@@ -1117,18 +1117,6 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_delay_debug(
-    int $ns_min,
-    int $ns_max,
-    &$seconds,
-    &$nanoseconds
-  ) {
-
-    $seconds = 0;
-    $nanoseconds = $ns_min;
-
-  }
-
   protected function is_cli() {
 
     return $this->php_sapi_name() === 'cli';
