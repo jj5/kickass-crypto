@@ -24,6 +24,24 @@ I am sharing this code with friends and colleagues, soliciting as much
 criticism and feedback as possible. When I feel this library is as good
 as I can make it I will update this status note.
 
+## tl;dr
+
+```
+mkdir -p kickass-demo/lib
+cd kickass-demo
+git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto
+php lib/kickass-crypto/bin/gen-config.php > config.php
+cat > demo.php <<'EOF'
+<?php
+require __DIR__ . '/lib/kickass-crypto/inc/library.php';
+require __DIR__ . '/config.php';
+$ciphertext = kickass_round_trip()->encrypt( 'secret text' );
+$plaintext = kickass_round_trip()->decrypt( $ciphertext );
+echo "the secret data is: $plaintext.\n";
+EOF
+php demo.php
+```
+
 ## Library Demo
 
 Assuming I remember to update it from time to time, there's a demo system over
