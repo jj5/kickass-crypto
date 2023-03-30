@@ -36,6 +36,22 @@ here:
 This code should work on PHP 7.4 or greater. If you try to run this code on an
 older version of PHP it will log an error message and exit your process.
 
+## Configuration Settings
+
+Please be advised that at the moment this code is configured directly in the `config.php` file.
+
+In future the `config.php` will include two separately managed config files, being:
+
+* etc/config-round-trip.php
+* etc/config-at-rest.php
+
+There will be management scripts for automatically rotating and provisioning keys in these files.
+
+Experienced Linux users know that you don't edit /etc/sudoers directly, you edit it with `visudo`
+so that you can verify you haven't accidentally introduced a syntax error and hosed your system.
+I intend to provide similar scripts for editing and managing `config.php` and other config files.
+So stand-by for those updates. In the mean time... _just be very careful_.
+
 ## Supported Use Cases
 
 This code supports two specific use cases:
