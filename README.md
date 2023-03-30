@@ -357,6 +357,11 @@ use HTTPS for your web clients.
 
 This code is licensed under the MIT License.
 
+## Commit Messages
+
+I should be more disciplined with my commit messages. I promise if this library matures and gets
+widely used I will be more careful with my commits.
+
 ## Comments? Questions? Suggestions?
 
 I'd love to hear from you! Hit me up at
