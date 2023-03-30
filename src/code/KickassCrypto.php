@@ -2,7 +2,7 @@
 
 // 2023-03-30 jj5 - this is the Kickass Crypto library, you only need to include this file.
 //
-// 2023-03-30 jj5 - make sure you have a valid config.php file, then encrypt like this:
+// 2023-03-30 jj5 - make sure you load a valid config.php file, then encrypt like this:
 //
 //   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
 //
