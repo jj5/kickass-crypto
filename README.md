@@ -11,8 +11,8 @@ the PHP
 function.
 
 This library aims to ensure that the data it encrypts is as secure as the
-secret keys used to encrypt it. Also measures are taken to ensure that the
-encrypted data is tamperproof.
+secret keys used to encrypt it. Also measures are taken in an attempt to ensure
+that the encrypted data is tamperproof.
 
 **_This library can't solve the hard problem of key management._**
 
