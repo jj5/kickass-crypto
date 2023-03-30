@@ -69,23 +69,29 @@ The details of how each use case is supported are documented below.
 
 ## Configuration Settings
 
-Please be advised that at the moment this code is configured directly in the `config.php` file.
+Please be advised that at the moment this code is configured directly in the
+`config.php` file.
 
-In future the `config.php` will include two separately managed config files, being:
+In future the `config.php` will include two separately managed config files,
+being:
 
 * etc/config-round-trip.php
 * etc/config-at-rest.php
 
-There will be management scripts for automatically rotating and provisioning keys in these files.
+There will be management scripts for automatically rotating and provisioning
+keys in these files.
 
-Experienced Linux users know that you don't edit /etc/sudoers directly, you edit it with `visudo`
-so that you can verify you haven't accidentally introduced a syntax error and hosed your system.
-I intend to provide similar scripts for editing and managing `config.php` and other config files.
-So stand-by for those updates. In the mean time... _just be very careful_.
+Experienced Linux users know that you don't edit /etc/sudoers directly, you
+edit it with `visudo` so that you can verify you haven't accidentally
+introduced a syntax error and hosed your system.
+
+I intend to provide similar scripts for editing and managing `config.php`
+and other config files. So stand-by for those updates. In the mean time...
+_just be very careful_.
 
 ## Service Locators
 
-This library provides to service locator functions which manage an instance of
+This library provides two service locator functions which manage an instance of
 the crypto library, those are:
 
 * kickass_round_trip()
