@@ -511,20 +511,19 @@ abstract class KickassCrypto {
 
       try {
 
+        $this->do_delay_emergency();
+
+        $this->error_list[] = $error;
+
         while ( $openssl_error = $this->php_openssl_error_string() ) {
 
           $this->openssl_error = $openssl_error;
 
         }
-
-        $this->error_list[] = $error;
-
-        $this->do_delay_emergency();
-
       }
       catch ( Throwable $dummy ) { ; }
 
-      return $error;
+      return false;
 
     }
   }
