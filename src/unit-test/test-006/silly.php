@@ -55,7 +55,7 @@ function run_test() {
 
     echo "n.4: $n\n";
 
-    $big_array[] = str_repeat( '0', $n * $n );
+    $big_array[] = str_repeat( '0', $n * $n * $n );
 
     test_error( $big_array );
 
@@ -65,7 +65,7 @@ function run_test() {
 
     echo "n.5: $n\n";
 
-    $big_array[] = str_repeat( '0', $n * 2 );
+    $big_array[] = str_repeat( '0', $n * $n );
 
     test_error( $big_array );
 
@@ -75,7 +75,7 @@ function run_test() {
 
     echo "n.6: $n\n";
 
-    $big_array[] = str_repeat( '0', $n );
+    $big_array[] = str_repeat( '0', $n * 2 );
 
     test_error( $big_array );
 
@@ -84,6 +84,16 @@ function run_test() {
   for ( $n = 1; $n >= 1; $n++ ) {
 
     echo "n.7: $n\n";
+
+    $big_array[] = str_repeat( '0', $n );
+
+    test_error( $big_array );
+
+  }
+
+  for ( $n = 1; $n >= 1; $n++ ) {
+
+    echo "n.8: $n\n";
 
     $big_array[] = '0';
 
