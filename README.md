@@ -38,8 +38,8 @@ git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/nu
 php lib/kickass-crypto/bin/gen-config.php > config.php
 cat > demo.php <<'EOF'
 <?php
-require __DIR__ . '/lib/kickass-crypto/inc/library.php';
-require __DIR__ . '/config.php';
+require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
+require_once __DIR__ . '/config.php';
 $ciphertext = kickass_round_trip()->encrypt( 'secret text' );
 $plaintext = kickass_round_trip()->decrypt( $ciphertext );
 echo "the secret data is: $plaintext.\n";
