@@ -56,6 +56,17 @@ here:
 This code should work on PHP 7.4 or greater. If you try to run this code on an
 older version of PHP it will log an error message and exit your process.
 
+## Supported Use Cases
+
+This code supports two specific use cases:
+
+* round-trip encryption
+* at-rest encryption
+
+Keys are managed separately and differently for each use case.
+
+The details of how each use case is supported are documented below.
+
 ## Configuration Settings
 
 Please be advised that at the moment this code is configured directly in the `config.php` file.
@@ -71,15 +82,6 @@ Experienced Linux users know that you don't edit /etc/sudoers directly, you edit
 so that you can verify you haven't accidentally introduced a syntax error and hosed your system.
 I intend to provide similar scripts for editing and managing `config.php` and other config files.
 So stand-by for those updates. In the mean time... _just be very careful_.
-
-## Supported Use Cases
-
-This code supports two specific use cases:
-
-* round-trip encryption
-* at-rest encryption
-
-The details of how each use case is supported are documented below.
 
 ## Service Locators
 
