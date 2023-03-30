@@ -361,26 +361,26 @@ use HTTPS for your web clients.
 
 ## Directory Structure
 
-* /bin: command-line commands
-* /bin/dev: development scripts
-* /bin/dev/test-all.sh: run fast and slow unit tests
-* /bin/dev/test.sh: run unit tests, control with flags
-* /bin/gen-config.php: generate an initial config.php file
-* /bin/gen-key.php: generate a secret key
-* /bin/get-cipher-list.php: list cipher suites supported by your version of PHP
-* /bin/get-hash-list.php: list hash algorithms supported by your version of PHP
-* /doc: additional documentation
-* /doc/tex: LaTeX write-up (planned)
-* /etc: library configuration files (planned)
-* /src: PHP source code
-* /src/code: the full library
-* /src/demo: a web-client for demonstration purposes
-* /src/host: software hosts (presently for hosting unit-tests)
-* /src/unit-test: unit tests: fast, slow, and silly; see /bin/dev/test.sh
-* /.gitignore: the list of files ignored by git
-* /LICENSE: the software license
-* /README.md: this documentation file
-* /config.php: the library config file, used by demo web-client (create your own)
+* bin: command-line commands
+* bin/dev: development scripts
+* bin/dev/test-all.sh: run fast and slow unit tests
+* bin/dev/test.sh: run unit tests, control with flags
+* bin/gen-config.php: generate an initial config.php file
+* bin/gen-key.php: generate a secret key
+* bin/get-cipher-list.php: list cipher suites supported by your version of PHP
+* bin/get-hash-list.php: list hash algorithms supported by your version of PHP
+* doc: additional documentation
+* doc/tex: LaTeX write-up (planned)
+* etc: library configuration files (planned)
+* src: PHP source code
+* src/code: the full library
+* src/demo: a web-client for demonstration purposes
+* src/host: software hosts (presently for hosting unit-tests)
+* src/unit-test: unit tests: fast, slow, and silly; see /bin/dev/test.sh
+* .gitignore: the list of files ignored by git
+* LICENSE: the software license
+* README.md: this documentation file
+* config.php: the library config file, used by demo web-client (create your own)
 
 ## License
 
