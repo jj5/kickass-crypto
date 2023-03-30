@@ -396,4 +396,4 @@ widely used I will be more careful with my commits.
 I'd love to hear from you! Hit me up at
 [jj5@jj5.net](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
 Put "Kickass Crypto" in
-the subject line to make it past my mail rules.
+the subject line to make it past my mail filters.
