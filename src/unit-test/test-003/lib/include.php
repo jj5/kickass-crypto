@@ -1,7 +1,5 @@
 <?php
 
-define( 'KICKASS_CRYPTO_DEBUG', true );
-
 class TestCrypto extends KickassCryptoRoundTrip {
 
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }

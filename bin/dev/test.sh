@@ -33,7 +33,6 @@ main() {
 
   done;
 
-
 }
 
 process_fast() {

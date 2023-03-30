@@ -7,8 +7,6 @@
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../host/unit-test.php';
 
-define( 'KICKASS_CRYPTO_DEBUG', true );
-
 function run_test() {
 
   $plaintext = 'test';

@@ -1,8 +1,6 @@
 #!/usr/bin/env php
 <?php
 
-define( 'KICKASS_CRYPTO_DEBUG', true );
-
 function test_error( $instance ) {
 
   test_service_error( kickass_round_trip(), $instance );

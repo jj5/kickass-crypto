@@ -5,8 +5,6 @@
 
 require_once __DIR__ . '/../../host/unit-test.php';
 
-define( 'KICKASS_CRYPTO_DEBUG', true );
-
 class TestCryptoRoundTrip extends KickassCryptoRoundTrip {
 
   private $chunk_size = 0;

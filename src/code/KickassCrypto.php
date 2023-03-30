@@ -507,11 +507,11 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
+      $this->do_delay_emergency();
+
       $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
 
       try {
-
-        $this->do_delay_emergency();
 
         $this->error_list[] = $error;
 
@@ -802,24 +802,7 @@ abstract class KickassCrypto {
     int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
   ) {
 
-    if ( defined( 'KICKASS_CRYPTO_DEBUG' ) && KICKASS_CRYPTO_DEBUG ) {
-
-      if ( ! $this->is_cli() ) {
-
-        error_log(
-          "WARNING: constant 'KICKASS_CRYPTO_DEBUG' has disabled delay, redefine to enable."
-        );
-
-      }
-
-      $this->get_delay_debug( $ns_min, $ns_max, $seconds, $nanoseconds );
-
-    }
-    else {
-
-      $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
-
-    }
+    $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
 
     assert( is_int( $seconds ) );
     assert( $seconds >= 0 );
@@ -831,6 +814,11 @@ abstract class KickassCrypto {
   }
 
   protected final function do_delay_emergency() {
+
+    // 2023-03-30 jj5 - ordinarily do_delay() does our delay, but there are a bunch of ways that
+    // could go wrong. If do_delay() throws we make a sincere effort to call this function,
+    // which endeavors to "fail safe". In this case failing safe means ensuring that there is
+    // some delay. This code tries very hard to make sure there's some sort of random delay...
 
     try {
 

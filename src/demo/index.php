@@ -1,7 +1,5 @@
 <?php
 
-define( 'KICKASS_CRYPTO_DEBUG', true );
-
 require_once __DIR__ . '/../code/KickassCrypto.php';
 
 require_once __DIR__ . '/../../config.php';

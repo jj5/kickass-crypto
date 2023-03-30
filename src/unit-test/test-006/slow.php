@@ -9,6 +9,10 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
+  // 2023-03-30 jj5 - can't encrypt false...
+  //
+  test_error( false );
+
   $limit = 26;
 
   for ( $n = 0; $n < $limit; $n++ ) {
