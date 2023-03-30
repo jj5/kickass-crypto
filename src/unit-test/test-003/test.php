@@ -475,7 +475,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function php_deflate( $buffer ) {
+        protected function php_gzdeflate( $buffer ) {
           return false;
         }
       };
@@ -491,7 +491,7 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
-        protected function php_inflate( $buffer ) {
+        protected function php_gzinflate( $buffer ) {
           return false;
         }
       };
@@ -573,6 +573,15 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
   assert( count( $crypto->get_error_list() ) === 0 );
 
   $result = $crypto->test();
+
+  if ( $result !== false ) {
+
+    var_dump([
+      'class' => get_class( $crypto ),
+      'result' => $result,
+    ]);
+
+  }
 
   assert( $result === false );
 
