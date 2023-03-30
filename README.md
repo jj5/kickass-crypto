@@ -2,7 +2,8 @@
 
 A contemporary PHP cryptography library circa 2023.
 
-This library is a wrapper around the PHP OpenSSL library.
+This library is a wrapper around the
+[PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php).
 
 The code in this library is based on the example given in the documentation for
 the PHP
