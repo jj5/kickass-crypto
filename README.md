@@ -180,7 +180,7 @@ guest on your VPS host (or a malicious person listening to your server's fans!
 😜) could figure out that your process is sleeping rather than doing actual
 work.
 
-The library includes a method called `delay`, and this method is called
+This library includes a method called `delay`, and this method is called
 automatically on the first instance of an error. The `delay` method is public
 and you can call it yourself if you feel the need.
 
@@ -240,7 +240,7 @@ suite we use is the
 
 Secret keys are the secret values you keep in your `config.php` file which
 will be processed and turned into passphrases for use by the OpenSSL library
-functions. The library automatically handles converting secret keys into
+functions. This library automatically handles converting secret keys into
 passphrases so your only responsibility is to nominate the secret keys.
 
 The secret keys used vary based on the use case. There are two default use
