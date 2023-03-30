@@ -78,6 +78,8 @@ at-rest keys.
 The main use case for which this library was developed was to support
 round-tripping a few kilobytes of data containing mildly sensitive but
 not mission critical row version numbers for optimistic concurrency control.
+As compared with the alternative (not encrypting or authenticating the
+optimistic concurrency control data) the use of this library is an improvement.
 Whether it's really suitable in other applications is an open question, I'm
 not sure.
 
