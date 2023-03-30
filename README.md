@@ -29,7 +29,7 @@ as I can make it I will update this status note.
 ```
 mkdir -p kickass-demo/lib
 cd kickass-demo
-git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto
+git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
 php lib/kickass-crypto/bin/gen-config.php > config.php
 cat > demo.php <<'EOF'
 <?php
