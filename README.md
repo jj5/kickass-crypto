@@ -26,6 +26,8 @@ as I can make it I will update this status note.
 
 ## tl;dr
 
+Don't want to RTFM..?
+
 ```
 mkdir -p kickass-demo/lib
 cd kickass-demo
