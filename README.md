@@ -153,7 +153,7 @@ for discussion.
 Note that avoiding timing attacks is
 [hard](https://www.openwall.com/lists/oss-security/2023/01/25/3). A malicious
 guest on your VPS host (or a malicious person listening to your server's fans!
-😜 ) could figure out that your process is sleeping rather than doing actual
+😜) could figure out that your process is sleeping rather than doing actual
 work.
 
 The library includes a method called `delay`, and this method is called
