@@ -2,6 +2,8 @@
 
 A contemporary PHP cryptography library circa 2023.
 
+This library is a wrapper around the PHP OpenSSL library.
+
 The code in this library is based on the example given in the documentation for
 the PHP
 [openssl_encrypt](https://www.php.net/manual/en/function.openssl-encrypt.php)
