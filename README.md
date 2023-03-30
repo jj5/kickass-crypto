@@ -436,7 +436,7 @@ host in `src/host/unit-test.php`.
 * src/code/: the full library
 * src/demo/: a web-client for demonstration purposes
 * src/host/: software hosts (presently for hosting unit-tests)
-* src/unit-test/: unit tests: fast, slow, and silly; see /bin/dev/test.sh
+* src/unit-test/: unit tests: fast, slow, and silly; see bin/dev/test.sh
 * .gitignore: the list of files ignored by git
 * LICENSE: the software license
 * README.md: this documentation file
