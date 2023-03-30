@@ -24,6 +24,12 @@ will update this status note.
 
 **This library can't solve the hard problem of key management.**
 
+## Library Demo
+
+There's a demo system over here:
+
+* [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
+
 ## Supported PHP Versions
 
 This code should work on PHP 7.4 or greater. If you try to run this code on an
