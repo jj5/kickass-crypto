@@ -69,6 +69,12 @@ Keys are managed separately and differently for each use case.
 
 The details of how each use case is supported are documented below.
 
+Using this library for at-rest encryption is generally a bigger risk and a
+bigger commitment than using it simply for round-trip encryption. If you
+lose your round-trip encryption keys or are forced to rotate them urgently
+that will likely be less of a problem that if similar happened to your
+at-rest keys.
+
 ## Configuration settings
 
 Please be advised that at the moment this code is configured directly in the
