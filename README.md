@@ -21,8 +21,8 @@ encrypted data is tamperproof.
 **This library is a work in progress.**
 
 I am sharing this code with friends and colleagues, soliciting as much
-criticism as possible. When I feel this library is as good as I can make it I
-will update this status note.
+criticism and feedback as possible. When I feel this library is as good
+as I can make it I will update this status note.
 
 ## Library Demo
 
