@@ -23,7 +23,7 @@ function run_test() {
 
   for ( $n = 1; $n < 8; $n++ ) {
 
-    //echo "n: $n\n";
+    //echo "n.1: $n\n";
 
     $big_array[] = $big_array;
 
@@ -33,7 +33,7 @@ function run_test() {
 
   for ( $n = 1; $n < 16; $n++ ) {
 
-    //echo "n: $n\n";
+    //echo "n.2: $n\n";
 
     $big_array[] = str_repeat( $limit_str, $n );
 
@@ -43,7 +43,7 @@ function run_test() {
 
   for ( $n = 1; $n < 8; $n++ ) {
 
-    //echo "n: $n\n";
+    //echo "n.3: $n\n";
 
     $big_array[] = $limit_str;
 
@@ -53,7 +53,7 @@ function run_test() {
 
   for ( $n = 1; $n >= 1; $n++ ) {
 
-    echo "n: $n\n";
+    echo "n.4: $n\n";
 
     $big_array[] = str_repeat( '0', $n * $n );
 
@@ -63,7 +63,7 @@ function run_test() {
 
   for ( $n = 1; $n >= 1; $n++ ) {
 
-    echo "n: $n\n";
+    echo "n.5: $n\n";
 
     $big_array[] = str_repeat( '0', $n * 2 );
 
@@ -73,7 +73,7 @@ function run_test() {
 
   for ( $n = 1; $n >= 1; $n++ ) {
 
-    echo "n: $n\n";
+    echo "n.6: $n\n";
 
     $big_array[] = str_repeat( '0', $n );
 
@@ -83,7 +83,7 @@ function run_test() {
 
   for ( $n = 1; $n >= 1; $n++ ) {
 
-    echo "n: $n\n";
+    echo "n.7: $n\n";
 
     $big_array[] = '0';
 
