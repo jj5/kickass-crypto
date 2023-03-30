@@ -14,6 +14,8 @@ This library aims to ensure that the data it encrypts is as secure as the
 secret keys used to encrypt it. Also measures are taken to ensure that the
 encrypted data is tamperproof.
 
+**_This library can't solve the hard problem of key management._**
+
 ## Status of this library
 
 **This library is a work in progress.**
@@ -21,8 +23,6 @@ encrypted data is tamperproof.
 I am sharing this code with friends and colleagues, soliciting as much
 criticism as possible. When I feel this library is as good as I can make it I
 will update this status note.
-
-**_This library can't solve the hard problem of key management._**
 
 ## Library Demo
 
