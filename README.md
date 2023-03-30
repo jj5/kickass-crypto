@@ -454,7 +454,7 @@ they are provided by your PHP implementation.
 
 This code is licensed under the MIT License.
 
-## Commit bessages
+## Commit messages
 
 I should be more disciplined with my commit messages. I promise if this library
 matures and gets widely used I will be more careful with my commits.
