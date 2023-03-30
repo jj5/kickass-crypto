@@ -16,6 +16,8 @@ encrypted data is tamperproof.
 
 **_This library can't solve the hard problem of key management._**
 
+![The key's under the mat.](/jj5/kickass-crypto/raw/main/src/demo/res/key-management.jpg "The key's under the mat.")
+
 ## Status of this library
 
 **This library is a work in progress.**
