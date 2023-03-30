@@ -130,7 +130,7 @@ function render_foot() {
   <footer>
     <hr>
     <h4>Current Version</h4>
-    <pre><?= htmlentities( `git log -n 1` ) ?></pre>
+    <pre><?= htmlentities( `/usr/bin/git log -n 1` ) ?></pre>
   </footer>
 </body>
 </html>
