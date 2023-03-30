@@ -75,6 +75,10 @@ lose your round-trip encryption keys or are forced to rotate them urgently
 that will likely be less of a problem that if similar happened to your
 at-rest keys.
 
+The main use case for which this library was developed was to support
+round-tripping a few kilobytes of data containing mildly sensitive but
+not mission critical row version numbers for optimistic concurrency control.
+
 ## Configuration settings
 
 Please be advised that at the moment this code is configured directly in the
