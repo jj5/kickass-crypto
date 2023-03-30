@@ -1099,6 +1099,7 @@ abstract class KickassCrypto {
 
     assert( $ns_min >= 0 );
     assert( $ns_max >= 0 );
+    assert( $ns_max >= $ns_min );
 
     $delay = $this->php_random_int( $ns_min, $ns_max );
 
