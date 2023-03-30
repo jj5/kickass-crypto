@@ -44,19 +44,19 @@ EOF
 php demo.php
 ```
 
-## Library Demo
+## Library demo
 
 Assuming I remember to update it from time to time, there's a demo system over
 here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
-## Supported PHP Versions
+## Supported PHP versions
 
 This code should work on PHP 7.4 or greater. If you try to run this code on an
 older version of PHP it will log an error message and exit your process.
 
-## Supported Use Cases
+## Supported use cases
 
 This code supports two specific use cases:
 
@@ -67,7 +67,7 @@ Keys are managed separately and differently for each use case.
 
 The details of how each use case is supported are documented below.
 
-## Configuration Settings
+## Configuration settings
 
 Please be advised that at the moment this code is configured directly in the
 `config.php` file.
@@ -89,7 +89,7 @@ I intend to provide similar scripts for editing and managing `config.php`
 and other config files. So stand-by for those updates. In the mean time...
 _just be very careful_.
 
-## Service Locators
+## Service locators
 
 This library provides two service locator functions which manage an instance of
 the crypto library each, those are:
@@ -103,7 +103,7 @@ parameter. Ideally this library will meet your requirements out of the box
 and you won't need to replace the instances provided by the service locators
 by default.
 
-## Data-format Prefix
+## Data-format prefix
 
 When this library encodes its ciphertext it includes a data-format prefix of
 "KA1/". Future versions of this library might implement a new data-format
@@ -112,7 +112,7 @@ prefix.
 When this library decodes its ciphertext it verifies the data-format prefix. At
 present only "KA1/" is supported.
 
-## Chunk Size
+## Chunk size
 
 When this library encrypts its data it pads its output up to a configurable
 chunk size.
@@ -126,7 +126,7 @@ If you wanted to increase the chunk size to 8,192 you could do that in your
 
 ```define( 'CONFIG_ENCRYPTION_CHUNK_SIZE', 8912 );```
 
-## Data Size Limits
+## Data size limits
 
 Before data is encrypted it is serialized then compressed. After data is
 serialized it is limited to a configurable maxlimum length.
@@ -145,7 +145,7 @@ If you wanted to decrease the serialization limit you could do that in your
 
 ```define( 'CONFIG_ENCRYPTION_SERIALIZE_LIMIT', pow( 2, 25 ) );```
 
-## Data Compression
+## Data compression
 
 After data is serialized, and before it is encrypted, it is compressed with
 the PHP function
@@ -154,7 +154,7 @@ compression level 9. The
 [gzinflate](https://www.php.net/manual/en/function.gzinflate.php) function is
 used for decompression.
 
-## Timing Attack Mitigation
+## Timing attack mitigation
 
 If an error is encountered during encryption or decryption a delay of between
 1 millisecond (1ms) and 10 seconds (10s) is introduced. This is a mitigation
@@ -172,7 +172,7 @@ The library includes a method called `delay`, and this method is called
 automatically on the first instance of an error. The `delay` method is public
 and you can call it yourself if you feel the need.
 
-## Fail Safe
+## Fail safe
 
 The user of this library has the opportunity to override the `do_delay`
 method and provide their own delay logic.
@@ -185,7 +185,7 @@ throw an exception that would be bad. Don't do that.** (Except for in your
 unit tests, it's okay to skip delay in unit tests. If you're testing the
 delay in your unit tests put those tests in the slow tests.)
 
-## Exceptions and Errors
+## Exceptions and errors
 
 When an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest is
 created the configuration settings are validated. If the configuration settings
@@ -218,12 +218,13 @@ library calls to do the heavy lifting, then the last such error is available
 if you call the `get_openssl_error`. You can clear the current error list and
 OpenSSL error messages by calling the method `clear_error`.
 
-## Cipher Suite
+## Cipher suite
 
 This library is a wrapper around the PHP OpenSSL implementation. The cipher
-suite we use is the AES-256-GCM.
+suite we use is the
+[AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html).
 
-## Secret Keys and Passphrases
+## Secret keys and passphrases
 
 Secret keys are the secret values you keep in your `config.php` file which
 will be processed and turned into passphrases for use by the OpenSSL library
@@ -247,7 +248,7 @@ taken from the SHA512 hash of the secret key. When this hash code is applied
 with raw binary output from an 88 byte base64 encoded input you should be
 getting about 32 bytes of randomness for your keys.
 
-## Initialization Vector
+## Initialization vector
 
 Our AES-256-GCM cipher suite supports the use of a 12 byte initialization
 vector, which we provide. The initialization vector ensures that even if you
@@ -261,7 +262,7 @@ have the same ciphertext for their birthdays. When this happens you can see
 who has the same birthday, even when you might not know exactly when it is. The
 initialization vector avoids this potential problem.
 
-## Authentication Tag
+## Authentication tag
 
 Our AES-256-GCM cipher suite supports the validation of a 16 byte
 authentication tag.
@@ -271,7 +272,7 @@ Message Authentication Code (MAC) similar to a Hash-based Message
 Authentication Code (HMAC) which you may have heard of before. The goal of the
 GCM authentication tag is to make your encrypted data tamperproof.
 
-## Round Trip Use Case
+## Round-trip use case
 
 The round-trip use case is for when you want to send data to the client in
 hidden HTML form &lt;input> elements and have it POSTed back later.
@@ -309,7 +310,7 @@ To decrypt round-trip data:
 $plaintext = kickass_round_trip()->decrypt( $ciphertext );
 ```
 
-## At Rest Use Case
+## At-rest use case
 
 The at-rest use case if for when you want to encrypt data for storage in a
 database or elsewhere.
@@ -347,7 +348,7 @@ To decrypt at-test data:
 $plaintext = kickass_at_rest()->decrypt( $ciphertext );
 ```
 
-## Notes On Key Management
+## Notes on key management
 
 It has been noted that key management is the hardest part of cybersecurity.
 **This library can't help you with that.**
@@ -375,7 +376,7 @@ edited in a secure way. A syntax error in a config file could lead to a
 secret key being exposed to the public web. If this happened you would have to
 rotate all of your keys immediately and then destroy the old compromised keys.**
 
-## Key Coordination
+## Key coordination
 
 When you rotate your round-trip and at-rest keys you need to make sure they
 are synchronized across all of your web servers.
@@ -383,7 +384,7 @@ are synchronized across all of your web servers.
 I intend to implement some facilities to help with key deployment, and config
 file editing but those facilities are not done yet.
 
-## Data In Motion
+## Data in motion
 
 This library supports encrypted data at-rest, and encrypted data round-trips.
 Another consideration is data in motion.
@@ -394,7 +395,7 @@ clients that access them. You should use asymetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
 
-## How the Unit Tests Work
+## How the unit tests work
 
 The unit tests are in the `src/unit-test/` directory, numbered sequentially.
 
@@ -418,7 +419,7 @@ create both `slow.sh` will have precedence and `slow.php` will be ignored.
 See existing unit tests for examples of how to use the simple unit test
 host in `src/host/unit-test.php`.
 
-## Directory Structure
+## Directory structure
 
 * bin/: command-line commands
 * bin/dev/: development scripts
@@ -441,14 +442,22 @@ host in `src/host/unit-test.php`.
 * README.md: this documentation file
 * config.php: the library config file, used by demo web-client (create your own)
 
+## Bans and restrictions
+
+Some countries have banned the import or use of strong cryp­togra­phy, such as
+256 bit AES.
+
+Please be advised that this library does not contain cryptographic functions,
+they are provided by your PHP implementation.
+
 ## License
 
 This code is licensed under the MIT License.
 
-## Commit Messages
+## Commit bessages
 
-I should be more disciplined with my commit messages. I promise if this library matures and gets
-widely used I will be more careful with my commits.
+I should be more disciplined with my commit messages. I promise if this library
+matures and gets widely used I will be more careful with my commits.
 
 ## Comments? Questions? Suggestions?
 
