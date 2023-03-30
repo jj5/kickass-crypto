@@ -26,7 +26,8 @@ will update this status note.
 
 ## Library Demo
 
-There's a demo system over here:
+Assuming I remember to update it from time to time, there's a demo system over
+here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
