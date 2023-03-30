@@ -154,6 +154,16 @@ compression level 9. The
 [gzinflate](https://www.php.net/manual/en/function.gzinflate.php) function is
 used for decompression.
 
+## Data encryption
+
+This library actually encrypts your data twice. The process is roughly:
+
+* serialize
+* compress
+* encrypt
+* pad
+* encrypt
+
 ## Timing attack mitigation
 
 If an error is encountered during encryption or decryption a delay of between
