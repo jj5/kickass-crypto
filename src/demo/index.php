@@ -127,6 +127,11 @@ function handle_load() {
 function render_foot() {
 ?>
   </main>
+  <footer>
+    <hr>
+    <h4>Current Version</h4>
+    <pre><?= htmlentities( `git log -n 1` ) ?></pre>
+  </footer>
 </body>
 </html>
 <?php
