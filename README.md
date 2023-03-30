@@ -81,7 +81,8 @@ not mission critical row version numbers for optimistic concurrency control.
 As compared with the alternative (not encrypting or authenticating the
 optimistic concurrency control data) the use of this library is an improvement.
 Whether it's really suitable in other applications is an open question, I'm
-not sure.
+not sure. Certainly you shouldn't use this library use this library if it
+doesn't provide the level of security you require.
 
 ## Configuration settings
 
