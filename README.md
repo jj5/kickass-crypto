@@ -16,7 +16,7 @@ encrypted data is tamperproof.
 
 **_This library can't solve the hard problem of key management._**
 
-![The key's under the mat.](/raw/main/src/demo/res/key-management.jpg)
+![The key's under the mat.](/src/demo/res/key-management.jpg)
 
 ## Status of this library
 
