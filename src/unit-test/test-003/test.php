@@ -380,6 +380,51 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->encrypt( 'test' );
+        }
+        public function do_encrypt( $input ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decrypt( 'test' );
+        }
+        public function do_decrypt( $input ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->delay();
+        }
+        public function do_delay(
+          int $ns_max = KICKASS_CRYPTO_DELAY_NS_MAX,
+          int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
+        ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT,
     function() {
       return new class extends ValidCrypto {

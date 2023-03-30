@@ -507,7 +507,24 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5 );
+      $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
+
+      try {
+
+        while ( $openssl_error = $this->php_openssl_error_string() ) {
+
+          $this->openssl_error = $openssl_error;
+
+        }
+
+        $this->error_list[] = $error;
+
+        $this->do_delay_emergency();
+
+      }
+      catch ( Throwable $dummy ) { ; }
+
+      return $error;
 
     }
   }
@@ -811,6 +828,29 @@ abstract class KickassCrypto {
     assert( $nanoseconds < 1_000_000_000 );
 
     return $this->php_time_nanosleep( $seconds, $nanoseconds );
+
+  }
+
+  protected final function do_delay_emergency() {
+
+    try {
+
+      $ns_min =      1_000_000;
+      $ns_max = 10_000_000_000;
+
+      $delay = random_int( $ns_min, $ns_max );
+
+      $seconds = intval( round( $delay / 1_000_000_000 ) );
+      $nanoseconds = $delay % 1_000_000_000;
+
+      $result = time_nanosleep( $seconds, $nanoseconds );
+
+      if ( $result ) { return; }
+
+    }
+    catch ( Throwable $ex ) { ; }
+
+    usleep( random_int( 1_000, 10_000_000 ) );
 
   }
 
