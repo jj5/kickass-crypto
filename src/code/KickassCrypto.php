@@ -1,5 +1,17 @@
 <?php
 
+// 2023-03-30 jj5 - this is the Kickass Crypto library, you only need to include this file.
+//
+// 2023-03-30 jj5 - make sure you have a valid config.php file, then encrypt like this:
+//
+//   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
+//
+// and decrypt like this:
+//
+//   $plaintext = kickass_round_trip()->decrypt( $ciphertext );
+//
+// see README.md for more info.
+
 if ( version_compare( phpversion(), '7.4', '<' ) ) {
 
   $error_message = "The kickass-crypto library requires PHP version 7.4 or greater.";
