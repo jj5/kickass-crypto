@@ -382,6 +382,30 @@ clients that access them. You should use asymetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
 
+## How the Unit Tests Work
+
+The unit tests are in the `src/unit-test` directory, numbered sequentially.
+
+There's some test runners in `bin/dev/`, as you can see. Read the scripts
+for the gory details but in brief:
+
+* `bin/dev/test.sh` will run the fast tests
+* `bin/dev/test-all.sh` will run the fast tests and the slow tests
+
+There are also some silly tests, but we won't talk about those. They are not
+ordinarily run.
+
+If you want to add a normal/fast test create the unit test directory in
+`src/unit-test/test-XXX`, then add either `test.php` or `test.sh`. If you
+create both `test.sh` will have precedence and `test.php` will be ignored.
+
+If you want to add a slow test create the unit test directory in
+`src/unit-test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
+create both `slow.sh` will have precedence and `slow.php` will be ignored.
+
+See existing unit tests for examples of how to use the simple unit test
+host in `src/host/unit-test.php`.
+
 ## Directory Structure
 
 * bin: command-line commands
