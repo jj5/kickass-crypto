@@ -136,7 +136,7 @@ serialized it is limited to a configurable maxlimum length.
 The config constant for the maximum serialization length is
 `CONFIG_ENCRYPTION_SERIALIZE_LIMIT`.
 
-The default serialization limit is 67,108,864 (2^<sup>26</sup>) characters.
+The default serialization limit is 67,108,864 (2^<sup>26</sup>) bytes.
 
 It's possible to configure this serialization limit, if you need to make it
 larger or smaller. Just be aware that if you make the limit too large you will
