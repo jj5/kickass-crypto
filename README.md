@@ -25,7 +25,7 @@ that the encrypted data is tamperproof.
 I am sharing this code with friends and colleagues, soliciting as much
 criticism and feedback as possible. When I feel this library is as good
 as I can make it I will update this status note. In the mean time
-breaking changes are certain.
+breaking changes are almost certain.
 
 ## tl;dr
 
