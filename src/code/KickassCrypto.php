@@ -1005,7 +1005,7 @@ abstract class KickassCrypto {
 
     $message = $data_length . '|' . $json . $this->get_padding( $pad_length );
 
-    $ciphertext = $this->encrypt_string( $message, $passphrase );
+    $ciphertext = $this->do_encrypt_string( $message, $passphrase );
 
     if ( $ciphertext === false ) {
 
@@ -1294,7 +1294,7 @@ abstract class KickassCrypto {
 
   }
 
-  protected function encrypt_string( string $plaintext, string $passphrase ) {
+  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
 
     $iv = $this->php_random_bytes( $this->get_const_ivlen() );
 
@@ -1342,7 +1342,7 @@ abstract class KickassCrypto {
 
   protected function try_decrypt( string $binary, string $passphrase ) {
 
-    $message = $this->decrypt_string( $binary, $passphrase );
+    $message = $this->do_decrypt_string( $binary, $passphrase );
 
     if ( $message === false ) {
 
@@ -1366,7 +1366,7 @@ abstract class KickassCrypto {
     return $json;
   }
 
-  protected function decrypt_string( string $binary, string $passphrase ) {
+  protected function do_decrypt_string( string $binary, string $passphrase ) {
 
     if ( ! $this->parse_data( $binary, $iv, $tag, $ciphertext ) ) {
 

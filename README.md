@@ -231,10 +231,27 @@ couldn't encrypt it, it's because we return it when encryption fails. So we
 refuse to encrypt false so that it can't be confused with an error upon
 decryption.
 
+If you need to encrypt the boolean value false consider either putting it in an array, like this:
+
+```
+$data = [ 'value' => false ];
+```
+
+Or encoding as JSON, like this:
+
+```
+$data = json_encode( false );
+```
+
+If you do either of those things you will be able to encrypt your value.
+
 It's worth pointing out that in PHP "strings" are essentially byte arrays, which means they can
 contain essentially "binary" data. Such binary data cannot be represented as JSON however. If
 you need to handle binary data the best way is probably to encoded it as base64 (base64_encode)
-or hexadecimal (bin2hex).
+or hexadecimal (bin2hex) and then encrypt that.
+
+In future the ability to work with data that isn't always JSON encoded might be added to this
+library. Let me know if that's a feature you care to have.
 
 ## Data size limits
 

@@ -109,7 +109,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase );
+          return $this->do_encrypt_string( 'test', $passphrase );
         }
         protected function php_random_bytes( $length ) {
           return '123';
@@ -136,7 +136,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase );
+          return $this->do_encrypt_string( 'test', $passphrase );
         }
         protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $tag = 'invalid';
@@ -168,7 +168,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test'  );
         }
-        protected function encrypt_string( $compressed, $passphrase ) {
+        protected function do_encrypt_string( $compressed, $passphrase ) {
           return false;
         }
       };
@@ -227,7 +227,7 @@ function run_test() {
         private $count = 0;
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase  );
+          return $this->do_encrypt_string( 'test', $passphrase  );
         }
         protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           parent::php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
@@ -244,7 +244,7 @@ function run_test() {
         private $iv_count = 0;
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase );
+          return $this->do_encrypt_string( 'test', $passphrase );
         }
         protected function php_random_bytes( $length ) {
           return '';
@@ -265,7 +265,7 @@ function run_test() {
         private $cipher_count = 0;
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase );
+          return $this->do_encrypt_string( 'test', $passphrase );
         }
         protected function get_const_cipher() {
           $this->cipher_count++;
@@ -283,7 +283,7 @@ function run_test() {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
           $binary = $this->decode( $ciphertext );
-          return $this->decrypt_string( $binary, $this->get_encryption_passphrase() );
+          return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function php_openssl_decrypt(
           $ciphertext, $cipher, $passphrase, $options, $iv, $tag
@@ -304,7 +304,7 @@ function run_test() {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
           $binary = $this->decode( $ciphertext );
-          return $this->decrypt_string( $binary, $this->get_encryption_passphrase() );
+          return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function php_openssl_decrypt(
           $ciphertext, $cipher, $passphrase, $options, $iv, $tag
@@ -375,7 +375,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decrypt_string( 'invalid', 'invalid' );
+          return $this->do_decrypt_string( 'invalid', 'invalid' );
         }
       };
     }
@@ -388,7 +388,7 @@ function run_test() {
         public function test() {
           return $this->try_decrypt( 'invalid', 'invalid' );
         }
-        protected function decrypt_string( $binary, $key ) {
+        protected function do_decrypt_string( $binary, $key ) {
           return 'invalid';
         }
       };
@@ -494,7 +494,7 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
-        protected function decrypt_string( string $binary, string $key ) {
+        protected function do_decrypt_string( string $binary, string $key ) {
           return false;
         }
       };
@@ -509,7 +509,7 @@ function run_test() {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
           $binary = $this->decode( $ciphertext );
-          return $this->decrypt_string( $binary, $this->get_encryption_passphrase() );
+          return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag ) {
           return false;
