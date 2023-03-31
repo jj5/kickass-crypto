@@ -498,6 +498,10 @@ Your encrypted data is only as secure as the secret keys.
 If someone gets a copy of your secret keys, they will be able to decrypt your
 data.
 
+If someone gets a copy of your encrypted data now, they can keep it and decrypt it if they get a
+copy of your secret keys in the future. So your keys don't have to be only secret now, but they
+have to be secret for all time.
+
 If you lose your secret keys, you won't be able to decrypt your data.
 
 Your round-trip data is probably less essential than your at-rest data.
