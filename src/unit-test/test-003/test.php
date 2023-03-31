@@ -440,6 +440,7 @@ function run_test() {
     }
   );
 
+  /*
   test_error(
     KICKASS_CRYPTO_ERROR_DEFLATE_FAILED,
     function() {
@@ -469,6 +470,7 @@ function run_test() {
       };
     }
   );
+  */
 
   test_error(
     KICKASS_CRYPTO_ERROR_NO_VALID_KEY,

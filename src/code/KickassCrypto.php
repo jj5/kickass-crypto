@@ -270,8 +270,6 @@ define( 'KICKASS_CRYPTO_ERROR_INVALID_PARTS', 'invalid parts.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_DEFLATE_FAILED', 'deflate failed.' );
-define( 'KICKASS_CRYPTO_ERROR_INFLATE_FAILED', 'inflate failed.' );
 define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED', 'decryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
@@ -968,25 +966,17 @@ abstract class KickassCrypto {
 
     }
 
-    $encoded = $this->data_encode( $input );
+    $json = $this->data_encode( $input );
 
-    if ( $encoded === false ) {
+    if ( $json === false ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
 
     }
 
-    if ( strlen( $encoded ) > $this->get_config_data_encoding_limit() ) {
+    if ( strlen( $json ) > $this->get_config_data_encoding_limit() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE );
-
-    }
-
-    $compressed = $this->deflate( $encoded );
-
-    if ( $compressed === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DEFLATE_FAILED );
 
     }
 
@@ -1004,16 +994,16 @@ abstract class KickassCrypto {
 
     }
 
-    $data_len = strlen( $compressed );
+    $data_length = strlen( $json );
 
     $chunk_size = $this->get_config_chunk_size();
 
     assert( is_int( $chunk_size ) );
     assert( $chunk_size > 0 );
 
-    $pad_len = $chunk_size - ( $data_len % $chunk_size );
+    $pad_length = $chunk_size - ( $data_length % $chunk_size );
 
-    $message = $data_len . '|' . $compressed . $this->get_padding( $pad_len );
+    $message = $data_length . '|' . $json . $this->get_padding( $pad_length );
 
     $ciphertext = $this->encrypt_string( $message, $passphrase );
 
@@ -1235,7 +1225,8 @@ abstract class KickassCrypto {
   protected function deflate( $input ) {
 
     // 2023-04-01 jj5 - NOTE: when compression is used it enables a CRIME-style attack, so we
-    // don't compress any more.
+    // don't compress any more. You might think you want to compress, but you really don't.
+    // It's a bad idea. Don't do it.
 
     return $input;
 
@@ -1370,17 +1361,9 @@ abstract class KickassCrypto {
     $length = intval( $parts[ 0 ] );
     $binary = $parts[ 1 ];
 
-    $compressed = substr( $binary, 0, $length );
+    $json = substr( $binary, 0, $length );
 
-    $result = $this->inflate( $compressed );
-
-    if ( $result === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INFLATE_FAILED );
-
-    }
-
-    return $result;
+    return $json;
   }
 
   protected function decrypt_string( string $binary, string $passphrase ) {

@@ -85,8 +85,8 @@ The details of how each use case is supported are documented below.
 Using this library for at-rest encryption is generally a bigger risk and a
 bigger commitment than using it simply for round-trip encryption. If you
 lose your round-trip encryption keys or are forced to rotate them urgently
-that will likely be less of a problem that if similar happened to your
-at-rest keys.
+that will likely be less of a problem than if something similar happened to
+your at-rest keys.
 
 The main use case for which this library was developed was to support
 round-tripping a few kilobytes of data containing mildly sensitive but
@@ -105,8 +105,8 @@ Please be advised that at the moment this code is configured directly in the
 In future the `config.php` will include two separately managed config files,
 being:
 
-* etc/config-round-trip.php
-* etc/config-at-rest.php
+* etc/keys-round-trip.php
+* etc/keys-at-rest.php
 
 There will be management scripts for automatically rotating and provisioning
 keys in these files.
@@ -141,6 +141,34 @@ prefix.
 
 When this library decodes its ciphertext it verifies the data-format prefix. At
 present only "KA1/" is supported.
+
+## Data format
+
+The KA1 data format, mentioned above, implies the following:
+
+Input data is encoded as JSON using the PHP
+[json_encode()](https://www.php.net/manual/en/function.json-encode.php) function.
+
+By default these options are used for JSON encoding:
+
+```
+JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+```
+
+But these options won't affect an implementation's ability to decode the JSON.
+
+After JSON encoding padding is done.
+
+
+
+The data is encrypted with AES-256-GCM. The authentication tag, initialization vector, and
+cipher text are concatenated together, like this:
+
+```
+$tag . $iv . $ciphertext
+```
+
+
 
 ## Chunk size
 
