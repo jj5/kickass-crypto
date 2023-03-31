@@ -356,12 +356,12 @@ method `get_error`. If you want the full list of errors, call `get_error_list`.
 If there were any errors registered by the OpenSSL library functions (which this
 library calls to do the heavy lifting), then the last such error is available
 if you call the `get_openssl_error`. You can clear the current error list and
-OpenSSL error messages by calling the method `clear_error`.
+OpenSSL error message by calling the method `clear_error`.
 
 ## Cipher suite
 
 This library is a wrapper around the PHP OpenSSL implementation. The cipher
-suite we use is the
+suite we use is
 [AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html).
 
 ## Secret keys and passphrases

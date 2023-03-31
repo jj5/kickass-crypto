@@ -6,4 +6,4 @@
 //
 // $ php bin/gen-key.php
 
-echo base64_encode( openssl_random_pseudo_bytes( 66 ) ) . "\n";
+echo base64_encode( random_bytes( 66 ) ) . "\n";
