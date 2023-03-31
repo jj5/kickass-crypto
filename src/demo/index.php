@@ -10,7 +10,7 @@ function encrypt_if_not_null( $input ) {
 
   $result = kickass_round_trip()->encrypt( $input );
 
-  if ( ! $result ) {
+  if ( false && ! $result ) {
 
     var_dump([
       'input' => $input,
@@ -31,7 +31,7 @@ function decrypt_if_not_null( $input ) {
 
   $result = kickass_round_trip()->decrypt( $input );
 
-  if ( ! $result ) {
+  if ( false && ! $result ) {
 
     var_dump([
       'input' => $input,
@@ -60,6 +60,10 @@ function main() {
     $older = decrypt_if_not_null( $older_ciphertext );
     $oldest = decrypt_if_not_null( $oldest_ciphertext );
 
+    $oldest_ciphertext = encrypt_if_not_null( $oldest );
+    $older_ciphertext = encrypt_if_not_null( $older );
+    $old_ciphertext = encrypt_if_not_null( $old );
+
     render_head();
 
     ?>
@@ -67,9 +71,6 @@ function main() {
 <p>Submit a new value, it will be encrypted then decrypted as the old value.</p>
 
 <form method="POST">
-  <input id="old_ciphertext" name="old_ciphertext" value="<?= $old_ciphertext ?>">
-  <input id="older_ciphertext" name="older_ciphertext" value="<?= $older_ciphertext ?>">
-  <input id="oldest_ciphertext" name="oldest_ciphertext" value="<?= $oldest_ciphertext ?>">
   <dl>
 
     <dt><label for="new">New: </label></dt>
@@ -88,6 +89,14 @@ function main() {
     <dd><button id="submit" name="submit">Submit</button></dd>
 
   </dl>
+
+  <h2>Old ciphertexts</h2>
+  <p>You can edit these, but if you do they will not be able to be decrypted, and that will
+    trigger the delay mechanism, so you will have to wait a few seconds for the response.</p>
+  <p><textarea id="old_ciphertext" name="old_ciphertext"><?= $old_ciphertext ?></textarea></p>
+  <p><textarea id="older_ciphertext" name="older_ciphertext"><?= $older_ciphertext ?></textarea></p>
+  <p><textarea id="oldest_ciphertext" name="oldest_ciphertext"><?= $oldest_ciphertext ?></textarea></p>
+
 </form>
 
     <?php
