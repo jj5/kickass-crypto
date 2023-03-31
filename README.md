@@ -326,7 +326,7 @@ that is secret. It's best just not to compress at all._**
 The encryption process is roughly:
 
 * JSON encode
-* prefix with data length
+* prefix with JSON data length
 * pad with random data
 * encrypt
 * concatenate authentication tag, initialization vector, and cipher text
