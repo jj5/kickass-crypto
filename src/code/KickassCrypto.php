@@ -165,6 +165,7 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA1' );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
 define( 'KICKASS_CRYPTO_DEFAULT_SERIALIZE_LIMIT', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', 9 );
 
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
 //
@@ -301,6 +302,15 @@ class KickassException extends Exception {
 // to be able to inject invalid return values during testing this is the place to make such
 // arrangements to do such things.
 //
+// 2023-03-31 jj5 - NOTE: these wrappers should do as little as possible and just defer entirely
+// to the PHP implementation. One exception is that I like to initialize variables passed by
+// reference to null, this is probably not necessary but it gives me the warm and fuzzies.
+//
+// 2023-03-31 jj5 - NOTE: when defining default variables you should use the same default values
+// as the library functions you are calling use, or just don't provide a default value at all,
+// that's a sensible enough option, you can make the wrapper demand a value from the caller if
+// you want.
+//
 trait PHP_WRAPPER {
 
   protected function php_base64_encode( $input ) {
@@ -327,9 +337,9 @@ trait PHP_WRAPPER {
 
   }
 
-  protected function php_gzdeflate( $buffer ) {
+  protected function php_gzdeflate( $buffer, $level ) {
 
-    return gzdeflate( $buffer, 9 );
+    return gzdeflate( $buffer, $level );
 
   }
 
@@ -366,24 +376,30 @@ trait PHP_WRAPPER {
   }
 
   protected function php_openssl_encrypt(
-    $plaintext, $cipher, $passphrase, $options, $iv, &$tag
+    $plaintext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    &$tag
   ) {
 
     $tag = null;
 
-    return openssl_encrypt(
-      $plaintext, $cipher, $passphrase, $options, $iv, $tag
-    );
+    return openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
 
   }
 
   protected function php_openssl_decrypt(
-    $ciphertext, $cipher, $passphrase, $options, $iv, $tag
+    $ciphertext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    $tag
   ) {
 
-    return openssl_decrypt(
-      $ciphertext, $cipher, $passphrase, $options, $iv, $tag
-    );
+    return openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
 
   }
 
@@ -407,7 +423,9 @@ trait PHP_WRAPPER {
 }
 
 // 2023-03-30 jj5 - the KickassCrypt class is the core of this library, but to use it you need
-// an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest...
+// an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest, it's also possible to
+// create your own instance by inheriting KickassCrypto and providing an implementation of the
+// abstract methods to suite your use case.
 //
 abstract class KickassCrypto {
 
@@ -675,9 +693,19 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_config_serialize_limit( $default = KICKASS_CRYPTO_DEFAULT_SERIALIZE_LIMIT ) {
+  protected function get_config_serialize_limit(
+    $default = KICKASS_CRYPTO_DEFAULT_SERIALIZE_LIMIT
+  ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_SERIALIZE_LIMIT', $default );
+
+  }
+
+  protected function get_config_compression_level(
+    $default = KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL
+  ) {
+
+    return $this->get_const( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', $default );
 
   }
 
@@ -804,7 +832,7 @@ abstract class KickassCrypto {
 
     }
 
-    $compressed = $this->php_gzdeflate( $serialized );
+    $compressed = $this->php_gzdeflate( $serialized, $this->get_config_compression_level() );
 
     if ( $compressed === false ) {
 

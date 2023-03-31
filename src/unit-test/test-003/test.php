@@ -477,7 +477,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function php_gzdeflate( $buffer ) {
+        protected function php_gzdeflate( $buffer, $level ) {
           return false;
         }
       };
