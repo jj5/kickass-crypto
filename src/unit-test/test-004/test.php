@@ -3,7 +3,7 @@
 
 // 2023-03-30 jj5 - this test takes the round-trip crypto for a spin using various chunk sizes...
 
-require_once __DIR__ . '/../../host/unit-test.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
 class TestCryptoRoundTrip extends KickassCryptoRoundTrip {
 

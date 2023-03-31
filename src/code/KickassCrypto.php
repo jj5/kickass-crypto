@@ -118,10 +118,11 @@
   }
   catch ( Throwable $ex ) { ; }
 
-  if ( $errors ) { exit( 50 ); }
+  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error
+  //
+  if ( $errors ) { exit( 40 ); }
 
 })();
-
 
 // 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
 // encryption components for each use case. If you want to override with a different

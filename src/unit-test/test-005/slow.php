@@ -6,7 +6,7 @@
 // tests will trigger a delay which is why they are defined in this slow.php file.
 
 require_once __DIR__ . '/etc/config.php';
-require_once __DIR__ . '/../../host/unit-test.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
 function run_test() {
 

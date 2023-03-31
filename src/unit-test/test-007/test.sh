@@ -44,7 +44,7 @@ test_fail() {
 
     report "test failed, as expected.";
 
-    [ "$error" == '50' ] && {
+    [ "$error" == '40' ] && {
 
       report "error level was: $error, as expected.";
 

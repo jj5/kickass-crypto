@@ -5,7 +5,7 @@
 // result in an error should be exercised... the code paths which will run quickly are in this
 // test, test.php, other tests which include a delay are in slow.php.
 
-require_once __DIR__ . '/../../host/unit-test.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
 require_once __DIR__ . '/lib/include.php';
 

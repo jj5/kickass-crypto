@@ -3,7 +3,7 @@
 
 // 2023-03-30 jj5 - this test checks that config problems are properly handled...
 
-require_once __DIR__ . '/../../host/unit-test.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
 function run_test( $argv ) {
 

@@ -4,7 +4,7 @@
 // 2023-03-30 jj5 - this test takes the various constructors for a spin, all code paths which
 // should result in an exception from the constructor should be exercised...
 
-require_once __DIR__ . '/../../host/unit-test.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
 class TestException extends KickassException {}
 

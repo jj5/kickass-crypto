@@ -6,7 +6,12 @@
 // run-time validation done by the library can be overridden by programmers using special
 // constant defines.
 
-require_once __DIR__ . '/../../test/util.php';
+// 2023-03-31 jj5 - NOTE: we don't use the test-host for these unit tests, because we need to
+// configure our environment specially before it's loaded, so we take care of such things for
+// ourselves in this script. See the test.sh shell script for details about how this test.php
+// script is run.
+
+require_once __DIR__ . '/../../../inc/test.php';
 
 main( $argv );
 
@@ -59,7 +64,7 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    exit( 40 );
+    kickass_exit( $ex, 54 );
 
   }
 }
