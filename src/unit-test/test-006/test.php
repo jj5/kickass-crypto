@@ -9,6 +9,9 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
+
+  get_floats( $nan, $pos_inf, $neg_inf, $pos_zero, $neg_zero, $float_min, $float_max, $epslion );
+
   test_value( true );
 
   test_value( 0 );
@@ -26,9 +29,15 @@ function run_test() {
   test_value( '1.0' );
   test_value( 1.23 );
   test_value( '1.23' );
-  test_value( PHP_FLOAT_MIN );
-  test_value( PHP_FLOAT_MAX );
-  test_value( PHP_FLOAT_EPSILON );
+
+  test_nan( $nan );
+  test_value( $pos_inf );
+  test_value( $neg_inf );
+  test_value( $pos_zero );
+  test_value( $neg_zero );
+  test_value( $float_min );
+  test_value( $float_max );
+  test_value( $epslion );
 
   test_value( '' );
   test_value( ' ' );
@@ -59,9 +68,14 @@ function run_test() {
   test_value( [ '1.0' ] );
   test_value( [ 1.23 ] );
   test_value( [ '1.23' ] );
-  test_value( [ PHP_FLOAT_MIN ] );
-  test_value( [ PHP_FLOAT_MAX ] );
-  test_value( [ PHP_FLOAT_EPSILON ] );
+
+  test_value( [ $pos_inf ] );
+  test_value( [ $neg_inf ] );
+  test_value( [ $pos_zero ] );
+  test_value( [ $neg_zero ] );
+  test_value( [ $float_min ] );
+  test_value( [ $float_max ] );
+  test_value( [ $epslion ] );
 
   test_value( [ '' ] );
   test_value( [ ' ' ] );

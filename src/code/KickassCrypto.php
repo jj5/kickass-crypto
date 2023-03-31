@@ -1,6 +1,9 @@
 <?php
 
-// 2023-03-30 jj5 - this is the Kickass Crypto library, you only need to include this file.
+// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is the
+// only file that you need to include, but other goodies ship with the project.
+//
+// 2023-03-31 jj5 - SEE: https://github.com/jj5/kickass-crypto
 //
 // 2023-03-30 jj5 - make sure you load a valid config.php file, then encrypt like this:
 //
@@ -11,25 +14,80 @@
 //   $plaintext = kickass_round_trip()->decrypt( $ciphertext );
 //
 // see README.md for more info.
+//
+// 2023-03-31 jj5 - a valid config.php file will define constants per relevant use-case.
+//
+// For round-trip define these keys:
+//
+//* CONFIG_ENCRYPTION_SECRET_CURR
+//* CONFIG_ENCRYPTION_SECRET_PREV (optional)
+//
+// For at-rest use case define this list of keys:
+//
+//* CONFIG_ENCRYPTION_SECRET_LIST
+//
+// See bin/gen-key.php in this project for key generation.
 
-if ( version_compare( phpversion(), '7.4', '<' ) ) {
+(function() {
 
-  $error_message = "The kickass-crypto library requires PHP version 7.4 or greater.";
+  // 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a
+  // problem we exit, unless the programmer has overridden that behavior by defining certain
+  // constants. See the code for details.
 
-  if ( defined( 'STDERR' ) ) {
+  $errors = [];
 
-    fwrite( STDERR, "$error_message\n" );
+  try {
 
+    if ( version_compare( phpversion(), '7.4', '<' ) ) {
+
+      if ( defined( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION' ) && KICKASS_CRYPTO_ENABLE_PHP_VERSION ) {
+
+        // 2023-03-31 jj5 - the programmer has enabled this version of PHP, we will allow it.
+
+      }
+      else {
+
+        $errors[] = "The kickass-crypto library requires PHP version 7.4 or greater. " .
+          "define( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION', true ) to force enablement.";
+
+      }
+    }
+
+    if ( strval( PHP_INT_MAX ) !== '9223372036854775807' ) {
+
+      if ( defined( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE' ) && KICKASS_CRYPTO_ENABLE_WORD_SIZE ) {
+
+        // 2023-03-31 jj5 - the programmer has enabled this platform, we will allow it.
+
+      }
+      else {
+
+        $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
+          "define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', true ) to force enablement.";
+
+      }
+    }
+
+    foreach ( $errors as $error ) {
+
+      if ( defined( 'STDERR' ) ) {
+
+        fwrite( STDERR, "$error\n" );
+
+      }
+      else {
+
+        error_log( $error );
+
+      }
+    }
   }
-  else {
+  catch ( Throwable $ex ) { ; }
 
-    error_log( $error_message );
+  if ( $errors ) { exit( 100 ); }
 
-  }
+})();
 
-  exit( 1 );
-
-}
 
 // 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
 // encryption components for each use case. If you want to override with a different

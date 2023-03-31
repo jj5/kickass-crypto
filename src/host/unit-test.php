@@ -36,6 +36,8 @@ function main( $argv ) {
 
 function handle_error( $errno, $errstr, $errfile, $errline ) {
 
+  if ( error_reporting() === 0 ) { return; }
+
   throw new ErrorException( $errstr, $errno, $errno, $errfile, $errline );
 
 }

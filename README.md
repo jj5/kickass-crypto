@@ -59,6 +59,18 @@ here:
 This code should work on PHP 7.4 or greater. If you try to run this code on an
 older version of PHP it will log an error message and exit your process.
 
+## Supported platforms
+
+This code assumes it's running on a 64-bit platform. It also assumes your PHP
+installation includes the bundled OpenSSL library.
+
+I believe this code should run in any PHP environment, but it has only been
+tested by my on Linux. If you have success with MacOS or Windows I would be
+happy to hear about it.
+
+Shell scripts are written for bash. If you don't have bash you may need to
+port.
+
 ## Supported use cases
 
 This code supports two specific use cases:
@@ -143,6 +155,30 @@ If you wanted to increase the chunk size to 8,192 you could do that in your
 `config.php` file like this:
 
 ```define( 'CONFIG_ENCRYPTION_CHUNK_SIZE', 8912 );```
+
+## Encryptable values
+
+So long as the data size limits are observed (these are discussed next), this
+library can encrypt anything which can be serialized and unserialized by PHP.
+This includes a great many types of things, such as:
+
+* the boolean value true
+* integers (signed 64-bit integers)
+* floats (including: NaN, Inf, Neg Inf, Neg Zero, and Epsilon)
+* strings (including binary data)
+* arrays (associative and indexes)
+* objects (not necessarily all of them, only ones which can be serialized)
+* combinations of the above
+
+Note that the boolean value false cannot be encrypted. It's not because we
+couldn't encrypt it, it's because we return it when encryption fails. So we
+refuse to encrypt false so that it can't be confused with an error upon
+decryption.
+
+It's worth pointing out that in PHP "strings" are essentially byte arrays,
+and the serialization format supports them containing "binary" data. This is
+a use case that is not supported by other serialization encodings, notably
+JSON.
 
 ## Data size limits
 
