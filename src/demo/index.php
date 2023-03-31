@@ -68,7 +68,8 @@ function main() {
 
     ?>
 
-<p>Submit a new value, it will be encrypted then decrypted as the old value.</p>
+<p>Submit a new value, it will be encrypted then decrypted as the old value. Keep submitting
+  new values to cycle the ciphertexts.</p>
 
 <form method="POST">
   <dl>
