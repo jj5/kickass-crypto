@@ -212,14 +212,15 @@ library can encrypt anything which can be encoded as JSON by PHP.
 This includes a variety of things, such as:
 
 * the boolean value true
-* integers (signed 64-bit integers)
+* signed 64-bit integers
 * some floats, including: PHP_FLOAT_MIN, PHP_FLOAT_MAX, and PHP_FLOAT_EPSILON
 * strings; but only ones in a valid string encoding, not PHP byte arrays
 * arrays; both associative and indexed
 * combinations of the above
 
-Things that can't be encoded as JSON:
+Things that can't be supported with JSON:
 
+* very large unsigned integers
 * floats which can be represented as integers, e.g. 0.0, 1.0, etc; these can be encoded but get
 decoded as integers not doubles
 * some special floats, including: NaN, Pos Inf, Neg Inf, and Neg Zero
