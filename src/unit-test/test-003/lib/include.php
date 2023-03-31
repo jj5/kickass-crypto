@@ -38,12 +38,19 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
 
   if ( $result !== false ) {
 
+    var_dump([
+      'expected' => $expected_error,
+      'class' => get_class( $crypto ),
+      'result' => $result,
+      'error_list' => $crypto->get_error_list(),
+    ]);
+
     throw new Exception( 'error: ' . json_encode( [
       'expected' => $expected_error,
       'class' => get_class( $crypto ),
       'result' => $result,
       'error_list' => $crypto->get_error_list(),
-    ] ) );
+    ], JSON_PARTIAL_OUTPUT_ON_ERROR ) );
 
   }
 

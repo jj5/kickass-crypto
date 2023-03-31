@@ -104,22 +104,6 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_WEAK_RESULT,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          $passphrase = $this->get_encryption_passphrase();
-          return $this->encrypt_string( 'test', $passphrase );
-        }
-        protected function php_openssl_random_pseudo_bytes( $length, &$strong_result ) {
-          $strong_result = false;
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
     KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH,
     function() {
       return new class extends ValidCrypto {
@@ -127,8 +111,7 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->encrypt_string( 'test', $passphrase );
         }
-        protected function php_openssl_random_pseudo_bytes( $length, &$strong_result ) {
-          $strong_result = true;
+        protected function php_random_bytes( $length ) {
           return '123';
         }
       };
@@ -263,8 +246,7 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->encrypt_string( 'test', $passphrase );
         }
-        protected function php_openssl_random_pseudo_bytes( $length, &$strong_result ) {
-          $strong_result = true;
+        protected function php_random_bytes( $length ) {
           return '';
         }
         protected function get_const_ivlen() {

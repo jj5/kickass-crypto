@@ -257,7 +257,6 @@ define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH', 'invalid passphrase length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2', 'invalid passphrase length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_WEAK_RESULT', 'weak result.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
@@ -586,11 +585,7 @@ abstract class KickassCrypto {
   //
   public static function GenerateSecret() {
 
-    $result = base64_encode( openssl_random_pseudo_bytes( 66, $strong_result ) );
-
-    if ( ! $strong_result ) { throw new Exception( 'openssl_random_pseudo_bytes() returned weak result.' ); }
-
-    return $result;
+    return base64_encode( random_bytes( 66 ) );
 
   }
 
@@ -1111,9 +1106,7 @@ abstract class KickassCrypto {
 
   protected function do_catch( $ex ) {
 
-    if ( defined( 'DEBUG' )  && DEBUG ) {
-
-      throw $ex;
+    if ( $this->is_debug() ) {
 
       $message = $ex->getMessage();
 
@@ -1288,13 +1281,7 @@ abstract class KickassCrypto {
 
   protected function encrypt_string( string $plaintext, string $passphrase ) {
 
-    $iv = $this->php_openssl_random_pseudo_bytes( $this->get_const_ivlen(), $strong_result );
-
-    if ( ! $strong_result ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_WEAK_RESULT );
-
-    }
+    $iv = $this->php_random_bytes( $this->get_const_ivlen() );
 
     if ( strlen( $iv ) !== $this->get_const_ivlen() ) {
 
