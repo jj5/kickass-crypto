@@ -1013,7 +1013,7 @@ abstract class KickassCrypto {
 
     $pad_len = $chunk_size - ( $data_len % $chunk_size );
 
-    $message = $data_len . '|' . $compressed . str_repeat( "\0", $pad_len );
+    $message = $data_len . '|' . $compressed . $this->get_padding( $pad_len );
 
     $ciphertext = $this->encrypt_string( $message, $passphrase );
 
@@ -1024,6 +1024,16 @@ abstract class KickassCrypto {
     }
 
     return $this->encode( $ciphertext );
+
+  }
+
+  protected function get_padding( int $length ) {
+
+    return $this->php_random_bytes( $length );
+
+    // 2023-04-01 jj5 - the following is also an option, and might be faster..?
+
+    return str_repeat( "\0", $length );
 
   }
 
