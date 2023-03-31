@@ -453,7 +453,8 @@ initialization vector avoids this potential problem.
 
 Our AES-256-GCM cipher suite supports the validation of a 16 byte authentication tag.
 
-The "GCM" in AES-256-GCM stands for Galois/Counter Mode. The GCM is a
+The "GCM" in AES-256-GCM stands for
+[Galois/Counter_Mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode). The GCM is a
 [Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)
 (MAC) similar to a
 [Hash-based Message Authentication Code](https://en.wikipedia.org/wiki/HMAC)
