@@ -267,13 +267,13 @@ decryption.
 If you need to encrypt the boolean value false consider either putting it in an array, like this:
 
 ```
-$data = [ 'value' => false ];
+$input = [ 'value' => false ];
 ```
 
 Or encoding as JSON, like this:
 
 ```
-$data = json_encode( false );
+$input = json_encode( false );
 ```
 
 If you do either of those things you will be able to encrypt your value.
