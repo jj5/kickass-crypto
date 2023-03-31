@@ -328,7 +328,7 @@ The encryption process is roughly:
 * JSON encode
 * prefix with JSON data length
 * pad with random data
-* encrypt
+* encrypt with AES-256-GCM using the OpenSSL library
 * concatenate authentication tag, initialization vector, and cipher text
 * encode as base64
 * prefix with data-format indicator
