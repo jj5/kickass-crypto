@@ -511,6 +511,7 @@ essential rount-trip or at-rest data. You can consider:
 
 * off-server secret key backups (only send to trusted hosts on secure networks)
 * off-site secret key backups (only send to trusted hosts on secure networks)
+* air-gapped secret key backups (transferred to storage via secure physical media)
 * hardcopy secret key backups (don't send to insecure printers!)
 * hand-written secret key backups (make sure your writing is legible, and don't
 leave them on your desk)
