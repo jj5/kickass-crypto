@@ -56,8 +56,9 @@ here:
 
 ## Supported PHP versions
 
-This code should work on PHP 7.4 or greater. If you try to run this code on an
-older version of PHP it will log an error message and exit your process.
+This code should work on PHP 7.4 or greater (but so far I have only actually tested it on
+PHP 8.1.2). If you try to run this code on an older version of PHP it will log an error message
+and exit your process.
 
 ## Supported platforms
 
