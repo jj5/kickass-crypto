@@ -152,7 +152,29 @@ present only "KA1/" is supported.
 
 The KA1 data format, mentioned above, implies the following:
 
-Input data is encoded as JSON using the PHP
+After JSON encoding (discussed in the following section) padding is done and the data length is
+prefixed. Before encryption the message is formatted like this:
+
+```
+$message = $data_length . '|' . $json . $this->get_padding( $pad_length );
+```
+
+The data is encrypted with AES-256-GCM. The authentication tag, initialization vector, and
+cipher text are concatenated together, like this:
+
+```
+$tag . $iv . $ciphertext
+```
+
+Then everything is base64 encoded. The decryption process expects to find the 16 byte
+authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
+ciphertext the library expects to find the size of the JSON data as an ASCII string representing
+a decimal value, followed by a single pipe character, followed by the JSON, and then the padding.
+The library can then remove the JSON from its padding and take care of the rest of the decoding.
+
+## JSON encoding and decoding
+
+Prior to encryption input data is encoded as JSON using the PHP
 [json_encode()](https://www.php.net/manual/en/function.json-encode.php) function. Initially this
 library used the PHP
 [serialize()](https://www.php.net/manual/en/function.serialize.php) function but apparently that
@@ -189,10 +211,10 @@ If you specify `JSON_PARTIAL_OUTPUT_ON_ERROR` in your JSON encoding options your
 become invalid, so do that at your own risk. Perhaps counter-intuitively I have found that
 enabling `JSON_PARTIAL_OUTPUT_ON_ERROR` is the least worst strategy because at least in that case
 you get _something_. If you don't enable `JSON_PARTIAL_OUTPUT_ON_ERROR` if any part of your input
-can't be encoded (such as when you have non-unicode binary strings) then the whole of the data
-is removed. With `JSON_PARTIAL_OUTPUT_ON_ERROR` only the unrepresentable portion is omitted. At
-the moment `JSON_PARTIAL_OUTPUT_ON_ERROR` is not automatically specified, but this is something I
-might revisit in future.
+can't be encoded (such as when you have binary strings that aren't in a valid encoding such as
+UTF-8) then the whole of the data is removed. With `JSON_PARTIAL_OUTPUT_ON_ERROR` only the
+unrepresentable portion is omitted. At the moment `JSON_PARTIAL_OUTPUT_ON_ERROR` is not
+automatically specified, but this is something I might revisit in future.
 
 If you use any of these JSON encoding/decoding options you might very well end up having a bad
 time:
@@ -200,26 +222,6 @@ time:
 * `JSON_NUMERIC_CHECK`
 * `JSON_INVALID_UTF8_IGNORE`
 * `JSON_INVALID_UTF8_SUBSTITUTE`
-
-After JSON encoding padding is done and the data length is prefixed. Before encryption the message
-is formatted like this:
-
-```
-$message = $data_length . '|' . $json . $this->get_padding( $pad_length );
-```
-
-The data is encrypted with AES-256-GCM. The authentication tag, initialization vector, and
-cipher text are concatenated together, like this:
-
-```
-$tag . $iv . $ciphertext
-```
-
-Then everything is base64 encoded. The decryption process expects to find the 16 byte
-authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
-ciphertext the library expects to find the size of the JSON data as an ASCII string representing
-a decimal value, followed by a single pipe character, followed by the JSON, and then the padding.
-The library can then remove the JSON from its padding and take care of the rest of the decoding.
 
 ## Chunk size
 
