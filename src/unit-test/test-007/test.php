@@ -33,6 +33,11 @@ function main( $argv ) {
 
       }
 
+      // 2023-03-31 jj5 - we just exit here with a non-zero value. It's not because we have failed
+      // but just because we don't want the caller to think that a unit-test has succeeded if
+      // they accidentally invoke this code path by mistake. Since our caller knows to expect
+      // this error level it can be ignored by them.
+
       exit( 90 );
 
     }
@@ -54,12 +59,17 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    exit( 1 );
+    exit( 40 );
 
   }
 }
 
 function get_test_list() {
+
+  // 2023-03-31 jj5 - so decide if the configured environment should be expected to work or
+  // expected to fail and then define a function to apply that environment config. The test
+  // runner will configure the environment as specified in your function and then load the
+  // crypto library which should then succeed or fail depending on the configuration.
 
   return [
     'fail' => [
