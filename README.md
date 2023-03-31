@@ -31,7 +31,8 @@ something you think I should know about please
 
 ## Why was this library written?
 
-I wanted to use the PHP OpenSSL library to round-trip some data between my server and its clients.
+I wanted to use the PHP OpenSSL library to round-trip some relatively sensitive data between my
+server and its clients in a relatively secure fashion.
 As mentioned above I found example code in the PHP documentation for the
 [openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
 function.
