@@ -427,6 +427,16 @@ trait PHP_WRAPPER {
 // create your own instance by inheriting KickassCrypto and providing an implementation of the
 // abstract methods to suite your use case.
 //
+// 2023-03-31 jj5 - NOTE: the intention with this library as a framework for implementing your
+// own use cases is that you inherit directly from KickassCrypto itself and go from there. If it
+// was possible for me to do so I would make KickassCryptoRoundTrip and KickassCryptoAtRest
+// final, but I need to keep them open for unit-testing purposes. While there is nothing to stop
+// you from inheriting either KickassCryptoRoundTrip or KickassCryptoAtRest if you do so you
+// will have an effect on the class counter telemetry. The class counter telemetry only counts
+// KickassCryptoRoundTrip or KickassCryptoAtRest instance directly, not the inheriters of them.
+// Other inheriters of KickassCrypto are counted separately, which is probably what you want. See
+// the count_this() method if you need to change counting behavior.
+//
 abstract class KickassCrypto {
 
   use PHP_WRAPPER;
@@ -454,23 +464,7 @@ abstract class KickassCrypto {
   //
   public function __construct() {
 
-    $this->count( 'instance' );
-
-    if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
-
-      $this->count_class( KickassCryptoRoundTrip::class );
-
-    }
-    else if ( is_a( $this, KickassCryptoAtRest::class ) ) {
-
-      $this->count_class( KickassCryptoAtRest::class );
-
-    }
-    else {
-
-      $this->count_class( get_class( $this ) );
-
-    }
+    $this->count_this();
 
     if ( ! $this->is_valid_config( $problem ) ) {
 
@@ -677,6 +671,27 @@ abstract class KickassCrypto {
 
     return $this->do_error( $error );
 
+  }
+
+  protected function count_this() {
+
+    $this->count( 'instance' );
+
+    if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
+
+      $this->count_class( KickassCryptoRoundTrip::class );
+
+    }
+    else if ( is_a( $this, KickassCryptoAtRest::class ) ) {
+
+      $this->count_class( KickassCryptoAtRest::class );
+
+    }
+    else {
+
+      $this->count_class( get_class( $this ) );
+
+    }
   }
 
   protected function count( $metric ) {

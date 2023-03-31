@@ -1,9 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-// 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
-// values. All the tests here should run relatively quickly because they succeed and don't cause
-// any delay.
+// 2023-03-31 jj5 - this tests does some very rudiementary testing of our class counter telemetry.
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
