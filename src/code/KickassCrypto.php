@@ -120,6 +120,8 @@
 
   // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error
   //
+  // 2023-03-31 jj5 - the error level 40 means "invalid run-time environment, cannot run."
+  //
   if ( $errors ) { exit( 40 ); }
 
 })();
@@ -463,6 +465,9 @@ abstract class KickassCrypto {
   // encryption or decryption won't be able to succeed the constructor should throw.
   //
   public function __construct() {
+
+    // 2023-03-31 jj5 - NOTE: we count all instances created, even if their constructors end up
+    // throwing an exception thus making them unusable.
 
     $this->count_this();
 
