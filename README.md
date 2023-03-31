@@ -25,7 +25,9 @@ that the encrypted data is tamperproof.
 I am sharing this code with friends and colleagues, soliciting as much
 criticism and feedback as possible. When I feel this library is as good
 as I can make it I will update this status note. In the mean time
-breaking changes are almost certain and encryption weaknesses are quite possible.
+breaking changes are almost certain and encryption weaknesses are quite possible. If you find
+something you think I should know about please
+[let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
 
 ## tl;dr
 
