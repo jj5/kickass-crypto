@@ -529,7 +529,7 @@ immediately in case of emergency.
 When you rotate your round-trip and at-rest keys you need to make sure they
 are synchronized across all of your web servers.
 
-I intend to implement some facilities to help with key deployment, and config
+I intend to implement some facilities to help with key deployment and config
 file editing but those facilities are not done yet.
 
 ## Data in motion
