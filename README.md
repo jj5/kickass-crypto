@@ -543,6 +543,11 @@ clients that access them. You should use asymetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
 
+## Client-side encryption
+
+This library is a server-side component. We don't support encrypting data client-side in web
+browsers.
+
 ## How the unit tests work
 
 The unit tests are in the `src/unit-test/` directory, numbered sequentially.
