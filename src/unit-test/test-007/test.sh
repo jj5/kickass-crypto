@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# 2023-03-31 jj5 - this shell script invokes various instances on the test.php for both tests
+# which are expected to succeed and tests which are expected to fail. In order to get a list of
+# available tests we run the test.php without the test index specified and it reports the list
+# of available tests for the given mode. The two modes are 'work' and 'fail', the former are
+# expected to succeed and the latter are expected to fail.
+
 QUIET=1
 
 main() {

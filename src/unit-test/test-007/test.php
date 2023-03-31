@@ -1,6 +1,11 @@
 #!/usr/bin/env php
 <?php
 
+// 2023-03-31 jj5 - these tests take our run-time environment validation facilities for a spin.
+// We check error handling by injecting values which should fail, and we validate that the
+// run-time validation done by the library can be overridden by programmers using special
+// constant defines.
+
 require_once __DIR__ . '/../../test/util.php';
 
 main( $argv );
