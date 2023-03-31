@@ -436,8 +436,9 @@ getting about 32 bytes of randomness for your keys.
 
 ## Initialization vector
 
-Our AES-256-GCM cipher suite supports the use of a 12 byte initialization
-vector, which we provide. The initialization vector ensures that even if you
+Our AES-256-GCM cipher suite supports the use of a 12 byte
+[initialization vector](https://en.wikipedia.org/wiki/Initialization_vector),
+which we provide. The initialization vector ensures that even if you
 encrypt the same values with the same passphrase the resultant ciphertext still
 varies.
 
@@ -450,13 +451,15 @@ initialization vector avoids this potential problem.
 
 ## Authentication tag
 
-Our AES-256-GCM cipher suite supports the validation of a 16 byte
-authentication tag.
+Our AES-256-GCM cipher suite supports the validation of a 16 byte authentication tag.
 
 The "GCM" in AES-256-GCM stands for Galois/Counter Mode. The GCM is a
-Message Authentication Code (MAC) similar to a Hash-based Message
-Authentication Code (HMAC) which you may have heard of before. The goal of the
-GCM authentication tag is to make your encrypted data tamperproof.
+[Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)
+(MAC) similar to a
+[Hash-based Message Authentication Code](https://en.wikipedia.org/wiki/HMAC)
+(HMAC) which you may have heard of before. The goal of the
+GCM authentication tag is to make your encrypted data
+[tamperproof](https://en.wikipedia.org/wiki/Tamperproofing).
 
 ## Round-trip use case
 
