@@ -188,7 +188,7 @@ Then everything is base64 encoded. The decryption process expects to find the 16
 authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
 ciphertext the library expects to find the size of the JSON data as an ASCII string representing
 a decimal value, followed by a single pipe character, followed by the JSON, and then the padding.
-The library can then remove the JSON from its padding and take care of the decoding.
+The library can then remove the JSON from its padding and take care of the rest of the decoding.
 
 ## Chunk size
 
