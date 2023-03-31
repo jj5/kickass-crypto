@@ -348,7 +348,8 @@ guest on your VPS host (or a malicious person listening to your server's fans!
 work.
 
 This library includes a method called `delay`, and this method is called
-automatically on the first instance of an error. The `delay` method is public
+automatically on the first instance of an error. The `delay` method does what is says on the tin:
+it injects a random delay into the process. The `delay` method is public
 and you can call it yourself if you feel the need.
 
 ## Fail safe
