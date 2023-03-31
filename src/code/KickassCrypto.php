@@ -299,7 +299,7 @@ class KickassException extends Exception {
 // these is so that we can use them to inject errors during testing... some PHP functions such as
 // is_int(), intval() and round() are called directly and not via these indirections.
 //
-trait PhpWrappers {
+trait PHP_WRAPPER {
 
   protected function php_base64_encode( $input ) {
 
@@ -409,7 +409,7 @@ trait PhpWrappers {
 //
 abstract class KickassCrypto {
 
-  use PhpWrappers;
+  use PHP_WRAPPER;
 
   // 2023-03-30 jj5 - our counters are stored here, call the count() method to increment...
   //
