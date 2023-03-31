@@ -183,7 +183,7 @@ define( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', JSON_UNESCAPED_SLASHES | JSON_U
 define( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', JSON_THROW_ON_ERROR );
 ```
 
-This library should work regardless of whether JSON_THROW_ON_ERROR is specified or not.
+This library should work regardless of whether `JSON_THROW_ON_ERROR` is specified or not.
 
 If you specify `JSON_PARTIAL_OUTPUT_ON_ERROR` in your JSON encoding options your data may silently
 become invalid, so do that at your own risk. Perhaps counter-intuitively I have found that
