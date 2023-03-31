@@ -569,6 +569,11 @@ If you want to add a slow test create the unit test directory in
 `src/unit-test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
 create both then `slow.sh` will have precedence and `slow.php` will be ignored.
 
+You usually only need to supply a shell script if your unit tests require a multiple processes
+to work. That can happen when you need to test different constant definitions. As you can't
+redefine constants in PHP you have to restart your process if you want to run with different
+values.
+
 See existing unit tests for examples of how to use the simple unit test
 host in `src/host/unit-test.php`.
 
