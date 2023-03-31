@@ -29,7 +29,7 @@ breaking changes are almost certain.
 
 ## tl;dr
 
-Don't want to RTFM..?
+Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
 
 ```
 mkdir -p kickass-demo/lib
