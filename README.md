@@ -521,6 +521,9 @@ edited in a secure way. A syntax error in a config file could lead to a
 secret key being exposed to the public web. If this happened you would have to
 rotate all of your keys immediately and then destroy the old compromised keys.**
 
+It would be a good idea to stand ready to do a key rotation in an automated and tested fashion
+immediately in case of emergency.
+
 ## Key coordination
 
 When you rotate your round-trip and at-rest keys you need to make sure they
@@ -539,9 +542,6 @@ server. Data is also in motion when it moves between your web servers and the
 clients that access them. You should use asymetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
-
-It would be a good idea to stand ready to do a key rotation in an automated and tested fashion
-immediately in case of emergency.
 
 ## How the unit tests work
 
