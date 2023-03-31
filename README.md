@@ -157,9 +157,12 @@ JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 
 But these options won't affect an implementation's ability to decode the JSON.
 
-After JSON encoding padding is done.
+After JSON encoding padding is done and the data length is prefixed. Before encryption the message
+is formatted like this:
 
-
+```
+$message = $data_length . '|' . $json . $this->get_padding( $pad_length );
+```
 
 The data is encrypted with AES-256-GCM. The authentication tag, initialization vector, and
 cipher text are concatenated together, like this:
@@ -168,7 +171,11 @@ cipher text are concatenated together, like this:
 $tag . $iv . $ciphertext
 ```
 
-
+Then everything is base64 encoded. The decryption process then expects to find the 16 byte
+authentication tag, the 12 byte initialization vector and the ciphertext. After decrypting the
+ciphertext the library expects to find the size of the JSON data as a decimal ASCII value,
+followed by a single pipe character, followed by the JSON, and then the padding. The library
+can then remove the JSON from its padding and take care of the decoding.
 
 ## Chunk size
 
