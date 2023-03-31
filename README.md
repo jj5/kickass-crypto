@@ -154,10 +154,11 @@ can lead to some code-execution scenarios (I'm not sure on the details) so it wa
 JSON encoding was safer. Thus, now, we use JSON encoding instead.
 
 The use of JSON as the data encoding format has some minor implications
-concerning the values we can support. Particularly we can't encoded object instances that can
-be decoded back to object instances (if the objects implement the JsonSerializable interface they
-can be serialized as data, but those will only be decoded back to PHP arrays, not the PHP objects
-from which they came), and some odd floating point values can't be represented (NaN, Inf, etc).
+concerning the values we can support. Particularly we can't encode object instances that can
+later be decoded back to object instances (if the objects implement the JsonSerializable interface
+they can be serialized as data, but those will only be decoded back to PHP arrays, not the PHP
+objects from which they came), and some odd floating point values can't be represented (NaN, Inf,
+etc).
 
 By default these options are used for JSON encoding:
 
