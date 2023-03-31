@@ -297,7 +297,9 @@ class KickassException extends Exception {
 
 // 2023-03-30 jj5 - these are indirections to default PHP functions. The main reason for using
 // these is so that we can use them to inject errors during testing... some PHP functions such as
-// is_int(), intval() and round() are called directly and not via these indirections.
+// is_int(), intval() and round() are called directly and not via these indirections. If you need
+// to be able to inject invalid return values during testing this is the place to make such
+// arrangements to do such things.
 //
 trait PHP_WRAPPER {
 
