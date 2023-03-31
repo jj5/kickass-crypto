@@ -7,6 +7,7 @@
 # expected to succeed and the latter are expected to fail.
 
 QUIET=1
+DEBUG=0
 
 main() {
 
@@ -38,13 +39,21 @@ test_fail() {
 
   local test="$1";
 
-  php test.php fail $test 2>/dev/null || {
+  local output=/dev/null
+
+  if [ "$DEBUG" == 1 ]; then
+
+    output=/dev/stdout
+
+  fi
+
+  php test.php fail $test 2>$output || {
 
     local error="$?";
 
     report "test failed, as expected.";
 
-    [ "$error" == '40' ] && {
+    [ "$error" == '53' ] && {
 
       report "error level was: $error, as expected.";
 
@@ -66,7 +75,15 @@ test_work() {
 
   local test="$1";
 
-  php test.php work $test 2>/dev/null && {
+  local output=/dev/null
+
+  if [ "$DEBUG" == 1 ]; then
+
+    output=/dev/stdout
+
+  fi
+
+  php test.php work $test 2>$output && {
 
     report "test worked, as expected.";
 

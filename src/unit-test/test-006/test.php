@@ -11,7 +11,7 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
-  get_floats( $nan, $pos_inf, $neg_inf, $pos_zero, $neg_zero, $float_min, $float_max, $epslion );
+  kickass_get_floats( $nan, $pos_inf, $neg_inf, $pos_zero, $neg_zero, $float_min, $float_max, $epslion );
 
   // 2023-04-01 jj5 - when we switched from PHP serialization to JSON encoding we lost the
   // ability to represent some values, those are these:

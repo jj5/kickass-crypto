@@ -142,28 +142,3 @@ function nan_equal( $a, $b ) {
 function date_equal( $a, $b ) { return $a->format( 'r' ) === $b->format( 'r' ); }
 
 function class_equal( $a, $b ) { return get_class( $a ) === get_class( $b ); }
-
-function get_floats(
-  &$nan = null,
-  &$pos_inf = null,
-  &$neg_inf = null,
-  &$pos_zero = null,
-  &$neg_zero = null,
-  &$float_min = null,
-  &$float_max = null,
-  &$epslion = null
-) {
-
-  $nan = NAN;
-
-  $pos_inf = INF;
-  $neg_int = INF * -1.0;
-
-  $pos_zero = 0.0;
-  $neg_zero = 0.0 * -1.0;
-
-  $float_min = PHP_FLOAT_MIN;
-  $float_max = PHP_FLOAT_MAX;
-  $epslion = PHP_FLOAT_EPSILON;
-
-}

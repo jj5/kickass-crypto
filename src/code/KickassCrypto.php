@@ -294,6 +294,8 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5', 'exception raised (5).' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_ENCODING', 'invalid encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING', 'unknown encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED', 'base64 decode failed.' );
@@ -1207,18 +1209,28 @@ abstract class KickassCrypto {
 
   protected function data_encode( $input ) {
 
-    return $this->php_json_encode( $input, $this->get_config_json_encode_options() );
+    try {
 
-    if ( $this->is_debug() ) {
+      $options = $this->get_config_json_encode_options();
 
-      $decoded = $this->data_decode( $result );
+      $result = $this->php_json_encode( $input, $options );
 
-      $this->verify_encoding( $input, $decoded );
+      if ( $result === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+
+      }
+
+      return $result;
 
     }
+    catch ( JsonException $ex ) {
 
-    return $result;
+      $this->catch( $ex );
 
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+
+    }
   }
 
   protected function verify_encoding( $input, $decoded ) {
@@ -1248,12 +1260,22 @@ abstract class KickassCrypto {
 
       $options = $this->get_config_json_decode_options();
 
-      return $this->php_json_decode( $json, $assoc = true, 512, $options );
+      $result = $this->php_json_decode( $json, $assoc = true, 512, $options );
+
+      if ( $result === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+
+      }
+
+      return $result;
 
     }
     catch ( JsonException $ex ) {
 
-      return false;
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
     }
   }

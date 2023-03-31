@@ -194,6 +194,13 @@ is removed. With `JSON_PARTIAL_OUTPUT_ON_ERROR` only the unrepresentable portion
 the moment `JSON_PARTIAL_OUTPUT_ON_ERROR` is not automatically specified, but this is something I
 might revisit in future.
 
+If you use any of these JSON encoding/decoding options you might very well end up having a bad
+time:
+
+* `JSON_NUMERIC_CHECK`
+* `JSON_INVALID_UTF8_IGNORE`
+* `JSON_INVALID_UTF8_SUBSTITUTE`
+
 After JSON encoding padding is done and the data length is prefixed. Before encryption the message
 is formatted like this:
 
