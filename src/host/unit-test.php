@@ -9,6 +9,12 @@ function main( $argv ) {
 
   $start = microtime( $as_float = true );
 
+  if ( defined( 'DEBUG' ) && DEBUG ) {
+
+    return run_test( $argv );
+
+  }
+
   try {
 
     run_test( $argv );

@@ -42,7 +42,19 @@ function run_test() {
 
       $ciphertext = $crypto->encrypt( $test_string );
 
+      if ( $ciphertext === false ) {
+
+        var_dump( $crypto->get_error_list() );
+
+      }
+
       $plaintext = $crypto->decrypt( $ciphertext );
+
+      if ( $plaintext === false ) {
+
+        var_dump( $crypto->get_error_list() );
+
+      }
 
       assert( $plaintext === $test_string );
 

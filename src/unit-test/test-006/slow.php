@@ -15,9 +15,21 @@ function run_test() {
   //
   test_error( false );
 
+  get_floats( $nan, $pos_inf, $neg_inf, $pos_zero, $neg_zero, $float_min, $float_max, $epslion );
+
+  // 2023-04-01 jj5 - when we switched from PHP serialization to JSON encoding we lost the
+  // ability to represent some values, those are the following, which we now make sure fail as
+  // that's what we now expect.
+  //
+  test_error( $nan );
+  test_error( $pos_inf );
+  test_error( [ $pos_inf ] );
+
   $limit = 26;
 
   for ( $n = 0; $n < $limit; $n++ ) {
+
+    //echo "n: $n\n";
 
     test_value( str_repeat( '0', pow( 2, $n ) ) );
 

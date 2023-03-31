@@ -116,7 +116,11 @@
       }
     }
   }
-  catch ( Throwable $ex ) { ; }
+  catch ( Throwable $ex ) {
+
+    error_log( __FILE__ . ': ' . $ex->getMessage() );
+
+  }
 
   // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error
   //
@@ -166,8 +170,15 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA1' );
 // future...
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
-define( 'KICKASS_CRYPTO_DEFAULT_SERIALIZE_LIMIT', pow( 2, 26 ) );
+
+// 2023-04-01 jj5 - this was the limit when using PHP serialize():
+//define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING_LIMIT', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING_LIMIT', pow( 2, 26 ) );
+
+
 define( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', 9 );
+define( 'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS', JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
 //
@@ -178,7 +189,8 @@ define( 'KICKASS_CRYPTO_DELAY_NS_MAX', 10_000_000_000 );
 //
 define(
   'KICKASS_CRYPTO_REGEX_BASE64',
-  '/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
+  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
+  //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
 );
 
 // 2023-03-29 jj5 - exceptions are thrown from the constructor only, these are the possible
@@ -190,6 +202,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG',          2_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH',     3_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER',          4_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
+define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
 
 // 2023-03-30 jj5 - these are the exception messages for each exception code. These exception
 // messages should be stable, you can add new ones but don't change existing ones.
@@ -200,6 +213,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH    => 'invalid secret hash.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER         => 'invalid cipher.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH      => 'invalid IV length.',
+  KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
 ]);
 
 // 2023-03-30 jj5 - config problems are things that can go wrong with a config file...
@@ -238,7 +252,6 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5', 'exception raised (5).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_ENCODING', 'invalid encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING', 'unknown encoding.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING', 'invalid base64 encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED', 'base64 decode failed.' );
 define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
@@ -251,20 +264,18 @@ define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2', 'invalid tag length (2).' );
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED', 'encryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2', 'encryption failed (2).' );
-define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_3', 'encryption failed (3).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2', 'invalid ciphertext (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA', 'invalid data.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PARTS', 'invalid parts.' );
-define( 'KICKASS_CRYPTO_ERROR_SERIALIZE_FAILED', 'serialize failed.' );
-define( 'KICKASS_CRYPTO_ERROR_SERIALIZE_TOO_LARGE', 'serialize too large.' );
-define( 'KICKASS_CRYPTO_ERROR_UNSERIALIZE_FAILED', 'unserialize failed.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DEFLATE_FAILED', 'deflate failed.' );
 define( 'KICKASS_CRYPTO_ERROR_INFLATE_FAILED', 'inflate failed.' );
 define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED', 'decryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
-define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_3', 'decryption failed (3).' );
 
 // 2023-03-29 jj5 - NOTE: these constants are *constants* and not configuration settings. If you
 // need to override any of these, for instance to test the correct handling of error scenarios,
@@ -321,9 +332,21 @@ trait PHP_WRAPPER {
 
   }
 
-  protected function php_base64_decode( $input ) {
+  protected function php_base64_decode( $input, $strict ) {
 
-    return base64_decode( $input );
+    return base64_decode( $input, $strict );
+
+  }
+
+  protected function php_json_encode( $value, $flags, $depth = 512 ) {
+
+    return json_encode( $value, $flags, $depth );
+
+  }
+
+  protected function php_json_decode( $json, $associative, $depth, $flags ) {
+
+    return json_decode( $json, $associative, $depth, $flags );
 
   }
 
@@ -348,6 +371,12 @@ trait PHP_WRAPPER {
   protected function php_gzinflate( $buffer ) {
 
     return gzinflate( $buffer );
+
+  }
+
+  protected function php_random_bytes( $length ) {
+
+    return random_bytes( $length );
 
   }
 
@@ -529,6 +558,19 @@ abstract class KickassCrypto {
       );
 
     }
+
+    try {
+
+      $test_bytes = $this->php_random_bytes( 2 );
+
+    }
+    catch ( Random\RandomException $ex ) {
+
+      $this->catch( $ex );
+
+      return $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
+
+    }
   }
 
   // 2023-03-30 jj5 - implementations need to define what a valid config looks like and provide
@@ -544,7 +586,11 @@ abstract class KickassCrypto {
   //
   public static function GenerateSecret() {
 
-    return base64_encode( openssl_random_pseudo_bytes( 66 ) );
+    $result = base64_encode( openssl_random_pseudo_bytes( 66, $strong_result ) );
+
+    if ( ! $strong_result ) { throw new Exception( 'openssl_random_pseudo_bytes() returned weak result.' ); }
+
+    return $result;
 
   }
 
@@ -609,6 +655,8 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
+      $this->catch( $ex );
+
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
 
     }
@@ -624,6 +672,8 @@ abstract class KickassCrypto {
 
     }
     catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
 
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
 
@@ -641,11 +691,13 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->do_delay_emergency();
-
-      $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
-
       try {
+
+        // 2023-04-01 jj5 - it's important to do things in this order, in case something throws...
+
+        $this->do_delay_emergency();
+
+        $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
 
         $this->error_list[] = $error;
 
@@ -654,12 +706,23 @@ abstract class KickassCrypto {
           $this->openssl_error = $openssl_error;
 
         }
+
+        $this->catch( $ex );
+
       }
       catch ( Throwable $dummy ) { ; }
 
       return false;
 
     }
+  }
+
+  protected final function catch( $ex ) {
+
+    $this->count( __FUNCTION__ );
+
+    return $this->do_catch( $ex );
+
   }
 
   protected final function throw( int $code, $data = null, $previous = null ) {
@@ -749,11 +812,11 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_config_serialize_limit(
-    $default = KICKASS_CRYPTO_DEFAULT_SERIALIZE_LIMIT
+  protected function get_config_data_encoding_limit(
+    $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING_LIMIT
   ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_SERIALIZE_LIMIT', $default );
+    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT', $default );
 
   }
 
@@ -762,6 +825,22 @@ abstract class KickassCrypto {
   ) {
 
     return $this->get_const( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', $default );
+
+  }
+
+  protected function get_config_json_encode_options(
+    $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
+  ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
+
+  }
+
+  protected function get_config_json_decode_options(
+    $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
+  ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
 
   }
 
@@ -816,6 +895,12 @@ abstract class KickassCrypto {
   protected function get_encryption_passphrase() {
 
     return $this->get_passphrase_list()[ 0 ] ?? false;
+
+  }
+
+  protected function is_debug() {
+
+    return defined( 'DEBUG' ) && DEBUG;
 
   }
 
@@ -874,21 +959,21 @@ abstract class KickassCrypto {
 
     }
 
-    $serialized = $this->php_serialize( $input );
+    $encoded = $this->data_encode( $input );
 
-    if ( $serialized === false ) {
+    if ( $encoded === false ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_SERIALIZE_FAILED );
-
-    }
-
-    if ( strlen( $serialized ) > $this->get_config_serialize_limit() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_SERIALIZE_TOO_LARGE );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
 
     }
 
-    $compressed = $this->php_gzdeflate( $serialized, $this->get_config_compression_level() );
+    if ( strlen( $encoded ) > $this->get_config_data_encoding_limit() ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE );
+
+    }
+
+    $compressed = $this->deflate( $encoded );
 
     if ( $compressed === false ) {
 
@@ -910,15 +995,7 @@ abstract class KickassCrypto {
 
     }
 
-    $ciphertext = $this->encrypt_string( $compressed, $passphrase );
-
-    if ( $ciphertext === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
-
-    }
-
-    $data_len = strlen( $ciphertext );
+    $data_len = strlen( $compressed );
 
     $chunk_size = $this->get_config_chunk_size();
 
@@ -927,13 +1004,13 @@ abstract class KickassCrypto {
 
     $pad_len = $chunk_size - ( $data_len % $chunk_size );
 
-    $message = $data_len . "|$ciphertext" . str_repeat( "\0", $pad_len );
+    $message = $data_len . '|' . $compressed . str_repeat( "\0", $pad_len );
 
     $ciphertext = $this->encrypt_string( $message, $passphrase );
 
     if ( $ciphertext === false ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
+      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
 
     }
 
@@ -962,13 +1039,13 @@ abstract class KickassCrypto {
 
       $plaintext = $this->try_decrypt( $binary, $passphrase );
 
-      if ( ! $plaintext ) { continue; }
+      if ( $plaintext === false ) { continue; }
 
-      $result = $this->php_unserialize( $plaintext );
+      $result = $this->data_decode( $plaintext );
 
       if ( $result !== false ) { return $result; }
 
-      $error = KICKASS_CRYPTO_ERROR_UNSERIALIZE_FAILED;
+      $error = KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED;
 
     }
 
@@ -980,6 +1057,14 @@ abstract class KickassCrypto {
     int $ns_max = KICKASS_CRYPTO_DELAY_NS_MAX,
     int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
   ) {
+
+    if ( $this->is_debug() ) {
+
+      error_log( __FILE__ . ': delayed due to error...' );
+
+      //debug_print_backtrace();
+
+    }
 
     $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
 
@@ -1014,10 +1099,27 @@ abstract class KickassCrypto {
       if ( $result ) { return; }
 
     }
-    catch ( Throwable $ex ) { ; }
+    catch ( Throwable $ex ) {
+
+      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+
+    }
 
     usleep( random_int( 1_000, 10_000_000 ) );
 
+  }
+
+  protected function do_catch( $ex ) {
+
+    if ( defined( 'DEBUG' )  && DEBUG ) {
+
+      throw $ex;
+
+      $message = $ex->getMessage();
+
+      error_log( "caught exception: $message" );
+
+    }
   }
 
   protected function do_throw( int $code, $data = null, $previous = null ) {
@@ -1027,6 +1129,12 @@ abstract class KickassCrypto {
     if ( ! $message ) {
 
       $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE );
+
+    }
+
+    if ( $this->is_debug() ) {
+
+      error_log( "error: $message" );
 
     }
 
@@ -1054,6 +1162,80 @@ abstract class KickassCrypto {
 
   }
 
+  protected function data_encode( $input ) {
+
+    $result = $this->php_json_encode( $input, $this->get_config_json_encode_options() );
+
+    if ( $this->is_debug() ) {
+
+      $decoded = $this->data_decode( $result );
+
+      $this->verify_encoding( $input, $decoded );
+
+    }
+
+    return $result;
+
+  }
+
+  protected function verify_encoding( $input, $decoded ) {
+
+    return;
+
+    if ( $input !== $decoded ) {
+
+      var_dump([
+        'input' => $input,
+        'decoded' => $decoded,
+      ]);
+
+    }
+
+    assert( $input === $decoded );
+
+  }
+
+  protected function data_decode( string $json ) {
+
+    try {
+
+      $options = $this->get_config_json_decode_options();
+
+      return $this->php_json_decode( $json, $assoc = true, 512, $options );
+
+    }
+    catch ( JsonException $ex ) {
+
+      var_dump([
+        'json' => $json,
+      ]);
+
+      return false;
+
+    }
+  }
+
+  protected function deflate( $input ) {
+
+    // 2023-04-01 jj5 - NOTE: when compression is used it enables a CRIME-style attack, so we
+    // don't compress any more.
+
+    return $input;
+
+    return $this->php_gzdeflate( $input, $this->get_config_compression_level() );
+
+  }
+
+  protected function inflate( $input ) {
+
+    // 2023-04-01 jj5 - compression has been removed for better security.
+
+    return $input;
+
+    return $this->php_gzinflate( $input );
+
+  }
+
   protected function encode( string $binary ) {
 
     return $this->get_const_data_format_version() . '/' . $this->php_base64_encode( $binary );
@@ -1076,15 +1258,25 @@ abstract class KickassCrypto {
 
     }
 
+    /*
     if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
+
+      var_dump( $parts );
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
 
     }
+    */
 
-    $result = $this->php_base64_decode( $parts[ 1 ] );
+    $result = $this->php_base64_decode( $parts[ 1 ], $strict = true );
 
     if ( $result === false ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED );
+
+    }
+
+    if ( $result === '' ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED );
 
@@ -1124,6 +1316,8 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
+      $this->catch( $ex );
+
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
 
     }
@@ -1136,7 +1330,7 @@ abstract class KickassCrypto {
 
     if ( ! $ciphertext ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_3 );
+      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
 
     }
 
@@ -1165,15 +1359,9 @@ abstract class KickassCrypto {
     $length = intval( $parts[ 0 ] );
     $binary = $parts[ 1 ];
 
-    $data = $this->decrypt_string( substr( $binary, 0, $length ), $passphrase );
+    $compressed = substr( $binary, 0, $length );
 
-    if ( $data === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
-
-    }
-
-    $result = $this->php_gzinflate( $data );
+    $result = $this->inflate( $compressed );
 
     if ( $result === false ) {
 
@@ -1182,7 +1370,6 @@ abstract class KickassCrypto {
     }
 
     return $result;
-
   }
 
   protected function decrypt_string( string $binary, string $passphrase ) {
@@ -1207,13 +1394,15 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
+      $this->catch( $ex );
+
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
 
     }
 
     if ( ! $plaintext ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_3 );
+      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
 
     }
 

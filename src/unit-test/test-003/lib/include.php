@@ -38,10 +38,12 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
 
   if ( $result !== false ) {
 
-    var_dump([
+    throw new Exception( 'error: ' . json_encode( [
+      'expected' => $expected_error,
       'class' => get_class( $crypto ),
       'result' => $result,
-    ]);
+      'error_list' => $crypto->get_error_list(),
+    ] ) );
 
   }
 
@@ -53,6 +55,8 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
   assert( count( $error_list ) > 0 );
 
   if ( $error !== $expected_error ) {
+
+    throw new Exception( 'error: ' . json_encode( [ 'error' => $error, 'expected' => $expected_error ] ) );
 
     var_dump([
       'error_list' => $error_list,

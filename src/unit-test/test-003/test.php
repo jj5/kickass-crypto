@@ -34,7 +34,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING,
+    KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -51,7 +51,7 @@ function run_test() {
         public function test() {
           return $this->decode( 'KA1/123=' );
         }
-        protected function php_base64_decode( $input ) { return false; }
+        protected function php_base64_decode( $input, $strict ) { return false; }
       };
     }
   );
@@ -243,23 +243,6 @@ function run_test() {
       return new class extends ValidCrypto {
         private $count = 0;
         public function test() {
-          return $this->encrypt( 'test'  );
-        }
-        protected function encrypt_string( $compressed, $passphrase ) {
-          $this->count++;
-          if ( $this->count === 1 ) { return parent::encrypt_string( $compressed, $passphrase ); }
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_3,
-    function() {
-      return new class extends ValidCrypto {
-        private $count = 0;
-        public function test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->encrypt_string( 'test', $passphrase  );
         }
@@ -431,13 +414,13 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_SERIALIZE_FAILED,
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED,
     function() {
       return new class extends ValidCrypto {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function php_serialize( $input ) {
+        protected function data_encode( $input ) {
           return false;
         }
       };
@@ -445,27 +428,32 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_SERIALIZE_TOO_LARGE,
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->encrypt( str_repeat( '0', $this->get_config_serialize_limit() ) );
+          return $this->encrypt( str_repeat( '0', $this->get_config_data_encoding_limit() ) );
         }
       };
     }
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_UNSERIALIZE_FAILED,
+    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED,
     function() {
       return new class extends ValidCrypto {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          return $this->decrypt( $ciphertext );
+          if ( ! $ciphertext ) {
+            var_dump(  $this->get_error_list() );
+          }
+          $result = $this->decrypt( $ciphertext );
+          return $result;
         }
-        protected function php_unserialize( $input ) {
+        protected function data_decode( $input ) {
           return false;
         }
+        protected function verify_encoding( $input, $decoded ) { ; }
       };
     }
   );
@@ -477,7 +465,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function php_gzdeflate( $buffer, $level ) {
+        protected function deflate( $buffer ) {
           return false;
         }
       };
@@ -493,7 +481,7 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
-        protected function php_gzinflate( $buffer ) {
+        protected function inflate( $buffer ) {
           return false;
         }
       };
@@ -531,25 +519,6 @@ function run_test() {
 
   test_error(
     KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2,
-    function() {
-      return new class extends ValidCrypto {
-        private $count = 0;
-        public function test() {
-          $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
-          return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
-        }
-        protected function decrypt_string( string $binary, string $key ) {
-          $this->count++;
-          if ( $this->count === 1 ) { return parent::decrypt_string( $binary, $key ); }
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_3,
     function() {
       return new class extends ValidCrypto {
         private $count = 0;

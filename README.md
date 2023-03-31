@@ -159,50 +159,57 @@ If you wanted to increase the chunk size to 8,192 you could do that in your
 ## Encryptable values
 
 So long as the data size limits are observed (these are discussed next), this
-library can encrypt anything which can be serialized and unserialized by PHP.
-This includes a great many types of things, such as:
+library can encrypt anything which can be encoded as JSON by PHP.
+
+This includes a variety of things, such as:
 
 * the boolean value true
 * integers (signed 64-bit integers)
-* floats (including: NaN, Inf, Neg Inf, Neg Zero, and Epsilon)
-* strings (including binary data)
-* arrays (associative and indexes)
-* objects (not necessarily all of them, only ones which can be serialized)
+* some floats, including: PHP_FLOAT_MIN, PHP_FLOAT_MAX, and PHP_FLOAT_EPSILON
+* strings; but only ones in a valid string encoding, not PHP byte arrays
+* arrays; both associative and indexed
 * combinations of the above
+
+Things that can't be encoded as JSON:
+
+* floats which can be represented as integers, e.g. 0.0, 1.0, etc; these can be encoded but get
+decoded as integers not doubles
+* some special floats, including: NaN, Pos Inf, Neg Inf, and Neg Zero
+* objects (except if they implement the JsonSerializable interface)
 
 Note that the boolean value false cannot be encrypted. It's not because we
 couldn't encrypt it, it's because we return it when encryption fails. So we
 refuse to encrypt false so that it can't be confused with an error upon
 decryption.
 
-It's worth pointing out that in PHP "strings" are essentially byte arrays,
-and the serialization format supports them containing "binary" data. This is
-a use case that is not supported by other serialization encodings, notably
-JSON.
+It's worth pointing out that in PHP "strings" are essentially byte arrays, which means they can
+contain essentially "binary" data. Such binary data cannot be represented as JSON however. If
+you need to handle binary data the best way is probably to encoded it as base64 (base64_encode)
+or hexadecimal (bin2hex).
 
 ## Data size limits
 
-Before data is encrypted it is serialized then compressed. After data is
-serialized it is limited to a configurable maxlimum length.
+Before data is encrypted it is encoded as JSON and then compressed. After data is
+encoded as JSON it is limited to a configurable maxlimum length.
 
-The config constant for the maximum serialization length is
-`CONFIG_ENCRYPTION_SERIALIZE_LIMIT`.
+The config constant for the maximum JSON encoding length is
+`CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT`.
 
-The default serialization limit is 67,108,864 (2^<sup>26</sup>) bytes, which
+The default data encoding limit is 67,108,864 (2^<sup>26</sup>) bytes, which
 is roughly 67 MB.
 
-It's possible to configure this serialization limit, if you need to make it
+It's possible to configure this data encoding limit, if you need to make it
 larger or smaller. Just be aware that if you make the limit too large you will
 end up with memory problems and your process might get terminated.
 
-If you wanted to decrease the serialization limit you could do that in your
+If you wanted to decrease the data encoding limit you could do that in your
 `config.php` file like this:
 
-```define( 'CONFIG_ENCRYPTION_SERIALIZE_LIMIT', pow( 2, 25 ) );```
+```define( 'CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT', pow( 2, 25 ) );```
 
 ## Data compression
 
-After data is serialized, and before it is encrypted, it is compressed with
+After data is JSON encoded, and before it is encrypted, it is compressed with
 the PHP function
 [gzdeflate](https://www.php.net/manual/en/function.gzdeflate.php) with
 compression level 9. The
@@ -211,11 +218,10 @@ used for decompression.
 
 ## Data encryption
 
-This library actually encrypts your data twice. The process is roughly:
+The encryption process is roughly:
 
-* serialize
+* JSON encode
 * compress
-* encrypt
 * pad
 * encrypt
 
