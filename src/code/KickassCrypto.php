@@ -38,7 +38,15 @@
 
   try {
 
-    if ( version_compare( phpversion(), '7.4', '<' ) ) {
+    $php_version = defined( 'KICKASS_CRYPTO_TEST_PHP_VERSION' ) ?
+      KICKASS_CRYPTO_TEST_PHP_VERSION :
+      phpversion();
+
+    $php_int_max = defined( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX' ) ?
+      KICKASS_CRYPTO_TEST_PHP_INT_MAX :
+      PHP_INT_MAX;
+
+    if ( version_compare( $php_version, '7.4', '<' ) ) {
 
       if ( defined( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION' ) && KICKASS_CRYPTO_ENABLE_PHP_VERSION ) {
 
@@ -53,7 +61,7 @@
       }
     }
 
-    if ( strval( PHP_INT_MAX ) !== '9223372036854775807' ) {
+    if ( strval( $php_int_max ) !== '9223372036854775807' ) {
 
       if ( defined( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE' ) && KICKASS_CRYPTO_ENABLE_WORD_SIZE ) {
 
@@ -70,21 +78,23 @@
 
     foreach ( $errors as $error ) {
 
+      $message = __FILE__ . ": $error";
+
       if ( defined( 'STDERR' ) ) {
 
-        fwrite( STDERR, "$error\n" );
+        fwrite( STDERR, "$message\n" );
 
       }
       else {
 
-        error_log( $error );
+        error_log( $message );
 
       }
     }
   }
   catch ( Throwable $ex ) { ; }
 
-  if ( $errors ) { exit( 100 ); }
+  if ( $errors ) { exit( 50 ); }
 
 })();
 
