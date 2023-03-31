@@ -189,8 +189,7 @@ or hexadecimal (bin2hex).
 
 ## Data size limits
 
-Before data is encrypted it is encoded as JSON and then compressed. After data is
-encoded as JSON it is limited to a configurable maxlimum length.
+After data is encoded as JSON it is limited to a configurable maxlimum length.
 
 The config constant for the maximum JSON encoding length is
 `CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT`.
@@ -209,19 +208,23 @@ If you wanted to decrease the data encoding limit you could do that in your
 
 ## Data compression
 
-After data is JSON encoded, and before it is encrypted, it is compressed with
-the PHP function
-[gzdeflate](https://www.php.net/manual/en/function.gzdeflate.php) with
-compression level 9. The
-[gzinflate](https://www.php.net/manual/en/function.gzinflate.php) function is
-used for decompression.
+This library does _not_ compress input data, because compression can introduce cryptographic
+weaknesses, such as in the
+[CRIME SSL/TLS attack](https://www.acunetix.com/vulnerabilities/web/crime-ssl-tls-attack/).
+
+The problem is that if the attacker can modify some of the plain text they can find out if the
+data they input exists in other parts of the plain text, because if they put in a value and the
+result is smaller that's because it exists in the part of the plain text they didn't know, but do
+now!
+
+**_It's very important that you don't compress data that an attacker can supply with other data
+that is secret. It's best just not to compress at all._**
 
 ## Data encryption
 
 The encryption process is roughly:
 
 * JSON encode
-* compress
 * pad
 * encrypt
 

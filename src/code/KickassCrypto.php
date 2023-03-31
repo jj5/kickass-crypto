@@ -1032,8 +1032,8 @@ abstract class KickassCrypto {
     return $this->php_random_bytes( $length );
 
     // 2023-04-01 jj5 - the following is also an option, and might be faster..?
-
-    return str_repeat( "\0", $length );
+    //
+    //return str_repeat( "\0", $length );
 
   }
 
