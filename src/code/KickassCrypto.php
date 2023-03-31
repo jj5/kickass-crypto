@@ -714,10 +714,24 @@ abstract class KickassCrypto {
 
   protected final function catch( $ex ) {
 
-    $this->count( __FUNCTION__ );
+    try {
 
-    return $this->do_catch( $ex );
+      $this->count( __FUNCTION__ );
 
+      return $this->do_catch( $ex );
+
+    }
+    catch ( Throwable $ex ) {
+
+      // 2023-04-01 jj5 - this function is called from exception handlers, and then notifies
+      // impementations via the do_catch() method, as above. We don't trust implementations not
+      // to throw, and as we're presently *in* an exception handler, we don't want to throw
+      // another exception, because code might not be set up to accommodate that. So if we
+      // land here do_catch() above (or count()?) has thrown, so just log and ignore.
+
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
+
+    }
   }
 
   protected final function throw( int $code, $data = null, $previous = null ) {
