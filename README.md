@@ -329,7 +329,7 @@ delay in your unit tests put those tests in the slow tests.)
 
 When an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest is
 created the configuration settings are validated. If the configuration settings
-are not valid the constructor throw an exception. If the constructor succeeds
+are not valid the constructor will throw an exception. If the constructor succeeds
 then encryption and decryption later on should also (usually) succeed. If there
 are any configuration problems that will mean encryption or decryption won't
 be able to succeed the constructor should throw.
