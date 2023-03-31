@@ -147,7 +147,17 @@ present only "KA1/" is supported.
 The KA1 data format, mentioned above, implies the following:
 
 Input data is encoded as JSON using the PHP
-[json_encode()](https://www.php.net/manual/en/function.json-encode.php) function.
+[json_encode()](https://www.php.net/manual/en/function.json-encode.php) function. Initially this
+library used the PHP
+[serialize()](https://www.php.net/manual/en/function.serialize.php) function but apparently that
+can lead to some code-execution scenarios (I'm not sure on the details) so it was decided that
+JSON encoding was safer. Thus, now, we use JSON encoding instead.
+
+The use of JSON as the data encoding format has some minor implications
+concerning the values we can support. Particularly we can't encoded object instances that can
+be decoded back to object instances (if the objects implement the JsonSerializable interface they
+can be serialized as data, but those will only be decoded back to PHP arrays, not the PHP objects
+from which they came), and some odd floating point values can't be represented (NaN, Inf, etc).
 
 By default these options are used for JSON encoding:
 
@@ -155,7 +165,9 @@ By default these options are used for JSON encoding:
 JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 ```
 
-But these options won't affect an implementation's ability to decode the JSON.
+But these options won't affect an implementation's ability to decode the JSON. Implementations
+can fine tune the JSON encoding and decoding if necessary by overriding the data_encode() and
+data_decode() methods.
 
 After JSON encoding padding is done and the data length is prefixed. Before encryption the message
 is formatted like this:
@@ -172,10 +184,10 @@ $tag . $iv . $ciphertext
 ```
 
 Then everything is base64 encoded. The decryption process then expects to find the 16 byte
-authentication tag, the 12 byte initialization vector and the ciphertext. After decrypting the
-ciphertext the library expects to find the size of the JSON data as a decimal ASCII value,
-followed by a single pipe character, followed by the JSON, and then the padding. The library
-can then remove the JSON from its padding and take care of the decoding.
+authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
+ciphertext the library expects to find the size of the JSON data as an ASCII string representing
+a decimal value, followed by a single pipe character, followed by the JSON, and then the padding.
+The library can then remove the JSON from its padding and take care of the decoding.
 
 ## Chunk size
 
