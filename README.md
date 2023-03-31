@@ -567,7 +567,7 @@ create both then `test.sh` will have precedence and `test.php` will be ignored.
 
 If you want to add a slow test create the unit test directory in
 `src/unit-test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
-create both `slow.sh` will have precedence and `slow.php` will be ignored.
+create both then `slow.sh` will have precedence and `slow.php` will be ignored.
 
 See existing unit tests for examples of how to use the simple unit test
 host in `src/host/unit-test.php`.
