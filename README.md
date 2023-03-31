@@ -64,9 +64,8 @@ older version of PHP it will log an error message and exit your process.
 This code assumes it's running on a 64-bit platform. It also assumes your PHP
 installation includes the bundled OpenSSL library.
 
-I believe this code should run in any PHP environment, but it has only been
-tested by my on Linux. If you have success with MacOS or Windows I would be
-happy to hear about it.
+I believe this code should run in any PHP environment, but I have only tested it on Linux. If you
+have had success on MacOS or Windows I would be happy to hear about it.
 
 Shell scripts are written for bash. If you don't have bash you may need to
 port.
