@@ -17,12 +17,12 @@
 //
 // 2023-03-31 jj5 - a valid config.php file will define constants per relevant use-case.
 //
-// For round-trip define these keys:
+// For round-trip use cases define these keys:
 //
 //* CONFIG_ENCRYPTION_SECRET_CURR
 //* CONFIG_ENCRYPTION_SECRET_PREV (optional)
 //
-// For at-rest use case define this list of keys:
+// For at-rest use cases define this list of keys:
 //
 //* CONFIG_ENCRYPTION_SECRET_LIST
 //
