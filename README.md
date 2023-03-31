@@ -185,13 +185,13 @@ define( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', JSON_THROW_ON_ERROR );
 
 This library should work regardless of whether JSON_THROW_ON_ERROR is specified or not.
 
-If you specify JSON_PARTIAL_OUTPUT_ON_ERROR in your JSON encoding options your data may silently
+If you specify `JSON_PARTIAL_OUTPUT_ON_ERROR` in your JSON encoding options your data may silently
 become invalid, so do that at your own risk. Perhaps counter-intuitively I have found that
-enabling JSON_PARTIAL_OUTPUT_ON_ERROR is the least worst strategy because at least in that case
-you get _something_. If you don't enable JSON_PARTIAL_OUTPUT_ON_ERROR if any part of your input
+enabling `JSON_PARTIAL_OUTPUT_ON_ERROR` is the least worst strategy because at least in that case
+you get _something_. If you don't enable `JSON_PARTIAL_OUTPUT_ON_ERROR` if any part of your input
 can't be encoded (such as when you have non-unicode binary strings) then the whole of the data
-is removed. With JSON_PARTIAL_OUTPUT_ON_ERROR only the unrepresentable portion is omitted. At
-the moment JSON_PARTIAL_OUTPUT_ON_ERROR is not automatically specified, but this is something I
+is removed. With `JSON_PARTIAL_OUTPUT_ON_ERROR` only the unrepresentable portion is omitted. At
+the moment `JSON_PARTIAL_OUTPUT_ON_ERROR` is not automatically specified, but this is something I
 might revisit in future.
 
 After JSON encoding padding is done and the data length is prefixed. Before encryption the message
