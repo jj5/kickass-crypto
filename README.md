@@ -7,7 +7,7 @@ This library is a wrapper around the
 
 The code in this library is based on the example given in the documentation for
 the PHP
-[openssl_encrypt](https://www.php.net/manual/en/function.openssl-encrypt.php)
+[openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
 function.
 
 This library aims to ensure that the data it encrypts is as secure as the
