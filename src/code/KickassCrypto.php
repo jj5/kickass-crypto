@@ -1207,7 +1207,7 @@ abstract class KickassCrypto {
 
   protected function data_encode( $input ) {
 
-    $result = $this->php_json_encode( $input, $this->get_config_json_encode_options() );
+    return $this->php_json_encode( $input, $this->get_config_json_encode_options() );
 
     if ( $this->is_debug() ) {
 
@@ -1222,6 +1222,10 @@ abstract class KickassCrypto {
   }
 
   protected function verify_encoding( $input, $decoded ) {
+
+    // 2023-04-01 jj5 - NOTE: we don't actually do this. Turns out some things which successfully
+    // encode will also successfully decode, but as different things! Notably floats and many
+    // objects.
 
     return;
 
@@ -1248,10 +1252,6 @@ abstract class KickassCrypto {
 
     }
     catch ( JsonException $ex ) {
-
-      var_dump([
-        'json' => $json,
-      ]);
 
       return false;
 
