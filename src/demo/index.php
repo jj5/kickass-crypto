@@ -4,14 +4,61 @@ require_once __DIR__ . '/../code/KickassCrypto.php';
 
 require_once __DIR__ . '/../../config.php';
 
+function encrypt_if_not_null( $input ) {
+
+  if ( $input === null || $input === '' ) { return ''; }
+
+  $result = kickass_round_trip()->encrypt( $input );
+
+  if ( ! $result ) {
+
+    var_dump([
+      'input' => $input,
+      'result' => $result,
+    ]);
+
+    exit;
+
+  }
+
+  return $result;
+
+}
+
+function decrypt_if_not_null( $input ) {
+
+  if ( $input === null || $input === '' ) { return ''; }
+
+  $result = kickass_round_trip()->decrypt( $input );
+
+  if ( ! $result ) {
+
+    var_dump([
+      'input' => $input,
+      'result' => $result,
+    ]);
+
+    exit;
+
+  }
+
+  return $result;
+
+}
+
 function main() {
 
   error_reporting( E_ALL | E_STRICT );
 
   try {
 
-    $ciphertext = kickass_round_trip()->encrypt( $_POST[ 'new' ] );
-    $plaintext = kickass_round_trip()->decrypt( $ciphertext );
+    $oldest_ciphertext = $_POST[ 'older_ciphertext' ] ?? null;
+    $older_ciphertext = $_POST[ 'old_ciphertext' ] ?? null;
+    $old_ciphertext = encrypt_if_not_null( $_POST[ 'new' ] ?? null );
+
+    $old = decrypt_if_not_null( $old_ciphertext );
+    $older = decrypt_if_not_null( $older_ciphertext );
+    $oldest = decrypt_if_not_null( $oldest_ciphertext );
 
     render_head();
 
@@ -20,13 +67,22 @@ function main() {
 <p>Submit a new value, it will be encrypted then decrypted as the old value.</p>
 
 <form method="POST">
+  <input id="old_ciphertext" name="old_ciphertext" value="<?= $old_ciphertext ?>">
+  <input id="older_ciphertext" name="older_ciphertext" value="<?= $older_ciphertext ?>">
+  <input id="oldest_ciphertext" name="oldest_ciphertext" value="<?= $oldest_ciphertext ?>">
   <dl>
-
-    <dt><label for="old">Old:</label></dt>
-    <dd><input id="old" name="old" value="<?= $plaintext ?>" disabled></dd>
 
     <dt><label for="new">New: </label></dt>
     <dd><input id="new" name="new" value=""></dd>
+
+    <dt><label for="old">Old:</label></dt>
+    <dd><input id="old" name="old" value="<?= $old ?>" disabled></dd>
+
+    <dt><label for="older">Older:</label></dt>
+    <dd><input id="older" name="older" value="<?= $older ?>" disabled></dd>
+
+    <dt><label for="oldest">Oldest:</label></dt>
+    <dd><input id="oldest" name="oldest" value="<?= $oldest ?>" disabled></dd>
 
     <dt><label for="submit">Submit:</label</dt>
     <dd><button id="submit" name="submit">Submit</button></dd>
