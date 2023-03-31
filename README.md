@@ -559,7 +559,7 @@ for the gory details but in brief:
 * `bin/dev/test-all.sh` will run the fast tests and the slow tests
 
 There are also some silly tests, but we won't talk about those. They are not
-ordinarily run.
+ordinarily run. And they're silly.
 
 If you want to add a normal/fast test create the unit test directory in
 `src/unit-test/test-XXX`, then add either `test.php` or `test.sh`. If you
