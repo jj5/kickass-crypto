@@ -431,9 +431,13 @@ abstract class KickassCrypto {
 
   use PHP_WRAPPER;
 
-  // 2023-03-30 jj5 - our counters are stored here, call the count() method to increment...
+  // 2023-03-30 jj5 - our counters are stored here, call the count() or count_class() methods to
+  // increment...
   //
-  private static $telemetry = [];
+  private static $telemetry = [
+    'counter' => [],
+    'class' => [],
+  ];
 
   // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
   // interface methods defined below...
@@ -454,12 +458,17 @@ abstract class KickassCrypto {
 
     if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
 
-      $this->count( 'round_trip' );
+      $this->count_class( KickassCryptoRoundTrip::class );
 
     }
     else if ( is_a( $this, KickassCryptoAtRest::class ) ) {
 
-      $this->count( 'at_rest' );
+      $this->count_class( KickassCryptoAtRest::class );
+
+    }
+    else {
+
+      $this->count_class( get_class( $this ) );
 
     }
 
@@ -549,25 +558,38 @@ abstract class KickassCrypto {
   public static function ReportTelemetry() {
 
     $telemetry = self::GetTelemetry();
-    $telemetry_formatted = [];
+
+    echo "= Counters =\n\n";
+
+    self::ReportCounters( $telemetry[ 'counter' ] );
+
+    echo "\n= Classes =\n\n";
+
+    self::ReportCounters( $telemetry[ 'class' ] );
+
+  }
+
+  public static function ReportCounters( $table ) {
+
+    $table_formatted = [];
     $key_max_len = 0;
     $count_max_len = 0;
 
-    foreach ( $telemetry as $key => $count ) {
+    foreach ( $table as $key => $count ) {
 
       $formatted = number_format( $count );
 
       $key_max_len = max( strlen( $key ), $key_max_len );
       $count_max_len = max( strlen( $formatted ), $count_max_len );
 
-      $telemetry_formatted[ $key ] = $formatted;
+      $table_formatted[ $key ] = $formatted;
 
     }
 
     $key_pad = $key_max_len + 2;
     $count_pad = $count_max_len;
 
-    foreach ( $telemetry_formatted as $key => $count ) {
+    foreach ( $table_formatted as $key => $count ) {
 
       echo str_pad( $key, $key_pad, '.' );
       echo ': ';
@@ -659,13 +681,27 @@ abstract class KickassCrypto {
 
   protected function count( $metric ) {
 
-    if ( ! array_key_exists( $metric, self::$telemetry ) ) {
+    return $this->increment_counter( self::$telemetry[ 'counter' ], $metric );
 
-      self::$telemetry[ $metric ] = 0;
+  }
+
+  protected function count_class( $class ) {
+
+    return $this->increment_counter( self::$telemetry[ 'class' ], $class );
+
+  }
+
+  protected function increment_counter( &$array, $key ) {
+
+    if ( ! array_key_exists( $key, $array ) ) {
+
+      $array[ $key ] = 0;
 
     }
 
-    self::$telemetry[ $metric ]++;
+    $array[ $key ]++;
+
+    return $array[ $key ];
 
   }
 
