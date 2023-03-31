@@ -260,7 +260,7 @@ decoded as integers not doubles
 * objects (except if they implement the JsonSerializable interface)
 
 Note that the boolean value false cannot be encrypted. It's not because we
-couldn't encrypt it, it's because we return it when encryption fails. So we
+couldn't encrypt it, it's because we return it when decryption fails. So we
 refuse to encrypt false so that it can't be confused with an error upon
 decryption.
 
