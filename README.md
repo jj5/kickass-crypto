@@ -591,6 +591,8 @@ host in `src/host/unit-test.php`.
 * doc/tex: LaTeX write-up (planned)
 * inc/: include files
 * inc/library.php: the include file for this library, clients include this we do the rest
+* inc/test-host.php: the include file for the unit testing framework
+* inc/test.php: the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
 * src/: PHP source code
 * src/code/: the full library
@@ -605,7 +607,7 @@ host in `src/host/unit-test.php`.
 
 ## Bans and restrictions
 
-Some countries have banned the import or use of strong cryp­togra­phy, such as
+Some countries have banned the import or use of strong cryptography, such as
 256 bit AES.
 
 Please be advised that this library does not contain cryptographic functions,
