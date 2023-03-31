@@ -255,7 +255,7 @@ library. Let me know if that's a feature you care to have.
 
 ## Data size limits
 
-After data is encoded as JSON it is limited to a configurable maxlimum length.
+After data is encoded as JSON it is limited to a configurable maximum length.
 
 The config constant for the maximum JSON encoding length is
 `CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT`.
