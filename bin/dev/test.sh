@@ -130,6 +130,13 @@ report_skip_slow() {
 
 report_skip_silly() {
 
+  # 2023-03-31 jj5 - this report is disabled, because it's not worth taking people's time to tell
+  # them about this. For people reading this the 'silly' tests took a really long time to run and
+  # basically just tested what happened in various memory exhaustion situations. There wasn't
+  # really very much learned there, just that PHP will eventually die if you run it out of memory.
+
+  return 0;
+
   echo "  skipping silly; run with --silly to process silly tests.";
 
 }

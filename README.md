@@ -496,11 +496,14 @@ host in `src/host/unit-test.php`.
 * bin/get-hash-list.php: list hash algorithms supported by your version of PHP
 * doc/: additional documentation
 * doc/tex: LaTeX write-up (planned)
+* inc/: include files
+* inc/library.php: the include file for this library, clients include this we do the rest
 * etc/: library configuration files (planned)
 * src/: PHP source code
 * src/code/: the full library
 * src/demo/: a web-client for demonstration purposes
 * src/host/: software hosts (presently for hosting unit-tests)
+* src/test/: facilities for use during testing
 * src/unit-test/: unit tests: fast, slow, and silly; see bin/dev/test.sh
 * .gitignore: the list of files ignored by git
 * LICENSE: the software license
