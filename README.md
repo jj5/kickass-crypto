@@ -457,7 +457,7 @@ database or elsewhere.
 
 This use case is supported with an arbitrarily long list of secret keys.
 
-The list must include are least one value. The first value in the list is
+The list must include at least one value. The first value in the list is
 used for encryption. For decryption each secret key in the list is tried until
 one is found that works. If none work the data cannot be decrypted and the
 boolean value false is returned to signal the error.
