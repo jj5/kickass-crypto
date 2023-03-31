@@ -38,6 +38,10 @@
 
   try {
 
+    // 2023-03-31 jj5 - NOTE: we read in our environment settings by allowing them to be
+    // overridden with constant values. We do this so that we can test our validation logic on
+    // platforms which are otherwise valid.
+
     $php_version = defined( 'KICKASS_CRYPTO_TEST_PHP_VERSION' ) ?
       KICKASS_CRYPTO_TEST_PHP_VERSION :
       phpversion();
