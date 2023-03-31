@@ -70,16 +70,16 @@ function get_test_list() {
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_VERSION', '7.0' );
-        define( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION', false );
+        define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX', '123' );
-        define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', false );
+        define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_VERSION', '7.0' );
         define( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX', '123' );
-        define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', false );
+        define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
       },
     ],
     'work' => [
@@ -89,17 +89,17 @@ function get_test_list() {
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_VERSION', '7.0' );
-        define( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION', true );
+        define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX', '123' );
-        define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', true );
+        define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
       },
       function() {
         define( 'KICKASS_CRYPTO_TEST_PHP_VERSION', '7.0' );
         define( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX', '123' );
-        define( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION', true );
-        define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', true );
+        define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
+        define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
       },
     ],
   ];

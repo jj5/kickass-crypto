@@ -32,7 +32,15 @@
 
   // 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a
   // problem we exit, unless the programmer has overridden that behavior by defining certain
-  // constants. See the code for details.
+  // constants
+  //
+  // 2023-03-31 jj5 - to override PHP version requirements:
+  //
+  //  define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
+  //
+  // 2023-03-31 jj5 - to override PHP 64-bit word size requirements:
+  //
+  //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
 
   $errors = [];
 
@@ -50,9 +58,21 @@
       KICKASS_CRYPTO_TEST_PHP_INT_MAX :
       PHP_INT_MAX;
 
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
+
+    }
+
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
+
+    }
+
     if ( version_compare( $php_version, '7.4', '<' ) ) {
 
-      if ( defined( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION' ) && KICKASS_CRYPTO_ENABLE_PHP_VERSION ) {
+      if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
 
         // 2023-03-31 jj5 - the programmer has enabled this version of PHP, we will allow it.
 
@@ -60,14 +80,14 @@
       else {
 
         $errors[] = "The kickass-crypto library requires PHP version 7.4 or greater. " .
-          "define( 'KICKASS_CRYPTO_ENABLE_PHP_VERSION', true ) to force enablement.";
+          "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
       }
     }
 
     if ( strval( $php_int_max ) !== '9223372036854775807' ) {
 
-      if ( defined( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE' ) && KICKASS_CRYPTO_ENABLE_WORD_SIZE ) {
+      if ( KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK ) {
 
         // 2023-03-31 jj5 - the programmer has enabled this platform, we will allow it.
 
@@ -75,7 +95,7 @@
       else {
 
         $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
-          "define( 'KICKASS_CRYPTO_ENABLE_WORD_SIZE', true ) to force enablement.";
+          "define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true ) to force enablement.";
 
       }
     }
