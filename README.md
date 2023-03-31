@@ -384,8 +384,9 @@ library can't complete an encryption or decryption operation after a successful
 construction it will signal the error by returning the boolean value false.
 Returning false on error is a PHP idiom, and we use this idiom rather than
 raising an exception to limit the possibility of an excpetion being thrown
-while an encryption secret or passphrase is on the call stack. The problem
-with having sensitive data on the call stack when an exception is raised is
+while an encryption secret or passphrase is on the call stack.
+
+The problem with having sensitive data on the call stack when an exception is raised is
 that the data can be copied into stack traces, which can get saved, serialized,
 displayed to users, logged, etc. We don't want that so we try very hard not to
 raise exceptions while sensitive data might be on the stack.
