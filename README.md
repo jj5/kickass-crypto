@@ -540,6 +540,9 @@ clients that access them. You should use asymetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
 
+It would be a good idea to stand ready to do a key rotation in an automated and tested fashion
+immediately in case of emergency.
+
 ## How the unit tests work
 
 The unit tests are in the `src/unit-test/` directory, numbered sequentially.
