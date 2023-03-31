@@ -58,6 +58,30 @@
       KICKASS_CRYPTO_TEST_PHP_INT_MAX :
       PHP_INT_MAX;
 
+    $has_openssl = true;
+
+    if ( defined( 'KICKASS_CRYPTO_TEST_HAS_OPENSSL' ) ) {
+
+      $has_openssl = KICKASS_CRYPTO_TEST_HAS_OPENSSL;
+
+    }
+    else {
+
+      $openssl_functions = [
+        'openssl_get_cipher_methods',
+        'openssl_cipher_iv_length',
+        'openssl_error_string',
+        'openssl_encrypt',
+        'openssl_decrypt',
+      ];
+
+      foreach ( $openssl_functions as $function ) {
+
+        if ( ! function_exists( $function ) ) { $has_openssl = false; }
+
+      }
+    }
+
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
 
       define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
@@ -67,6 +91,12 @@
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK' ) ) {
 
       define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
+
+    }
+
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', false );
 
     }
 
@@ -96,6 +126,21 @@
 
         $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
           "define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true ) to force enablement.";
+
+      }
+    }
+
+    if ( ! $has_openssl ) {
+
+      if ( KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK ) {
+
+        // 2023-04-01 jj5 - the programmer has enabled OpenSSL anyway, we will allow it.
+
+      }
+      else {
+
+        $errors[] = "The kickass-crypto library requires the PHP OpenSSL library. " .
+          "define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true ) to force enablement.";
 
       }
     }
@@ -374,14 +419,6 @@ trait PHP_WRAPPER {
   protected function php_random_bytes( $length ) {
 
     return random_bytes( $length );
-
-  }
-
-  protected function php_openssl_random_pseudo_bytes( $length, &$strong_result ) {
-
-    $strong_result = null;
-
-    return openssl_random_pseudo_bytes( $length, $strong_result );
 
   }
 
