@@ -29,6 +29,36 @@ breaking changes are almost certain and encryption weaknesses are quite possible
 something you think I should know about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
 
+## Why was this library written?
+
+I wanted to use the PHP OpenSSL library to round-trip some data between my server and its clients.
+As mentioned above I found example code in the PHP documentation for the
+[openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
+function.
+
+Initially it wasn't clear to me how to use this code. Particularly it was difficult to figure
+out what to do with the three parts: the authentication tag, the initialization vector, and the
+cipher text. Eventually I figured out I could just concatenate them.
+
+But I figured it would be better to mask my actual data size by padding it to fixed lengths at
+certain boundaries.
+
+And I wanted to support rich data which demanded some form of serialization. Initially I was using
+the PHP [serialize()](https://www.php.net/manual/en/function.serialize.php) function but that
+was changed later changed to
+[json_encode()](https://www.php.net/manual/en/function.json-encode.php).
+
+The example code didn't indicate anything about how to rotate keys in a supported fashion. So I
+came up with the two use cases supported by this library with different approaches to key
+management. This library lets you rotate in new keys while maintaining support for older keys, as
+you are likely wont to do.
+
+Then I layered in a careful approach to exception handling and error reporting, some testing, and
+things like that.
+
+Basically this whole library was just everything I felt like I had to do so that I could actually
+use the built-in PHP OpenSSL library implementation.
+
 ## tl;dr
 
 Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
