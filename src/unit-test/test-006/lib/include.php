@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+// 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
+
 function test_error( $instance ) {
 
   test_service_error( kickass_round_trip(), $instance );

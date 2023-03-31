@@ -2,7 +2,8 @@
 <?php
 
 // 2023-03-30 jj5 - this test takes the service locators for a spin and makes sure they are
-// mutually independent (i.e. don't share keys)...
+// mutually independent (i.e. don't share keys)... because tests for failure are included these
+// tests will trigger a delay which is why they are defined in this slow.php file.
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../host/unit-test.php';

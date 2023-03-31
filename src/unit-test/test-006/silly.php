@@ -1,17 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-// 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt complex values...
+// 2023-03-30 jj5 - these tests are silly. there's really no need to run them. the values for
+// $n were picked based on what my development workstation could handle, you might have more
+// or less luck.
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../host/unit-test.php';
 require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
-
-  // 2023-03-30 jj5 - these tests are silly. there's really no need to run them. the values for
-  // $n were picked based on what my development workstation could handle, you might have more
-  // or less luck.
 
   $limit = 26;
 

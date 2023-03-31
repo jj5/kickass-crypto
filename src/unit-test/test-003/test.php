@@ -2,7 +2,8 @@
 <?php
 
 // 2023-03-30 jj5 - this test takes the various errors for a spin, all code paths which should
-// result in an error should be exercised...
+// result in an error should be exercised... the code paths which will run quickly are in this
+// test, test.php, other tests which include a delay are in slow.php.
 
 require_once __DIR__ . '/../../host/unit-test.php';
 
