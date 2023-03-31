@@ -563,7 +563,7 @@ ordinarily run. And they're silly.
 
 If you want to add a normal/fast test create the unit test directory in
 `src/unit-test/test-XXX`, then add either `test.php` or `test.sh`. If you
-create both `test.sh` will have precedence and `test.php` will be ignored.
+create both then `test.sh` will have precedence and `test.php` will be ignored.
 
 If you want to add a slow test create the unit test directory in
 `src/unit-test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
