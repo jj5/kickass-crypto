@@ -261,6 +261,13 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/config.php';
 ```
 
+Consequently, as with most PHP source files, it's best to use `require_once` when including the
+`config.php` file:
+
+```
+require_once __DIR__ . '/config.php';
+```
+
 When I name things which are secret I make sure the name contains the string "pass" (as in
 "password", "passwd", and "passphrase") or "secret". In my general purpose logging facilities
 (which aren't included in this library) I scrub and redact anything with a name that matches
