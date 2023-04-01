@@ -245,7 +245,7 @@ PHP define() function. The problem with using class fields or global variables i
 can fairly easily leak into debug and logging code, this is less likely (though still possible)
 for constants. Similarly if you need to cache global/static data (such as read from the config
 file) the best way to do that is with a static variable in a function, if possible, as using
-instance fields or globals can more easily lead to secret leakage.
+instance fields, class fields, or globals can more easily lead to secret leakage.
 
 The safest way to define a constant in PHP is to check that it's not already defined first,
 because attempting to define an already defined constant will result in error. If you find an
