@@ -127,7 +127,7 @@ The details of how each use case is supported are documented below.
 Using this library for at-rest encryption is generally a bigger risk and a
 bigger commitment than using it simply for round-trip encryption. If you
 lose your round-trip encryption keys or are forced to rotate them urgently
-that will likely be less of a problem than if something similar happened to
+that will likely be less of a problem than if something similar happened with
 your at-rest keys.
 
 The main use case for which this library was developed was to support
