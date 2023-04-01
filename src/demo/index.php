@@ -20,6 +20,30 @@ function decrypt_if_not_empty( $input ) {
 
 }
 
+function henc( $input ) {
+
+  static $flags = ENT_QUOTES | ENT_SUBSTITUTE | ENT_DISALLOWED | ENT_HTML5;
+
+  $text = strval( $input );
+
+  if ( $text === '' ) { return ''; }
+
+  $result = htmlspecialchars( $text, $flags, 'UTF-8', true );
+
+  // 2019-07-18 jj5 - this should never happen due to ENT_SUBSTITUTE | ENT_DISALLOWED being in
+  // $flags above...
+  //
+  if ( $result === '' ) {
+
+    return '0x' . bin2hex( $text );
+
+  }
+
+  return $result;
+
+}
+
+
 function main() {
 
   error_reporting( E_ALL | E_STRICT );
@@ -40,7 +64,7 @@ function main() {
 
     render_head();
 
-    ?>
+?>
 
 <p>Submit a new value, it will be encrypted then decrypted as the old value. Keep submitting
   new values to cycle the ciphertexts.</p>
@@ -52,13 +76,13 @@ function main() {
     <dd><input id="new" name="new" value=""></dd>
 
     <dt><label for="old">Old:</label></dt>
-    <dd><input id="old" name="old" value="<?= $old ?>" disabled></dd>
+    <dd><input id="old" name="old" value="<?= henc( $old ) ?>" disabled></dd>
 
     <dt><label for="older">Older:</label></dt>
-    <dd><input id="older" name="older" value="<?= $older ?>" disabled></dd>
+    <dd><input id="older" name="older" value="<?= henc( $older ) ?>" disabled></dd>
 
     <dt><label for="oldest">Oldest:</label></dt>
-    <dd><input id="oldest" name="oldest" value="<?= $oldest ?>" disabled></dd>
+    <dd><input id="oldest" name="oldest" value="<?= henc( $oldest ) ?>" disabled></dd>
 
     <dt><label for="submit">Submit:</label</dt>
     <dd><button id="submit" name="submit">Submit</button></dd>
@@ -68,9 +92,9 @@ function main() {
   <h2>Old ciphertexts</h2>
   <p>You can edit these, but if you do they will not be able to be decrypted, and that will
     trigger the delay mechanism, so you will have to wait a few seconds for the response.</p>
-  <p><textarea id="old_ciphertext" name="old_ciphertext"><?= $old_ciphertext ?></textarea></p>
-  <p><textarea id="older_ciphertext" name="older_ciphertext"><?= $older_ciphertext ?></textarea></p>
-  <p><textarea id="oldest_ciphertext" name="oldest_ciphertext"><?= $oldest_ciphertext ?></textarea></p>
+  <p><textarea id="old_ciphertext" name="old_ciphertext"><?= henc( $old_ciphertext ) ?></textarea></p>
+  <p><textarea id="older_ciphertext" name="older_ciphertext"><?= $henc( older_ciphertext ) ?></textarea></p>
+  <p><textarea id="oldest_ciphertext" name="oldest_ciphertext"><?= henc( $oldest_ciphertext ) ?></textarea></p>
 
 </form>
 
@@ -91,7 +115,7 @@ function main() {
 
         $problem = $ex->getData()[ 'problem' ] ?? null;
 
-        ?><p>The problem is: <?= htmlentities( $problem ) ?>.</p><?php
+        ?><p>The problem is: <?= henc( $problem ) ?>.</p><?php
 
         break;
 
@@ -101,7 +125,7 @@ function main() {
 
         $message = $ex->getMessage();
 
-        ?><p>The error message is: <?= htmlentities( $message ) ?>.</p><?php
+        ?><p>The error message is: <?= henc( $message ) ?>.</p><?php
 
     }
 
