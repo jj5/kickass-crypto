@@ -130,9 +130,9 @@ After loading this library you will usually access via the `kickass_round_trip()
 
 If you want to host the demo code you need to host the files in
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
-and include a valid config.php file in the project base directory (that's the directory that
+and include a valid `config.php` file in the project base directory (that's the directory that
 includes this [README.md](https://github.com/jj5/kickass-crypto/tree/main/README.md) file).
-For demonstration purposes a valid config.php file only needs to define a constant string for
+For demonstration purposes a valid `config.php` file only needs to define a constant string for
 `CONFIG_ENCRYPTION_SECRET_CURR`, but it needs to be a long and random string, you can generate
 an appropriate string with:
 
@@ -196,7 +196,7 @@ level of security you require.
 
 ## Configuration settings
 
-In addition to inheriting from KickassCrypto and overriding particular functionality a lot of
+In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
 configuration is available via the configuration constants. Search for `CONFIG_ENCRYPTION` to
 find what's available.
 
@@ -212,7 +212,7 @@ being:
 There will be management scripts for automatically rotating and provisioning
 keys in these files.
 
-Experienced Linux users know that you don't edit /etc/sudoers directly, you
+Experienced Linux users know that you don't edit `/etc/sudoers` directly, you
 edit it with `visudo` so that you can verify you haven't accidentally
 introduced a syntax error and hosed your system.
 
@@ -248,7 +248,7 @@ As mentioned in the previous section a fair amount of configurability is provide
 for named configuration constants.
 
 In addition to the configuration constants there's a lot you can do if you inherit from the
-KickassCrypto base class and override its methods.
+`KickassCrypto` base class and override its methods.
 
 As an alternative to the configuration constants (which can only be defined once per process)
 there are instance methods as "get_config_*()" for configuration options and "get_const_*()" for
@@ -256,12 +256,12 @@ constant evaluation. Most important constants and configuration options are read
 these accessors so you should be able to override them reliably.
 
 Most calls to PHP built-in functions are done by slim wrappers via protected functions on
-KickassCrypto. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
+`KickassCrypto`. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
 PHP function invocations to be intercepted and potentially modified. This has been done primarily
 to support fault injection during unit testing, but you could use for other purposes to change
 implementation particulars.
 
-Things which are considered sensitive in KickassCrypto are defined as private and/or final. If
+Things which are considered sensitive in `KickassCrypto` are defined as private and/or final. If
 it's not private and it's not private it's fair game for overriding. Particularly the instance
 methods with start with "do_" were specifically made to be replaced or intercepted by
 implementers.
@@ -517,7 +517,7 @@ delay in your unit tests put those tests in the slow tests.)
 
 ## Exceptions and errors
 
-When an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest is
+When an instance of either `KickassCryptoRoundTrip` or `KickassCryptoAtRest` is
 created the configuration settings are validated. If the configuration settings
 are not valid the constructor will throw an exception. If the constructor succeeds
 then encryption and decryption later on should also (usually) succeed. If there
@@ -788,7 +788,7 @@ See existing unit tests for examples of how to use the simple unit test host in
 * [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/): development scripts
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh): run fast and slow unit tests
 * [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh): run unit tests, control with flags
-* [bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-demo-config.php): generate an initial config.php file for the demo
+* [bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-demo-config.php): generate an initial `config.php` file for the demo
 * [bin/gen-key.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-key.php): generate a secret key
 * [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
 * [bin/get-hash-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-hash-list.php): list hash algorithms supported by your version of PHP
