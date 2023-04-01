@@ -71,6 +71,7 @@ to actually use OpenSSL_. If I've made any mistakes, obvious or otherwise, I wou
 Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
 
 ```
+#!/bin/bash
 mkdir -p kickass-demo/lib
 cd kickass-demo
 git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
