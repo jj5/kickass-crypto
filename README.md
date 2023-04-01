@@ -284,10 +284,10 @@ for named configuration constants.
 In addition to the configuration constants there's a lot you can do if you inherit from the
 `KickassCrypto` base class and override its methods.
 
-As an alternative to the configuration constants (which can only be defined once per process)
-there are instance methods as "get_config_*()" for configuration options and "get_const_*()" for
-constant evaluation. Most important constants and configuration options are read indirectly via
-these accessors so you should be able to override them reliably.
+As an alternative to the configuration constants (which can only be defined once per process and
+thereafter cannot be changed) there are instance methods as "get_config_*()" for configuration
+options and "get_const_*()" for constant evaluation. Most important constants and configuration
+options are read indirectly via these accessors so you should be able to override them reliably.
 
 Most calls to PHP built-in functions are done by slim wrappers via protected functions on
 `KickassCrypto`. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
