@@ -69,7 +69,7 @@ maintaining support for older keys, as you are likely wont to do.
 
 Then I layered in a careful approach to exception handling and error reporting, some unit testing
 and validation, timing attack mitigation, service locators, usage demonstration, data size limits,
-passphrase initialization, key generation scripts, and things like that.
+passphrase initialization, key generation scripts, telemetry, and things like that.
 
 Basically this whole library was just everything I felt like I had to do so that I could actually
 use the built-in PHP OpenSSL library implementation.
@@ -795,6 +795,17 @@ use HTTPS for your web clients.
 
 This library is a server-side component. We don't support encrypting data client-side in web
 browsers.
+
+## Telemetry
+
+This library collects some basic telemetry:
+
+* counters: how many times certain key functions have been called
+* classes: how many times certain key classes have been constructed
+* lengths: data lengths of successfully generated ciphertext
+
+Call `KickassCrypto::GetTelemetry()` to get the telemetry and `KickassCrypto::ReportTelemetry()`
+to report it.
 
 ## How the unit tests work
 
