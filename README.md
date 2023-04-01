@@ -253,7 +253,7 @@ already defined constant you can either abort with an error message (if you do d
 much detail because the public web might see it) or just keep the existing value and don't try
 to redefine it. The
 [bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/blob/main/bin/gen-demo-config.php)
-config file generate takes the first approach and calls the PHP `die()` function if a duplicate
+config file generator takes the first approach and calls the PHP `die()` function if a duplicate
 is detected. You can see what happens by including the generated `config.php` file twice, as:
 
 ```
