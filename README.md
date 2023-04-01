@@ -52,8 +52,8 @@ was changed later to
 
 The example code didn't indicate anything at all about how to rotate keys in a supported fashion.
 So I came up with the two use cases supported by this library with different approaches to key
-management. This library lets you rotate in new keys while maintaining support for older keys, as
-you are likely wont to do.
+management for round-trip and at-rest scenarios. This library lets you rotate in new keys while
+maintaining support for older keys, as you are likely wont to do.
 
 Then I layered in a careful approach to exception handling and error reporting, some testing,
 timing attack mitigation, and things like that.
