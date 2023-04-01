@@ -102,8 +102,9 @@ here:
 
 The demo facility just shows how to round-trip encrypted data between the client and server.
 
-The demo code is available in this library in the src/demo/ directory if you'd like to host it
-yourself.
+The demo code is available in this library in the
+[src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
+directory if you'd like to host it yourself.
 
 ## Using this library
 
@@ -115,15 +116,17 @@ git clone https://github.com/jj5/kickass-crypto.git
 
 **This code is unreleased, there is no stable version.**
 
-If you want to include the client library for use in your application include the inc/library.php
+If you want to include the client library for use in your application include the
+[inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php)
 file which will take care of loading everything else. Then usually you will access via the
 `kickass_round_trip()` or `kickass_at_rest()` service locators which are documented below.
 
-If you want to host the demo code you need to host the files in src/demo/ and include a valid
-config.php file in the project base directory (that's the directory that includes the 'inc' and
-'src' directories among others). For demonstration purposes a valid config.php file only needs
-to define a constant string for 'CONFIG_ENCRYPTION_SECRET_CURR', but it needs to be a long and
-random string, you can generate an appropriate string with:
+If you want to host the demo code you need to host the files in
+[src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
+and include a valid config.php file in the project base directory (that's the directory that
+includes the 'inc' and 'src' directories among others). For demonstration purposes a valid
+config.php file only needs to define a constant string for 'CONFIG_ENCRYPTION_SECRET_CURR', but
+it needs to be a long and random string, you can generate an appropriate string with:
 
 ```
 php bin/gen-key.php
@@ -738,7 +741,9 @@ browsers.
 
 ## How the unit tests work
 
-The unit tests are in the `src/unit-test/` directory, numbered sequentially.
+The unit tests are in the
+[src/unit-test/](https://github.com/jj5/kickass-crypto/tree/main/src/unit-test/)
+directory, numbered sequentially.
 
 There's some test runners in
 [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev),
@@ -765,8 +770,8 @@ to work. That can happen when you need to test different constant definitions. A
 redefine constants in PHP you have to restart your process if you want to run with different
 values.
 
-See existing unit tests for examples of how to use the simple unit test
-host in `src/host/unit-test.php`.
+See existing unit tests for examples of how to use the simple unit test host in
+[src/host/unit-test.php](https://github.com/jj5/kickass-crypto/tree/main/src/host/unit-test.php).
 
 ## Directory structure
 
