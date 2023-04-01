@@ -223,7 +223,6 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_LIMIT', pow( 2, 26 ) );
-define( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', 9 );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS', JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
@@ -405,18 +404,6 @@ trait PHP_WRAPPER {
   protected function php_unserialize( $input ) {
 
     return unserialize( $input );
-
-  }
-
-  protected function php_gzdeflate( $buffer, $level ) {
-
-    return gzdeflate( $buffer, $level );
-
-  }
-
-  protected function php_gzinflate( $buffer ) {
-
-    return gzinflate( $buffer );
 
   }
 
@@ -868,14 +855,6 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_config_compression_level(
-    $default = KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL
-  ) {
-
-    return $this->get_const( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', $default );
-
-  }
-
   protected function get_config_json_encode_options(
     $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
   ) {
@@ -1281,28 +1260,6 @@ abstract class KickassCrypto {
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
     }
-  }
-
-  protected function deflate( $input ) {
-
-    // 2023-04-01 jj5 - NOTE: when compression is used it enables a CRIME-style attack, so we
-    // don't compress any more. You might think you want to compress, but you really don't.
-    // It's a bad idea. Don't do it.
-
-    return $input;
-
-    return $this->php_gzdeflate( $input, $this->get_config_compression_level() );
-
-  }
-
-  protected function inflate( $input ) {
-
-    // 2023-04-01 jj5 - compression has been removed for better security.
-
-    return $input;
-
-    return $this->php_gzinflate( $input );
-
   }
 
   protected function encode( string $binary ) {
