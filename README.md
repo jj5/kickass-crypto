@@ -100,6 +100,8 @@ here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
+The demo facility just shows how to round-trip encrypted data between the client and server.
+
 ## Using this library
 
 As mentioned above you can check out the code from git with a command like this:
