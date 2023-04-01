@@ -189,7 +189,7 @@ When this library decodes its ciphertext it verifies the data-format prefix. At 
 
 ## Data format
 
-The KA0 data format, mentioned above, implies the following:
+The KA0 data format, mentioned above, presently implies the following:
 
 After JSON encoding (discussed in the following section) padding is done and the data length is
 prefixed. Before encryption the message is formatted like this:
