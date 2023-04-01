@@ -769,12 +769,31 @@ abstract class KickassCrypto {
 
   protected final function error( $error ) {
 
-    $this->count( __FUNCTION__ );
+    try {
 
-    return $this->do_error( $error );
+      $this->count( __FUNCTION__ );
+
+      return $this->do_error( $error );
+
+    }
+    catch ( Throwable $ex ) {
+
+      // 2023-04-01 jj5 - the whole point of this function is to *not* throw an exception. Neither
+      // count() or do_error() has any business throwing an exception. If they do we make some
+      // noise in the log file and return false.
+
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
+
+    }
+
+    return false;
 
   }
 
+  // 2023-04-01 jj5 - implementations can vary this behavior. By default we don't count extensions
+  // of KickassCryptoRoundTrip or KickassCryptoAtRest separately, but we do count other extensions
+  // separately...
+  //
   protected function count_this() {
 
     $this->count( 'instance' );
@@ -1361,6 +1380,10 @@ abstract class KickassCrypto {
 
     }
 
+    // 2023-04-01 jj5 - OLD: we don't do this any more, if base64 decoding fails we can
+    // surmise that the encoding was not valid, there's not much point doing validation in
+    // advance, especially as the normal case is that the encoding is valid.
+    //
     /*
     if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
 
@@ -1379,7 +1402,11 @@ abstract class KickassCrypto {
 
     }
 
-    if ( $result === '' ) {
+    // 2023-04-01 jj5 - NOTE: but we did have to include this extra check for empty because
+    // it's not always false which is returned... actually empty() is probably stronger than
+    // required, a simplye $result !== '' would probably do, but this should be fine...
+    //
+    if ( empty( $result ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED );
 
