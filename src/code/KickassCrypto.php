@@ -251,7 +251,7 @@ define(
 //
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE',  1_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG',          2_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH',     3_000 );
+define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH',        3_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER',          4_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
@@ -262,7 +262,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE => 'invalid exception code.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG         => 'invalid config.',
-  KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH    => 'invalid secret hash.',
+  KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH       => 'invalid key hash.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER         => 'invalid cipher.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH      => 'invalid IV length.',
   KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
@@ -335,7 +335,7 @@ define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
 // pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
 // these... please see the documentation in README.md for an explanation of these values.
 //
-define( 'KICKASS_CRYPTO_SECRET_HASH', 'sha512/256' );
+define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
 define( 'KICKASS_CRYPTO_CIPHER', 'aes-256-gcm' );
 define( 'KICKASS_CRYPTO_OPTIONS', OPENSSL_RAW_DATA );
 define( 'KICKASS_CRYPTO_KEYMINLEN', 88 );
@@ -534,15 +534,15 @@ abstract class KickassCrypto {
 
     assert( $problem === null );
 
-    $secret_hash = $this->get_const_secret_hash();
+    $key_hash = $this->get_const_key_hash();
     $hash_list = hash_algos();
 
-    if ( ! in_array( $secret_hash, $hash_list ) ) {
+    if ( ! in_array( $key_hash, $hash_list ) ) {
 
       $this->throw(
-        KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH,
+        KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH,
         [
-          'secret_hash' => $secret_hash,
+          'key_hash' => $key_hash,
           'hash_list' => $hash_list,
         ]
       );
@@ -897,9 +897,9 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_const_secret_hash() {
+  protected function get_const_key_hash() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_SECRET_HASH' );
+    return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
 
   }
 
@@ -1446,7 +1446,7 @@ abstract class KickassCrypto {
 
   protected function calc_passphrase( string $key ) {
 
-    return hash( $this->get_const_secret_hash(), $key, $binary = true );
+    return hash( $this->get_const_key_hash(), $key, $binary = true );
 
   }
 

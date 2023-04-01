@@ -94,14 +94,14 @@ function run_test() {
   );
 
   test_exception(
-    KICKASS_CRYPTO_EXCEPTION_INVALID_SECRET_HASH,
+    KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function get_const_secret_hash() { return 'invalid-hash'; }
+        protected function get_const_key_hash() { return 'invalid-hash'; }
       };
     },
     [
-      'secret_hash' => 'invalid-hash',
+      'key_hash' => 'invalid-hash',
       'hash_list' => hash_algos(),
     ]
   );

@@ -172,6 +172,14 @@ I intend to provide similar scripts for editing and managing `config.php`
 and other config files. So stand-by for those updates. In the mean time...
 _just be very careful_.
 
+One thing you should be very careful you don't do is manage your keys in anything other than
+a PHP file with a ".php" file extension. If you put your keys in a ".ini" file or something like
+that _they might very well be served as plain text by your web server_. So don't do that. Also
+be careful not to introduce syntax errors into your config file or other source files running
+in production because details might leak with the potential resulting error messages.
+
+## Naming and specifying secret things
+
 The preferred and supported way to nominate secrets in config files is as constants using the
 PHP define() function. The problem with using class fields or global variables is that the values
 can fairly easily leak into debug and logging code, this is less likely (though still possible)
@@ -179,11 +187,12 @@ for constants. Similarly if you need to cache global/static data (such as read f
 file) the best way to do that is with a static variable in a function, using instance fields can
 more easily lead to secret leakage.
 
-One thing you should be very careful you don't do is manage your keys in anything other than
-a PHP file with a ".php" file extension. If you put your keys in a ".ini" file or something like
-that _they might very well be served as plain text by your web server_. So don't do that. Also
-be careful not to introduce syntax errors into your config file or other source files running
-in production because details might leak with the potential resulting error messages.
+When I name things which are secret I make sure the name contains the string "pass" (as in
+"password", "passwd", and "passphrase") or "secret". In my general purpose logging facilities
+(which aren't included in this library) I scrub and redact anything with a name that matches
+prior to logging diagnostic data. I encourage you to adopt this practice. In this library if
+a variable or constant might contain sensitive data it will be named with either "pass" or
+"secret" as a substring in the name.
 
 ## Configurability and extensibility
 
