@@ -5,7 +5,7 @@
 // keys for both round-trip and at-rest use cases. You can call it from the library base
 // directory, like this:
 //
-// $ [ ! -f config.php ] && php bin/gen-config.php > config.php
+// $ [ ! -f config.php ] && php bin/gen-demo-config.php > config.php
 //
 // Be aware that the above command will not overwrite an existing config.php. If you have an
 // existing config.php you should probably rotate your keys rather than replace them. See the

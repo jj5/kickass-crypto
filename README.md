@@ -75,7 +75,7 @@ Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
 mkdir -p kickass-demo/lib
 cd kickass-demo
 git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
-php lib/kickass-crypto/bin/gen-config.php > config.php
+php lib/kickass-crypto/bin/gen-demo-config.php > config.php
 cat > demo.php <<'EOF'
 <?php
 require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
@@ -137,7 +137,7 @@ php bin/gen-key.php
 Or you can just generate a whole demo `config.php` file with:
 
 ```
-php bin/gen-config.php > config.php
+php bin/gen-demo-config.php > config.php
 ```
 
 ## Supported PHP versions
@@ -781,7 +781,7 @@ See existing unit tests for examples of how to use the simple unit test host in
 * [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/): development scripts
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh): run fast and slow unit tests
 * [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh): run unit tests, control with flags
-* [bin/gen-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-config.php): generate an initial config.php file
+* [bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-demo-config.php): generate an initial config.php file for the demo
 * [bin/gen-key.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-key.php): generate a secret key
 * [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
 * [bin/get-hash-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-hash-list.php): list hash algorithms supported by your version of PHP
