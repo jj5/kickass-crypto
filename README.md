@@ -175,6 +175,18 @@ parameter. Ideally this library will meet your requirements out of the box
 and you won't need to replace the instances provided by the service locators
 by default.
 
+## Data encryption
+
+The encryption process is roughly:
+
+* JSON encode
+* prefix with JSON data length
+* pad with random data
+* encrypt with AES-256-GCM using the OpenSSL library
+* concatenate authentication tag, initialization vector, and cipher text
+* encode as base64
+* prefix with data-format indicator
+
 ## Data-format prefix
 
 When this library encodes its ciphertext it includes a data-format prefix of "KA0/".
@@ -365,18 +377,6 @@ now!
 
 **_It's very important that you don't compress data that an attacker can supply with other data
 that is secret. It's best just not to compress at all._**
-
-## Data encryption
-
-The encryption process is roughly:
-
-* JSON encode
-* prefix with JSON data length
-* pad with random data
-* encrypt with AES-256-GCM using the OpenSSL library
-* concatenate authentication tag, initialization vector, and cipher text
-* encode as base64
-* prefix with data-format indicator
 
 ## Timing attack mitigation
 
