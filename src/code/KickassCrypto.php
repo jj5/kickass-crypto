@@ -509,8 +509,8 @@ abstract class KickassCrypto {
   private $openssl_error = null;
 
   // 2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid... if
-  // the constructor succeeds then encryption and decryption should also succeed later on, if
-  // encryption or decryption won't be able to succeed the constructor should throw.
+  // the constructor succeeds then encryption and decryption should also usually succeed later on.
+  // If encryption or decryption won't be able to succeed the constructor should throw.
   //
   public function __construct() {
 
