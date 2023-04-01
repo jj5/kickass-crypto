@@ -292,9 +292,9 @@ define(
 );
 
 // 2023-03-30 jj5 - these are the errors that can happen during encryptiong and decryption, we
-// don't raise exceptions for these errors because a passphrase might be on the call stack and
-// we don't want to accidentally leak it. If an error occurs the boolean value false is
-// returned and the error constant is added to the error list.
+// don't raise exceptions for these errors because a secret key or a passphrase might be on the
+// call stack and we don't want to accidentally leak it. If an error occurs the boolean value
+// false is returned and the error constant is added to the error list.
 //
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED', 'exception raised.' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
