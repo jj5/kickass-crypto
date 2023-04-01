@@ -56,7 +56,8 @@ management for round-trip and at-rest scenarios. This library lets you rotate in
 maintaining support for older keys, as you are likely wont to do.
 
 Then I layered in a careful approach to exception handling and error reporting, some testing,
-timing attack mitigation, and things like that.
+timing attack mitigation, service locators, usage demonstration, data size limits, passphrase
+initialization, key generation scripts, and things like that.
 
 Basically this whole library was just everything I felt like I had to do so that I could actually
 use the built-in PHP OpenSSL library implementation.
