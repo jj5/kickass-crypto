@@ -55,8 +55,8 @@ So I came up with the two use cases supported by this library with different app
 management. This library lets you rotate in new keys while maintaining support for older keys, as
 you are likely wont to do.
 
-Then I layered in a careful approach to exception handling and error reporting, some testing, and
-things like that.
+Then I layered in a careful approach to exception handling and error reporting, some testing,
+timing attack mitigation, and things like that.
 
 Basically this whole library was just everything I felt like I had to do so that I could actually
 use the built-in PHP OpenSSL library implementation.
