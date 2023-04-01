@@ -179,8 +179,8 @@ by default.
 
 When this library encodes its ciphertext it includes a data-format prefix of "KA0/".
 
-The zero in "KA0" is for _version zero_, which is intended to imply that the interface is
-_unstable and may change_.
+The zero in "KA0" is for _version zero_, which is intended to imply that
+_the interface is unstable and may change_.
 
 Future versions of this library might implement a new data-format prefix for a stable data format.
 
