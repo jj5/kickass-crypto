@@ -108,6 +108,8 @@ As mentioned above you can check out the code from git with a command like this:
 git clone https://github.com/jj5/kickass-crypto.git
 ```
 
+**This code is unreleased, there is no stable version.**
+
 If you want to include the client library for use in your application include the inc/library.php
 file which will take care of loading everything else. Then usually you will access via the
 `kickass_round_trip()` or `kickass_at_rest()` service locators which are documented below.
