@@ -305,8 +305,8 @@ implementers.
 This library provides two service locator functions which manage an instance of
 the crypto library each, those are:
 
-* kickass_round_trip()
-* kickass_at_rest()
+* `kickass_round_trip()`
+* `kickass_at_rest()`
 
 You can replace the instance of the service provided by the service locator
 function by calling the function and passing the new instance as the sole
