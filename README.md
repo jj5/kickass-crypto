@@ -119,8 +119,14 @@ git clone https://github.com/jj5/kickass-crypto.git
 
 If you want to include the client library for use in your application include the
 [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php)
-file which will take care of loading everything else. Then usually you will access via the
-`kickass_round_trip()` or `kickass_at_rest()` service locators which are documented below.
+file which will take care of loading everything else.
+
+```
+require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
+```
+
+After loading this library you will usually access via the `kickass_round_trip()` or
+`kickass_at_rest()` service locators which are documented below.
 
 If you want to host the demo code you need to host the files in
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
