@@ -125,9 +125,10 @@ file which will take care of loading everything else. Then usually you will acce
 If you want to host the demo code you need to host the files in
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
 and include a valid config.php file in the project base directory (that's the directory that
-includes the 'inc' and 'src' directories among others). For demonstration purposes a valid
-config.php file only needs to define a constant string for 'CONFIG_ENCRYPTION_SECRET_CURR', but
-it needs to be a long and random string, you can generate an appropriate string with:
+includes this [README.md](https://github.com/jj5/kickass-crypto/tree/main/README.md) file).
+For demonstration purposes a valid config.php file only needs to define a constant string for
+`CONFIG_ENCRYPTION_SECRET_CURR`, but it needs to be a long and random string, you can generate
+an appropriate string with:
 
 ```
 php bin/gen-key.php
@@ -189,7 +190,7 @@ level of security you require.
 ## Configuration settings
 
 In addition to inheriting from KickassCrypto and overriding particular functionality a lot of
-configuration is available via the configuration constants. Search for 'CONFIG_ENCRYPTION' to
+configuration is available via the configuration constants. Search for `CONFIG_ENCRYPTION` to
 find what's available.
 
 Please be advised that at the moment this code is configured directly in the
