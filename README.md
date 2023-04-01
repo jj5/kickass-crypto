@@ -47,7 +47,7 @@ certain boundaries, so I did that.
 
 And I wanted to support rich data which demanded some form of serialization. Initially I was using
 the PHP [serialize()](https://www.php.net/manual/en/function.serialize.php) function but that
-was changed later changed to
+was changed later to
 [json_encode()](https://www.php.net/manual/en/function.json-encode.php).
 
 The example code didn't indicate anything about how to rotate keys in a supported fashion. So I
