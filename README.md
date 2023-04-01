@@ -86,6 +86,9 @@ EOF
 php demo.php
 ```
 
+For slightly more elaboration maybe check out the
+[sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
+
 ## Library demo
 
 Assuming I remember to update it from time to time, there's a demo system over
