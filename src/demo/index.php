@@ -93,7 +93,7 @@ function main() {
   <p>You can edit these, but if you do they will not be able to be decrypted, and that will
     trigger the delay mechanism, so you will have to wait a few seconds for the response.</p>
   <p><textarea id="old_ciphertext" name="old_ciphertext"><?= henc( $old_ciphertext ) ?></textarea></p>
-  <p><textarea id="older_ciphertext" name="older_ciphertext"><?= $henc( older_ciphertext ) ?></textarea></p>
+  <p><textarea id="older_ciphertext" name="older_ciphertext"><?= henc( older_ciphertext ) ?></textarea></p>
   <p><textarea id="oldest_ciphertext" name="oldest_ciphertext"><?= henc( $oldest_ciphertext ) ?></textarea></p>
 
 </form>
