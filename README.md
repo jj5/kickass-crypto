@@ -100,7 +100,8 @@ here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
-The demo facility just shows how to round-trip encrypted data between the client and server.
+The demo facility just shows how to round-trip encrypted data between the client and server using
+HTML and HTTP.
 
 The demo code is available in this library in the
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
