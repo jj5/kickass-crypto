@@ -185,6 +185,30 @@ that _they might very well be served as plain text by your web server_. So don't
 be careful not to introduce syntax errors into your config file or other source files running
 in production because details might leak with the potential resulting error messages.
 
+## Configurability and extensibility
+
+As mentioned in the previous section a fair amount of configurability is provided by support
+for named configuration constants.
+
+In addition to the configuration constants there's a lot you can do if you inherit from the
+KickassCrypto base class and override its methods.
+
+As an alternative to the configuration constants (which can only be defined once per process)
+there are instance methods as "get_config_*()" for configuration options and "get_const_*()" for
+constant evaluation. Most important constants and configuration options are read indirectly via
+these accessors so you should be able to override them reliably.
+
+Most calls to PHP built-in functions are done by slim wrappers via protected functions on
+KickassCrypto. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
+PHP function invocations to be intercepted and potentially modified. This has been done primarily
+to support fault injection during unit testing, but you could use for other purposes to change
+implementation particulars.
+
+Things which are considered sensitive in KickassCrypto are defined as private and/or final. If
+it's not private and it's not private it's fair game for overriding. Particularly the instance
+methods with start with "do_" were specifically made to be replaced or intercepted by
+implementers.
+
 ## Service locators
 
 This library provides two service locator functions which manage an instance of
