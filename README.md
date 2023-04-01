@@ -295,8 +295,8 @@ PHP function invocations to be intercepted and potentially modified. This has be
 to support fault injection during unit testing, but you could use for other purposes to change
 implementation particulars.
 
-Things which are considered sensitive in `KickassCrypto` are defined as private and/or final. If
-it's not private and it's not private it's fair game for overriding. Particularly the instance
+Things which are considered sensitive in `KickassCrypto` are defined as _private_ and/or _final_.
+If it's not private and it's not final it's fair game for overriding. Particularly the instance
 methods with start with "do_" were specifically made to be replaced or intercepted by
 implementers.
 
