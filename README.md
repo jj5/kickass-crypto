@@ -289,7 +289,7 @@ thereafter cannot be changed) there are instance methods as `get_config_...()` f
 options and `get_const_...()` for constant evaluation. Most important constants and configuration
 options are read indirectly via these accessors so you should be able to override them reliably.
 
-Most calls to PHP built-in functions are done by slim wrappers via protected functions on
+Most calls to PHP built-in functions are done by thin wrappers via protected functions on
 `KickassCrypto`. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
 PHP function invocations to be intercepted and potentially modified. This has been done primarily
 to support fault injection during unit testing, but you could use for other purposes to change
