@@ -195,11 +195,11 @@ After JSON encoding (discussed in the following section) padding is done and the
 prefixed. Before encryption the message is formatted like this:
 
 ```
-$message = $data_length . '|' . $json . $this->get_padding( $pad_length );
+$message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
 ```
 
-The data is encrypted with AES-256-GCM. The authentication tag, initialization vector, and
-cipher text are concatenated together, like this:
+The message is then encrypted with AES-256-GCM and the authentication tag, initialization vector,
+and cipher text are concatenated together, like this:
 
 ```
 $tag . $iv . $ciphertext
