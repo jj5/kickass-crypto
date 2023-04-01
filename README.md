@@ -100,6 +100,34 @@ here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
+## Using this library
+
+As mentioned above you can check out the code from git with a command like this:
+
+```
+git clone https://github.com/jj5/kickass-crypto.git
+```
+
+If you want to include the client library for use in your application include the inc/library.php
+file which will take care of loading everything else. Then usually you will access via the
+`kickass_round_trip()` or `kickass_at_rest()` service locators which are documented below.
+
+If you want to host the demo code you need to host the files in src/demo/ and include a valid
+config.php file in the project base directory (that's the directory that includes the 'inc' and
+'src' directories among others). For demonstration purposes a valid config.php file only needs
+to define a constant string for 'CONFIG_ENCRYPTION_SECRET_CURR', but it needs to be a long and
+random string, you can generate an appropriate string with:
+
+```
+php bin/gen-key.php
+```
+
+Or you can just generate a whole demo `config.php` file with:
+
+```
+php bin/gen-config.php > config.php
+```
+
 ## Supported PHP versions
 
 This code should work on PHP 7.4 or greater (but so far I have only actually tested it on
