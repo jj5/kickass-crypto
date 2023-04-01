@@ -222,7 +222,7 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
 // future...
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
-define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING_LIMIT', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_LIMIT', pow( 2, 26 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_COMPRESSION_LEVEL', 9 );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS', JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
@@ -860,11 +860,11 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_config_data_encoding_limit(
-    $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING_LIMIT
+  protected function get_config_json_length_limit(
+    $default = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_LIMIT
   ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT', $default );
+    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_LENGTH_LIMIT', $default );
 
   }
 
@@ -1015,7 +1015,7 @@ abstract class KickassCrypto {
 
     }
 
-    if ( strlen( $json ) > $this->get_config_data_encoding_limit() ) {
+    if ( strlen( $json ) > $this->get_config_json_length_limit() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE );
 

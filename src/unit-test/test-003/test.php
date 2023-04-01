@@ -414,7 +414,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->encrypt( str_repeat( '0', $this->get_config_data_encoding_limit() ) );
+          return $this->encrypt( str_repeat( '0', $this->get_config_json_length_limit() ) );
         }
       };
     }
