@@ -63,6 +63,8 @@
       KICKASS_CRYPTO_TEST_PHP_INT_MAX :
       PHP_INT_MAX;
 
+    // 2023-04-01 jj5 - innocent until proven guilty...
+    //
     $has_openssl = true;
 
     if ( defined( 'KICKASS_CRYPTO_TEST_HAS_OPENSSL' ) ) {
