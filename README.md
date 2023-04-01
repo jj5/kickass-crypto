@@ -310,7 +310,17 @@ the crypto library each, those are:
 
 You can replace the instance of the service provided by the service locator
 function by calling the function and passing the new instance as the sole
-parameter. Ideally this library will meet your requirements out of the box (or with certain
+parameter, like this:
+
+```
+class MyKickassCrypto extends KickassCrypto {
+  // ...
+}
+
+kickass_round_trip( new MyKickassCrypto );
+```
+
+Ideally this library will meet your requirements out of the box (or with certain
 configuration) and you won't need to replace the instances provided by the service locators
 by default.
 
