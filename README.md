@@ -174,10 +174,10 @@ _just be very careful_.
 
 The preferred and supported way to nominate secrets in config files is as constants using the
 PHP define() function. The problem with using class fields or global variables is that the values
-can fairly easily leak into debug and logging code, this is less likely for constants. Similarly
-if you need to cache global/static data (such as read from the config file) the best way to
-do that is with a static variable in a function, using instance fields can more easily lead to
-secret leakage.
+can fairly easily leak into debug and logging code, this is less likely (though still possible)
+for constants. Similarly if you need to cache global/static data (such as read from the config
+file) the best way to do that is with a static variable in a function, using instance fields can
+more easily lead to secret leakage.
 
 One thing you should be very careful you don't do is manage your keys in anything other than
 a PHP file with a ".php" file extension. If you put your keys in a ".ini" file or something like
