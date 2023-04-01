@@ -182,9 +182,9 @@ the crypto library each, those are:
 
 You can replace the instance of the service provided by the service locator
 function by calling the function and passing the new instance as the sole
-parameter. Ideally this library will meet your requirements out of the box
-and you won't need to replace the instances provided by the service locators
-by default and/or by configuration.
+parameter. Ideally this library will meet your requirements out of the box (or with certain
+configuration) and you won't need to replace the instances provided by the service locators
+by default.
 
 ## Data encryption
 
