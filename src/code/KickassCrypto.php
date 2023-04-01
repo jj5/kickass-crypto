@@ -235,8 +235,12 @@ define( 'KICKASS_CRYPTO_DELAY_NS_MAX', 10_000_000_000 );
 //
 define(
   'KICKASS_CRYPTO_REGEX_BASE64',
-  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
+  // 2023-04-01 jj5 - SEE: https://www.progclub.org/blog/2023/04/01/php-preg_match-regex-fail/
+  // 2023-04-01 jj5 - OLD: this old base64 validation regex had some really bad performance
+  // characteristics when tested with pathological inputs such as 2^17 zeros...
   //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
+  // 2023-04-01 jj5 - NEW:
+  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
 );
 
 // 2023-03-29 jj5 - exceptions are thrown from the constructor only, these are the possible
