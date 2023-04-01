@@ -732,6 +732,11 @@ abstract class KickassCrypto {
     }
   }
 
+  // 2023-04-01 jj5 - the point of catch() is simply to notify that an exception has been caught
+  // and "handled"; sometimes "handling" the exception is tantamount to ignoring it, so we call
+  // this method that we may make some noise about it (during debugging, usually). See do_catch()
+  // for the rest of the story.
+  //
   protected final function catch( $ex ) {
 
     try {
@@ -1031,13 +1036,49 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_padding( int $length ) {
+  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
 
-    return $this->php_random_bytes( $length );
+    $iv = $this->php_random_bytes( $this->get_const_ivlen() );
 
-    // 2023-04-01 jj5 - the following is also an option, and might be faster..?
-    //
-    //return str_repeat( "\0", $length );
+    if ( strlen( $iv ) !== $this->get_const_ivlen() ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH );
+
+    }
+
+    $cipher = $this->get_const_cipher();
+    $options = $this->get_const_options();
+
+    $ciphertext = false;
+
+    try {
+
+      $ciphertext = $this->php_openssl_encrypt(
+        $plaintext, $cipher, $passphrase, $options, $iv, $tag
+      );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
+
+    }
+
+    if ( strlen( $tag ) !== $this->get_const_taglen() ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH );
+
+    }
+
+    if ( ! $ciphertext ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
+
+    }
+
+    return $tag . $iv . $ciphertext;
 
   }
 
@@ -1073,6 +1114,44 @@ abstract class KickassCrypto {
     }
 
     return $this->error( $error );
+
+  }
+
+  protected function do_decrypt_string( string $binary, string $passphrase ) {
+
+    if ( ! $this->parse_data( $binary, $iv, $tag, $ciphertext ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
+
+    }
+
+    $cipher = $this->get_const_cipher();
+    $options = $this->get_const_options();
+
+    $plaintext = false;
+
+    try {
+
+      $plaintext = $this->php_openssl_decrypt(
+        $ciphertext, $cipher, $passphrase, $options, $iv, $tag
+      );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
+
+    }
+
+    if ( ! $plaintext ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
+
+    }
+
+    return $plaintext;
 
   }
 
@@ -1132,6 +1211,10 @@ abstract class KickassCrypto {
 
   }
 
+  // 2023-04-01 jj5 - implementations can decide what to do when errors are handled. By default
+  // we write a log entry when debugging is enabled. It would probably be reasonable to log this
+  // even in production.
+  //
   protected function do_catch( $ex ) {
 
     if ( $this->is_debug() ) {
@@ -1306,52 +1389,6 @@ abstract class KickassCrypto {
 
   }
 
-  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
-
-    $iv = $this->php_random_bytes( $this->get_const_ivlen() );
-
-    if ( strlen( $iv ) !== $this->get_const_ivlen() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH );
-
-    }
-
-    $cipher = $this->get_const_cipher();
-    $options = $this->get_const_options();
-
-    $ciphertext = false;
-
-    try {
-
-      $ciphertext = $this->php_openssl_encrypt(
-        $plaintext, $cipher, $passphrase, $options, $iv, $tag
-      );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
-
-    }
-
-    if ( strlen( $tag ) !== $this->get_const_taglen() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH );
-
-    }
-
-    if ( ! $ciphertext ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
-
-    }
-
-    return $tag . $iv . $ciphertext;
-
-  }
-
   protected function try_decrypt( string $binary, string $passphrase ) {
 
     $message = $this->do_decrypt_string( $binary, $passphrase );
@@ -1376,44 +1413,6 @@ abstract class KickassCrypto {
     $json = substr( $binary, 0, $length );
 
     return $json;
-  }
-
-  protected function do_decrypt_string( string $binary, string $passphrase ) {
-
-    if ( ! $this->parse_data( $binary, $iv, $tag, $ciphertext ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
-
-    }
-
-    $cipher = $this->get_const_cipher();
-    $options = $this->get_const_options();
-
-    $plaintext = false;
-
-    try {
-
-      $plaintext = $this->php_openssl_decrypt(
-        $ciphertext, $cipher, $passphrase, $options, $iv, $tag
-      );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
-
-    }
-
-    if ( ! $plaintext ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
-
-    }
-
-    return $plaintext;
-
   }
 
   protected function calc_passphrase( string $key ) {
@@ -1461,6 +1460,16 @@ abstract class KickassCrypto {
     }
 
     return true;
+
+  }
+
+  protected function get_padding( int $length ) {
+
+    return $this->php_random_bytes( $length );
+
+    // 2023-04-01 jj5 - the following is also an option, and might be faster..?
+    //
+    //return str_repeat( "\0", $length );
 
   }
 
