@@ -105,7 +105,7 @@ This code should work on PHP 7.4 or greater (but so far I have only actually tes
 PHP 8.1.2). If you try to run this code on an older version of PHP it will log an error message
 and exit your process.
 
-## Supported platforms
+## Supported platforms and environment
 
 This code assumes it's running on a 64-bit platform. It also assumes your PHP
 installation includes the bundled OpenSSL library.
