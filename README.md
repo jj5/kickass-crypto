@@ -206,38 +206,6 @@ Whether it's really suitable in other applications is an open question, I'm
 not sure. Certainly you shouldn't use this library if it doesn't provide the
 level of security you require.
 
-## Configuration settings
-
-In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
-configuration is available via the configuration constants. Search for `CONFIG_ENCRYPTION` to
-find what's available.
-
-Please be advised that at the moment this code is configured directly in the
-`config.php` file.
-
-In future the `config.php` file will include two separately managed config files,
-being:
-
-* etc/keys-round-trip.php
-* etc/keys-at-rest.php
-
-There will be management scripts for automatically rotating and provisioning
-keys in these files.
-
-Experienced Linux users know that you don't edit `/etc/sudoers` directly, you
-edit it with `visudo` so that you can verify you haven't accidentally
-introduced a syntax error and hosed your system.
-
-I intend to provide similar scripts for editing and managing `config.php`
-and other config files. So stand-by for those updates. In the mean time...
-_just be very careful_.
-
-One thing you should be very careful you don't do is manage your keys in anything other than
-a PHP file with a ".php" file extension. If you put your keys in a ".ini" file or something like
-that _they might very well be served as plain text by your web server_. So don't do that. Also
-be careful not to introduce syntax errors into your config file or other source files running
-in production because details might leak with the potential resulting error messages.
-
 ## Naming and specifying secret things
 
 The preferred and supported way to nominate secrets in config files is as constants using the
@@ -275,6 +243,38 @@ anything with a name that matches prior to logging diagnostic data. I encourage 
 practice. In this library if a variable or constant might contain sensitive data it will be named
 with either "pass" or "secret" as a substring in the name. **_Don't write sensitive data into
 logs._**
+
+## Configuration settings
+
+In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
+configuration is available via the configuration constants. Search for `CONFIG_ENCRYPTION` to
+find what's available.
+
+Please be advised that at the moment this code is configured directly in the
+`config.php` file.
+
+In future the `config.php` file will include two separately managed config files,
+being:
+
+* etc/keys-round-trip.php
+* etc/keys-at-rest.php
+
+There will be management scripts for automatically rotating and provisioning
+keys in these files.
+
+Experienced Linux users know that you don't edit `/etc/sudoers` directly, you
+edit it with `visudo` so that you can verify you haven't accidentally
+introduced a syntax error and hosed your system.
+
+I intend to provide similar scripts for editing and managing `config.php`
+and other config files. So stand-by for those updates. In the mean time...
+_just be very careful_.
+
+One thing you should be very careful you don't do is manage your keys in anything other than
+a PHP file with a ".php" file extension. If you put your keys in a ".ini" file or something like
+that _they might very well be served as plain text by your web server_. So don't do that. Also
+be careful not to introduce syntax errors into your config file or other source files running
+in production because details might leak with the potential resulting error messages.
 
 ## Configurability and extensibility
 
