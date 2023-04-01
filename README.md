@@ -55,7 +55,7 @@ So I came up with the two use cases supported by this library with different app
 management for round-trip and at-rest scenarios. This library lets you rotate in new keys while
 maintaining support for older keys, as you are likely wont to do.
 
-Then I layered in a careful approach to exception handling and error reporting, some testing,
+Then I layered in a careful approach to exception handling and error reporting, some unit testing,
 timing attack mitigation, service locators, usage demonstration, data size limits, passphrase
 initialization, key generation scripts, and things like that.
 
