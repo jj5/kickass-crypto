@@ -41,6 +41,11 @@
   // 2023-03-31 jj5 - to override PHP 64-bit word size requirements:
   //
   //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
+  //
+  // 2023-04-01 jj5 - to override checks for the OpenSSL library functions:
+  //
+  //  define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true );
+  //
 
   $errors = [];
 
