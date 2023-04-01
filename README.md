@@ -297,7 +297,7 @@ implementation particulars.
 
 Things which are considered sensitive in `KickassCrypto` are defined as _private_ and/or _final_.
 If it's not private and it's not final it's fair game for overriding. Particularly the instance
-methods with start with "do_" were specifically made to be replaced or intercepted by
+methods which start with `do_` were specifically made to be replaced or intercepted by
 implementers.
 
 ## Service locators
