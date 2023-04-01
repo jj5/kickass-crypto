@@ -114,7 +114,7 @@ Actually this code does a little more than assume it's on a 64-bit platform with
 library, it actually makes an attempt to ensure those things are true. If they're not an error
 is logged and the process is exited.
 
-I believe this code should run in any PHP environment, but I have only tested it on Linux. If you
+I believe this code should run on any operating system, but I have only tested it on Linux. If you
 have had success on MacOS or Windows I would be happy to hear about it.
 
 Shell scripts are written for bash. If you don't have bash you may need to
