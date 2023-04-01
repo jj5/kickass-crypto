@@ -4,9 +4,9 @@ require_once __DIR__ . '/../code/KickassCrypto.php';
 
 require_once __DIR__ . '/../../config.php';
 
-function encrypt_if_not_null( $input ) {
+function encrypt_if_not_empty( $input ) {
 
-  if ( $input === null || $input === '' ) { return ''; }
+  if ( empty( $input ) ) { return ''; }
 
   $result = kickass_round_trip()->encrypt( $input );
 
@@ -25,9 +25,9 @@ function encrypt_if_not_null( $input ) {
 
 }
 
-function decrypt_if_not_null( $input ) {
+function decrypt_if_not_empty( $input ) {
 
-  if ( $input === null || $input === '' ) { return ''; }
+  if ( empty( $input ) ) { return ''; }
 
   $result = kickass_round_trip()->decrypt( $input );
 
@@ -54,15 +54,15 @@ function main() {
 
     $oldest_ciphertext = $_POST[ 'older_ciphertext' ] ?? null;
     $older_ciphertext = $_POST[ 'old_ciphertext' ] ?? null;
-    $old_ciphertext = encrypt_if_not_null( $_POST[ 'new' ] ?? null );
+    $old_ciphertext = encrypt_if_not_empty( $_POST[ 'new' ] ?? null );
 
-    $old = decrypt_if_not_null( $old_ciphertext );
-    $older = decrypt_if_not_null( $older_ciphertext );
-    $oldest = decrypt_if_not_null( $oldest_ciphertext );
+    $old = decrypt_if_not_empty( $old_ciphertext );
+    $older = decrypt_if_not_empty( $older_ciphertext );
+    $oldest = decrypt_if_not_empty( $oldest_ciphertext );
 
-    $oldest_ciphertext = encrypt_if_not_null( $oldest );
-    $older_ciphertext = encrypt_if_not_null( $older );
-    $old_ciphertext = encrypt_if_not_null( $old );
+    $oldest_ciphertext = encrypt_if_not_empty( $oldest );
+    $older_ciphertext = encrypt_if_not_empty( $older );
+    $old_ciphertext = encrypt_if_not_empty( $old );
 
     render_head();
 
