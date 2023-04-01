@@ -199,7 +199,7 @@ $message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
 ```
 
 The reason for the padding is to obscure the actual data size. Padding is done in up to 4KB
-boundaries, which we call chunks. The padding length is configurable and the default may change
+boundaries, which we call chunks. The chunk size is configurable and the default may change
 in future.
 
 The message is then encrypted with AES-256-GCM and the authentication tag, initialization vector,
