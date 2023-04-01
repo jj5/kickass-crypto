@@ -371,7 +371,7 @@ class KickassException extends Exception {
 // reference to null, this is probably not necessary but it gives me the warm and fuzzies.
 //
 // 2023-03-31 jj5 - NOTE: when defining default variables you should use the same default values
-// as the library functions you are calling use, or just don't provide a default value at all,
+// as the library functions you are calling use, or just don't provide a default value at all;
 // that's a sensible enough option, you can make the wrapper demand a value from the caller if
 // you want.
 //
@@ -401,15 +401,9 @@ trait PHP_WRAPPER {
 
   }
 
-  protected function php_serialize( $input ) {
+  protected function php_random_int( $min, $max ) {
 
-    return serialize( $input );
-
-  }
-
-  protected function php_unserialize( $input ) {
-
-    return unserialize( $input );
+    return random_int( $min, $max );
 
   }
 
@@ -468,12 +462,6 @@ trait PHP_WRAPPER {
   protected function php_time_nanosleep( $seconds, $nanoseconds ) {
 
     return time_nanosleep( $seconds, $nanoseconds );
-
-  }
-
-  protected function php_random_int( int $min, int $max ) {
-
-    return random_int( $min, $max );
 
   }
 
