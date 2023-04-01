@@ -50,8 +50,8 @@ the PHP [serialize()](https://www.php.net/manual/en/function.serialize.php) func
 was changed later to
 [json_encode()](https://www.php.net/manual/en/function.json-encode.php).
 
-The example code didn't indicate anything about how to rotate keys in a supported fashion. So I
-came up with the two use cases supported by this library with different approaches to key
+The example code didn't indicate anything at all about how to rotate keys in a supported fashion.
+So I came up with the two use cases supported by this library with different approaches to key
 management. This library lets you rotate in new keys while maintaining support for older keys, as
 you are likely wont to do.
 
