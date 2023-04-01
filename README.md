@@ -61,6 +61,10 @@ things like that.
 Basically this whole library was just everything I felt like I had to do so that I could actually
 use the built-in PHP OpenSSL library implementation.
 
+I don't consider this library _rolling my own crypto_, rather I think of it as _figuring out how
+to actually use OpenSSL_. If I've made any mistakes, obvious or otherwise, I would
+[really appreciate hearing about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
+
 ## tl;dr
 
 Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
