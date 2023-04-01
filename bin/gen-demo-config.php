@@ -18,6 +18,9 @@ function gen_key() {
 }
 
 echo "<?php\n\n";
-echo "define( 'CONFIG_ENCRYPTION_SECRET_PREV', null );\n";
-echo "define( 'CONFIG_ENCRYPTION_SECRET_CURR', '" . gen_key() . "' );\n";
-echo "define( 'CONFIG_ENCRYPTION_SECRET_LIST',\n  [\n    '" . gen_key() . "',\n  ]\n);\n\n";
+echo "if ( defined( 'CONFIG_ENCRYPTION_SECRET_PREV' ) ) { die( 'Constant already defined.' ); }\n\n";
+echo "define( 'CONFIG_ENCRYPTION_SECRET_PREV', null );\n\n";
+echo "if ( defined( 'CONFIG_ENCRYPTION_SECRET_CURR' ) ) { die( 'Constant already defined.' ); }\n\n";
+echo "define( 'CONFIG_ENCRYPTION_SECRET_CURR', '" . gen_key() . "' );\n\n";
+echo "if ( defined( 'CONFIG_ENCRYPTION_SECRET_PREV' ) ) { die( 'Constant already defined.' ); }\n\n";
+echo "define( 'CONFIG_ENCRYPTION_SECRET_PREV',\n  [\n    '" . gen_key() . "',\n  ]\n);\n\n";
