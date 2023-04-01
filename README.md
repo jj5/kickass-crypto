@@ -162,7 +162,8 @@ library, it actually makes an attempt to ensure those things are true. If they'r
 is logged and the process is exited.
 
 I believe this code should run on any operating system, but I have only tested it on Linux. If you
-have had success on MacOS or Windows I would be happy to hear about it.
+have had success on MacOS or Windows I would be
+[happy to hear about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
 
 Shell scripts are written for bash. If you don't have bash you may need to
 port.
