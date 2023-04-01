@@ -182,6 +182,10 @@ parameter. Ideally this library will meet your requirements out of the box
 and you won't need to replace the instances provided by the service locators
 by default.
 
+In addition to inheriting from KickassCrypto and overriding particular functionality a lot of
+configuration is available via the configuration constants. Search for 'CONFIG_ENCRYPTION' to
+find what's available.
+
 ## Data encryption
 
 The encryption process is roughly:
