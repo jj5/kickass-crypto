@@ -1081,7 +1081,17 @@ abstract class KickassCrypto {
 
     }
 
-    return $this->encode( $ciphertext );
+    $encoded = $this->encode( $ciphertext );
+
+    /*
+    var_dump([
+      'message' => strlen( $message ),
+      'ciphertext' => strlen( $ciphertext ),
+      'encoded' => strlen( $encoded ),
+    ]);
+    */
+
+    return $encoded;
 
   }
 
