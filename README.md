@@ -119,7 +119,7 @@ git clone https://github.com/jj5/kickass-crypto.git
 
 If you want to include the client library for use in your application include the
 [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php)
-file which will take care of loading everything else.
+file which will take care of loading everything else, something like this:
 
 ```
 require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
