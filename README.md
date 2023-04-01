@@ -144,7 +144,7 @@ level of security you require.
 Please be advised that at the moment this code is configured directly in the
 `config.php` file.
 
-In future the `config.php` will include two separately managed config files,
+In future the `config.php` file will include two separately managed config files,
 being:
 
 * etc/keys-round-trip.php
