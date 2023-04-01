@@ -159,8 +159,6 @@ function handle_load() {
     <p>This is the demo page for the
       <a href="https://github.com/jj5/kickass-crypto">Kickass Crypto library</a>.
       You can <a href="./">reload</a> this page.</p>
-
-
 <?php
 }
 
