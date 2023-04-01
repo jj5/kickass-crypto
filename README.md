@@ -40,12 +40,12 @@ function.
 Initially it wasn't clear to me how to use this code. Particularly it was difficult to figure
 out what to do with the three parts: the authentication tag, the initialization vector, and the
 cipher text. Eventually I figured out I could just concatenate them. But if I was to do that I
-would need to standardize on their length so that I could retrieve them later.
+would need to standardize on their length so that I could retrieve them later...
 
-Then I figured it would be better to mask my actual data size by padding it to fixed lengths at
-certain boundaries, so I did that.
+...and then I figured it would be better to mask my actual data size by padding it to fixed
+lengths at certain boundaries, so I did that...
 
-And I wanted to support rich data which demanded some form of serialization. Initially I was using
+...and I wanted to support rich data which demanded some form of serialization. Initially I was using
 the PHP [serialize()](https://www.php.net/manual/en/function.serialize.php) function but that
 was changed later to
 [json_encode()](https://www.php.net/manual/en/function.json-encode.php).
