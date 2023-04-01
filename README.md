@@ -236,7 +236,7 @@ file) the best way to do that is with a static variable in a function, using ins
 more easily lead to secret leakage.
 
 The safest way to define a constant in PHP is to check that it's not already defined first,
-because attempting to define and already defined constant will result in error.
+because attempting to define an already defined constant will result in error.
 
 When I name things which are secret I make sure the name contains the string "pass" (as in
 "password", "passwd", and "passphrase") or "secret". In my general purpose logging facilities
