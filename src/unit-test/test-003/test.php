@@ -38,7 +38,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'KA1/!@#$%^&*()_' );
+          return $this->decode( 'KA0/!@#$%^&*()_' );
         }
       };
     }
@@ -49,7 +49,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'KA1/123=' );
+          return $this->decode( 'KA0/123=' );
         }
         protected function php_base64_decode( $input, $strict ) { return false; }
       };
@@ -96,7 +96,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decrypt( 'KA1/test' );
+          return $this->decrypt( 'KA0/test' );
         }
         protected function get_passphrase_list() { return [ 'invalid' ]; }
       };
@@ -477,7 +477,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          $test = "KA1/4cw25Y/6+5FIbfUOwHnkaGk5SHerXpBYdd6He9xjCRlzqzpUZAaU4U3kGZ0zKeym73d0DaXXlgcTugMDTOT+LThg8AfE54fkmSZBx7ne7Ulz";
+          $test = "KA0/4cw25Y/6+5FIbfUOwHnkaGk5SHerXpBYdd6He9xjCRlzqzpUZAaU4U3kGZ0zKeym73d0DaXXlgcTugMDTOT+LThg8AfE54fkmSZBx7ne7Ulz";
           return $this->decrypt( $test );
         }
         protected function get_passphrase_list() { return []; }
