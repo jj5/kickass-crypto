@@ -236,7 +236,18 @@ file) the best way to do that is with a static variable in a function, using ins
 more easily lead to secret leakage.
 
 The safest way to define a constant in PHP is to check that it's not already defined first,
-because attempting to define an already defined constant will result in error.
+because attempting to define an already defined constant will result in error. If you find an
+already defined constant you can either abort with an error message (if you do don't provide too
+much detail because the public web might see it) or just keep the existing value and don't try
+to redefine it. The
+[bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/blob/main/bin/gen-demo-config.php)
+config file generate takes the first approach and calls the PHP `die()` function if a duplicate
+is detected. You can see what happens by including the generated `config.php` file twice, as:
+
+```
+require __DIR__ . '/config.php';
+require __DIR__ . '/config.php';
+```
 
 When I name things which are secret I make sure the name contains the string "pass" (as in
 "password", "passwd", and "passphrase") or "secret". In my general purpose logging facilities
