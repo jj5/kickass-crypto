@@ -102,6 +102,9 @@ here:
 
 The demo facility just shows how to round-trip encrypted data between the client and server.
 
+The demo code is available in this library in the src/demo/ directory if you'd like to host it
+yourself.
+
 ## Using this library
 
 As mentioned above you can check out the code from git with a command like this:
@@ -737,11 +740,14 @@ browsers.
 
 The unit tests are in the `src/unit-test/` directory, numbered sequentially.
 
-There's some test runners in `bin/dev/`, as you can see. Read the scripts
-for the gory details but in brief:
+There's some test runners in
+[bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev),
+as you can see. Read the scripts for the gory details but in brief:
 
-* `bin/dev/test.sh` will run the fast tests
-* `bin/dev/test-all.sh` will run the fast tests and the slow tests
+* [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh) will run the
+fast tests
+* [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh) will
+run the fast tests and the slow tests
 
 There are also some silly tests, but we won't talk about those. They are not
 ordinarily run. And they're silly.
@@ -764,30 +770,31 @@ host in `src/host/unit-test.php`.
 
 ## Directory structure
 
-* bin/: command-line commands
-* bin/dev/: development scripts
-* bin/dev/test-all.sh: run fast and slow unit tests
-* bin/dev/test.sh: run unit tests, control with flags
-* bin/gen-config.php: generate an initial config.php file
-* bin/gen-key.php: generate a secret key
-* bin/get-cipher-list.php: list cipher suites supported by your version of PHP
-* bin/get-hash-list.php: list hash algorithms supported by your version of PHP
-* doc/: additional documentation
-* doc/tex: LaTeX write-up (planned)
-* inc/: include files
-* inc/library.php: the include file for this library, clients include this we do the rest
-* inc/test-host.php: the include file for the unit testing framework
-* inc/test.php: the include file for the unit testing toolkit
+* [bin/](https://github.com/jj5/kickass-crypto/tree/main/bin/): command-line commands
+* [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/): development scripts
+* [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh): run fast and slow unit tests
+* [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh): run unit tests, control with flags
+* [bin/gen-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-config.php): generate an initial config.php file
+* [bin/gen-key.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-key.php): generate a secret key
+* [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
+* [bin/get-hash-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-hash-list.php): list hash algorithms supported by your version of PHP
+* [doc/](https://github.com/jj5/kickass-crypto/tree/main/doc/): additional documentation
+* [doc/tex/](https://github.com/jj5/kickass-crypto/tree/main/doc/tex/): LaTeX write-up (planned)
+* [inc/](https://github.com/jj5/kickass-crypto/tree/main/inc/): include files
+* [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php): the include file for this library, clients include this we do the rest
+* [inc/test-host.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test-host.php): the include file for the unit testing framework
+* [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
-* src/: PHP source code
-* src/code/: the full library
-* src/demo/: a web-client for demonstration purposes
-* src/host/: software hosts (presently for hosting unit-tests)
-* src/test/: facilities for use during testing
-* src/unit-test/: unit tests: fast, slow, and silly; see bin/dev/test.sh
-* .gitignore: the list of files ignored by git
-* LICENSE: the software license
-* README.md: this documentation file
+* [src/](https://github.com/jj5/kickass-crypto/tree/main/src/): PHP source code
+* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the full library
+* [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
+* [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
+* [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
+* [src/unit-test/](https://github.com/jj5/kickass-crypto/tree/main/src/unit-test/): unit tests:
+fast, slow, and silly; see [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh)
+* [.gitignore](https://github.com/jj5/kickass-crypto/tree/main/.gitignore): the list of files ignored by git
+* [LICENSE](https://github.com/jj5/kickass-crypto/tree/main/LICENSE): the software license
+* [README.md](https://github.com/jj5/kickass-crypto/tree/main/README.md): this documentation file
 * config.php: the library config file, used by demo web-client (create your own)
 
 ## Bans and restrictions
