@@ -89,6 +89,9 @@ php demo.php
 For slightly more elaboration maybe check out the
 [sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
 
+Or if you want the bottom line on how this library works read the code in
+[this file](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCrypto.php).
+
 ## Library demo
 
 Assuming I remember to update it from time to time, there's a demo system over
