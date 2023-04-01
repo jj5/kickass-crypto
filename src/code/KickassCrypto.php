@@ -209,7 +209,7 @@ function kickass_at_rest( $set = false ) {
 // something other than 'KA' as the prefix. If you don't want the data format version reported
 // in your encoded data override the encode() and decode() methods.
 //
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA1' );
+define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
 // future...

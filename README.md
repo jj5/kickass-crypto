@@ -177,16 +177,19 @@ by default.
 
 ## Data-format prefix
 
-When this library encodes its ciphertext it includes a data-format prefix of
-"KA1/". Future versions of this library might implement a new data-format
-prefix.
+When this library encodes its ciphertext it includes a data-format prefix of "KA0/".
 
-When this library decodes its ciphertext it verifies the data-format prefix. At
-present only "KA1/" is supported.
+The zero in "KA0" is for _version zero_, which is intended to imply that the interface is
+_unstable and may change_.
+
+Future versions of this library might implement a new data-format prefix for a stable data format.
+
+When this library decodes its ciphertext it verifies the data-format prefix. At present only
+"KA0/" is supported.
 
 ## Data format
 
-The KA1 data format, mentioned above, implies the following:
+The KA0 data format, mentioned above, implies the following:
 
 After JSON encoding (discussed in the following section) padding is done and the data length is
 prefixed. Before encryption the message is formatted like this:
