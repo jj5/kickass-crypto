@@ -148,6 +148,10 @@ level of security you require.
 
 ## Configuration settings
 
+In addition to inheriting from KickassCrypto and overriding particular functionality a lot of
+configuration is available via the configuration constants. Search for 'CONFIG_ENCRYPTION' to
+find what's available.
+
 Please be advised that at the moment this code is configured directly in the
 `config.php` file.
 
@@ -180,11 +184,7 @@ You can replace the instance of the service provided by the service locator
 function by calling the function and passing the new instance as the sole
 parameter. Ideally this library will meet your requirements out of the box
 and you won't need to replace the instances provided by the service locators
-by default.
-
-In addition to inheriting from KickassCrypto and overriding particular functionality a lot of
-configuration is available via the configuration constants. Search for 'CONFIG_ENCRYPTION' to
-find what's available.
+by default and/or by configuration.
 
 ## Data encryption
 
