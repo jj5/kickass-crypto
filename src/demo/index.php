@@ -8,20 +8,7 @@ function encrypt_if_not_empty( $input ) {
 
   if ( empty( $input ) ) { return ''; }
 
-  $result = kickass_round_trip()->encrypt( $input );
-
-  if ( false && ! $result ) {
-
-    var_dump([
-      'input' => $input,
-      'result' => $result,
-    ]);
-
-    exit;
-
-  }
-
-  return $result;
+  return kickass_round_trip()->encrypt( $input );
 
 }
 
@@ -29,20 +16,7 @@ function decrypt_if_not_empty( $input ) {
 
   if ( empty( $input ) ) { return ''; }
 
-  $result = kickass_round_trip()->decrypt( $input );
-
-  if ( false && ! $result ) {
-
-    var_dump([
-      'input' => $input,
-      'result' => $result,
-    ]);
-
-    exit;
-
-  }
-
-  return $result;
+  return kickass_round_trip()->decrypt( $input );
 
 }
 
