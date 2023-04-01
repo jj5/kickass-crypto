@@ -30,9 +30,9 @@
 
 (function() {
 
-  // 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a
-  // problem we exit, unless the programmer has overridden that behavior by defining certain
-  // constants
+  // 2023-03-31 jj5 - this anonymous function is for validating our run-time environment. If
+  // there's a problem we exit, unless the programmer has overridden that behavior by defining
+  // certain constants. Read the code in this function for details.
   //
   // 2023-03-31 jj5 - to override PHP version requirements:
   //
