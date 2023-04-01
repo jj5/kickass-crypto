@@ -314,7 +314,10 @@ parameter, like this:
 
 ```
 class MyKickassCrypto extends KickassCrypto {
-  // ...
+
+  protected function is_valid_config( &$problem = null ) { return TODO; }
+  protected function get_passphrase_list() { return TODO; }
+
 }
 
 kickass_round_trip( new MyKickassCrypto );
