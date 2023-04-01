@@ -2,6 +2,18 @@
 
 A contemporary PHP cryptography library circa 2023.
 
+**Synopsis:** this library provides
+[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+encryption with
+[GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
+authentication by using the
+[AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html)
+cipher suite in the
+[OpenSSL library](https://www.php.net/manual/en/book.openssl.php)
+for
+[PHP](https://www.php.net/); it supports key rotation for separate round-trip and at-rest use
+cases and some key management functions.
+
 This library is a wrapper around the
 [PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php).
 
