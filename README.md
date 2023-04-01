@@ -205,7 +205,9 @@ cipher text are concatenated together, like this:
 $tag . $iv . $ciphertext
 ```
 
-Then everything is base64 encoded. The decryption process expects to find the 16 byte
+Then everything is base64 encoded with the PHP
+[base64_encode()](https://www.php.net/manual/en/function.base64-encode.php) function.
+The decryption process expects to find the 16 byte
 authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
 ciphertext the library expects to find the size of the JSON data as an ASCII string representing
 a decimal value, followed by a single pipe character, followed by the JSON, and then the padding.
