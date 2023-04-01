@@ -192,7 +192,7 @@ When I name things which are secret I make sure the name contains the string "pa
 (which aren't included in this library) I scrub and redact anything with a name that matches
 prior to logging diagnostic data. I encourage you to adopt this practice. In this library if
 a variable or constant might contain sensitive data it will be named with either "pass" or
-"secret" as a substring in the name.
+"secret" as a substring in the name. **_Don't write sensitive data into logs._**
 
 ## Configurability and extensibility
 
