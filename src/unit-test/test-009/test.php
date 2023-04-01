@@ -150,6 +150,9 @@ function main( $argv ) {
 
       }
     }
+
+    //KickassCrypto::ReportTelemetry();
+
   }
   catch ( Throwable $ex ) {
 

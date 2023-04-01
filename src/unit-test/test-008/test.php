@@ -8,13 +8,23 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 class TestCrypto extends KickassCrypto {
 
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
-  protected function get_passphrase_list() { return []; }
+  protected function get_passphrase_list() {
+    static $list = null;
+    if ( $list === null ) {
+      $secret = self::GenerateSecret();
+      $passphrase = $this->calc_passphrase( $secret );
+      $list = [ $passphrase ];
+    }
+    return $list;
+  }
 
 }
 
 function run_test() {
 
   $crypto = new TestCrypto();
+
+  $ciphertext = $crypto->encrypt( 'test' );
 
   ob_start();
 
@@ -32,10 +42,15 @@ function get_expected_output() {
 = Counters =
 
 instance..: 1
+encrypt...: 1
 
 = Classes =
 
 TestCrypto..: 1
+
+= Lengths =
+
+5516..: 1
 ");
 
 }

@@ -493,12 +493,15 @@ abstract class KickassCrypto {
 
   use PHP_WRAPPER;
 
-  // 2023-03-30 jj5 - our counters are stored here, call the count() or count_class() methods to
-  // increment...
+  // 2023-03-30 jj5 - our counters are stored here, call
+  //* count() to increment a 'counter'
+  //* count_class() to increment a 'class'
+  //* count_length() to increment a 'length'
   //
   private static $telemetry = [
     'counter' => [],
     'class' => [],
+    'length' => [],
   ];
 
   // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
@@ -611,6 +614,9 @@ abstract class KickassCrypto {
 
   }
 
+  // 2023-04-01 jj5 - NOTE: the telemetry might be considered sensitive data... but probably not
+  // so sensitive that it can't be logged. It's not at the same level as secrets or passphrases.
+  //
   public static function GetTelemetry() {
 
     return self::$telemetry;
@@ -628,6 +634,10 @@ abstract class KickassCrypto {
     echo "\n= Classes =\n\n";
 
     self::ReportCounters( $telemetry[ 'class' ] );
+
+    echo "\n= Lengths =\n\n";
+
+    self::ReportCounters( $telemetry[ 'length' ] );
 
   }
 
@@ -667,7 +677,15 @@ abstract class KickassCrypto {
 
       $this->count( __FUNCTION__ );
 
-      return $this->do_encrypt( $input );
+      $result = $this->do_encrypt( $input );
+
+      if ( is_string( $result ) ) {
+
+        $this->count_length( strlen( $result ) );
+
+      }
+
+      return $result;
 
     }
     catch ( Throwable $ex ) {
@@ -826,6 +844,12 @@ abstract class KickassCrypto {
   protected function count_class( $class ) {
 
     return $this->increment_counter( self::$telemetry[ 'class' ], $class );
+
+  }
+
+  protected function count_length( int $length ) {
+
+    return $this->increment_counter( self::$telemetry[ 'length' ], $length );
 
   }
 
@@ -1043,7 +1067,11 @@ abstract class KickassCrypto {
 
     $pad_length = $chunk_size - ( $data_length % $chunk_size );
 
-    $message = $data_length . '|' . $json . $this->get_padding( $pad_length );
+    // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
+    //
+    $hex_data_length = sprintf( '%08x', $data_length );
+
+    $message = $hex_data_length . '|' . $json . $this->get_padding( $pad_length );
 
     $ciphertext = $this->do_encrypt_string( $message, $passphrase );
 
@@ -1436,7 +1464,11 @@ abstract class KickassCrypto {
 
     }
 
-    $length = intval( $parts[ 0 ] );
+    $length = hexdec( $parts[ 0 ] );
+
+    assert( is_int( $length ) );
+    assert( $length > 0 );
+
     $binary = $parts[ 1 ];
 
     $json = substr( $binary, 0, $length );
