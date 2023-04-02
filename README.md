@@ -301,9 +301,9 @@ to support fault injection during unit testing, but you could use for other purp
 implementation particulars.
 
 Things which are considered sensitive in `KickassCrypto` are defined as _private_ and/or _final_.
-If it's not private and it's not final it's fair game for overriding. Particularly the instance
-methods which start with `do_` were specifically made to be replaced or intercepted by
-implementers.
+If it's not private and it's not final it's fair game for overriding (unless I've made a
+mistake). Particularly the instance methods which start with `do_` were specifically made to be
+replaced or intercepted by implementers.
 
 ## Service locators
 
