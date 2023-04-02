@@ -18,7 +18,7 @@
 // 2023-04-03 jj5 - this is the demo code, it's for use in a web browser. Host this file then
 // navigate to it so you can try out some basic encrypted round-tripping. This code tries to
 // help you set up your environment. What you need is a config.php file in the project base
-// directory. You can generate with this command:
+// directory. You can generate a demo config.php file with this command:
 //
 //$ [ -f config.php ] || php bin/gen-demo-config.php > config.php
 //

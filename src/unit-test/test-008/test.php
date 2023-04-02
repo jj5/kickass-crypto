@@ -16,7 +16,7 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this tests does some very rudiementary testing of our class counter telemetry.
+// 2023-03-31 jj5 - this test does some very rudiementary testing of our class counter telemetry.
 //
 \************************************************************************************************/
 
