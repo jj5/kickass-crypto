@@ -76,8 +76,8 @@ function kickass_at_rest( $set = false ) {
 (function() {
 
   // 2023-03-31 jj5 - this anonymous function is for validating our run-time environment. If
-  // there's a problem we exit, unless the programmer has overridden that behavior by defining
-  // certain constants as detailed here:
+  // there's a problem then we exit, unless the programmer has overridden that behavior by
+  // defining certain constants as detailed here:
   //
   //* to disable PHP version check:
   //
