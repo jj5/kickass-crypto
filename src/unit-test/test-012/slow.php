@@ -29,7 +29,9 @@ function run_test() {
 
   if ( ! defined( 'DEBUG' ) ) { define( 'DEBUG', false ); }
 
-  for ( $length = 0; $length < 10_000; $length += 1 ) {
+  test_data( '', 1 );
+
+  for ( $length = 1; $length < 10_000; $length += 1 ) {
 
     test_length( $length, 100 );
 
@@ -53,6 +55,12 @@ function run_test() {
 
   }
 
+  for ( $length = 100_000_000; $length < 1_000_000_000; $length += 1_000_000 ) {
+
+    test_length( $length, 10_000_000 );
+
+  }
+
   report( $length );
 
 }
@@ -68,7 +76,13 @@ function test_length( $length, $report ) {
     }
   }
 
-  $data = $length ? random_bytes( $length ) : '';
+  $data = random_bytes( $length );
+
+  test_data( $data, $report );
+
+}
+
+function test_data( $data, $report ) {
 
   $text = base64_encode( $data );
 
