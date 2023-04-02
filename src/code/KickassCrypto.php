@@ -1114,7 +1114,7 @@ abstract class KickassCrypto {
         $this->catch( $ex );
 
       }
-      catch ( Throwable $dummy ) { ; }
+      catch ( Throwable $ignore ) { ; }
 
       return false;
 
@@ -1143,7 +1143,7 @@ abstract class KickassCrypto {
       // another exception, because code might not be set up to accommodate that. So if we
       // land here do_catch() above (or count_function()?) has thrown, so just log and ignore.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $ignore ) { ; }
 
     }
   }
@@ -1189,7 +1189,7 @@ abstract class KickassCrypto {
       // error log function here directly because we don't want to make sure this message which
       // should never happen is visible.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $ignore ) { ; }
 
     }
 
@@ -1696,7 +1696,7 @@ abstract class KickassCrypto {
 
     // 2023-04-02 jj5 - NOTE: this limit of 2 GiB worth of JSON is just a heuristic for this
     // part of the code; the data can't actually be this long, but other parts of the code will
-    // handle that.
+    // make sure of that.
     //
     static $max_json_length = 2_147_483_647;
 
@@ -1816,7 +1816,7 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
 
     }
 
@@ -1835,7 +1835,7 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
 
     }
   }
@@ -2146,7 +2146,7 @@ abstract class KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
 
       return false;
 
