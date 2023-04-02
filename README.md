@@ -249,8 +249,8 @@ logs._**
 This library requires secure random data inputs for various purposes:
 
 * for generating secret keys
-* for generating initialization vectors
-* for generating message padding
+* for initialization vectors
+* for message padding
 
 There are two main options for generating suitable random data in PHP, those are:
 
