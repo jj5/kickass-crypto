@@ -1104,7 +1104,7 @@ abstract class KickassCrypto {
 
       $this->count_function( __FUNCTION__ );
 
-      // 2023-04-02 jj5 - we time the do_delay() implementation and if it doesn't meed the
+      // 2023-04-02 jj5 - we time the do_delay() implementation and if it doesn't meet the
       // minimum requirement we do the emergency delay.
 
       $start = microtime( $as_float = true );
