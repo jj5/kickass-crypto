@@ -268,7 +268,8 @@ define(
   // 2023-04-01 jj5 - NEW:
   '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
   // 2023-04-01 jj5 - OLD: this old base64 validation regex had some really bad performance
-  // characteristics when tested with pathological inputs such as 2^17 zeros...
+  // characteristics when tested with pathological inputs such as 2^17 zeros, see the article
+  // about the problem at the link above.
   //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
 );
 
