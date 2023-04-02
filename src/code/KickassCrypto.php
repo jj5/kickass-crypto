@@ -1163,16 +1163,36 @@ abstract class KickassCrypto {
 
     try {
 
+      // 2023-04-02 jj5 - the very first thing we do is inject our delay so we can make sure that
+      // happens...
+      //
+      if ( count( $this->error_list ) === 0 ) {
+
+        $this->delay();
+
+      }
+
       $this->count_function( __FUNCTION__ );
 
-      return $this->do_error( $error );
+      // 2023-04-02 jj5 - this part of error management is non-negotiable...
+      //
+      $this->error_list[] = $error;
+
+      $this->do_error( $error );
+
+      // 2023-04-02 jj5 - this function must always return false. We don't give implementations
+      // the option to make a mistake about that.
+      //
+      return false;
 
     }
     catch ( Throwable $ex ) {
 
       // 2023-04-01 jj5 - the whole point of this function is to *not* throw an exception. Neither
-      // count_function() or do_error() has any business throwing an exception. If they do we make
-      // some noise in the log file and return false.
+      // delay(), count_function() or do_error() has any business throwing an exception. If they
+      // do we make some noise in the log file and return false. Note that we call the PHP
+      // error log function here directly because we don't want to make sure this message which
+      // should never happen is visible.
 
       try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
 
@@ -1841,25 +1861,35 @@ abstract class KickassCrypto {
 
   protected function do_error( $error ) {
 
-    if ( count( $this->error_list ) === 0 ) {
-
-      $this->delay();
-
-    }
-
     while ( $openssl_error = $this->php_openssl_error_string() ) {
 
       $this->openssl_error = $openssl_error;
 
     }
 
-    $this->error_list[] = $error;
+    // 2023-04-02 jj5 - this return value will be ignored by the caller...
 
     return false;
 
   }
 
-  protected function data_encode( $input ) {
+  protected final function data_encode( $input ) {
+
+    try {
+
+      return $this->do_data_encode( $input );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+
+    }
+  }
+
+  protected function do_data_encode( $input ) {
 
     try {
 
@@ -1885,19 +1915,23 @@ abstract class KickassCrypto {
     }
   }
 
-  protected function verify_encoding( $input, $decoded ) {
+  protected final function data_decode( $json ) {
 
-    // 2023-04-01 jj5 - NOTE: we don't actually do this. Turns out some things which successfully
-    // encode will also successfully decode, but as different things! Notably floats and many
-    // objects.
+    try {
 
-    return;
+      return $this->do_data_decode( $json );
 
-    assert( $input === $decoded );
+    }
+    catch ( Throwable $ex ) {
 
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+
+    }
   }
 
-  protected function data_decode( string $json ) {
+  protected function do_data_decode( string $json ) {
 
     try {
 

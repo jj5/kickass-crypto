@@ -491,7 +491,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function data_encode( $input ) {
+        protected function do_data_encode( $input ) {
           return false;
         }
       };
@@ -521,10 +521,9 @@ function run_test() {
           $result = $this->decrypt( $ciphertext );
           return $result;
         }
-        protected function data_decode( $input ) {
+        protected function do_data_decode( $input ) {
           return false;
         }
-        protected function verify_encoding( $input, $decoded ) { ; }
       };
     }
   );
