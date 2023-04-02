@@ -612,9 +612,9 @@ This library is a wrapper around the PHP OpenSSL implementation. The cipher
 suite we use is
 [AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html).
 That's
-[Advanced_Encryption_Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+[Advanced Encryption Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 encryption with
-[Galois/Counter_Mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
+[Galois/Counter Mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
 authentication and integrity checking.
 
 ## Secret keys and passphrases
