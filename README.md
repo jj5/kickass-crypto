@@ -361,7 +361,7 @@ When this library decodes its ciphertext it verifies the data-format prefix. At 
 The KA0 data format, mentioned above, presently implies the following:
 
 After JSON encoding (discussed in the following section) padding is done and the data length is
-prefixed. Before encryption the message is formatted like this:
+prefixed. Before encryption the message is formatted, like this:
 
 ```
 $message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
@@ -379,7 +379,12 @@ $iv . $ciphertext . $tag
 ```
 
 Then everything is base64 encoded with the PHP
-[base64_encode()](https://www.php.net/manual/en/function.base64-encode.php) function.
+[base64_encode()](https://www.php.net/manual/en/function.base64-encode.php) function and the
+data-format prefix is added, like this:
+
+```
+"KA0/" . base64_encode( $iv . $ciphertext . $tag )
+```
 
 The decryption process expects to find the 12 byte initialization vector, the ciphertext, and
 the 16 byte authentication tag.
