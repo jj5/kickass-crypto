@@ -1544,6 +1544,8 @@ abstract class KickassCrypto {
 
     }
 
+    // 2023-04-02 jj5 - apparently it's traditional to format these items in this order...
+
     return $iv . $ciphertext . $tag;
 
   }
@@ -1551,6 +1553,7 @@ abstract class KickassCrypto {
   protected function do_decrypt( string $ciphertext ) {
 
     $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
+
     $binary = $this->decode( $ciphertext );
 
     if ( $binary === false ) {
@@ -1575,17 +1578,25 @@ abstract class KickassCrypto {
 
       if ( $result !== false ) { return $result; }
 
+      // 2023-04-02 jj5 - if we make it this far during any of our decryption attempts then this
+      // is the error we will return.
+
       $error = KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED;
 
     }
+
+    // 2023-04-02 jj5 - the $error here will be one of:
+    //
+    //* KICKASS_CRYPTO_ERROR_NO_VALID_KEY
+    //* KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED
 
     return $this->error( $error );
 
   }
 
-  protected function try_decrypt( string $binary, string $passphrase ) {
+  protected final function try_decrypt( string $binary, string $passphrase ) {
 
-    $message = $this->do_decrypt_string( $binary, $passphrase );
+    $message = $this->decrypt_string( $binary, $passphrase );
 
     if ( $message === false ) {
 
@@ -1597,7 +1608,57 @@ abstract class KickassCrypto {
 
   }
 
-  protected function decode_message( string $message ) {
+  protected final function decrypt_string( string $binary, string $passphrase ) {
+
+    return $this->do_decrypt_string( $binary, $passphrase );
+
+  }
+
+  protected function do_decrypt_string( string $binary, string $passphrase ) {
+
+    if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
+
+    }
+
+    $cipher = $this->get_const_cipher();
+    $options = $this->get_const_options();
+
+    $plaintext = false;
+
+    try {
+
+      $plaintext = $this->php_openssl_decrypt(
+        $ciphertext, $cipher, $passphrase, $options, $iv, $tag
+      );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
+
+    }
+
+    if ( ! $plaintext ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
+
+    }
+
+    return $plaintext;
+
+  }
+
+  protected final function decode_message( string $message ) {
+
+    return $this->do_decode_message( $message );
+
+  }
+
+  protected function do_decode_message( string $message ) {
 
     // 2023-04-02 jj5 - this function decodes a message, which is:
     //
@@ -1666,44 +1727,6 @@ abstract class KickassCrypto {
     $json = substr( $binary, 0, $json_length );
 
     return $json;
-
-  }
-
-  protected function do_decrypt_string( string $binary, string $passphrase ) {
-
-    if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
-
-    }
-
-    $cipher = $this->get_const_cipher();
-    $options = $this->get_const_options();
-
-    $plaintext = false;
-
-    try {
-
-      $plaintext = $this->php_openssl_decrypt(
-        $ciphertext, $cipher, $passphrase, $options, $iv, $tag
-      );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
-
-    }
-
-    if ( ! $plaintext ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
-
-    }
-
-    return $plaintext;
 
   }
 
