@@ -51,7 +51,7 @@ function run_test() {
         public function test() {
           return $this->decode( 'KA0/123=' );
         }
-        protected function php_base64_decode( $input, $strict ) { return false; }
+        protected function do_php_base64_decode( $input, $strict ) { return false; }
       };
     }
   );
@@ -209,7 +209,7 @@ function run_test() {
         public function test() {
           return $this->parse_binary( 'invalid', $iv, $ciphertext, $tag );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $tag = 'invalid';
           return false;
         }
@@ -225,7 +225,7 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase );
         }
-        protected function php_random_bytes( $length ) {
+        protected function do_php_random_bytes( $length ) {
           return '123';
         }
       };
@@ -240,7 +240,7 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $tag = 'invalid';
           return false;
         }
@@ -269,8 +269,8 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test'  );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
-          parent::php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+          parent::do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
           return false;
         }
       };
@@ -284,9 +284,9 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test'  );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $iv = null;
-          return parent::php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+          return parent::do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
         }
       };
     }
@@ -299,9 +299,9 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test'  );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $iv = '';
-          return parent::php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+          return parent::do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
         }
       };
     }
@@ -316,8 +316,8 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase  );
         }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
-          parent::php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+        protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+          parent::do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
           return false;
         }
       };
@@ -333,7 +333,7 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase );
         }
-        protected function php_random_bytes( $length ) {
+        protected function do_php_random_bytes( $length ) {
           return '';
         }
         protected function get_const_iv_length() {
@@ -372,11 +372,11 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
-        protected function php_openssl_decrypt(
+        protected function do_php_openssl_decrypt(
           $ciphertext, $cipher, $passphrase, $options, $iv, $tag
         ) {
           $cipher = 'invalid';
-          return parent::php_openssl_decrypt(
+          return parent::do_php_openssl_decrypt(
             $ciphertext, $cipher, $passphrase, $options, $iv, $tag
           );
         }
@@ -393,11 +393,11 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
-        protected function php_openssl_decrypt(
+        protected function do_php_openssl_decrypt(
           $ciphertext, $cipher, $passphrase, $options, $iv, $tag
         ) {
           $iv = '';
-          return parent::php_openssl_decrypt(
+          return parent::do_php_openssl_decrypt(
             $ciphertext, $cipher, $passphrase, $options, $iv, $tag
           );
         }
@@ -600,7 +600,7 @@ function run_test() {
           $binary = $this->decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
-        protected function php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag ) {
+        protected function do_php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag ) {
           return false;
         }
       };

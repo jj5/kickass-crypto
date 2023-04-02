@@ -385,61 +385,61 @@ class KickassException extends Exception {
 //
 trait PHP_WRAPPER {
 
-  protected function php_base64_encode( $input ) {
+  protected function do_php_base64_encode( $input ) {
 
     return base64_encode( $input );
 
   }
 
-  protected function php_base64_decode( $input, $strict ) {
+  protected function do_php_base64_decode( $input, $strict ) {
 
     return base64_decode( $input, $strict );
 
   }
 
-  protected function php_json_encode( $value, $flags, $depth = 512 ) {
+  protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
 
     return json_encode( $value, $flags, $depth );
 
   }
 
-  protected function php_json_decode( $json, $associative, $depth, $flags ) {
+  protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
 
     return json_decode( $json, $associative, $depth, $flags );
 
   }
 
-  protected function php_random_int( $min, $max ) {
+  protected function do_php_random_int( $min, $max ) {
 
     return random_int( $min, $max );
 
   }
 
-  protected function php_random_bytes( $length ) {
+  protected function do_php_random_bytes( $length ) {
 
     return random_bytes( $length );
 
   }
 
-  protected function php_openssl_get_cipher_methods() {
+  protected function do_php_openssl_get_cipher_methods() {
 
     return openssl_get_cipher_methods();
 
   }
 
-  protected function php_openssl_cipher_iv_length( $cipher ) {
+  protected function do_php_openssl_cipher_iv_length( $cipher ) {
 
     return openssl_cipher_iv_length( $cipher );
 
   }
 
-  protected function php_openssl_error_string() {
+  protected function do_php_openssl_error_string() {
 
     return openssl_error_string();
 
   }
 
-  protected function php_openssl_encrypt(
+  protected function do_php_openssl_encrypt(
     $plaintext,
     $cipher,
     $passphrase,
@@ -454,7 +454,7 @@ trait PHP_WRAPPER {
 
   }
 
-  protected function php_openssl_decrypt(
+  protected function do_php_openssl_decrypt(
     $ciphertext,
     $cipher,
     $passphrase,
@@ -467,13 +467,13 @@ trait PHP_WRAPPER {
 
   }
 
-  protected function php_time_nanosleep( $seconds, $nanoseconds ) {
+  protected function do_php_time_nanosleep( $seconds, $nanoseconds ) {
 
     return time_nanosleep( $seconds, $nanoseconds );
 
   }
 
-  protected function php_sapi_name() {
+  protected function do_php_sapi_name() {
 
     return php_sapi_name();
 
@@ -596,7 +596,7 @@ abstract class KickassCrypto {
     }
 
     $cipher = $this->get_const_cipher();
-    $cipher_list = $this->wrap_php_openssl_get_cipher_methods();
+    $cipher_list = $this->php_openssl_get_cipher_methods();
 
     if ( ! KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION ) {
 
@@ -613,7 +613,7 @@ abstract class KickassCrypto {
       }
     }
 
-    $iv_length = $this->wrap_php_openssl_cipher_iv_length( $cipher );
+    $iv_length = $this->php_openssl_cipher_iv_length( $cipher );
     $iv_length_expected = $this->get_const_iv_length();
 
     if ( ! KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION ) {
@@ -636,7 +636,7 @@ abstract class KickassCrypto {
 
       try {
 
-        $test_bytes = $this->wrap_php_random_bytes( 2 );
+        $test_bytes = $this->php_random_bytes( 2 );
 
       }
       catch ( Random\RandomException $ex ) {
@@ -798,7 +798,7 @@ abstract class KickassCrypto {
 
         $this->error_list[] = $error;
 
-        while ( $openssl_error = $this->wrap_php_openssl_error_string() ) {
+        while ( $openssl_error = $this->php_openssl_error_string() ) {
 
           $this->openssl_error = $openssl_error;
 
@@ -1194,7 +1194,7 @@ abstract class KickassCrypto {
 
   protected function do_encrypt_string( string $plaintext, string $passphrase ) {
 
-    $iv = $this->wrap_php_random_bytes( $this->get_const_iv_length() );
+    $iv = $this->php_random_bytes( $this->get_const_iv_length() );
 
     if ( strlen( $iv ) !== $this->get_const_iv_length() ) {
 
@@ -1209,7 +1209,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $ciphertext = $this->wrap_php_openssl_encrypt(
+      $ciphertext = $this->php_openssl_encrypt(
         $plaintext, $cipher, $passphrase, $options, $iv, $tag
       );
 
@@ -1374,7 +1374,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $plaintext = $this->wrap_php_openssl_decrypt(
+      $plaintext = $this->php_openssl_decrypt(
         $ciphertext, $cipher, $passphrase, $options, $iv, $tag
       );
 
@@ -1417,7 +1417,7 @@ abstract class KickassCrypto {
     assert( is_int( $nanoseconds ) );
     assert( $nanoseconds < 1_000_000_000 );
 
-    return $this->wrap_php_time_nanosleep( $seconds, $nanoseconds );
+    return $this->php_time_nanosleep( $seconds, $nanoseconds );
 
   }
 
@@ -1496,7 +1496,7 @@ abstract class KickassCrypto {
 
     }
 
-    while ( $openssl_error = $this->wrap_php_openssl_error_string() ) {
+    while ( $openssl_error = $this->php_openssl_error_string() ) {
 
       $this->openssl_error = $openssl_error;
 
@@ -1514,7 +1514,7 @@ abstract class KickassCrypto {
 
       $options = $this->get_config_json_encode_options();
 
-      $result = $this->wrap_php_json_encode( $input, $options );
+      $result = $this->php_json_encode( $input, $options );
 
       if ( $result === false ) {
 
@@ -1552,7 +1552,7 @@ abstract class KickassCrypto {
 
       $options = $this->get_config_json_decode_options();
 
-      $result = $this->wrap_php_json_decode( $json, $assoc = true, 512, $options );
+      $result = $this->php_json_decode( $json, $assoc = true, 512, $options );
 
       if ( $result === false ) {
 
@@ -1574,7 +1574,7 @@ abstract class KickassCrypto {
 
   protected function encode( string $binary ) {
 
-    return $this->get_const_data_format_version() . '/' . $this->wrap_php_base64_encode( $binary );
+    return $this->get_const_data_format_version() . '/' . $this->php_base64_encode( $binary );
 
   }
 
@@ -1606,7 +1606,7 @@ abstract class KickassCrypto {
     }
     */
 
-    $result = $this->wrap_php_base64_decode( $parts[ 1 ], $strict = true );
+    $result = $this->php_base64_decode( $parts[ 1 ], $strict = true );
 
     if ( $result === false ) {
 
@@ -1695,7 +1695,7 @@ abstract class KickassCrypto {
 
   protected function get_padding( int $length ) {
 
-    return $this->wrap_php_random_bytes( $length );
+    return $this->php_random_bytes( $length );
 
     // 2023-04-01 jj5 - the following is also an option, and might be faster..?
     //
@@ -1714,7 +1714,7 @@ abstract class KickassCrypto {
     assert( $ns_max >= 0 );
     assert( $ns_max >= $ns_min );
 
-    $delay = $this->wrap_php_random_int( $ns_min, $ns_max );
+    $delay = $this->php_random_int( $ns_min, $ns_max );
 
     assert( is_int( $delay ) );
     assert( $delay >= $ns_min );
@@ -1733,15 +1733,15 @@ abstract class KickassCrypto {
 
   protected function is_cli() {
 
-    return $this->wrap_php_sapi_name() === 'cli';
+    return $this->php_sapi_name() === 'cli';
 
   }
 
-  protected final function wrap_php_base64_encode( $input ) {
+  protected final function php_base64_encode( $input ) {
 
     try {
 
-      return $this->php_base64_encode( $input );
+      return $this->do_php_base64_encode( $input );
 
     }
     catch ( Throwable $ex ) {
@@ -1753,11 +1753,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_base64_decode( $input, $strict ) {
+  protected final function php_base64_decode( $input, $strict ) {
 
     try {
 
-      return $this->php_base64_decode( $input, $strict );
+      return $this->do_php_base64_decode( $input, $strict );
 
     }
     catch ( Throwable $ex ) {
@@ -1769,11 +1769,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_json_encode( $value, $flags, $depth = 512 ) {
+  protected final function php_json_encode( $value, $flags, $depth = 512 ) {
 
     try {
 
-      return $this->php_json_encode( $value, $flags, $depth );
+      return $this->do_php_json_encode( $value, $flags, $depth );
 
     }
     catch ( Throwable $ex ) {
@@ -1785,11 +1785,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_json_decode( $json, $associative, $depth, $flags ) {
+  protected final function php_json_decode( $json, $associative, $depth, $flags ) {
 
     try {
 
-      return $this->php_json_decode( $json, $associative, $depth, $flags );
+      return $this->do_php_json_decode( $json, $associative, $depth, $flags );
 
     }
     catch ( Throwable $ex ) {
@@ -1801,11 +1801,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_random_int( $min, $max ) {
+  protected final function php_random_int( $min, $max ) {
 
     try {
 
-      return $this->php_random_int( $min, $max );
+      return $this->do_php_random_int( $min, $max );
 
     }
     catch ( Throwable $ex ) {
@@ -1817,11 +1817,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_random_bytes( $length ) {
+  protected final function php_random_bytes( $length ) {
 
     try {
 
-      return $this->php_random_bytes( $length );
+      return $this->do_php_random_bytes( $length );
 
     }
     catch ( Throwable $ex ) {
@@ -1833,10 +1833,10 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_openssl_get_cipher_methods() {
+  protected final function php_openssl_get_cipher_methods() {
     try {
 
-      return $this->php_openssl_get_cipher_methods();
+      return $this->do_php_openssl_get_cipher_methods();
 
     }
     catch ( Throwable $ex ) {
@@ -1848,11 +1848,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_openssl_cipher_iv_length( $cipher ) {
+  protected final function php_openssl_cipher_iv_length( $cipher ) {
 
     try {
 
-      return $this->php_openssl_cipher_iv_length( $cipher );
+      return $this->do_php_openssl_cipher_iv_length( $cipher );
 
     }
     catch ( Throwable $ex ) {
@@ -1864,11 +1864,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_openssl_error_string() {
+  protected final function php_openssl_error_string() {
 
     try {
 
-      return $this->php_openssl_error_string();
+      return $this->do_php_openssl_error_string();
 
     }
     catch ( Throwable $ex ) {
@@ -1880,7 +1880,7 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_openssl_encrypt(
+  protected final function php_openssl_encrypt(
     $plaintext,
     $cipher,
     $passphrase,
@@ -1893,7 +1893,7 @@ abstract class KickassCrypto {
 
     try {
 
-      return $this->php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+      return $this->do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
 
     }
     catch ( Throwable $ex ) {
@@ -1905,7 +1905,7 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_openssl_decrypt(
+  protected final function php_openssl_decrypt(
     $ciphertext,
     $cipher,
     $passphrase,
@@ -1916,7 +1916,7 @@ abstract class KickassCrypto {
 
     try {
 
-      return $this->php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
+      return $this->do_php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
 
     }
     catch ( Throwable $ex ) {
@@ -1928,11 +1928,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_time_nanosleep( $seconds, $nanoseconds ) {
+  protected final function php_time_nanosleep( $seconds, $nanoseconds ) {
 
     try {
 
-      return $this->php_time_nanosleep( $seconds, $nanoseconds );
+      return $this->do_php_time_nanosleep( $seconds, $nanoseconds );
 
     }
     catch ( Throwable $ex ) {
@@ -1944,11 +1944,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function wrap_php_sapi_name() {
+  protected final function php_sapi_name() {
 
     try {
 
-      return $this->php_sapi_name();
+      return $this->do_php_sapi_name();
 
     }
     catch ( Throwable $ex ) {
