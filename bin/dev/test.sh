@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 2023-04-03 jj5 - this script will run the library's unit tests. By default only the normal/fast
+# tests are run. Pass --slow to also run the slow tests, and --silly to run the silly tests. But
+# don't run the silly tests... they're silly!
+
 main() {
 
   set -euo pipefail;
@@ -14,10 +18,12 @@ main() {
     local var="$1";
     shift;
     case $var in
+      --fast) fast=1;;
       --slow) slow=1;;
       --silly) silly=1;;
-      --slow-only) silly=0; slow=1; fast=0;;
-      --silly-only) silly=1; slow=0; fast=0;;
+      --fast-only) fast=1; slow=0; silly=0;;
+      --slow-only) fast=0; slow=1; silly=0;;
+      --silly-only) fast=0; slow=1; silly=1;;
     esac;
   done;
 
