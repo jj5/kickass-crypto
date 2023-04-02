@@ -11,6 +11,8 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
+  test_setup();
+
   $limit = 26;
 
   $limit_str = str_repeat( '0', pow( 2, $limit ) );

@@ -5,6 +5,18 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
+class TestRoundTrip extends KickassCryptoRoundTrip {
+
+  use KICKASS_DEBUG_LOG;
+
+}
+
+class TestAtRest extends KickassCryptoAtRest {
+
+  use KICKASS_DEBUG_LOG;
+
+}
+
 function run_test( $argv ) {
 
   $class = $argv[ 1 ];
@@ -22,13 +34,13 @@ function run_test( $argv ) {
 
       case 'KickassCryptoRoundTrip':
 
-        $crypto = new KickassCryptoRoundTrip();
+        $crypto = new TestRoundTrip();
 
         break;
 
       case 'KickassCryptoAtRest':
 
-        $crypto = new KickassCryptoAtRest();
+        $crypto = new TestAtRest();
 
         break;
 

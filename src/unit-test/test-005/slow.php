@@ -10,6 +10,8 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 
 function run_test() {
 
+  define( 'KICKASS_CRYPTO_DISABLE_LOG', true );
+
   $plaintext = 'test';
 
   $ciphertext_1 = kickass_round_trip()->encrypt( $plaintext );

@@ -369,6 +369,47 @@ class KickassException extends Exception {
 
 }
 
+trait KICKASS_DEBUG_LOG {
+
+  // 2023-04-02 jj5 - if you include this trait logs will only be written if DEBUG is defined...
+
+  protected function do_log_error( $message ) {
+
+    if ( ! $this->is_debug() ) { return false; }
+
+    return parent::do_log_error( $message );
+
+  }
+}
+
+trait KICKASS_DEBUG_KEYS {
+
+  // 2023-04-02 jj5 - if you include this trait you'll be setup with some test keys and a valid
+  // config file.
+
+  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
+
+  protected function get_passphrase_list() {
+    static $list = null;
+    if ( $list === null ) {
+      $secret = self::GenerateSecret();
+      $passphrase = $this->calc_passphrase( $secret );
+      $list = [ $passphrase ];
+    }
+    return $list;
+  }
+}
+
+trait KICKASS_DEBUG {
+
+  // 2023-04-02 jj5 - these traits will set you up for debugging...
+
+  use KICKASS_DEBUG_LOG;
+
+  use KICKASS_DEBUG_KEYS;
+
+}
+
 // 2023-03-30 jj5 - these are indirections to default PHP functions. The main reason for using
 // these is so that we can use them to inject errors during testing... some PHP functions such as
 // is_int(), intval() and round() are called directly and not via these indirections. If you need
@@ -384,7 +425,7 @@ class KickassException extends Exception {
 // that's a sensible enough option, you can make the wrapper demand a value from the caller if
 // you want.
 //
-trait PHP_WRAPPER {
+trait KICKASS_PHP_WRAPPER {
 
   protected function do_php_base64_encode( $input ) {
 
@@ -498,7 +539,7 @@ trait PHP_WRAPPER {
 //
 abstract class KickassCrypto {
 
-  use PHP_WRAPPER;
+  use KICKASS_PHP_WRAPPER;
 
   // 2023-03-30 jj5 - our counters are stored here, call
   //* count() to increment a 'counter'
@@ -1421,13 +1462,7 @@ abstract class KickassCrypto {
     int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
   ) {
 
-    if ( $this->is_debug() ) {
-
-      error_log( __FILE__ . ': delayed due to error...' );
-
-      //debug_print_backtrace();
-
-    }
+    $this->log_error( 'delayed due to error...' );
 
     $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
 
@@ -1493,8 +1528,16 @@ abstract class KickassCrypto {
 
   private function report_emergency_delay( string $type ) {
 
-    error_log( __FILE__ . ': emergency delay: ' . $type );
+    try {
 
+      return $this->log_error( 'emergency delay: ' . $type );
+
+    }
+    catch ( Throwable $ex ) {
+
+      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+
+    }
   }
 
   // 2023-04-01 jj5 - implementations can decide what to do when errors are handled. By default
@@ -1503,13 +1546,8 @@ abstract class KickassCrypto {
   //
   protected function do_catch( $ex ) {
 
-    if ( $this->is_debug() ) {
+    $this->log_error( 'caught exception: ' . $ex->getMessage() );
 
-      $message = $ex->getMessage();
-
-      error_log( "caught exception: $message" );
-
-    }
   }
 
   protected function do_throw( int $code, $data = null, $previous = null ) {
@@ -1522,11 +1560,7 @@ abstract class KickassCrypto {
 
     }
 
-    if ( $this->is_debug() ) {
-
-      error_log( "error: $message" );
-
-    }
+    $this->log_error( 'exception: ' . $message );
 
     throw new KickassException( $message, $code, $previous, $data );
 
@@ -1778,6 +1812,37 @@ abstract class KickassCrypto {
   protected function is_cli() {
 
     return $this->php_sapi_name() === 'cli';
+
+  }
+
+  protected final function log_error( $message ) {
+
+    try {
+
+      return $this->do_log_error( $message );
+
+    }
+    catch ( Throwable $ex ) {
+
+      try { $this->catch( $ex ); } catch ( Throwable $dummy ) { ; }
+
+      return false;
+
+    }
+  }
+
+  protected function do_log_error( $message ) {
+
+    if (
+      defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) &&
+      KICKASS_CRYPTO_DISABLE_LOG
+    ) {
+
+      return false;
+
+    }
+
+    return error_log( __FILE__ . ': ' . $message );
 
   }
 

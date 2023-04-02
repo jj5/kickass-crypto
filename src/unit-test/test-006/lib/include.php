@@ -3,6 +3,26 @@
 
 // 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
 
+class TestRoundTrip extends KickassCryptoRoundTrip {
+
+  use KICKASS_DEBUG_LOG;
+
+}
+
+class TestAtRest extends KickassCryptoAtRest {
+
+  use KICKASS_DEBUG_LOG;
+
+}
+
+function test_setup() {
+
+  kickass_round_trip( new TestRoundTrip );
+
+  kickass_at_rest( new TestAtRest );
+
+}
+
 function test_error( $instance ) {
 
   test_service_error( kickass_round_trip(), $instance );

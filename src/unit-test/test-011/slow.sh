@@ -23,11 +23,17 @@ run_test() {
 
     grep "KickassCrypto.php: emergency delay: ${test}sleep" "$tempfile" >/dev/null || {
 
-      error "Unexpected output:";
+      error "test failed: $test";
 
       cat "$tempfile";
 
+      rm "$tempfile";
+
+      exit 54
+
     };
+
+    report "test successful: $test";
 
   else
 

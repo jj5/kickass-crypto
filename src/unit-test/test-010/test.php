@@ -7,19 +7,10 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 
 class TestCrypto extends KickassCrypto {
 
+  use KICKASS_DEBUG;
+
   private $ivlen = 1;
   private $taglen = 1;
-
-  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
-  protected function get_passphrase_list() {
-    static $list = null;
-    if ( $list === null ) {
-      $secret = self::GenerateSecret();
-      $passphrase = $this->calc_passphrase( $secret );
-      $list = [ $passphrase ];
-    }
-    return $list;
-  }
 
   protected function get_const_iv_length() { return $this->ivlen; }
   protected function get_const_tag_length() { return $this->taglen; }

@@ -2,6 +2,8 @@
 
 class TestCrypto extends KickassCryptoRoundTrip {
 
+  use KICKASS_DEBUG;
+
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
 
   protected function do_delay(

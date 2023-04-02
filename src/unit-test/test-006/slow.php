@@ -10,6 +10,8 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
+  test_setup();
+
   // 2023-03-30 jj5 - can't encrypt false... because this encryption fails the delay is triggered
   // which is why this test is in this slow.php file...
   //
