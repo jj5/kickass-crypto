@@ -34,6 +34,11 @@
 
     }
 
+    // 2023-04-03 jj5 - I use some standard error levels... error level 40 means "invalid
+    // run-time environment, cannot run."
+    //
+    // 2023-04-03 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
+
     exit( 40 );
 
   }
