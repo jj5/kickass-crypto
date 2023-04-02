@@ -295,10 +295,10 @@ options and `get_const_...()` for constant evaluation. Most important constants 
 options are read indirectly via these accessors so you should be able to override them reliably.
 
 Most calls to PHP built-in functions are done by thin wrappers via protected functions on
-`KickassCrypto`. These are defined in the `PHP_WRAPPER` trait. This indirection allows for certain
-PHP function invocations to be intercepted and potentially modified. This has been done primarily
-to support fault injection during unit testing, but you could use for other purposes to change
-implementation particulars.
+`KickassCrypto`. These are defined in the `KICKASS_PHP_WRAPPER` trait. This indirection allows for
+certain PHP function invocations to be intercepted and potentially modified. This has been done
+primarily to support fault injection during unit testing, but you could use for other purposes to
+change implementation particulars.
 
 Things which are considered sensitive in `KickassCrypto` are defined as _private_ and/or _final_.
 If it's not private and it's not final it's fair game for overriding (unless I've made a
