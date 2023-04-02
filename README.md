@@ -937,7 +937,7 @@ This code is licensed under the MIT License.
 
 ## Commit messages
 
-I should probably be more disciplined with my commit messages... ff this library matures and gets
+I should probably be more disciplined with my commit messages... if this library matures and gets
 widely used I will try to be more careful with my commits.
 
 ## Colophon
