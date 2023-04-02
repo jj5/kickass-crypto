@@ -1,5 +1,14 @@
 <?php
 
+/*
+ ____  __.__        __                           _________                        __
+|    |/ _|__| ____ |  | _______    ______ ______ \_   ___ \_______ ___.__._______/  |_  ____
+|      < |  |/ ___\|  |/ /\__  \  /  ___//  ___/ /    \  \/\_  __ <   |  |\____ \   __\/  _ \
+|    |  \|  \  \___|    <  / __ \_\___ \ \___ \  \     \____|  | \/\___  ||  |_> >  | (  <_> )
+|____|__ \__|\___  >__|_ \(____  /____  >____  >  \______  /|__|   / ____||   __/|__|  \____/
+        \/       \/     \/     \/     \/     \/          \/        \/     |__|
+*/
+
 // 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is the
 // only file that you need to include, but other goodies ship with the project. The actual
 // proper and supported way to include this library is to include the inc/library.php include file
@@ -29,6 +38,38 @@
 //* CONFIG_ENCRYPTION_SECRET_LIST
 //
 // See bin/gen-key.php in this project for key generation.
+
+// 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
+// encryption components for each use case. If you want to override with a different
+// implementation you can pass in a new instance, or you can manage construction yourself and
+// access some other way. These functions are how you should ordinarily access this library, viz:
+//
+// $ciphertext = kickass_round_trip()->encrypt( 'secret text' );
+// $plaintext = kickass_round_trip()->decrypt( $ciphertext );
+
+function kickass_round_trip( $set = false ) {
+
+  static $instance = null;
+
+  if ( $set !== false ) { $instance = $set; }
+
+  if ( $instance === null ) { $instance = new KickassCryptoRoundTrip(); }
+
+  return $instance;
+
+}
+
+function kickass_at_rest( $set = false ) {
+
+  static $instance = null;
+
+  if ( $set !== false ) { $instance = $set; }
+
+  if ( $instance === null ) { $instance = new KickassCryptoAtRest(); }
+
+  return $instance;
+
+}
 
 (function() {
 
@@ -183,35 +224,6 @@
   if ( $errors ) { exit( 40 ); }
 
 })();
-
-// 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
-// encryption components for each use case. If you want to override with a different
-// implementation you can pass in a new instance, or you can manage construction yourself and
-// access some other way.
-
-function kickass_round_trip( $set = false ) {
-
-  static $instance = null;
-
-  if ( $set !== false ) { $instance = $set; }
-
-  if ( $instance === null ) { $instance = new KickassCryptoRoundTrip(); }
-
-  return $instance;
-
-}
-
-function kickass_at_rest( $set = false ) {
-
-  static $instance = null;
-
-  if ( $set !== false ) { $instance = $set; }
-
-  if ( $instance === null ) { $instance = new KickassCryptoAtRest(); }
-
-  return $instance;
-
-}
 
 // 2023-03-30 jj5 - this is the current data format version for this library. If you fork this
 // library and alter the data format you should change this. If you do change this please use
