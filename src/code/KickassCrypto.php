@@ -1080,10 +1080,10 @@ abstract class KickassCrypto {
 
       $this->count_function( __FUNCTION__ );
 
-      $start = microtime( $as_float = true );
-
       // 2023-04-02 jj5 - we time the do_delay() implementation and if it doesn't meed the
       // minimum requirement we do the emergency delay.
+
+      $start = microtime( $as_float = true );
 
       $result = $this->do_delay();
 
@@ -1109,9 +1109,9 @@ abstract class KickassCrypto {
         //
         $this->emergency_delay();
 
-        $this->catch( $ex );
+        $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5 );
 
-        return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5 );
+        $this->catch( $ex );
 
       }
       catch ( Throwable $dummy ) { ; }
