@@ -60,6 +60,8 @@ main() {
 
   done;
 
+  # 2023-04-03 jj5 - when all the tests pass update README.md with the "kickass" count...
+  #
   bash ../../bin/dev/count-kickass.sh >/dev/null
 
 }
