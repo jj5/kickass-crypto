@@ -67,11 +67,36 @@ function run_test() {
 
   }
 
-  report( $length );
+  // 2023-04-03 jj5 - this is as big as we can go. The -2 is for the pair of double quotes that
+  // go around the string to turn it into JSON...
+  //
+  $length = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX - 2;
+
+  test_text(
+    str_repeat( '0', $length ),
+    $length,
+    $length
+  );
 
 }
 
 function test_length( $length, $report ) {
+
+  $data = random_bytes( $length );
+
+  test_data( $data, $report, $length );
+
+}
+
+function test_data( $data, $report, $length = 0 ) {
+
+  $text = base64_encode( $data );
+
+  test_text( $text, $report, $length );
+
+}
+
+function test_text( $text, $report, $length = 0 ) {
 
   if ( DEBUG ) {
 
@@ -81,16 +106,6 @@ function test_length( $length, $report ) {
 
     }
   }
-
-  $data = random_bytes( $length );
-
-  test_data( $data, $report );
-
-}
-
-function test_data( $data, $report ) {
-
-  $text = base64_encode( $data );
 
   cycle( kickass_round_trip(), $text );
 
