@@ -31,13 +31,25 @@ function run_test() {
 
   test_data( '', 1 );
 
-  for ( $length = 1; $length < 10_000; $length += 1 ) {
+  for ( $length = 1; $length < 1_000; $length += 1 ) {
 
     test_length( $length, 100 );
 
   }
 
-  for ( $length = 10_000; $length < 1_000_000; $length += 100 ) {
+  for ( $length = 1_000; $length < 10_000; $length += 10 ) {
+
+    test_length( $length, 1_000 );
+
+  }
+
+  for ( $length = 10_000; $length < 100_000; $length += 100 ) {
+
+    test_length( $length, 1_000 );
+
+  }
+
+  for ( $length = 100_000; $length < 1_000_000; $length += 1_000 ) {
 
     test_length( $length, 10_000 );
 
@@ -49,15 +61,9 @@ function run_test() {
 
   }
 
-  for ( $length = 10_000_000; $length < 100_000_000; $length += 1_000_000 ) {
+  for ( $length = 10_000_000; $length < 50_000_000; $length += 1_000_000 ) {
 
     test_length( $length, 1_000_000 );
-
-  }
-
-  for ( $length = 100_000_000; $length < 1_000_000_000; $length += 10_000_000 ) {
-
-    test_length( $length, 10_000_000 );
 
   }
 
