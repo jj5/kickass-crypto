@@ -340,7 +340,7 @@ The encryption process is roughly:
 * prefix with JSON data length
 * pad with random data
 * encrypt with AES-256-GCM using the OpenSSL library
-* concatenate authentication tag, initialization vector, and cipher text
+* concatenate initialization vector, cipher text, and authentication tag
 * encode as base64
 * prefix with data-format indicator
 
@@ -380,12 +380,14 @@ $iv . $ciphertext . $tag
 
 Then everything is base64 encoded with the PHP
 [base64_encode()](https://www.php.net/manual/en/function.base64-encode.php) function.
-The decryption process expects to find the 16 byte
-authentication tag, the 12 byte initialization vector, and the ciphertext. After decrypting the
-ciphertext the library expects to find the size of the JSON data as an ASCII string representing
-an 8 character hex encoded value, followed by a single pipe character, followed by the JSON, and
-then the padding. The library can then remove the JSON from its padding and take care of the rest
-of the decoding.
+
+The decryption process expects to find the 12 byte initialization vector, the ciphertext, and
+the 16 byte authentication tag.
+
+After decrypting the ciphertext the library expects to find the size of the JSON data as an ASCII
+string representing an 8 character hex encoded value, followed by a single pipe character,
+followed by the JSON, and then the padding. The library can then remove the JSON from its
+padding and take care of the rest of the decoding.
 
 ## JSON encoding and decoding
 
