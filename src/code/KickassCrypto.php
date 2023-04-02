@@ -1400,12 +1400,13 @@ abstract class KickassCrypto {
 
   }
 
-  // 2023-04-02 jj5 - proper management of the error list is very important as we rely on it to
-  // determine if there have been any errors; we need to know this so that we can inject a delay
-  // when the first error occurs. The openssl_error is less essential and callers can override
-  // management of that.
-  //
-  public final function get_error() {
+  public function get_error_list() {
+
+    return $this->error_list;
+
+  }
+
+  public function get_error() {
 
     $count = count( $this->error_list );
 
@@ -1415,22 +1416,16 @@ abstract class KickassCrypto {
 
   }
 
-  public final function get_error_list() {
-
-    return $this->error_list;
-
-  }
-
-  public final function clear_error() {
-
-    $this->error_list = [];
-    $this->openssl_error = null;
-
-  }
-
   public function get_openssl_error() {
 
     return $this->openssl_error;
+
+  }
+
+  public function clear_error() {
+
+    $this->error_list = [];
+    $this->openssl_error = null;
 
   }
 
