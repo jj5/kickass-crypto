@@ -831,7 +831,8 @@ abstract class KickassCrypto {
   private $openssl_error = null;
 
   // 2023-04-02 jj5 - this flag indicates whether we need to inject a random delay or not, it gets
-  // set if there's an error...
+  // set when a call to either encrypt() or decrypt() is made. It gets set back to false after a
+  // delay has been injected so that multiple errors won't trigger multiple delays.
   //
   private $inject_delay = false;
 
