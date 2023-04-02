@@ -765,7 +765,7 @@ trait KICKASS_PHP_WRAPPER {
   }
 }
 
-// 2023-03-30 jj5 - the KickassCrypt class is the core of this library, but to use it you need
+// 2023-03-30 jj5 - the KickassCrypto class is the core of this library, but to use it you need
 // an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest, it's also possible to
 // create your own instance by inheriting KickassCrypto and providing an implementation of the
 // abstract methods to suite your use case.
@@ -785,12 +785,18 @@ abstract class KickassCrypto {
   use KICKASS_PHP_WRAPPER;
 
   // 2023-03-30 jj5 - our counters are stored here, call
-  //* count() to increment a 'counter'
-  //* count_class() to increment a 'class'
-  //* count_length() to increment a 'length'
+  //* count() to increment a 'function' counter
+  //* count_class() to increment a 'class' counter
+  //* count_length() to increment a 'length' counter
+  //
+  // 2023-04-02 jj5 - the function counters count how many times some key functions were called.
+  //
+  // 2023-04-02 jj5 - the class counters count how many times certain classes were constructed.
+  //
+  // 2023-04-02 jj5 - the length counter counts the lengths of successfully encrypted data.
   //
   private static $telemetry = [
-    'counter' => [],
+    'function' => [],
     'class' => [],
     'length' => [],
   ];
@@ -813,7 +819,7 @@ abstract class KickassCrypto {
     // 2023-03-31 jj5 - NOTE: we count all instances created, even if their constructors end up
     // throwing an exception thus making them unusable.
 
-    $this->count_this();
+    $this->count_this( __FUNCTION__ );
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION' ) ) {
 
@@ -964,9 +970,9 @@ abstract class KickassCrypto {
 
     $telemetry = self::GetTelemetry();
 
-    echo "= Counters =\n\n";
+    echo "= Functions =\n\n";
 
-    self::ReportCounters( $telemetry[ 'counter' ] );
+    self::ReportCounters( $telemetry[ 'function' ] );
 
     echo "\n= Classes =\n\n";
 
@@ -1179,9 +1185,9 @@ abstract class KickassCrypto {
   // of KickassCryptoRoundTrip or KickassCryptoAtRest separately, but we do count other extensions
   // separately...
   //
-  protected function count_this() {
+  protected function count_this( $caller ) {
 
-    $this->count( 'instance' );
+    $this->count( $caller );
 
     if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
 
@@ -1202,7 +1208,7 @@ abstract class KickassCrypto {
 
   protected function count( $metric ) {
 
-    return $this->increment_counter( self::$telemetry[ 'counter' ], $metric );
+    return $this->increment_counter( self::$telemetry[ 'function' ], $metric );
 
   }
 

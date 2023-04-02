@@ -30,10 +30,10 @@ function run_test() {
 function get_expected_output() {
 
   return ltrim("
-= Counters =
+= Functions =
 
-instance..: 1
-encrypt...: 1
+__construct..: 1
+encrypt......: 1
 
 = Classes =
 
