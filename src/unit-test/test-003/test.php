@@ -26,7 +26,80 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 
 require_once __DIR__ . '/lib/include.php';
 
+function get_ignored_errors() {
+
+  // 2023-04-03 jj5 - this function is defined to return a list of all errors which are defined
+  // in the library but which are not tested for by this test. The reasons for this might vary,
+  // but at the moment there are three errors which can no longer happen, but for which tests
+  // are still done, because I didn't want to remove code that was already done and expressed
+  // some of the intent, also if a bug is introduced maybe these errors which "can't happen" will
+  // actually happen, but I can't test for them at the moment because... they can't happen.
+
+  return [
+    KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2,
+    KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
+    KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2,
+  ];
+
+}
+
 function run_test() {
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->json_encode( true );
+        }
+        protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->json_encode( true );
+        }
+        protected function do_json_encode( $input ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->json_decode( 'true' );
+        }
+        protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->json_decode( 'true' );
+        }
+        protected function do_json_decode( string $json ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
 
   test_error(
     KICKASS_CRYPTO_ERROR_INVALID_ENCODING,
