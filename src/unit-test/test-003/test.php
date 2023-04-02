@@ -491,7 +491,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function do_data_encode( $input ) {
+        protected function do_json_encode( $input ) {
           return false;
         }
       };
@@ -521,7 +521,7 @@ function run_test() {
           $result = $this->decrypt( $ciphertext );
           return $result;
         }
-        protected function do_data_decode( $input ) {
+        protected function do_json_decode( $input ) {
           return false;
         }
       };

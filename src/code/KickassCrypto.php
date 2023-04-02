@@ -1436,7 +1436,7 @@ abstract class KickassCrypto {
 
     }
 
-    $json = $this->data_encode( $input );
+    $json = $this->json_encode( $input );
 
     if ( $json === false ) {
 
@@ -1590,11 +1590,11 @@ abstract class KickassCrypto {
 
       }
 
-      $plaintext = $this->try_decrypt( $binary, $passphrase );
+      $json = $this->try_decrypt( $binary, $passphrase );
 
-      if ( $plaintext === false ) { continue; }
+      if ( $json === false ) { continue; }
 
-      $result = $this->data_decode( $plaintext );
+      $result = $this->json_decode( $json );
 
       if ( $result !== false ) { return $result; }
 
@@ -1873,11 +1873,11 @@ abstract class KickassCrypto {
 
   }
 
-  protected final function data_encode( $input ) {
+  protected final function json_encode( $input ) {
 
     try {
 
-      return $this->do_data_encode( $input );
+      return $this->do_json_encode( $input );
 
     }
     catch ( Throwable $ex ) {
@@ -1889,7 +1889,7 @@ abstract class KickassCrypto {
     }
   }
 
-  protected function do_data_encode( $input ) {
+  protected function do_json_encode( $input ) {
 
     try {
 
@@ -1915,11 +1915,11 @@ abstract class KickassCrypto {
     }
   }
 
-  protected final function data_decode( $json ) {
+  protected final function json_decode( $json ) {
 
     try {
 
-      return $this->do_data_decode( $json );
+      return $this->do_json_decode( $json );
 
     }
     catch ( Throwable $ex ) {
@@ -1931,7 +1931,7 @@ abstract class KickassCrypto {
     }
   }
 
-  protected function do_data_decode( string $json ) {
+  protected function do_json_decode( string $json ) {
 
     try {
 
@@ -1957,13 +1957,25 @@ abstract class KickassCrypto {
     }
   }
 
-  protected function encode( string $binary ) {
+  protected final function encode( string $binary ) {
+
+    return $this->do_encode( $binary );
+
+  }
+
+  protected function do_encode( string $binary ) {
 
     return $this->get_const_data_format_version() . '/' . $this->php_base64_encode( $binary );
 
   }
 
-  protected function decode( string $encoded ) {
+  protected final function decode( string $encoded ) {
+
+    return $this->do_decode( $encoded );
+
+  }
+
+  protected function do_decode( string $encoded ) {
 
     $parts = explode( '/', $encoded, 2 );
 
