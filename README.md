@@ -160,7 +160,7 @@ php bin/gen-demo-config.php > config.php
 
 ## Supported PHP versions
 
-This code should work on PHP 7.4 or greater (but so far I have only actually tested it on
+This code should work on PHP 8.0 or greater (but so far I have only actually tested it on
 PHP 8.1.2). If you try to run this code on an older version of PHP it will try to log an error
 message and then exit your process.
 

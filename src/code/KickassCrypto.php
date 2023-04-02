@@ -48,19 +48,39 @@
 //
 interface IKickassCrypto {
 
-  public function get_error_list();
+  // 2023-04-03 jj5 - the list of errors which have happened since the last time clear_error()
+  // was called...
+  //
+  public function get_error_list() : array;
 
-  public function get_error();
+  // 2023-04-03 jj5 - the most recent error; this is a string or null if no errors...
+  //
+  public function get_error() : string|null;
 
-  public function get_openssl_error();
+  // 2023-04-03 jj5 - the most recent error from the OpenSSL library, this is retrieved from the
+  // OpenSSL library by way of the openssl_error_string() function...
+  //
+  public function get_openssl_error() : string|null;
 
-  public function clear_error();
+  // 2023-04-03 jj5 - this will clear the current error list and the current OpenSSL error...
+  //
+  public function clear_error() : void;
 
-  public function encrypt( $input );
+  // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result, returns false on
+  // error...
+  //
+  public function encrypt( mixed $input ) : string|false;
 
-  public function decrypt( string $ciphertext );
+  // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON, returns false on
+  // error...
+  //
+  public function decrypt( string $ciphertext ) : mixed;
 
-  public function delay();
+  // 2023-04-03 jj5 - this will sleep for a random amount of time, from 1 millisecond to 10
+  // seconds... this is called automatically on the first error as a mitigation against timing
+  // attacks.
+  //
+  public function delay() : void;
 
 }
 
@@ -172,7 +192,7 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
     }
 
-    if ( version_compare( $php_version, '7.4', '<' ) ) {
+    if ( version_compare( $php_version, '8.0', '<' ) ) {
 
       if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
 
@@ -181,7 +201,7 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
       }
       else {
 
-        $errors[] = "The kickass-crypto library requires PHP version 7.4 or greater. " .
+        $errors[] = "The kickass-crypto library requires PHP version 8.0 or greater. " .
           "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
       }
@@ -1060,13 +1080,13 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
   }
 
-  public function get_error_list() {
+  public function get_error_list() : array {
 
     return $this->error_list;
 
   }
 
-  public function get_error() {
+  public function get_error() : string|null {
 
     $count = count( $this->error_list );
 
@@ -1076,20 +1096,20 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  public function get_openssl_error() {
+  public function get_openssl_error() : string|null {
 
     return $this->openssl_error;
 
   }
 
-  public function clear_error() {
+  public function clear_error() : void {
 
     $this->error_list = [];
     $this->openssl_error = null;
 
   }
 
-  public final function encrypt( $input ) {
+  public final function encrypt( mixed $input ) : string|false {
 
     try {
 
@@ -1122,7 +1142,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
   }
 
-  public final function decrypt( string $ciphertext ) {
+  public final function decrypt( string $ciphertext ) : mixed {
 
     try {
 
@@ -1147,7 +1167,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
   }
 
-  public final function delay() {
+  public final function delay() : void {
 
     try {
 
@@ -1158,7 +1178,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
       $start = microtime( $as_float = true );
 
-      $result = $this->do_delay();
+      $this->do_delay();
 
       $duration = microtime( $as_float = true ) - $start;
 
@@ -1167,9 +1187,6 @@ abstract class KickassCrypto implements IKickassCrypto {
         $this->emergency_delay();
 
       }
-
-      return $result;
-
     }
     catch ( Throwable $ex ) {
 
@@ -1188,8 +1205,6 @@ abstract class KickassCrypto implements IKickassCrypto {
 
       }
       catch ( Throwable $ignore ) { ; }
-
-      return false;
 
     }
   }
