@@ -557,16 +557,18 @@ and you can call it yourself if you feel the need.
 
 ## Fail safe
 
-The user of this library has the opportunity to override the `do_delay`
-method and provide their own delay logic.
+The user of this library has the opportunity to override the `do_delay` method and provide their
+own delay logic.
 
-If that `do_delay` override throws an exception it will be handled and an
-emergency delay will be injected.
+If that `do_delay` override throws an exception it will be handled and an emergency delay will be
+injected.
 
-**If you override `do_delay` and then don't actually do a delay and don't
-throw an exception that would be bad. Don't do that.** (Except for in your
-unit tests, it's okay to skip delay in unit tests. If you're testing the
-delay in your unit tests put those tests in the slow tests.)
+If you do override `do_delay` but don't actually delay for at least the minimum duration (which
+is 1 ms) then the library will inject the emergency delay.
+
+The main reason for allowing the implementer to customize the delay logic is so that unit tests
+can delay for a minimum amount of time. Ordinarily there shouldn't be any reason to meddle with
+the delay logic.
 
 ## Exceptions and errors
 
