@@ -878,7 +878,7 @@ Here are some notes regarding notable components:
 * [bin/](https://github.com/jj5/kickass-crypto/tree/main/bin/): command-line commands
 * [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/): development scripts
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh): run fast and slow unit tests
-* [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh): run unit tests, control with flags
+* [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh): run unit tests, control with flags, slow tests skipped by default
 * [bin/gen-demo-config.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-demo-config.php): generate an initial `config.php` file for the demo
 * [bin/gen-key.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-key.php): generate a secret key
 * [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
