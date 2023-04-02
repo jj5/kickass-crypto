@@ -1,8 +1,19 @@
 <?php
 
+// 2023-04-03 jj5 - this is the demo code, it's for use in a web browser. Host this file then
+// navigate to it so you can try out some basic encrypted round-tripping. This code tries to
+// help you set up your environment. What you need is a config.php file in the project base
+// directory. You can generate with this command:
+//
+//$ [ -f config.php ] || php bin/gen-demo-config.php > config.php
+
 require_once __DIR__ . '/../code/KickassCrypto.php';
 
-require_once __DIR__ . '/../../config.php';
+if ( file_exists( __DIR__ . '/../../config.php' ) ) {
+
+  require_once __DIR__ . '/../../config.php';
+
+}
 
 function encrypt_if_not_empty( $input ) {
 
@@ -43,12 +54,16 @@ function henc( $input ) {
 
 }
 
-
 function main() {
 
   error_reporting( E_ALL | E_STRICT );
 
   try {
+
+    // 2023-04-03 jj5 - make sure our library is constructed (and therefore valid, this will
+    // throw if the config is invalid)...
+    //
+    kickass_round_trip();
 
     $oldest_ciphertext = $_POST[ 'older_ciphertext' ] ?? null;
     $older_ciphertext = $_POST[ 'old_ciphertext' ] ?? null;
@@ -115,7 +130,11 @@ function main() {
 
         $problem = $ex->getData()[ 'problem' ] ?? null;
 
-        ?><p>The problem is: <?= henc( $problem ) ?>.</p><?php
+        ?>
+          <p>The problem is: <?= henc( $problem ) ?>.</p>
+          <p>You can generate a demo config file with this command:</p>
+          <pre>[ -f config.php ] || php bin/gen-demo-config.php > config.php</p>
+        <?php
 
         break;
 

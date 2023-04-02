@@ -7,8 +7,6 @@ function main( $argv ) {
 
   kickass_setup_unit_test_environment();
 
-  $start = microtime( $as_float = true );
-
   if ( defined( 'DEBUG' ) && DEBUG ) {
 
     return run_test( $argv );
@@ -17,19 +15,9 @@ function main( $argv ) {
 
   try {
 
+    if ( ! defined( 'DEBUG' ) ) { define( 'DEBUG', false ); }
+
     run_test( $argv );
-
-    $duration = microtime( $as_float = true ) - $start;
-
-    $duration_format = number_format( $duration, 2 );
-
-    //echo "duration: $duration_format\n";
-
-    //KickassCrypto::ReportTelemetry();
-
-    //echo "\n";
-
-    exit( 0 );
 
   }
   catch ( Throwable $ex ) {
