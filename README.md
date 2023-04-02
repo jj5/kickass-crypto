@@ -542,7 +542,7 @@ that is secret. It's best just not to compress at all._**
 
 If an error is encountered during encryption or decryption a delay of between
 1 millisecond (1 ms) and 10 seconds (10 s) is introduced. This is a mitigation
-aginst potential timing attacks. See
+against potential timing attacks. See
 [s2n and Lucky 13](https://aws.amazon.com/blogs/security/s2n-and-lucky-13/)
 for discussion.
 
