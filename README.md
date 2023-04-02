@@ -903,8 +903,6 @@ Here are some notes regarding notable components:
 * [bin/gen-key.php](https://github.com/jj5/kickass-crypto/tree/main/bin/gen-key.php): generate a secret key
 * [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
 * [bin/get-hash-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-hash-list.php): list hash algorithms supported by your version of PHP
-* [doc/](https://github.com/jj5/kickass-crypto/tree/main/doc/): additional documentation
-* [doc/tex/](https://github.com/jj5/kickass-crypto/tree/main/doc/tex/): LaTeX write-up (planned)
 * [inc/](https://github.com/jj5/kickass-crypto/tree/main/inc/): include files
 * [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php): the include file for this library, clients include this the we do the rest
 * [inc/test-host.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test-host.php): the include file for the unit testing framework
