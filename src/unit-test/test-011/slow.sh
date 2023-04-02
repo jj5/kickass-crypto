@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QUIET=0
+QUIET=1
 
 main() {
 
