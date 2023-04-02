@@ -76,7 +76,16 @@ function main( $argv ) {
 
     require_once __DIR__ . '/../../code/KickassCrypto.php';
 
-    kickass_get_floats( $nan, $pos_inf, $neg_inf, $pos_zero, $neg_zero, $float_min, $float_max, $epslion );
+    kickass_get_floats(
+      $nan,
+      $pos_inf,
+      $neg_inf,
+      $pos_zero,
+      $neg_zero,
+      $float_min,
+      $float_max,
+      $epslion
+    );
 
     test_cycle( 'test' );
 
@@ -151,7 +160,9 @@ function main( $argv ) {
 
     if ( defined( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS' ) ) {
 
-      if ( JSON_INVALID_UTF8_IGNORE === ( CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS & JSON_INVALID_UTF8_IGNORE ) ) {
+      $options = CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS;
+
+      if ( kickass_is_set( $options, JSON_INVALID_UTF8_IGNORE ) ) {
 
         $invalid_utf8 = "\xE2\x28\xA1";
 
@@ -159,7 +170,7 @@ function main( $argv ) {
 
       }
 
-      if ( JSON_INVALID_UTF8_SUBSTITUTE === ( CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS & JSON_INVALID_UTF8_SUBSTITUTE ) ) {
+      if ( kickass_is_set( $options, JSON_INVALID_UTF8_SUBSTITUTE ) ) {
 
         $invalid_utf8 = "\xE2\x28\xA1";
 
@@ -178,6 +189,12 @@ function main( $argv ) {
     kickass_exit( $ex, 54 );
 
   }
+}
+
+function kickass_is_set( int $options, int $option ) {
+
+  return $option === ( $options & $option );
+
 }
 
 function test_cycle( $input, $expect = null ) {

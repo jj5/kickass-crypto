@@ -84,7 +84,9 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
 
   if ( $error !== $expected_error ) {
 
-    throw new Exception( 'error: ' . json_encode( [ 'error' => $error, 'expected' => $expected_error ] ) );
+    throw new Exception(
+      'error: ' . json_encode( [ 'error' => $error, 'expected' => $expected_error ] )
+    );
 
     var_dump([
       'error_list' => $error_list,

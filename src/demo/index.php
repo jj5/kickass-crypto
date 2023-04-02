@@ -35,7 +35,8 @@ else {
 
 ?>
   <p>You seem to be missing the KickassCrypto library.</p>
-  <p>Make sure you can include the library from the <code>src/code/KickassCrypto.php</code> file.</p>
+  <p>Make sure you can include the library from the
+    <code>src/code/KickassCrypto.php</code> file.</p>
 <?php
 
   render_foot();
