@@ -1,10 +1,27 @@
 #!/bin/bash
 
+##################################################################################################
+#                                                                                                #
+#  ____  __.__        __                           _________                        __           #
+# |    |/ _|__| ____ |  | _______    ______ ______ \_   ___ \_______ ___.__._______/  |_  ____   #
+# |      < |  |/ ___\|  |/ /\__  \  /  ___//  ___/ /    \  \/\_  __ <   |  |\____ \   __\/  _ \  #
+# |    |  \|  \  \___|    <  / __ \_\___ \ \___ \  \     \____|  | \/\___  ||  |_> >  | (  <_> ) #
+# |____|__ \__|\___  >__|_ \(____  /____  >____  >  \______  /|__|   / ____||   __/|__|  \____/  #
+#         \/       \/     \/     \/     \/     \/          \/        \/     |__|                 #
+#                                                                                                #
+#                                                                                        By jj5  #
+#                                                                                                #
+##################################################################################################
+
+##################################################################################################
+#
 # 2023-03-31 jj5 - this shell script invokes various instances of test.php for both tests which
 # are expected to succeed and tests which are expected to fail. In order to get a list of
 # available tests we run the test.php without the test index specified and it reports the list
 # of available tests for the given mode. The two modes are 'work' and 'fail', the former are
 # expected to succeed and the latter are expected to fail.
+#
+##################################################################################################
 
 QUIET=1
 DEBUG=0

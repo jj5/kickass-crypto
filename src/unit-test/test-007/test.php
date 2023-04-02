@@ -1,15 +1,33 @@
 #!/usr/bin/env php
 <?php
 
+/************************************************************************************************\
+*                                                                                                *
+*  ____  __.__        __                           _________                        __           *
+* |    |/ _|__| ____ |  | _______    ______ ______ \_   ___ \_______ ___.__._______/  |_  ____   *
+* |      < |  |/ ___\|  |/ /\__  \  /  ___//  ___/ /    \  \/\_  __ <   |  |\____ \   __\/  _ \  *
+* |    |  \|  \  \___|    <  / __ \_\___ \ \___ \  \     \____|  | \/\___  ||  |_> >  | (  <_> ) *
+* |____|__ \__|\___  >__|_ \(____  /____  >____  >  \______  /|__|   / ____||   __/|__|  \____/  *
+*         \/       \/     \/     \/     \/     \/          \/        \/     |__|                 *
+*                                                                                                *
+*                                                                                        By jj5  *
+*                                                                                                *
+\************************************************************************************************/
+
+/************************************************************************************************\
+//
 // 2023-03-31 jj5 - these tests take our run-time environment validation facilities for a spin.
 // We check error handling by injecting values which should fail, and we validate that the
 // run-time validation done by the library can be overridden by programmers using special
 // constant defines.
-
+//
 // 2023-03-31 jj5 - NOTE: we don't use the test-host for these unit tests, because we need to
 // configure our environment specially before it's loaded, so we take care of such things for
 // ourselves in this script. See the test.sh shell script for details about how this test.php
 // script is run.
+//
+\************************************************************************************************/
+
 
 require_once __DIR__ . '/../../../inc/test.php';
 
