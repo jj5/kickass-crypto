@@ -183,7 +183,9 @@ port.
 ## Namespaces etc
 
 Yes, I have heard of namespaces and PSR-4 autoloading, and no, I don't like them. If I wanted to
-program in Java, I would program in Java. This library does things the old fashioned way.
+program in Java, I would program in Java. This library does things the old fashioned way. I don't
+need a framework to include a couple of files. If I only need a function, I shouldn't have to
+invent a class to put it in.
 
 Yes I have heard of PHPUnit. No, I don't need it. Tests are a shell script, if that's missing
 they're a PHP script. If I need to make assertions I call assert(). Easy.
