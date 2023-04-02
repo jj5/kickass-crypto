@@ -796,10 +796,10 @@ essential rount-trip or at-rest data. You can consider:
 * hand-written secret key backups (make sure your writing is legible, and don't
 leave them on your desk)
 
-**When doing key management it is important to make sure your config files are
-edited in a secure way. A syntax error in a config file could lead to a
-secret key being exposed to the public web. If this happened you would have to
-rotate all of your keys immediately and then destroy the old compromised keys.**
+**When doing key management it is important to make sure your config files are edited in a secure
+way. A syntax error in a config file could lead to a secret key being exposed to the public web.
+If this happened you would have to rotate all of your keys immediately and then destroy the old
+compromised keys, _even then it might be too late_.**
 
 It would be a good idea to stand ready to do a key rotation in an automated and tested fashion
 immediately in case of emergency.
