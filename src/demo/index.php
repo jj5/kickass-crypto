@@ -7,7 +7,23 @@
 //
 //$ [ -f config.php ] || php bin/gen-demo-config.php > config.php
 
-require_once __DIR__ . '/../code/KickassCrypto.php';
+if ( file_exists( __DIR__ . '/../code/KickassCrypto.php' ) ) {
+
+  require_once __DIR__ . '/../code/KickassCrypto.php';
+
+}
+else {
+
+  render_head();
+
+?>
+  <p>You seem to be missing the KickassCrypto library.</p>
+  <p>Make sure you can include the library from the <code>src/code/KickassCrypto.php</code> file.</p>
+<?php
+
+  render_foot();
+
+}
 
 if ( file_exists( __DIR__ . '/../../config.php' ) ) {
 
