@@ -244,29 +244,6 @@ practice. In this library if a variable or constant might contain sensitive data
 with either "pass" or "secret" as a substring in the name. **_Don't write sensitive data into
 logs._**
 
-## Random data
-
-This library requires secure random data inputs for various purposes:
-
-* for generating secret keys
-* for initialization vectors
-* for message padding
-
-There are two main options for generating suitable random data in PHP, those are:
-
-* [openssl_random_pseudo_bytes()](https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php)
-* [random_bytes()](https://www.php.net/manual/en/function.random-bytes.php)
-
-Both are reasonable choices but this library uses
-[random_bytes()](https://www.php.net/manual/en/function.random-bytes.php).
-
-If the `random_bytes()` function is unable to generate secure random data it will throw an
-exception. See the documentation for details.
-
-We also use the PHP
-[random_int()](https://www.php.net/manual/en/function.random-int.php)
-function to generate a random delay for use in timing attack mitigation.
-
 ## Configuration settings
 
 In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
@@ -682,6 +659,29 @@ The "GCM" in AES-256-GCM stands for
 (HMAC) which you may have heard of before. The goal of the
 GCM authentication tag is to make your encrypted data
 [tamperproof](https://en.wikipedia.org/wiki/Tamperproofing).
+
+## Random data
+
+This library requires secure random data inputs for various purposes:
+
+* for generating secret keys
+* for initialization vectors
+* for message padding
+
+There are two main options for generating suitable random data in PHP, those are:
+
+* [openssl_random_pseudo_bytes()](https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php)
+* [random_bytes()](https://www.php.net/manual/en/function.random-bytes.php)
+
+Both are reasonable choices but this library uses
+[random_bytes()](https://www.php.net/manual/en/function.random-bytes.php).
+
+If the `random_bytes()` function is unable to generate secure random data it will throw an
+exception. See the documentation for details.
+
+We also use the PHP
+[random_int()](https://www.php.net/manual/en/function.random-int.php)
+function to generate a random delay for use in timing attack mitigation.
 
 ## Round-trip use case
 
