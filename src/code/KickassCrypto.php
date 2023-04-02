@@ -22,7 +22,7 @@
 //
 // 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
 //
-// 2023-03-30 jj5 - make sure you load a valid config.php file, then use it like this:
+// 2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:
 //
 //   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
 //   $plaintext = kickass_round_trip()->decrypt( $ciphertext );
