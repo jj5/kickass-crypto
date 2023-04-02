@@ -13,7 +13,7 @@
 
 function gen_key() {
 
-  return base64_encode( openssl_random_pseudo_bytes( 66 ) );
+  return base64_encode( random_bytes( 66 ) );
 
 }
 
