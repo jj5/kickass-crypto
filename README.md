@@ -246,7 +246,7 @@ logs._**
 
 ## Random data
 
-This library requires secure random data inputs for various reasons:
+This library requires secure random data inputs for various purposes:
 
 * for generating secret keys
 * for generating initialization vectors
