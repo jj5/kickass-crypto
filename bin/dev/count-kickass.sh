@@ -46,6 +46,9 @@ main() {
 
   echo $count;
 
+  sed -i "s/appears in the source code [^ ]* times/appears in the source code $count times/" \
+    README.md
+
 }
 
 main "$@";

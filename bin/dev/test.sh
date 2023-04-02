@@ -60,6 +60,8 @@ main() {
 
   done;
 
+  bash ../../bin/dev/count-kickass.sh >/dev/null
+
 }
 
 process_fast() {
