@@ -180,7 +180,7 @@ have had success on MacOS or Windows I would be
 Shell scripts are written for bash. If you don't have bash you may need to
 port.
 
-## Namespaces etc
+## On being old fashioned
 
 Yes, I have heard of namespaces and PSR-4 autoloading, and no, I don't like them. If I wanted to
 program in Java, I would program in Java. This library does things the old fashioned way. I don't
