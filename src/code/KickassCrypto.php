@@ -218,12 +218,17 @@ function kickass_at_rest( $set = false ) {
 // something other than 'KA' as the prefix. If you don't want the data format version reported
 // in your encoded data override the encode() and decode() methods.
 //
+// 2023-04-02 jj5 - NOTE: you don't need to actually change this constant, you can just override
+// get_const_data_format_version() and return a different string. For example:
+//
+// protected function get_const_data_format_version() { return 'MYKA1'; }
+//
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
-// future... note that 2^26 is about 64 MiB.
+// future... note that 2^12 is 4KiB and 2^26 is 64 MiB.
 //
-define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
+define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX', pow( 2, 26 ) );
 define(
@@ -246,11 +251,11 @@ define(
 define(
   'KICKASS_CRYPTO_REGEX_BASE64',
   // 2023-04-01 jj5 - SEE: https://www.progclub.org/blog/2023/04/01/php-preg_match-regex-fail/
+  // 2023-04-01 jj5 - NEW:
+  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
   // 2023-04-01 jj5 - OLD: this old base64 validation regex had some really bad performance
   // characteristics when tested with pathological inputs such as 2^17 zeros...
   //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
-  // 2023-04-01 jj5 - NEW:
-  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
 );
 
 // 2023-03-29 jj5 - exceptions are thrown from the constructor only, these are the possible
@@ -376,7 +381,7 @@ class KickassException extends Exception {
 }
 
 // 2023-04-02 jj5 - these traits make a bunch of assumptions about the class that hosts them.
-// They've basically been designed to be an a class which extends KickassCrypto, they're not for
+// They've basically been designed to be in a class which extends KickassCrypto, they're not for
 // use in other circumstances.
 
 trait KICKASS_DEBUG_LOG {
@@ -394,8 +399,9 @@ trait KICKASS_DEBUG_LOG {
 
 trait KICKASS_DEBUG_KEYS {
 
-  // 2023-04-02 jj5 - if you include this trait you'll be setup with a test key and a valid
-  // config.
+  // 2023-04-02 jj5 - if you include this trait you'll be set up with a test key and a valid
+  // config. The secret key isn't kept anywhere so you won't be able to decrypt data after your
+  // test completes.
 
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
 
@@ -435,12 +441,47 @@ trait KICKASS_DEBUG {
 // that's a sensible enough option, you can make the wrapper demand a value from the caller if
 // you want.
 //
+// 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
+// catch() method has been defined to notify exceptions.
+//
 trait KICKASS_PHP_WRAPPER {
+
+  protected final function php_base64_encode( $input ) {
+
+    try {
+
+      return $this->do_php_base64_encode( $input );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
 
   protected function do_php_base64_encode( $input ) {
 
     return base64_encode( $input );
 
+  }
+
+  protected final function php_base64_decode( $input, $strict ) {
+
+    try {
+
+      return $this->do_php_base64_decode( $input, $strict );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_base64_decode( $input, $strict ) {
@@ -449,10 +490,42 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_json_encode( $value, $flags, $depth = 512 ) {
+
+    try {
+
+      return $this->do_php_json_encode( $value, $flags, $depth );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
 
     return json_encode( $value, $flags, $depth );
 
+  }
+
+  protected final function php_json_decode( $json, $associative, $depth, $flags ) {
+
+    try {
+
+      return $this->do_php_json_decode( $json, $associative, $depth, $flags );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
@@ -461,10 +534,42 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_random_int( $min, $max ) {
+
+    try {
+
+      return $this->do_php_random_int( $min, $max );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_random_int( $min, $max ) {
 
     return random_int( $min, $max );
 
+  }
+
+  protected final function php_random_bytes( $length ) {
+
+    try {
+
+      return $this->do_php_random_bytes( $length );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_random_bytes( $length ) {
@@ -473,10 +578,41 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_openssl_get_cipher_methods() {
+    try {
+
+      return $this->do_php_openssl_get_cipher_methods();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_openssl_get_cipher_methods() {
 
     return openssl_get_cipher_methods();
 
+  }
+
+  protected final function php_openssl_cipher_iv_length( $cipher ) {
+
+    try {
+
+      return $this->do_php_openssl_cipher_iv_length( $cipher );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_openssl_cipher_iv_length( $cipher ) {
@@ -485,10 +621,51 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_openssl_error_string() {
+
+    try {
+
+      return $this->do_php_openssl_error_string();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_openssl_error_string() {
 
     return openssl_error_string();
 
+  }
+
+  protected final function php_openssl_encrypt(
+    $plaintext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    &$tag
+  ) {
+
+    $tag = null;
+
+    try {
+
+      return $this->do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_openssl_encrypt(
@@ -506,6 +683,29 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_openssl_decrypt(
+    $ciphertext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    $tag
+  ) {
+
+    try {
+
+      return $this->do_php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_openssl_decrypt(
     $ciphertext,
     $cipher,
@@ -519,10 +719,42 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
+  protected final function php_time_nanosleep( $seconds, $nanoseconds ) {
+
+    try {
+
+      return $this->do_php_time_nanosleep( $seconds, $nanoseconds );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
   protected function do_php_time_nanosleep( $seconds, $nanoseconds ) {
 
     return time_nanosleep( $seconds, $nanoseconds );
 
+  }
+
+  protected final function php_sapi_name() {
+
+    try {
+
+      return $this->do_php_sapi_name();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 
   protected function do_php_sapi_name() {
@@ -543,9 +775,9 @@ trait KICKASS_PHP_WRAPPER {
 // final, but I need to keep them open for unit-testing purposes. While there is nothing to stop
 // you from inheriting either KickassCryptoRoundTrip or KickassCryptoAtRest if you do so you
 // will have an effect on the class counter telemetry. The class counter telemetry only counts
-// KickassCryptoRoundTrip or KickassCryptoAtRest instance directly, not the inheriters of them.
-// Other inheriters of KickassCrypto are counted separately, which is probably what you want. See
-// the count_this() method if you need to change counting behavior.
+// KickassCryptoRoundTrip or KickassCryptoAtRest instance directly, not the things which inherit
+// from them. Other classes which inherit from KickassCrypto are counted separately, which is
+// probably what you want. See the count_this() method if you need to change counting behavior.
 //
 abstract class KickassCrypto {
 
@@ -1854,229 +2086,6 @@ abstract class KickassCrypto {
 
     return error_log( __FILE__ . ': ' . $message );
 
-  }
-
-  protected final function php_base64_encode( $input ) {
-
-    try {
-
-      return $this->do_php_base64_encode( $input );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_base64_decode( $input, $strict ) {
-
-    try {
-
-      return $this->do_php_base64_decode( $input, $strict );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_json_encode( $value, $flags, $depth = 512 ) {
-
-    try {
-
-      return $this->do_php_json_encode( $value, $flags, $depth );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_json_decode( $json, $associative, $depth, $flags ) {
-
-    try {
-
-      return $this->do_php_json_decode( $json, $associative, $depth, $flags );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_random_int( $min, $max ) {
-
-    try {
-
-      return $this->do_php_random_int( $min, $max );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_random_bytes( $length ) {
-
-    try {
-
-      return $this->do_php_random_bytes( $length );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_openssl_get_cipher_methods() {
-    try {
-
-      return $this->do_php_openssl_get_cipher_methods();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_openssl_cipher_iv_length( $cipher ) {
-
-    try {
-
-      return $this->do_php_openssl_cipher_iv_length( $cipher );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_openssl_error_string() {
-
-    try {
-
-      return $this->do_php_openssl_error_string();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_openssl_encrypt(
-    $plaintext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    &$tag
-  ) {
-
-    $tag = null;
-
-    try {
-
-      return $this->do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_openssl_decrypt(
-    $ciphertext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    $tag
-  ) {
-
-    try {
-
-      return $this->do_php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_time_nanosleep( $seconds, $nanoseconds ) {
-
-    try {
-
-      return $this->do_php_time_nanosleep( $seconds, $nanoseconds );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected final function php_sapi_name() {
-
-    try {
-
-      return $this->do_php_sapi_name();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
   }
 }
 
