@@ -15,10 +15,10 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is the
-// only file that you need to include, but other goodies ship with the project. The actual
-// proper and supported way to include this library is to include the inc/library.php include file
-// which will handle including this file after making sure it is safe to do so.
+// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is
+// the only file that you need to include, but other goodies ship with the project. The actual
+// proper and supported way to include this library is to include the inc/library.php include
+// file which will handle including this file after making sure it is safe to do so.
 //
 // 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
 //
