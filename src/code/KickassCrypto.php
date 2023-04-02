@@ -77,17 +77,17 @@ function kickass_at_rest( $set = false ) {
 
   // 2023-03-31 jj5 - this anonymous function is for validating our run-time environment. If
   // there's a problem we exit, unless the programmer has overridden that behavior by defining
-  // certain constants. Read the code in this function for details.
+  // certain constants as detailed here:
   //
-  // 2023-03-31 jj5 - to override PHP version requirements:
+  //* to disable PHP version check:
   //
   //  define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
   //
-  // 2023-03-31 jj5 - to override PHP 64-bit word size requirements:
+  //* to disable PHP 64-bit word size check:
   //
   //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
   //
-  // 2023-04-01 jj5 - to override checks for the OpenSSL library functions:
+  //* to disable checks for the OpenSSL library functions:
   //
   //  define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true );
   //
