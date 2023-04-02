@@ -1199,8 +1199,6 @@ abstract class KickassCrypto implements IKickassCrypto {
         //
         $this->emergency_delay();
 
-        $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5 );
-
         $this->catch( $ex );
 
       }
