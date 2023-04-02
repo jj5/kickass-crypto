@@ -15,9 +15,9 @@
 
 ##################################################################################################
 #
-# 2023-04-03 jj5 - this script will run the library's unit tests. By default only the normal/fast
-# tests are run. Pass --slow to also run the slow tests, and --silly to run the silly tests. But
-# don't run the silly tests... they're silly.
+# 2023-04-03 jj5 - this script will run the library's unit tests. By default only the fast tests
+# are run. Pass --slow to also run the slow tests, and --silly to run the silly tests. But don't
+# run the silly tests... they're silly.
 #
 # 2023-04-03 jj5 - NOTE: if a test has a shell script, that is run. Otherwise the PHP script is
 # run. Each test in a src/unit-test/test-XXX directory can have fast, slow, and silly components,
@@ -64,19 +64,19 @@ main() {
 
 process_fast() {
 
-  if [ -f "$test/test.sh" ]; then
+  if [ -f "$test/fast.sh" ]; then
 
     if [ "$fast" == '1' ]; then
 
-      bash "$test/test.sh";
+      bash "$test/fast.sh";
 
     fi;
 
-  elif [ -f "$test/test.php" ]; then
+  elif [ -f "$test/fast.php" ]; then
 
     if [ "$fast" == '1' ]; then
 
-      php "$test/test.php";
+      php "$test/fast.php";
 
     fi;
 

@@ -23,7 +23,7 @@
 //
 // 2023-03-31 jj5 - NOTE: we don't use the test-host for these unit tests, because we need to
 // configure our environment specially before it's loaded, so we take care of such things for
-// ourselves in this script. See the test.sh shell script for details about how this test.php
+// ourselves in this script. See the fast.sh shell script for details about how this fast.php
 // script is run.
 //
 \************************************************************************************************/
