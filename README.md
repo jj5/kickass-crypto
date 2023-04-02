@@ -922,6 +922,11 @@ This code is licensed under the MIT License.
 I should be more disciplined with my commit messages. I promise if this library
 matures and gets widely used I will be more careful with my commits.
 
+## Colophon
+
+The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
+[TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
+
 ## Comments? Questions? Suggestions?
 
 I'd love to hear from you! Hit me up at
