@@ -19,8 +19,8 @@ function run_test() {
           return $this->delay();
         }
         public function do_delay(
-          int $ns_max = KICKASS_CRYPTO_DELAY_NS_MAX,
-          int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
+          int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
+          int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
         ) {
           throw new Exception( 'fail' );
         }

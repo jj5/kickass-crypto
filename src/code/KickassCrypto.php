@@ -231,8 +231,9 @@ define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
 //
-define( 'KICKASS_CRYPTO_DELAY_NS_MIN',      1_000_000 );
-define( 'KICKASS_CRYPTO_DELAY_NS_MAX', 10_000_000_000 );
+define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
+define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
+define( 'KICKASS_CRYPTO_DELAY_MICROSECONDS_MIN', 1.0 / ( KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN / 1_000 ) );
 
 // 2023-03-30 jj5 - this is our Base64 validation regex...
 //
@@ -783,7 +784,22 @@ abstract class KickassCrypto {
 
       $this->count( __FUNCTION__ );
 
-      return $this->do_delay();
+      $start = microtime( $as_float = true );
+
+      // 2023-04-02 jj5 - we time the do_delay() implementation and if it doesn't meed the
+      // minimum requirement we do the emergency delay.
+
+      $result = $this->do_delay();
+
+      $duration = microtime( $as_float = true ) - $start;
+
+      if ( $duration < KICKASS_CRYPTO_DELAY_MICROSECONDS_MIN ) {
+
+        $this->emergency_delay();
+
+      }
+
+      return $result;
 
     }
     catch ( Throwable $ex ) {
@@ -792,7 +808,10 @@ abstract class KickassCrypto {
 
         // 2023-04-01 jj5 - it's important to do things in this order, in case something throws...
 
-        $this->do_delay_emergency();
+        // 2023-04-02 jj5 - in order to "fail safe" we inject this emergency delay immediately
+        // so that nothing can accidentally interfere with it happening...
+        //
+        $this->emergency_delay();
 
         $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
 
@@ -1398,8 +1417,8 @@ abstract class KickassCrypto {
   }
 
   protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
+    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
+    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
   ) {
 
     if ( $this->is_debug() ) {
@@ -1421,7 +1440,7 @@ abstract class KickassCrypto {
 
   }
 
-  protected final function do_delay_emergency() {
+  protected final function emergency_delay() {
 
     // 2023-03-30 jj5 - ordinarily do_delay() does our delay, but there are a bunch of ways that
     // could go wrong. If do_delay() throws we make a sincere effort to call this function,
@@ -1429,6 +1448,17 @@ abstract class KickassCrypto {
     // some delay. This code tries very hard to make sure there's some sort of random delay...
 
     try {
+
+      if (
+        defined( 'KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP' ) &&
+        KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP
+      ) {
+
+        throw new Exception(
+          'test running: KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP'
+        );
+
+      }
 
       $ns_min =      1_000_000;
       $ns_max = 10_000_000_000;
@@ -1440,7 +1470,13 @@ abstract class KickassCrypto {
 
       $result = time_nanosleep( $seconds, $nanoseconds );
 
-      if ( $result ) { return; }
+      if ( $result ) {
+
+        return $this->report_emergency_delay( 'nanosleep' );
+
+      }
+
+      // 2023-04-02 jj5 - otherwise we fall through to the usleep() fallback below...
 
     }
     catch ( Throwable $ex ) {
@@ -1450,6 +1486,14 @@ abstract class KickassCrypto {
     }
 
     usleep( random_int( 1_000, 10_000_000 ) );
+
+    return $this->report_emergency_delay( 'microsleep' );
+
+  }
+
+  private function report_emergency_delay( string $type ) {
+
+    error_log( __FILE__ . ': emergency delay: ' . $type );
 
   }
 

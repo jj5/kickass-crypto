@@ -5,11 +5,11 @@ class TestCrypto extends KickassCryptoRoundTrip {
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
 
   protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NS_MIN
+    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
+    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
   ) {
 
-    // 2023-03-30 jj5 - we disable the delay during testing...
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 
   }
 }
