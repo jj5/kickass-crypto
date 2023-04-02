@@ -381,7 +381,7 @@ define( 'KICKASS_CRYPTO_IV_LENGTH', 12 );
 define( 'KICKASS_CRYPTO_TAG_LENGTH', 16 );
 
 // 2023-03-30 jj5 - we define an exception class for this component so that we can associate
-// custom data with our exceptions...
+// custom data with our exceptions... note that not all exceptions will have associated data.
 //
 class KickassException extends Exception {
 
