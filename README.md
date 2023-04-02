@@ -806,7 +806,7 @@ file editing but those facilities are not done yet.
 ## Data in motion
 
 This library supports encrypted data at-rest, and encrypted data round-trips.
-Another consideration is data in motion.
+Another consideration is data in motion. Data in motion is also sometimes called data in transit.
 
 Data is in motion when it moves between your web servers and your database
 server. Data is also in motion when it moves between your web servers and the
