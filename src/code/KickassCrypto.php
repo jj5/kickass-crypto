@@ -66,12 +66,12 @@ interface IKickassCrypto {
   //
   public function clear_error() : void;
 
-  // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result, returns false on
+  // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result; returns false on
   // error...
   //
   public function encrypt( mixed $input ) : string|false;
 
-  // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON, returns false on
+  // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON; returns false on
   // error...
   //
   public function decrypt( string $ciphertext ) : mixed;
