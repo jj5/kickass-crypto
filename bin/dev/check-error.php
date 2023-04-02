@@ -22,6 +22,8 @@
 
 function main( $argv ) {
 
+  define( 'REGEX', "/.*define\( '(KICKASS_CRYPTO_ERROR_[^']*)'/" );
+
   $error = 0;
 
   $lib = realpath( __DIR__ . '/../../src/code/KickassCrypto.php' );
@@ -32,7 +34,7 @@ function main( $argv ) {
 
   foreach ( $lib_lines as $lib_line ) {
 
-    if ( ! preg_match( "/.*define\( '(KICKASS_CRYPTO_ERROR_[^']*)'/", $lib_line, $matches ) ) { continue; }
+    if ( ! preg_match( REGEX, $lib_line, $matches ) ) { continue; }
 
     $error_const = $matches[ 1 ];
 
