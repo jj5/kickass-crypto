@@ -1,11 +1,30 @@
 <?php
 
+/************************************************************************************************\
+
+ ____  __.__        __                           _________                        __
+|    |/ _|__| ____ |  | _______    ______ ______ \_   ___ \_______ ___.__._______/  |_  ____
+|      < |  |/ ___\|  |/ /\__  \  /  ___//  ___/ /    \  \/\_  __ <   |  |\____ \   __\/  _ \
+|    |  \|  \  \___|    <  / __ \_\___ \ \___ \  \     \____|  | \/\___  ||  |_> >  | (  <_> )
+|____|__ \__|\___  >__|_ \(____  /____  >____  >  \______  /|__|   / ____||   __/|__|  \____/
+        \/       \/     \/     \/     \/     \/          \/        \/     |__|
+
+                                                                                        By jj5
+
+\************************************************************************************************/
+
+/************************************************************************************************\
+//
+// 2023-04-03 jj5 - the kickass_exit() function just exits with some standard error levels.
+//
+// 2023-03-31 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
+//
+\************************************************************************************************/
+
 function kickass_exit( $error = 0, $default = 50 ) {
 
   // 2023-03-31 jj5 - I try to use more or less standard error levels, this is a work in
   // progress but the documentation is here...
-  //
-  // 2023-03-31 jj5 - SEE: https://www.jj5.net/sixsigma/Error
 
   // 2023-03-31 jj5 - NOTE: it is possible to exit with negative numbers and values greater than
   // 255, but such things might not do what you expect, so this function will not allow it.
