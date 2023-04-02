@@ -948,7 +948,7 @@ abstract class KickassCrypto {
 
       try {
 
-        $test_bytes = $this->php_random_bytes( 2 );
+        $test_bytes = $this->php_random_bytes( 1 );
 
       }
       catch ( Random\RandomException $ex ) {
