@@ -41,6 +41,7 @@ main() {
 
   if false; then
 
+    echo $banner;
     echo $kickass_1;
     echo $kickass_2;
     echo $kickass_3;
