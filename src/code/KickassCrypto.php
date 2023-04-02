@@ -811,6 +811,11 @@ abstract class KickassCrypto {
   //
   private $openssl_error = null;
 
+  // 2023-04-02 jj5 - this flag indicates whether we need to inject a random delay or not, it gets
+  // set if there's an error...
+  //
+  private $inject_delay = false;
+
   // 2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid... if
   // the constructor succeeds then encryption and decryption should also usually succeed later on.
   // If encryption or decryption won't be able to succeed the constructor should throw.
@@ -1104,17 +1109,9 @@ abstract class KickassCrypto {
         //
         $this->emergency_delay();
 
-        $error = KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5;
-
-        $this->error_list[] = $error;
-
-        while ( $openssl_error = $this->php_openssl_error_string() ) {
-
-          $this->openssl_error = $openssl_error;
-
-        }
-
         $this->catch( $ex );
+
+        return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_5 );
 
       }
       catch ( Throwable $dummy ) { ; }
@@ -1166,17 +1163,15 @@ abstract class KickassCrypto {
       // 2023-04-02 jj5 - the very first thing we do is inject our delay so we can make sure that
       // happens...
       //
-      if ( count( $this->error_list ) === 0 ) {
+      if ( $this->inject_delay ) {
 
         $this->delay();
+
+        $this->inject_delay = false;
 
       }
 
       $this->count_function( __FUNCTION__ );
-
-      // 2023-04-02 jj5 - this part of error management is non-negotiable...
-      //
-      $this->error_list[] = $error;
 
       $this->do_error( $error );
 
@@ -1375,6 +1370,12 @@ abstract class KickassCrypto {
 
   }
 
+  protected function is_cli() {
+
+    return $this->php_sapi_name() === 'cli';
+
+  }
+
   protected function is_debug() {
 
     return defined( 'DEBUG' ) && DEBUG;
@@ -1399,13 +1400,12 @@ abstract class KickassCrypto {
 
   }
 
-  public function get_openssl_error() {
-
-    return $this->openssl_error;
-
-  }
-
-  public function get_error() {
+  // 2023-04-02 jj5 - proper management of the error list is very important as we rely on it to
+  // determine if there have been any errors; we need to know this so that we can inject a delay
+  // when the first error occurs. The openssl_error is less essential and callers can override
+  // management of that.
+  //
+  public final function get_error() {
 
     $count = count( $this->error_list );
 
@@ -1415,16 +1415,22 @@ abstract class KickassCrypto {
 
   }
 
-  public function get_error_list() {
+  public final function get_error_list() {
 
     return $this->error_list;
 
   }
 
-  public function clear_error() {
+  public final function clear_error() {
 
     $this->error_list = [];
     $this->openssl_error = null;
+
+  }
+
+  public function get_openssl_error() {
+
+    return $this->openssl_error;
 
   }
 
@@ -1508,7 +1514,7 @@ abstract class KickassCrypto {
 
     $message = $hex_json_length . '|' . $json . $this->get_padding( $pad_length );
 
-    $ciphertext = $this->do_encrypt_string( $message, $passphrase );
+    $ciphertext = $this->encrypt_string( $message, $passphrase );
 
     if ( $ciphertext === false ) {
 
@@ -1519,6 +1525,12 @@ abstract class KickassCrypto {
     $encoded = $this->encode( $ciphertext );
 
     return $encoded;
+
+  }
+
+  protected final function encrypt_string( string $plaintext, string $passphrase ) {
+
+    return $this->do_encrypt_string( $plaintext, $passphrase );
 
   }
 
@@ -1861,6 +1873,8 @@ abstract class KickassCrypto {
 
   protected function do_error( $error ) {
 
+    $this->error_list[] = $error;
+
     while ( $openssl_error = $this->php_openssl_error_string() ) {
 
       $this->openssl_error = $openssl_error;
@@ -2125,12 +2139,6 @@ abstract class KickassCrypto {
     assert( is_int( $nanoseconds ) );
     assert( $nanoseconds >= ( $ns_min % 1_000_000_000 ) );
     assert( $nanoseconds < 1_000_000_000 );
-
-  }
-
-  protected function is_cli() {
-
-    return $this->php_sapi_name() === 'cli';
 
   }
 
