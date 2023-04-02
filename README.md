@@ -927,8 +927,8 @@ This code is licensed under the MIT License.
 
 ## Commit messages
 
-I should be more disciplined with my commit messages. I promise if this library
-matures and gets widely used I will be more careful with my commits.
+I should probably be more disciplined with my commit messages... ff this library matures and gets
+widely used I will try to be more careful with my commits.
 
 ## Colophon
 
