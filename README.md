@@ -893,7 +893,8 @@ Here are some notes regarding notable components:
 * [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
 * [src/](https://github.com/jj5/kickass-crypto/tree/main/src/): PHP source code
-* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the full library
+* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the library components (presently only one)
+* [src/code/KickassCrypto.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCrypto.php): the full library
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
 * [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
