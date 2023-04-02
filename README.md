@@ -886,7 +886,7 @@ Here are some notes regarding notable components:
 * [doc/](https://github.com/jj5/kickass-crypto/tree/main/doc/): additional documentation
 * [doc/tex/](https://github.com/jj5/kickass-crypto/tree/main/doc/tex/): LaTeX write-up (planned)
 * [inc/](https://github.com/jj5/kickass-crypto/tree/main/inc/): include files
-* [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php): the include file for this library, clients include this we do the rest
+* [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php): the include file for this library, clients include this the we do the rest
 * [inc/test-host.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test-host.php): the include file for the unit testing framework
 * [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
