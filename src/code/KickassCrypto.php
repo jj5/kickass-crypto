@@ -995,7 +995,7 @@ abstract class KickassCrypto implements IKickassCrypto {
         $test_bytes = $this->php_random_bytes( 1 );
 
       }
-      catch ( Random\RandomException $ex ) {
+      catch ( Exception $ex ) {
 
         $this->catch( $ex );
 

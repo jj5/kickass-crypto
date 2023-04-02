@@ -56,6 +56,8 @@ class TestCryptoRoundTripInvalidConfig extends KickassCryptoRoundTrip {
 
 class TestCryptoRoundTrip extends KickassCryptoRoundTrip {
 
+  use KICKASS_DEBUG_LOG;
+
   use CustomThrow;
 
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
@@ -178,6 +180,16 @@ function run_test() {
       };
     },
     [ 'cipher' => 'aes-256-gcm', 'iv_length' => 12, 'iv_length_expected' => 123 ]
+  );
+
+  test_exception(
+    KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM,
+    function() {
+      return new class extends TestCryptoRoundTrip {
+        protected function do_php_random_bytes( $length ) { throw new Exception( 'fail' ); }
+      };
+    },
+    null
   );
 
 }
