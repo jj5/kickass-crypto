@@ -25,8 +25,6 @@ require_once __DIR__ . '/etc/config.php';
 
 function run_test() {
 
-  if ( ! defined( 'DEBUG' ) ) { define( 'DEBUG', false ); }
-
   test_data( '', 1 );
 
   for ( $length = 1; $length < 1_000; $length += 1 ) {
