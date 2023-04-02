@@ -871,6 +871,8 @@ See existing unit tests for examples of how to use the simple unit test host in
 
 ## Directory structure
 
+Here are some notes regarding notable components:
+
 * [bin/](https://github.com/jj5/kickass-crypto/tree/main/bin/): command-line commands
 * [bin/dev/](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/): development scripts
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh): run fast and slow unit tests
