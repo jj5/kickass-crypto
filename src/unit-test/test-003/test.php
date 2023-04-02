@@ -387,7 +387,10 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->encrypt( 'test'  );
+          assert( $this->get_openssl_error() === null );
+          $result = $this->encrypt( 'test'  );
+          assert( $this->get_openssl_error() !== null );
+          return $result;
         }
         protected function do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $iv = '';
