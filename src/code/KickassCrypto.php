@@ -255,8 +255,12 @@ define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 //
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
+
+// 2023-04-03 jj5 - this delay is a floating-point value in seconds, it's for comparison of the
+// value returned from the PHP microtime()...
+//
 define(
-  'KICKASS_CRYPTO_DELAY_MICROSECONDS_MIN',
+  'KICKASS_CRYPTO_DELAY_SECONDS_MIN',
   1.0 / ( KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN / 1_000 )
 );
 
@@ -1108,7 +1112,7 @@ abstract class KickassCrypto {
 
       $duration = microtime( $as_float = true ) - $start;
 
-      if ( $duration < KICKASS_CRYPTO_DELAY_MICROSECONDS_MIN ) {
+      if ( $duration < KICKASS_CRYPTO_DELAY_SECONDS_MIN ) {
 
         $this->emergency_delay();
 
