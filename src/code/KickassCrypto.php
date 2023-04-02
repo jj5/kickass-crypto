@@ -221,10 +221,11 @@ function kickass_at_rest( $set = false ) {
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
-// future...
+// future... note that 2^26 is about 64 MiB.
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', 4096 );
-define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_LIMIT', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX', pow( 2, 26 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS', JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
@@ -313,6 +314,7 @@ define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH', 'invalid passphrase length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2', 'invalid passphrase length (2).' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE', 'invalid chunk size.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH', 'invalid binary length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
@@ -323,7 +325,10 @@ define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2', 'encryption failed (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2', 'invalid ciphertext (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA', 'invalid data.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PARTS', 'invalid parts.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT', 'invalid message format.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC', 'invalid data length spec.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE', 'invalid data length range.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH', 'invalid message length.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
@@ -739,7 +744,12 @@ abstract class KickassCrypto {
 
       $this->catch( $ex );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3,
+        [
+          'ex' => $ex,
+        ]
+      );
 
     }
   }
@@ -757,7 +767,12 @@ abstract class KickassCrypto {
 
       $this->catch( $ex );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
+        [
+          'ex' => $ex,
+        ]
+      );
 
     }
   }
@@ -938,11 +953,19 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_config_json_length_limit(
-    $default = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_LIMIT
+  protected function get_config_chunk_size_max(
+    $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
   ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_LENGTH_LIMIT', $default );
+    return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
+
+  }
+
+  protected function get_config_json_length_max(
+    $default = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX
+  ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_LENGTH_MAX', $default );
 
   }
 
@@ -1091,9 +1114,17 @@ abstract class KickassCrypto {
 
     }
 
-    if ( strlen( $json ) > $this->get_config_json_length_limit() ) {
+    $json_length = strlen( $json );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE );
+    if ( $json_length > $this->get_config_json_length_max() ) {
+
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
+        [
+          'json_length' => $json_length,
+          'json_length_max' => $this->get_config_json_length_max(),
+        ]
+      );
 
     }
 
@@ -1105,26 +1136,47 @@ abstract class KickassCrypto {
 
     }
 
-    if ( strlen( $passphrase ) !== $this->get_const_passphrase_length() ) {
+    $passphrase_length = strlen( $passphrase );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH );
+    if ( $passphrase_length !== $this->get_const_passphrase_length() ) {
+
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH,
+        [
+          'passphrase_length' => $passphrase_length,
+          'passphrase_length_required' => $this->get_const_passphrase_length(),
+        ]
+      );
 
     }
 
-    $data_length = strlen( $json );
-
     $chunk_size = $this->get_config_chunk_size();
 
-    assert( is_int( $chunk_size ) );
-    assert( $chunk_size > 0 );
+    if (
+      ! is_int( $chunk_size ) ||
+      $chunk_size <= 0 ||
+      $chunk_size > $this->get_config_chunk_size_max()
+    ) {
 
-    $pad_length = $chunk_size - ( $data_length % $chunk_size );
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+        [
+          'chunk_size' => $chunk_size,
+          'chunk_size_max' => $this->get_config_chunk_size_max(),
+        ]
+      );
+
+    }
+
+    $pad_length = $chunk_size - ( $json_length % $chunk_size );
+
+    assert( $pad_length <= $chunk_size );
 
     // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
     //
-    $hex_data_length = sprintf( '%08x', $data_length );
+    $hex_json_length = sprintf( '%08x', $json_length );
 
-    $message = $hex_data_length . '|' . $json . $this->get_padding( $pad_length );
+    $message = $hex_json_length . '|' . $json . $this->get_padding( $pad_length );
 
     $ciphertext = $this->do_encrypt_string( $message, $passphrase );
 
@@ -1226,6 +1278,92 @@ abstract class KickassCrypto {
     }
 
     return $this->error( $error );
+
+  }
+
+  protected function try_decrypt( string $binary, string $passphrase ) {
+
+    $message = $this->do_decrypt_string( $binary, $passphrase );
+
+    if ( $message === false ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+
+    }
+
+    return $this->decode_message( $message );
+
+  }
+
+  protected function decode_message( string $message ) {
+
+    // 2023-04-02 jj5 - this function decodes a message, which is:
+    //
+    // $json_length . '|' . $json . $random_padding
+    //
+    // 2023-04-02 jj5 - this function will read the data length and then extract the JSON. This
+    // function doesn't validate the JSON.
+
+    // 2023-04-02 jj5 - NOTE: this limit of 2 GiB worth of JSON is just a heuristic for this
+    // part of the code; the data can't actually be this long, but other parts of the code will
+    // handle that.
+    //
+    static $max_json_length = 2_147_483_647;
+
+    assert( hexdec( '7fffffff' ) === $max_json_length );
+
+    $parts = explode( '|', $message, 2 );
+
+    if ( count( $parts ) !== 2 ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT );
+
+    }
+
+    $json_length_string = $parts[ 0 ];
+
+    if ( strlen( $json_length_string ) !== 8 ) {
+
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC,
+        [
+          'json_length_string' => $json_length_string,
+        ]
+      );
+
+    }
+
+    $json_length = hexdec( $json_length_string );
+
+    if (
+      ! is_int( $json_length ) ||
+      $json_length <= 0 ||
+      $json_length > $max_json_length
+    ) {
+
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+        [
+          'json_length' => $json_length,
+        ]
+      );
+
+    }
+
+    // 2023-04-02 jj5 - the binary data is the JSON with the random padding after it. So take
+    // the JSON from the beginning of the string, ignore the padding, and return the JSON.
+
+    $binary = $parts[ 1 ];
+
+    if ( $json_length > strlen( $binary ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH );
+
+    }
+
+    $json = substr( $binary, 0, $json_length );
+
+    return $json;
 
   }
 
@@ -1507,36 +1645,6 @@ abstract class KickassCrypto {
 
     return $result;
 
-  }
-
-  protected function try_decrypt( string $binary, string $passphrase ) {
-
-    $message = $this->do_decrypt_string( $binary, $passphrase );
-
-    if ( $message === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
-
-    }
-
-    $parts = explode( '|', $message, 2 );
-
-    if ( count( $parts ) !== 2 ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_PARTS );
-
-    }
-
-    $length = hexdec( $parts[ 0 ] );
-
-    assert( is_int( $length ) );
-    assert( $length > 0 );
-
-    $binary = $parts[ 1 ];
-
-    $json = substr( $binary, 0, $length );
-
-    return $json;
   }
 
   protected function calc_passphrase( string $key ) {

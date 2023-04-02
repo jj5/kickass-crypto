@@ -104,6 +104,90 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return true;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return 0;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return 0.0;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return 1.0;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( 'test' );
+        }
+        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+          return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX + 1;
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
     function() {
       return new class extends ValidCrypto {
@@ -387,7 +471,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_PARTS,
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -419,7 +503,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->encrypt( str_repeat( '0', $this->get_config_json_length_limit() ) );
+          return $this->encrypt( str_repeat( '0', $this->get_config_json_length_max() ) );
         }
       };
     }
@@ -518,6 +602,73 @@ function run_test() {
         }
         protected function php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag ) {
           return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decode_message( 'invalid' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decode_message( '123456789|true' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          assert( $this->decode_message( '00000001| ' ) === ' ' );
+          return $this->decode_message( '00000000|' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decode_message( 'ffffffff|true' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decode_message( '80000000|true' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->decode_message( '7fffffff|true' );
         }
       };
     }
