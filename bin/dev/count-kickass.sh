@@ -37,7 +37,7 @@ main() {
   # 2023-04-03 jj5 - the +1 is for the last line above (it has five kickasses in it, I'm gonna
   # assume there are no other instances of five kickasses on a single line).
 
-  local count=$(( banner + kickass_1 + kickass_2 + kickass_3 + kickass_4 + 1 ));
+  local count=$( printf "%'d" $(( banner + kickass_1 + kickass_2 + kickass_3 + kickass_4 + 1 )) );
 
   if false; then
 
