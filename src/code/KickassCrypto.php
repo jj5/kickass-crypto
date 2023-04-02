@@ -1188,14 +1188,6 @@ abstract class KickassCrypto {
 
     $encoded = $this->encode( $ciphertext );
 
-    /*
-    var_dump([
-      'message' => strlen( $message ),
-      'ciphertext' => strlen( $ciphertext ),
-      'encoded' => strlen( $encoded ),
-    ]);
-    */
-
     return $encoded;
 
   }
@@ -1550,15 +1542,6 @@ abstract class KickassCrypto {
 
     return;
 
-    if ( $input !== $decoded ) {
-
-      var_dump([
-        'input' => $input,
-        'decoded' => $decoded,
-      ]);
-
-    }
-
     assert( $input === $decoded );
 
   }
@@ -1618,8 +1601,6 @@ abstract class KickassCrypto {
     /*
     if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
 
-      var_dump( $parts );
-
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
 
     }
@@ -1666,18 +1647,6 @@ abstract class KickassCrypto {
     $iv_length = $this->get_const_iv_length();
     $tag_length = $this->get_const_tag_length();
     $ciphertext_length = $binary_length - $iv_length - $tag_length;
-
-    if ( false ) {
-
-      var_dump([
-        'binary' => $binary,
-        'binary_length' => $binary_length,
-        'iv_length' => $iv_length,
-        'ciphertext_length' => $ciphertext_length,
-        'tag_length' => $tag_length,
-      ]);
-
-    }
 
     $min_length = $iv_length + 1 + $tag_length;
 
