@@ -13,19 +13,18 @@
 
 \************************************************************************************************/
 
+/************************************************************************************************\
+//
 // 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is the
 // only file that you need to include, but other goodies ship with the project. The actual
 // proper and supported way to include this library is to include the inc/library.php include file
 // which will handle including this file after making sure it is safe to do so.
 //
-// 2023-03-31 jj5 - SEE: https://github.com/jj5/kickass-crypto
+// 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
 //
-// 2023-03-30 jj5 - make sure you load a valid config.php file, then encrypt like this:
+// 2023-03-30 jj5 - make sure you load a valid config.php file, then use it like this:
 //
 //   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
-//
-// and decrypt like this:
-//
 //   $plaintext = kickass_round_trip()->decrypt( $ciphertext );
 //
 // see README.md for more info.
@@ -42,14 +41,13 @@
 //* CONFIG_ENCRYPTION_SECRET_LIST
 //
 // See bin/gen-key.php in this project for key generation.
+//
+\************************************************************************************************/
 
 // 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
 // encryption components for each use case. If you want to override with a different
 // implementation you can pass in a new instance, or you can manage construction yourself and
-// access some other way. These functions are how you should ordinarily access this library, viz:
-//
-// $ciphertext = kickass_round_trip()->encrypt( 'secret text' );
-// $plaintext = kickass_round_trip()->decrypt( $ciphertext );
+// access some other way. These functions are how you should ordinarily access this library.
 
 function kickass_round_trip( $set = false ) {
 
