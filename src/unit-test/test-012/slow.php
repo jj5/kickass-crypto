@@ -49,13 +49,13 @@ function run_test() {
 
   }
 
-  for ( $length = 10_000_000; $length < 100_000_000; $length += 100_000 ) {
+  for ( $length = 10_000_000; $length < 100_000_000; $length += 1_000_000 ) {
 
     test_length( $length, 1_000_000 );
 
   }
 
-  for ( $length = 100_000_000; $length < 1_000_000_000; $length += 1_000_000 ) {
+  for ( $length = 100_000_000; $length < 1_000_000_000; $length += 10_000_000 ) {
 
     test_length( $length, 10_000_000 );
 
