@@ -239,10 +239,15 @@ require_once __DIR__ . '/config.php';
 When I name things which are secret I make sure the name contains the string "pass" (as in
 "password", "passwd", and "passphrase", or even, at a stretch, "passport") or "secret". In my
 general purpose logging facilities (which aren't included in this library) I scrub and redact
-anything with a name that matches prior to logging diagnostic data. I encourage you to adopt this
-practice. In this library if a variable or constant might contain sensitive data it will be named
-with either "pass" or "secret" as a substring in the name. **_Don't write sensitive data into
-logs._**
+anything with a name that matches (case-insensitive) prior to logging diagnostic data. I encourage
+you to adopt this practice.
+
+In this library if a variable or constant might contain sensitive data it will be named
+with either "pass" or "secret" as a substring in the name.
+
+**_Don't write sensitive data into logs._**
+
+**_Do put either 'pass' or 'secret' in the name of sensitive variables, fields, or constants._**
 
 ## Configuration settings
 
