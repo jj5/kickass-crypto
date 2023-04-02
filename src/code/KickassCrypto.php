@@ -44,6 +44,8 @@
 //
 \************************************************************************************************/
 
+// 2023-04-03 jj5 - a crypto component will provide this interface...
+//
 interface IKickassCrypto {
 
   public function get_error_list();
