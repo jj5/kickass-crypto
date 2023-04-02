@@ -254,17 +254,17 @@ This library requires secure random data inputs for various reasons:
 
 There are two main options for generating suitable random data in PHP, those are:
 
-* [openssl_random_pseudo_bytes()])https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php)
-* [random_bytes()])https://www.php.net/manual/en/function.random-bytes.php)
+* [openssl_random_pseudo_bytes()](https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php)
+* [random_bytes()](https://www.php.net/manual/en/function.random-bytes.php)
 
 Both are reasonable choices but this library uses
-[random_bytes()])https://www.php.net/manual/en/function.random-bytes.php).
+[random_bytes()](https://www.php.net/manual/en/function.random-bytes.php).
 
 If the `random_bytes()` function is unable to generate secure random data it will throw an
 exception. See the documentation for details.
 
 We also use the PHP
-[random_int()])https://www.php.net/manual/en/function.random-int.php)
+[random_int()](https://www.php.net/manual/en/function.random-int.php)
 function to generate a random delay for use in timing attack mitigation.
 
 ## Configuration settings
