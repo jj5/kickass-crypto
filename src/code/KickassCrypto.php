@@ -199,7 +199,7 @@ function kickass_at_rest( $set = false ) {
 
     foreach ( $errors as $error ) {
 
-      $message = __FILE__ . ": $error";
+      $message = __FILE__ . ': ' . $error;
 
       if ( defined( 'STDERR' ) ) {
 
