@@ -868,9 +868,9 @@ There's some test runners in
 as you can see. Read the scripts for the gory details but in brief:
 
 * [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh) will run the
-fast tests
+fast tests, takes about 5 seconds
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh) will
-run the fast tests and the slow tests
+run the fast tests and the slow tests, takes about 5 minutes
 
 There are also some silly tests, but we won't talk about those. They are not
 ordinarily run. And they're silly.
