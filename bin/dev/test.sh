@@ -2,7 +2,11 @@
 
 # 2023-04-03 jj5 - this script will run the library's unit tests. By default only the normal/fast
 # tests are run. Pass --slow to also run the slow tests, and --silly to run the silly tests. But
-# don't run the silly tests... they're silly!
+# don't run the silly tests... they're silly.
+#
+# 2023-04-03 jj5 - NOTE: if a test has a shell script, that is run. Otherwise the PHP script is
+# run. Each test in a src/unit-test/test-XXX directory can have fast, slow, and silly components,
+# and they will be run in that order, if they are enabled.
 
 main() {
 
