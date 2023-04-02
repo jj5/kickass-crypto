@@ -785,7 +785,7 @@ abstract class KickassCrypto {
   use KICKASS_PHP_WRAPPER;
 
   // 2023-03-30 jj5 - our counters are stored here, call
-  //* count() to increment a 'function' counter
+  //* count_function() to increment a 'function' counter
   //* count_class() to increment a 'class' counter
   //* count_length() to increment a 'length' counter
   //
@@ -793,7 +793,8 @@ abstract class KickassCrypto {
   //
   // 2023-04-02 jj5 - the class counters count how many times certain classes were constructed.
   //
-  // 2023-04-02 jj5 - the length counter counts the lengths of successfully encrypted data.
+  // 2023-04-02 jj5 - the length counter counts the lengths of successfully encrypted data that
+  // occur, these should group due to chunking.
   //
   private static $telemetry = [
     'function' => [],
@@ -1018,7 +1019,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $this->count( __FUNCTION__ );
+      $this->count_function( __FUNCTION__ );
 
       $result = $this->do_encrypt( $input );
 
@@ -1049,7 +1050,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $this->count( __FUNCTION__ );
+      $this->count_function( __FUNCTION__ );
 
       return $this->do_decrypt( $ciphertext );
 
@@ -1072,7 +1073,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $this->count( __FUNCTION__ );
+      $this->count_function( __FUNCTION__ );
 
       $start = microtime( $as_float = true );
 
@@ -1132,7 +1133,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $this->count( __FUNCTION__ );
+      $this->count_function( __FUNCTION__ );
 
       return $this->do_catch( $ex );
 
@@ -1143,7 +1144,7 @@ abstract class KickassCrypto {
       // impementations via the do_catch() method, as above. We don't trust implementations not
       // to throw, and as we're presently *in* an exception handler, we don't want to throw
       // another exception, because code might not be set up to accommodate that. So if we
-      // land here do_catch() above (or count()?) has thrown, so just log and ignore.
+      // land here do_catch() above (or count_function()?) has thrown, so just log and ignore.
 
       try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
 
@@ -1152,7 +1153,7 @@ abstract class KickassCrypto {
 
   protected final function throw( int $code, $data = null, $previous = null ) {
 
-    $this->count( __FUNCTION__ );
+    $this->count_function( __FUNCTION__ );
 
     return $this->do_throw( $code, $data, $previous );
 
@@ -1162,7 +1163,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $this->count( __FUNCTION__ );
+      $this->count_function( __FUNCTION__ );
 
       return $this->do_error( $error );
 
@@ -1170,8 +1171,8 @@ abstract class KickassCrypto {
     catch ( Throwable $ex ) {
 
       // 2023-04-01 jj5 - the whole point of this function is to *not* throw an exception. Neither
-      // count() or do_error() has any business throwing an exception. If they do we make some
-      // noise in the log file and return false.
+      // count_function() or do_error() has any business throwing an exception. If they do we make
+      // some noise in the log file and return false.
 
       try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $dummy ) { ; }
 
@@ -1187,7 +1188,7 @@ abstract class KickassCrypto {
   //
   protected function count_this( $caller ) {
 
-    $this->count( $caller );
+    $this->count_function( $caller );
 
     if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
 
@@ -1206,7 +1207,7 @@ abstract class KickassCrypto {
     }
   }
 
-  protected function count( $metric ) {
+  protected function count_function( $metric ) {
 
     return $this->increment_counter( self::$telemetry[ 'function' ], $metric );
 
