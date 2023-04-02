@@ -1039,6 +1039,8 @@ abstract class KickassCrypto {
 
     try {
 
+      $this->inject_delay = true;
+
       $this->count_function( __FUNCTION__ );
 
       $result = $this->do_encrypt( $input );
@@ -1069,6 +1071,8 @@ abstract class KickassCrypto {
   public final function decrypt( string $ciphertext ) {
 
     try {
+
+      $this->inject_delay = true;
 
       $this->count_function( __FUNCTION__ );
 
@@ -1157,6 +1161,10 @@ abstract class KickassCrypto {
       // to throw, and as we're presently *in* an exception handler, we don't want to throw
       // another exception, because code might not be set up to accommodate that. So if we
       // land here do_catch() above (or count_function()?) has thrown, so just log and ignore.
+
+      // 2023-04-03 jj5 - note that here we call the PHP error directly so no one has a chance
+      // to interfere with this message being logged. It should never happen and if it does we
+      // want to give ourselves our best chance of finding out about it so we can address.
 
       try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $ignore ) { ; }
 
