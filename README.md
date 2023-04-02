@@ -367,6 +367,9 @@ prefixed. Before encryption the message is formatted, like this:
 $message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
 ```
 
+The JSON data length is formatted as an 8-character hexadecimal value. The size of 8 characters
+is constant and does not vary depending on the magnitude of the JSON data length.
+
 The reason for the padding is to obscure the actual data size. Padding is done in up to 4 KiB
 boundaries (2<sup>12</sup> bytes), which we call chunks. The chunk size is configurable and the
 default may change in future.
