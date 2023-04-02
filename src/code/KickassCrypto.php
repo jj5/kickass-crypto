@@ -1398,6 +1398,8 @@ abstract class KickassCrypto {
 
   protected function is_valid_secret( $secret ) {
 
+    if ( ! is_string( $secret ) ) { return false; }
+
     if ( strlen( $secret ) < $this->get_const_key_length_min() ) { return false; }
 
     return true;
