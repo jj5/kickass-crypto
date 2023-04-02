@@ -369,6 +369,10 @@ class KickassException extends Exception {
 
 }
 
+// 2023-04-02 jj5 - these traits make a bunch of assumptions about the class that hosts them.
+// They've basically been designed to be an a class which extends KickassCrypto, they're not for
+// use in other circumstances.
+
 trait KICKASS_DEBUG_LOG {
 
   // 2023-04-02 jj5 - if you include this trait logs will only be written if DEBUG is defined...
@@ -384,8 +388,8 @@ trait KICKASS_DEBUG_LOG {
 
 trait KICKASS_DEBUG_KEYS {
 
-  // 2023-04-02 jj5 - if you include this trait you'll be setup with some test keys and a valid
-  // config file.
+  // 2023-04-02 jj5 - if you include this trait you'll be setup with a test key and a valid
+  // config.
 
   protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
 
