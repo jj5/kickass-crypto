@@ -1406,9 +1406,11 @@ abstract class KickassCrypto {
 
   }
 
-  protected function is_valid_base64( string $input ) {
+  protected function is_valid_base64( $input ) {
 
     if ( empty( $input ) ) { return false; }
+
+    if ( ! is_string( $input ) ) { return false; }
 
     if ( preg_match( KICKASS_CRYPTO_REGEX_BASE64, $input ) ) { return true; }
 
