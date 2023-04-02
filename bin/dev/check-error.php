@@ -25,6 +25,7 @@ function main( $argv ) {
   define( 'REGEX', "/.*define\( '(KICKASS_CRYPTO_ERROR_[^']*)'/" );
 
   $error = 0;
+  $const_list = [];
 
   $lib = realpath( __DIR__ . '/../../src/code/KickassCrypto.php' );
   $test = realpath( __DIR__ . '/../../src/unit-test/test-003/test.php' );
@@ -42,7 +43,13 @@ function main( $argv ) {
 
     foreach ( $test_lines as $test_line ) {
 
-      if ( strpos( $test_line, $match ) !== false ) { continue 2; }
+      if ( strpos( $test_line, $match ) !== false ) {
+
+        $const_list[] = $error_const;
+
+        continue 2;
+
+      }
 
     }
 
@@ -52,8 +59,17 @@ function main( $argv ) {
 
   }
 
-  exit( $error );
+  if ( $error ) {
 
+    exit( $error );
+
+  }
+
+  foreach ( $const_list as $const ) {
+
+    echo $const . "\n";
+
+  }
 }
 
 main( $argv );
