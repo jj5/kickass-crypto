@@ -44,12 +44,30 @@
 //
 \************************************************************************************************/
 
+interface IKickassCrypto {
+
+  public function get_error_list();
+
+  public function get_error();
+
+  public function get_openssl_error();
+
+  public function clear_error();
+
+  public function encrypt( $input );
+
+  public function decrypt( string $ciphertext );
+
+  public function delay();
+
+}
+
 // 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
 // encryption components for each use case. If you want to override with a different
 // implementation you can pass in a new instance, or you can manage construction yourself and
 // access some other way. These functions are how you should ordinarily access this library.
 
-function kickass_round_trip( $set = false ) {
+function kickass_round_trip( $set = false ) : IKickassCrypto {
 
   static $instance = null;
 
@@ -61,7 +79,7 @@ function kickass_round_trip( $set = false ) {
 
 }
 
-function kickass_at_rest( $set = false ) {
+function kickass_at_rest( $set = false ) : IKickassCrypto {
 
   static $instance = null;
 
@@ -799,7 +817,7 @@ trait KICKASS_PHP_WRAPPER {
 // from them. Other classes which inherit from KickassCrypto are counted separately, which is
 // probably what you want. See the count_this() method if you need to change counting behavior.
 //
-abstract class KickassCrypto {
+abstract class KickassCrypto implements IKickassCrypto {
 
   use KICKASS_PHP_WRAPPER;
 
@@ -1038,6 +1056,35 @@ abstract class KickassCrypto {
       echo "\n";
 
     }
+  }
+
+  public function get_error_list() {
+
+    return $this->error_list;
+
+  }
+
+  public function get_error() {
+
+    $count = count( $this->error_list );
+
+    if ( $count === 0 ) { return null; }
+
+    return $this->error_list[ $count - 1 ];
+
+  }
+
+  public function get_openssl_error() {
+
+    return $this->openssl_error;
+
+  }
+
+  public function clear_error() {
+
+    $this->error_list = [];
+    $this->openssl_error = null;
+
   }
 
   public final function encrypt( $input ) {
@@ -1429,35 +1476,6 @@ abstract class KickassCrypto {
     if ( preg_match( KICKASS_CRYPTO_REGEX_BASE64, $input ) ) { return true; }
 
     return false;
-
-  }
-
-  public function get_error_list() {
-
-    return $this->error_list;
-
-  }
-
-  public function get_error() {
-
-    $count = count( $this->error_list );
-
-    if ( $count === 0 ) { return null; }
-
-    return $this->error_list[ $count - 1 ];
-
-  }
-
-  public function get_openssl_error() {
-
-    return $this->openssl_error;
-
-  }
-
-  public function clear_error() {
-
-    $this->error_list = [];
-    $this->openssl_error = null;
 
   }
 
