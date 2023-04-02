@@ -313,6 +313,7 @@ define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH', 'invalid passphrase length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2', 'invalid passphrase length (2).' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH', 'invalid binary length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
@@ -338,10 +339,10 @@ define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
 define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
 define( 'KICKASS_CRYPTO_CIPHER', 'aes-256-gcm' );
 define( 'KICKASS_CRYPTO_OPTIONS', OPENSSL_RAW_DATA );
-define( 'KICKASS_CRYPTO_KEYMINLEN', 88 );
-define( 'KICKASS_CRYPTO_PPLEN', 32 );
-define( 'KICKASS_CRYPTO_IVLEN', 12 );
-define( 'KICKASS_CRYPTO_TAGLEN', 16 );
+define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
+define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH', 32 );
+define( 'KICKASS_CRYPTO_IV_LENGTH', 12 );
+define( 'KICKASS_CRYPTO_TAG_LENGTH', 16 );
 
 // 2023-03-30 jj5 - we define an exception class for this component so that we can associate
 // custom data with our exceptions...
@@ -524,76 +525,122 @@ abstract class KickassCrypto {
 
     $this->count_this();
 
-    if ( ! $this->is_valid_config( $problem ) ) {
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION' ) ) {
 
-      $this->throw(
-        KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG,
-        [
-          'problem' => $problem,
-        ]
-      );
+      define( 'KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION', false );
 
     }
 
-    assert( $problem === null );
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION', false );
+
+    }
+
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION', false );
+
+    }
+
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION', false );
+
+    }
+
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION' ) ) {
+
+      define( 'KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION', false );
+
+    }
+
+    if ( ! KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION ) {
+
+      if ( ! $this->is_valid_config( $problem ) ) {
+
+        $this->throw(
+          KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG,
+          [
+            'problem' => $problem,
+          ]
+        );
+
+      }
+
+      assert( $problem === null );
+
+    }
 
     $key_hash = $this->get_const_key_hash();
     $hash_list = hash_algos();
 
-    if ( ! in_array( $key_hash, $hash_list ) ) {
+    if ( ! KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION ) {
 
-      $this->throw(
-        KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH,
-        [
-          'key_hash' => $key_hash,
-          'hash_list' => $hash_list,
-        ]
-      );
+      if ( ! in_array( $key_hash, $hash_list ) ) {
 
+        $this->throw(
+          KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH,
+          [
+            'key_hash' => $key_hash,
+            'hash_list' => $hash_list,
+          ]
+        );
+
+      }
     }
 
     $cipher = $this->get_const_cipher();
-    $cipher_list = $this->php_openssl_get_cipher_methods();
+    $cipher_list = $this->wrap_php_openssl_get_cipher_methods();
 
-    if ( ! in_array( $cipher, $cipher_list ) ) {
+    if ( ! KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION ) {
 
-      $this->throw(
-        KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER,
-        [
-          'cipher' => $cipher,
-          'cipher_list' => $cipher_list,
-        ]
-      );
+      if ( ! in_array( $cipher, $cipher_list ) ) {
 
+        $this->throw(
+          KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER,
+          [
+            'cipher' => $cipher,
+            'cipher_list' => $cipher_list,
+          ]
+        );
+
+      }
     }
 
-    $ivlen = $this->php_openssl_cipher_iv_length( $cipher );
-    $ivlen_expected = $this->get_const_ivlen();
+    $iv_length = $this->wrap_php_openssl_cipher_iv_length( $cipher );
+    $iv_length_expected = $this->get_const_iv_length();
 
-    if ( $ivlen !== $ivlen_expected ) {
+    if ( ! KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION ) {
 
-      $this->throw(
-        KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH,
-        [
-          'cipher' => $cipher,
-          'ivlen' => $ivlen,
-          'ivlen_expected' => $ivlen_expected,
-        ]
-      );
+      if ( $iv_length !== $iv_length_expected ) {
 
+        $this->throw(
+          KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH,
+          [
+            'cipher' => $cipher,
+            'iv_length' => $iv_length,
+            'iv_length_expected' => $iv_length_expected,
+          ]
+        );
+
+      }
     }
 
-    try {
+    if ( ! KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION ) {
 
-      $test_bytes = $this->php_random_bytes( 2 );
+      try {
 
-    }
-    catch ( Random\RandomException $ex ) {
+        $test_bytes = $this->wrap_php_random_bytes( 2 );
 
-      $this->catch( $ex );
+      }
+      catch ( Random\RandomException $ex ) {
 
-      return $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
+        $this->catch( $ex );
 
+        return $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
+
+      }
     }
   }
 
@@ -736,7 +783,7 @@ abstract class KickassCrypto {
 
         $this->error_list[] = $error;
 
-        while ( $openssl_error = $this->php_openssl_error_string() ) {
+        while ( $openssl_error = $this->wrap_php_openssl_error_string() ) {
 
           $this->openssl_error = $openssl_error;
 
@@ -939,21 +986,27 @@ abstract class KickassCrypto {
 
   }
 
-  protected function get_const_pplen() {
+  protected function get_const_key_length_min() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_PPLEN' );
-
-  }
-
-  protected function get_const_ivlen() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_IVLEN' );
+    return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
 
   }
 
-  protected function get_const_taglen() {
+  protected function get_const_passphrase_length() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_TAGLEN' );
+    return $this->get_const( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH' );
+
+  }
+
+  protected function get_const_iv_length() {
+
+    return $this->get_const( 'KICKASS_CRYPTO_IV_LENGTH' );
+
+  }
+
+  protected function get_const_tag_length() {
+
+    return $this->get_const( 'KICKASS_CRYPTO_TAG_LENGTH' );
 
   }
 
@@ -977,7 +1030,7 @@ abstract class KickassCrypto {
 
   protected function is_valid_secret( $secret ) {
 
-    if ( strlen( $secret ) < KICKASS_CRYPTO_KEYMINLEN ) { return false; }
+    if ( strlen( $secret ) < $this->get_const_key_length_min() ) { return false; }
 
     return true;
 
@@ -1052,7 +1105,7 @@ abstract class KickassCrypto {
 
     }
 
-    if ( strlen( $passphrase ) !== $this->get_const_pplen() ) {
+    if ( strlen( $passphrase ) !== $this->get_const_passphrase_length() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH );
 
@@ -1097,9 +1150,9 @@ abstract class KickassCrypto {
 
   protected function do_encrypt_string( string $plaintext, string $passphrase ) {
 
-    $iv = $this->php_random_bytes( $this->get_const_ivlen() );
+    $iv = $this->wrap_php_random_bytes( $this->get_const_iv_length() );
 
-    if ( strlen( $iv ) !== $this->get_const_ivlen() ) {
+    if ( strlen( $iv ) !== $this->get_const_iv_length() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH );
 
@@ -1112,7 +1165,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $ciphertext = $this->php_openssl_encrypt(
+      $ciphertext = $this->wrap_php_openssl_encrypt(
         $plaintext, $cipher, $passphrase, $options, $iv, $tag
       );
 
@@ -1125,7 +1178,7 @@ abstract class KickassCrypto {
 
     }
 
-    if ( strlen( $tag ) !== $this->get_const_taglen() ) {
+    if ( strlen( $tag ) !== $this->get_const_tag_length() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH );
 
@@ -1137,7 +1190,7 @@ abstract class KickassCrypto {
 
     }
 
-    return $tag . $iv . $ciphertext;
+    return $iv . $ciphertext . $tag;
 
   }
 
@@ -1154,7 +1207,7 @@ abstract class KickassCrypto {
 
     foreach ( $this->get_passphrase_list() as $passphrase ) {
 
-      if ( strlen( $passphrase ) !== $this->get_const_pplen() ) {
+      if ( strlen( $passphrase ) !== $this->get_const_passphrase_length() ) {
 
         return $this->error( KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2 );
 
@@ -1178,7 +1231,7 @@ abstract class KickassCrypto {
 
   protected function do_decrypt_string( string $binary, string $passphrase ) {
 
-    if ( ! $this->parse_data( $binary, $iv, $tag, $ciphertext ) ) {
+    if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
 
@@ -1191,7 +1244,7 @@ abstract class KickassCrypto {
 
     try {
 
-      $plaintext = $this->php_openssl_decrypt(
+      $plaintext = $this->wrap_php_openssl_decrypt(
         $ciphertext, $cipher, $passphrase, $options, $iv, $tag
       );
 
@@ -1234,7 +1287,7 @@ abstract class KickassCrypto {
     assert( is_int( $nanoseconds ) );
     assert( $nanoseconds < 1_000_000_000 );
 
-    return $this->php_time_nanosleep( $seconds, $nanoseconds );
+    return $this->wrap_php_time_nanosleep( $seconds, $nanoseconds );
 
   }
 
@@ -1313,7 +1366,7 @@ abstract class KickassCrypto {
 
     }
 
-    while ( $openssl_error = $this->php_openssl_error_string() ) {
+    while ( $openssl_error = $this->wrap_php_openssl_error_string() ) {
 
       $this->openssl_error = $openssl_error;
 
@@ -1331,7 +1384,7 @@ abstract class KickassCrypto {
 
       $options = $this->get_config_json_encode_options();
 
-      $result = $this->php_json_encode( $input, $options );
+      $result = $this->wrap_php_json_encode( $input, $options );
 
       if ( $result === false ) {
 
@@ -1378,7 +1431,7 @@ abstract class KickassCrypto {
 
       $options = $this->get_config_json_decode_options();
 
-      $result = $this->php_json_decode( $json, $assoc = true, 512, $options );
+      $result = $this->wrap_php_json_decode( $json, $assoc = true, 512, $options );
 
       if ( $result === false ) {
 
@@ -1400,7 +1453,7 @@ abstract class KickassCrypto {
 
   protected function encode( string $binary ) {
 
-    return $this->get_const_data_format_version() . '/' . $this->php_base64_encode( $binary );
+    return $this->get_const_data_format_version() . '/' . $this->wrap_php_base64_encode( $binary );
 
   }
 
@@ -1434,7 +1487,7 @@ abstract class KickassCrypto {
     }
     */
 
-    $result = $this->php_base64_decode( $parts[ 1 ], $strict = true );
+    $result = $this->wrap_php_base64_decode( $parts[ 1 ], $strict = true );
 
     if ( $result === false ) {
 
@@ -1492,41 +1545,70 @@ abstract class KickassCrypto {
 
   }
 
-  protected function parse_data( $binary, &$iv, &$tag, &$ciphertext ) {
+  protected function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) {
+
+    // 2023-04-02 jj5 - the binary data is: IV + ciphertext + tag; the IV and tag are fixed length
 
     $iv = false;
-    $tag = false;
     $ciphertext = false;
+    $tag = false;
 
-    $ivlen = $this->get_const_ivlen();
-    $taglen = $this->get_const_taglen();
-    $tag = substr( $binary, 0, $taglen );
+    $binary_length = strlen( $binary );
 
-    if ( strlen( $tag ) !== $taglen ) {
+    $iv_length = $this->get_const_iv_length();
+    $tag_length = $this->get_const_tag_length();
+    $ciphertext_length = $binary_length - $iv_length - $tag_length;
 
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
-        [
-          'tag_len' => strlen( $tag ),
-          'expected_tag_len' => $taglen,
-        ]
-      );
+    if ( false ) {
+
+      var_dump([
+        'binary' => $binary,
+        'binary_length' => $binary_length,
+        'iv_length' => $iv_length,
+        'ciphertext_length' => $ciphertext_length,
+        'tag_length' => $tag_length,
+      ]);
 
     }
 
-    $iv = substr( $binary, $taglen, $ivlen );
+    $min_length = $iv_length + 1 + $tag_length;
 
-    if ( strlen( $iv ) !== $ivlen ) {
+    // 2023-04-02 jj5 - NOTE: this test obviates the possibility of the latter tests failing, but
+    // I left them in anyway, just in case a bug is introduced into this part of the function...
+    //
+    if ( $binary_length < $min_length ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH );
+
+    }
+
+    $iv = substr( $binary, 0, $iv_length );
+
+    if ( strlen( $iv ) !== $iv_length ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2 );
 
     }
 
-    $ciphertext = substr( $binary, $taglen + $ivlen );
+    $ciphertext = substr( $binary, $iv_length, $ciphertext_length );
 
-    if ( ! $ciphertext ) {
+    if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2 );
+
+    }
+
+    $tag = substr( $binary, $iv_length + $ciphertext_length );
+
+    if ( strlen( $tag ) !== $tag_length ) {
+
+      return $this->error(
+        KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
+        [
+          'tag_len' => strlen( $tag ),
+          'expected_tag_len' => $tag_length,
+        ]
+      );
 
     }
 
@@ -1536,7 +1618,7 @@ abstract class KickassCrypto {
 
   protected function get_padding( int $length ) {
 
-    return $this->php_random_bytes( $length );
+    return $this->wrap_php_random_bytes( $length );
 
     // 2023-04-01 jj5 - the following is also an option, and might be faster..?
     //
@@ -1555,7 +1637,7 @@ abstract class KickassCrypto {
     assert( $ns_max >= 0 );
     assert( $ns_max >= $ns_min );
 
-    $delay = $this->php_random_int( $ns_min, $ns_max );
+    $delay = $this->wrap_php_random_int( $ns_min, $ns_max );
 
     assert( is_int( $delay ) );
     assert( $delay >= $ns_min );
@@ -1574,8 +1656,231 @@ abstract class KickassCrypto {
 
   protected function is_cli() {
 
-    return $this->php_sapi_name() === 'cli';
+    return $this->wrap_php_sapi_name() === 'cli';
 
+  }
+
+  protected final function wrap_php_base64_encode( $input ) {
+
+    try {
+
+      return $this->php_base64_encode( $input );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_base64_decode( $input, $strict ) {
+
+    try {
+
+      return $this->php_base64_decode( $input, $strict );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_json_encode( $value, $flags, $depth = 512 ) {
+
+    try {
+
+      return $this->php_json_encode( $value, $flags, $depth );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_json_decode( $json, $associative, $depth, $flags ) {
+
+    try {
+
+      return $this->php_json_decode( $json, $associative, $depth, $flags );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_random_int( $min, $max ) {
+
+    try {
+
+      return $this->php_random_int( $min, $max );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_random_bytes( $length ) {
+
+    try {
+
+      return $this->php_random_bytes( $length );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_openssl_get_cipher_methods() {
+    try {
+
+      return $this->php_openssl_get_cipher_methods();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_openssl_cipher_iv_length( $cipher ) {
+
+    try {
+
+      return $this->php_openssl_cipher_iv_length( $cipher );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_openssl_error_string() {
+
+    try {
+
+      return $this->php_openssl_error_string();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_openssl_encrypt(
+    $plaintext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    &$tag
+  ) {
+
+    $tag = null;
+
+    try {
+
+      return $this->php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_openssl_decrypt(
+    $ciphertext,
+    $cipher,
+    $passphrase,
+    $options,
+    $iv,
+    $tag
+  ) {
+
+    try {
+
+      return $this->php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_time_nanosleep( $seconds, $nanoseconds ) {
+
+    try {
+
+      return $this->php_time_nanosleep( $seconds, $nanoseconds );
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
+  }
+
+  protected final function wrap_php_sapi_name() {
+
+    try {
+
+      return $this->php_sapi_name();
+
+    }
+    catch ( Throwable $ex ) {
+
+      $this->catch( $ex );
+
+      throw $ex;
+
+    }
   }
 }
 

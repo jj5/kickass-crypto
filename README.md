@@ -385,15 +385,15 @@ prefixed. Before encryption the message is formatted like this:
 $message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
 ```
 
-The reason for the padding is to obscure the actual data size. Padding is done in up to 4KiB
-boundaries, which we call chunks. The chunk size is configurable and the default may change
-in future.
+The reason for the padding is to obscure the actual data size. Padding is done in up to 4 KiB
+boundaries (2<sup>12</sup> bytes), which we call chunks. The chunk size is configurable and the
+default may change in future.
 
-The message is then encrypted with AES-256-GCM and the authentication tag, initialization vector,
-and cipher text are concatenated together, like this:
+The message is then encrypted with AES-256-GCM and the initialization vector, ciphertext,
+and authentication tag are concatenated together, like this:
 
 ```
-$tag . $iv . $ciphertext
+$iv . $ciphertext . $tag
 ```
 
 Then everything is base64 encoded with the PHP
@@ -557,7 +557,7 @@ that is secret. It's best just not to compress at all._**
 ## Timing attack mitigation
 
 If an error is encountered during encryption or decryption a delay of between
-1 millisecond (1ms) and 10 seconds (10s) is introduced. This is a mitigation
+1 millisecond (1 ms) and 10 seconds (10 s) is introduced. This is a mitigation
 aginst potential timing attacks. See
 [s2n and Lucky 13](https://aws.amazon.com/blogs/security/s2n-and-lucky-13/)
 for discussion.

@@ -104,6 +104,36 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          $binary = str_repeat(
+            '0',
+            $this->get_const_iv_length() - 1
+          );
+          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->parse_binary( 'invalid', $iv, $ciphertext, $tag );
+        }
+        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
+          $tag = 'invalid';
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH,
     function() {
       return new class extends ValidCrypto {
@@ -119,39 +149,12 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          $binary = str_repeat( '0', $this->get_const_taglen() ) . '0';
-          return $this->parse_data( $binary, $iv, $tag, $ciphertext );
-        }
-      };
-    }
-  );
-
-  test_error(
     KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH,
     function() {
       return new class extends ValidCrypto {
         public function test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase );
-        }
-        protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
-          $tag = 'invalid';
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          return $this->parse_data( 'invalid', $iv, $tag, $ciphertext );
         }
         protected function php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, &$tag ) {
           $tag = 'invalid';
@@ -249,9 +252,9 @@ function run_test() {
         protected function php_random_bytes( $length ) {
           return '';
         }
-        protected function get_const_ivlen() {
+        protected function get_const_iv_length() {
           $this->iv_count++;
-          if ( $this->iv_count === 1 ) { return parent::get_const_ivlen(); }
+          if ( $this->iv_count === 1 ) { return parent::get_const_iv_length(); }
           return 0;
         }
       };
@@ -358,13 +361,15 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2,
+    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          $binary = str_repeat( '0', $this->get_const_taglen() ) .
-            str_repeat( '0', $this->get_const_ivlen() );
-          return $this->parse_data( $binary, $iv, $tag, $ciphertext );
+          $binary = str_repeat(
+            '0',
+            $this->get_const_tag_length() + $this->get_const_iv_length()
+          );
+          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
         }
       };
     }

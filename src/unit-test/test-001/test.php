@@ -157,10 +157,10 @@ function run_test() {
     KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function get_const_ivlen() { return 123; }
+        protected function get_const_iv_length() { return 123; }
       };
     },
-    [ 'cipher' => 'aes-256-gcm', 'ivlen' => 12, 'ivlen_expected' => 123 ]
+    [ 'cipher' => 'aes-256-gcm', 'iv_length' => 12, 'iv_length_expected' => 123 ]
   );
 
 }
