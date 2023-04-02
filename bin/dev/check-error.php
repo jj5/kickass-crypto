@@ -50,7 +50,6 @@ function main( $argv ) {
         continue 2;
 
       }
-
     }
 
     echo "untested error: $error_const\n";
