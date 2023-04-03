@@ -2,15 +2,8 @@
 
 A contemporary PHP cryptography library circa 2023.
 
-**Synopsis:** this library provides:
-* a uniform interface to two separate and current encryption libraries
-* [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-encryption with
-[GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
-authentication by using the
-[AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html)
-cipher suite from the
-[OpenSSL library](https://www.php.net/manual/en/book.openssl.php)
+**Synopsis:**
+* a uniform interface to two separate and contemporary encryption libraries
 * [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
 encryption with
 [Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
@@ -18,18 +11,25 @@ authentication by using the
 [sodium_crypto_secretbox()](https://www.php.net/manual/en/function.sodium-crypto-secretbox.php)
 function from the
 [Sodium library](https://doc.libsodium.org/)
+* [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+encryption with
+[GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
+authentication by using the
+[AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html)
+cipher suite from the
+[OpenSSL library](https://www.php.net/manual/en/book.openssl.php)
 * key rotation for separate round-trip and at-rest use cases and some key management functions
 
 This library is a wrapper around the
-[PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php) and the
-[PHP Sodium library](https://www.php.net/manual/en/book.sodium.php).
-
-The OpenSSL code in this library is based on the example given in the documentation for the PHP
-[openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
-function.
+[PHP Sodium library](https://www.php.net/manual/en/book.sodium.php) and the
+[PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php).
 
 The Sodium code in this library is based on the example given in the documentation for the PHP
 [sodium_crypto_secretbox()](https://www.php.net/manual/en/function.sodium-crypto-secretbox.php)
+function.
+
+The OpenSSL code in this library is based on the example given in the documentation for the PHP
+[openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
 function.
 
 This library aims to ensure that the data it encrypts is as secure as the
