@@ -575,7 +575,7 @@ library. Let me know if that's a feature you care to have.
 After data is encoded as JSON it is limited to a configurable maximum length.
 
 The config constant for the maximum JSON encoding length is
-`CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT`.
+`CONFIG_ENCRYPTION_JSON_LENGTH_MAX`.
 
 The default data encoding limit is 67,108,864 (2^<sup>26</sup>) bytes, which
 is roughly 67 MB.
@@ -587,7 +587,7 @@ end up with memory problems and your process might get terminated.
 If you wanted to decrease the data encoding limit you could do that in your
 `config.php` file like this:
 
-```define( 'CONFIG_ENCRYPTION_DATA_ENCODING_LIMIT', pow( 2, 25 ) );```
+```define( 'CONFIG_ENCRYPTION_JSON_LENGTH_MAX', pow( 2, 25 ) );```
 
 ## Data compression
 
@@ -614,8 +614,7 @@ for discussion.
 Note that avoiding timing attacks is
 [hard](https://www.openwall.com/lists/oss-security/2023/01/25/3). A malicious
 guest on your VPS host (or a malicious person listening to your server's fans!
-😜) could figure out that your process is sleeping rather than doing actual
-work.
+😜) could figure out that your process is sleeping rather than doing actual work.
 
 This library includes a method called `delay`, and this method is called
 automatically on the first instance of an error. The `delay` method does what is says on the tin:
@@ -635,19 +634,25 @@ is 1 ms) then the library will inject the emergency delay.
 
 The main reason for allowing the implementer to customize the delay logic is so that unit tests
 can delay for a minimum amount of time. Ordinarily there shouldn't be any reason to meddle with
-the delay logic.
+the delay logic and it might be less safe to do so.
 
 ## Exceptions and errors
 
-When an instance of either `KickassCryptoOpenSSLRoundTrip` or `KickassCryptoOpenSSLAtRest` is
-created the configuration settings are validated. If the configuration settings
+When an instance of one of:
+
+* `KickassCryptoSodiumRoundTrip`
+* `KickassCryptoSodiumAtRest`
+* `KickassCryptoOpenSSLRoundTrip`
+* `KickassCryptoOpenSSLAtRest`
+
+is created the configuration settings are validated. If the configuration settings
 are not valid the constructor will throw an exception. If the constructor succeeds
 then encryption and decryption later on should also (usually) succeed. If there
 are any configuration problems that will mean encryption or decryption won't
 be able to succeed the constructor should throw.
 
 This library defines its own exception class called `KickassException`. This
-works like a normal Exception except that it adds a method `getData` which
+works like a normal Exception except that it adds a method `getData()` which
 can return any data associated with the exception. A `KickassException` doesn't
 always have associated data.
 
@@ -655,7 +660,7 @@ Of course not all problems will be able to be diagnosed in advance. If the
 library can't complete an encryption or decryption operation after a successful
 construction it will signal the error by returning the boolean value false.
 Returning false on error is a PHP idiom, and we use this idiom rather than
-raising an exception to limit the possibility of an excpetion being thrown
+raising an exception to limit the possibility of an exception being thrown
 while an encryption secret or passphrase is on the call stack.
 
 The problem with having sensitive data on the call stack when an exception is raised is
@@ -666,14 +671,23 @@ raise exceptions while sensitive data might be on the stack.
 If false is returned on error, one or more error messages will be added to an
 internal list of errors. The caller can get the latest error by calling the
 method `get_error`. If you want the full list of errors, call `get_error_list`.
-If there were any errors registered by the OpenSSL library functions (which this
-library calls to do the heavy lifting), then the last such error is available
-if you call the `get_openssl_error`. You can clear the current error list and
-OpenSSL error message by calling the method `clear_error`.
+
+If there were any errors registered by the OpenSSL library functions (which the OpenSSL module
+calls to do the heavy lifting), then the last such error is available
+if you call the `get_openssl_error()`. You can clear the current error list (and
+OpenSSL error message) by calling the method `clear_error()`.
 
 ## Cipher suite
 
-This library is a wrapper around the PHP OpenSSL implementation. The cipher
+For the PHP Sodium implementation the function we use is
+[sodium_crypto_secretbox()](https://www.php.net/manual/en/function.sodium-crypto-secretbox.php).
+That's
+[XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
+encryption with
+[Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
+authentication and integrity checking.
+
+For the PHP OpenSSL implementation the cipher
 suite we use is
 [AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html).
 That's
@@ -685,26 +699,40 @@ authentication and integrity checking.
 ## Secret keys and passphrases
 
 Secret keys are the secret values you keep in your `config.php` file which
-will be processed and turned into passphrases for use by the OpenSSL library
+will be processed and turned into passphrases for use by the Sodium and OpenSSL library
 functions. This library automatically handles converting secret keys into
 passphrases so your only responsibility is to nominate the secret keys.
 
-The secret keys used vary based on the use case. There are two default use
+The secret keys used vary based on the use case and the module. There are two default use
 cases, known as round-trip and at-rest.
 
 The "256" in AES-256-GCM means that this cipher suite expects 256-bit (32 byte)
-passphrases. We use a hash algorithm to convert our secret keys into 256-bit
-binary strings which can be used as the passphrases the cipher algorithm
-expects.
+passphrases. The Sodium library `sodium_crypto_secretbox()` function also expects a 256-bit
+(32 byte) passphrase.
+
+We use a hash algorithm to convert our secret keys into 256-bit
+binary strings which can be used as the passphrases the cipher algorithms
+expect.
 
 The minimum secret key length required is 88 bytes. When these keys are
 generated by this library they are generated with 66 bytes of random data which
 is then base64 encoded.
 
-The secret hash algorithm we use is SHA512/256. That's 256-bits worth of data
+The secret key hashing algorithm we use is SHA512/256. That's 256-bits worth of data
 taken from the SHA512 hash of the secret key. When this hash code is applied
 with raw binary output from an 88 byte base64 encoded input you should be
 getting about 32 bytes of randomness for your keys.
+
+## Nonce
+
+The Sodium library expects to be provided with a nonce, in lieu of an initialization vector.
+
+To understand what problem the nonce mitigates, think about what would happen if you
+were encrypting people's birthday. If you had two users with the same birthday
+and you encrypted those birthdays with the same key, then both users would
+have the same ciphertext for their birthdays. When this happens you can see
+who has the same birthday, even when you might not know exactly when it is. The
+initialization vector avoids this potential problem.
 
 ## Initialization vector
 
@@ -714,12 +742,7 @@ which we provide. The initialization vector ensures that even if you
 encrypt the same values with the same passphrase the resultant ciphertext still
 varies.
 
-To understand what problem this mitigates, think about what would happen if you
-were encrypting people's birthday. If you had two users with the same birthday
-and you encrypted those birthdays with the same key, then both users would
-have the same ciphertext for their birthdays. When this happens you can see
-who has the same birthday, even when you might not know exactly when it is. The
-initialization vector avoids this potential problem.
+This mitigates the same problem as the Sodium nonce.
 
 ## Authentication tag
 
@@ -733,6 +756,10 @@ The "GCM" in AES-256-GCM stands for
 (HMAC) which you may have heard of before. The goal of the
 GCM authentication tag is to make your encrypted data
 [tamperproof](https://en.wikipedia.org/wiki/Tamperproofing).
+
+The Sodium library also uses an authentication tag but it takes care of that by itself, it's not
+something we have to manage. When you `parse_binary()` in the Sodium module the tag is set
+to false.
 
 ## Random data
 
@@ -779,9 +806,13 @@ When you rotate your round-trip secret keys you copy the current key into the
 previous key, replacing the old previous key, and then you generate a new
 current key.
 
-The config setting for the current key is: `CONFIG_OPENSSL_SECRET_CURR`.
+The config setting for the current key for the Sodium module is: `CONFIG_SODIUM_SECRET_CURR`.
 
-The config setting for the previous key is: `CONFIG_OPENSSL_SECRET_PREV`.
+The config setting for the current key for the OpenSSL module is: `CONFIG_OPENSSL_SECRET_CURR`.
+
+The config setting for the previous key for the Sodium module is: `CONFIG_SODIUM_SECRET_PREV`.
+
+The config setting for the previous key for the OpenSSL module is: `CONFIG_OPENSSL_SECRET_PREV`.
 
 To encrypt round-trip data:
 
@@ -815,6 +846,10 @@ After you rotate your at-rest secret keys you should consider re-encrypting
 all your existing at-rest data so that it is using the latest key. After you
 have re-encrypted your at-rest data, you can remove the older key.
 
+The config setting for the key list for the Sodium module is: `CONFIG_SODIUM_SECRET_LIST`.
+
+The config setting for the key list for the OpenSSL module is: `CONFIG_OPENSSL_SECRET_LIST`.
+
 **Please be aware:** if you restore an old backup of your database, you will
 also need to restore your old keys.
 
@@ -840,8 +875,7 @@ It has been noted that key management is the hardest part of cybersecurity.
 
 Your encrypted data is only as secure as the secret keys.
 
-If someone gets a copy of your secret keys, they will be able to decrypt your
-data.
+If someone gets a copy of your secret keys, they will be able to decrypt your data.
 
 If someone gets a copy of your encrypted data now, they can keep it and decrypt it if they get a
 copy of your secret keys in the future. So your keys don't have to be only secret now, but they
@@ -852,7 +886,7 @@ If you lose your secret keys, you won't be able to decrypt your data.
 Your round-trip data is probably less essential than your at-rest data.
 
 It's a very good idea to make sure you have backups of the secret keys for your
-essential rount-trip or at-rest data. You can consider:
+essential round-trip or at-rest data. You can consider:
 
 * off-server secret key backups (only send to trusted hosts on secure networks)
 * off-site secret key backups (only send to trusted hosts on secure networks)
@@ -884,7 +918,7 @@ Another consideration is data in motion. Data in motion is also sometimes called
 
 Data is in motion when it moves between your web servers and your database
 server. Data is also in motion when it moves between your web servers and the
-clients that access them. You should use asymetric encryption for your data in
+clients that access them. You should use asymmetric encryption for your data in
 motion. Use SSL encryption support when you connect to your database, and
 use HTTPS for your web clients.
 
@@ -956,8 +990,10 @@ Here are some notes regarding notable components:
 * [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
 * [src/](https://github.com/jj5/kickass-crypto/tree/main/src/): PHP source code
-* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the library components (presently only one)
-* [src/code/KickassCrypto.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCrypto.php): the full library
+* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the library components
+* [src/code/KickassCrypto.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCrypto.php): the library framework
+* [src/code/KickassCryptoOpenSSL.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCryptoOpenSSL.php): the OpenSSL module
+* [src/code/KickassCryptoSodium.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCryptoSodium.php): the Sodium module
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
 * [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
