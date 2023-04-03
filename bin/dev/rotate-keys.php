@@ -16,15 +16,15 @@
 
 /************************************************************************************************\
 //
-// 2023-04-03 jj5 - this is a development script, if you run it in production it will replace all
-// of your keys. If you do that and you don't have backups there goes your data.
-//
 // 2023-04-03 jj5 - this script changes anything which looks like a secret key to a new secret
 // key. The reason for having this script is that invariably, someone, somewhere, will copy the
 // example files from our unit tests and then use them in production. We can't stop that
 // happening, but we can cycle our keys from time to time as a mitigation of sorts. Of course
 // it's all there in the git history, I dunno. Would it be evil to run this script automatically
 // when the user loads the library on their machine..?
+//
+// 2023-04-03 jj5 - this script has been updated to only run on files in src/unit-test so that
+// hopefully people don't use this script to accidentally hose their production keys.
 //
 \************************************************************************************************/
 
