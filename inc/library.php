@@ -35,29 +35,43 @@
     version_compare( phpversion(), '7.4', '<' )
   ) {
 
-    $error = "The kickass-crypto library requires PHP version 7.4 or greater. " .
-      "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
+    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
 
-    $message = __FILE__ . ": $error";
+      define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
 
-    if ( defined( 'STDERR' ) ) {
+    }
 
-      fwrite( STDERR, "$message\n" );
+    if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
+
+      // 2023-03-31 jj5 - the programmer has enabled this version of PHP, we will allow it.
 
     }
     else {
 
-      error_log( $message );
+      $error = "The kickass-crypto library requires PHP version 7.4 or greater. " .
+        "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
+
+      $message = __FILE__ . ": $error";
+
+      if ( defined( 'STDERR' ) ) {
+
+        fwrite( STDERR, "$message\n" );
+
+      }
+      else {
+
+        error_log( $message );
+
+      }
+
+      // 2023-04-03 jj5 - I use some standard error levels... error level 40 means "invalid
+      // run-time environment, cannot run."
+      //
+      // 2023-04-03 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
+
+      exit( 40 );
 
     }
-
-    // 2023-04-03 jj5 - I use some standard error levels... error level 40 means "invalid
-    // run-time environment, cannot run."
-    //
-    // 2023-04-03 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
-
-    exit( 40 );
-
   }
 })();
 
