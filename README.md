@@ -88,13 +88,16 @@ use the built-in PHP OpenSSL library implementation.
 
 And then... people started telling me about the Sodium library, and suggesting that I use that
 instead. Since I'd already done a bunch of work for key management and input serialization and
-so on I figured I could just reuse all of that and provide a wrapper around Sodium too. So that's
-what I did. Now if you use this library you can decide whether you want to use the Sodium
+message formatting and encoding and so on I figured I could just reuse all of that and provide a
+wrapper around Sodium too. So that's what I did.
+
+Now if you use this library you can decide whether you want to use the Sodium
 implementation or the OpenSSL implementation. Because the two implementations can happily
-co-exist you can also write code to move from one to the other, if you so desired.
+co-exist you can also write code to move from one to the other, if you so desired. The
+implementations never share key configuration, they are entirely separate.
 
 I don't consider this library _rolling my own crypto_, rather I think of it as _figuring out how
-to actually use OpenSSL and Sodium_. If I've made any mistakes, obvious or otherwise, I would
+to actually use Sodium and OpenSSL_. If I've made any mistakes, obvious or otherwise, I would
 [really appreciate hearing about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
 
 ## tl;dr
