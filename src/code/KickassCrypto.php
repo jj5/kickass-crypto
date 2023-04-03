@@ -55,7 +55,7 @@ interface IKickassCrypto {
   // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result; returns false on
   // error...
   //
-  public function encrypt( mixed $input );
+  public function encrypt( $input );
 
   // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON; returns false on
   // error...
@@ -905,7 +905,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
   }
 
-  public final function encrypt( mixed $input ) {
+  public final function encrypt( $input ) {
 
     try {
 
