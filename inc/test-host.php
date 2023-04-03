@@ -22,7 +22,7 @@
 \************************************************************************************************/
 
 require_once __DIR__ . '/test.php';
-require_once __DIR__ . '/library.php';
+require_once __DIR__ . '/framework.php';
 require_once __DIR__ . '/openssl.php';
 require_once __DIR__ . '/sodium.php';
 require_once __DIR__ . '/../src/host/unit-test.php';
