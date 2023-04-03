@@ -133,8 +133,7 @@ or the
 
 ## Library demo
 
-Assuming I remember to update it from time to time, there's a demo system over
-here:
+Assuming I remember to update it from time to time, there's a demo system over here:
 
 * [https://www.progclub.net/~jj5/kickass-crypto/](https://www.progclub.net/~jj5/kickass-crypto/)
 
@@ -155,12 +154,13 @@ git clone https://github.com/jj5/kickass-crypto.git
 
 **This code is unreleased, there is no stable version.**
 
-If you want to include the client library for use in your application include the
-[inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php)
+If you want to include the client library for use in your application include either the
+[inc/sodium.php](https://github.com/jj5/kickass-crypto/tree/main/inc/sodium.php) or the
+[inc/openssl.php](https://github.com/jj5/kickass-crypto/tree/main/inc/openssl.php)
 file which will take care of loading everything else; use something like this:
 
 ```
-require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
+require_once __DIR__ . '/lib/kickass-crypto/inc/sodium.php';
 ```
 
 After loading this library you will usually access via the `kickass_round_trip()` or
@@ -171,7 +171,7 @@ If you want to host the demo code you need to host the files in
 and include a valid `config.php` file in the project base directory (that's the directory that
 includes this [README.md](https://github.com/jj5/kickass-crypto/tree/main/README.md) file).
 For demonstration purposes a valid `config.php` file only needs to define a constant string for
-`CONFIG_OPENSSL_SECRET_CURR`, but it needs to be a long and random string, you can generate
+`CONFIG_SODIUM_SECRET_CURR`, but it needs to be a long and random string, you can generate
 an appropriate string with:
 
 ```
@@ -186,25 +186,25 @@ php bin/gen-demo-config.php > config.php
 
 ## Supported PHP versions
 
-This code should work on PHP 7.4 or greater (but so far I have only actually tested it on
-PHP 8.1.2). If you try to run this code on an older version of PHP it will try to log an error
-message and then exit your process.
+This code should work on PHP 7.4 or greater. If you try to run this code on an older version of
+PHP it will try to log an error message and then exit your process.
 
 ## Supported platforms and environment
 
-This code assumes it's running on a 64-bit platform. It also assumes your PHP
-installation includes the bundled OpenSSL library.
+This code will check to make sure it's running on a 64-bit platform. If it's not it will complain
+and exit.
 
-Actually this code does a little more than assume it's on a 64-bit platform with the OpenSSL
-library, it actually makes an attempt to ensure those things are true. If they're not an error
-is logged and the process is exited.
+If you load the Sodium module the library will ensure that the Sodium library is actually
+available. If it's not, the process will complain and exit.
+
+If you load the OpenSSL module the library will ensure that the OpenSSL library is actually
+available. If it's not, the process will complain and exit.
 
 I believe this code should run on any operating system, but I have only tested it on Linux. If you
 have had success on MacOS or Windows I would be
 [happy to hear about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
 
-Shell scripts are written for bash. If you don't have bash you may need to
-port.
+Shell scripts are written for bash. If you don't have bash you may need to port.
 
 ## On being old fashioned
 
@@ -969,7 +969,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 711 times (including the ASCII banners).
+The string "kickass" appears in the source code 715 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 
