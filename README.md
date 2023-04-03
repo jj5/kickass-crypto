@@ -3,7 +3,7 @@
 A contemporary PHP cryptography library circa 2023.
 
 **Synopsis:**
-* a uniform interface to two separate and contemporary encryption libraries
+* a uniform interface to two separate and contemporary encryption libraries, batteries included
 * [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
 encryption with
 [Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
