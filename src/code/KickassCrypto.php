@@ -85,6 +85,8 @@ function kickass_round_trip( $set = false ) : IKickassCrypto {
 
   if ( $instance === null ) {
 
+    // 2023-04-03 jj5 - prefer Sodium...
+
     if ( class_exists( 'KickassCryptoSodiumRoundTrip' ) ) {
 
       $instance = new KickassCryptoSodiumRoundTrip();
@@ -108,6 +110,8 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
   if ( $set !== false ) { $instance = $set; }
 
   if ( $instance === null ) {
+
+    // 2023-04-03 jj5 - prefer Sodium...
 
     if ( class_exists( 'KickassCryptoSodiumAtRest' ) ) {
 
