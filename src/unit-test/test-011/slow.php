@@ -20,7 +20,7 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../../inc/library.php';
+require_once __DIR__ . '/../../../inc/openssl.php';
 require_once __DIR__ . '/../../../inc/test.php';
 
 function main( $argv ) {
@@ -46,7 +46,7 @@ function main( $argv ) {
   }
 }
 
-class TestDelay extends KickassCrypto {
+class TestDelay extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG_KEYS;
 

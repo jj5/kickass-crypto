@@ -20,4 +20,4 @@
 //
 \************************************************************************************************/
 
-define( 'CONFIG_ENCRYPTION_SECRET_LIST', [ 'invalid' ] );
+define( 'CONFIG_OPENSSL_SECRET_LIST', [ 'invalid' ] );

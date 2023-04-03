@@ -16,50 +16,24 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this test does some very rudiementary testing of our class counter telemetry.
+// 2023-04-03 jj5 - this script takes the new sodium client for a spin...
 //
 \************************************************************************************************/
 
+define( 'DEBUG', true );
+
 require_once __DIR__ . '/../../../inc/test-host.php';
-
-class TestCrypto extends KickassCryptoOpenSslRoundTrip {
-
-  use KICKASS_DEBUG;
-
-}
+require_once __DIR__ . '/etc/config.php';
 
 function run_test() {
 
-  $crypto = new TestCrypto();
+  $crypto = new KickassCryptoSodiumRoundTrip();
 
   $ciphertext = $crypto->encrypt( 'test' );
 
-  ob_start();
+  $plaintext = $crypto->decrypt( $ciphertext );
 
-  KickassCrypto::ReportTelemetry();
-
-  $output = ob_get_clean();
-
-  assert( $output === get_expected_output() );
-
-}
-
-function get_expected_output() {
-
-  return ltrim("
-= Functions =
-
-__construct..: 1
-encrypt......: 1
-
-= Classes =
-
-KickassCryptoOpenSslRoundTrip..: 1
-
-= Lengths =
-
-5516..: 1
-");
+  assert( $plaintext === 'test' );
 
 }
 

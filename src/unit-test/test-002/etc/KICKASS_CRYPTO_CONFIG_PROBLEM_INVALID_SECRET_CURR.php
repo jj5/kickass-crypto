@@ -19,4 +19,4 @@
 //
 \************************************************************************************************/
 
-define( 'CONFIG_ENCRYPTION_SECRET_CURR', 'invalid' );
+define( 'CONFIG_OPENSSL_SECRET_CURR', 'invalid' );

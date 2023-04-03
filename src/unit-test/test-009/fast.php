@@ -25,8 +25,6 @@
 //
 \************************************************************************************************/
 
-define( 'DEBUG', true );
-
 require_once __DIR__ . '/../../../inc/test.php';
 require_once __DIR__ . '/etc/config.php';
 
@@ -75,6 +73,7 @@ function main( $argv ) {
     $configure();
 
     require_once __DIR__ . '/../../code/KickassCrypto.php';
+    require_once __DIR__ . '/../../code/KickassCryptoOpenSsl.php';
 
     kickass_get_floats(
       $nan,

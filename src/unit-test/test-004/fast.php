@@ -22,7 +22,7 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestCryptoRoundTrip extends KickassCryptoRoundTrip {
+class TestCryptoRoundTrip extends KickassCryptoOpenSslRoundTrip {
 
   private $chunk_size = 0;
 

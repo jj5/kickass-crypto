@@ -22,15 +22,15 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestCrypto extends KickassCrypto {
+class TestCrypto extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG;
 
   private $ivlen = 1;
   private $taglen = 1;
 
-  protected function get_const_iv_length() { return $this->ivlen; }
-  protected function get_const_tag_length() { return $this->taglen; }
+  protected function get_const_openssl_iv_length() { return $this->ivlen; }
+  protected function get_const_openssl_tag_length() { return $this->taglen; }
 
   public function set( $ivlen, $taglen ) {
 
@@ -74,7 +74,7 @@ class TestCrypto extends KickassCrypto {
 
     }
 
-    $this->parse_binary( $binary, $iv, $ciphertext, $tag );
+    $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
 
     if (
       $expect_iv !== $iv ||

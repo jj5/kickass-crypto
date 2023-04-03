@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-class TestCrypto extends KickassCryptoRoundTrip {
+class TestCrypto extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG;
 

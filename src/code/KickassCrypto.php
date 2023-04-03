@@ -15,12 +15,11 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use the library this is
-// the only file that you need to include, but other goodies ship with the project. The actual
-// proper and supported way to include this library is to include the inc/library.php include
-// file which will handle including this file after making sure it is safe to do so.
+// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use it decide whether you
+// want the Sodium implementation or the OpenSSL implementation and then include one of:
 //
-// 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
+//* inc/sodium.php
+//* inc/openssl.php
 //
 // 2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:
 //
@@ -29,18 +28,7 @@
 //
 // see README.md for more info.
 //
-// 2023-03-31 jj5 - a valid config.php file will define constants per relevant use-case.
-//
-// For round-trip use cases define these keys:
-//
-//* CONFIG_ENCRYPTION_SECRET_CURR
-//* CONFIG_ENCRYPTION_SECRET_PREV (optional)
-//
-// For at-rest use cases define this list of keys:
-//
-//* CONFIG_ENCRYPTION_SECRET_LIST
-//
-// See bin/gen-key.php in this project for key generation.
+// 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
 //
 \************************************************************************************************/
 
@@ -57,12 +45,7 @@ interface IKickassCrypto {
   //
   public function get_error() : string|null;
 
-  // 2023-04-03 jj5 - the most recent error from the OpenSSL library, this is retrieved from the
-  // OpenSSL library by way of the openssl_error_string() function...
-  //
-  public function get_openssl_error() : string|null;
-
-  // 2023-04-03 jj5 - this will clear the current error list and the current OpenSSL error...
+  // 2023-04-03 jj5 - this will clear the current error list...
   //
   public function clear_error() : void;
 
@@ -95,7 +78,19 @@ function kickass_round_trip( $set = false ) : IKickassCrypto {
 
   if ( $set !== false ) { $instance = $set; }
 
-  if ( $instance === null ) { $instance = new KickassCryptoRoundTrip(); }
+  if ( $instance === null ) {
+
+    if ( class_exists( 'KickassCryptoSodiumRoundTrip' ) ) {
+
+      $instance = new KickassCryptoSodiumRoundTrip();
+
+    }
+    else if ( class_exists( 'KickassCryptoOpenSslRoundTrip' ) ) {
+
+      $instance = new KickassCryptoOpenSslRoundTrip();
+
+    }
+  }
 
   return $instance;
 
@@ -107,7 +102,19 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
   if ( $set !== false ) { $instance = $set; }
 
-  if ( $instance === null ) { $instance = new KickassCryptoAtRest(); }
+  if ( $instance === null ) {
+
+    if ( class_exists( 'KickassCryptoSodiumAtRest' ) ) {
+
+      $instance = new KickassCryptoSodiumAtRest();
+
+    }
+    else if ( class_exists( 'KickassCryptoOpenSslAtRest' ) ) {
+
+      $instance = new KickassCryptoOpenSslAtRest();
+
+    }
+  }
 
   return $instance;
 
@@ -127,10 +134,6 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
   //
   //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
   //
-  //* to disable checks for the OpenSSL library functions:
-  //
-  //  define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true );
-  //
 
   $errors = [];
 
@@ -148,32 +151,6 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
       KICKASS_CRYPTO_TEST_PHP_INT_MAX :
       PHP_INT_MAX;
 
-    // 2023-04-01 jj5 - innocent until proven guilty...
-    //
-    $has_openssl = true;
-
-    if ( defined( 'KICKASS_CRYPTO_TEST_HAS_OPENSSL' ) ) {
-
-      $has_openssl = KICKASS_CRYPTO_TEST_HAS_OPENSSL;
-
-    }
-    else {
-
-      $openssl_functions = [
-        'openssl_get_cipher_methods',
-        'openssl_cipher_iv_length',
-        'openssl_error_string',
-        'openssl_encrypt',
-        'openssl_decrypt',
-      ];
-
-      foreach ( $openssl_functions as $function ) {
-
-        if ( ! function_exists( $function ) ) { $has_openssl = false; }
-
-      }
-    }
-
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
 
       define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
@@ -183,12 +160,6 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK' ) ) {
 
       define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
-
-    }
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', false );
 
     }
 
@@ -218,21 +189,6 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
         $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
           "define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true ) to force enablement.";
-
-      }
-    }
-
-    if ( ! $has_openssl ) {
-
-      if ( KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK ) {
-
-        // 2023-04-01 jj5 - the programmer has enabled OpenSSL anyway, we will allow it.
-
-      }
-      else {
-
-        $errors[] = "The kickass-crypto library requires the PHP OpenSSL library. " .
-          "define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true ) to force enablement.";
 
       }
     }
@@ -267,8 +223,11 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
 })();
 
-// 2023-03-30 jj5 - this is the current data format version for this library. If you fork this
-// library and alter the data format you should change this. If you do change this please use
+define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
+define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
+
+// 2023-03-30 jj5 - these are the current data format versions for this library. If you fork this
+// library and alter the data format you should change these. If you do change this please use
 // something other than 'KA' as the prefix. If you don't want the data format version reported
 // in your encoded data override the encode() and decode() methods.
 //
@@ -277,7 +236,8 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 //
 // protected function get_const_data_format_version() { return 'MYKA1'; }
 //
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION', 'KA0' );
+define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_OPENSSL', 'KA0' );
+define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
 // future... note that 2^12 is 4KiB and 2^26 is 64 MiB.
@@ -340,30 +300,6 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
 ]);
 
-// 2023-03-30 jj5 - config problems are things that can go wrong with a config file...
-//
-define(
-  'KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR',
-  'config missing: CONFIG_ENCRYPTION_SECRET_CURR.'
-);
-define(
-  'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR',
-  'config invalid: CONFIG_ENCRYPTION_SECRET_CURR.'
-);
-define(
-  'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV',
-  'config invalid: CONFIG_ENCRYPTION_SECRET_PREV.'
-);
-
-define(
-  'KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST',
-  'config missing: CONFIG_ENCRYPTION_SECRET_LIST.'
-);
-define(
-  'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST',
-  'config invalid: CONFIG_ENCRYPTION_SECRET_LIST.'
-);
-
 // 2023-03-30 jj5 - these are the errors that can happen during encryptiong and decryption, we
 // don't raise exceptions for these errors because a secret key or a passphrase might be on the
 // call stack and we don't want to accidentally leak it. If an error occurs the boolean value
@@ -405,19 +341,6 @@ define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED', 'decryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
-
-// 2023-03-29 jj5 - NOTE: these constants are *constants* and not configuration settings. If you
-// need to override any of these, for instance to test the correct handling of error scenarios,
-// pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
-// these... please see the documentation in README.md for an explanation of these values.
-//
-define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
-define( 'KICKASS_CRYPTO_CIPHER', 'aes-256-gcm' );
-define( 'KICKASS_CRYPTO_OPTIONS', OPENSSL_RAW_DATA );
-define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
-define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH', 32 );
-define( 'KICKASS_CRYPTO_IV_LENGTH', 12 );
-define( 'KICKASS_CRYPTO_TAG_LENGTH', 16 );
 
 // 2023-03-30 jj5 - we define an exception class for this component so that we can associate
 // custom data with our exceptions... note that not all exceptions will have associated data.
@@ -637,147 +560,6 @@ trait KICKASS_PHP_WRAPPER {
 
   }
 
-  protected final function php_openssl_get_cipher_methods() {
-    try {
-
-      return $this->do_php_openssl_get_cipher_methods();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_openssl_get_cipher_methods() {
-
-    return openssl_get_cipher_methods();
-
-  }
-
-  protected final function php_openssl_cipher_iv_length( $cipher ) {
-
-    try {
-
-      return $this->do_php_openssl_cipher_iv_length( $cipher );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_openssl_cipher_iv_length( $cipher ) {
-
-    return openssl_cipher_iv_length( $cipher );
-
-  }
-
-  protected final function php_openssl_error_string() {
-
-    try {
-
-      return $this->do_php_openssl_error_string();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_openssl_error_string() {
-
-    return openssl_error_string();
-
-  }
-
-  protected final function php_openssl_encrypt(
-    $plaintext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    &$tag
-  ) {
-
-    $tag = null;
-
-    try {
-
-      return $this->do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_openssl_encrypt(
-    $plaintext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    &$tag
-  ) {
-
-    $tag = null;
-
-    return openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
-
-  }
-
-  protected final function php_openssl_decrypt(
-    $ciphertext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    $tag
-  ) {
-
-    try {
-
-      return $this->do_php_openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_openssl_decrypt(
-    $ciphertext,
-    $cipher,
-    $passphrase,
-    $options,
-    $iv,
-    $tag
-  ) {
-
-    return openssl_decrypt( $ciphertext, $cipher, $passphrase, $options, $iv, $tag );
-
-  }
-
   protected final function php_time_nanosleep( $seconds, $nanoseconds ) {
 
     try {
@@ -823,21 +605,116 @@ trait KICKASS_PHP_WRAPPER {
   }
 }
 
-// 2023-03-30 jj5 - the KickassCrypto class is the core of this library, but to use it you need
-// an instance of either KickassCryptoRoundTrip or KickassCryptoAtRest, it's also possible to
-// create your own instance by inheriting KickassCrypto and providing an implementation of the
-// abstract methods to suite your use case.
-//
-// 2023-03-31 jj5 - NOTE: the intention with this library as a framework for implementing your
-// own use cases is that you inherit directly from KickassCrypto itself and go from there. If it
-// was possible for me to do so I would make KickassCryptoRoundTrip and KickassCryptoAtRest
-// final, but I need to keep them open for unit-testing purposes. While there is nothing to stop
-// you from inheriting either KickassCryptoRoundTrip or KickassCryptoAtRest if you do so you
-// will have an effect on the class counter telemetry. The class counter telemetry only counts
-// KickassCryptoRoundTrip or KickassCryptoAtRest instance directly, not the things which inherit
-// from them. Other classes which inherit from KickassCrypto are counted separately, which is
-// probably what you want. See the count_this() method if you need to change counting behavior.
-//
+trait KICKASS_ROUND_TRIP {
+
+  protected function is_valid_config( &$problem = null ) {
+
+    $secret_curr = $this->get_config_secret_curr();
+    $secret_prev = $this->get_config_secret_prev();
+
+    if ( ! $secret_curr ) {
+
+      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR;
+
+      return false;
+
+    }
+
+    if ( ! $this->is_valid_secret( $secret_curr ) ) {
+
+      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR;
+
+      return false;
+
+    }
+
+    if ( $secret_prev && ! $this->is_valid_secret( $secret_prev ) ) {
+
+      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV;
+
+      return false;
+
+    }
+
+    $problem = null;
+
+    return true;
+
+  }
+
+  protected function generate_passphrase_list() {
+
+    $secret_curr = $this->get_config_secret_curr();
+    $secret_prev = $this->get_config_secret_prev();
+
+    $result = [ $this->calc_passphrase( $secret_curr ) ];
+
+    if ( $secret_prev ) {
+
+      $result[] = $this->calc_passphrase( $secret_prev );
+
+    }
+
+    return $result;
+
+  }
+}
+
+trait KICKASS_AT_REST {
+
+  protected function is_valid_config( &$problem = null ) {
+
+    $secret_list = $this->get_config_secret_list();
+
+    if ( $secret_list === false ) {
+
+      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST;
+
+      return false;
+
+    }
+
+    if ( ! is_array( $secret_list ) || count( $secret_list ) === 0 ) {
+
+      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
+
+      return false;
+
+    }
+
+    foreach ( $secret_list as $secret ) {
+
+      if ( ! $this->is_valid_secret( $secret ) ) {
+
+        $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
+
+        return false;
+
+      }
+    }
+
+    $problem = null;
+
+    return true;
+
+  }
+
+  protected function generate_passphrase_list() {
+
+    $secret_list = $this->get_config_secret_list();
+    $result = [];
+
+    foreach ( $secret_list as $secret ) {
+
+      $result[] = $this->calc_passphrase( $secret );
+
+    }
+
+    return $result;
+
+  }
+}
+
 abstract class KickassCrypto implements IKickassCrypto {
 
   use KICKASS_PHP_WRAPPER;
@@ -859,15 +736,6 @@ abstract class KickassCrypto implements IKickassCrypto {
     'class' => [],
     'length' => [],
   ];
-
-  // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
-  // interface methods defined below...
-  //
-  private $error_list = [];
-
-  // 2023-03-30 jj5 - this is for tracking the first openssl error that occurs, if any...
-  //
-  private $openssl_error = null;
 
   // 2023-04-02 jj5 - this flag indicates whether we need to inject a random delay or not, it gets
   // set when a call to either encrypt() or decrypt() is made. It gets set back to false after a
@@ -895,18 +763,6 @@ abstract class KickassCrypto implements IKickassCrypto {
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION' ) ) {
 
       define( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION', false );
-
-    }
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION', false );
-
-    }
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION', false );
 
     }
 
@@ -951,43 +807,6 @@ abstract class KickassCrypto implements IKickassCrypto {
       }
     }
 
-    $cipher = $this->get_const_cipher();
-    $cipher_list = $this->php_openssl_get_cipher_methods();
-
-    if ( ! KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION ) {
-
-      if ( ! in_array( $cipher, $cipher_list ) ) {
-
-        $this->throw(
-          KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER,
-          [
-            'cipher' => $cipher,
-            'cipher_list' => $cipher_list,
-          ]
-        );
-
-      }
-    }
-
-    $iv_length = $this->php_openssl_cipher_iv_length( $cipher );
-    $iv_length_expected = $this->get_const_iv_length();
-
-    if ( ! KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION ) {
-
-      if ( $iv_length !== $iv_length_expected ) {
-
-        $this->throw(
-          KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH,
-          [
-            'cipher' => $cipher,
-            'iv_length' => $iv_length,
-            'iv_length_expected' => $iv_length_expected,
-          ]
-        );
-
-      }
-    }
-
     if ( ! KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION ) {
 
       try {
@@ -1007,11 +826,15 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   // 2023-03-30 jj5 - implementations need to define what a valid config looks like and provide
   // a list of passphrases. The first passphrase in the list is the one that's used for
-  // encryption, others are potentially used for decryption. See KickassCryptoRoundTrip and
-  // KickassCryptoAtRest for details.
+  // encryption, others are potentially used for decryption.
   //
   abstract protected function is_valid_config( &$problem = null );
   abstract protected function get_passphrase_list();
+  abstract protected function get_const_data_format_version();
+  abstract protected function do_encrypt_string( string $plaintext, string $passphrase );
+  abstract protected function do_error( $error );
+  abstract protected function do_decrypt_string( string $binary, string $passphrase );
+  abstract protected function do_parse_binary( $binary, &$iv, &$ciphertext, &$tag );
 
   // 2023-03-30 jj5 - this function will generate a secret key suitable for use in the config
   // file...
@@ -1077,35 +900,6 @@ abstract class KickassCrypto implements IKickassCrypto {
       echo "\n";
 
     }
-  }
-
-  public function get_error_list() : array {
-
-    return $this->error_list;
-
-  }
-
-  public function get_error() : string|null {
-
-    $count = count( $this->error_list );
-
-    if ( $count === 0 ) { return null; }
-
-    return $this->error_list[ $count - 1 ];
-
-  }
-
-  public function get_openssl_error() : string|null {
-
-    return $this->openssl_error;
-
-  }
-
-  public function clear_error() : void {
-
-    $this->error_list = [];
-    $this->openssl_error = null;
-
   }
 
   public final function encrypt( mixed $input ) : string|false {
@@ -1286,29 +1080,12 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  // 2023-04-01 jj5 - implementations can vary this behavior. By default we don't count extensions
-  // of KickassCryptoRoundTrip or KickassCryptoAtRest separately, but we do count other extensions
-  // separately...
-  //
   protected function count_this( $caller ) {
 
     $this->count_function( $caller );
 
-    if ( is_a( $this, KickassCryptoRoundTrip::class ) ) {
+    $this->count_class( get_class( $this ) );
 
-      $this->count_class( KickassCryptoRoundTrip::class );
-
-    }
-    else if ( is_a( $this, KickassCryptoAtRest::class ) ) {
-
-      $this->count_class( KickassCryptoAtRest::class );
-
-    }
-    else {
-
-      $this->count_class( get_class( $this ) );
-
-    }
   }
 
   protected function count_function( $metric ) {
@@ -1343,21 +1120,15 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  protected function get_config_secret_curr() {
+  protected function get_const_key_hash() {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_SECRET_CURR' );
-
-  }
-
-  protected function get_config_secret_prev() {
-
-    return $this->get_const( 'CONFIG_ENCRYPTION_SECRET_PREV' );
+    return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
 
   }
 
-  protected function get_config_secret_list() {
+  protected function get_const_key_length_min() {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_SECRET_LIST' );
+    return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
 
   }
 
@@ -1396,54 +1167,6 @@ abstract class KickassCrypto implements IKickassCrypto {
   ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
-
-  }
-
-  protected function get_const_data_format_version() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION' );
-
-  }
-
-  protected function get_const_key_hash() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
-
-  }
-
-  protected function get_const_cipher() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_CIPHER' );
-
-  }
-
-  protected function get_const_options() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_OPTIONS' );
-
-  }
-
-  protected function get_const_key_length_min() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
-
-  }
-
-  protected function get_const_passphrase_length() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH' );
-
-  }
-
-  protected function get_const_iv_length() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_IV_LENGTH' );
-
-  }
-
-  protected function get_const_tag_length() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_TAG_LENGTH' );
 
   }
 
@@ -1593,53 +1316,6 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
-
-    $iv = $this->php_random_bytes( $this->get_const_iv_length() );
-
-    if ( strlen( $iv ) !== $this->get_const_iv_length() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH );
-
-    }
-
-    $cipher = $this->get_const_cipher();
-    $options = $this->get_const_options();
-
-    $ciphertext = false;
-
-    try {
-
-      $ciphertext = $this->php_openssl_encrypt(
-        $plaintext, $cipher, $passphrase, $options, $iv, $tag
-      );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
-
-    }
-
-    if ( strlen( $tag ) !== $this->get_const_tag_length() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH );
-
-    }
-
-    if ( ! $ciphertext ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
-
-    }
-
-    // 2023-04-02 jj5 - apparently it's traditional to format these items in this order...
-
-    return $iv . $ciphertext . $tag;
-
-  }
 
   protected function do_decrypt( string $ciphertext ) {
 
@@ -1702,44 +1378,6 @@ abstract class KickassCrypto implements IKickassCrypto {
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
     return $this->do_decrypt_string( $binary, $passphrase );
-
-  }
-
-  protected function do_decrypt_string( string $binary, string $passphrase ) {
-
-    if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
-
-    }
-
-    $cipher = $this->get_const_cipher();
-    $options = $this->get_const_options();
-
-    $plaintext = false;
-
-    try {
-
-      $plaintext = $this->php_openssl_decrypt(
-        $ciphertext, $cipher, $passphrase, $options, $iv, $tag
-      );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex );
-
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
-
-    }
-
-    if ( ! $plaintext ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
-
-    }
-
-    return $plaintext;
 
   }
 
@@ -1930,22 +1568,6 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  protected function do_error( $error ) {
-
-    $this->error_list[] = $error;
-
-    while ( $openssl_error = $this->php_openssl_error_string() ) {
-
-      $this->openssl_error = $openssl_error;
-
-    }
-
-    // 2023-04-02 jj5 - this return value will be ignored by the caller...
-
-    return false;
-
-  }
-
   protected final function json_encode( $input ) {
 
     try {
@@ -2104,65 +1726,6 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  protected function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) {
-
-    // 2023-04-02 jj5 - the binary data is: IV + ciphertext + tag; the IV and tag are fixed length
-
-    $iv = false;
-    $ciphertext = false;
-    $tag = false;
-
-    $binary_length = strlen( $binary );
-
-    $iv_length = $this->get_const_iv_length();
-    $tag_length = $this->get_const_tag_length();
-    $ciphertext_length = $binary_length - $iv_length - $tag_length;
-
-    $min_length = $iv_length + 1 + $tag_length;
-
-    // 2023-04-02 jj5 - NOTE: this test obviates the possibility of the latter tests failing, but
-    // I left them in anyway, just in case a bug is introduced into this part of the function...
-    //
-    if ( $binary_length < $min_length ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH );
-
-    }
-
-    $iv = substr( $binary, 0, $iv_length );
-
-    if ( strlen( $iv ) !== $iv_length ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2 );
-
-    }
-
-    $ciphertext = substr( $binary, $iv_length, $ciphertext_length );
-
-    if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2 );
-
-    }
-
-    $tag = substr( $binary, $iv_length + $ciphertext_length );
-
-    if ( strlen( $tag ) !== $tag_length ) {
-
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
-        [
-          'tag_len' => strlen( $tag ),
-          'expected_tag_len' => $tag_length,
-        ]
-      );
-
-    }
-
-    return true;
-
-  }
-
   protected function get_padding( int $length ) {
 
     return $this->php_random_bytes( $length );
@@ -2229,140 +1792,6 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
 
     return error_log( __FILE__ . ': ' . $message );
-
-  }
-}
-
-// 2023-03-30 jj5 - if you need to round trip data from the web server to the client and back
-// again via hidden HTML form <input> tags use this KickassCryptoRoundTrip class. This class uses
-// one or two secret keys from the config file. The first key is required and it's called the
-// "current" key, its config option is 'CONFIG_ENCRYPTION_SECRET_CURR'; the second key is
-// option and it's called the "previous" key, its config option is 'CONFIG_ENCRYPTION_SECRET_PREV'.
-
-class KickassCryptoRoundTrip extends KickassCrypto {
-
-  protected function is_valid_config( &$problem = null ) {
-
-    $secret_curr = $this->get_config_secret_curr();
-    $secret_prev = $this->get_config_secret_prev();
-
-    if ( ! $secret_curr ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR;
-
-      return false;
-
-    }
-
-    if ( ! $this->is_valid_secret( $secret_curr ) ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR;
-
-      return false;
-
-    }
-
-    if ( $secret_prev && ! $this->is_valid_secret( $secret_prev ) ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV;
-
-      return false;
-
-    }
-
-    $problem = null;
-
-    return true;
-
-  }
-
-  protected function get_passphrase_list() {
-
-    // 2023-03-30 jj5 - we cache the generated passphrase list in a static variable so we don't
-    // have to constantly regenerate it and because we don't want to put this sensitive data
-    // into an instance field. If you don't want the passphrase list stored in a static variable
-    // override this method and implement differently.
-
-    static $result = null;
-
-    if ( $result !== null ) { return $result; }
-
-    $secret_curr = $this->get_config_secret_curr();
-    $secret_prev = $this->get_config_secret_prev();
-
-    $result = [ $this->calc_passphrase( $secret_curr ) ];
-
-    if ( $secret_prev ) {
-
-      $result[] = $this->calc_passphrase( $secret_prev );
-
-    }
-
-    return $result;
-
-  }
-}
-
-class KickassCryptoAtRest extends KickassCrypto {
-
-  protected function is_valid_config( &$problem = null ) {
-
-    $secret_list = $this->get_config_secret_list();
-
-    if ( $secret_list === false ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST;
-
-      return false;
-
-    }
-
-    if ( ! is_array( $secret_list ) || count( $secret_list ) === 0 ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
-
-      return false;
-
-    }
-
-    foreach ( $secret_list as $secret ) {
-
-      if ( ! $this->is_valid_secret( $secret ) ) {
-
-        $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
-
-        return false;
-
-      }
-    }
-
-    $problem = null;
-
-    return true;
-
-  }
-
-  protected function get_passphrase_list() {
-
-    // 2023-03-30 jj5 - we cache the generated passphrase list in a static variable so we don't
-    // have to constantly regenerate it and because we don't want to put this sensitive data
-    // into an instance field. If you don't want the passphrase list stored in a static variable
-    // override this method and implement differently.
-
-    static $result = null;
-
-    if ( $result !== null ) { return $result; }
-
-    $secret_list = $this->get_config_secret_list();
-    $result = [];
-
-    foreach ( $secret_list as $secret ) {
-
-      $result[] = $this->calc_passphrase( $secret );
-
-    }
-
-    return $result;
 
   }
 }

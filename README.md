@@ -2,24 +2,34 @@
 
 A contemporary PHP cryptography library circa 2023.
 
-**Synopsis:** this library provides
-[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+**Synopsis:** this library provides:
+* a uniform interface to two separate and current encryption libraries
+* [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 encryption with
 [GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
 authentication by using the
 [AES-256-GCM](https://crypt-app.net/info/aes-256-gcm.html)
-cipher suite in the
+cipher suite from the
 [OpenSSL library](https://www.php.net/manual/en/book.openssl.php)
-for
-[PHP](https://www.php.net/); it supports key rotation for separate round-trip and at-rest use
-cases and some key management functions.
+* [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
+encryption with
+[Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
+authentication by using the
+[sodium_crypto_secretbox()](https://www.php.net/manual/en/function.sodium-crypto-secretbox.php)
+function from the
+[Sodium library](https://doc.libsodium.org/)
+* key rotation for separate round-trip and at-rest use cases and some key management functions
 
 This library is a wrapper around the
-[PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php).
+[PHP OpenSSL library](https://www.php.net/manual/en/book.openssl.php) and the
+[PHP Sodium library](https://www.php.net/manual/en/book.sodium.php).
 
-The code in this library is based on the example given in the documentation for
-the PHP
+The OpenSSL code in this library is based on the example given in the documentation for the PHP
 [openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
+function.
+
+The Sodium code in this library is based on the example given in the documentation for the PHP
+[sodium_crypto_secretbox()](https://www.php.net/manual/en/function.sodium-crypto-secretbox.php)
 function.
 
 This library aims to ensure that the data it encrypts is as secure as the
@@ -42,6 +52,8 @@ something you think I should know about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
 
 ## Why was this library written?
+
+Gee, it got kind of complicated.
 
 I wanted to use the PHP OpenSSL library to round-trip some relatively sensitive data between my
 server and its clients in a relatively secure fashion, secrecy and tamperproofing preferred.
@@ -74,8 +86,15 @@ passphrase initialization, key generation scripts, telemetry, and things like th
 Basically this whole library was just everything I felt like I had to do so that I could actually
 use the built-in PHP OpenSSL library implementation.
 
+And then... people started telling me about the Sodium library, and suggesting that I use that
+instead. Since I'd already done a bunch of work for key management and input serialization and
+so on I figured I could just reuse all of that and provide a wrapper around Sodium too. So that's
+what I did. Now if you use this library you can decide whether you want to use the Sodium
+implementation or the OpenSSL implementation. Because the two implementations can happily
+co-exist you can also write code to move from one to the other, if you so desired.
+
 I don't consider this library _rolling my own crypto_, rather I think of it as _figuring out how
-to actually use OpenSSL_. If I've made any mistakes, obvious or otherwise, I would
+to actually use OpenSSL and Sodium_. If I've made any mistakes, obvious or otherwise, I would
 [really appreciate hearing about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
 
 ## tl;dr
@@ -90,7 +109,7 @@ git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/nu
 php lib/kickass-crypto/bin/gen-demo-config.php > config.php
 cat > demo.php <<'EOF'
 <?php
-require_once __DIR__ . '/lib/kickass-crypto/inc/library.php';
+require_once __DIR__ . '/lib/kickass-crypto/inc/sodium.php';
 require_once __DIR__ . '/config.php';
 $ciphertext = kickass_round_trip()->encrypt( 'secret text' );
 $plaintext = kickass_round_trip()->decrypt( $ciphertext );
@@ -145,7 +164,7 @@ If you want to host the demo code you need to host the files in
 and include a valid `config.php` file in the project base directory (that's the directory that
 includes this [README.md](https://github.com/jj5/kickass-crypto/tree/main/README.md) file).
 For demonstration purposes a valid `config.php` file only needs to define a constant string for
-`CONFIG_ENCRYPTION_SECRET_CURR`, but it needs to be a long and random string, you can generate
+`CONFIG_OPENSSL_SECRET_CURR`, but it needs to be a long and random string, you can generate
 an appropriate string with:
 
 ```
@@ -592,7 +611,7 @@ the delay logic.
 
 ## Exceptions and errors
 
-When an instance of either `KickassCryptoRoundTrip` or `KickassCryptoAtRest` is
+When an instance of either `KickassCryptoOpenSSLRoundTrip` or `KickassCryptoOpenSSLAtRest` is
 created the configuration settings are validated. If the configuration settings
 are not valid the constructor will throw an exception. If the constructor succeeds
 then encryption and decryption later on should also (usually) succeed. If there
@@ -732,9 +751,9 @@ When you rotate your round-trip secret keys you copy the current key into the
 previous key, replacing the old previous key, and then you generate a new
 current key.
 
-The config setting for the current key is: `CONFIG_ENCRYPTION_SECRET_CURR`.
+The config setting for the current key is: `CONFIG_OPENSSL_SECRET_CURR`.
 
-The config setting for the previous key is: `CONFIG_ENCRYPTION_SECRET_PREV`.
+The config setting for the previous key is: `CONFIG_OPENSSL_SECRET_PREV`.
 
 To encrypt round-trip data:
 
@@ -943,7 +962,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 668 times (including the ASCII banners).
+The string "kickass" appears in the source code 710 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

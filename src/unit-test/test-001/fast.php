@@ -42,19 +42,19 @@ trait CustomThrow {
   }
 }
 
-class TestCryptoAtRestInvalidConfig extends KickassCryptoAtRest {
+class TestCryptoAtRestInvalidConfig extends KickassCryptoOpenSslAtRest {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTripInvalidConfig extends KickassCryptoRoundTrip {
+class TestCryptoRoundTripInvalidConfig extends KickassCryptoOpenSslRoundTrip {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTrip extends KickassCryptoRoundTrip {
+class TestCryptoRoundTrip extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG_LOG;
 
@@ -163,7 +163,7 @@ function run_test() {
     KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function get_const_cipher() { return 'invalid-cipher'; }
+        protected function get_const_openssl_cipher() { return 'invalid-cipher'; }
       };
     },
     [
@@ -176,7 +176,7 @@ function run_test() {
     KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function get_const_iv_length() { return 123; }
+        protected function get_const_openssl_iv_length() { return 123; }
       };
     },
     [ 'cipher' => 'aes-256-gcm', 'iv_length' => 12, 'iv_length_expected' => 123 ]

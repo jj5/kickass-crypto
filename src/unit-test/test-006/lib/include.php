@@ -20,13 +20,13 @@
 //
 \************************************************************************************************/
 
-class TestRoundTrip extends KickassCryptoRoundTrip {
+class TestRoundTrip extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG_LOG;
 
 }
 
-class TestAtRest extends KickassCryptoAtRest {
+class TestAtRest extends KickassCryptoOpenSslAtRest {
 
   use KICKASS_DEBUG_LOG;
 

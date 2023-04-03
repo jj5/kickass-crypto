@@ -16,50 +16,67 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this test does some very rudiementary testing of our class counter telemetry.
+// 2023-04-03 jj5 - this script changes anything which looks like a secret key to a new secret
+// key.
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../../inc/test-host.php';
+function main( $argv ) {
 
-class TestCrypto extends KickassCryptoOpenSslRoundTrip {
+  define( 'REGEX', "/'([a-zA-Z0-9\/+]{2,}={0,2})'/" );
 
-  use KICKASS_DEBUG;
-
-}
-
-function run_test() {
-
-  $crypto = new TestCrypto();
-
-  $ciphertext = $crypto->encrypt( 'test' );
-
-  ob_start();
-
-  KickassCrypto::ReportTelemetry();
-
-  $output = ob_get_clean();
-
-  assert( $output === get_expected_output() );
+  process_dir( '.' );
 
 }
 
-function get_expected_output() {
+function process_dir( $dir ) {
 
-  return ltrim("
-= Functions =
+  chdir( $dir );
 
-__construct..: 1
-encrypt......: 1
+  echo getcwd();
+  echo ":\n";
 
-= Classes =
+  $files = scandir( '.' );
 
-KickassCryptoOpenSslRoundTrip..: 1
+  foreach ( $files as $file ) {
 
-= Lengths =
+    if ( $file[ 0 ] === '.' ) { continue; }
 
-5516..: 1
-");
+    if ( is_dir( $file ) ) {
+
+      process_dir( $file );
+
+    }
+    else {
+
+      $lines = file( $file );
+
+      for ( $i = 0; $i < count( $lines ); $i++ ) {
+
+        $line = $lines[ $i ];
+
+        if ( ! preg_match( REGEX, $line, $matches ) ) { continue; }
+
+        $match = $matches[ 1 ];
+
+        if ( strlen( $match ) !== 88 ) { continue; }
+
+        $new_key = base64_encode( random_bytes( 66 ) );
+
+        $lines[ $i ] = str_replace( $match, $new_key, $line );
+
+      }
+
+      $code = implode( '', $lines );
+
+      echo "$file:\n";
+      echo "$code\n";
+
+
+    }
+  }
+
+  chdir( '..' );
 
 }
 

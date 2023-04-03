@@ -16,7 +16,7 @@
 
 /************************************************************************************************\
 //
-// 2023-04-02 jj5 - this test takes the default service locators for a good long spin...
+// 2023-04-02 jj5 - this test takes the four crypto providers for a good long spin...
 //
 \************************************************************************************************/
 
@@ -24,6 +24,13 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/etc/config.php';
 
 function run_test() {
+
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
+
+  $openssl_round_trip = new KickassCryptoOpenSslRoundTrip();
+  $openssl_at_rest = new KickassCryptoOpenSslAtRest();
+  $sodium_round_trip = new KickassCryptoSodiumRoundTrip();
+  $sodium_at_rest = new KickassCryptoSodiumAtRest();
 
   test_data( '', 1 );
 
@@ -94,6 +101,8 @@ function test_data( $data, $report, $length = 0 ) {
 
 function test_text( $text, $report, $length = 0 ) {
 
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
+
   if ( DEBUG ) {
 
     if ( 0 === $length % $report ) {
@@ -103,9 +112,13 @@ function test_text( $text, $report, $length = 0 ) {
     }
   }
 
-  cycle( kickass_round_trip(), $text );
+  cycle( $openssl_round_trip, $text );
 
-  cycle( kickass_at_rest(), $text );
+  cycle( $openssl_at_rest, $text );
+
+  cycle( $sodium_round_trip, $text );
+
+  cycle( $sodium_at_rest, $text );
 
 }
 

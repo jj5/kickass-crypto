@@ -25,12 +25,12 @@ main() {
 
   pushd "$( dirname "$0" )" >/dev/null;
 
-  php fast.php KickassCryptoRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR
-  php fast.php KickassCryptoRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR
-  php fast.php KickassCryptoRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV
+  php fast.php KickassCryptoOpenSslRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR
+  php fast.php KickassCryptoOpenSslRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR
+  php fast.php KickassCryptoOpenSslRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV
 
-  php fast.php KickassCryptoAtRest KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST
-  php fast.php KickassCryptoAtRest KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST
+  php fast.php KickassCryptoOpenSslAtRest KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST
+  php fast.php KickassCryptoOpenSslAtRest KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST
 
 }
 

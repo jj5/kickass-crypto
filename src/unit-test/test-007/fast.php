@@ -28,6 +28,8 @@
 //
 \************************************************************************************************/
 
+define( 'DEBUG', true );
+
 require_once __DIR__ . '/../../../inc/test.php';
 
 main( $argv );
@@ -75,6 +77,7 @@ function main( $argv ) {
     $configure();
 
     require_once __DIR__ . '/../../code/KickassCrypto.php';
+    require_once __DIR__ . '/../../code/KickassCryptoOpenSsl.php';
 
   }
   catch ( Throwable $ex ) {

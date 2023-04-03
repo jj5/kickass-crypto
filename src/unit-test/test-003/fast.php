@@ -284,9 +284,9 @@ function run_test() {
         public function test() {
           $binary = str_repeat(
             '0',
-            $this->get_const_iv_length() - 1
+            $this->get_const_openssl_iv_length() - 1
           );
-          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
+          return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
         }
       };
     }
@@ -297,7 +297,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->parse_binary( 'invalid', $iv, $ciphertext, $tag );
+          return $this->do_parse_binary( 'invalid', $iv, $ciphertext, $tag );
         }
         protected function do_php_openssl_encrypt(
           $plaintext,
@@ -485,9 +485,9 @@ function run_test() {
         protected function do_php_random_bytes( $length ) {
           return '';
         }
-        protected function get_const_iv_length() {
+        protected function get_const_openssl_iv_length() {
           $this->iv_count++;
-          if ( $this->iv_count === 1 ) { return parent::get_const_iv_length(); }
+          if ( $this->iv_count === 1 ) { return parent::get_const_openssl_iv_length(); }
           return 0;
         }
       };
@@ -503,9 +503,9 @@ function run_test() {
           $passphrase = $this->get_encryption_passphrase();
           return $this->do_encrypt_string( 'test', $passphrase );
         }
-        protected function get_const_cipher() {
+        protected function get_const_openssl_cipher() {
           $this->cipher_count++;
-          if ( $this->cipher_count === 1 ) { return parent::get_const_cipher(); }
+          if ( $this->cipher_count === 1 ) { return parent::get_const_openssl_cipher(); }
           return 'invalid';
         }
       };
@@ -600,9 +600,9 @@ function run_test() {
         public function test() {
           $binary = str_repeat(
             '0',
-            $this->get_const_tag_length() + $this->get_const_iv_length()
+            $this->get_const_openssl_tag_length() + $this->get_const_openssl_iv_length()
           );
-          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
+          return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
         }
       };
     }

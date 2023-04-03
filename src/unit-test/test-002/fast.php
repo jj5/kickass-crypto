@@ -22,13 +22,13 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestRoundTrip extends KickassCryptoRoundTrip {
+class TestRoundTrip extends KickassCryptoOpenSslRoundTrip {
 
   use KICKASS_DEBUG_LOG;
 
 }
 
-class TestAtRest extends KickassCryptoAtRest {
+class TestAtRest extends KickassCryptoOpenSslAtRest {
 
   use KICKASS_DEBUG_LOG;
 
@@ -49,13 +49,13 @@ function run_test( $argv ) {
 
     switch ( $class ) {
 
-      case 'KickassCryptoRoundTrip':
+      case 'KickassCryptoOpenSslRoundTrip':
 
         $crypto = new TestRoundTrip();
 
         break;
 
-      case 'KickassCryptoAtRest':
+      case 'KickassCryptoOpenSslAtRest':
 
         $crypto = new TestAtRest();
 
