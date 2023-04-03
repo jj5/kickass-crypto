@@ -48,6 +48,10 @@ main() {
     esac;
   done;
 
+  # 2023-04-03 jj5 - before we do anything rotate our testing keys...
+  #
+  php ../../bin/dev/rotate-keys.php 2>/dev/null
+
   for test in *; do
 
     echo processing $test...;
