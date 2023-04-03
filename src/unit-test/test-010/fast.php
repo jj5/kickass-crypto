@@ -74,7 +74,7 @@ class TestCrypto extends KickassCryptoOpenSslRoundTrip {
 
     }
 
-    $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+    $this->parse_binary( $binary, $iv, $ciphertext, $tag );
 
     if (
       $expect_iv !== $iv ||

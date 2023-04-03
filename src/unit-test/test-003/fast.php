@@ -286,7 +286,7 @@ function run_test() {
             '0',
             $this->get_const_openssl_iv_length() - 1
           );
-          return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
         }
       };
     }
@@ -297,7 +297,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->do_parse_binary( 'invalid', $iv, $ciphertext, $tag );
+          return $this->parse_binary( 'invalid', $iv, $ciphertext, $tag );
         }
         protected function do_php_openssl_encrypt(
           $plaintext,
@@ -602,7 +602,7 @@ function run_test() {
             '0',
             $this->get_const_openssl_tag_length() + $this->get_const_openssl_iv_length()
           );
-          return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+          return $this->parse_binary( $binary, $iv, $ciphertext, $tag );
         }
       };
     }

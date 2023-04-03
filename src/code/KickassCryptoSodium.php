@@ -250,7 +250,7 @@ abstract class KickasCryptoSodium extends KickassCrypto {
 
   protected function do_decrypt_string( string $binary, string $passphrase ) {
 
-    if ( ! $this->do_parse_binary( $binary, $nonce, $ciphertext, $tag ) ) {
+    if ( ! $this->parse_binary( $binary, $nonce, $ciphertext, $tag ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
 

@@ -1390,6 +1390,16 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
+  protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) {
+
+    $iv = false;
+    $ciphertext = false;
+    $tag = false;
+
+    return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+
+  }
+
   protected final function decode_message( string $message ) {
 
     return $this->do_decode_message( $message );
