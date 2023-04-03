@@ -32,13 +32,31 @@ function main( $argv ) {
 
   define( 'REGEX', "/'([a-zA-Z0-9\/+]{2,}={0,2})'/" );
 
+  change_dir( __DIR__ );
+
+  change_dir( '../../src/unit-test' );
+
   process_dir( '.' );
+
+}
+
+function change_dir( $dir ) {
+
+  if ( ! is_dir( $dir ) ) {
+
+    report( "invalid dir: $dir" );
+
+    exit( 50 );
+
+  }
+
+  chdir( $dir );
 
 }
 
 function process_dir( $dir ) {
 
-  chdir( $dir );
+  change_dir( $dir );
 
   $files = scandir( '.' );
 
@@ -85,7 +103,7 @@ function process_dir( $dir ) {
     }
   }
 
-  chdir( '..' );
+  change_dir( '..' );
 
 }
 
