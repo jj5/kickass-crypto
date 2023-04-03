@@ -288,20 +288,20 @@ with either "pass" or "secret" as a substring in the name.
 ## Configuration settings
 
 In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
-configuration is available via the configuration constants. Search for `CONFIG_ENCRYPTION` to
-find what's available.
+configuration is available via the configuration constants. Search for `CONFIG_SODIUM` to
+find what's available for Sodium and `CONFIG_OPENSSL` to find what's available for OpenSSL.
 
 Please be advised that at the moment this code is configured directly in the
 `config.php` file.
 
-In future the `config.php` file will include two separately managed config files,
-being:
+In future the `config.php` file will include separately managed config files, being:
 
-* etc/keys-round-trip.php
-* etc/keys-at-rest.php
+* etc/keys-round-trip-sodium.php
+* etc/keys-round-trip-openssl.php
+* etc/keys-at-rest-sodium.php
+* etc/keys-at-rest-openssl.php
 
-There will be management scripts for automatically rotating and provisioning
-keys in these files.
+There will be management scripts for automatically rotating and provisioning keys in these files.
 
 Experienced Linux users know that you don't edit `/etc/sudoers` directly, you
 edit it with `visudo` so that you can verify you haven't accidentally
@@ -358,6 +358,7 @@ class MyKickassCrypto extends KickassCrypto {
 
   protected function is_valid_config( &$problem = null ) { return TODO; }
   protected function get_passphrase_list() { return TODO; }
+  // ... other function overrides ...
 
 }
 
@@ -375,26 +376,30 @@ The encryption process is roughly:
 * JSON encode
 * prefix with JSON data length
 * pad with random data
-* encrypt with AES-256-GCM using the OpenSSL library
+* encrypt with either the Sodium library or the OpenSSL library
 * concatenate initialization vector, cipher text, and authentication tag
 * encode as base64
 * prefix with data-format indicator
 
+Note that the Sodium library uses a nonce instead of an initialization vector (to similar
+effect) and Sodium handles its own authentication tag.
+
 ## Data-format prefix
 
-When this library encodes its ciphertext it includes a data-format prefix of "KA0/".
+When this library encodes its ciphertext it includes a data-format prefix of "KAS0/" for the
+Sodium implementation and "KA0/" for the OpenSSL implementation.
 
-The zero in "KA0" is for _version zero_, which is intended to imply that
+The zero ("0") in the data-format prefix is for _version zero_, which is intended to imply that
 _the interface is unstable and may change_.
 
 Future versions of this library might implement a new data-format prefix for a stable data format.
 
 When this library decodes its ciphertext it verifies the data-format prefix. At present only
-"KA0/" is supported.
+"KAS0/" or "KA0/" is supported.
 
 ## Data format
 
-The KA0 data format, mentioned above, presently implies the following:
+The version zero data format, mentioned above, presently implies the following:
 
 After JSON encoding (discussed in the following section) padding is done and the data length is
 prefixed. Before encryption the message is formatted, like this:
@@ -410,8 +415,15 @@ The reason for the padding is to obscure the actual data size. Padding is done i
 boundaries (2<sup>12</sup> bytes), which we call chunks. The chunk size is configurable and the
 default may change in future.
 
-The message is then encrypted with AES-256-GCM and the initialization vector, ciphertext,
-and authentication tag are concatenated together, like this:
+Then if we're encrypting with Sodium the message is encrypted with `sodium_crypto_secretbox()`
+and then nonce and the ciphertext are concatenated together, like this:
+
+```
+$nonce . $ciphertext
+```
+
+Otherwise if we're encrypting with OpenSSL the message is encrypted with AES-256-GCM and the
+initialization vector, ciphertext, and authentication tag are concatenated together, like this:
 
 ```
 $iv . $ciphertext . $tag
@@ -419,14 +431,23 @@ $iv . $ciphertext . $tag
 
 Then everything is base64 encoded with the PHP
 [base64_encode()](https://www.php.net/manual/en/function.base64-encode.php) function and the
-data-format prefix is added, like this:
+data-format prefix is added.
+
+For Sodium that's done like this:
+
+```
+"KAS0/" . base64_encode( $nonce . $ciphertext )
+```
+
+And for OpenSSL that's done like this:
 
 ```
 "KA0/" . base64_encode( $iv . $ciphertext . $tag )
 ```
 
-The decryption process expects to find the 12 byte initialization vector, the ciphertext, and
-the 16 byte authentication tag.
+The decryption process expects to find the 24 byte nonce and the ciphertext for the "KAS0"
+data format and the 12 byte initialization vector, the ciphertext, and
+the 16 byte authentication tag for the KA0 data format.
 
 After decrypting the ciphertext the library expects to find the size of the JSON data as an ASCII
 string representing an 8 character hex encoded value, followed by a single pipe character,
