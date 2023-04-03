@@ -33,8 +33,7 @@ function process_dir( $dir ) {
 
   chdir( $dir );
 
-  echo getcwd();
-  echo "\n";
+  //echo getcwd() . "\n";
 
   $files = scandir( '.' );
 
@@ -50,6 +49,7 @@ function process_dir( $dir ) {
     else {
 
       $lines = file( $file );
+      $changed = false;
 
       for ( $i = 0; $i < count( $lines ); $i++ ) {
 
@@ -61,11 +61,17 @@ function process_dir( $dir ) {
 
         if ( strlen( $match ) !== 88 ) { continue; }
 
+        $changed = true;
+
         $new_key = base64_encode( random_bytes( 66 ) );
 
         $lines[ $i ] = str_replace( $match, $new_key, $line );
 
       }
+
+      if ( ! $changed ) { continue; }
+
+      echo getcwd() . "/$file\n";
 
       $code = implode( '', $lines );
 
