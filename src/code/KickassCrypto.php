@@ -166,7 +166,7 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
     }
 
-    if ( version_compare( $php_version, '8.0', '<' ) ) {
+    if ( version_compare( $php_version, '7.4', '<' ) ) {
 
       if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
 
