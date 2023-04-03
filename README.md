@@ -94,7 +94,10 @@ wrapper around Sodium too. So that's what I did.
 Now if you use this library you can decide whether you want to use the Sodium
 implementation or the OpenSSL implementation. Because the two implementations can happily
 co-exist you can also write code to move from one to the other, if you so desired. The
-implementations never share key configuration, they are entirely separate.
+implementations never share key configuration, they are entirely separate. (That said, it's not
+exactly trivial to switch encryption algorithms and you probably have to go offline to migrate
+all of your data and if you can't do that you're gonna have a bad time so don't plan on
+switching algorithms, if you're not sure start with Sodium and stick with it.)
 
 I don't consider this library _rolling my own crypto_, rather I think of it as _figuring out how
 to actually use Sodium and OpenSSL_. If I've made any mistakes, obvious or otherwise, I would
