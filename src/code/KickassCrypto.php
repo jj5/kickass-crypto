@@ -21,6 +21,8 @@
 //* inc/sodium.php
 //* inc/openssl.php
 //
+// 2023-04-03 jj5 - if you're not sure, use Sodium.
+//
 // 2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:
 //
 //   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
