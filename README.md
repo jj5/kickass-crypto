@@ -121,8 +121,12 @@ php demo.php
 For slightly more elaboration maybe check out the
 [sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
 
-Or if you want the bottom line on how this library works read the code in
-[this file](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCrypto.php).
+Or if you want the bottom line on how this library works read the code in the
+[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCrypto.php),
+the
+[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCryptoSodium.php),
+or the
+[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCryptoOpenSSL.php).
 
 ## Library demo
 
@@ -179,7 +183,7 @@ php bin/gen-demo-config.php > config.php
 
 ## Supported PHP versions
 
-This code should work on PHP 8.0 or greater (but so far I have only actually tested it on
+This code should work on PHP 7.4 or greater (but so far I have only actually tested it on
 PHP 8.1.2). If you try to run this code on an older version of PHP it will try to log an error
 message and then exit your process.
 

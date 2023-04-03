@@ -362,13 +362,13 @@ abstract class KickassCryptoOpenSsl extends KickassCrypto {
     }
   }
 
-  public function get_error_list() : array {
+  public function get_error_list() {
 
     return $this->error_list;
 
   }
 
-  public function get_error() : string|null {
+  public function get_error() {
 
     $count = count( $this->error_list );
 
@@ -378,13 +378,13 @@ abstract class KickassCryptoOpenSsl extends KickassCrypto {
 
   }
 
-  public function get_openssl_error() : string|null {
+  public function get_openssl_error() {
 
     return $this->openssl_error;
 
   }
 
-  public function clear_error() : void {
+  public function clear_error() {
 
     $this->error_list = [];
     $this->openssl_error = null;

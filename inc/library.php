@@ -32,10 +32,10 @@
   if (
     ! function_exists( 'version_compare' ) ||
     ! function_exists( 'phpversion' ) ||
-    version_compare( phpversion(), '8.0', '<' )
+    version_compare( phpversion(), '7.4', '<' )
   ) {
 
-    $error = "The kickass-crypto library requires PHP version 8.0 or greater. " .
+    $error = "The kickass-crypto library requires PHP version 7.4 or greater. " .
       "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
     $message = __FILE__ . ": $error";

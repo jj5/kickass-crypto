@@ -176,13 +176,13 @@ abstract class KickasCryptoSodium extends KickassCrypto {
 
   }
 
-  public function get_error_list() : array {
+  public function get_error_list() {
 
     return $this->error_list;
 
   }
 
-  public function get_error() : string|null {
+  public function get_error() {
 
     $count = count( $this->error_list );
 
@@ -192,7 +192,7 @@ abstract class KickasCryptoSodium extends KickassCrypto {
 
   }
 
-  public function clear_error() : void {
+  public function clear_error() {
 
     $this->error_list = [];
 
