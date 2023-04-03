@@ -34,7 +34,7 @@ function process_dir( $dir ) {
   chdir( $dir );
 
   echo getcwd();
-  echo ":\n";
+  echo "\n";
 
   $files = scandir( '.' );
 
@@ -69,9 +69,7 @@ function process_dir( $dir ) {
 
       $code = implode( '', $lines );
 
-      echo "$file:\n";
-      echo "$code\n";
-
+      file_put_contents( $file, $code );
 
     }
   }
