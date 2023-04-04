@@ -332,6 +332,18 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_message_encode( 'whatever' );
+        }
+        protected function do_php_base64_encode( $binary ) { return ''; }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED,
     function() {
       return new class extends TestCrypto {
@@ -423,6 +435,54 @@ function run_test() {
           return $this->message_decode( 'XKA0/123=' );
         }
         protected function do_php_base64_decode( $input, $strict ) { return false; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_decode( 'XKA0/123=' );
+        }
+        protected function do_php_base64_decode( $input, $strict ) { return null; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_decode( 'XKA0/123=' );
+        }
+        protected function do_php_base64_decode( $input, $strict ) { return ''; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_decode( 'XKA0/123=' );
+        }
+        protected function do_php_base64_decode( $input, $strict ) { return []; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_decode( 'XKA0/123=' );
+        }
+        protected function do_php_base64_decode( $input, $strict ) { return 0; }
       };
     }
   );
