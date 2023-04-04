@@ -85,7 +85,8 @@ Some other things to be aware of:
 
 * if your data really is so sensitive that it requires encryption, it might be so sensitive that
 it's better to delete it than risk it possibly being decrypted; deletion is generally a better
-option than encryption for sensitive data if you don't absolutely need it
+option than encryption for sensitive data if you don't absolutely need it (secure deletion is not
+covered in this documentation or by this library)
 * be careful not to introduce syntax errors into config files
 * be careful not to attempt to redefine secret configuration constants
 * be careful not to deploy syntax errors to hosted code (production or otherwise)
