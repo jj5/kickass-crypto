@@ -1079,9 +1079,9 @@ See existing unit tests for examples of how to use the simple unit test host.
 
 ## Regarding PHPUnit
 
-I have heard of and used PHPUnit. I don't use it in this project because I don't feel I need it or
-that it adds much value. Tests are a shell script, if that's missing they're a PHP script. If I
-need to make assertions I call assert(). Easy.
+I have heard of and used PHPUnit (although I haven't used it for a long while). I don't use it in
+this project because I don't feel I need it or that it adds much value. Tests are a shell script,
+if that's missing they're a PHP script. If I need to make assertions I call assert(). Easy.
 
 ## Directory structure
 
