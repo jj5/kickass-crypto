@@ -44,7 +44,7 @@ function main( $argv ) {
 
   echo "\n";
 
-  format_part_b( $parts[ 'b' ] );
+  format_part_b( $parts[ 'b' ], '#Files' );
 
   echo "\n";
 
@@ -62,7 +62,7 @@ function main( $argv ) {
 
   echo "\n";
 
-  format_part_b( $parts[ 'b' ] );
+  format_part_b( $parts[ 'b' ], 'SLOC' );
 
 }
 
@@ -205,29 +205,29 @@ function format_part_a( $part_a ) {
   }
 
   echo
-    '| ' . pad_r( $head_a, $max_a ) . ' ' .
     '| ' . pad_r( $head_b, $max_b ) . ' ' .
+    '| ' . pad_r( $head_a, $max_a ) . ' ' .
     '| ' . pad_r( $head_c, $max_c ) . ' ' .
     "|\n";
 
   echo
-    '| ' . pad_r( '', $max_a, '-' ) . ':' .
     '| ' . pad_r( '', $max_b, '-' ) . ' ' .
+    '| ' . pad_r( '', $max_a, '-' ) . ':' .
     '| ' . pad_r( '', $max_c, '-' ) . ' ' .
     "|\n";
 
   foreach ( $cell_list as $cell ) {
 
     echo
-      '| ' . pad_l( $cell[ 0 ], $max_a ) . ' ' .
       '| ' . pad_r( $cell[ 1 ], $max_b ) . ' ' .
+      '| ' . pad_l( $cell[ 0 ], $max_a ) . ' ' .
       '| ' . pad_r( $cell[ 2 ], $max_c ) . ' ' .
       "|\n";
 
   }
 }
 
-function format_part_b( $part_b ) {
+function format_part_b( $part_b, $head_b ) {
 
   // 2023-04-05 jj5 - example markdown table...
   //
@@ -246,7 +246,6 @@ function format_part_b( $part_b ) {
   $head = trim( $part_b[ 0 ] );
 
   $head_a = 'Language';
-  $head_b = 'SLOC';
   $head_c = 'Percentage';
 
   $max_a = strlen( $head_a );
@@ -282,7 +281,7 @@ function format_part_b( $part_b ) {
   echo
     '| ' . pad_r( '', $max_a, '-' ) . ' ' .
     '| ' . pad_r( '', $max_b, '-' ) . ':' .
-    '| ' . pad_r( '', $max_c, '-' ) . ' ' .
+    '| ' . pad_r( '', $max_c, '-' ) . ':' .
     "|\n";
 
   foreach ( $cell_list as $cell ) {
