@@ -668,37 +668,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto",
             "name": "IKickassCrypto",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020IKickassCrypto\u0020interface\u0020is\u0020the\u0020interface\u0020provided\u0020by\u0020an\u0020encryption\nservice.\u0020You\u0020can\u0020use\u0020the\u0020framework\u0020to\u0020create\u0020your\u0020own\u0020encryption\u0020services\u0020or\u0020you\u0020can\u0020use\u0020one\u0020\u0028or\nmore\u0029\u0020of\u0020the\u0020four\u0020encryption\u0020services\u0020provided\u0020by\u0020this\u0020library.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
             "name": "get_error_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020errors\u0020which\u0020have\u0020happened\u0020since\u0020the\u0020last\u0020time\u0020clear_error\u0028\u0029\nwas\u0020called.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_get_error_list"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Aget_error\u0028\u0029",
             "name": "get_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020most\u0020recent\u0020error\u003B\u0020this\u0020is\u0020a\u0020string\u0020or\u0020null\u0020if\u0020no\u0020errors.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_get_error"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Aclear_error\u0028\u0029",
             "name": "clear_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020clear\u0020the\u0020current\u0020error\u0020list.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_clear_error"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Aencrypt\u0028\u0029",
             "name": "encrypt",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020JSON\u0020encode\u0020the\u0020input\u0020and\u0020encrypt\u0020the\u0020result\u003B\u0020returns\u0020false\u0020on\nerror.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_encrypt"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020decrypt\u0020the\u0020ciphertext\u0020and\u0020decode\u0020it\u0020as\u0020JSON\u003B\u0020returns\u0020false\u0020on\nerror.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_decrypt"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto\u003A\u003Adelay\u0028\u0029",
             "name": "delay",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020sleep\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time,\u0020from\u00201\u0020millisecond\u0020to\u002010\nseconds\u003B\u0020this\u0020is\u0020called\u0020automatically\u0020on\u0020the\u0020first\u0020error\u0020as\u0020a\u0020mitigation\u0020against\u0020timing\nattacks.",
             "url": "classes/Kickass-Crypto-Contract-IKickassCrypto.html#method_delay"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION",
@@ -783,17 +783,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aencrypt\u0028\u0029",
             "name": "encrypt",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020JSON\u0020encode\u0020the\u0020input\u0020and\u0020encrypt\u0020the\u0020result\u003B\u0020returns\u0020false\u0020on\nerror.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_encrypt"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020decrypt\u0020the\u0020ciphertext\u0020and\u0020decode\u0020it\u0020as\u0020JSON\u003B\u0020returns\u0020false\u0020on\nerror.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_decrypt"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Adelay\u0028\u0029",
             "name": "delay",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020sleep\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time,\u0020from\u00201\u0020millisecond\u0020to\u002010\nseconds\u003B\u0020this\u0020is\u0020called\u0020automatically\u0020on\u0020the\u0020first\u0020error\u0020as\u0020a\u0020mitigation\u0020against\u0020timing\nattacks.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_delay"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acatch\u0028\u0029",
