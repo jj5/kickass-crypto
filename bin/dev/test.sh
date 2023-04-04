@@ -52,6 +52,10 @@ main() {
   #
   php ../../bin/dev/rotate-keys.php 2>/dev/null
 
+  # 2023-04-03 jj5 - and update README.md with the "kickass" count...
+  #
+  bash ../../bin/dev/count-kickass.sh >/dev/null
+
   for test in *; do
 
     echo processing $test...;
@@ -63,10 +67,6 @@ main() {
     process_silly
 
   done;
-
-  # 2023-04-03 jj5 - when all the tests pass update README.md with the "kickass" count...
-  #
-  bash ../../bin/dev/count-kickass.sh >/dev/null
 
 }
 
