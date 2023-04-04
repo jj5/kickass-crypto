@@ -22,8 +22,8 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/library/php/check.php';
+require_once __DIR__ . '/../src/code/global/php/check.php';
 
 require_once __DIR__ . '/utility.php';
 
-require_once __DIR__ . '/../src/code/library/test/util.php';
+require_once __DIR__ . '/../src/code/global/test/util.php';

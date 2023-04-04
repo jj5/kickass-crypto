@@ -19,13 +19,13 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/library/php/check.php';
+require_once __DIR__ . '/../src/code/global/php/check.php';
 
 require_once __DIR__ . '/framework.php';
 
 if ( ! function_exists( 'kickass_round_trip' ) ) {
 
-  require_once __DIR__ . '/../src/code/library/service/sodium.php';
+  require_once __DIR__ . '/../src/code/global/service/sodium.php';
 
 }
 

@@ -19,6 +19,6 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/library/utility/error.php';
-require_once __DIR__ . '/../src/code/library/utility/exit.php';
-require_once __DIR__ . '/../src/code/library/utility/twiddle.php';
+require_once __DIR__ . '/../src/code/global/utility/error.php';
+require_once __DIR__ . '/../src/code/global/utility/exit.php';
+require_once __DIR__ . '/../src/code/global/utility/twiddle.php';

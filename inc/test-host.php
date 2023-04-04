@@ -21,9 +21,9 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/library/php/check.php';
+require_once __DIR__ . '/../src/code/global/php/check.php';
 
 require_once __DIR__ . '/library.php';
 require_once __DIR__ . '/test.php';
 
-require_once __DIR__ . '/../src/code/library/host/unit-test.php';
+require_once __DIR__ . '/../src/code/global/host/unit-test.php';
