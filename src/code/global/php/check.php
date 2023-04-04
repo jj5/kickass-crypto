@@ -22,7 +22,7 @@
 kickass_crypto_validate_php();
 
 /**
- * 2023-04-04 jj5 - this function makes sure we're running a supported version of PHP. Don't use
+ * 2023-04-04 jj5 - this function makes sure we're running a supported version of PHP; don't use
  * fancy PHP features because they might not be available in older versions.
  * @return void
  */

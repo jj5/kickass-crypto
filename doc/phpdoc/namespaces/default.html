@@ -1015,7 +1015,7 @@ then we exit, unless the programmer has overridden that behavior by defining cer
                                 &nbsp;: void    </span>
 </dt>
 <dd>2023-03-31 jj5 - this function is for validating our run-time environment. If there&#039;s a problem
-then we exit, unless the programmer has overridden that behavior by defining certain constants</dd>
+then we exit, unless the programmer has overridden that behavior by defining certain constants.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_crypto_validate_environment_sodium">kickass_crypto_validate_environment_sodium()</a>
@@ -1040,7 +1040,7 @@ your code so you shouldn&#039;t have to worry about whether it is defined or not
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>2023-04-04 jj5 - this function makes sure we&#039;re running a supported version of PHP. Don&#039;t use
+<dd>2023-04-04 jj5 - this function makes sure we&#039;re running a supported version of PHP; don&#039;t use
 fancy PHP features because they might not be available in older versions.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
@@ -1048,42 +1048,43 @@ fancy PHP features because they might not be available in older versions.</dd>
     <span>
                                 &nbsp;: <a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this is the round-trip service locator defined for use by the OpenSSL module.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_at_rest">kickass_at_rest()</a>
     <span>
                                 &nbsp;: <a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this is the at-rest service locator defined for use by the OpenSSL module.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_round_trip">kickass_round_trip()</a>
     <span>
                                 &nbsp;: <a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this is the round-trip service locator defined for use by the Sodium module.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_at_rest">kickass_at_rest()</a>
     <span>
                                 &nbsp;: <a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this is the at-rest service locator defined for use by the Sodium module.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_crypto_setup_unit_test_environment">kickass_crypto_setup_unit_test_environment()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this function will set up a test environment.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_crypto_get_floats">kickass_crypto_get_floats()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - this function will generate a bunch of special purpose floating-point
+values.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_crypto_setup_environment">kickass_crypto_setup_environment()</a>
@@ -4667,7 +4668,7 @@ then we exit, unless the programmer has overridden that behavior by defining cer
     </aside>
 
         <p class="phpdocumentor-summary">2023-03-31 jj5 - this function is for validating our run-time environment. If there&#039;s a problem
-then we exit, unless the programmer has overridden that behavior by defining certain constants</p>
+then we exit, unless the programmer has overridden that behavior by defining certain constants.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
@@ -4777,7 +4778,7 @@ your code so you shouldn&#039;t have to worry about whether it is defined or not
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-04 jj5 - this function makes sure we&#039;re running a supported version of PHP. Don&#039;t use
+        <p class="phpdocumentor-summary">2023-04-04 jj5 - this function makes sure we&#039;re running a supported version of PHP; don&#039;t use
 fancy PHP features because they might not be available in older versions.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -4802,35 +4803,60 @@ fancy PHP features because they might not be available in older versions.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/service/openssl.php"><a href="files/src-code-global-service-openssl.html"><abbr title="src/code/global/service/openssl.php">openssl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this is the round-trip service locator defined for use by the OpenSSL module.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This component will use the round-trip keys defined for the OpenSSL module, those keys are
+defined with the CONFIG_OPENSSL_SECRET_CURR configuration constant (required) and the
+CONFIG_OPENSSL_SECRET_PREV configuration constant (optional).</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
+service locator with a new service instance.</p>
+</section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Kickass-KickassException.html"><abbr title="\Kickass\KickassException">KickassException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if the environment is determined to be unsupported during
+construction.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the crypto interface.</p>
+</section>
+
     
 </article>
                     <article class="phpdocumentor-element -function - ">
@@ -4841,35 +4867,59 @@ fancy PHP features because they might not be available in older versions.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/service/openssl.php"><a href="files/src-code-global-service-openssl.html"><abbr title="src/code/global/service/openssl.php">openssl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this is the at-rest service locator defined for use by the OpenSSL module.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This component will use the at-rest keys defined for the OpenSSL module, those keys are
+defined with the CONFIG_OPENSSL_SECRET_LIST configuration constant.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
+service locator with a new service instance.</p>
+</section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Kickass-KickassException.html"><abbr title="\Kickass\KickassException">KickassException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if the environment is determined to be unsupported during
+construction.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the crypto interface.</p>
+</section>
+
     
 </article>
                     <article class="phpdocumentor-element -function - ">
@@ -4884,31 +4934,56 @@ fancy PHP features because they might not be available in older versions.</p>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this is the round-trip service locator defined for use by the Sodium module.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This component will use the round-trip keys defined for the Sodium module, those keys are
+defined with the CONFIG_SODIUM_SECRET_CURR configuration constant (required) and the
+CONFIG_SODIUM_SECRET_PREV configuration constant (optional).</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
+service locator with a new service instance.</p>
+</section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Kickass-KickassException.html"><abbr title="\Kickass\KickassException">KickassException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if the environment is determined to be unsupported during
+construction.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the crypto interface.</p>
+</section>
+
     
 </article>
                     <article class="phpdocumentor-element -function - ">
@@ -4923,31 +4998,55 @@ fancy PHP features because they might not be available in older versions.</p>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this is the at-rest service locator defined for use by the Sodium module.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This component will use the at-rest keys defined for the Sodium module, those keys are
+defined with the CONFIG_SODIUM_SECRET_LIST configuration constant.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
+service locator with a new service instance.</p>
+</section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/Kickass-KickassException.html"><abbr title="\Kickass\KickassException">KickassException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if the environment is determined to be unsupported during
+construction.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Kickass-Crypto-Contract-IKickassCrypto.html"><abbr title="\Kickass\Crypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the crypto interface.</p>
+</section>
+
     
 </article>
                     <article class="phpdocumentor-element -function - ">
@@ -4958,22 +5057,22 @@ fancy PHP features because they might not be available in older versions.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/test/util.php"><a href="files/src-code-global-test-util.html"><abbr title="src/code/global/test/util.php">util.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this function will set up a test environment.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_crypto_setup_unit_test_environment</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">kickass_crypto_setup_unit_test_environment</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -4986,81 +5085,90 @@ fancy PHP features because they might not be available in older versions.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/test/util.php"><a href="files/src-code-global-test-util.html"><abbr title="src/code/global/test/util.php">util.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - this function will generate a bunch of special purpose floating-point
+values.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_crypto_get_floats</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$nan</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$pos_inf</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$neg_inf</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$pos_zero</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$neg_zero</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$float_min</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$float_max</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$epslion</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">kickass_crypto_get_floats</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$nan</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$pos_inf</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$neg_inf</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$pos_zero</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$neg_zero</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$float_min</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$float_max</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$epslion</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$nan</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the NaN (Not a Number) floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$pos_inf</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the positive infinity floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$neg_inf</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the negative infinity floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$pos_zero</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the positive zero floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$neg_zero</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the negative zero floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$float_min</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the minimum floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$float_max</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the maximum floating-point value</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$epslion</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the smallest absolute non-zero floating-point value</p>
+</section>
 
             </dd>
             </dl>
@@ -5068,7 +5176,7 @@ fancy PHP features because they might not be available in older versions.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     

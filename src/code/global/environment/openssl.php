@@ -21,7 +21,7 @@
 
 /**
  * 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
- * then we exit, unless the programmer has overridden that behavior by defining certain constants
+ * then we exit, unless the programmer has overridden that behavior by defining certain constants.
  *
  * - to disable checks for the OpenSSL library functions:
  *

@@ -528,7 +528,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\kickass_crypto_validate_environment_openssl\u0028\u0029",
             "name": "kickass_crypto_validate_environment_openssl",
-            "summary": "2023\u002D03\u002D31\u0020jj5\u0020\u002D\u0020this\u0020function\u0020is\u0020for\u0020validating\u0020our\u0020run\u002Dtime\u0020environment.\u0020If\u0020there\u0027s\u0020a\u0020problem\nthen\u0020we\u0020exit,\u0020unless\u0020the\u0020programmer\u0020has\u0020overridden\u0020that\u0020behavior\u0020by\u0020defining\u0020certain\u0020constants",
+            "summary": "2023\u002D03\u002D31\u0020jj5\u0020\u002D\u0020this\u0020function\u0020is\u0020for\u0020validating\u0020our\u0020run\u002Dtime\u0020environment.\u0020If\u0020there\u0027s\u0020a\u0020problem\nthen\u0020we\u0020exit,\u0020unless\u0020the\u0020programmer\u0020has\u0020overridden\u0020that\u0020behavior\u0020by\u0020defining\u0020certain\u0020constants.",
             "url": "namespaces/default.html#function_kickass_crypto_validate_environment_openssl"
         },                {
             "fqsen": "\\kickass_crypto_validate_environment_sodium\u0028\u0029",
@@ -548,27 +548,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\kickass_crypto_validate_php\u0028\u0029",
             "name": "kickass_crypto_validate_php",
-            "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020this\u0020function\u0020makes\u0020sure\u0020we\u0027re\u0020running\u0020a\u0020supported\u0020version\u0020of\u0020PHP.\u0020Don\u0027t\u0020use\nfancy\u0020PHP\u0020features\u0020because\u0020they\u0020might\u0020not\u0020be\u0020available\u0020in\u0020older\u0020versions.",
+            "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020this\u0020function\u0020makes\u0020sure\u0020we\u0027re\u0020running\u0020a\u0020supported\u0020version\u0020of\u0020PHP\u003B\u0020don\u0027t\u0020use\nfancy\u0020PHP\u0020features\u0020because\u0020they\u0020might\u0020not\u0020be\u0020available\u0020in\u0020older\u0020versions.",
             "url": "namespaces/default.html#function_kickass_crypto_validate_php"
         },                {
             "fqsen": "\\kickass_round_trip\u0028\u0029",
             "name": "kickass_round_trip",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020round\u002Dtrip\u0020service\u0020locator\u0020defined\u0020for\u0020use\u0020by\u0020the\u0020Sodium\u0020module.",
             "url": "namespaces/default.html#function_kickass_round_trip"
         },                {
             "fqsen": "\\kickass_at_rest\u0028\u0029",
             "name": "kickass_at_rest",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020at\u002Drest\u0020service\u0020locator\u0020defined\u0020for\u0020use\u0020by\u0020the\u0020Sodium\u0020module.",
             "url": "namespaces/default.html#function_kickass_at_rest"
         },                {
             "fqsen": "\\kickass_crypto_setup_unit_test_environment\u0028\u0029",
             "name": "kickass_crypto_setup_unit_test_environment",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020set\u0020up\u0020a\u0020test\u0020environment.",
             "url": "namespaces/default.html#function_kickass_crypto_setup_unit_test_environment"
         },                {
             "fqsen": "\\kickass_crypto_get_floats\u0028\u0029",
             "name": "kickass_crypto_get_floats",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020generate\u0020a\u0020bunch\u0020of\u0020special\u0020purpose\u0020floating\u002Dpoint\nvalues.",
             "url": "namespaces/default.html#function_kickass_crypto_get_floats"
         },                {
             "fqsen": "\\kickass_crypto_setup_environment\u0028\u0029",
