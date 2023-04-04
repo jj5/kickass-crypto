@@ -985,19 +985,26 @@ Here are some notes regarding notable components:
 * [bin/get-cipher-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-cipher-list.php): list cipher suites supported by your version of PHP
 * [bin/get-hash-list.php](https://github.com/jj5/kickass-crypto/tree/main/bin/get-hash-list.php): list hash algorithms supported by your version of PHP
 * [inc/](https://github.com/jj5/kickass-crypto/tree/main/inc/): include files
-* [inc/framework.php](https://github.com/jj5/kickass-crypto/tree/main/inc/framework.php): the include file for the base framework
+* [inc/framework.php](https://github.com/jj5/kickass-crypto/tree/main/inc/framework.php): the include file for the base framework if you want to build your own crypto module on top of it
+* [inc/library.php](https://github.com/jj5/kickass-crypto/tree/main/inc/library.php): this loads the entire library and both crypto modules
 * [inc/openssl.php](https://github.com/jj5/kickass-crypto/tree/main/inc/openssl.php): the OpenSSL implementation
 * [inc/sodium.php](https://github.com/jj5/kickass-crypto/tree/main/inc/sodium.php): the Sodium implementation
 * [inc/test-host.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test-host.php): the include file for the unit testing framework
 * [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
+* [inc/utility.php](https://github.com/jj5/kickass-crypto/tree/main/inc/utility.php): the include file for the utility functions
 * etc/: library configuration files (planned)
 * [src/](https://github.com/jj5/kickass-crypto/tree/main/src/): PHP source code
 * [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the PHP source code
-* [src/code/library/](https://github.com/jj5/kickass-crypto/tree/main/src/code/library/): global PHP functions
+* [src/code/global/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/): global PHP functions
+* [src/code/global/autoload/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/autoload/): PHP autoloading functions
+* [src/code/global/constant/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/constant/): PHP constants
+* [src/code/global/environment/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/environment/): environment validation
+* [src/code/global/host/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/host/): process hosts, presently for unit-testing
+* [src/code/global/php/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/php/): PHP version validation
+* [src/code/global/server/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/server/): service locators for library modules
+* [src/code/global/test/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/test/): helpers for use during testing
 * [src/code/namespace/](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/): namespaced PHP components (classes, interfaces, and traits)
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
-* [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
-* [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): unit tests:
 fast, slow, and silly; see [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh)
 * [.gitignore](https://github.com/jj5/kickass-crypto/tree/main/.gitignore): the list of files ignored by git
