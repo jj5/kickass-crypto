@@ -26,7 +26,7 @@ class TestCryptoRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
 
   private $chunk_size = 0;
 
-  protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+  protected function do_get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
 
     return $this->chunk_size;
 

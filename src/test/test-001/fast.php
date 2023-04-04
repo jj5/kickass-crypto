@@ -60,7 +60,7 @@ class TestCryptoRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
 
   use CustomThrow;
 
-  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
+  protected function do_is_valid_config( &$problem ) { $problem = null; return true; }
 
 }
 
@@ -116,7 +116,7 @@ function run_test() {
     KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function get_const_key_hash() { return 'invalid-hash'; }
+        protected function do_get_const_key_hash() { return 'invalid-hash'; }
       };
     },
     [

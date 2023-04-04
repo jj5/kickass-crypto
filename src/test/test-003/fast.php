@@ -22,8 +22,9 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../../inc/test-host.php';
+//define( 'DEBUG', true );
 
+require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/lib/include.php';
 
 function get_ignored_errors() {
@@ -50,7 +51,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->data_encode( true );
+          return $this->data_encode( true, $this->get_data_encoding() );
         }
         protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
           return false;
@@ -60,13 +61,13 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED,
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED,
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->data_encode( true );
+          return $this->data_encode( true, $this->get_data_encoding() );
         }
-        protected function do_data_encode( $input ) {
+        protected function do_data_encode( $input, $data_encoding ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -88,13 +89,13 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED,
+    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED,
     function() {
       return new class extends TestCrypto {
         public function test() {
           return $this->data_decode( 'true' );
         }
-        protected function do_data_decode( string $json ) {
+        protected function do_data_decode( string $json, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -164,7 +165,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_passphrase_list() { return []; }
+        protected function do_get_passphrase_list() { return []; }
       };
     }
   );
@@ -176,7 +177,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_passphrase_list() { return [ 'invalid' ]; }
+        protected function do_get_passphrase_list() { return [ 'invalid' ]; }
       };
     }
   );
@@ -188,7 +189,7 @@ function run_test() {
         public function test() {
           return $this->decrypt( 'XKA0/test' );
         }
-        protected function get_passphrase_list() { return [ 'invalid' ]; }
+        protected function do_get_passphrase_list() { return [ 'invalid' ]; }
       };
     }
   );
@@ -200,7 +201,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return true;
         }
       };
@@ -214,7 +215,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return false;
         }
       };
@@ -228,7 +229,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return 0;
         }
       };
@@ -242,7 +243,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return 0.0;
         }
       };
@@ -256,7 +257,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return 1.0;
         }
       };
@@ -270,7 +271,7 @@ function run_test() {
         public function test() {
           return $this->do_encrypt( 'test' );
         }
-        protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+        protected function do_get_config_chunk_size( $default ) {
           return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX + 1;
         }
       };
@@ -348,6 +349,18 @@ function run_test() {
           $tag = 'invalid';
           return false;
         }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING,
+    function() {
+      return new class extends ValidCrypto {
+        public function test() {
+          return $this->encrypt( 'test'  );
+        }
+        protected function do_get_data_encoding() { return 'invalid'; }
       };
     }
   );
@@ -640,7 +653,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function do_data_encode( $input ) {
+        protected function do_data_encode( $input, $data_encoding ) {
           return false;
         }
       };
@@ -670,7 +683,7 @@ function run_test() {
           $result = $this->decrypt( $ciphertext );
           return $result;
         }
-        protected function do_data_decode( $input ) {
+        protected function do_data_decode( $input, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
           return false;
         }
       };
@@ -717,7 +730,7 @@ function run_test() {
           $test = "XKA0/4cw25Y/6+5FIbfUOwHnkaGk5SHerXpBYdd6He9xjCRlzqzpUZAaU4U3kGZ0zKeym73d0DaXXlgcTugMDTOT+LThg8AfE54fkmSZBx7ne7Ulz";
           return $this->decrypt( $test );
         }
-        protected function get_passphrase_list() { return []; }
+        protected function do_get_passphrase_list() { return []; }
       };
     }
   );
@@ -767,7 +780,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decode_message( 'invalid' );
+          return $this->decode_message( 'invalid', $data_encoding );
         }
       };
     }
@@ -778,7 +791,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decode_message( '123456789|true' );
+          return $this->decode_message( '123456789|json|true', $data_encoding );
         }
       };
     }
@@ -789,8 +802,8 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          assert( $this->decode_message( '00000001| ' ) === ' ' );
-          return $this->decode_message( '00000000|' );
+          assert( $this->decode_message( '00000001|json| ', $data_encoding ) === ' ' );
+          return $this->decode_message( '00000000|json|', $data_encoding );
         }
       };
     }
@@ -801,7 +814,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decode_message( 'ffffffff|true' );
+          return $this->decode_message( 'ffffffff|json|true', $data_encoding );
         }
       };
     }
@@ -812,7 +825,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decode_message( '80000000|true' );
+          return $this->decode_message( '80000000|json|true', $data_encoding );
         }
       };
     }
@@ -823,7 +836,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->decode_message( '7fffffff|true' );
+          return $this->decode_message( '7fffffff|json|true', $data_encoding );
         }
       };
     }

@@ -27,13 +27,13 @@ require_once __DIR__ . '/etc/config.php';
 
 class CryptoTest extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
 
-  protected function do_data_encode( $input ) {
+  protected function do_data_encode( $input, $data_encoding ) {
 
     return serialize( $input );
 
   }
 
-  protected function do_data_decode( string $input ) {
+  protected function do_data_decode( string $input, $data_encoding ) {
 
     return unserialize( $input );
 

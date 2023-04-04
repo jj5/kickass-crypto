@@ -412,8 +412,8 @@ parameter, like this:
 ```
 class MyKickassCrypto extends \Kickass\Crypto\Framework\KickassCrypto {
 
-  protected function is_valid_config( &$problem = null ) { return TODO; }
-  protected function get_passphrase_list() { return TODO; }
+  protected function do_is_valid_config( &$problem = null ) { return TODO; }
+  protected function do_get_passphrase_list() { return TODO; }
   // ... other function overrides ...
 
 }
@@ -457,11 +457,11 @@ When this library decodes its ciphertext it verifies the data-format prefix. At 
 
 The version zero data format, mentioned above, presently implies the following:
 
-After JSON encoding (discussed in the following section) padding is done and the data length is
-prefixed. Before encryption the message is formatted, like this:
+After data encoding (JSON by default, discussed in the following section) padding is done and
+the data length is prefixed. Before encryption the message is formatted, like this:
 
 ```
-$message = $json_data_length . '|' . $json . $this->get_padding( $pad_length );
+$message = $encoded_data_length . '|json|' . $encoded_data . $this->get_padding( $pad_length );
 ```
 
 The JSON data length is formatted as an 8-character hexadecimal value. The size of 8 characters
@@ -1089,7 +1089,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 948 times (including the ASCII banners).
+The string "kickass" appears in the source code 968 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

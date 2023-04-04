@@ -25,7 +25,7 @@ class KickassSodiumAtRest extends KickassSodium {
 
   use \Kickass\Crypto\Traits\KICKASS_CRYPTO_AT_REST;
 
-  protected function get_passphrase_list() {
+  protected function do_get_passphrase_list() {
 
     // 2023-03-30 jj5 - we cache the generated passphrase list in a static variable so we don't
     // have to constantly regenerate it and because we don't want to put this sensitive data
@@ -40,7 +40,7 @@ class KickassSodiumAtRest extends KickassSodium {
 
   }
 
-  protected function is_valid_config( &$problem = null ) {
+  protected function do_is_valid_config( &$problem ) {
 
     $secret_list = $this->get_config_secret_list();
 

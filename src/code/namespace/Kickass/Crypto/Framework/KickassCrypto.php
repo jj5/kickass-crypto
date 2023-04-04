@@ -149,9 +149,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
   // a list of passphrases. The first passphrase in the list is the one that's used for
   // encryption, others are potentially used for decryption.
   //
-  abstract protected function is_valid_config( &$problem = null );
-  abstract protected function get_passphrase_list();
-  abstract protected function get_const_data_format_version();
+  abstract protected function do_is_valid_config( &$problem );
+  abstract protected function do_get_passphrase_list();
+  abstract protected function do_get_const_data_format_version();
   abstract protected function do_encrypt_string( string $plaintext, string $passphrase );
   abstract protected function do_error( $error );
   abstract protected function do_decrypt_string( string $binary, string $passphrase );
@@ -401,7 +401,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function count_this( $caller ) {
+  protected final function count_this( $caller ) {
+
+    return $this->do_count_this( $caller );
+
+  }
+
+  protected function do_count_this( $caller ) {
 
     $this->count_function( $caller );
 
@@ -409,25 +415,49 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function count_function( $metric ) {
+  protected final function count_function( $metric ) {
+
+    return $this->do_count_function( $metric );
+
+  }
+
+  protected function do_count_function( $metric ) {
 
     return $this->increment_counter( self::$telemetry[ 'function' ], $metric );
 
   }
 
-  protected function count_class( $class ) {
+  protected final function count_class( $class ) {
+
+    return $this->do_count_class( $class );
+
+  }
+
+  protected function do_count_class( $class ) {
 
     return $this->increment_counter( self::$telemetry[ 'class' ], $class );
 
   }
 
-  protected function count_length( int $length ) {
+  protected final function count_length( int $length ) {
+
+    return $this->do_count_length( $length );
+
+  }
+
+  protected function do_count_length( int $length ) {
 
     return $this->increment_counter( self::$telemetry[ 'length' ], $length );
 
   }
 
-  protected function increment_counter( &$array, $key ) {
+  protected final function increment_counter( &$array, $key ) {
+
+    return $this->do_increment_counter( $array, $key );
+
+  }
+
+  protected function do_increment_counter( &$array, $key ) {
 
     if ( ! array_key_exists( $key, $array ) ) {
 
@@ -441,81 +471,193 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function get_const_key_hash() {
+  protected final function get_const_data_format_version() {
+
+    return $this->do_get_const_data_format_version();
+
+  }
+
+  protected final function get_const_key_hash() {
+
+    return $this->do_get_const_key_hash();
+
+  }
+
+  protected function do_get_const_key_hash() {
 
     return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
 
   }
 
-  protected function get_const_key_length_min() {
+  protected final function get_const_key_length_min() {
+
+    return $this->do_get_const_key_length_min();
+
+  }
+
+  protected function do_get_const_key_length_min() {
 
     return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
 
   }
 
-  protected function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+  protected final function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+
+    return $this->do_get_config_chunk_size( $default );
+
+  }
+
+  protected function do_get_config_chunk_size( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
 
   }
 
-  protected function get_config_chunk_size_max(
+  protected final function get_config_chunk_size_max(
     $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
   ) {
+
+    return $this->do_get_config_chunk_size_max( $default );
+
+  }
+
+  protected function do_get_config_chunk_size_max( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
 
   }
 
-  protected function get_config_data_length_max(
+  protected final function get_config_data_length_max(
     $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
   ) {
+
+    return $this->do_get_config_data_length_max( $default );
+
+  }
+
+  protected function do_get_config_data_length_max( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
 
   }
 
-  protected function get_config_json_encode_options(
+  protected final function get_config_data_encoding(
+    $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
+  ) {
+
+    return $this->do_get_config_data_encoding( $default );
+
+  }
+
+  protected function do_get_config_data_encoding( $default ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
+
+  }
+
+  protected final function get_config_json_encode_options(
     $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
   ) {
+
+    return $this->do_get_config_json_encode_options( $default );
+
+  }
+
+  protected function do_get_config_json_encode_options( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
 
   }
 
-  protected function get_config_json_decode_options(
+  protected final function get_config_json_decode_options(
     $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
   ) {
+
+    return $this->do_get_config_json_decode_options( $default );
+
+  }
+
+  protected function do_get_config_json_decode_options( $default  ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
 
   }
 
-  protected function get_const( $const, $default = false ) {
+  protected final function get_const( $const, $default = false ) {
+
+    return $this->do_get_const( $const, $default );
+
+  }
+
+  protected function do_get_const( $const, $default ) {
 
     return defined( $const ) ? constant( $const ) : $default;
 
   }
 
-  protected function get_encryption_passphrase() {
+  protected final function get_passphrase_list() {
+
+    return $this->do_get_passphrase_list();
+
+  }
+
+  protected final function get_encryption_passphrase() {
+
+    return $this->do_get_encryption_passphrase();
+
+  }
+
+  protected function do_get_encryption_passphrase() {
 
     return $this->get_passphrase_list()[ 0 ] ?? false;
 
   }
 
-  protected function is_cli() {
+  protected final function is_cli() {
+
+    return $this->do_is_cli();
+
+  }
+
+  protected function do_is_cli() {
 
     return $this->php_sapi_name() === 'cli';
 
   }
 
-  protected function is_debug() {
+  protected final function is_debug() {
+
+    return $this->do_is_debug();
+
+  }
+
+  protected function do_is_debug() {
 
     return defined( 'DEBUG' ) && DEBUG;
 
   }
 
-  protected function is_valid_secret( $secret ) {
+  protected final function is_valid_config( &$problem = null ) {
+
+    return $this->do_is_valid_config( $problem );
+
+  }
+
+  protected final function is_valid_secret( $secret ) {
+
+    $is_valid = $this->do_is_valid_secret( $secret );
+
+    if ( $is_valid && strlen( $secret ) < KICKASS_CRYPTO_KEY_LENGTH_MIN ) {
+
+      $this->log_error( 'secret shorter than recommended.', __FILE__, __LINE__, __FUNCTION__ );
+
+    }
+
+    return $is_valid;
+
+  }
+
+  protected function do_is_valid_secret( $secret ) {
 
     if ( ! is_string( $secret ) ) { return false; }
 
@@ -525,7 +667,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function is_valid_base64( $input ) {
+  protected final function is_valid_base64( $input ) {
+
+    return $this->do_is_valdi_base64( $input );
+
+  }
+
+  protected function do_is_valid_base64( $input ) {
 
     if ( empty( $input ) ) { return false; }
 
@@ -545,7 +693,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $encoded_data = $this->data_encode( $input );
+    $data_encoding = $this->get_config_data_encoding();
+
+    if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING );
+
+    }
+
+    $encoded_data = $this->data_encode( $input, $data_encoding );
 
     if ( $encoded_data === false ) {
 
@@ -613,9 +769,21 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
     //
-    $hex_json_length = sprintf( '%08x', $encoded_data_length );
+    $encoded_data_length_hex = sprintf( '%08x', $encoded_data_length );
 
-    $message = $hex_json_length . '|' . $encoded_data . $this->get_padding( $pad_length );
+    $data_encoding = $this->get_data_encoding();
+
+    if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING );
+
+    }
+
+    $message =
+      $encoded_data_length_hex . '|' .
+      $data_encoding . '|' .
+      $encoded_data .
+      $this->get_padding( $pad_length );
 
     $ciphertext = $this->encrypt_string( $message, $passphrase );
 
@@ -631,12 +799,50 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  protected final function is_valid_data_encoding( $data_encoding ) {
+
+    // 2023-04-04 jj5 - the string length is non-negotiable, we need our padded messsages to
+    // always be the same size.
+    //
+    if ( strlen( $data_encoding ) !== 4 ) { return false; }
+
+    return $this->do_is_valid_data_encoding( $data_encoding );
+
+  }
+
+  protected function do_is_valid_data_encoding( $data_encoding ) {
+
+    switch ( $data_encoding ) {
+
+      case KICKASS_CRYPTO_DATA_ENCODING_JSON :
+      case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
+
+        return true;
+
+      default :
+
+        return false;
+
+    }
+  }
+
+  protected final function get_data_encoding() {
+
+    return $this->do_get_data_encoding();
+
+  }
+
+  protected function do_get_data_encoding() {
+
+    return $this->get_config_data_encoding();
+
+  }
+
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
     return $this->do_encrypt_string( $plaintext, $passphrase );
 
   }
-
 
   protected function do_decrypt( string $ciphertext ) {
 
@@ -658,11 +864,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       }
 
-      $encoded_data = $this->try_decrypt( $binary, $passphrase );
+      $encoded_data = $this->try_decrypt( $binary, $passphrase, $data_encoding );
 
       if ( $encoded_data === false ) { continue; }
 
-      $result = $this->data_decode( $encoded_data );
+      $result = $this->data_decode( $encoded_data, $data_encoding );
 
       if ( $result !== false ) { return $result; }
 
@@ -682,7 +888,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function try_decrypt( string $binary, string $passphrase ) {
+  protected final function try_decrypt( string $binary, string $passphrase, &$data_encoding = null ) {
+
+    $data_encoding = null;
 
     $message = $this->decrypt_string( $binary, $passphrase );
 
@@ -692,7 +900,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    return $this->decode_message( $message );
+    return $this->decode_message( $message, $data_encoding );
 
   }
 
@@ -712,13 +920,17 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function decode_message( string $message ) {
+  protected final function decode_message( string $message, &$data_encoding ) {
 
-    return $this->do_decode_message( $message );
+    return $this->do_decode_message( $message, $data_encoding );
 
   }
 
-  protected function do_decode_message( string $message ) {
+  protected function do_decode_message( string $message, &$data_encoding ) {
+
+    // 2023-04-04 jj5 - this should be null unless its valid.
+    //
+    $data_encoding = null;
 
     // 2023-04-02 jj5 - this function decodes a message, which is:
     //
@@ -735,15 +947,17 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     assert( hexdec( '7fffffff' ) === $max_json_length );
 
-    $parts = explode( '|', $message, 2 );
+    $parts = explode( '|', $message, 3 );
 
-    if ( count( $parts ) !== 2 ) {
+    if ( count( $parts ) !== 3 ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT );
 
     }
 
     $encoded_data_length_string = $parts[ 0 ];
+    $data_encoding_read = $parts[ 1 ];
+    $binary = $parts[ 2 ];
 
     if ( strlen( $encoded_data_length_string ) !== 8 ) {
 
@@ -773,10 +987,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
+    if ( ! $this->is_valid_data_encoding( $data_encoding_read ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING );
+
+    }
+
     // 2023-04-02 jj5 - the binary data is the JSON with the random padding after it. So take
     // the JSON from the beginning of the string, ignore the padding, and return the JSON.
-
-    $binary = $parts[ 1 ];
 
     if ( $encoded_data_length > strlen( $binary ) ) {
 
@@ -785,6 +1003,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
 
     $encoded_data = substr( $binary, 0, $encoded_data_length );
+
+    $data_encoding = $data_encoding_read;
 
     return $encoded_data;
 
@@ -915,23 +1135,59 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function data_encode( $input ) {
+  protected final function data_encode( $data, $data_encoding ) {
 
     try {
 
-      return $this->do_data_encode( $input );
+      return $this->do_data_encode( $data, $data_encoding );
 
     }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
 
     }
   }
 
-  protected function do_data_encode( $input ) {
+  protected function do_data_encode( $data, $data_encoding ) {
+
+    try {
+
+      switch ( $data_encoding ) {
+
+        case KICKASS_CRYPTO_DATA_ENCODING_JSON :
+
+          return $this->encode_json( $data );
+
+        case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
+
+          return $this->encode_phps( $data );
+
+        default :
+
+          return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+
+      }
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+
+    }
+  }
+
+  protected final function encode_json( $input ) {
+
+    return $this->do_encode_json( $input );
+
+  }
+
+  protected function do_encode_json( $input ) {
 
     try {
 
@@ -957,46 +1213,92 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function data_decode( $encoded_data ) {
+  protected final function data_decode( $encoded_data, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
 
     try {
 
-      return $this->do_data_decode( $encoded_data );
+      return $this->do_data_decode( $encoded_data, $data_encoding );
 
     }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
 
     }
   }
 
-  protected function do_data_decode( string $encoded_data ) {
+  protected function do_data_decode( string $encoded_data, $data_encoding ) {
 
     try {
 
-      $options = $this->get_config_json_decode_options();
+      switch ( $data_encoding ) {
 
-      $result = $this->php_json_decode( $encoded_data, $assoc = true, 512, $options );
+        case KICKASS_CRYPTO_DATA_ENCODING_JSON :
 
-      if ( $result === false ) {
+          return $this->decode_json( $encoded_data );
 
-        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+        case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
+
+          return $this->decode_phps( $encoded_data );
+
+        default :
+
+          return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
 
       }
 
-      return $result;
-
     }
-    catch ( \JsonException $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
+
+    }
+  }
+
+  protected final function decode_json( $input ) {
+
+    return $this->do_decode_json( $input );
+
+  }
+
+  protected function do_decode_json( $input ) {
+
+    $options = $this->get_config_json_decode_options();
+
+    $result = $this->php_json_decode( $input, $assoc = true, 512, $options );
+
+    if ( $result === false ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
     }
+
+    return $result;
+
+  }
+
+  protected final function decode_phps( $input ) {
+
+    return $this->do_decode_phps( $input );
+
+  }
+
+  protected function do_decode_phps( $input ) {
+
+    $result = $this->php_unserialize( $input );
+
+    if ( $result === false ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+
+    }
+
+    return $result;
+
   }
 
   protected final function encode( string $binary ) {
@@ -1098,13 +1400,25 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function convert_secret_to_passphrase( string $key ) {
+  protected final function convert_secret_to_passphrase( string $key ) {
+
+    return $this->do_convert_secret_to_passphrase( $key );
+
+  }
+
+  protected function do_convert_secret_to_passphrase( string $key ) {
 
     return hash( $this->get_const_key_hash(), $key, $binary = true );
 
   }
 
-  protected function get_padding( int $length ) {
+  protected final function get_padding( int $length ) {
+
+    return $this->do_get_padding( $length );
+
+  }
+
+  protected function do_get_padding( int $length ) {
 
     return $this->php_random_bytes( $length );
 
@@ -1114,12 +1428,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function get_delay(
-    int $ns_min,
-    int $ns_max,
-    &$seconds,
-    &$nanoseconds
-  ) {
+  protected final function get_delay( int $ns_min, int $ns_max, &$seconds, &$nanoseconds ) {
+
+    return $this->do_get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+
+  }
+
+  protected function do_get_delay( int $ns_min, int $ns_max, &$seconds, &$nanoseconds ) {
 
     assert( $ns_min >= 0 );
     assert( $ns_max >= 0 );
@@ -1165,10 +1480,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_log_error( $message, $file, $line, $function ) {
 
-    if (
-      defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) &&
-      KICKASS_CRYPTO_DISABLE_LOG
-    ) {
+    if ( defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) && KICKASS_CRYPTO_DISABLE_LOG ) {
 
       return false;
 

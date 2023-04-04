@@ -128,6 +128,50 @@ trait KICKASS_WRAPPER_PHP {
 
   }
 
+  protected final function php_serialize( $value ) {
+
+    try {
+
+      return $this->do_php_serialize( $value );
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      throw $ex;
+
+    }
+  }
+
+  protected function do_php_serialize( $value ) {
+
+    return serialize( $value );
+
+  }
+
+  protected final function php_unserialize( $value ) {
+
+    try {
+
+      return $this->do_php_unserialize( $value );
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      throw $ex;
+
+    }
+  }
+
+  protected function do_php_unserialize( $value ) {
+
+    return unserialize( $value );
+
+  }
+
   protected final function php_random_int( $min, $max ) {
 
     try {

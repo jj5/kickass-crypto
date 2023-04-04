@@ -25,9 +25,9 @@ namespace Kickass\Crypto\Traits;
 
 trait KICKASS_DEBUG_KEYS {
 
-  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
+  protected function do_is_valid_config( &$problem ) { $problem = null; return true; }
 
-  protected function get_passphrase_list() {
+  protected function do_get_passphrase_list() {
     static $list = null;
     if ( $list === null ) {
       $secret = self::GenerateSecret();

@@ -23,7 +23,7 @@ class TestCrypto extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip 
 
   use \Kickass\Crypto\Traits\KICKASS_DEBUG;
 
-  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
+  protected function do_is_valid_config( &$problem ) { $problem = null; return true; }
 
   protected function do_delay(
     int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
@@ -37,7 +37,7 @@ class TestCrypto extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip 
 
 class ValidCrypto extends TestCrypto {
 
-  protected function get_passphrase_list() {
+  protected function do_get_passphrase_list() {
 
     static $result = null;
 

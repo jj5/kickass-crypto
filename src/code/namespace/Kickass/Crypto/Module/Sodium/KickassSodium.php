@@ -60,7 +60,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
   }
 
-  protected function get_const_data_format_version() {
+  protected function do_get_const_data_format_version() {
 
     return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM' );
 
@@ -188,7 +188,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
   }
 
-  protected function count_this( $caller ) {
+  protected function do_count_this( $caller ) {
 
     $this->count_function( $caller );
 

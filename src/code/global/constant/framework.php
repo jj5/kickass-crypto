@@ -27,6 +27,11 @@
 define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
 define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 
+// 2023-04-04 jj5 - the encoding format strings must be four characters long...
+//
+define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
+define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
+
 // 2023-03-30 jj5 - these are the current data format versions for this library. If you fork this
 // library and alter the data format you should change these. If you do change this please use
 // something other than 'KA' as the prefix. If you don't want the data format version reported
@@ -45,6 +50,7 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING', KICKASS_CRYPTO_DATA_ENCODING_JSON );
 define( 'KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX', pow( 2, 26 ) );
 define(
   'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS',
@@ -113,7 +119,9 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_DECODING_FAILED', 'decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED', 'PHPS decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_ENCODING', 'invalid encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING', 'unknown encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED', 'base64 decode failed.' );
@@ -127,6 +135,7 @@ define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2', 'invalid tag length (2).' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING', 'invalid data encoding.' );
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED', 'encryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2', 'encryption failed (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
