@@ -34,10 +34,7 @@ class TestJsonWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
 
   }
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 
@@ -60,10 +57,7 @@ class TestJsonWithPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoun
 
   }
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 
@@ -80,10 +74,7 @@ class TestPhpsWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
 
   }
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 
@@ -106,10 +97,7 @@ class TestPhpsWithPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoun
 
   }
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 

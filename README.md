@@ -278,27 +278,27 @@ Total Number of Source Code Files = 102
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 5,477
-Development Effort Estimate, Person-Years (Person-Months) = 1.19 (14.31)
+Total Physical Source Lines of Code (SLOC)                = 5,453
+Development Effort Estimate, Person-Years (Person-Months) = 1.19 (14.25)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.57 (6.87)
+Schedule Estimate, Years (Months)                         = 0.57 (6.86)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.08
-Total Estimated Cost to Develop                           = $ 161,106
+Total Estimated Cost to Develop                           = $ 160,365
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| src       | 4,927 | php=4758,sh=169 |
+| src       | 4,903 | php=4734,sh=169 |
 | bin       |   550 | php=422,sh=128  |
 
 #### Totals grouped by language (dominant language first)
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,180 |   (94.58%) |
-| sh       |   297 |    (5.42%) |
+| php      | 5,156 |   (94.55%) |
+| sh       |   297 |    (5.45%) |
 
 ## Supported PHP versions
 
@@ -1145,7 +1145,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,154 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,138 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

@@ -292,7 +292,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $start = microtime( $as_float = true );
 
-      $this->do_delay();
+      $this->do_delay(
+        KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN, KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX
+      );
 
       $duration = microtime( $as_float = true ) - $start;
 
@@ -841,13 +843,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
     // format.
 
-    if ( strlen( $data_format ) < KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN ) {
+    $length = strlen( $data_format );
+
+    if ( $length < KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN ) {
 
       return false;
 
     }
 
-    if ( strlen( $data_format ) > KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX ) {
+    if ( $length > KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX ) {
 
       return false;
 
@@ -1077,10 +1081,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     $this->log_error( 'delayed due to error...', __FILE__, __LINE__, __FUNCTION__ );
 

@@ -64,10 +64,7 @@ class TestDelay extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
   use \Kickass\Crypto\Traits\KICKASS_DEBUG_KEYS;
 
-  protected function do_delay(
-    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
-    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
-  ) {
+  protected function do_delay( int $ns_min, int $ns_max ) {
 
     // 2023-04-02 jj5 - we don't do a delay, this will cause the emergency delay to kick in
 
