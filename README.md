@@ -4,7 +4,9 @@ A contemporary PHP cryptography library circa 2023.
 
 **Synopsis:**
 * a uniform interface to two separate and contemporary encryption libraries with support for
-input serialization and output encoding
+input and config validation, serialization and deserialization (with JSON), data size limits,
+passphrase management, message padding, output encoding, logging, telemetry, and exception
+handling and error management
 * [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
 encryption with
 [Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
@@ -53,6 +55,8 @@ something you think I should know about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
 
 ## Warning
+
+**Please read this section.**
 
 There are a lot of ways you can go wrong with your crypto code. This library was written as an
 attempt to reduce crypto footguns; hopefully it hasn't introduced any!
