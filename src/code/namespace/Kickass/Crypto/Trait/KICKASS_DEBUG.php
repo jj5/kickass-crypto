@@ -19,14 +19,14 @@
 //
 \************************************************************************************************/
 
-namespace Kickass\Crypto\Trait;
+namespace Kickass\Crypto\Traits;
 
 trait KICKASS_DEBUG {
 
   // 2023-04-02 jj5 - these traits will set you up for debugging...
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_KEYS;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_KEYS;
 
 }

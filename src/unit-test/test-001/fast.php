@@ -56,7 +56,7 @@ class TestCryptoRoundTripInvalidConfig extends \Kickass\Crypto\Module\OpenSsl\Ki
 
 class TestCryptoRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
   use CustomThrow;
 

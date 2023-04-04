@@ -30,7 +30,7 @@ namespace Kickass\Crypto\Module\OpenSsl;
 
 class KickassOpenSslRoundTrip extends KickassOpenSsl {
 
-  use \Kickass\Crypto\Trait\KICKASS_CRYPTO_ROUND_TRIP;
+  use \Kickass\Crypto\Traits\KICKASS_CRYPTO_ROUND_TRIP;
 
   protected function get_passphrase_list() {
 

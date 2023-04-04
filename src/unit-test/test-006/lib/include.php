@@ -22,13 +22,13 @@
 
 class TestRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
 class TestAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 

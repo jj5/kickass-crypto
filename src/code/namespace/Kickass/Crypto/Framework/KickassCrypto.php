@@ -38,7 +38,7 @@ namespace Kickass\Crypto\Framework;
 
 abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto {
 
-  use \Kickass\Crypto\Trait\KICKASS_WRAPPER_PHP;
+  use \Kickass\Crypto\Traits\KICKASS_WRAPPER_PHP;
 
   // 2023-03-30 jj5 - our counters are stored here, call
   //* count_function() to increment a 'function' counter

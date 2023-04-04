@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-namespace Kickass\Crypto\Trait;
+namespace Kickass\Crypto\Traits;
 
 trait KICKASS_CRYPTO_ROUND_TRIP {
 

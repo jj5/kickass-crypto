@@ -21,7 +21,7 @@
 //
 \************************************************************************************************/
 
-namespace Kickass\Crypto\Trait;
+namespace Kickass\Crypto\Traits;
 
 trait KICKASS_DEBUG_LOG {
 

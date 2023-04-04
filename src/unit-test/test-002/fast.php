@@ -24,25 +24,25 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 
 class TestKickassSodiumRoundTrip extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
 class TestKickassSodiumAtRest extends \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
 class TestKickassOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
 class TestKickassOpenSslAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
 
-  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 

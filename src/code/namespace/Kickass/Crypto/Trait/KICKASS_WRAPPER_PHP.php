@@ -36,7 +36,7 @@
 //
 \************************************************************************************************/
 
-namespace Kickass\Crypto\Trait;
+namespace Kickass\Crypto\Traits;
 
 trait KICKASS_WRAPPER_PHP {
 

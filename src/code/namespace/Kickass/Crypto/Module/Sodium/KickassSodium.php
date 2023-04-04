@@ -25,7 +25,7 @@ use Kickass\Crypto\Framework\KickassCrypto;
 
 abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
-  use \Kickass\Crypto\Trait\KICKASS_WRAPPER_PHP_SODIUM;
+  use \Kickass\Crypto\Traits\KICKASS_WRAPPER_PHP_SODIUM;
 
   // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
   // interface methods defined below...

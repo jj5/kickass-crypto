@@ -23,7 +23,7 @@ namespace Kickass\Crypto\Module\Sodium;
 
 class KickassSodiumAtRest extends KickassSodium {
 
-  use \Kickass\Crypto\Trait\KICKASS_CRYPTO_AT_REST;
+  use \Kickass\Crypto\Traits\KICKASS_CRYPTO_AT_REST;
 
   protected function get_passphrase_list() {
 
