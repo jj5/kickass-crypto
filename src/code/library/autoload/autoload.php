@@ -23,7 +23,9 @@ spl_autoload_register( 'kickass_crypto_autoload' );
 
 function kickass_crypto_autoload( $class_name ) {
 
-  $path = __DIR__ . '/../../namespace/' . str_replace( '\\', DIRECTORY_SEPARATOR, $class_name ) . '.php';
+  $class_path = str_replace( '\\', DIRECTORY_SEPARATOR, $class_name );
+
+  $path = __DIR__ . '/../../namespace/' . $class_path . '.php';
 
   if ( file_exists( $path ) ) { require_once $path; return true; }
 

@@ -28,14 +28,6 @@ function kickass_setup_unit_test_environment() {
 
 }
 
-function kickass_handle_error( $errno, $errstr, $errfile, $errline ) {
-
-  if ( error_reporting() === 0 ) { return; }
-
-  throw new ErrorException( $errstr, $errno, $errno, $errfile, $errline );
-
-}
-
 function kickass_get_floats(
   &$nan = null,
   &$pos_inf = null,

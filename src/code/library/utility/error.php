@@ -15,9 +15,14 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-04-04 jj5 - help with error management...
 //
 \************************************************************************************************/
 
-define( 'CONFIG_SODIUM_SECRET_CURR', '6k11gM2NRfOiEF8Rc+bXpCCjgAaFC9JJwOlA9vZ3WsovpZitpoV1rya1JTLXbL7TYSU6fLgFKh95DVCZHBNUk54r' );
-define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );
+function kickass_handle_error( $errno, $errstr, $errfile, $errline ) {
+
+  if ( error_reporting() === 0 ) { return; }
+
+  throw new ErrorException( $errstr, $errno, $errno, $errfile, $errline );
+
+}

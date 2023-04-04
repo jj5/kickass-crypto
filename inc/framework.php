@@ -21,6 +21,8 @@
 
 require_once __DIR__ . '/../src/code/library/php/check.php';
 
+require_once __DIR__ . '/utility.php';
+
 require_once __DIR__ . '/../src/code/library/autoload/autoload.php';
 
 require_once __DIR__ . '/../src/code/library/constant/framework.php';
@@ -30,7 +32,5 @@ require_once __DIR__ . '/../src/code/library/constant/sodium.php';
 require_once __DIR__ . '/../src/code/library/environment/framework.php';
 require_once __DIR__ . '/../src/code/library/environment/openssl.php';
 require_once __DIR__ . '/../src/code/library/environment/sodium.php';
-
-require_once __DIR__ . '/../src/code/library/utility/twiddle.php';
 
 kickass_validate_environment();

@@ -24,7 +24,6 @@
 
 require_once __DIR__ . '/../src/code/library/php/check.php';
 
-require_once __DIR__ . '/../src/code/library/utility/twiddle.php';
+require_once __DIR__ . '/utility.php';
 
-require_once __DIR__ . '/../src/code/library/test/exit.php';
 require_once __DIR__ . '/../src/code/library/test/util.php';

@@ -15,9 +15,10 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-04-04 jj5 - here we include our utility functions...
 //
 \************************************************************************************************/
 
-define( 'CONFIG_SODIUM_SECRET_CURR', '6k11gM2NRfOiEF8Rc+bXpCCjgAaFC9JJwOlA9vZ3WsovpZitpoV1rya1JTLXbL7TYSU6fLgFKh95DVCZHBNUk54r' );
-define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );
+require_once __DIR__ . '/../src/code/library/utility/error.php';
+require_once __DIR__ . '/../src/code/library/utility/exit.php';
+require_once __DIR__ . '/../src/code/library/utility/twiddle.php';
