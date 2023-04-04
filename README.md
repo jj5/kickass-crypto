@@ -102,6 +102,9 @@ The problem with compression is that if an attacker can control some of the inpu
 include a particular value and then if the output decreases in size they can know that the other
 input also included in the particular value. Ouch.
 
+This code base is not mature or well tested, before you use it you should read all the code to
+make sure it meets your quality standards. If you do so I would be pleased to hear from you.
+
 If you can think of anything else that everyone should know about and be careful about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
 
