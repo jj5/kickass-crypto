@@ -173,6 +173,46 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_json_decode( 'true' );
+        }
+        protected function do_php_json_last_error() { return 123; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_decode( 'true' );
+        }
+        protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_decode( 'true' );
+        }
+        protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED,
     function() {
       return new class extends ValidCrypto {
@@ -226,20 +266,6 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3,
-    function() {
-      return new class extends TestCrypto {
-        public function test() {
-          return $this->data_decode( 'true' );
-        }
-        protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
     KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED,
     function() {
       return new class extends TestCrypto {
@@ -277,6 +303,30 @@ function run_test() {
         protected function do_message_encode( $binary ) {
           throw new Exception( 'fail' );
         }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_message_encode( 'whatever' );
+        }
+        protected function do_php_base64_encode( $binary ) { return 123; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_message_encode( 'whatever' );
+        }
+        protected function do_get_const_data_format_version() { return 'Z'; }
       };
     }
   );

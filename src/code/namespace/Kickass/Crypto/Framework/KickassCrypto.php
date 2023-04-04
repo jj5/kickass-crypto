@@ -477,6 +477,18 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  protected final function get_const_data_format_version_length_min() {
+
+    return $this->do_get_const_data_format_version_length_min();
+
+  }
+
+  protected function do_get_const_data_format_version_length_min() {
+
+    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_LENGTH_MIN' );
+
+  }
+
   protected final function get_const_key_hash() {
 
     return $this->do_get_const_key_hash();
@@ -1458,27 +1470,21 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     $data_format_version = $this->get_data_format_version();
     $base64 = $this->php_base64_encode( $binary );
 
-    if ( ! is_string( $data_format_version ) ) {
+    if ( ! is_string( $base64 ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
 
     }
 
-    if ( ! is_string( $base64 ) ) {
+    if ( strlen( $data_format_version ) < $this->get_const_data_format_version_length_min() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 
     }
 
-    if ( ! $data_format_version ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
-
-    }
-
     if ( ! $base64 ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_5 );
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
 
     }
 

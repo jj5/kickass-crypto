@@ -40,6 +40,8 @@ define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_OPENSSL', 'KA0' );
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
 
+define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_LENGTH_MIN', 2 );
+
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
 // future... note that 2^12 is 4KiB and 2^26 is 64 MiB.
 //
@@ -172,7 +174,6 @@ define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED', 'message encoding failed
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2', 'message encoding failed (2).' );
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3', 'message encoding failed (3).' );
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4', 'message encoding failed (4).' );
-define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_5', 'message encoding failed (5).' );
 
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED', 'message decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID', 'message encoding invalid.' );
