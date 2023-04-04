@@ -16,7 +16,8 @@
 
 /************************************************************************************************\
 //
-// 2023-04-05 jj5 - this script uses the `sloccount` command to generate a report.
+// 2023-04-05 jj5 - this script uses the `sloccount` command to generate a report for the
+// README.md file.
 //
 \************************************************************************************************/
 
