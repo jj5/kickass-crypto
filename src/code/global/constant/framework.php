@@ -53,6 +53,20 @@ define(
 );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
+// 2023-04-05 jj5 - PHP serialization is disabled by default because it can lead to code execution
+// vulnerabilities... (I don't have a source for this claim, that might be a rumor or not true
+// any more).
+//
+// 2023-04-05 jj5 - also note that you would only deserialize data which was successfully
+// encrypted, so that would presumably make it harder for an attacker to inject code via PHP
+// serialization format.
+//
+// 2023-04-05 jj5 - if you want to enable PHP serialization you will need these two defines in
+// your config file:
+//
+// define( 'CONFIG_ENCRYPTION_PHPS_ENABLE', true );
+// define( 'CONFIG_ENCRYPTION_DATA_ENCODING', KICKASS_CRYPTO_DATA_ENCODING_PHPS );
+//
 define( 'KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE', false );
 
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
@@ -110,7 +124,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
 // false is returned and the error constant is added to the error list. Sometimes the same basic
 // error can happen from multiple code points; when that happens we add a number in the hope that
 // later we can find the specific point in the code which flagged the error.
-//
+
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED', 'exception raised.' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
