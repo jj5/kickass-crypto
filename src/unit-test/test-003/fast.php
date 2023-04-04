@@ -67,7 +67,7 @@ function run_test() {
           return $this->json_encode( true );
         }
         protected function do_json_encode( $input ) {
-          throw new Exception( 'fail' );
+          throw new \Exception( 'fail' );
         }
       };
     }
@@ -95,7 +95,7 @@ function run_test() {
           return $this->json_decode( 'true' );
         }
         protected function do_json_decode( string $json ) {
-          throw new Exception( 'fail' );
+          throw new \Exception( 'fail' );
         }
       };
     }
@@ -562,7 +562,7 @@ function run_test() {
           return $this->encrypt( 'test' );
         }
         public function do_encrypt( $input ) {
-          throw new Exception( 'fail' );
+          throw new \Exception( 'fail' );
         }
       };
     }
@@ -576,7 +576,7 @@ function run_test() {
           return $this->decrypt( 'test' );
         }
         public function do_decrypt( $input ) {
-          throw new Exception( 'fail' );
+          throw new \Exception( 'fail' );
         }
       };
     }

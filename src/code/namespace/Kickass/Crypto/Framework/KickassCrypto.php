@@ -822,7 +822,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
         KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP
       ) {
 
-        throw new Exception(
+        throw new \Exception(
           'test running: KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP'
         );
 

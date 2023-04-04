@@ -66,7 +66,7 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
       'error_list' => $crypto->get_error_list(),
     ]);
 
-    throw new Exception( 'error: ' . json_encode( [
+    throw new \Exception( 'error: ' . json_encode( [
       'expected' => $expected_error,
       'class' => get_class( $crypto ),
       'result' => $result,
@@ -84,7 +84,7 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
 
   if ( $error !== $expected_error ) {
 
-    throw new Exception(
+    throw new \Exception(
       'error: ' . json_encode( [ 'error' => $error, 'expected' => $expected_error ] )
     );
 

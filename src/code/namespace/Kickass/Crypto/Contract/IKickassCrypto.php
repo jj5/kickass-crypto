@@ -23,7 +23,7 @@
 //
 \************************************************************************************************/
 
-namespace Kickass\Crypto\Interface;
+namespace Kickass\Crypto\Contract;
 
 interface IKickassCrypto {
 

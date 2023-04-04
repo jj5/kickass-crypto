@@ -70,7 +70,7 @@ function main( $argv ) {
 
     if ( ! is_callable( $configure ) ) {
 
-      throw new Exception( "Invalid test $mode_in:$test_in\n" );
+      throw new \Exception( "Invalid test $mode_in:$test_in\n" );
 
     }
 

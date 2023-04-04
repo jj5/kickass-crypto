@@ -186,7 +186,7 @@ function run_test() {
     KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM,
     function() {
       return new class extends TestCryptoRoundTrip {
-        protected function do_php_random_bytes( $length ) { throw new Exception( 'fail' ); }
+        protected function do_php_random_bytes( $length ) { throw new \Exception( 'fail' ); }
       };
     },
     null
