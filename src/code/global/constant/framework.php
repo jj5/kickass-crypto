@@ -105,20 +105,26 @@ define( 'KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE', false );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE', false );
 
-// 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
+// 2023-03-29 jj5 - the following delays are in nanoseconds, these might be changed in future...
+
+// 2023-04-05 jj5 - the minimum random delay used for timing attack mitigation...
 //
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
+
+// 2023-04-05 jj5 - the maximum random delay used for timing attack mitigation...
+//
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
 
 // 2023-04-03 jj5 - this delay is a floating-point value in seconds, it's for comparison of the
-// value returned from the PHP microtime()...
+// value returned from the PHP microtime() to check that our delay implementation did actually
+// delay for at least this minimum amount of time.
 //
 define(
   'KICKASS_CRYPTO_DELAY_SECONDS_MIN',
   1.0 / ( KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN / 1_000 )
 );
 
-// 2023-03-30 jj5 - this is our Base64 validation regex...
+// 2023-04-05 jj5 - this is our Base64 validation regex, it's not presently being used.
 //
 define(
   'KICKASS_CRYPTO_REGEX_BASE64',

@@ -258,47 +258,47 @@ php bin/gen-demo-config.php > config.php
 ### File count
 
 ```
-Total Number of Files = 102
-Total Number of Source Code Files = 102
+Total Number of Files = 105
+Total Number of Source Code Files = 105
 ```
 
 | Directory | Files | By language |
 | --------- | -----:| ----------- |
 | src       |    84 | php=80,sh=4 |
-| bin       |    18 | php=13,sh=5 |
+| bin       |    21 | php=13,sh=8 |
 
 #### Totals grouped by language (dominant language first)
 
 | Language | Files | Percentage |
 | -------- | -----:| ----------:|
-| php      |    93 |   (91.18%) |
-| sh       |     9 |    (8.82%) |
+| php      |    93 |   (88.57%) |
+| sh       |    12 |   (11.43%) |
 
 
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 5,453
-Development Effort Estimate, Person-Years (Person-Months) = 1.19 (14.25)
+Total Physical Source Lines of Code (SLOC)                = 5,484
+Development Effort Estimate, Person-Years (Person-Months) = 1.19 (14.33)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.57 (6.86)
+Schedule Estimate, Years (Months)                         = 0.57 (6.88)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.08
-Total Estimated Cost to Develop                           = $ 160,365
+Total Estimated Cost to Develop                           = $ 161,322
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
 | src       | 4,903 | php=4734,sh=169 |
-| bin       |   550 | php=422,sh=128  |
+| bin       |   581 | php=422,sh=159  |
 
 #### Totals grouped by language (dominant language first)
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,156 |   (94.55%) |
-| sh       |   297 |    (5.45%) |
+| php      | 5,156 |   (94.02%) |
+| sh       |   328 |    (5.98%) |
 
 ## Supported PHP versions
 
@@ -1145,7 +1145,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,138 times (including the ASCII banners).
+The string "kickass" appears in the source code 39,844 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

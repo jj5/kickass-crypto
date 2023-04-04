@@ -21,13 +21,29 @@
 //
 \************************************************************************************************/
 
+// 2023-04-05 jj5 - this function will set up a test environment...
+//
 function kickass_crypto_setup_unit_test_environment() {
 
   set_error_handler( 'kickass_crypto_handle_error' );
+
   error_reporting( E_ALL | E_STRICT );
 
 }
 
+/* 2023-04-05 jj5 - this function will generate a bunch of special purpose floating-point
+    values...
+
+  @param float $nan the NaN (Not a Number) floating-point value
+  @param float $pos_inf the positive infinity floating-point value
+  @param float $neg_inf the negative infinity floating-point value
+  @param float $pos_zero the positive zero floating-point value
+  @param float $neg_zero the negative zero floating-point value
+  @param float $float_min the minimum floating-point value
+  @param float $float_max the maximum floating-point value
+  @param float $epslion the smallest absolute non-zero floating-point value
+
+*/
 function kickass_crypto_get_floats(
   &$nan = null,
   &$pos_inf = null,

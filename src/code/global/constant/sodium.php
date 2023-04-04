@@ -24,6 +24,9 @@
 //
 \************************************************************************************************/
 
+// 2023-04-05 jj5 - this is the length of the passphrase (it's the $key parameter) expected by the
+// sodium_crypto_secretbox() function.
+//
 define( 'KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH', SODIUM_CRYPTO_SECRETBOX_KEYBYTES );
 
 // 2023-04-04 jj5 - config problems are things that can go wrong with a config file...

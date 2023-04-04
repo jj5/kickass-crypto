@@ -25,6 +25,20 @@
 //
 \************************************************************************************************/
 
+/* 2023-04-05 jj5 - this is the round-trip service locator defined for use by the Sodium module.
+    This component will use the round-trip keys defined for the Sodium module, those keys are
+    defined with the CONFIG_SODIUM_SECRET_CURR configuration constant (required) and the
+    CONFIG_SODIUM_SECRET_PREV configuration constant (optional).
+
+    @param Kickass\Crypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+      service locator with a new service instance.
+
+    @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
+
+    @throws Kickass\KickassException if the environment is determined to be unsupported during
+      construction.
+
+*/
 function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 
   static $instance = null;
@@ -41,6 +55,19 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassC
 
 }
 
+/* 2023-04-05 jj5 - this is the at-rest service locator defined for use by the Sodium module.
+    This component will use the at-rest keys defined for the Sodium module, those keys are
+    defined with the CONFIG_SODIUM_SECRET_LIST configuration constant.
+
+    @param Kickass\Crypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+      service locator with a new service instance.
+
+    @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
+
+    @throws Kickass\KickassException if the environment is determined to be unsupported during
+      construction.
+
+*/
 function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 
   static $instance = null;
