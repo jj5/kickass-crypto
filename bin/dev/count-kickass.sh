@@ -15,7 +15,8 @@
 
 ##################################################################################################
 #
-# 2023-04-03 jj5 - this script counts how many times "kickass" appears in the code.
+# 2023-04-03 jj5 - this script counts how many times "kickass" appears in the code and updates
+# the documentation.
 #
 ##################################################################################################
 

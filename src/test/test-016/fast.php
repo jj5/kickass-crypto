@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /************************************************************************************************\
@@ -15,28 +16,25 @@
 
 /************************************************************************************************\
 //
-// 2023-04-04 jj5 - bit twiddling helpers...
+// 2023-04-04 jj5 - this script takes the serialization overrides for a spin...
 //
 \************************************************************************************************/
 
-function kickass_crypto_is_set( int $flags, int $flag ) {
+require_once __DIR__ . '/../../../inc/test-host.php';
 
-  return $flag === ( $flags & $flag );
+function run_test() {
+
+  test( 0, [] );
+  test( 5, [ 1, 4 ] );
+
+}
+
+function test( int $value, array $expect ) {
+
+  $parts = kickass_crypto_bits_split( $value );
+
+  assert( $parts === $expect );
 
 }
 
-function kickass_crypto_bits_split( int $flags ) {
-
-  $result = [];
-
-  for ( $n = 0; $n < 63; $n++ ) {
-
-    $flag = pow( 2, $n );
-
-    if ( kickass_crypto_is_set( $flags, $flag ) ) { $result[] = $flag; }
-
-  }
-
-  return $result;
-
-}
+main( $argv );
