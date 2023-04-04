@@ -68,13 +68,13 @@ here are a few things to think about:
 
 * if you backup your keys make sure your backups are secure
 * if you don't backup your keys you won't be able to decrypt your data if you lose them
-* be careful you don't do things with your keys that cause them to potentially be swapped to the
-swap file (this might be unavoidable, such as when they're in a config file that you edit with a
-text editor, in which case make sure you are on a secure host)
 * don't commit your keys to source control
 * your keys don't only need to be secure now, they have to be secure _for all time_; if people are
 intercepting and recording your data now they will be able to decrypt it if they get a copy of the
 key in the future
+* be careful you don't do things with your keys that cause them to potentially be swapped to the
+swap file (this might be unavoidable, such as when they're in a config file that you edit with a
+text editor, in which case make sure you are on a secure host)
 * if you do leak your key (by accidentally putting it in source control or otherwise doing
 something which might have exposed it) then you have to immediately rotate your keys and
 re-encrypt all of your data (and the damage might have been done even if you do this, if your key
