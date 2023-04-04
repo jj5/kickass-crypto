@@ -652,7 +652,7 @@ function run_test() {
     function() {
       return new class extends ValidCrypto {
         public function test() {
-          return $this->encrypt( str_repeat( '0', $this->get_config_json_length_max() ) );
+          return $this->encrypt( str_repeat( '0', $this->get_config_data_length_max() ) );
         }
       };
     }
@@ -774,7 +774,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC,
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_SPEC,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -785,7 +785,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -797,7 +797,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -808,7 +808,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
     function() {
       return new class extends ValidCrypto {
         public function test() {

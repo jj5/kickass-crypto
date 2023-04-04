@@ -45,7 +45,7 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
-define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX', pow( 2, 26 ) );
+define( 'KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX', pow( 2, 26 ) );
 define(
   'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS',
   JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
@@ -133,8 +133,8 @@ define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2', 'invalid ciphertext (2).' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA', 'invalid data.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT', 'invalid message format.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC', 'invalid data length spec.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE', 'invalid data length range.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_SPEC', 'invalid data length spec.' );
+define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE', 'invalid data length range.' );
 define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH', 'invalid message length.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );

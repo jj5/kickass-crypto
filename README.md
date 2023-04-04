@@ -631,7 +631,7 @@ library. Let me know if that's a feature you care to have.
 After data is encoded as JSON it is limited to a configurable maximum length.
 
 The config constant for the maximum JSON encoding length is
-`CONFIG_ENCRYPTION_JSON_LENGTH_MAX`.
+`CONFIG_ENCRYPTION_DATA_LENGTH_MAX`.
 
 The default data encoding limit is 67,108,864 (2^<sup>26</sup>) bytes, which
 is roughly 67 MB.
@@ -643,7 +643,7 @@ end up with memory problems and your process might get terminated.
 If you wanted to decrease the data encoding limit you could do that in your
 `config.php` file like this:
 
-```define( 'CONFIG_ENCRYPTION_JSON_LENGTH_MAX', pow( 2, 25 ) );```
+```define( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', pow( 2, 25 ) );```
 
 ## Data compression
 

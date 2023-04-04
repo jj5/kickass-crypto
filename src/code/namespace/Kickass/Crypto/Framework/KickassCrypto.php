@@ -467,11 +467,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function get_config_json_length_max(
-    $default = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX
+  protected function get_config_data_length_max(
+    $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
   ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_LENGTH_MAX', $default );
+    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
 
   }
 
@@ -545,23 +545,23 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $json = $this->data_encode( $input );
+    $encoded_data = $this->data_encode( $input );
 
-    if ( $json === false ) {
+    if ( $encoded_data === false ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
 
     }
 
-    $json_length = strlen( $json );
+    $encoded_data_length = strlen( $encoded_data );
 
-    if ( $json_length > $this->get_config_json_length_max() ) {
+    if ( $encoded_data_length > $this->get_config_data_length_max() ) {
 
       return $this->error(
         KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
         [
-          'json_length' => $json_length,
-          'json_length_max' => $this->get_config_json_length_max(),
+          'data_length' => $encoded_data_length,
+          'data_length_max' => $this->get_config_data_length_max(),
         ]
       );
 
@@ -607,15 +607,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $pad_length = $chunk_size - ( $json_length % $chunk_size );
+    $pad_length = $chunk_size - ( $encoded_data_length % $chunk_size );
 
     assert( $pad_length <= $chunk_size );
 
     // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
     //
-    $hex_json_length = sprintf( '%08x', $json_length );
+    $hex_json_length = sprintf( '%08x', $encoded_data_length );
 
-    $message = $hex_json_length . '|' . $json . $this->get_padding( $pad_length );
+    $message = $hex_json_length . '|' . $encoded_data . $this->get_padding( $pad_length );
 
     $ciphertext = $this->encrypt_string( $message, $passphrase );
 
@@ -658,11 +658,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       }
 
-      $json = $this->try_decrypt( $binary, $passphrase );
+      $encoded_data = $this->try_decrypt( $binary, $passphrase );
 
-      if ( $json === false ) { continue; }
+      if ( $encoded_data === false ) { continue; }
 
-      $result = $this->data_decode( $json );
+      $result = $this->data_decode( $encoded_data );
 
       if ( $result !== false ) { return $result; }
 
@@ -722,7 +722,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     // 2023-04-02 jj5 - this function decodes a message, which is:
     //
-    // $json_length . '|' . $json . $random_padding
+    // $encoded_data_length . '|' . $encoded_data . $random_padding
     //
     // 2023-04-02 jj5 - this function will read the data length and then extract the JSON. This
     // function doesn't validate the JSON.
@@ -743,31 +743,31 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $json_length_string = $parts[ 0 ];
+    $encoded_data_length_string = $parts[ 0 ];
 
-    if ( strlen( $json_length_string ) !== 8 ) {
+    if ( strlen( $encoded_data_length_string ) !== 8 ) {
 
       return $this->error(
-        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC,
+        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_SPEC,
         [
-          'json_length_string' => $json_length_string,
+          'data_length_string' => $encoded_data_length_string,
         ]
       );
 
     }
 
-    $json_length = hexdec( $json_length_string );
+    $encoded_data_length = hexdec( $encoded_data_length_string );
 
     if (
-      ! is_int( $json_length ) ||
-      $json_length <= 0 ||
-      $json_length > $max_json_length
+      ! is_int( $encoded_data_length ) ||
+      $encoded_data_length <= 0 ||
+      $encoded_data_length > $max_json_length
     ) {
 
       return $this->error(
-        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE,
+        KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
         [
-          'json_length' => $json_length,
+          'json_length' => $encoded_data_length,
         ]
       );
 
@@ -778,15 +778,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     $binary = $parts[ 1 ];
 
-    if ( $json_length > strlen( $binary ) ) {
+    if ( $encoded_data_length > strlen( $binary ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH );
 
     }
 
-    $json = substr( $binary, 0, $json_length );
+    $encoded_data = substr( $binary, 0, $encoded_data_length );
 
-    return $json;
+    return $encoded_data;
 
   }
 
@@ -957,11 +957,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function data_decode( $json ) {
+  protected final function data_decode( $encoded_data ) {
 
     try {
 
-      return $this->do_data_decode( $json );
+      return $this->do_data_decode( $encoded_data );
 
     }
     catch ( \Throwable $ex ) {
@@ -973,13 +973,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_data_decode( string $json ) {
+  protected function do_data_decode( string $encoded_data ) {
 
     try {
 
       $options = $this->get_config_json_decode_options();
 
-      $result = $this->php_json_decode( $json, $assoc = true, 512, $options );
+      $result = $this->php_json_decode( $encoded_data, $assoc = true, 512, $options );
 
       if ( $result === false ) {
 

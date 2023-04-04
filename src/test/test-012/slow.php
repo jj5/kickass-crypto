@@ -73,7 +73,7 @@ function run_test() {
   // 2023-04-03 jj5 - this is as big as we can go. The -2 is for the pair of double quotes that
   // go around the string to turn it into JSON...
   //
-  $length = KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX - 2;
+  $length = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX - 2;
 
   test_text(
     str_repeat( '0', $length ),
