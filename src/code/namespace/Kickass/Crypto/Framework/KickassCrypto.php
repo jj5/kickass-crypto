@@ -1213,6 +1213,36 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
+  protected final function encode_phps( $input ) {
+
+    return $this->do_encode_phps( $input );
+
+  }
+
+  protected function do_encode_phps( $input ) {
+
+    try {
+
+      $result = $this->php_serialize( $input );
+
+      if ( ! $result ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED );
+
+      }
+
+      return $result;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+
+    }
+  }
+
   protected final function data_decode( $encoded_data, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
 
     try {
