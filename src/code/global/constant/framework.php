@@ -24,23 +24,38 @@
 //
 \************************************************************************************************/
 
+// 2023-04-05 jj5 - the key has is used to convert a secret key into a 32 byte (256-bit)
+// passphrase for use with either the OpenSSL or Sodium encryption library.
+//
 define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
+
+// 2023-04-05 jj5 - the minimum key length is used to ensure that secret keys meet at least a
+// minimal requirement.
+//
 define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 
-// 2023-04-04 jj5 - the encoding format strings must be four characters long...
+// 2023-04-04 jj5 - the encoding format strings must be four characters long... two formats are
+// supported:
+//
+// json: uses the PHP json_encode() and json_decode() functions
+// phps: uses the PHP serialize() and unserialize() functions (not enabled by default due to
+//       potential security issues, enable with CONFIG_ENCRYPTION_PHPS_ENABLE)
 //
 define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
 define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 
 // 2023-04-02 jj5 - NOTE: you don't need to actually change this constant, you can just override
-// get_const_data_format_version() and return a different string. For example:
+// get_const_data_format() and return a different string. For example:
 //
-// protected function do_get_const_data_format_version() { return 'MYKA1'; }
+// protected function do_get_const_data_format() { return 'MYKA1'; }
 //
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_OPENSSL', 'KA0' );
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
+// 2023-04-05 jj5 - NOTE: at the moment we're using version zero format constants; we will make
+// these version one when the library is ready for its first release. Note that the
+//
+define( 'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL', 'KA0' );
+define( 'KICKASS_CRYPTO_DATA_FORMAT_SODIUM', 'KAS0' );
 
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_LENGTH_MIN', 2 );
+define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN', 2 );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
 // future... note that 2^12 is 4KiB and 2^26 is 64 MiB.

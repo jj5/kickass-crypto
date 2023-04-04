@@ -29,20 +29,20 @@ interface IKickassCrypto {
   // 2023-04-03 jj5 - the list of errors which have happened since the last time clear_error()
   // was called...
   //
-  public function get_error_list();
+  public function get_error_list() : array;
 
   // 2023-04-03 jj5 - the most recent error; this is a string or null if no errors...
   //
-  public function get_error();
+  public function get_error() : ?string;
 
   // 2023-04-03 jj5 - this will clear the current error list...
   //
-  public function clear_error();
+  public function clear_error() : void;
 
   // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result; returns false on
   // error...
   //
-  public function encrypt( $input );
+  public function encrypt( mixed $input );
 
   // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON; returns false on
   // error...
@@ -53,6 +53,6 @@ interface IKickassCrypto {
   // seconds... this is called automatically on the first error as a mitigation against timing
   // attacks.
   //
-  public function delay();
+  public function delay() : void;
 
 }

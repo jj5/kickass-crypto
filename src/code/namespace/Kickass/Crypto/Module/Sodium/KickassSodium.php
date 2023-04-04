@@ -38,13 +38,13 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
   }
 
-  public function get_error_list() {
+  public function get_error_list() : array {
 
     return $this->error_list;
 
   }
 
-  public function get_error() {
+  public function get_error() : ?string {
 
     $count = count( $this->error_list );
 
@@ -54,15 +54,15 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
   }
 
-  public function clear_error() {
+  public function clear_error() : void {
 
     $this->error_list = [];
 
   }
 
-  protected function do_get_const_data_format_version() {
+  protected function do_get_const_data_format() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM' );
+    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_SODIUM' );
 
   }
 

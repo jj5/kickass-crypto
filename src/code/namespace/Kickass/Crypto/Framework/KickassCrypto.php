@@ -151,7 +151,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
   //
   abstract protected function do_is_valid_config( &$problem );
   abstract protected function do_get_passphrase_list();
-  abstract protected function do_get_const_data_format_version();
+  abstract protected function do_get_const_data_format();
   abstract protected function do_encrypt_string( string $plaintext, string $passphrase );
   abstract protected function do_error( $error );
   abstract protected function do_decrypt_string( string $binary, string $passphrase );
@@ -223,7 +223,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  public final function encrypt( $input ) {
+  public final function encrypt( mixed $input ) {
 
     try {
 
@@ -281,7 +281,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  public final function delay() {
+  public final function delay() : void {
 
     try {
 
@@ -471,21 +471,21 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function get_const_data_format_version() {
+  protected final function get_const_data_format() {
 
-    return $this->do_get_const_data_format_version();
-
-  }
-
-  protected final function get_const_data_format_version_length_min() {
-
-    return $this->do_get_const_data_format_version_length_min();
+    return $this->do_get_const_data_format();
 
   }
 
-  protected function do_get_const_data_format_version_length_min() {
+  protected final function get_const_data_format_length_min() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_LENGTH_MIN' );
+    return $this->do_get_const_data_format_length_min();
+
+  }
+
+  protected function do_get_const_data_format_length_min() {
+
+    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN' );
 
   }
 
@@ -1513,7 +1513,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_message_encode( string $binary ) {
 
-    $data_format_version = $this->get_data_format_version();
+    $data_format = $this->get_data_format();
     $base64 = $this->php_base64_encode( $binary );
 
     if ( ! is_string( $base64 ) ) {
@@ -1522,7 +1522,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    if ( strlen( $data_format_version ) < $this->get_const_data_format_version_length_min() ) {
+    if ( strlen( $data_format ) < $this->get_const_data_format_length_min() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 
@@ -1534,7 +1534,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    return $data_format_version . '/' . $base64;
+    return $data_format . '/' . $base64;
 
   }
 
@@ -1564,9 +1564,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $data_format_version = $parts[ 0 ];
+    $data_format = $parts[ 0 ];
 
-    if ( $data_format_version !== $this->get_data_format_version() ) {
+    if ( $data_format !== $this->get_data_format() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN );
 
@@ -1606,14 +1606,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function get_data_format_version() {
+  protected final function get_data_format() {
 
     // 2023-04-04 jj5 - this function just makes sure that only our implementation can use the
     // "KA" data format version prefix. If we're running someone elses code and they don't
     // nominate a new data format version for their own use we just put an 'X' in front of the
     // version so as to avoid it having the same value as used by our canonical implementation.
 
-    $version = $this->get_const_data_format_version();
+    $version = $this->get_const_data_format();
 
     $class = get_class( $this );
 

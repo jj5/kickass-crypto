@@ -326,7 +326,7 @@ function run_test() {
         public function test() {
           return $this->do_message_encode( 'whatever' );
         }
-        protected function do_get_const_data_format_version() { return 'Z'; }
+        protected function do_get_const_data_format() { return 'Z'; }
       };
     }
   );
