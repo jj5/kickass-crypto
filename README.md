@@ -100,7 +100,7 @@ but in certain circumstances it can be, so it's probably best just never to do i
 
 The problem with compression is that if an attacker can control some of the input data they can
 include a particular value and then if the output decreases in size they can know that the other
-input also included in the other input. Ouch.
+input also included in the particular value. Ouch.
 
 If you can think of anything else that everyone should know about and be careful about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
