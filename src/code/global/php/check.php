@@ -22,12 +22,12 @@
 
 (function() {
 
-  $min_version = '7.4';
+  $php_version_min = '7.4';
 
   if (
     ! function_exists( 'version_compare' ) ||
     ! function_exists( 'phpversion' ) ||
-    version_compare( phpversion(), $min_version, '<' )
+    version_compare( phpversion(), $php_version_min, '<' )
   ) {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
@@ -43,7 +43,8 @@
     }
     else {
 
-      $error = "The kickass-crypto library requires PHP version $min_version or greater. " .
+      $error =
+        "The kickass-crypto library requires PHP version $php_version_min or greater. " .
         "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
       $message = __FILE__ . ':' . __LINE__ . ': ' . $error;

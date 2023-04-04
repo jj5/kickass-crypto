@@ -21,14 +21,14 @@
 //
 \************************************************************************************************/
 
-function kickass_setup_unit_test_environment() {
+function kickass_crypto_setup_unit_test_environment() {
 
-  set_error_handler( 'kickass_handle_error' );
+  set_error_handler( 'kickass_crypto_handle_error' );
   error_reporting( E_ALL | E_STRICT );
 
 }
 
-function kickass_get_floats(
+function kickass_crypto_get_floats(
   &$nan = null,
   &$pos_inf = null,
   &$neg_inf = null,

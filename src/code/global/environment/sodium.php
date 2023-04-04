@@ -25,7 +25,7 @@
 //
 \************************************************************************************************/
 
-function kickass_validate_environment_sodium() {
+function kickass_crypto_validate_environment_sodium() {
 
   $errors = [];
 

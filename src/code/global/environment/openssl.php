@@ -25,7 +25,7 @@
 //
 \************************************************************************************************/
 
-function kickass_validate_environment_openssl() {
+function kickass_crypto_validate_environment_openssl() {
 
   $errors = [];
 

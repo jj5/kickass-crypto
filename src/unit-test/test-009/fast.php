@@ -34,7 +34,7 @@ function main( $argv ) {
 
   assert( class_exists( JsonException::class ) );
 
-  kickass_setup_unit_test_environment();
+  kickass_crypto_setup_unit_test_environment();
 
   $start = microtime( $as_float = true );
 
@@ -78,7 +78,7 @@ function main( $argv ) {
 
     require_once __DIR__ . '/../../../inc/openssl.php';
 
-    kickass_get_floats(
+    kickass_crypto_get_floats(
       $nan,
       $pos_inf,
       $neg_inf,
@@ -164,7 +164,7 @@ function main( $argv ) {
 
       $options = CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS;
 
-      if ( kickass_is_set( $options, JSON_INVALID_UTF8_IGNORE ) ) {
+      if ( kickass_crypto_is_set( $options, JSON_INVALID_UTF8_IGNORE ) ) {
 
         $invalid_utf8 = "\xE2\x28\xA1";
 
@@ -172,7 +172,7 @@ function main( $argv ) {
 
       }
 
-      if ( kickass_is_set( $options, JSON_INVALID_UTF8_SUBSTITUTE ) ) {
+      if ( kickass_crypto_is_set( $options, JSON_INVALID_UTF8_SUBSTITUTE ) ) {
 
         $invalid_utf8 = "\xE2\x28\xA1";
 
@@ -188,7 +188,7 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    kickass_exit( $ex, 84 );
+    kickass_crypto_exit( $ex, 84 );
 
   }
 }

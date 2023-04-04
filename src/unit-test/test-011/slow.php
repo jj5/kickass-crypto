@@ -25,7 +25,7 @@ require_once __DIR__ . '/../../../inc/test.php';
 
 function main( $argv ) {
 
-  kickass_setup_unit_test_environment();
+  kickass_crypto_setup_unit_test_environment();
 
   $mode = null;
   $debug = false;

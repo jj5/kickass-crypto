@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-function kickass_handle_error( $errno, $errstr, $errfile, $errline ) {
+function kickass_crypto_handle_error( $errno, $errstr, $errfile, $errline ) {
 
   if ( error_reporting() === 0 ) { return; }
 

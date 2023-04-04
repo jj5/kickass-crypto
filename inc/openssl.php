@@ -29,4 +29,4 @@ if ( ! function_exists( 'kickass_round_trip' ) ) {
 
 }
 
-kickass_validate_environment_openssl();
+kickass_crypto_validate_environment_openssl();

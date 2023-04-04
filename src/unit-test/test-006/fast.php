@@ -30,7 +30,7 @@ function run_test() {
 
   test_setup();
 
-  kickass_get_floats(
+  kickass_crypto_get_floats(
     $nan,
     $pos_inf,
     $neg_inf,

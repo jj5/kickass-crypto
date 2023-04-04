@@ -19,5 +19,5 @@
 //
 \************************************************************************************************/
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'Pg24G6ePf+mQLT+o3dKNxufKLSRcC3sbArzuC9Nc8JdI2Uvdu0UkR0rKZ/0HL9OMbHRrpFTAmLeesz9ZFVsxedmn' );
+define( 'CONFIG_OPENSSL_SECRET_CURR', '0Na+Po9a9fe7FllSvnzT9Pndl+dji1+RMN6jg5GutlfbY8YH7l2UUT5DDetszuAj0k3QkoVQksQO2+O5c1GaC9kl' );
 define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );

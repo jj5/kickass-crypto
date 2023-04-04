@@ -33,4 +33,4 @@ require_once __DIR__ . '/../src/code/global/environment/framework.php';
 require_once __DIR__ . '/../src/code/global/environment/openssl.php';
 require_once __DIR__ . '/../src/code/global/environment/sodium.php';
 
-kickass_validate_environment();
+kickass_crypto_validate_environment();

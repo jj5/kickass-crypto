@@ -36,7 +36,7 @@ main( $argv );
 
 function main( $argv ) {
 
-  kickass_setup_unit_test_environment();
+  kickass_crypto_setup_unit_test_environment();
 
   $start = microtime( $as_float = true );
 
@@ -87,7 +87,7 @@ function main( $argv ) {
 
     var_dump( $ex );
 
-    kickass_exit( $ex, 84 );
+    kickass_crypto_exit( $ex, 84 );
 
   }
 }

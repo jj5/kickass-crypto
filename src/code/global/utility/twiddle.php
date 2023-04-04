@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-function kickass_is_set( int $options, int $option ) {
+function kickass_crypto_is_set( int $options, int $option ) {
 
   return $option === ( $options & $option );
 

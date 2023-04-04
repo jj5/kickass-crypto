@@ -30,7 +30,7 @@
 //
 \************************************************************************************************/
 
-function kickass_validate_environment() {
+function kickass_crypto_validate_environment() {
 
   $errors = [];
 
@@ -60,7 +60,9 @@ function kickass_validate_environment() {
 
     }
 
-    if ( version_compare( $php_version, '7.4', '<' ) ) {
+    $php_version_min = '7.4';
+
+    if ( version_compare( $php_version, $php_version_min, '<' ) ) {
 
       if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
 
@@ -69,7 +71,8 @@ function kickass_validate_environment() {
       }
       else {
 
-        $errors[] = "The kickass-crypto library requires PHP version 7.4 or greater. " .
+        $errors[] =
+          "The kickass-crypto library requires PHP version $php_version_min or greater. " .
           "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
       }
@@ -84,7 +87,8 @@ function kickass_validate_environment() {
       }
       else {
 
-        $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
+        $errors[] =
+          "The kickass-crypto library has only been tested on 64-bit platforms. " .
           "define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true ) to force enablement.";
 
       }

@@ -15,13 +15,13 @@
 
 /************************************************************************************************\
 //
-// 2023-04-03 jj5 - the kickass_exit() function just exits with some standard error levels.
+// 2023-04-03 jj5 - the kickass_crypto_exit() function just exits with some standard error levels.
 //
 // 2023-03-31 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
 //
 \************************************************************************************************/
 
-function kickass_exit( $error = 0, $default = 80 ) {
+function kickass_crypto_exit( $error = 0, $default = 80 ) {
 
   // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
 

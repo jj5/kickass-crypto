@@ -24,7 +24,7 @@
 
 function main( $argv ) {
 
-  kickass_setup_unit_test_environment();
+  kickass_crypto_setup_unit_test_environment();
 
   if ( defined( 'DEBUG' ) && DEBUG ) {
 
@@ -45,7 +45,7 @@ function main( $argv ) {
 
     // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#82
     //
-    kickass_exit( $ex, 82 );
+    kickass_crypto_exit( $ex, 82 );
 
   }
 }
