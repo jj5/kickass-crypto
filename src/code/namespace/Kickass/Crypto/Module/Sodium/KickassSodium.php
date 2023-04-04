@@ -114,7 +114,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( ! $this->parse_binary( $binary, $nonce, $ciphertext, $tag ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
+      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
 
     }
 
@@ -164,7 +164,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
     //
     if ( $binary_length < $min_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH );
+      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
 
     }
 
@@ -172,7 +172,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( strlen( $nonce ) !== $nonce_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2 );
+      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
 
     }
 
@@ -180,7 +180,7 @@ abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2 );
+      return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
 
     }
 

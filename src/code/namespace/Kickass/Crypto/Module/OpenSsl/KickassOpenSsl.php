@@ -179,7 +179,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( strlen( $iv ) !== $this->get_const_openssl_iv_length() ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH );
+      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID );
 
     }
 
@@ -205,7 +205,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( strlen( $tag ) !== $this->get_const_openssl_tag_length() ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH );
+      return $this->error( KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID );
 
     }
 
@@ -241,7 +241,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA );
+      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
 
     }
 
@@ -296,7 +296,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
     //
     if ( $binary_length < $min_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH );
+      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
 
     }
 
@@ -304,7 +304,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( strlen( $iv ) !== $iv_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2 );
+      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
 
     }
 
@@ -312,7 +312,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
 
     if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2 );
+      return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
 
     }
 
@@ -321,7 +321,7 @@ abstract class KickassOpenSsl extends \Kickass\Crypto\Framework\KickassCrypto {
     if ( strlen( $tag ) !== $tag_length ) {
 
       return $this->error(
-        KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
+        KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID_2,
         [
           'tag_len' => strlen( $tag ),
           'expected_tag_len' => $tag_length,

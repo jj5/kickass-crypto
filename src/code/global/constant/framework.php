@@ -115,38 +115,52 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED', 'exception raised.' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
+
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID', 'data encoding invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
+
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED', 'PHPS encoding failed.' );
+
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED', 'PHPS encoding disabled.' );
-define( 'KICKASS_CRYPTO_ERROR_DECODING_FAILED', 'decoding failed.' );
+
+define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED', 'PHPS decoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_ENCODING', 'invalid encoding.' );
-define( 'KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING', 'unknown encoding.' );
-define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED', 'base64 decode failed.' );
+
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED', 'message encoding failed.' );
+
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED', 'message decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID', 'message encoding invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN', 'message encoding unknown.' );
+
+define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED', 'base64 decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH', 'invalid passphrase length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2', 'invalid passphrase length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE', 'invalid chunk size.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH', 'invalid binary length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2', 'invalid tag length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING', 'invalid data encoding.' );
+
+define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID', 'passphrase invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID', 'passphrase length invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID_2', 'passphrase length invalid (2).' );
+
+define( 'KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID', 'chunk size invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID', 'binary length invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID', 'IV length invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2', 'IV length invalid (2).' );
+define( 'KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID', 'tag length invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID_2', 'tag length invalid (2).' );
+
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED', 'encryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2', 'encryption failed (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2', 'invalid ciphertext (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA', 'invalid data.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT', 'invalid message format.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_SPEC', 'invalid data length spec.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE', 'invalid data length range.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH', 'invalid message length.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
+
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED', 'decryption failed.' );
 define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
+
+define( 'KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID', 'ciphertext invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2', 'ciphertext invalid (2).' );
+define( 'KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID', 'binary data invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID', 'message format invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_SPEC_INVALID', 'message data length spec invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID', 'message data length range invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID', 'message length invalid.' );
+
+define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );

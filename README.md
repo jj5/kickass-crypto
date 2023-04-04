@@ -1010,7 +1010,7 @@ as you can see. Read the scripts for the gory details but in brief:
 * [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh) will run the
 fast tests, takes about 5 seconds
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh) will
-run the fast tests and the slow tests, takes about 5 minutes
+run the fast tests and the slow tests, takes about 10 minutes
 
 There are also some silly tests, but we won't talk about those. They are not
 ordinarily run. And they're silly.
@@ -1092,7 +1092,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,027 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,036 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

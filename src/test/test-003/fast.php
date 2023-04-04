@@ -37,9 +37,9 @@ function get_ignored_errors() {
   // actually happen, but I can't test for them at the moment because... they can't happen.
 
   return [
-    KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2,
-    KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2,
-    KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2,
+    KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2,
+    KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID_2,
+    KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2,
   ];
 
 }
@@ -121,7 +121,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_ENCODING,
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -132,7 +132,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING,
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -143,7 +143,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED,
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -154,7 +154,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED,
+    KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -177,7 +177,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE,
+    KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -189,7 +189,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH,
+    KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -201,7 +201,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2,
+    KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID_2,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -213,7 +213,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -227,7 +227,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -241,7 +241,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -255,7 +255,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -269,7 +269,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -283,7 +283,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE,
+    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -297,7 +297,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
+    KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -312,7 +312,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
+    KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -334,7 +334,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH,
+    KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -349,7 +349,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH,
+    KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -372,7 +372,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING,
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -614,7 +614,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT,
+    KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -625,7 +625,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH,
+    KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -640,7 +640,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_DATA,
+    KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -651,7 +651,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT,
+    KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -794,7 +794,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT,
+    KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -805,7 +805,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_SPEC,
+    KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_SPEC_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -816,7 +816,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -828,7 +828,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -839,7 +839,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_DATA_LENGTH_RANGE,
+    KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
@@ -850,7 +850,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH,
+    KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID,
     function() {
       return new class extends ValidCrypto {
         public function test() {
