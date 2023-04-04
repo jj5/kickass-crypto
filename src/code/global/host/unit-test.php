@@ -15,13 +15,19 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this file hosts a unit test, it's just for convenience. It sets up your
-// environment and then calls run_test() which you should define. If debugging is enabled then
-// no try-catch block is used, otherwise it is. Also we make sure DEBUG is defined before we run
-// your code so you shouldn't have to worry about whether it is defined or not.
+// 2023-04-05 jj5 - unit test host.
 //
 \************************************************************************************************/
 
+/**
+ * 2023-03-31 jj5 - this function hosts a unit test, it's just for convenience. It sets up your
+ * environment and then calls run_test() which you should define. If debugging is enabled then
+ * no try-catch block is used, otherwise it is. Also we make sure DEBUG is defined before we run
+ * your code so you shouldn't have to worry about whether it is defined or not.
+ *
+ * @param array $argv the command-line options.
+ * @return void
+ */
 function main( $argv ) {
 
   kickass_crypto_setup_unit_test_environment();

@@ -15,20 +15,24 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
-// then we exit, unless the programmer has overridden that behavior by defining certain constants
-// as detailed here:
-//
-//* to disable PHP version check:
-//
-//  define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
-//
-//* to disable PHP 64-bit word size check:
-//
-//  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
+// 2023-04-05 jj5 - environment validation for the framework.
 //
 \************************************************************************************************/
 
+/**
+ * 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
+ * then we exit, unless the programmer has overridden that behavior by defining certain constants.
+ *
+ * - to disable PHP version check:
+ *
+ * define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
+ *
+ * - to disable PHP 64-bit word size check:
+ *
+ * define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
+ *
+ * @return void
+ */
 function kickass_crypto_validate_environment() {
 
   $errors = [];

@@ -15,12 +15,18 @@
 
 /************************************************************************************************\
 //
-// 2023-04-04 jj5 - this script makes sure we're running a supported version of PHP. Don't use
-// fancy PHP features because they might not be available in older versions.
+// 2023-04-05 jj5 - PHP version validation.
 //
 \************************************************************************************************/
 
-(function() {
+kickass_crypto_validate_php();
+
+/**
+ * 2023-04-04 jj5 - this function makes sure we're running a supported version of PHP. Don't use
+ * fancy PHP features because they might not be available in older versions.
+ * @return void
+ */
+function kickass_crypto_validate_php() {
 
   $php_version_min = '7.4';
 
@@ -64,4 +70,4 @@
 
     }
   }
-})();
+}

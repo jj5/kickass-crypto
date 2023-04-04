@@ -50,24 +50,52 @@ define( 'KICKASS_CRYPTO_OPENSSL_IV_LENGTH', 12 );
 define( 'KICKASS_CRYPTO_OPENSSL_TAG_LENGTH', 16 );
 
 // 2023-03-30 jj5 - config problems are things that can go wrong with a config file...
-//
+
+/**
+ * 2023-04-05 jj5 - this happens when CONFIG_OPENSSL_SECRET_CURR is not defined for the round-trip
+ * use case and the OpenSSL module.
+ * @var string
+ */
 define(
   'KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR',
   'config missing: CONFIG_OPENSSL_SECRET_CURR.'
 );
+
+/**
+ * 2023-04-05 jj5 - this happens when CONFIG_OPENSSL_SECRET_CURR is defined for the round-trip
+ * use case and the OpenSSL module but it is not valid.
+ * @var string
+ */
 define(
   'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_CURR',
   'config invalid: CONFIG_OPENSSL_SECRET_CURR.'
 );
+
+/**
+ * 2023-04-05 jj5 - this happens when CONFIG_OPENSSL_SECRET_PREV is defined for the round-trip
+ * use case and the OpenSSL module but it is not valid.
+ * @var string
+ */
 define(
   'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_PREV',
   'config invalid: CONFIG_OPENSSL_SECRET_PREV.'
 );
 
+/**
+ * 2023-04-05 jj5 - this happens when CONFIG_OPENSSL_SECRET_LIST is not defined for the at-rest
+ * use case and the OpenSSL module.
+ * @var string
+ */
 define(
   'KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_LIST',
   'config missing: CONFIG_OPENSSL_SECRET_LIST.'
 );
+
+/**
+ * 2023-04-05 jj5 - this happens when CONFIG_OPENSSL_SECRET_LIST is defined for the at-rest
+ * use case and the OpenSSL module but it is not valid.
+ * @var string
+ */
 define(
   'KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST',
   'config invalid: CONFIG_OPENSSL_SECRET_LIST.'

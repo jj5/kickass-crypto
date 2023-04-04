@@ -3,142 +3,142 @@ Search.appendIndex(
                 {
             "fqsen": "\\kickass_crypto_autoload\u0028\u0029",
             "name": "kickass_crypto_autoload",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020registered\u0020with\u0020PHP\u0027s\u0020spl_autoload_register\u0028\u0029\u0020to\u0020provide\nautomatic\u0020loading\u0020of\u0020namespace\u0020elements.",
             "url": "namespaces/default.html#function_kickass_crypto_autoload"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_KEY_HASH",
             "name": "KICKASS_CRYPTO_KEY_HASH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020key\u0020has\u0020is\u0020used\u0020to\u0020convert\u0020a\u0020secret\u0020key\u0020into\u0020a\u002032\u0020byte\u0020\u0028256\u002Dbit\u0029\npassphrase\u0020for\u0020use\u0020with\u0020either\u0020the\u0020OpenSSL\u0020or\u0020Sodium\u0020encryption\u0020library.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_KEY_HASH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_KEY_LENGTH_MIN",
             "name": "KICKASS_CRYPTO_KEY_LENGTH_MIN",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020minimum\u0020key\u0020length\u0020is\u0020used\u0020to\u0020ensure\u0020that\u0020secret\u0020keys\u0020meet\u0020at\u0020least\u0020a\nminimal\u0020requirement.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_KEY_LENGTH_MIN"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_ENCODING_JSON",
             "name": "KICKASS_CRYPTO_DATA_ENCODING_JSON",
-            "summary": "",
+            "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020the\u0020JSON\u0020format\u0020uses\u0020the\u0020PHP\u0020json_encode\u0028\u0029\u0020and\u0020json_decode\u0028\u0029\u0020functions\u003B\u0020the\nencoding\u0020format\u0020strings\u0020must\u0020be\u0020four\u0020characters\u0020long.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_ENCODING_JSON"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_ENCODING_PHPS",
             "name": "KICKASS_CRYPTO_DATA_ENCODING_PHPS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020uses\u0020the\u0020PHP\u0020serialize\u0028\u0029\u0020and\u0020unserialize\u0028\u0029\u0020functions\u0020\u0028not\u0020enabled\u0020by\u0020default\ndue\u0020to\u0020potential\u0020security\u0020issues,\u0020enable\u0020with\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0029\u003B\u0020the\u0020encoding\nformat\u0020strings\u0020must\u0020be\u0020four\u0020characters\u0020long.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_ENCODING_PHPS"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_FORMAT_OPENSSL",
             "name": "KICKASS_CRYPTO_DATA_FORMAT_OPENSSL",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020OpenSSL\u0020data\u0020format.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_FORMAT_OPENSSL"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_FORMAT_SODIUM",
             "name": "KICKASS_CRYPTO_DATA_FORMAT_SODIUM",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020Sodium\u0020data\u0020format.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_FORMAT_SODIUM"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN",
             "name": "KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020indicator\u0020must\u0020meet\u0020this\u0020minimum\u0020character\u0020length.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX",
             "name": "KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020indicator\u0020must\u0020meet\u0020this\u0020maximum\u0020character\u0020length.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE",
             "name": "KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020default\u0020chunk\u0020size\u003B\u0020messages\u0020are\u0020padded\u0020up\u0020to\u0020the\u0020message\u0020length\nmodulo\u0020the\u0020chunk\u0020size\u003B\u00202\u005E12\u0020is\u00204KiB\u003B\u0020this\u0020value\u0020might\u0020be\u0020changed\u0020in\u0020future.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX",
             "name": "KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020default\u0020maximum\u0020chunk\u0020size\u003B\u00202\u005E26\u0020is\u002064\u0020MiB\u003B\u0020this\u0020value\u0020might\u0020be\nchanged\u0020in\u0020future.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_DATA_ENCODING",
             "name": "KICKASS_CRYPTO_DEFAULT_DATA_ENCODING",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020default\u0020data\u0020encoding\u0020format\u0020is\u0020JSON.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_DATA_ENCODING"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX",
             "name": "KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020maximum\u0020data\u0020length\u0020supported\u003B\u00202\u005E26\u0020is\u002064\u0020MiB\u003B\u0020this\u0020value\u0020might\u0020be\nchanged\u0020in\u0020future.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS",
             "name": "KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020default\u0020JSON\u0020encoding\u0020options\u0020passed\u0020to\u0020the\u0020PHP\u0020json_encode\u0028\u0029\nfunction.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS",
             "name": "KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020default\u0020JSON\u0020decoding\u0020options\u0020passed\u0020to\u0020the\u0020PHP\u0020json_decode\u0028\u0029\nfunction.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE",
             "name": "KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020PHP\u0020serialization\u0020is\u0020disabled\u0020by\u0020default\u0020because\u0020it\u0020can\u0020lead\u0020to\u0020code\u0020execution\nvulnerabilities...\u0020\u0028I\u0020don\u0027t\u0020have\u0020a\u0020source\u0020for\u0020this\u0020claim,\u0020that\u0020might\u0020be\u0020a\u0020rumor\u0020or\u0020not\u0020true\nany\u0020more\u0029.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE",
             "name": "KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020you\u0020can\u0027t\u0020encrypt\u0020false.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN",
             "name": "KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020minimum\u0020random\u0020delay\u0020\u0028in\u0020nanoseconds\u0029\u0020used\u0020for\u0020timing\u0020attack\u0020mitigation\u003B\nthis\u0020value\u0020might\u0020be\u0020changed\u0020in\u0020future.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX",
             "name": "KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020maximum\u0020random\u0020delay\u0020\u0028in\u0020nanoseconds\u0029\u0020used\u0020for\u0020timing\u0020attack\u0020mitigation\u003B\nthis\u0020value\u0020might\u0020be\u0020changed\u0020in\u0020future.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DELAY_SECONDS_MIN",
             "name": "KICKASS_CRYPTO_DELAY_SECONDS_MIN",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020delay\u0020is\u0020a\u0020floating\u002Dpoint\u0020value\u0020in\u0020seconds,\u0020it\u0027s\u0020for\u0020comparison\u0020of\u0020the\nvalue\u0020returned\u0020from\u0020the\u0020PHP\u0020microtime\u0028\u0029\u0020to\u0020check\u0020that\u0020our\u0020delay\u0020implementation\u0020did\u0020actually\ndelay\u0020for\u0020at\u0020least\u0020this\u0020minimum\u0020amount\u0020of\u0020time.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DELAY_SECONDS_MIN"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_REGEX_BASE64",
             "name": "KICKASS_CRYPTO_REGEX_BASE64",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020our\u0020Base64\u0020validation\u0020regex,\u0020it\u0027s\u0020not\u0020presently\u0020being\u0020used\u003B\u0020see\u0020the\nlink\u0020for\u0020discussion\u0020concerning\u0020the\u0020previous\u0020regex\u0020and\u0020poor\u0020performance.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_REGEX_BASE64"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020an\u0020invalid\u0020exception\u0020code\u0020is\u0020passed\u0020to\u0020the\u0020exception\u0020raising\u0020facility\nthis\u0020exception\u0020is\u0020raised\u0020instead.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020exception\u0020is\u0020raise\u0020if\u0020the\u0020config\u0020is\u0020invalid.\u0020Modules\u0020define\u0020what\nconstitutes\u0020a\u0020valid\u0020config\u0020based\u0020on\u0020the\u0020use\u0020case.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020the\u0020hash\u0020algorithm\u0020is\u0020invalid\u0020or\u0020not\u0020available\u0020this\u0020exception\u0020is\u0020raised.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020the\u0020cipher\u0020nominated\u0020for\u0020the\u0020OpenSSL\u0020library\u0020is\u0020not\u0020available\u0020in\u0020the\nenvironment\u0020this\u0020exception\u0020is\u0020raise.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020the\u0020initialization\u0020vector\u0020for\u0020the\u0020OpenSSL\u0020library\u0020is\u0020not\u0020what\u0020we\u0027ve\u0020been\ncoded\u0020to\u0020expect\u0020then\u0020this\u0020exception\u0020is\u0020raise.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM",
             "name": "KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020the\u0020PHP\u0020random_bytes\u0028\u0029\u0020implementation\u0020is\u0020not\u0020using\u0020a\u0020secure\u0020PRNG\u0020then\u0020this\nexception\u0020is\u0020supposed\u0020to\u0020be\u0020raised.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_MESSAGE",
             "name": "KICKASS_CRYPTO_EXCEPTION_MESSAGE",
-            "summary": "",
+            "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020exception\u0020messages\u0020for\u0020each\u0020exception\u0020code.\u0020These\u0020exception\nmessages\u0020should\u0020be\u0020stable,\u0020you\u0020can\u0020add\u0020new\u0020ones\u0020but\u0020don\u0027t\u0020change\u0020existing\u0020ones.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_MESSAGE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED",
@@ -468,78 +468,88 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_OPENSSL_SECRET_CURR\u0020is\u0020not\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020OpenSSL\u0020module.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_CURR",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_CURR",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_OPENSSL_SECRET_CURR\u0020is\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020OpenSSL\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_CURR"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_PREV",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_PREV",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_OPENSSL_SECRET_PREV\u0020is\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020OpenSSL\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_PREV"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_LIST",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_LIST",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_OPENSSL_SECRET_LIST\u0020is\u0020not\u0020defined\u0020for\u0020the\u0020at\u002Drest\nuse\u0020case\u0020and\u0020the\u0020OpenSSL\u0020module.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_LIST"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_OPENSSL_SECRET_LIST\u0020is\u0020defined\u0020for\u0020the\u0020at\u002Drest\nuse\u0020case\u0020and\u0020the\u0020OpenSSL\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH",
             "name": "KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020length\u0020of\u0020the\u0020passphrase\u0020\u0028it\u0027s\u0020the\u0020\u0024key\u0020parameter\u0029\u0020expected\u0020by\u0020the\nsodium_crypto_secretbox\u0028\u0029\u0020function.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_CURR",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_CURR",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_SODIUM_SECRET_CURR\u0020is\u0020not\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020Sodium\u0020module.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_CURR"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_CURR",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_CURR",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_SODIUM_SECRET_CURR\u0020is\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020Sodium\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_CURR"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_PREV",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_PREV",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_SODIUM_SECRET_PREV\u0020is\u0020defined\u0020for\u0020the\u0020round\u002Dtrip\nuse\u0020case\u0020and\u0020the\u0020Sodium\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_PREV"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_LIST",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_LIST",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_SODIUM_SECRET_LIST\u0020is\u0020not\u0020defined\u0020for\u0020the\u0020at\u002Drest\nuse\u0020case\u0020and\u0020the\u0020Sodium\u0020module.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_LIST"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_LIST",
             "name": "KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_LIST",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020happens\u0020when\u0020CONFIG_SODIUM_SECRET_LIST\u0020is\u0020defined\u0020for\u0020the\u0020at\u002Drest\nuse\u0020case\u0020and\u0020the\u0020Sodium\u0020module\u0020but\u0020it\u0020is\u0020not\u0020valid.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_LIST"
         },                {
             "fqsen": "\\kickass_crypto_validate_environment\u0028\u0029",
             "name": "kickass_crypto_validate_environment",
-            "summary": "",
+            "summary": "2023\u002D03\u002D31\u0020jj5\u0020\u002D\u0020this\u0020function\u0020is\u0020for\u0020validating\u0020our\u0020run\u002Dtime\u0020environment.\u0020If\u0020there\u0027s\u0020a\u0020problem\nthen\u0020we\u0020exit,\u0020unless\u0020the\u0020programmer\u0020has\u0020overridden\u0020that\u0020behavior\u0020by\u0020defining\u0020certain\u0020constants.",
             "url": "namespaces/default.html#function_kickass_crypto_validate_environment"
         },                {
             "fqsen": "\\kickass_crypto_validate_environment_openssl\u0028\u0029",
             "name": "kickass_crypto_validate_environment_openssl",
-            "summary": "",
+            "summary": "2023\u002D03\u002D31\u0020jj5\u0020\u002D\u0020this\u0020function\u0020is\u0020for\u0020validating\u0020our\u0020run\u002Dtime\u0020environment.\u0020If\u0020there\u0027s\u0020a\u0020problem\nthen\u0020we\u0020exit,\u0020unless\u0020the\u0020programmer\u0020has\u0020overridden\u0020that\u0020behavior\u0020by\u0020defining\u0020certain\u0020constants",
             "url": "namespaces/default.html#function_kickass_crypto_validate_environment_openssl"
         },                {
             "fqsen": "\\kickass_crypto_validate_environment_sodium\u0028\u0029",
             "name": "kickass_crypto_validate_environment_sodium",
-            "summary": "",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020function\u0020is\u0020for\u0020validating\u0020our\u0020run\u002Dtime\u0020environment.\u0020If\u0020there\u0027s\u0020a\u0020problem\nthen\u0020we\u0020exit,\u0020unless\u0020the\u0020programmer\u0020has\u0020overridden\u0020that\u0020behavior\u0020by\u0020defining\u0020certain\u0020constants.",
             "url": "namespaces/default.html#function_kickass_crypto_validate_environment_sodium"
         },                {
             "fqsen": "\\main\u0028\u0029",
             "name": "main",
-            "summary": "",
+            "summary": "2023\u002D03\u002D31\u0020jj5\u0020\u002D\u0020this\u0020function\u0020hosts\u0020a\u0020unit\u0020test,\u0020it\u0027s\u0020just\u0020for\u0020convenience.\u0020It\u0020sets\u0020up\u0020your\nenvironment\u0020and\u0020then\u0020calls\u0020run_test\u0028\u0029\u0020which\u0020you\u0020should\u0020define.\u0020If\u0020debugging\u0020is\u0020enabled\u0020then\nno\u0020try\u002Dcatch\u0020block\u0020is\u0020used,\u0020otherwise\u0020it\u0020is.\u0020Also\u0020we\u0020make\u0020sure\u0020DEBUG\u0020is\u0020defined\u0020before\u0020we\u0020run\nyour\u0020code\u0020so\u0020you\u0020shouldn\u0027t\u0020have\u0020to\u0020worry\u0020about\u0020whether\u0020it\u0020is\u0020defined\u0020or\u0020not.",
             "url": "namespaces/default.html#function_main"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK",
+            "name": "KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK"
+        },                {
+            "fqsen": "\\kickass_crypto_validate_php\u0028\u0029",
+            "name": "kickass_crypto_validate_php",
+            "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020this\u0020function\u0020makes\u0020sure\u0020we\u0027re\u0020running\u0020a\u0020supported\u0020version\u0020of\u0020PHP.\u0020Don\u0027t\u0020use\nfancy\u0020PHP\u0020features\u0020because\u0020they\u0020might\u0020not\u0020be\u0020available\u0020in\u0020older\u0020versions.",
+            "url": "namespaces/default.html#function_kickass_crypto_validate_php"
         },                {
             "fqsen": "\\kickass_round_trip\u0028\u0029",
             "name": "kickass_round_trip",

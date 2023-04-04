@@ -113,9 +113,10 @@
                             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_crypto_validate_environment_sodium">kickass_crypto_validate_environment_sodium()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-03 jj5 - this function is for validating our run-time environment. If there&#039;s a problem
+then we exit, unless the programmer has overridden that behavior by defining certain constants.</dd>
 
     </dl>
 
@@ -136,22 +137,28 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/environment/sodium.php"><a href="files/src-code-global-environment-sodium.html"><abbr title="src/code/global/environment/sodium.php">sodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-03 jj5 - this function is for validating our run-time environment. If there&#039;s a problem
+then we exit, unless the programmer has overridden that behavior by defining certain constants.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_crypto_validate_environment_sodium</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">kickass_crypto_validate_environment_sodium</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><ul>
+<li>to disable checks for the Sodium library functions:</li>
+</ul>
+<p>define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );</p>
+</section>
 
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     

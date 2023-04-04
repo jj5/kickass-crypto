@@ -15,16 +15,20 @@
 
 /************************************************************************************************\
 //
-// 2023-04-03 jj5 - this function is for validating our run-time environment. If there's a problem
-// then we exit, unless the programmer has overridden that behavior by defining certain constants
-// as detailed here:
-//
-//* to disable checks for the Sodium library functions:
-//
-//  define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );
+// 2023-04-05 jj5 - environment validation for the OpenSSL module.
 //
 \************************************************************************************************/
 
+/**
+ * 2023-04-03 jj5 - this function is for validating our run-time environment. If there's a problem
+ * then we exit, unless the programmer has overridden that behavior by defining certain constants.
+ *
+ * - to disable checks for the Sodium library functions:
+ *
+ * define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );
+ *
+ * @return void
+ */
 function kickass_crypto_validate_environment_sodium() {
 
   $errors = [];

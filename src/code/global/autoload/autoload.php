@@ -21,14 +21,12 @@
 
 spl_autoload_register( 'kickass_crypto_autoload' );
 
-/* 2023-04-05 jj5 - this function registered with PHP's spl_autoload_register() to provide
-   automatic loading of namespace elements.
-
-    @param string $class_name the full name of the relevant interface, class, or trait.
-
-    @return boolean true on success or false on failure (the return value is not used by PHP).
-
-*/
+/**
+ * 2023-04-05 jj5 - this function registered with PHP's spl_autoload_register() to provide
+ * automatic loading of namespace elements.
+ * @param string $class_name the full name of the relevant interface, class, or trait.
+ * @return boolean true on success or false on failure (the return value is not used by PHP).
+ */
 function kickass_crypto_autoload( $class_name ) {
 
   $class_path = str_replace( '\\', DIRECTORY_SEPARATOR, $class_name );
