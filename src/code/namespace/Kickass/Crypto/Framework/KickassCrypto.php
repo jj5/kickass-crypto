@@ -477,18 +477,6 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function get_const_data_format_length_min() {
-
-    return $this->do_get_const_data_format_length_min();
-
-  }
-
-  protected function do_get_const_data_format_length_min() {
-
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN' );
-
-  }
-
   protected final function get_const_key_hash() {
 
     return $this->do_get_const_key_hash();
@@ -845,6 +833,29 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     $encoded = $this->message_encode( $ciphertext );
 
     return $encoded;
+
+  }
+
+  protected final function is_valid_data_format( $data_format ) {
+
+    // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
+    // format.
+
+    if ( strlen( $data_format ) < KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN ) {
+
+      return false;
+
+    }
+
+    if ( strlen( $data_format ) > KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX ) {
+
+      return false;
+
+    }
+
+    if ( ! preg_match( '/^[A-Z0-9]+$/', $data_format ) ) { return false; }
+
+    return true;
 
   }
 
@@ -1522,7 +1533,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    if ( strlen( $data_format ) < $this->get_const_data_format_length_min() ) {
+    if ( ! $this->is_valid_data_format( $data_format ) ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 

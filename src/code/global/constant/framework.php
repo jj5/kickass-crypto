@@ -44,18 +44,33 @@ define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
 define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 
-// 2023-04-02 jj5 - NOTE: you don't need to actually change this constant, you can just override
-// get_const_data_format() and return a different string. For example:
+// 2023-04-02 jj5 - NOTE: you don't need to actually change the following constants, you can just
+// override do_get_const_data_format() and return a different string. For example:
 //
 // protected function do_get_const_data_format() { return 'MYKA1'; }
 //
-// 2023-04-05 jj5 - NOTE: at the moment we're using version zero format constants; we will make
-// these version one when the library is ready for its first release. Note that the
+// 2023-04-05 jj5 - NOTE: at the moment we're using version zero data format constants; we will
+// make these version one when the library is ready for its first release.
+//
+// 2023-04-05 jj5 - NOTE: the data format relates to the formatting of the binary data generated
+// and expected by the encryption library, it's not the message encoding or data encoding, which
+// are two other separate things.
+
+// 2023-04-05 jj5 - the OpenSSL data format...
 //
 define( 'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL', 'KA0' );
+
+// 2023-04-05 jj5 - the Sodium data format...
+//
 define( 'KICKASS_CRYPTO_DATA_FORMAT_SODIUM', 'KAS0' );
 
+// 2023-04-05 jj5 - the data format indicator must meet this minimum character length...
+//
 define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN', 2 );
+
+// 2023-04-05 jj5 - the data format indicator must meet this maximum character length...
+//
+define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX', 8 );
 
 // 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
 // future... note that 2^12 is 4KiB and 2^26 is 64 MiB.
