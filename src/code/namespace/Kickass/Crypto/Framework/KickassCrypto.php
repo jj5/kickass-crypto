@@ -793,7 +793,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $encoded = $this->encode( $ciphertext );
+    $encoded = $this->message_encode( $ciphertext );
 
     return $encoded;
 
@@ -848,7 +848,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
 
-    $binary = $this->decode( $ciphertext );
+    $binary = $this->message_decode( $ciphertext );
 
     if ( $binary === false ) {
 
@@ -1331,25 +1331,25 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function encode( string $binary ) {
+  protected final function message_encode( string $binary ) {
 
-    return $this->do_encode( $binary );
+    return $this->do_message_encode( $binary );
 
   }
 
-  protected function do_encode( string $binary ) {
+  protected function do_message_encode( string $binary ) {
 
     return $this->get_data_format_version() . '/' . $this->php_base64_encode( $binary );
 
   }
 
-  protected final function decode( string $encoded ) {
+  protected final function message_decode( string $encoded ) {
 
-    return $this->do_decode( $encoded );
+    return $this->do_message_decode( $encoded );
 
   }
 
-  protected function do_decode( string $encoded ) {
+  protected function do_message_decode( string $encoded ) {
 
     $parts = explode( '/', $encoded, 2 );
 

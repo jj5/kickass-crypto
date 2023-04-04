@@ -107,7 +107,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'invalid' );
+          return $this->message_decode( 'invalid' );
         }
       };
     }
@@ -118,7 +118,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'KA2/invalid' );
+          return $this->message_decode( 'KA2/invalid' );
         }
       };
     }
@@ -129,7 +129,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'XKA0/!@#$%^&*()_' );
+          return $this->message_decode( 'XKA0/!@#$%^&*()_' );
         }
       };
     }
@@ -140,7 +140,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->decode( 'XKA0/123=' );
+          return $this->message_decode( 'XKA0/123=' );
         }
         protected function do_php_base64_decode( $input, $strict ) { return false; }
       };
@@ -531,7 +531,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
+          $binary = $this->message_decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function do_php_openssl_decrypt(
@@ -552,7 +552,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
+          $binary = $this->message_decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function do_php_openssl_decrypt(
@@ -711,7 +711,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
+          $binary = $this->message_decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
         protected function inflate( $buffer ) {
@@ -741,7 +741,7 @@ function run_test() {
       return new class extends ValidCrypto {
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
+          $binary = $this->message_decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
         protected function do_decrypt_string( string $binary, string $key ) {
@@ -758,7 +758,7 @@ function run_test() {
         private $count = 0;
         public function test() {
           $ciphertext = $this->encrypt( 'test' );
-          $binary = $this->decode( $ciphertext );
+          $binary = $this->message_decode( $ciphertext );
           return $this->do_decrypt_string( $binary, $this->get_encryption_passphrase() );
         }
         protected function do_php_openssl_decrypt(

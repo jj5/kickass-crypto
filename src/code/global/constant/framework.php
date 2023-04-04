@@ -32,15 +32,10 @@ define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
 define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 
-// 2023-03-30 jj5 - these are the current data format versions for this library. If you fork this
-// library and alter the data format you should change these. If you do change this please use
-// something other than 'KA' as the prefix. If you don't want the data format version reported
-// in your encoded data override the encode() and decode() methods.
-//
 // 2023-04-02 jj5 - NOTE: you don't need to actually change this constant, you can just override
 // get_const_data_format_version() and return a different string. For example:
 //
-// protected function get_const_data_format_version() { return 'MYKA1'; }
+// protected function do_get_const_data_format_version() { return 'MYKA1'; }
 //
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_OPENSSL', 'KA0' );
 define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
