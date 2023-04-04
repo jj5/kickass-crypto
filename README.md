@@ -257,8 +257,10 @@ php bin/gen-demo-config.php > config.php
 
 ### File count
 
+```
 Total Number of Files = 102
 Total Number of Source Code Files = 102
+```
 
 | #Files | Directory | #Files-by-Language (Sorted) |
 |:------:| --------- | --------------------------- |
@@ -275,6 +277,7 @@ Total Number of Source Code Files = 102
 
 ### Lines of Code
 
+```
 Total Physical Source Lines of Code (SLOC)                = 5,437
 Development Effort Estimate, Person-Years (Person-Months) = 1.18 (14.20)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
@@ -283,6 +286,7 @@ Schedule Estimate, Years (Months)                         = 0.57 (6.85)
 Estimated Average Number of Developers (Effort/Schedule)  = 2.07
 Total Estimated Cost to Develop                           = $ 159,871
  (average salary = $56,286/year, overhead = 2.40).
+```
 
 | SLOC  | Directory | SLOC-by-Language (Sorted) |
 |:-----:| --------- | ------------------------- |
