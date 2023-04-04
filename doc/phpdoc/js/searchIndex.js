@@ -1806,11 +1806,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#function_render_foot"
         },                {
-            "fqsen": "\\App\\Kernel",
-            "name": "Kernel",
-            "summary": "",
-            "url": "classes/App-Kernel.html"
-        },                {
             "fqsen": "\\run_test\u0028\u0029",
             "name": "run_test",
             "summary": "",
@@ -2310,10 +2305,5 @@ Search.appendIndex(
             "name": "Kickass",
             "summary": "",
             "url": "namespaces/kickass.html"
-        },                {
-            "fqsen": "\\App",
-            "name": "App",
-            "summary": "",
-            "url": "namespaces/app.html"
         }            ]
 );
