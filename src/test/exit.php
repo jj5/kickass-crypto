@@ -21,7 +21,9 @@
 //
 \************************************************************************************************/
 
-function kickass_exit( $error = 0, $default = 50 ) {
+function kickass_exit( $error = 0, $default = 80 ) {
+
+  // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
 
   // 2023-03-31 jj5 - I try to use more or less standard error levels, this is a work in
   // progress but the documentation is here...
@@ -31,9 +33,9 @@ function kickass_exit( $error = 0, $default = 50 ) {
 
   if ( is_int( $error ) && $error <= 255 && $error >= 0 ) { exit( $error ); }
 
-  if ( is_a( $error, ErrorException::class ) ) { exit( 51 ); }
-  if ( is_a( $error, AssertionError::class ) ) { exit( 53 ); }
-  if ( is_a( $error, Throwable::class ) ) { exit( 52 ); }
+  if ( is_a( $error, ErrorException::class ) ) { exit( 81 ); }
+  if ( is_a( $error, AssertionError::class ) ) { exit( 83 ); }
+  if ( is_a( $error, Throwable::class ) ) { exit( 82 ); }
 
   // 2023-03-31 jj5 - if the default is [0,255] we allow it...
   //
@@ -61,6 +63,6 @@ function kickass_exit( $error = 0, $default = 50 ) {
   }
   catch ( Throwable $ex ) { ; }
 
-  exit( 59 );
+  exit( 89 );
 
 }

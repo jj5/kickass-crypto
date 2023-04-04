@@ -111,9 +111,9 @@
 
   // 2023-04-03 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
   //
-  // 2023-04-03 jj5 - the error level 40 means "invalid run-time environment, cannot run."
+  // 2023-04-03 jj5 - the error level 60 means "invalid run-time environment, cannot run."
   //
-  if ( $errors ) { exit( 40 ); }
+  if ( $errors ) { exit( 60 ); }
 
 })();
 

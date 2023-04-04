@@ -43,7 +43,9 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    kickass_exit( $ex, 54 );
+    // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#82
+    //
+    kickass_exit( $ex, 82 );
 
   }
 }

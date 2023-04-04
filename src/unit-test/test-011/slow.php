@@ -55,7 +55,7 @@ function main( $argv ) {
 
     default :
 
-      exit( 54 );
+      exit( 84 );
 
   }
 }

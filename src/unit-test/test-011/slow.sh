@@ -65,7 +65,7 @@ run_test() {
 
       rm "$tempfile";
 
-      exit 54
+      exit 84
 
     };
 

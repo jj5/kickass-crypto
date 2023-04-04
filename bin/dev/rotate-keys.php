@@ -46,7 +46,9 @@ function change_dir( $dir ) {
 
     report( "invalid dir: $dir" );
 
-    exit( 50 );
+    // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#61
+    //
+    exit( 61 );
 
   }
 

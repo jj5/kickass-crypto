@@ -54,7 +54,9 @@ function main( $argv ) {
 
     echo "untested problem: $problem_const\n";
 
-    $error = 1;
+    // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#10
+    //
+    $error = 10;
 
   }
 

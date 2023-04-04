@@ -62,7 +62,9 @@ function main( $argv ) {
       // they accidentally invoke this code path by mistake. Since our caller knows to expect
       // this error level it can be ignored by them.
 
-      exit( 90 );
+      // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#98
+      //
+      exit( 98 );
 
     }
 
@@ -84,7 +86,7 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    kickass_exit( $ex, 54 );
+    kickass_exit( $ex, 84 );
 
   }
 }
