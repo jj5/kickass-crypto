@@ -16,63 +16,35 @@
 
 /************************************************************************************************\
 //
-// 2023-04-03 jj5 - this script makes sure all of our exceptions are tested.
+// 2023-04-05 jj5 - this script is just for looking at specific cases which ordinarily will run
+// in fast.php.
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../inc/utility.php';
+//define( 'DEBUG', true );
 
-function main( $argv ) {
+require_once __DIR__ . '/../../../inc/test-host.php';
+require_once __DIR__ . '/lib/include.php';
 
-  define( 'REGEX', "/.*define\( '(KICKASS_CRYPTO_EXCEPTION_[^']*)'/" );
+function run_test() {
 
-  $error = 0;
-  $const_list = [];
 
-  $lib = realpath( __DIR__ . '/../../src/code/global/constant/framework.php' );
-  $test = realpath( __DIR__ . '/../../src/test/test-001/fast.php' );
-
-  $lib_lines = file( $lib );
-  $test_lines = file( $test );
-
-  foreach ( $lib_lines as $lib_line ) {
-
-    if ( ! preg_match( REGEX, $lib_line, $matches ) ) { continue; }
-
-    $exception_const = $matches[ 1 ];
-
-    if ( $exception_const === 'KICKASS_CRYPTO_EXCEPTION_MESSAGE' ) { continue; }
-
-    $match = "$exception_const,";
-
-    foreach ( $test_lines as $test_line ) {
-
-      if ( strpos( $test_line, $match ) !== false ) {
-
-        $const_list[] = $exception_const;
-
-        continue 2;
-
-      }
+  test_error(
+    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( true );
+        }
+        protected function do_get_config_data_encoding( $default ) {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_is_valid_data_encoding( $data_encoding ) { return false; }
+        protected function do_get_config_phps_enable( $default ) { return false; }
+      };
     }
+  );
 
-    echo "untested exception: $exception_const\n";
-
-    $error = KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE;
-
-  }
-
-  if ( $error ) {
-
-    exit( $error );
-
-  }
-
-  foreach ( $const_list as $const ) {
-
-    echo $const . "\n";
-
-  }
 }
 
 main( $argv );

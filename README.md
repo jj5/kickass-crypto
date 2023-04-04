@@ -1092,7 +1092,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,036 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,091 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

@@ -69,6 +69,10 @@ define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 //
 define( 'KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE', false );
 
+// 2023-04-05 jj5 - by default you can't encrypt false...
+//
+define( 'KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE', false );
+
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
 //
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
@@ -131,25 +135,52 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
 
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID', 'data encoding invalid.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2', 'data encoding invalid (2).' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3', 'data encoding invalid (3).' );
+
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
 
 define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2', 'data encoding failed (2).' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_3', 'data encoding failed (3).' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4', 'data encoding failed (4).' );
+
 define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_2', 'JSON encoding failed (2).' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3', 'JSON encoding failed (3).' );
+
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED', 'PHPS encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2', 'PHPS encoding failed (2).' );
 
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED', 'PHPS encoding disabled.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2', 'PHPS encoding disabled (2).' );
 
 define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2', 'data decoding failed (2).' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_3', 'data decoding failed (3).' );
+define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4', 'data decoding failed (4).' );
+
 define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2', 'JSON decoding failed (2).' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3', 'JSON decoding failed (3).' );
+define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4', 'JSON decoding failed (4).' );
+
 define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED', 'PHPS decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2', 'PHPS decoding failed (2).' );
 
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED', 'message encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2', 'message encoding failed (2).' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3', 'message encoding failed (3).' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4', 'message encoding failed (4).' );
+define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_5', 'message encoding failed (5).' );
 
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED', 'message decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID', 'message encoding invalid.' );
 define( 'KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN', 'message encoding unknown.' );
 
 define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED', 'base64 decoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2', 'base64 decoding failed (2).' );
+
 define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 
 define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID', 'passphrase invalid.' );

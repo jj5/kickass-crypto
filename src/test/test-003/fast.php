@@ -53,6 +53,20 @@ function run_test() {
         public function test() {
           return $this->data_encode( true, $this->get_data_encoding() );
         }
+        protected function do_php_json_last_error( ) {
+          return 123;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_encode( true, $this->get_data_encoding() );
+        }
         protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
           return false;
         }
@@ -79,7 +93,55 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED,
+    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( true );
+        }
+        protected function do_get_config_data_encoding( $default ) {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_is_valid_data_encoding( $data_encoding ) { return false; }
+        protected function do_get_config_phps_enable( $default ) { return false; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->encode_phps( true );
+        }
+        protected function do_get_data_encoding() {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_get_config_phps_enable( $default ) { return false; }
+          protected function do_php_serialize( $value ) {
+            return false;
+          }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_decode( 'true' );
+        }
+        protected function do_decode_json( $json ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -93,7 +155,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED,
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -107,7 +169,63 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED,
+    KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->decode_phps( 'true' );
+        }
+        protected function do_decode_phps( $input ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->decode_phps( 'true' );
+        }
+        protected function do_php_unserialize( $input ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_encode( 'whatever' );
+        }
+        protected function do_message_encode( $binary ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->message_decode( 'whatever' );
+        }
+        protected function do_message_decode( $binary ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -115,6 +233,29 @@ function run_test() {
         }
         protected function do_data_decode( string $json, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
           throw new \Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_3,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_decode( 'true', 'invalid' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          define( 'KICKASS_CRYPTO_TEST_DATA_DECODE', true );
+          return $this->data_decode( 'true', false );
         }
       };
     }
@@ -374,11 +515,28 @@ function run_test() {
   test_error(
     KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID,
     function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->do_encrypt( true );
+        }
+        protected function do_get_config_data_encoding( $default ) {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_is_valid_data_encoding( $data_encoding ) { return false; }
+        protected function do_get_config_phps_enable( $default ) { return true; }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2,
+    function() {
       return new class extends ValidCrypto {
         public function test() {
           return $this->encrypt( 'test'  );
         }
         protected function do_get_data_encoding() { return 'invalid'; }
+        protected function do_get_config_phps_enable( $default ) { return true; }
       };
     }
   );

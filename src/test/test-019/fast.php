@@ -16,63 +16,56 @@
 
 /************************************************************************************************\
 //
-// 2023-04-03 jj5 - this script makes sure all of our exceptions are tested.
+// 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
+// values using PHP serialization.
+//
+// 2023-04-04 jj5 - All the tests here should run relatively quickly because they succeed and
+// don't cause any delay.
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../inc/utility.php';
+require_once __DIR__ . '/etc/config.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
 
-function main( $argv ) {
+class TestOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  define( 'REGEX', "/.*define\( '(KICKASS_CRYPTO_EXCEPTION_[^']*)'/" );
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
-  $error = 0;
-  $const_list = [];
+  protected function do_delay(
+    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
+    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
+  ) {
 
-  $lib = realpath( __DIR__ . '/../../src/code/global/constant/framework.php' );
-  $test = realpath( __DIR__ . '/../../src/test/test-001/fast.php' );
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 
-  $lib_lines = file( $lib );
-  $test_lines = file( $test );
+  }
+}
 
-  foreach ( $lib_lines as $lib_line ) {
+function run_test() {
 
-    if ( ! preg_match( REGEX, $lib_line, $matches ) ) { continue; }
+  $crypto = new TestOpenSslRoundTrip();
 
-    $exception_const = $matches[ 1 ];
+  $ciphertext = $crypto->encrypt( false );
 
-    if ( $exception_const === 'KICKASS_CRYPTO_EXCEPTION_MESSAGE' ) { continue; }
+  if ( $crypto->get_error() !== null ) {
 
-    $match = "$exception_const,";
-
-    foreach ( $test_lines as $test_line ) {
-
-      if ( strpos( $test_line, $match ) !== false ) {
-
-        $const_list[] = $exception_const;
-
-        continue 2;
-
-      }
-    }
-
-    echo "untested exception: $exception_const\n";
-
-    $error = KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE;
+    var_dump( $crypto->get_error() );
 
   }
 
-  if ( $error ) {
+  assert( $crypto->get_error() === null );
 
-    exit( $error );
+  $plaintext = $crypto->decrypt( $ciphertext );
 
-  }
+  if ( $crypto->get_error() !== null ) {
 
-  foreach ( $const_list as $const ) {
-
-    echo $const . "\n";
+    var_dump( $crypto->get_error() );
 
   }
+
+  assert( $crypto->get_error() === null );
+  assert( $plaintext === false );
+
 }
 
 main( $argv );

@@ -20,6 +20,8 @@
 //
 \************************************************************************************************/
 
+require_once __DIR__ . '/../../inc/utility.php';
+
 function main( $argv ) {
 
   define( 'REGEX', "/.*'(KICKASS_CRYPTO_CONFIG_PROBLEM_[^']*)'/" );
@@ -27,7 +29,7 @@ function main( $argv ) {
   $error = 0;
   $const_list = [];
 
-  $lib = realpath( __DIR__ . '/../../src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php' );
+  $lib = realpath( __DIR__ . '/../../src/code/global/constant/framework.php' );
   $test = realpath( __DIR__ . '/../../src/test/test-002/fast.sh' );
 
   $lib_lines = file( $lib );

@@ -110,6 +110,8 @@ trait KICKASS_WRAPPER_PHP {
 
     try {
 
+      //json_last_error();
+
       return $this->do_php_json_decode( $json, $associative, $depth, $flags );
 
     }
@@ -125,6 +127,28 @@ trait KICKASS_WRAPPER_PHP {
   protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
 
     return json_decode( $json, $associative, $depth, $flags );
+
+  }
+
+  protected final function php_json_last_error() {
+
+    try {
+
+      return $this->do_php_json_last_error();
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      throw $ex;
+
+    }
+  }
+
+  protected function do_php_json_last_error() {
+
+    return json_last_error();
 
   }
 

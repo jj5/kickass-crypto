@@ -597,6 +597,20 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  protected final function get_config_false_enable(
+    $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
+  ) {
+
+    return $this->do_get_config_false_enable( $default );
+
+  }
+
+  protected function do_get_config_false_enable( $default ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
+
+  }
+
   protected final function get_const( $const, $default = false ) {
 
     return $this->do_get_const( $const, $default );
@@ -701,7 +715,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_encrypt( $input ) {
 
-    if ( $input === false ) {
+    if ( $input === false && ! $this->get_config_false_enable() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE );
 
@@ -798,7 +812,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2 );
 
     }
 
@@ -899,6 +913,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
       $result = $this->data_decode( $encoded_data, $data_encoding );
 
       if ( $result !== false ) { return $result; }
+
+      if ( $this->get_config_false_enable() && $this->get_error() === null ) { return false; }
 
       // 2023-04-02 jj5 - if we make it this far during any of our decryption attempts then this
       // is the error we will return.
@@ -1017,7 +1033,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     if ( ! $this->is_valid_data_encoding( $data_encoding_read ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3 );
 
     }
 
@@ -1174,7 +1190,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
 
     }
   }
@@ -1195,7 +1211,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
         default :
 
-          return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+          return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_3 );
 
       }
 
@@ -1204,7 +1220,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
 
     }
   }
@@ -1223,9 +1239,17 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $result = $this->php_json_encode( $input, $options );
 
-      if ( $result === false ) {
+      $error = $this->php_json_last_error();
+
+      if ( $error ) {
 
         return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+
+      }
+
+      if ( $result === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_2 );
 
       }
 
@@ -1236,7 +1260,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
 
     }
   }
@@ -1245,7 +1269,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     if ( ! $this->get_config_phps_enable() ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2 );
 
     }
 
@@ -1272,7 +1296,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
 
     }
   }
@@ -1288,7 +1312,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
 
     }
   }
@@ -1296,6 +1320,16 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
   protected function do_data_decode( string $encoded_data, $data_encoding ) {
 
     try {
+
+      if (
+        $data_encoding === false &&
+        defined( 'KICKASS_CRYPTO_TEST_DATA_DECODE' ) &&
+        KICKASS_CRYPTO_TEST_DATA_DECODE
+      ) {
+
+        throw new Exception( 'fault injection' );
+
+      }
 
       switch ( $data_encoding ) {
 
@@ -1309,7 +1343,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
         default :
 
-          return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
+          return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_3 );
 
       }
 
@@ -1318,7 +1352,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
 
     }
   }
@@ -1341,18 +1375,36 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_decode_json( $input ) {
 
-    $options = $this->get_config_json_decode_options();
+    try {
 
-    $result = $this->php_json_decode( $input, $assoc = true, 512, $options );
+      $options = $this->get_config_json_decode_options();
 
-    if ( $result === false ) {
+      $result = $this->php_json_decode( $input, $assoc = true, 512, $options );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+      $error = $this->php_json_last_error();
+
+      if ( $error ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2 );
+
+      }
+
+      if ( $result === false && ! $this->get_config_false_enable() ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3 );
+
+      }
+
+      return $result;
 
     }
+    catch ( \Throwable $ex ) {
 
-    return $result;
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+
+    }
   }
 
   protected final function decode_phps( $input ) {
@@ -1377,7 +1429,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     if ( $result === false ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
 
     }
 
@@ -1408,25 +1460,25 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     if ( ! is_string( $data_format_version ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
 
     }
 
     if ( ! is_string( $base64 ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 
     }
 
     if ( ! $data_format_version ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
 
     }
 
     if ( ! $base64 ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_5 );
 
     }
 
@@ -1494,7 +1546,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     //
     if ( empty( $result ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2 );
 
     }
 
