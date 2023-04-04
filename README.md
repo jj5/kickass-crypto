@@ -3,7 +3,8 @@
 A contemporary PHP cryptography library circa 2023.
 
 **Synopsis:**
-* a uniform interface to two separate and contemporary encryption libraries, batteries included
+* a uniform interface to two separate and contemporary encryption libraries with support for
+input serialization and output encoding
 * [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
 encryption with
 [Poly1305 MAC](https://en.wikipedia.org/wiki/Poly1305)
@@ -50,6 +51,86 @@ as I can make it I will update this status note. In the mean time
 breaking changes are almost certain and encryption weaknesses are quite possible. If you find
 something you think I should know about please
 [let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
+
+## Warning
+
+There are a lot of ways you can go wrong with your crypto code. This library was written as an
+attempt to reduce crypto footguns; hopefully it hasn't introduced any!
+
+The first thing to know about crypto is your data is only as secure as your keys. There's more to
+know about key management than I can possibly tell you here (and I'm not an expert anyway), but
+here are a few things to think about:
+
+* if you backup your keys make sure your backups are secure
+* if you don't backup your keys you won't be able to decrypt your data if you lose them
+* be careful you don't do things with your keys that cause them to potentially be swapped to the
+swap file (this might be unavoidable in which case make sure you are on a secure host)
+* don't commit your keys to source control
+* your keys don't only need to be secure now, they have to be secure _for all time_; if people are
+intercepting and recording your data now they will be able to decrypt it if they get a copy of the
+key in the future
+* if you do leak your key (by accidentally putting it in source control or otherwise doing
+something which might have exposed it) then you have to immediately rotate your keys and
+re-encrypt all of your data (and the damage might have been done even if you do this, if your key
+leaks and an attacker already has a copy of the encrypted data it's too late and they know
+everything now)
+
+Some other things to be aware of:
+
+* if your data really is so sensitive that it requires encryption, it might be so sensitive that
+it's better to delete it than risk it possibly being decrypted; deletion is generally a better
+option than encryption for sensitive data if you don't absolutely need it
+* be careful not to introduce syntax errors into config files
+* be careful not to attempt to redefine secret configuration constants
+* be careful not to deploy syntax errors to hosted code (production or otherwise)
+* never log anything whose name includes the case-insensitive string "secret" or "pass"; this
+library will make sure that any secret or sensitive data is named with either of those substrings
+as part of its name
+* don't try to encrypt the boolean value false; the boolean value false is used to indicate
+decryption errors so we don't want to decrypt it as a valid value so we refuse to encrypt it
+
+Another thing, which surprised me when I learned it, although it's quite obvious once you know, is
+that you should _not_ compress your data before you encrypt it. This isn't _always_ a problem,
+but in certain circumstances it can be, so it's probably best just never to do it.
+
+The problem with compression is that if an attacker can control some of the input data they can
+include a particular value and then if the output decreases in size they can know that the other
+input also included in the other input. Ouch.
+
+If you can think of anything else that everyone should know about and be careful about please
+[let me know](mailto:jj5@jj5.net?subject=Kickass%20Crypto)!
+
+## tl;dr
+
+Don't want to RTFM..? And here I am, writing all this stuff... sheesh. At least read the
+[warnings](#warnings) listed above.
+
+```
+#!/bin/bash
+mkdir -p kickass-demo/lib
+cd kickass-demo
+git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
+php lib/kickass-crypto/bin/gen-demo-config.php > config.php
+cat > demo.php <<'EOF'
+<?php
+require_once __DIR__ . '/lib/kickass-crypto/inc/sodium.php';
+require_once __DIR__ . '/config.php';
+$ciphertext = kickass_round_trip()->encrypt( 'secret text' );
+$plaintext = kickass_round_trip()->decrypt( $ciphertext );
+echo "the secret data is: $plaintext.\n";
+EOF
+php demo.php
+```
+
+For slightly more elaboration maybe check out the
+[sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
+
+Or if you want the bottom line on how this library works read the code in the
+[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php),
+the
+[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/Sodium/KickassSodium.php),
+or the
+[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/OpenSsl/KickassOpenSSL.php).
 
 ## Why was this library written?
 
@@ -104,37 +185,6 @@ switching algorithms, if you're not sure start with Sodium and stick with it.)
 I don't consider this library _rolling my own crypto_, rather I think of it as _figuring out how
 to actually use Sodium and OpenSSL_. If I've made any mistakes, obvious or otherwise, I would
 [really appreciate hearing about it](mailto:jj5@jj5.net?subject=Kickass%20Crypto).
-
-## tl;dr
-
-Don't want to RTFM..? And here I am, writing all this stuff... sheesh.
-
-```
-#!/bin/bash
-mkdir -p kickass-demo/lib
-cd kickass-demo
-git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
-php lib/kickass-crypto/bin/gen-demo-config.php > config.php
-cat > demo.php <<'EOF'
-<?php
-require_once __DIR__ . '/lib/kickass-crypto/inc/sodium.php';
-require_once __DIR__ . '/config.php';
-$ciphertext = kickass_round_trip()->encrypt( 'secret text' );
-$plaintext = kickass_round_trip()->decrypt( $ciphertext );
-echo "the secret data is: $plaintext.\n";
-EOF
-php demo.php
-```
-
-For slightly more elaboration maybe check out the
-[sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
-
-Or if you want the bottom line on how this library works read the code in the
-[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php),
-the
-[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/Sodium/KickassSodium.php),
-or the
-[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/OpenSsl/KickassOpenSSL.php).
 
 ## Library demo
 
@@ -1034,7 +1084,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 879 times (including the ASCII banners).
+The string "kickass" appears in the source code 885 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 
