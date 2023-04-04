@@ -28,9 +28,11 @@ main() {
   source inc/env.sh;
   popd >/dev/null;
 
+  rm -r doc/phpdoc;
+
   mkdir -p doc/phpdoc;
 
-  bin/dev/phpdoc/phpDocumentor.phar run -d src -t doc/phpdoc
+  bin/dev/phpdoc/phpDocumentor.phar run -d src/code -t doc/phpdoc
 
 }
 
