@@ -27,10 +27,10 @@ function run_test() {
 
   global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  $openssl_round_trip = new KickassOpenSslRoundTrip();
-  $openssl_at_rest = new KickassOpenSslAtRest();
-  $sodium_round_trip = new KickassSodiumRoundTrip();
-  $sodium_at_rest = new KickassSodiumAtRest();
+  $openssl_round_trip = new \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip();
+  $openssl_at_rest = new \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest();
+  $sodium_round_trip = new \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip();
+  $sodium_at_rest = new \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest();
 
   test_data( '', 1 );
 

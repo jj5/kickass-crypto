@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/library/php/check.php';
+require_once __DIR__ . '/../src/code/global/php/check.php';
 
 require_once __DIR__ . '/framework.php';
 
