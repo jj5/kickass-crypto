@@ -1203,11 +1203,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
         case KICKASS_CRYPTO_DATA_ENCODING_JSON :
 
-          return $this->encode_json( $data );
+          return $this->json_encode( $data );
 
         case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
-          return $this->encode_phps( $data );
+          return $this->phps_encode( $data );
 
         default :
 
@@ -1225,13 +1225,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function encode_json( $input ) {
+  protected final function json_encode( $input ) {
 
-    return $this->do_encode_json( $input );
+    return $this->do_json_encode( $input );
 
   }
 
-  protected function do_encode_json( $input ) {
+  protected function do_json_encode( $input ) {
 
     try {
 
@@ -1256,7 +1256,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
       return $result;
 
     }
-    catch ( \JsonException $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1265,7 +1265,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function encode_phps( $input ) {
+  protected final function phps_encode( $input ) {
 
     if ( ! $this->get_config_phps_enable() ) {
 
@@ -1273,11 +1273,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    return $this->do_encode_phps( $input );
+    return $this->do_phps_encode( $input );
 
   }
 
-  protected function do_encode_phps( $input ) {
+  protected function do_phps_encode( $input ) {
 
     try {
 
@@ -1335,11 +1335,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
         case KICKASS_CRYPTO_DATA_ENCODING_JSON :
 
-          return $this->decode_json( $encoded_data );
+          return $this->json_decode( $encoded_data );
 
         case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
-          return $this->decode_phps( $encoded_data );
+          return $this->phps_decode( $encoded_data );
 
         default :
 
@@ -1357,11 +1357,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function decode_json( $input ) {
+  protected final function json_decode( $input ) {
 
     try {
 
-      return $this->do_decode_json( $input );
+      return $this->do_json_decode( $input );
 
     }
     catch ( \Throwable $ex ) {
@@ -1373,7 +1373,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_decode_json( $input ) {
+  protected function do_json_decode( $input ) {
 
     try {
 
@@ -1407,11 +1407,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function decode_phps( $input ) {
+  protected final function phps_decode( $input ) {
 
     try {
 
-      return $this->do_decode_phps( $input );
+      return $this->do_phps_decode( $input );
 
     }
     catch ( \Throwable $ex ) {
@@ -1423,7 +1423,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_decode_phps( $input ) {
+  protected function do_phps_decode( $input ) {
 
     $result = $this->php_unserialize( $input );
 
