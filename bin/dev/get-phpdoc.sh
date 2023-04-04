@@ -32,7 +32,23 @@ main() {
 
   pushd "phpdoc/" >/dev/null;
 
+  rm -f phpDocumentor.phar
+
   wget https://phpdoc.org/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.2.1/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v2.9.0/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-alpha1/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-alpha.2/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-alpha.2-nightly-gc1ab753/phpDocumentor.phar
+
+  #wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-alpha.2-nightly-g46e6b49/phpDocumentor.phar
 
   chmod +x phpDocumentor.phar;
 

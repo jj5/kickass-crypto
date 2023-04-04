@@ -1,6 +1,7 @@
 /nbproject/private/
 /nbproject/
 /etc/
+/log/
 config.php
 ###> symfony/framework-bundle ###
 /.env.local
@@ -12,3 +13,4 @@ config.php
 /vendor/
 ###< symfony/framework-bundle ###
 .phpdoc
+/build/
