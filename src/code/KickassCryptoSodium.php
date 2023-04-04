@@ -84,7 +84,7 @@
 
     foreach ( $errors as $error ) {
 
-      $message = __FILE__ . ': ' . $error;
+      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
 
       if ( defined( 'STDERR' ) ) {
 
@@ -100,7 +100,12 @@
   }
   catch ( Throwable $ex ) {
 
-    error_log( __FILE__ . ': ' . $ex->getMessage() );
+    try {
+
+      error_log( __FILE__ . ':' . __LINE__ . ': ' . $ex->getMessage() );
+
+    }
+    catch ( Throwable $ignore ) { ; }
 
   }
 

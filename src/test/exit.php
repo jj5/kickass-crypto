@@ -52,7 +52,11 @@ function kickass_exit( $error = 0, $default = 50 ) {
 
   try {
 
-    error_log( __FILE__ . ": invalid error level nominated, exiting with 59." );
+    $error = "invalid error level nominated, exiting with 59.";
+
+    $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
+
+    error_log( $message );
 
   }
   catch ( Throwable $ex ) { ; }

@@ -87,7 +87,7 @@
 
     foreach ( $errors as $error ) {
 
-      $message = __FILE__ . ': ' . $error;
+      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
 
       if ( defined( 'STDERR' ) ) {
 
@@ -103,11 +103,16 @@
   }
   catch ( Throwable $ex ) {
 
-    error_log( __FILE__ . ': ' . $ex->getMessage() );
+    try {
+
+      error_log( __FILE__ . ':' . __LINE__ . ': ' . $ex->getMessage() );
+
+    }
+    catch ( Throwable $ignore ) { ; }
 
   }
 
-  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error
+  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
   //
   // 2023-03-31 jj5 - the error level 40 means "invalid run-time environment, cannot run."
   //

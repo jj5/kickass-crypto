@@ -204,7 +204,7 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
 
     foreach ( $errors as $error ) {
 
-      $message = __FILE__ . ': ' . $error;
+      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
 
       if ( defined( 'STDERR' ) ) {
 
@@ -220,11 +220,16 @@ function kickass_at_rest( $set = false ) : IKickassCrypto {
   }
   catch ( Throwable $ex ) {
 
-    error_log( __FILE__ . ': ' . $ex->getMessage() );
+    try {
+
+      error_log( __FILE__ . ':' . __LINE__ . ': ' . $ex->getMessage() );
+
+    }
+    catch ( Throwable $ignore ) { ; }
 
   }
 
-  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error
+  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
   //
   // 2023-03-31 jj5 - the error level 40 means "invalid run-time environment, cannot run."
   //
@@ -1537,7 +1542,12 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( Throwable $ignore ) { ; }
 
     }
 
@@ -1551,14 +1561,25 @@ abstract class KickassCrypto implements IKickassCrypto {
 
     try {
 
-      return $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
+      return $this->do_report_emergency_delay( $type, $file, $line, $function );
 
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( Throwable $ignore ) { ; }
 
     }
+  }
+
+  protected function do_report_emergency_delay( $type, $file, $line, $function ) {
+
+    return $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
+
   }
 
   // 2023-04-01 jj5 - implementations can decide what to do when errors are handled. By default

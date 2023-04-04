@@ -48,7 +48,7 @@
       $error = "The kickass-crypto library requires PHP version 7.4 or greater. " .
         "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
 
-      $message = __FILE__ . ": $error";
+      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
 
       if ( defined( 'STDERR' ) ) {
 
