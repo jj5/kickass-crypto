@@ -211,7 +211,7 @@ function format_part_a( $part_a ) {
     "|\n";
 
   echo
-    '|:' . pad_r( '', $max_a, '-' ) . ':' .
+    '| ' . pad_r( '', $max_a, '-' ) . ':' .
     '| ' . pad_r( '', $max_b, '-' ) . ' ' .
     '| ' . pad_r( '', $max_c, '-' ) . ' ' .
     "|\n";
@@ -280,7 +280,7 @@ function format_part_b( $part_b ) {
     "|\n";
 
   echo
-    '|:' . pad_r( '', $max_a, '-' ) . ':' .
+    '| ' . pad_r( '', $max_a, '-' ) . ':' .
     '| ' . pad_r( '', $max_b, '-' ) . ' ' .
     '| ' . pad_r( '', $max_c, '-' ) . ' ' .
     "|\n";
@@ -289,7 +289,7 @@ function format_part_b( $part_b ) {
 
     echo
       '| ' . pad_r( $cell[ 0 ], $max_a ) . ' ' .
-      '| <div style="text-align:right;">' . pad_l( $cell[ 1 ], $max_b ) . '</div> ' .
+      '| ' . pad_l( $cell[ 1 ], $max_b ) . ' ' .
       '| ' . pad_l( $cell[ 2 ], $max_c ) . ' ' .
       "|\n";
 

@@ -263,16 +263,16 @@ Total Number of Source Code Files = 102
 ```
 
 | #Files | Directory | #Files-by-Language (Sorted) |
-|:------:| --------- | --------------------------- |
+| ------:| --------- | --------------------------- |
 |     84 | src       | php=80,sh=4                 |
 |     18 | bin       | php=13,sh=5                 |
 
 #### Totals grouped by language (dominant language first):
 
 | Language | SLOC | Percentage |
-|:--------:| ---- | ---------- |
-| php      | <div style="text-align:right;">  93</div> |   (91.18%) |
-| sh       | <div style="text-align:right;">   9</div> |    (8.82%) |
+| --------:| ---- | ---------- |
+| php      |   93 |   (91.18%) |
+| sh       |    9 |    (8.82%) |
 
 
 ### Lines of Code
@@ -289,16 +289,16 @@ Total Estimated Cost to Develop                           = $ 159,932
 ```
 
 | SLOC  | Directory | SLOC-by-Language (Sorted) |
-|:-----:| --------- | ------------------------- |
+| -----:| --------- | ------------------------- |
 | 4,922 | src       | php=4753,sh=169           |
 |   517 | bin       | php=390,sh=127            |
 
 #### Totals grouped by language (dominant language first):
 
 | Language | SLOC  | Percentage |
-|:--------:| ----- | ---------- |
-| php      | <div style="text-align:right;">5,143</div> |   (94.56%) |
-| sh       | <div style="text-align:right;">  296</div> |    (5.44%) |
+| --------:| ----- | ---------- |
+| php      | 5,143 |   (94.56%) |
+| sh       |   296 |    (5.44%) |
 
 ## Supported PHP versions
 
