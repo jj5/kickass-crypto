@@ -223,7 +223,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  public final function encrypt( mixed $input ) {
+  public final function encrypt( $input ) {
 
     try {
 
