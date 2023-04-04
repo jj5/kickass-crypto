@@ -270,12 +270,6 @@ have had success on MacOS or Windows I would be
 
 Shell scripts are written for bash. If you don't have bash you may need to port.
 
-## On being old fashioned
-
-I have heard of PHPUnit. I don't use it because I don't feel I need it or that it adds much value.
-Tests are a shell script, if that's missing they're a PHP script. If I need to make assertions I
-call assert(). Easy.
-
 ## Supported use cases
 
 This code supports two specific use cases:
@@ -1030,6 +1024,12 @@ redefine constants in PHP you have to restart your process if you want to run wi
 values.
 
 See existing unit tests for examples of how to use the simple unit test host.
+
+## Regarding PHPUnit
+
+I have heard of and used PHPUnit. I don't use it in this project because I don't feel I need it or
+that it adds much value. Tests are a shell script, if that's missing they're a PHP script. If I
+need to make assertions I call assert(). Easy.
 
 ## Directory structure
 
