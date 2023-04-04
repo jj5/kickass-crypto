@@ -16,7 +16,7 @@
 
 /************************************************************************************************\
 //
-// 2023-04-04 jj5 - this script takes the serialization overrides for a spin...
+// 2023-04-04 jj5 - this script takes the bit twiddling for a spin...
 //
 \************************************************************************************************/
 
@@ -29,12 +29,17 @@ function run_test() {
 
 }
 
-function test( int $value, array $expect ) {
+function test( int $flags, array $expect ) {
 
-  $parts = kickass_crypto_bits_split( $value );
+  $parts = kickass_crypto_bits_split( $flags );
 
   assert( $parts === $expect );
 
+  foreach ( $parts as $flag ) {
+
+    assert( kickass_crypto_is_set( $flags, $flag ) );
+
+  }
 }
 
 main( $argv );
