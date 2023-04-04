@@ -160,7 +160,7 @@ trait KICKASS_PHP_WRAPPER_OPENSSL {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -182,7 +182,7 @@ trait KICKASS_PHP_WRAPPER_OPENSSL {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -204,7 +204,7 @@ trait KICKASS_PHP_WRAPPER_OPENSSL {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -235,7 +235,7 @@ trait KICKASS_PHP_WRAPPER_OPENSSL {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -273,7 +273,7 @@ trait KICKASS_PHP_WRAPPER_OPENSSL {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -469,7 +469,7 @@ abstract class KickassCryptoOpenSsl extends KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
 
@@ -531,7 +531,7 @@ abstract class KickassCryptoOpenSsl extends KickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
 

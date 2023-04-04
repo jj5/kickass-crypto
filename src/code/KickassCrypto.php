@@ -378,11 +378,11 @@ trait KICKASS_DEBUG_LOG {
 
   // 2023-04-02 jj5 - if you include this trait logs will only be written if DEBUG is defined...
 
-  protected function do_log_error( $message ) {
+  protected function do_log_error( $message, $file, $line, $function ) {
 
     if ( ! $this->is_debug() ) { return false; }
 
-    return parent::do_log_error( $message );
+    return parent::do_log_error( $message, $file, $line, $function );
 
   }
 }
@@ -446,7 +446,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -468,7 +468,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -490,7 +490,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -512,7 +512,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -534,7 +534,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -556,7 +556,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -578,7 +578,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -600,7 +600,7 @@ trait KICKASS_PHP_WRAPPER {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -825,7 +825,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       }
       catch ( Exception $ex ) {
 
-        $this->catch( $ex );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
         return $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
 
@@ -932,7 +932,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error(
         KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3,
@@ -957,7 +957,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error(
         KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
@@ -1001,7 +1001,7 @@ abstract class KickassCrypto implements IKickassCrypto {
         //
         $this->emergency_delay();
 
-        $this->catch( $ex );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( Throwable $ignore ) { ; }
@@ -1014,13 +1014,13 @@ abstract class KickassCrypto implements IKickassCrypto {
   // this method that we may make some noise about it (during debugging, usually). See do_catch()
   // for the rest of the story.
   //
-  protected final function catch( $ex ) {
+  protected final function catch( $ex, $file, $line, $function ) {
 
     try {
 
       $this->count_function( __FUNCTION__ );
 
-      return $this->do_catch( $ex );
+      return $this->do_catch( $ex, $file, $line, $function );
 
     }
     catch ( Throwable $ex ) {
@@ -1483,7 +1483,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
   ) {
 
-    $this->log_error( 'delayed due to error...' );
+    $this->log_error( 'delayed due to error...', __FILE__, __LINE__, __FUNCTION__ );
 
     $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
 
@@ -1528,7 +1528,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
       if ( $result ) {
 
-        return $this->report_emergency_delay( 'nanosleep' );
+        return $this->report_emergency_delay( 'nanosleep', __FILE__, __LINE__, __FUNCTION__ );
 
       }
 
@@ -1543,15 +1543,15 @@ abstract class KickassCrypto implements IKickassCrypto {
 
     usleep( random_int( 1_000, 10_000_000 ) );
 
-    return $this->report_emergency_delay( 'microsleep' );
+    return $this->report_emergency_delay( 'microsleep', __FILE__, __LINE__, __FUNCTION__ );
 
   }
 
-  private function report_emergency_delay( string $type ) {
+  private function report_emergency_delay( string $type, $file, $line, $function ) {
 
     try {
 
-      return $this->log_error( 'emergency delay: ' . $type );
+      return $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
 
     }
     catch ( Throwable $ex ) {
@@ -1565,9 +1565,9 @@ abstract class KickassCrypto implements IKickassCrypto {
   // we write a log entry when debugging is enabled. It would probably be reasonable to log this
   // even in production.
   //
-  protected function do_catch( $ex ) {
+  protected function do_catch( $ex, $file, $line, $function ) {
 
-    $this->log_error( 'caught exception: ' . $ex->getMessage() );
+    $this->log_error( 'caught exception: ' . $ex->getMessage(), $file, $line, $function );
 
   }
 
@@ -1581,7 +1581,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
     }
 
-    $this->log_error( 'exception: ' . $message );
+    $this->log_error( 'exception: ' . $message, __FILE__, __LINE__, __FUNCTION__ );
 
     throw new KickassException( $message, $code, $previous, $data );
 
@@ -1596,7 +1596,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
 
@@ -1622,7 +1622,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( JsonException $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
 
@@ -1638,7 +1638,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( Throwable $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
@@ -1664,7 +1664,7 @@ abstract class KickassCrypto implements IKickassCrypto {
     }
     catch ( JsonException $ex ) {
 
-      $this->catch( $ex );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
@@ -1783,23 +1783,28 @@ abstract class KickassCrypto implements IKickassCrypto {
 
   }
 
-  protected final function log_error( $message ) {
+  protected final function log_error( $message, $file, $line, $function ) {
 
     try {
 
-      return $this->do_log_error( $message );
+      return $this->do_log_error( $message, $file, $line, $function );
 
     }
     catch ( Throwable $ex ) {
 
-      try { $this->catch( $ex ); } catch ( Throwable $ignore ) { ; }
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( Throwable $ignore ) { ; }
 
       return false;
 
     }
   }
 
-  protected function do_log_error( $message ) {
+  protected function do_log_error( $message, $file, $line, $function ) {
 
     if (
       defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) &&
@@ -1810,7 +1815,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
     }
 
-    return error_log( __FILE__ . ': ' . $message );
+    return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
 
   }
 }

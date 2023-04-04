@@ -27,7 +27,21 @@ function main( $argv ) {
 
   kickass_setup_unit_test_environment();
 
-  switch ( $argv[ 1 ] ?? null ) {
+  $mode = null;
+  $debug = false;
+
+  foreach ( $argv as $arg ) {
+
+    switch ( $arg ) {
+
+      case '--debug' : $debug = true; break;
+
+      default : $mode = $arg; break;
+
+    }
+  }
+
+  switch ( $mode ) {
 
     case 'nano' :
 

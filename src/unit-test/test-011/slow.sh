@@ -20,12 +20,21 @@
 ##################################################################################################
 
 QUIET=1
+DEBUG=0
 
 main() {
 
   set -euo pipefail;
 
   pushd "$( dirname "$0" )" >/dev/null;
+
+  while [[ $# > 0 ]]; do
+    local var="$1";
+    shift;
+    case $var in
+      --debug) QUIET=0; DEBUG=1;;
+    esac;
+  done;
 
   run_test nano
 
@@ -38,9 +47,17 @@ run_test() {
   local tempfile=$( mktemp );
   local test="$1";
 
-  if php slow.php "$test" 2> "$tempfile"; then
+  local args="$test";
 
-    grep "KickassCrypto.php: emergency delay: ${test}sleep" "$tempfile" >/dev/null || {
+  if [ "$DEBUG" == '1' ]; then
+
+    args="--debug $args"
+
+  fi
+
+  if php slow.php $args 2> "$tempfile"; then
+
+    grep "emergency delay: ${test}sleep" "$tempfile" >/dev/null || {
 
       error "test failed: $test";
 
