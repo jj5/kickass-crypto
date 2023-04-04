@@ -64,7 +64,7 @@ test_fail() {
 
     report "test failed, as expected.";
 
-    [ "$error" == '60' ] && {
+    [ "$error" == $KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT ] && {
 
       report "error level was: $error, as expected.";
 

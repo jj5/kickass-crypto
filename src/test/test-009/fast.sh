@@ -73,7 +73,7 @@ test_fail() {
 
     report "test failed, as expected.";
 
-    [ "$error" == '83' ] && {
+    [ "$error" == $KICKASS_CRYPTO_EXIT_ASSERT ] && {
 
       report "error level was: $error, as expected.";
 
