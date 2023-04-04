@@ -61,6 +61,24 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_encode( true, $this->get_data_encoding() );
+        }
+        protected function do_get_data_encoding() {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_get_config_phps_enable( $default ) { return true; }
+        protected function do_php_serialize( $value ) {
+          return false;
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED,
     function() {
       return new class extends TestCrypto {

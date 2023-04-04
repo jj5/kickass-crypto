@@ -587,6 +587,12 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
   ) {
 
+    return $this->do_get_config_phps_enable( $default );
+
+  }
+
+  protected function do_get_config_phps_enable( $default ) {
+
     return $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
 
   }
