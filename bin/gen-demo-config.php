@@ -23,8 +23,8 @@
 // $ [ -f config.php ] || php bin/gen-demo-config.php > config.php
 //
 // Be aware that the above command will not overwrite an existing config.php. If you have an
-// existing config.php file you should probably rotate your keys rather than replace them. See
- //the README.md file for information about how to do that.
+// existing config.php file you should probably rotate your keys rather than replace them. See the
+// README.md file for information about how to do that.
 //
 \************************************************************************************************/
 

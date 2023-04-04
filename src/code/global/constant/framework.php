@@ -17,6 +17,11 @@
 //
 // 2023-04-04 jj5 - these are the constants used by the library.
 //
+// 2023-04-04 jj5 - NOTE: these constants are *constants* and not configuration settings. If you
+// need to override any of these, for instance to test the correct handling of error scenarios,
+// pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
+// these... please see the documentation in README.md for an explanation of these values.
+//
 \************************************************************************************************/
 
 define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );

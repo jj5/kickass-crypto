@@ -21,7 +21,7 @@
 #
 # 2023-04-03 jj5 - NOTE: if a test has a shell script, that is run. Otherwise the PHP script is
 # run. Each test in a src/test/test-XXX directory can have fast, slow, and silly components,
-# and they will be run in that order, if they are enabled.
+# and they will be run in that order, if they are available.
 #
 ##################################################################################################
 
@@ -29,7 +29,10 @@ main() {
 
   set -euo pipefail;
 
-  pushd "$( dirname "$0" )/../../src/test" >/dev/null;
+  pushd "$( dirname "$0" )/../../src/test/" >/dev/null;
+  pushd "../../bin/" >/dev/null;
+  source inc/env.sh;
+  popd >/dev/null;
 
   local fast=1;
   local slow=0;
@@ -155,7 +158,6 @@ process_silly() {
   true;
 
 }
-
 
 report_skip_slow() {
 

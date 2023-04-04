@@ -15,9 +15,9 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this anonymous function is for validating our run-time environment. If
-// there's a problem then we exit, unless the programmer has overridden that behavior by
-// defining certain constants as detailed here:
+// 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
+// then we exit, unless the programmer has overridden that behavior by defining certain constants
+// as detailed here:
 //
 //* to disable PHP version check:
 //
@@ -26,7 +26,6 @@
 //* to disable PHP 64-bit word size check:
 //
 //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
-//
 //
 \************************************************************************************************/
 
@@ -121,10 +120,6 @@ function kickass_crypto_validate_environment() {
 
   }
 
-  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
-  //
-  // 2023-03-31 jj5 - the error level 60 means "invalid run-time environment, cannot run."
-  //
-  if ( $errors ) { exit( 60 ); }
+  if ( $errors ) { exit( KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT ); }
 
 }

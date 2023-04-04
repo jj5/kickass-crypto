@@ -15,7 +15,10 @@
 
 /************************************************************************************************\
 //
-// 2023-04-04 jj5 - here we include our framework components and validate our environment...
+// 2023-04-04 jj5 - here we include our framework components and validate our environment... if
+// you want to extend the crypto framework with your own implementation this is the include file
+// to use. If you just want to use either of the existing modules include either inc/sodium.php or
+// inc/openssl.php instead. If you're not sure use inc/sodium.php.
 //
 \************************************************************************************************/
 

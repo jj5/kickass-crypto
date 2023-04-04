@@ -31,6 +31,9 @@ main() {
   set -euo pipefail;
 
   pushd "$( dirname "$0" )" >/dev/null;
+  pushd "../../../bin/" >/dev/null;
+  source inc/env.sh;
+  popd >/dev/null;
 
   # 2023-03-31 jj5 - we run the fast.php script with the mode as 'fail' and no test specified
   # to get the list of tests, then we run the tests

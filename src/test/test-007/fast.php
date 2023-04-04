@@ -62,9 +62,7 @@ function main( $argv ) {
       // they accidentally invoke this code path by mistake. Since our caller knows to expect
       // this error level it can be ignored by them.
 
-      // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#98
-      //
-      exit( 98 );
+      exit( KICKASS_CRYPTO_EXIT_OPTIONS_LISTED );
 
     }
 
@@ -85,9 +83,7 @@ function main( $argv ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
-    var_dump( $ex );
-
-    kickass_crypto_exit( $ex, 84 );
+    kickass_crypto_exit( $ex, KICKASS_CRYPTO_EXIT_TEST_FAILED );
 
   }
 }

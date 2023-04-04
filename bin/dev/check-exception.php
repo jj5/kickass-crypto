@@ -56,9 +56,7 @@ function main( $argv ) {
 
     echo "untested exception: $exception_const\n";
 
-    // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#10
-    //
-    $error = 10;
+    $error = KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE;
 
   }
 

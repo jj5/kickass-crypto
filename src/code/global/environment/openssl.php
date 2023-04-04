@@ -15,9 +15,9 @@
 
 /************************************************************************************************\
 //
-// 2023-03-31 jj5 - this function is for validating our run-time environment. If
-// there's a problem then we exit, unless the programmer has overridden that behavior by
-// defining certain constants as detailed here:
+// 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
+// then we exit, unless the programmer has overridden that behavior by defining certain constants
+// as detailed here:
 //
 //* to disable checks for the OpenSSL library functions:
 //
@@ -76,7 +76,8 @@ function kickass_crypto_validate_environment_openssl() {
       }
       else {
 
-        $errors[] = "The kickass-crypto library requires the PHP OpenSSL library. " .
+        $errors[] =
+          "The kickass-crypto library requires the PHP OpenSSL library. " .
           "define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', true ) to force enablement.";
 
       }
@@ -109,10 +110,6 @@ function kickass_crypto_validate_environment_openssl() {
 
   }
 
-  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
-  //
-  // 2023-03-31 jj5 - the error level 60 means "invalid run-time environment, cannot run."
-  //
-  if ( $errors ) { exit( 60 ); }
+  if ( $errors ) { exit( KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT ); }
 
 }

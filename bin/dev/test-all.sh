@@ -27,6 +27,9 @@ main() {
   set -euo pipefail;
 
   pushd "$( dirname "$0" )" >/dev/null;
+  pushd "../" >/dev/null;
+  source inc/env.sh;
+  popd >/dev/null;
 
   bash test.sh --slow;
 

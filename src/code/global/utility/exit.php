@@ -21,7 +21,27 @@
 //
 \************************************************************************************************/
 
-function kickass_crypto_exit( $error = 0, $default = 80 ) {
+// 2023-04-04 jj5 - error level constants are defined here.
+//
+// 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
+
+define( 'KICKASS_CRYPTO_EXIT_SUCCESS', 0 );
+define( 'KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE', 10 );
+define( 'KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT', 60 );
+define( 'KICKASS_CRYPTO_EXIT_FILE_MISSING', 61 );
+define( 'KICKASS_CRYPTO_EXIT_PROBLEM', 80 );
+define( 'KICKASS_CRYPTO_EXIT_ERROR', 81 );
+define( 'KICKASS_CRYPTO_EXIT_EXCEPTION', 82 );
+define( 'KICKASS_CRYPTO_EXIT_ASSERT', 83 );
+define( 'KICKASS_CRYPTO_EXIT_TEST_FAILED', 84 );
+define( 'KICKASS_CRYPTO_EXIT_INVALID', 89 );
+define( 'KICKASS_CRYPTO_EXIT_OPTIONS_LISTED', 98 );
+define( 'KICKASS_CRYPTO_EXIT_HELP', 99 );
+
+function kickass_crypto_exit(
+  $error = KICKASS_CRYPTO_EXIT_SUCCESS,
+  int $default = KICKASS_CRYPTO_EXIT_PROBLEM
+) {
 
   // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels
 
@@ -33,9 +53,9 @@ function kickass_crypto_exit( $error = 0, $default = 80 ) {
 
   if ( is_int( $error ) && $error <= 255 && $error >= 0 ) { exit( $error ); }
 
-  if ( is_a( $error, ErrorException::class ) ) { exit( 81 ); }
-  if ( is_a( $error, AssertionError::class ) ) { exit( 83 ); }
-  if ( is_a( $error, Throwable::class ) ) { exit( 82 ); }
+  if ( is_a( $error, ErrorException::class ) ) { exit( KICKASS_CRYPTO_EXIT_ERROR ); }
+  if ( is_a( $error, AssertionError::class ) ) { exit( KICKASS_CRYPTO_EXIT_ASSERT ); }
+  if ( is_a( $error, Throwable::class ) ) { exit( KICKASS_CRYPTO_EXIT_EXCEPTION ); }
 
   // 2023-03-31 jj5 - if the default is [0,255] we allow it...
   //
@@ -54,7 +74,7 @@ function kickass_crypto_exit( $error = 0, $default = 80 ) {
 
   try {
 
-    $error = "invalid error level nominated, exiting with 59.";
+    $error = "invalid error level nominated, exiting with KICKASS_CRYPTO_EXIT_INVALID.";
 
     $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
 
@@ -63,6 +83,6 @@ function kickass_crypto_exit( $error = 0, $default = 80 ) {
   }
   catch ( \Throwable $ex ) { ; }
 
-  exit( 89 );
+  exit( KICKASS_CRYPTO_EXIT_INVALID );
 
 }

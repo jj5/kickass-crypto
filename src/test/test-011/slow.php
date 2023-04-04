@@ -55,7 +55,7 @@ function main( $argv ) {
 
     default :
 
-      exit( 84 );
+      exit( KICKASS_CRYPTO_EXIT_TEST_FAILED );
 
   }
 }

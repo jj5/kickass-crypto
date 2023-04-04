@@ -15,13 +15,13 @@
 
 /************************************************************************************************\
 //
-  // 2023-04-03 jj5 - this function is for validating our run-time environment. If
-  // there's a problem then we exit, unless the programmer has overridden that behavior by
-  // defining certain constants as detailed here:
-  //
-  //* to disable checks for the Sodium library functions:
-  //
-  //  define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );
+// 2023-04-03 jj5 - this function is for validating our run-time environment. If there's a problem
+// then we exit, unless the programmer has overridden that behavior by defining certain constants
+// as detailed here:
+//
+//* to disable checks for the Sodium library functions:
+//
+//  define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );
 //
 \************************************************************************************************/
 
@@ -73,7 +73,8 @@ function kickass_crypto_validate_environment_sodium() {
       }
       else {
 
-        $errors[] = "The kickass-crypto library requires the PHP Sodium library. " .
+        $errors[] =
+          "The kickass-crypto library requires the PHP Sodium library. " .
           "define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true ) to force enablement.";
 
       }
@@ -106,10 +107,6 @@ function kickass_crypto_validate_environment_sodium() {
 
   }
 
-  // 2023-04-03 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
-  //
-  // 2023-04-03 jj5 - the error level 60 means "invalid run-time environment, cannot run."
-  //
-  if ( $errors ) { exit( 60 ); }
+  if ( $errors ) { exit( KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT ); }
 
 }

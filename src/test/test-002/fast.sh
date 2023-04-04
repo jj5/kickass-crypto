@@ -24,6 +24,9 @@ main() {
   set -euo pipefail;
 
   pushd "$( dirname "$0" )" >/dev/null;
+  pushd "../../../bin/" >/dev/null;
+  source inc/env.sh;
+  popd >/dev/null;
 
   php fast.php KickassSodiumRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SODIUM_SECRET_CURR
   php fast.php KickassSodiumRoundTrip KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SODIUM_SECRET_CURR

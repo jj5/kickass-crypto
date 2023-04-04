@@ -27,6 +27,9 @@ main() {
   set -euo pipefail;
 
   pushd "$( dirname "$0" )" >/dev/null;
+  pushd "../../../bin/" >/dev/null;
+  source inc/env.sh;
+  popd >/dev/null;
 
   while [[ $# > 0 ]]; do
     local var="$1";
@@ -65,7 +68,7 @@ run_test() {
 
       rm "$tempfile";
 
-      exit 84
+      exit $KICKASS_CRYPTO_EXIT_TEST_FAILED
 
     };
 
