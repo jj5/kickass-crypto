@@ -275,7 +275,7 @@ Total Number of Source Code Files = 102
 | sh       |     9 |    (8.82%) |
 
 
-### Lines of Code
+### Lines of code
 
 ```
 Total Physical Source Lines of Code (SLOC)                = 5,472

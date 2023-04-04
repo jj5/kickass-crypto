@@ -120,7 +120,7 @@ function generate_report() {
 
   $parts = get_parts( $text );
 
-  echo "\n### Lines of Code\n\n";
+  echo "\n### Lines of code\n\n";
 
   format_part_c( $parts[ 'c' ] );
 
