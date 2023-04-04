@@ -24,6 +24,18 @@
 
 namespace Kickass\Crypto\Contract;
 
+/**
+ * 2023-04-05 jj5 - the IKickassCrypto interface is the interface provided by an encryption
+ * server. You can use the framework to create your own encryption services or you can use one (or
+ * both) of the four encryption services provided by this library.
+ *
+ * 2023-04-05 jj5 - the four encryption services provided by this library are:
+ *
+ * - Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest
+ * - Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip
+ * - Kickass\Crypto\Module\Sodium\KickassSodiumAtRest
+ * - Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip
+ */
 interface IKickassCrypto {
 
   // 2023-04-03 jj5 - the list of errors which have happened since the last time clear_error()
