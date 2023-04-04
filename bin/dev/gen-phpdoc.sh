@@ -32,7 +32,7 @@ main() {
 
   mkdir -p doc/phpdoc;
 
-  bin/dev/phpdoc/phpDocumentor.phar run -d src/code/global -t doc/phpdoc
+  bin/dev/phpdoc/phpDocumentor.phar run -d src/code -t doc/phpdoc
 
 }
 
