@@ -28,11 +28,11 @@ trait KICKASS_CRYPTO_ROUND_TRIP {
     $secret_curr = $this->get_config_secret_curr();
     $secret_prev = $this->get_config_secret_prev();
 
-    $result = [ $this->calc_passphrase( $secret_curr ) ];
+    $result = [ $this->convert_secret_to_passphrase( $secret_curr ) ];
 
     if ( $secret_prev ) {
 
-      $result[] = $this->calc_passphrase( $secret_prev );
+      $result[] = $this->convert_secret_to_passphrase( $secret_prev );
 
     }
 

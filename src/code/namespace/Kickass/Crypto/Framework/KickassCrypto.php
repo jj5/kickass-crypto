@@ -1067,7 +1067,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected function calc_passphrase( string $key ) {
+  protected function convert_secret_to_passphrase( string $key ) {
 
     return hash( $this->get_const_key_hash(), $key, $binary = true );
 

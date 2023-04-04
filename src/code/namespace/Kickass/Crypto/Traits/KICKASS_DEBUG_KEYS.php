@@ -31,7 +31,7 @@ trait KICKASS_DEBUG_KEYS {
     static $list = null;
     if ( $list === null ) {
       $secret = self::GenerateSecret();
-      $passphrase = $this->calc_passphrase( $secret );
+      $passphrase = $this->convert_secret_to_passphrase( $secret );
       $list = [ $passphrase ];
     }
     return $list;

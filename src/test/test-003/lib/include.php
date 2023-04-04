@@ -41,7 +41,7 @@ class ValidCrypto extends TestCrypto {
 
     static $result = null;
 
-    if ( $result === null ) { $result = [ $this->calc_passphrase( 'whatever' ) ]; }
+    if ( $result === null ) { $result = [ $this->convert_secret_to_passphrase( 'whatever' ) ]; }
 
     return $result;
 

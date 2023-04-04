@@ -30,7 +30,7 @@ trait KICKASS_CRYPTO_AT_REST {
 
     foreach ( $secret_list as $secret ) {
 
-      $result[] = $this->calc_passphrase( $secret );
+      $result[] = $this->convert_secret_to_passphrase( $secret );
 
     }
 
