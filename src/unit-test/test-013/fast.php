@@ -27,7 +27,7 @@ require_once __DIR__ . '/etc/config.php';
 
 function run_test() {
 
-  $crypto = new KickassCryptoSodiumRoundTrip();
+  $crypto = new \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip();
 
   $ciphertext = $crypto->encrypt( 'test' );
 

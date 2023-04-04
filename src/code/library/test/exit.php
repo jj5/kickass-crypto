@@ -61,7 +61,7 @@ function kickass_exit( $error = 0, $default = 80 ) {
     error_log( $message );
 
   }
-  catch ( Throwable $ex ) { ; }
+  catch ( \Throwable $ex ) { ; }
 
   exit( 89 );
 

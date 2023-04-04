@@ -53,11 +53,13 @@ something you think I should know about please
 
 ## Why was this library written?
 
-Gee, it got kind of complicated.
+Gee, it started simply enough but it got kind of complicated in the end.
 
-I wanted to use the PHP OpenSSL library to round-trip some relatively sensitive data between my
-server and its clients in a relatively secure fashion, secrecy and tamperproofing preferred.
-As mentioned above I found example code in the PHP documentation for the
+I wanted to round-trip some relatively sensitive data between my server and its clients in a
+relatively secure fashion, secrecy and tamperproofing preferred.
+
+I had heard that the OpenSSL library was available in PHP so I searched for information
+concerning how to use that. I found example code in the PHP documentation for the
 [openssl_encrypt()](https://www.php.net/manual/en/function.openssl-encrypt.php)
 function.
 
@@ -128,11 +130,11 @@ For slightly more elaboration maybe check out the
 [sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
 
 Or if you want the bottom line on how this library works read the code in the
-[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCrypto.php),
+[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php),
 the
-[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCryptoSodium.php),
+[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/Sodium/KickassSodium.php),
 or the
-[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/KickassCryptoOpenSSL.php).
+[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/OpenSsl/KickassOpenSSL.php).
 
 ## Library demo
 
@@ -211,13 +213,9 @@ Shell scripts are written for bash. If you don't have bash you may need to port.
 
 ## On being old fashioned
 
-Yes, I have heard of namespaces and PSR-4 autoloading, and no, I don't like them. If I wanted to
-program in Java, I would program in Java. This library does things the old fashioned way. I don't
-need a framework to include a couple of files. If I only need a function, I don't want to have
-to invent a class to put it in.
-
-Yes I have heard of PHPUnit. No, I don't need it. Tests are a shell script, if that's missing
-they're a PHP script. If I need to make assertions I call assert(). Easy.
+I have heard of PHPUnit. I don't use it because I don't feel I need it or that it adds much value.
+Tests are a shell script, if that's missing they're a PHP script. If I need to make assertions I
+call assert(). Easy.
 
 ## Supported use cases
 
@@ -334,7 +332,7 @@ options and `get_const_...()` for constant evaluation. Most important constants 
 options are read indirectly via these accessors so you should be able to override them reliably.
 
 Most calls to PHP built-in functions are done by thin wrappers via protected functions on
-`KickassCrypto`. These are defined in the `KICKASS_PHP_WRAPPER` trait. This indirection allows for
+`KickassCrypto`. These are defined in the `KICKASS_WRAPPER_PHP` trait. This indirection allows for
 certain PHP function invocations to be intercepted and potentially modified. This has been done
 primarily to support fault injection during unit testing, but you could use for other purposes to
 change implementation particulars.
@@ -357,7 +355,7 @@ function by calling the function and passing the new instance as the sole
 parameter, like this:
 
 ```
-class MyKickassCrypto extends KickassCrypto {
+class MyKickassCrypto extends \Kickass\Crypto\Framework\KickassCrypto {
 
   protected function is_valid_config( &$problem = null ) { return TODO; }
   protected function get_passphrase_list() { return TODO; }
@@ -643,10 +641,10 @@ the delay logic and it might be less safe to do so.
 
 When an instance of one of:
 
-* `KickassCryptoSodiumRoundTrip`
-* `KickassCryptoSodiumAtRest`
-* `KickassCryptoOpenSSLRoundTrip`
-* `KickassCryptoOpenSSLAtRest`
+* `KickassSodiumRoundTrip`
+* `KickassSodiumAtRest`
+* `KickassOpenSSLRoundTrip`
+* `KickassOpenSSLAtRest`
 
 is created the configuration settings are validated. If the configuration settings
 are not valid the constructor will throw an exception. If the constructor succeeds
@@ -995,10 +993,9 @@ Here are some notes regarding notable components:
 * [inc/test.php](https://github.com/jj5/kickass-crypto/tree/main/inc/test.php): the include file for the unit testing toolkit
 * etc/: library configuration files (planned)
 * [src/](https://github.com/jj5/kickass-crypto/tree/main/src/): PHP source code
-* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the library components
-* [src/code/KickassCrypto.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCrypto.php): the library framework
-* [src/code/KickassCryptoOpenSSL.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCryptoOpenSSL.php): the OpenSSL module
-* [src/code/KickassCryptoSodium.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/KickassCryptoSodium.php): the Sodium module
+* [src/code/](https://github.com/jj5/kickass-crypto/tree/main/src/code/): the PHP source code
+* [src/code/library/](https://github.com/jj5/kickass-crypto/tree/main/src/code/library/): global PHP functions
+* [src/code/namespace/](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/): namespaced PHP components (classes, interfaces, and traits)
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
 * [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
@@ -1031,7 +1028,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 724 times (including the ASCII banners).
+The string "kickass" appears in the source code 873 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

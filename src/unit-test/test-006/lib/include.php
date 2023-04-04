@@ -20,15 +20,15 @@
 //
 \************************************************************************************************/
 
-class TestRoundTrip extends KickassCryptoOpenSslRoundTrip {
+class TestRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
 
 }
 
-class TestAtRest extends KickassCryptoOpenSslAtRest {
+class TestAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
 
-  use KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
 
 }
 

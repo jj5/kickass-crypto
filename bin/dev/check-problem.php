@@ -27,7 +27,7 @@ function main( $argv ) {
   $error = 0;
   $const_list = [];
 
-  $lib = realpath( __DIR__ . '/../../src/code/KickassCrypto.php' );
+  $lib = realpath( __DIR__ . '/../../src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php' );
   $test = realpath( __DIR__ . '/../../src/unit-test/test-002/fast.sh' );
 
   $lib_lines = file( $lib );

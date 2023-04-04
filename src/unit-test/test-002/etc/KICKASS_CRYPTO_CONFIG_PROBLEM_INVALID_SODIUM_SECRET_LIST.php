@@ -15,9 +15,9 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-03-30 jj5 - this config file is problematic because the secret list includes an invalid
+// key.
 //
 \************************************************************************************************/
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'odDjx7KB8AUHTTYUaJDeVvnzqvDCzH/MDfE5IlpvAQ8UhLabizTumEYvWI4hCAfoqtz4M+IA3XTuCABnttBe3rXH' );
-define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );
+define( 'CONFIG_SODIUM_SECRET_LIST', [ 'invalid' ] );

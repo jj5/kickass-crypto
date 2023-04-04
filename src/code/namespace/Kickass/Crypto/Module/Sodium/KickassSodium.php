@@ -19,156 +19,13 @@
 //
 \************************************************************************************************/
 
-(function() {
+namespace Kickass\Crypto\Module\Sodium;
 
-  // 2023-04-03 jj5 - this anonymous function is for validating our run-time environment. If
-  // there's a problem then we exit, unless the programmer has overridden that behavior by
-  // defining certain constants as detailed here:
-  //
-  //* to disable checks for the Sodium library functions:
-  //
-  //  define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true );
-  //
+use Kickass\Crypto\Framework\KickassCrypto;
 
-  $errors = [];
+abstract class KickassSodium extends \Kickass\Crypto\Framework\KickassCrypto {
 
-  try {
-
-    // 2023-04-03 jj5 - NOTE: we read in our environment settings by allowing them to be
-    // overridden with constant values. We do this so that we can test our validation logic on
-    // platforms which are otherwise valid.
-
-    // 2023-04-03 jj5 - innocent until proven guilty...
-    //
-    $has_sodium = true;
-
-    if ( defined( 'KICKASS_CRYPTO_TEST_HAS_SODIUM' ) ) {
-
-      $has_sodium = KICKASS_CRYPTO_TEST_HAS_SODIUM;
-
-    }
-    else {
-
-      $sodium_functions = [
-        'sodium_crypto_secretbox',
-        'sodium_crypto_secretbox_open',
-      ];
-
-      foreach ( $sodium_functions as $function ) {
-
-        if ( ! function_exists( $function ) ) { $has_sodium = false; }
-
-      }
-    }
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', false );
-
-    }
-
-    if ( ! $has_sodium ) {
-
-      if ( KICKASS_CRYPTO_DISABLE_SODIUM_CHECK ) {
-
-        // 2023-04-01 jj5 - the programmer has enabled sodium anyway, we will allow it.
-
-      }
-      else {
-
-        $errors[] = "The kickass-crypto library requires the PHP Sodium library. " .
-          "define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', true ) to force enablement.";
-
-      }
-    }
-
-    foreach ( $errors as $error ) {
-
-      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
-
-      if ( defined( 'STDERR' ) ) {
-
-        fwrite( STDERR, "$message\n" );
-
-      }
-      else {
-
-        error_log( $message );
-
-      }
-    }
-  }
-  catch ( Throwable $ex ) {
-
-    try {
-
-      error_log( __FILE__ . ':' . __LINE__ . ': ' . $ex->getMessage() );
-
-    }
-    catch ( Throwable $ignore ) { ; }
-
-  }
-
-  // 2023-04-03 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
-  //
-  // 2023-04-03 jj5 - the error level 60 means "invalid run-time environment, cannot run."
-  //
-  if ( $errors ) { exit( 60 ); }
-
-})();
-
-define( 'KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH', SODIUM_CRYPTO_SECRETBOX_KEYBYTES );
-
-trait KICKASS_PHP_WRAPPER_SODIUM {
-
-  protected final function php_sodium_crypto_secretbox( $plaintext, $nonce, $passphrase ) {
-
-    try {
-
-      return $this->do_php_sodium_crypto_secretbox( $plaintext, $nonce, $passphrase );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_sodium_crypto_secretbox( $plaintext, $nonce, $passphrase ) {
-
-    return sodium_crypto_secretbox( $plaintext, $nonce, $passphrase );
-
-  }
-
-  protected final function php_sodium_crypto_secretbox_open( $plaintext, $nonce, $passphrase ) {
-
-    try {
-
-      return $this->do_php_sodium_crypto_secretbox_open( $plaintext, $nonce, $passphrase );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_sodium_crypto_secretbox_open( $plaintext, $nonce, $passphrase ) {
-
-    return sodium_crypto_secretbox_open( $plaintext, $nonce, $passphrase );
-
-  }
-}
-
-abstract class KickasCryptoSodium extends KickassCrypto {
-
-  use KICKASS_PHP_WRAPPER_SODIUM;
+  use \Kickass\Crypto\Trait\KICKASS_WRAPPER_PHP_SODIUM;
 
   // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
   // interface methods defined below...
@@ -268,7 +125,7 @@ abstract class KickasCryptoSodium extends KickassCrypto {
       $plaintext = $this->php_sodium_crypto_secretbox_open( $ciphertext, $nonce, $passphrase );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -335,14 +192,14 @@ abstract class KickasCryptoSodium extends KickassCrypto {
 
     $this->count_function( $caller );
 
-    if ( is_a( $this, KickassCryptoSodiumRoundTrip::class ) ) {
+    if ( is_a( $this, KickassSodiumRoundTrip::class ) ) {
 
-      $this->count_class( KickassCryptoSodiumRoundTrip::class );
+      $this->count_class( KickassSodiumRoundTrip::class );
 
     }
-    else if ( is_a( $this, KickassCryptoSodiumAtRest::class ) ) {
+    else if ( is_a( $this, KickassSodiumAtRest::class ) ) {
 
-      $this->count_class( KickassCryptoSodiumAtRest::class );
+      $this->count_class( KickassSodiumAtRest::class );
 
     }
     else {
@@ -350,45 +207,5 @@ abstract class KickasCryptoSodium extends KickassCrypto {
       $this->count_class( get_class( $this ) );
 
     }
-  }
-}
-
-class KickassCryptoSodiumRoundTrip extends KickasCryptoSodium {
-
-  use KICKASS_ROUND_TRIP;
-
-  protected function get_passphrase_list() {
-
-    // 2023-03-30 jj5 - we cache the generated passphrase list in a static variable so we don't
-    // have to constantly regenerate it and because we don't want to put this sensitive data
-    // into an instance field. If you don't want the passphrase list stored in a static variable
-    // override this method and implement differently.
-
-    static $result = null;
-
-    if ( $result === null ) { $result = $this->generate_passphrase_list(); }
-
-    return $result;
-
-  }
-}
-
-class KickassCryptoSodiumAtRest extends KickasCryptoSodium {
-
-  use KICKASS_AT_REST;
-
-  protected function get_passphrase_list() {
-
-    // 2023-03-30 jj5 - we cache the generated passphrase list in a static variable so we don't
-    // have to constantly regenerate it and because we don't want to put this sensitive data
-    // into an instance field. If you don't want the passphrase list stored in a static variable
-    // override this method and implement differently.
-
-    static $result = null;
-
-    if ( $result === null ) { $result = $this->generate_passphrase_list(); }
-
-    return $result;
-
   }
 }

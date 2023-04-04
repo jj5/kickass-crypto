@@ -19,5 +19,14 @@
 //
 \************************************************************************************************/
 
+require_once __DIR__ . '/../src/code/library/php/check.php';
+
 require_once __DIR__ . '/framework.php';
-require_once __DIR__ . '/../src/code/KickassCryptoSodium.php';
+
+if ( ! function_exists( 'kickass_round_trip' ) ) {
+
+  require_once __DIR__ . '/../src/code/library/service/sodium.php';
+
+}
+
+kickass_validate_environment_sodium();

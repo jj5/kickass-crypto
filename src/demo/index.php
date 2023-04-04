@@ -152,7 +152,7 @@ function main() {
     render_foot();
 
   }
-  catch ( KickassException $ex ) {
+  catch ( \Kickass\KickassException $ex ) {
 
     render_head();
 

@@ -78,13 +78,14 @@ function main( $argv ) {
 
     $configure();
 
-    require_once __DIR__ . '/../../code/KickassCrypto.php';
-    require_once __DIR__ . '/../../code/KickassCryptoOpenSsl.php';
+    require_once __DIR__ . '/../../../inc/openssl.php';
 
   }
-  catch ( Throwable $ex ) {
+  catch ( \Throwable $ex ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
+
+    var_dump( $ex );
 
     kickass_exit( $ex, 84 );
 

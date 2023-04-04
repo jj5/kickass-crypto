@@ -39,7 +39,7 @@ function main( $argv ) {
     run_test( $argv );
 
   }
-  catch ( Throwable $ex ) {
+  catch ( \Throwable $ex ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 

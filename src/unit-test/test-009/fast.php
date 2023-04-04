@@ -25,12 +25,14 @@
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../../../inc/test.php';
 require_once __DIR__ . '/etc/config.php';
+require_once __DIR__ . '/../../../inc/test.php';
 
 main( $argv );
 
 function main( $argv ) {
+
+  assert( class_exists( JsonException::class ) );
 
   kickass_setup_unit_test_environment();
 
@@ -74,8 +76,7 @@ function main( $argv ) {
 
     $configure();
 
-    require_once __DIR__ . '/../../code/KickassCrypto.php';
-    require_once __DIR__ . '/../../code/KickassCryptoOpenSsl.php';
+    require_once __DIR__ . '/../../../inc/openssl.php';
 
     kickass_get_floats(
       $nan,
@@ -183,19 +184,13 @@ function main( $argv ) {
     //KickassCrypto::ReportTelemetry();
 
   }
-  catch ( Throwable $ex ) {
+  catch ( \Throwable $ex ) {
 
     fwrite( STDERR, $ex->getMessage() . "\n" );
 
     kickass_exit( $ex, 84 );
 
   }
-}
-
-function kickass_is_set( int $options, int $option ) {
-
-  return $option === ( $options & $option );
-
 }
 
 function test_cycle( $input, $expect = null ) {
@@ -208,6 +203,14 @@ function test_cycle( $input, $expect = null ) {
 
   if ( false ) {
 
+    $encode_options = defined( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS' ) ?
+      CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS :
+      null;
+
+    $decode_options = defined( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS' ) ?
+      CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS :
+      null;
+
     if ( $plaintext !== $expect ) {
 
       var_dump([
@@ -215,6 +218,9 @@ function test_cycle( $input, $expect = null ) {
         'input' => $input,
         'expect' => $expect,
         'hex' => bin2hex( $plaintext ),
+        'class' => get_class( kickass_round_trip() ),
+        'encode_options' => $encode_options,
+        'decode_options' => $decode_options,
       ]);
 
       debug_print_backtrace();

@@ -23,7 +23,7 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestException extends KickassException {}
+class TestException extends \Kickass\KickassException {}
 
 trait CustomThrow {
 
@@ -42,21 +42,21 @@ trait CustomThrow {
   }
 }
 
-class TestCryptoAtRestInvalidConfig extends KickassCryptoOpenSslAtRest {
+class TestCryptoAtRestInvalidConfig extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTripInvalidConfig extends KickassCryptoOpenSslRoundTrip {
+class TestCryptoRoundTripInvalidConfig extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTrip extends KickassCryptoOpenSslRoundTrip {
+class TestCryptoRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
 
   use CustomThrow;
 
@@ -83,7 +83,7 @@ function run_test() {
       return new class extends TestCryptoRoundTripInvalidConfig{};
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR,
     ]
   );
 
@@ -95,7 +95,7 @@ function run_test() {
       };
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_CURR,
     ]
   );
 
@@ -108,7 +108,7 @@ function run_test() {
       };
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_PREV,
     ]
   );
 
@@ -131,7 +131,7 @@ function run_test() {
       return new class extends TestCryptoAtRestInvalidConfig{};
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_LIST,
     ]
   );
 
@@ -143,7 +143,7 @@ function run_test() {
       };
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST,
     ]
   );
 
@@ -155,7 +155,7 @@ function run_test() {
       };
     },
     [
-      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST,
+      'problem' => KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_OPENSSL_SECRET_LIST,
     ]
   );
 
@@ -210,12 +210,12 @@ function test_exception( int $code, callable $fn, $data = null ) {
     $exception = $ex;
 
   }
-  catch ( AssertionError $ex ) {
+  catch ( \AssertionError $ex ) {
 
     throw $ex;
 
   }
-  catch ( Throwable $ex ) {
+  catch ( \Throwable $ex ) {
 
     var_dump( $ex );
 

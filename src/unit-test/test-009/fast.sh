@@ -78,7 +78,7 @@ test_fail() {
 
     };
 
-    error "error level was: $error, this was unexpected.";
+    error "test fail:$test failed; error level was: $error, this was unexpected.";
 
     return 1;
 

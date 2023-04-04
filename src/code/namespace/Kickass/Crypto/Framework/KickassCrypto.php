@@ -34,704 +34,11 @@
 //
 \************************************************************************************************/
 
-// 2023-04-03 jj5 - a crypto component will provide this interface...
-//
-// 2023-04-03 jj5 - oh man, I really wanted to use the PHP 8.0 type system, but the demo server
-// for this library is still on 7.4. No typed interface for you. :(
-//
-interface IKickassCrypto {
+namespace Kickass\Crypto\Framework;
 
-  // 2023-04-03 jj5 - the list of errors which have happened since the last time clear_error()
-  // was called...
-  //
-  public function get_error_list();
+abstract class KickassCrypto implements \Kickass\Crypto\Interface\IKickassCrypto {
 
-  // 2023-04-03 jj5 - the most recent error; this is a string or null if no errors...
-  //
-  public function get_error();
-
-  // 2023-04-03 jj5 - this will clear the current error list...
-  //
-  public function clear_error();
-
-  // 2023-04-03 jj5 - this will JSON encode the input and encrypt the result; returns false on
-  // error...
-  //
-  public function encrypt( $input );
-
-  // 2023-04-03 jj5 - this will decrypt the ciphertext and decode it as JSON; returns false on
-  // error...
-  //
-  public function decrypt( string $ciphertext );
-
-  // 2023-04-03 jj5 - this will sleep for a random amount of time, from 1 millisecond to 10
-  // seconds... this is called automatically on the first error as a mitigation against timing
-  // attacks.
-  //
-  public function delay();
-
-}
-
-// 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
-// encryption components for each use case. If you want to override with a different
-// implementation you can pass in a new instance, or you can manage construction yourself and
-// access some other way. These functions are how you should ordinarily access this library.
-
-function kickass_round_trip( $set = false ) : IKickassCrypto {
-
-  static $instance = null;
-
-  if ( $set !== false ) { $instance = $set; }
-
-  if ( $instance === null ) {
-
-    // 2023-04-03 jj5 - prefer Sodium...
-
-    if ( class_exists( 'KickassCryptoSodiumRoundTrip' ) ) {
-
-      $instance = new KickassCryptoSodiumRoundTrip();
-
-    }
-    else if ( class_exists( 'KickassCryptoOpenSslRoundTrip' ) ) {
-
-      $instance = new KickassCryptoOpenSslRoundTrip();
-
-    }
-  }
-
-  return $instance;
-
-}
-
-function kickass_at_rest( $set = false ) : IKickassCrypto {
-
-  static $instance = null;
-
-  if ( $set !== false ) { $instance = $set; }
-
-  if ( $instance === null ) {
-
-    // 2023-04-03 jj5 - prefer Sodium...
-
-    if ( class_exists( 'KickassCryptoSodiumAtRest' ) ) {
-
-      $instance = new KickassCryptoSodiumAtRest();
-
-    }
-    else if ( class_exists( 'KickassCryptoOpenSslAtRest' ) ) {
-
-      $instance = new KickassCryptoOpenSslAtRest();
-
-    }
-  }
-
-  return $instance;
-
-}
-
-(function() {
-
-  // 2023-03-31 jj5 - this anonymous function is for validating our run-time environment. If
-  // there's a problem then we exit, unless the programmer has overridden that behavior by
-  // defining certain constants as detailed here:
-  //
-  //* to disable PHP version check:
-  //
-  //  define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true );
-  //
-  //* to disable PHP 64-bit word size check:
-  //
-  //  define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true );
-  //
-
-  $errors = [];
-
-  try {
-
-    // 2023-03-31 jj5 - NOTE: we read in our environment settings by allowing them to be
-    // overridden with constant values. We do this so that we can test our validation logic on
-    // platforms which are otherwise valid.
-
-    $php_version = defined( 'KICKASS_CRYPTO_TEST_PHP_VERSION' ) ?
-      KICKASS_CRYPTO_TEST_PHP_VERSION :
-      phpversion();
-
-    $php_int_max = defined( 'KICKASS_CRYPTO_TEST_PHP_INT_MAX' ) ?
-      KICKASS_CRYPTO_TEST_PHP_INT_MAX :
-      PHP_INT_MAX;
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
-
-    }
-
-    if ( ! defined( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK' ) ) {
-
-      define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
-
-    }
-
-    if ( version_compare( $php_version, '7.4', '<' ) ) {
-
-      if ( KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK ) {
-
-        // 2023-03-31 jj5 - the programmer has enabled this version of PHP, we will allow it.
-
-      }
-      else {
-
-        $errors[] = "The kickass-crypto library requires PHP version 7.4 or greater. " .
-          "define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', true ) to force enablement.";
-
-      }
-    }
-
-    if ( strval( $php_int_max ) !== '9223372036854775807' ) {
-
-      if ( KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK ) {
-
-        // 2023-03-31 jj5 - the programmer has enabled this platform, we will allow it.
-
-      }
-      else {
-
-        $errors[] = "The kickass-crypto library has only been tested on 64-bit platforms. " .
-          "define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', true ) to force enablement.";
-
-      }
-    }
-
-    foreach ( $errors as $error ) {
-
-      $message = __FILE__ . ':' . __LINE__ . ': ' . $error;
-
-      if ( defined( 'STDERR' ) ) {
-
-        fwrite( STDERR, "$message\n" );
-
-      }
-      else {
-
-        error_log( $message );
-
-      }
-    }
-  }
-  catch ( Throwable $ex ) {
-
-    try {
-
-      error_log( __FILE__ . ':' . __LINE__ . ': ' . $ex->getMessage() );
-
-    }
-    catch ( Throwable $ignore ) { ; }
-
-  }
-
-  // 2023-03-31 jj5 - SEE: my standard error levels: https://www.jj5.net/sixsigma/Error_levels
-  //
-  // 2023-03-31 jj5 - the error level 60 means "invalid run-time environment, cannot run."
-  //
-  if ( $errors ) { exit( 60 ); }
-
-})();
-
-define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
-define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
-
-// 2023-03-30 jj5 - these are the current data format versions for this library. If you fork this
-// library and alter the data format you should change these. If you do change this please use
-// something other than 'KA' as the prefix. If you don't want the data format version reported
-// in your encoded data override the encode() and decode() methods.
-//
-// 2023-04-02 jj5 - NOTE: you don't need to actually change this constant, you can just override
-// get_const_data_format_version() and return a different string. For example:
-//
-// protected function get_const_data_format_version() { return 'MYKA1'; }
-//
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_OPENSSL', 'KA0' );
-define( 'KICKASS_CRYPTO_DATA_FORMAT_VERSION_SODIUM', 'KAS0' );
-
-// 2023-03-30 jj5 - these are the default values for configuration... these might be changed in
-// future... note that 2^12 is 4KiB and 2^26 is 64 MiB.
-//
-define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
-define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
-define( 'KICKASS_CRYPTO_DEFAULT_JSON_LENGTH_MAX', pow( 2, 26 ) );
-define(
-  'KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS',
-  JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
-);
-define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
-
-// 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
-//
-define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
-define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
-
-// 2023-04-03 jj5 - this delay is a floating-point value in seconds, it's for comparison of the
-// value returned from the PHP microtime()...
-//
-define(
-  'KICKASS_CRYPTO_DELAY_SECONDS_MIN',
-  1.0 / ( KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN / 1_000 )
-);
-
-// 2023-03-30 jj5 - this is our Base64 validation regex...
-//
-define(
-  'KICKASS_CRYPTO_REGEX_BASE64',
-  // 2023-04-01 jj5 - SEE: https://www.progclub.org/blog/2023/04/01/php-preg_match-regex-fail/
-  // 2023-04-01 jj5 - NEW:
-  '/^[a-zA-Z0-9\/+]{2,}={0,2}$/'
-  // 2023-04-01 jj5 - OLD: this old base64 validation regex had some really bad performance
-  // characteristics when tested with pathological inputs such as 2^17 zeros, see the article
-  // about the problem at the link above.
-  //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
-);
-
-// 2023-03-29 jj5 - exceptions are thrown from the constructor only, these are the possible
-// exceptions. The exception codes should be stable, you can add new ones but don't change
-// existing ones.
-//
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE',  1_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG',          2_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH',        3_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER',          4_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
-define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
-
-// 2023-03-30 jj5 - these are the exception messages for each exception code. These exception
-// messages should be stable, you can add new ones but don't change existing ones.
-//
-define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
-  KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE => 'invalid exception code.',
-  KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG         => 'invalid config.',
-  KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH       => 'invalid key hash.',
-  KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER         => 'invalid cipher.',
-  KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH      => 'invalid IV length.',
-  KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
-]);
-
-// 2023-03-30 jj5 - these are the errors that can happen during encryptiong and decryption, we
-// don't raise exceptions for these errors because a secret key or a passphrase might be on the
-// call stack and we don't want to accidentally leak it. If an error occurs the boolean value
-// false is returned and the error constant is added to the error list. Sometimes the same basic
-// error can happen from multiple code points; when that happens we add a number in the hope that
-// later we can find the specific point in the code which flagged the error.
-//
-define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED', 'exception raised.' );
-define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
-define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
-define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
-define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_ENCODING', 'invalid encoding.' );
-define( 'KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING', 'unknown encoding.' );
-define( 'KICKASS_CRYPTO_ERROR_BASE64_DECODE_FAILED', 'base64 decode failed.' );
-define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE', 'invalid passphrase.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH', 'invalid passphrase length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_PASSPHRASE_LENGTH_2', 'invalid passphrase length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CHUNK_SIZE', 'invalid chunk size.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_BINARY_LENGTH', 'invalid binary length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH', 'invalid IV length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_IV_LENGTH_2', 'invalid IV length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH', 'invalid tag length.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_TAG_LENGTH_2', 'invalid tag length (2).' );
-define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED', 'encryption failed.' );
-define( 'KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2', 'encryption failed (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT', 'invalid ciphertext.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_CIPHERTEXT_2', 'invalid ciphertext (2).' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_DATA', 'invalid data.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_FORMAT', 'invalid message format.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_SPEC', 'invalid data length spec.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_JSON_LENGTH_RANGE', 'invalid data length range.' );
-define( 'KICKASS_CRYPTO_ERROR_INVALID_MESSAGE_LENGTH', 'invalid message length.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED', 'data encoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE', 'data encoding too large.' );
-define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
-define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
-define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED', 'decryption failed.' );
-define( 'KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2', 'decryption failed (2).' );
-
-// 2023-03-30 jj5 - we define an exception class for this component so that we can associate
-// custom data with our exceptions... note that not all exceptions will have associated data.
-//
-class KickassException extends Exception {
-
-  private $data;
-
-  public function __construct( $message, $code = 0, $previous = null, $data = null ) {
-
-    parent::__construct( $message, $code, $previous );
-
-    $this->data = $data;
-
-  }
-
-  public function getData() { return $this->data; }
-
-}
-
-// 2023-04-02 jj5 - these traits make a bunch of assumptions about the class that hosts them.
-// They've basically been designed to be in a class which extends KickassCrypto, they're not for
-// use in other circumstances.
-
-trait KICKASS_DEBUG_LOG {
-
-  // 2023-04-02 jj5 - if you include this trait logs will only be written if DEBUG is defined...
-
-  protected function do_log_error( $message, $file, $line, $function ) {
-
-    if ( ! $this->is_debug() ) { return false; }
-
-    return parent::do_log_error( $message, $file, $line, $function );
-
-  }
-}
-
-trait KICKASS_DEBUG_KEYS {
-
-  // 2023-04-02 jj5 - if you include this trait you'll be set up with a test key and a valid
-  // config. The secret key isn't kept anywhere so you won't be able to decrypt data after your
-  // test completes.
-
-  protected function is_valid_config( &$problem = null ) { $problem = null; return true; }
-
-  protected function get_passphrase_list() {
-    static $list = null;
-    if ( $list === null ) {
-      $secret = self::GenerateSecret();
-      $passphrase = $this->calc_passphrase( $secret );
-      $list = [ $passphrase ];
-    }
-    return $list;
-  }
-}
-
-trait KICKASS_DEBUG {
-
-  // 2023-04-02 jj5 - these traits will set you up for debugging...
-
-  use KICKASS_DEBUG_LOG;
-
-  use KICKASS_DEBUG_KEYS;
-
-}
-
-// 2023-03-30 jj5 - these are indirections to PHP functions. The main reason for using these is
-// so that we can use them to inject errors during testing... some PHP functions such as
-// is_int(), intval() and round() are called directly and not via these indirections. If you need
-// to be able to inject invalid return values during testing this is the place to make such
-// arrangements to do such things.
-//
-// 2023-03-31 jj5 - NOTE: these wrappers should do as little as possible and just defer entirely
-// to the PHP implementation. One exception is that I like to initialize variables passed by
-// reference to null, this is probably not necessary but it gives me the warm and fuzzies.
-//
-// 2023-03-31 jj5 - NOTE: when defining default variables you should use the same default values
-// as the library functions you are calling use, or just don't provide a default value at all;
-// that's a sensible enough option, you can make the wrapper demand a value from the caller if
-// you want.
-//
-// 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
-// catch() method has been defined to notify exceptions. After exceptions are notified they are
-// rethrown.
-//
-trait KICKASS_PHP_WRAPPER {
-
-  protected final function php_base64_encode( $input ) {
-
-    try {
-
-      return $this->do_php_base64_encode( $input );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_base64_encode( $input ) {
-
-    return base64_encode( $input );
-
-  }
-
-  protected final function php_base64_decode( $input, $strict ) {
-
-    try {
-
-      return $this->do_php_base64_decode( $input, $strict );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_base64_decode( $input, $strict ) {
-
-    return base64_decode( $input, $strict );
-
-  }
-
-  protected final function php_json_encode( $value, $flags, $depth = 512 ) {
-
-    try {
-
-      return $this->do_php_json_encode( $value, $flags, $depth );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
-
-    return json_encode( $value, $flags, $depth );
-
-  }
-
-  protected final function php_json_decode( $json, $associative, $depth, $flags ) {
-
-    try {
-
-      return $this->do_php_json_decode( $json, $associative, $depth, $flags );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
-
-    return json_decode( $json, $associative, $depth, $flags );
-
-  }
-
-  protected final function php_random_int( $min, $max ) {
-
-    try {
-
-      return $this->do_php_random_int( $min, $max );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_random_int( $min, $max ) {
-
-    return random_int( $min, $max );
-
-  }
-
-  protected final function php_random_bytes( $length ) {
-
-    try {
-
-      return $this->do_php_random_bytes( $length );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_random_bytes( $length ) {
-
-    return random_bytes( $length );
-
-  }
-
-  protected final function php_time_nanosleep( $seconds, $nanoseconds ) {
-
-    try {
-
-      return $this->do_php_time_nanosleep( $seconds, $nanoseconds );
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_time_nanosleep( $seconds, $nanoseconds ) {
-
-    return time_nanosleep( $seconds, $nanoseconds );
-
-  }
-
-  protected final function php_sapi_name() {
-
-    try {
-
-      return $this->do_php_sapi_name();
-
-    }
-    catch ( Throwable $ex ) {
-
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      throw $ex;
-
-    }
-  }
-
-  protected function do_php_sapi_name() {
-
-    return php_sapi_name();
-
-  }
-}
-
-trait KICKASS_ROUND_TRIP {
-
-  protected function is_valid_config( &$problem = null ) {
-
-    $secret_curr = $this->get_config_secret_curr();
-    $secret_prev = $this->get_config_secret_prev();
-
-    if ( ! $secret_curr ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_CURR;
-
-      return false;
-
-    }
-
-    if ( ! $this->is_valid_secret( $secret_curr ) ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_CURR;
-
-      return false;
-
-    }
-
-    if ( $secret_prev && ! $this->is_valid_secret( $secret_prev ) ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_PREV;
-
-      return false;
-
-    }
-
-    $problem = null;
-
-    return true;
-
-  }
-
-  protected function generate_passphrase_list() {
-
-    $secret_curr = $this->get_config_secret_curr();
-    $secret_prev = $this->get_config_secret_prev();
-
-    $result = [ $this->calc_passphrase( $secret_curr ) ];
-
-    if ( $secret_prev ) {
-
-      $result[] = $this->calc_passphrase( $secret_prev );
-
-    }
-
-    return $result;
-
-  }
-}
-
-trait KICKASS_AT_REST {
-
-  protected function is_valid_config( &$problem = null ) {
-
-    $secret_list = $this->get_config_secret_list();
-
-    if ( $secret_list === false ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_SECRET_LIST;
-
-      return false;
-
-    }
-
-    if ( ! is_array( $secret_list ) || count( $secret_list ) === 0 ) {
-
-      $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
-
-      return false;
-
-    }
-
-    foreach ( $secret_list as $secret ) {
-
-      if ( ! $this->is_valid_secret( $secret ) ) {
-
-        $problem = KICKASS_CRYPTO_CONFIG_PROBLEM_INVALID_SECRET_LIST;
-
-        return false;
-
-      }
-    }
-
-    $problem = null;
-
-    return true;
-
-  }
-
-  protected function generate_passphrase_list() {
-
-    $secret_list = $this->get_config_secret_list();
-    $result = [];
-
-    foreach ( $secret_list as $secret ) {
-
-      $result[] = $this->calc_passphrase( $secret );
-
-    }
-
-    return $result;
-
-  }
-}
-
-abstract class KickassCrypto implements IKickassCrypto {
-
-  use KICKASS_PHP_WRAPPER;
+  use \Kickass\Crypto\Trait\KICKASS_WRAPPER_PHP;
 
   // 2023-03-30 jj5 - our counters are stored here, call
   //* count_function() to increment a 'function' counter
@@ -828,7 +135,7 @@ abstract class KickassCrypto implements IKickassCrypto {
         $test_bytes = $this->php_random_bytes( 1 );
 
       }
-      catch ( Exception $ex ) {
+      catch ( \Exception $ex ) {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -935,7 +242,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $result;
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -960,7 +267,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_decrypt( $ciphertext );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -995,7 +302,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
       }
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       try {
 
@@ -1009,7 +316,7 @@ abstract class KickassCrypto implements IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) { ; }
 
     }
   }
@@ -1028,7 +335,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_catch( $ex, $file, $line, $function );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       // 2023-04-01 jj5 - this function is called from exception handlers, and then notifies
       // impementations via the do_catch() method, as above. We don't trust implementations not
@@ -1040,7 +347,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       // to interfere with this message being logged. It should never happen and if it does we
       // want to give ourselves our best chance of finding out about it so we can address.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $ignore ) { ; }
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( \Throwable $ignore ) { ; }
 
     }
   }
@@ -1078,7 +385,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return false;
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       // 2023-04-01 jj5 - the whole point of this function is to *not* throw an exception. Neither
       // delay(), count_function() or do_error() has any business throwing an exception. If they
@@ -1086,7 +393,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       // error log function here directly because we don't want to make sure this message which
       // should never happen is visible.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( Throwable $ignore ) { ; }
+      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( \Throwable $ignore ) { ; }
 
     }
 
@@ -1540,14 +847,14 @@ abstract class KickassCrypto implements IKickassCrypto {
       // 2023-04-02 jj5 - otherwise we fall through to the usleep() fallback below...
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) { ; }
 
     }
 
@@ -1564,14 +871,14 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_report_emergency_delay( $type, $file, $line, $function );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) { ; }
 
     }
   }
@@ -1604,7 +911,7 @@ abstract class KickassCrypto implements IKickassCrypto {
 
     $this->log_error( 'exception: ' . $message, __FILE__, __LINE__, __FUNCTION__ );
 
-    throw new KickassException( $message, $code, $previous, $data );
+    throw new \Kickass\KickassException( $message, $code, $previous, $data );
 
   }
 
@@ -1615,7 +922,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_json_encode( $input );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1641,7 +948,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $result;
 
     }
-    catch ( JsonException $ex ) {
+    catch ( \JsonException $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1657,7 +964,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_json_decode( $json );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1683,7 +990,7 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $result;
 
     }
-    catch ( JsonException $ex ) {
+    catch ( \JsonException $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1811,14 +1118,14 @@ abstract class KickassCrypto implements IKickassCrypto {
       return $this->do_log_error( $message, $file, $line, $function );
 
     }
-    catch ( Throwable $ex ) {
+    catch ( \Throwable $ex ) {
 
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) { ; }
 
       return false;
 

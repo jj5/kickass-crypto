@@ -22,15 +22,27 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestRoundTrip extends KickassCryptoOpenSslRoundTrip {
+class TestKickassSodiumRoundTrip extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
 
-  use KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
 
 }
 
-class TestAtRest extends KickassCryptoOpenSslAtRest {
+class TestKickassSodiumAtRest extends \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest {
 
-  use KICKASS_DEBUG_LOG;
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+
+}
+
+class TestKickassOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
+
+}
+
+class TestKickassOpenSslAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
+
+  use \Kickass\Crypto\Trait\KICKASS_DEBUG_LOG;
 
 }
 
@@ -49,15 +61,27 @@ function run_test( $argv ) {
 
     switch ( $class ) {
 
-      case 'KickassCryptoOpenSslRoundTrip':
+      case 'KickassSodiumRoundTrip':
 
-        $crypto = new TestRoundTrip();
+        $crypto = new TestKickassSodiumRoundTrip();
 
         break;
 
-      case 'KickassCryptoOpenSslAtRest':
+      case 'KickassSodiumAtRest':
 
-        $crypto = new TestAtRest();
+        $crypto = new TestKickassSodiumAtRest();
+
+        break;
+
+      case 'KickassOpenSslRoundTrip':
+
+        $crypto = new TestKickassOpenSslRoundTrip();
+
+        break;
+
+      case 'KickassOpenSslAtRest':
+
+        $crypto = new TestKickassOpenSslAtRest();
 
         break;
 
@@ -66,7 +90,7 @@ function run_test( $argv ) {
     assert( false );
 
   }
-  catch ( KickassException $ex ) {
+  catch ( \Kickass\KickassException $ex ) {
 
     $expected_code = KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG;
     $expected_message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $expected_code ];
