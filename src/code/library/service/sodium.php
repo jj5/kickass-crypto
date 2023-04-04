@@ -20,6 +20,9 @@
 // implementation you can pass in a new instance, or you can manage construction yourself and
 // access some other way. These functions are how you should ordinarily access this library.
 //
+// 2023-04-04 jj5 - the service locators will default to using the Sodium module. These are the
+// service locators which will be included by default.
+//
 \************************************************************************************************/
 
 function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
@@ -29,8 +32,6 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassC
   if ( $set !== false ) { $instance = $set; }
 
   if ( $instance === null ) {
-
-    // 2023-04-03 jj5 - prefer Sodium...
 
     $instance = new \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip();
 
@@ -47,8 +48,6 @@ function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCryp
   if ( $set !== false ) { $instance = $set; }
 
   if ( $instance === null ) {
-
-    // 2023-04-03 jj5 - prefer Sodium...
 
     $instance = new \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest();
 
