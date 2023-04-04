@@ -40,6 +40,13 @@ function run_test() {
 
   $output = ob_get_clean();
 
+  if ( $output !== get_expected_output() ) {
+
+    var_dump( $output );
+
+  }
+
+
   assert( $output === get_expected_output() );
 
 }
@@ -58,7 +65,7 @@ Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip..: 1
 
 = Lengths =
 
-5516..: 1
+5517..: 1
 ");
 
 }

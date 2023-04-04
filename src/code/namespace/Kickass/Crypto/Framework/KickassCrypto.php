@@ -1007,7 +1007,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_encode( string $binary ) {
 
-    return $this->get_const_data_format_version() . '/' . $this->php_base64_encode( $binary );
+    return $this->get_data_format_version() . '/' . $this->php_base64_encode( $binary );
 
   }
 
@@ -1027,7 +1027,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    if ( $parts[ 0 ] !== $this->get_const_data_format_version() ) {
+    $data_format_version = $parts[ 0 ];
+
+    if ( $data_format_version !== $this->get_data_format_version() ) {
 
       return $this->error( KICKASS_CRYPTO_ERROR_UNKNOWN_ENCODING );
 
@@ -1065,6 +1067,28 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     return $result;
 
+  }
+
+  protected final function get_data_format_version() {
+
+    $version = $this->get_const_data_format_version();
+
+    $class = get_class( $this );
+
+    switch ( $class ) {
+
+      case 'Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip' :
+      case 'Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest' :
+      case 'Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip' :
+      case 'Kickass\Crypto\Module\Sodium\KickassSodiumAtRest' :
+
+        return $version;
+
+      default :
+
+        return 'X' . $version;
+
+    }
   }
 
   protected function convert_secret_to_passphrase( string $key ) {
