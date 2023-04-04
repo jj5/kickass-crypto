@@ -16,8 +16,8 @@
 /************************************************************************************************\
 //
 // 2023-03-31 jj5 - this file is for bits and pieces we want in all of our unit tests, including
-// unit tests which are managed by our unit test host (src/host/unit-test.php) and those which,
-// for various reasons, host themselves.
+// unit tests which are managed by our unit test host and those which, for various reasons, host
+// themselves.
 //
 \************************************************************************************************/
 

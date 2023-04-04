@@ -942,7 +942,7 @@ to report it.
 ## How the unit tests work
 
 The unit tests are in the
-[src/unit-test/](https://github.com/jj5/kickass-crypto/tree/main/src/unit-test/)
+[src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/)
 directory, numbered sequentially.
 
 There's some test runners in
@@ -958,11 +958,11 @@ There are also some silly tests, but we won't talk about those. They are not
 ordinarily run. And they're silly.
 
 If you want to add a normal/fast test create the unit test directory as
-`src/unit-test/test-XXX`, then add either `fast.php` or `fast.sh`. If you
+`src/test/test-XXX`, then add either `fast.php` or `fast.sh`. If you
 create both then `fast.sh` will have precedence and `fast.php` will be ignored.
 
 If you want to add a slow test create the unit test directory as
-`src/unit-test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
+`src/test/test-XXX`, then add either `slow.php` or `slow.sh`. If you
 create both then `slow.sh` will have precedence and `slow.php` will be ignored.
 
 You usually only need to supply a shell script if your unit tests require multiple processes
@@ -970,8 +970,7 @@ to work. That can happen when you need to test different constant definitions. A
 redefine constants in PHP you have to restart your process if you want to run with different
 values.
 
-See existing unit tests for examples of how to use the simple unit test host in
-[src/host/unit-test.php](https://github.com/jj5/kickass-crypto/tree/main/src/host/unit-test.php).
+See existing unit tests for examples of how to use the simple unit test host.
 
 ## Directory structure
 
@@ -999,7 +998,7 @@ Here are some notes regarding notable components:
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
 * [src/host/](https://github.com/jj5/kickass-crypto/tree/main/src/host/): software hosts (presently for hosting unit-tests)
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): facilities for use during testing
-* [src/unit-test/](https://github.com/jj5/kickass-crypto/tree/main/src/unit-test/): unit tests:
+* [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): unit tests:
 fast, slow, and silly; see [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh)
 * [.gitignore](https://github.com/jj5/kickass-crypto/tree/main/.gitignore): the list of files ignored by git
 * [LICENSE](https://github.com/jj5/kickass-crypto/tree/main/LICENSE): the software license

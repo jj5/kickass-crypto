@@ -23,7 +23,7 @@
 // it's all there in the git history, I dunno. Would it be evil to run this script automatically
 // when the user loads the library on their machine..?
 //
-// 2023-04-03 jj5 - this script has been updated to only run on files in src/unit-test so that
+// 2023-04-03 jj5 - this script has been updated to only run on files in src/test so that
 // hopefully people don't use this script to accidentally hose their production keys.
 //
 \************************************************************************************************/
@@ -34,7 +34,7 @@ function main( $argv ) {
 
   change_dir( __DIR__ );
 
-  change_dir( '../../src/unit-test' );
+  change_dir( '../../src/test' );
 
   process_dir( '.' );
 
