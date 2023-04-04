@@ -1071,6 +1071,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected final function get_data_format_version() {
 
+    // 2023-04-04 jj5 - this function just makes sure that only our implementation can use the
+    // "KA" data format version prefix. If we're running someone elses code and they don't
+    // nominate a new data format version for their own use we just put an 'X' in front of the
+    // version so as to avoid it having the same value as used by our canonical implementation.
+
     $version = $this->get_const_data_format_version();
 
     $class = get_class( $this );
@@ -1085,6 +1090,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
         return $version;
 
       default :
+
+        if ( strpos( $version, 'KA' ) !== 0 ) { return $version; }
 
         return 'X' . $version;
 
