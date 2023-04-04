@@ -583,6 +583,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  protected final function get_config_phps_enable(
+    $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
+  ) {
+
+    return $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
+
+  }
+
   protected final function get_const( $const, $default = false ) {
 
     return $this->do_get_const( $const, $default );
@@ -696,6 +704,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     $data_encoding = $this->get_config_data_encoding();
 
     if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
+
+      if ( $data_encoding === KICKASS_CRYPTO_DATA_ENCODING_PHPS ) {
+
+        if ( ! $this->get_config_phps_enable() ) {
+
+          return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+
+        }
+      }
 
       return $this->error( KICKASS_CRYPTO_ERROR_INVALID_DATA_ENCODING );
 
@@ -815,9 +832,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     switch ( $data_encoding ) {
 
       case KICKASS_CRYPTO_DATA_ENCODING_JSON :
-      case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
         return true;
+
+      case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
+
+        // 2023-04-04 jj5 - this data encoding is valid if it has been made available...
+        //
+        return $this->get_config_phps_enable();
 
       default :
 
@@ -1215,6 +1237,12 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected final function encode_phps( $input ) {
 
+    if ( ! $this->get_config_phps_enable() ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+
+    }
+
     return $this->do_encode_phps( $input );
 
   }
@@ -1238,7 +1266,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED );
 
     }
   }

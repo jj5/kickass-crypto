@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /************************************************************************************************\
@@ -15,9 +16,39 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
+// values using PHP serialization.
+//
+// 2023-04-04 jj5 - All the tests here should run relatively quickly because they succeed and
+// don't cause any delay.
 //
 \************************************************************************************************/
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'J0vuymG/2F7N84XjxwmcgiCLVDqqI5JML6QGQZg54I0HolVOWmay0scUhZKnd4G5DR34lpYZr2g1yvTg0dUwXITa' );
-define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );
+require_once __DIR__ . '/etc/config.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
+
+class TestOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+
+  protected function do_delay(
+    int $ns_max = KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX,
+    int $ns_min = KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN
+  ) {
+
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
+
+  }
+}
+
+function run_test() {
+
+  $crypto = new TestOpenSslRoundTrip();
+
+  $result = $crypto->encrypt( true );
+
+  assert( $crypto->get_error() === KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+
+}
+
+main( $argv );

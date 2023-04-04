@@ -20,13 +20,25 @@
 //
 \************************************************************************************************/
 
-class TestRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
   use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
+class TestOpenSslAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
+
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+
+}
+
+class TestSodiumRoundTrip extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
+
+  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+
+}
+
+class TestSodiumAtRest extends \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest {
 
   use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
 
@@ -34,17 +46,26 @@ class TestAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
 
 function test_setup() {
 
-  kickass_round_trip( new TestRoundTrip );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  kickass_at_rest( new TestAtRest );
+  $openssl_round_trip = new TestOpenSslRoundTrip();
+  $openssl_at_rest = new TestOpenSslAtRest();
+  $sodium_round_trip = new TestSodiumRoundTrip();
+  $sodium_at_rest = new TestSodiumAtRest();
 
 }
 
 function test_error( $instance ) {
 
-  test_service_error( kickass_round_trip(), $instance );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_error( kickass_at_rest(), $instance );
+  test_service_error( $openssl_round_trip, $instance );
+
+  test_service_error( $openssl_at_rest, $instance );
+
+  test_service_error( $sodium_round_trip, $instance );
+
+  test_service_error( $sodium_at_rest, $instance );
 
 }
 

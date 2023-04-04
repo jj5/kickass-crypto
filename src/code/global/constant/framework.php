@@ -53,6 +53,8 @@ define(
 );
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
 
+define( 'KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE', false );
+
 // 2023-03-29 jj5 - these delays are in nanoseconds, these might be changed in future...
 //
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
@@ -114,6 +116,8 @@ define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2', 'exception raised (2).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3', 'exception raised (3).' );
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4', 'exception raised (4).' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED', 'JSON encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED', 'PHPS encoding failed.' );
+define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED', 'PHPS encoding disabled.' );
 define( 'KICKASS_CRYPTO_ERROR_DECODING_FAILED', 'decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED', 'JSON decoding failed.' );
 define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED', 'PHPS decoding failed.' );
