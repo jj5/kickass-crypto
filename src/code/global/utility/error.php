@@ -19,6 +19,14 @@
 //
 \************************************************************************************************/
 
+function kickass_crypto_setup_environment() {
+
+  set_error_handler( 'kickass_crypto_handle_error' );
+
+  error_reporting( E_ALL | E_STRICT );
+
+}
+
 function kickass_crypto_handle_error( $errno, $errstr, $errfile, $errline ) {
 
   if ( error_reporting() === 0 ) { return; }

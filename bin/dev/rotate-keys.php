@@ -28,7 +28,11 @@
 //
 \************************************************************************************************/
 
+require_once __DIR__ . '/../../inc/utility.php';
+
 function main( $argv ) {
+
+  kickass_crypto_setup_environment();
 
   define( 'REGEX', "/'([a-zA-Z0-9\/+]{2,}={0,2})'/" );
 
@@ -52,8 +56,20 @@ function change_dir( $dir ) {
 
   }
 
-  chdir( $dir );
+  try {
 
+    chdir( $dir );
+
+  }
+  catch ( \Throwable $ex ) {
+
+    report( "invalid dir: $dir" );
+
+    // 2023-04-04 jj5 - SEE: https://www.jj5.net/sixsigma/Error_levels#61
+    //
+    exit( 61 );
+
+  }
 }
 
 function process_dir( $dir ) {
