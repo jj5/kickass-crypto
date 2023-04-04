@@ -20,6 +20,12 @@
 //
 \************************************************************************************************/
 
+/**
+ * 2023-04-05 jj5 - this function prints a line of text to STDERR.
+ *
+ * @param string $line the line of text to print to STDERR.
+ * @return void
+ */
 function kickass_crypto_report_error( $line ) {
 
   fwrite( STDERR, $line . "\n" );

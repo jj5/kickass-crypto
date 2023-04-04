@@ -19,12 +19,24 @@
 //
 \************************************************************************************************/
 
+/**
+ * 2023-04-05 jj5 - this function tests to see if a given flag is set within a set of flags.
+ *
+ * @param int $flags the flags which are specified.
+ * @param int $flag the flag which you're interested in.
+ * @return boolean true if the flag is set.
+ */
 function kickass_crypto_is_set( int $flags, int $flag ) {
 
   return $flag === ( $flags & $flag );
 
 }
 
+/**
+ * 2023-04-05 jj5 - this function splits a set of flags into a list of singular flag values.
+ * @param int $flags the flags which are specified.
+ * @return array the list of singular flag values.
+ */
 function kickass_crypto_bits_split( int $flags ) {
 
   $result = [];

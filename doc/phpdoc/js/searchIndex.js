@@ -573,97 +573,97 @@ Search.appendIndex(
         },                {
             "fqsen": "\\kickass_crypto_setup_environment\u0028\u0029",
             "name": "kickass_crypto_setup_environment",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020set\u0020up\u0020a\u0020standard\u0020run\u002Dtime\u0020environment.",
             "url": "namespaces/default.html#function_kickass_crypto_setup_environment"
         },                {
             "fqsen": "\\kickass_crypto_handle_error\u0028\u0029",
             "name": "kickass_crypto_handle_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020handles\u0020a\u0020PHP\u0020error\u0020by\u0020throwing\u0020it\u0020as\u0020an\u0020ErrorException.\u0020This\nfunction\u0020is\u0020called\u0020by\u0020PHP\u0020when\u0020it\u0027s\u0020registered\u0020as\u0020an\u0020error\u0020handler\u0020with\u0020the\u0020set_error_handler\u0028\u0029\nfunction.\u0020This\u0020function\u0020doesn\u0027t\u0020throw\u0020if\u0020error\u0020reporting\u0020is\u0020disabled.",
             "url": "namespaces/default.html#function_kickass_crypto_handle_error"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_SUCCESS",
             "name": "KICKASS_CRYPTO_EXIT_SUCCESS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020upon\u0020success.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_SUCCESS"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE",
             "name": "KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020nothing\u0020is\u0020broken\u0020or\u0020wrong\u0020but\u0020the\u0020program\ncannot\u0020continue.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_CANNOT_CONTINUE"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT",
             "name": "KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020the\u0020program\u0020can\u0027t\u0020run\u0020due\u0020to\u0020an\u0020invalid\nrun\u002Dtime\u0020environment.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_BAD_ENVIRONMENT"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_FILE_MISSING",
             "name": "KICKASS_CRYPTO_EXIT_FILE_MISSING",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020a\u0020file\u0020is\u0020missing.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_FILE_MISSING"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_PROBLEM",
             "name": "KICKASS_CRYPTO_EXIT_PROBLEM",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020there\u0027s\u0020a\u0020problem\u0020with\u0020the\u0020program.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_PROBLEM"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_ERROR",
             "name": "KICKASS_CRYPTO_EXIT_ERROR",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020the\u0020program\u0020exits\u0020due\u0020to\u0020an\u0020error.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_ERROR"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_EXCEPTION",
             "name": "KICKASS_CRYPTO_EXIT_EXCEPTION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020the\u0020program\u0020exits\u0020due\u0020to\u0020an\u0020exception.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_EXCEPTION"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_ASSERT",
             "name": "KICKASS_CRYPTO_EXIT_ASSERT",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020the\u0020program\u0020exits\u0020due\u0020to\u0020an\u0020assertion\nviolation.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_ASSERT"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_TEST_FAILED",
             "name": "KICKASS_CRYPTO_EXIT_TEST_FAILED",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020a\u0020unit\u002Dtest\u0020failed.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_TEST_FAILED"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_INVALID",
             "name": "KICKASS_CRYPTO_EXIT_INVALID",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020the\u0020program\u0020tries\u0020to\u0020exit\u0020with\u0020an\u0020invalid\nerror\u0020level.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_INVALID"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_OPTIONS_LISTED",
             "name": "KICKASS_CRYPTO_EXIT_OPTIONS_LISTED",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020program\u0020options\u0020have\u0020been\u0020requested\u003B\u0020this\u0020is\nnot\u0020an\u0020error\u0020but\u0020it\u0020does\u0020return\u0020a\u0020non\u002Dzero\u0020error\u0020level\u0020for\u0020safety.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_OPTIONS_LISTED"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXIT_HELP",
             "name": "KICKASS_CRYPTO_EXIT_HELP",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020error\u0020level\u0020to\u0020return\u0020when\u0020help\u0020\u0028or\u0020version\u0029\u0020has\u0020been\u0020requested\u003B\u0020this\u0020is\nnot\u0020an\u0020error\u0020but\u0020it\u0020does\u0020return\u0020a\u0020non\u002Dzero\u0020error\u0020level\u0020for\u0020safety.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXIT_HELP"
         },                {
             "fqsen": "\\kickass_crypto_exit\u0028\u0029",
             "name": "kickass_crypto_exit",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020exit\u0020the\u0020process\u0020with\u0020a\u0020suitable\u0020error\u0020level.",
             "url": "namespaces/default.html#function_kickass_crypto_exit"
         },                {
             "fqsen": "\\kickass_crypto_change_dir\u0028\u0029",
             "name": "kickass_crypto_change_dir",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020change\u0020the\u0020current\u0020directory\u003B\u0020if\u0020there\u0027s\u0020any\u0020sort\u0020of\nproblem\u0020the\u0020program\u0020will\u0020be\u0020immediately\u0020aborted\u0020with\u0020an\u0020appropriate\u0020error\u0020level\u003B\u0020this\u0020function\nis\u0020for\u0020command\u002Dline\u0020scripts,\u0020not\u0020web\u0020services.",
             "url": "namespaces/default.html#function_kickass_crypto_change_dir"
         },                {
             "fqsen": "\\kickass_crypto_report_error\u0028\u0029",
             "name": "kickass_crypto_report_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020prints\u0020a\u0020line\u0020of\u0020text\u0020to\u0020STDERR.",
             "url": "namespaces/default.html#function_kickass_crypto_report_error"
         },                {
             "fqsen": "\\kickass_crypto_is_set\u0028\u0029",
             "name": "kickass_crypto_is_set",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020tests\u0020to\u0020see\u0020if\u0020a\u0020given\u0020flag\u0020is\u0020set\u0020within\u0020a\u0020set\u0020of\u0020flags.",
             "url": "namespaces/default.html#function_kickass_crypto_is_set"
         },                {
             "fqsen": "\\kickass_crypto_bits_split\u0028\u0029",
             "name": "kickass_crypto_bits_split",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020splits\u0020a\u0020set\u0020of\u0020flags\u0020into\u0020a\u0020list\u0020of\u0020singular\u0020flag\u0020values.",
             "url": "namespaces/default.html#function_kickass_crypto_bits_split"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Contract\\IKickassCrypto",

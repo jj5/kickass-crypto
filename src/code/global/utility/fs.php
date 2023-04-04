@@ -20,6 +20,14 @@
 //
 \************************************************************************************************/
 
+/**
+ * 2023-04-05 jj5 - this function will change the current directory; if there's any sort of
+ * problem the program will be immediately aborted with an appropriate error level; this function
+ * is for command-line scripts, not web services.
+ *
+ * @param string $dir the directory to change into
+ * @return void
+ */
 function kickass_crypto_change_dir( $dir ) {
 
   if ( ! is_dir( $dir ) ) {

@@ -19,8 +19,10 @@
 //
 \************************************************************************************************/
 
-// 2023-04-05 jj5 - this function will set up a standard run-time environment...
-//
+/**
+ * 2023-04-05 jj5 - this function will set up a standard run-time environment.
+ * @return void
+ */
 function kickass_crypto_setup_environment() {
 
   set_error_handler( 'kickass_crypto_handle_error' );
@@ -29,17 +31,16 @@ function kickass_crypto_setup_environment() {
 
 }
 
-/* 2023-04-05 jj5 - this function handles a PHP error by throwing it as an ErrorException. This
-    function is called by PHP when it's registered as an error handler with the
-    set_error_handler() function.
-
-  @param int $errno the error number.
-  @param string $errstr the error string.
-  @param string $errfile the file the error was triggered from.
-  @param string $errline the line in the file the error was triggered from.
-
-  @throws ErrorException the PHP ErrorException class.
-
+/**
+ * 2023-04-05 jj5 - this function handles a PHP error by throwing it as an ErrorException. This
+ * function is called by PHP when it's registered as an error handler with the set_error_handler()
+ * function. This function doesn't throw if error reporting is disabled.
+ *
+ * @param int $errno the error number.
+ * @param string $errstr the error string.
+ * @param string $errfile the file the error was triggered from.
+ * @param string $errline the line in the file the error was triggered from.
+ * @throws ErrorException the PHP ErrorException class.
 */
 function kickass_crypto_handle_error( $errno, $errstr, $errfile, $errline ) {
 
