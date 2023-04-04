@@ -36,7 +36,7 @@
 
 namespace Kickass\Crypto\Framework;
 
-abstract class KickassCrypto implements \Kickass\Crypto\Interface\IKickassCrypto {
+abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto {
 
   use \Kickass\Crypto\Trait\KICKASS_WRAPPER_PHP;
 

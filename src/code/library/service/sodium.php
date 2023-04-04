@@ -22,7 +22,7 @@
 //
 \************************************************************************************************/
 
-function kickass_round_trip( $set = false ) : \Kickass\Crypto\Interface\IKickassCrypto {
+function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 
   static $instance = null;
 
@@ -40,7 +40,7 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Interface\IKickass
 
 }
 
-function kickass_at_rest( $set = false ) : \Kickass\Crypto\Interface\IKickassCrypto {
+function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 
   static $instance = null;
 
