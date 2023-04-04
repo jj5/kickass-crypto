@@ -27,10 +27,6 @@ function kickass_crypto_autoload( $class_name ) {
 
   if ( file_exists( $path ) ) { require_once $path; return true; }
 
-  echo "no such class path: $path\n\n";
-
-  debug_print_backtrace();
-
-  exit( 80 );
+  return false;
 
 }

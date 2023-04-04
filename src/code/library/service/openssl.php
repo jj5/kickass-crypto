@@ -20,6 +20,8 @@
 // implementation you can pass in a new instance, or you can manage construction yourself and
 // access some other way. These functions are how you should ordinarily access this library.
 //
+// 2023-04-04 jj5 - the service locators will default to using the OpenSSL module.
+//
 \************************************************************************************************/
 
 function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
