@@ -24,12 +24,32 @@ require_once __DIR__ . '/../../inc/utility.php';
 
 function main( $argv ) {
 
+  global $const_list, $error;
+
   define( 'REGEX', "/.*'(KICKASS_CRYPTO_CONFIG_PROBLEM_[^']*)'/" );
 
   $error = 0;
   $const_list = [];
 
-  $lib = realpath( __DIR__ . '/../../src/code/global/constant/framework.php' );
+  $lib = realpath( __DIR__ . '/../../src/code/global/constant/openssl.php' );
+
+  test_lib( $lib );
+
+  $lib = realpath( __DIR__ . '/../../src/code/global/constant/sodium.php' );
+
+  test_lib( $lib );
+
+  foreach ( $const_list as $const ) {
+
+    echo $const . "\n";
+
+  }
+}
+
+function test_lib( $lib ) {
+
+  global $const_list, $error;
+
   $test = realpath( __DIR__ . '/../../src/test/test-002/fast.sh' );
 
   $lib_lines = file( $lib );
@@ -63,12 +83,6 @@ function main( $argv ) {
   if ( $error ) {
 
     exit( $error );
-
-  }
-
-  foreach ( $const_list as $const ) {
-
-    echo $const . "\n";
 
   }
 }
