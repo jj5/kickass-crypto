@@ -289,7 +289,7 @@ function format_part_b( $part_b ) {
 
     echo
       '| ' . pad_r( $cell[ 0 ], $max_a ) . ' ' .
-      '| ' . pad_l( $cell[ 1 ], $max_b ) . ' ' .
+      '| <div style="text-align:right;">' . pad_l( $cell[ 1 ], $max_b ) . '</div> ' .
       '| ' . pad_l( $cell[ 2 ], $max_c ) . ' ' .
       "|\n";
 
@@ -297,6 +297,8 @@ function format_part_b( $part_b ) {
 }
 
 function format_part_c( $part_c ) {
+
+  echo "```\n";
 
   foreach ( $part_c as $line ) {
 
@@ -307,6 +309,9 @@ function format_part_c( $part_c ) {
     echo $line . "\n";
 
   }
+
+  echo "```\n";
+
 }
 
 function pad_l( $string, $length, $pad_string = ' ' ) {
