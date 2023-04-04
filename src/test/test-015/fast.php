@@ -18,6 +18,10 @@
 //
 // 2023-04-04 jj5 - this script takes the serialization overrides for a spin...
 //
+// 2023-04-05 jj5 - NOTE: this code remains valid but it was written before PHP serialization
+// support was implemented. As PHP serialization support is now done you don't need to do it
+// yourself such as its done in this script.
+//
 \************************************************************************************************/
 
 define( 'DEBUG', true );
@@ -33,7 +37,9 @@ class CryptoTest extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
 
   }
 
-  protected function do_data_decode( string $input, $data_encoding ) {
+  protected function do_data_decode( string $input, $data_encoding, &$is_false ) {
+
+    $is_false = false;
 
     return unserialize( $input );
 

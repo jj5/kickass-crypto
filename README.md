@@ -92,7 +92,10 @@ option than encryption for sensitive data if you don't absolutely need it
 library will make sure that any secret or sensitive data is named with either of those substrings
 as part of its name
 * don't try to encrypt the boolean value false; the boolean value false is used to indicate
-decryption errors so we don't want to decrypt it as a valid value so we refuse to encrypt it
+decryption errors so we don't want to decrypt it as a valid value so we refuse to encrypt it (it
+is possible to force support for encrypting the value false by way of a configuration option, but
+if you do that you should always call `get_error()` after encryption to make sure it's null
+indicating no error).
 
 Another thing, which surprised me when I learned it, although it's quite obvious once you know, is
 that you should _not_ compress your data before you encrypt it. This isn't _always_ a problem,
@@ -1093,7 +1096,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,106 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,105 times (including the ASCII banners).
 
 ## Comments? Questions? Suggestions?
 

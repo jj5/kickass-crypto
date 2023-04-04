@@ -922,11 +922,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       if ( $encoded_data === false ) { continue; }
 
-      $result = $this->data_decode( $encoded_data, $data_encoding );
+      $result = $this->data_decode( $encoded_data, $data_encoding, $is_false );
 
       if ( $result !== false ) { return $result; }
 
-      if ( $this->get_config_false_enable() && $this->get_error() === null ) { return false; }
+      if ( $is_false ) { return false; }
 
       // 2023-04-02 jj5 - if we make it this far during any of our decryption attempts then this
       // is the error we will return.
@@ -1313,11 +1313,17 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function data_decode( $encoded_data, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
+  protected final function data_decode(
+    $encoded_data,
+    $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON,
+    &$is_false = null
+  ) {
 
     try {
 
-      return $this->do_data_decode( $encoded_data, $data_encoding );
+      $is_false = false;
+
+      return $this->do_data_decode( $encoded_data, $data_encoding, $is_false );
 
     }
     catch ( \Throwable $ex ) {
@@ -1329,9 +1335,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_data_decode( string $encoded_data, $data_encoding ) {
+  protected function do_data_decode( string $encoded_data, $data_encoding, &$is_false ) {
 
     try {
+
+      $is_false = false;
 
       if (
         $data_encoding === false &&
@@ -1347,11 +1355,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
         case KICKASS_CRYPTO_DATA_ENCODING_JSON :
 
-          return $this->json_decode( $encoded_data );
+          return $this->json_decode( $encoded_data, $is_false );
 
         case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
-          return $this->phps_decode( $encoded_data );
+          return $this->phps_decode( $encoded_data, $is_false );
 
         default :
 
@@ -1369,11 +1377,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function json_decode( $input ) {
+  protected final function json_decode( $input, &$is_false ) {
 
     try {
 
-      return $this->do_json_decode( $input );
+      $is_false = false;
+
+      return $this->do_json_decode( $input, $is_false );
 
     }
     catch ( \Throwable $ex ) {
@@ -1385,9 +1395,19 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_json_decode( $input ) {
+  protected function do_json_decode( $input, &$is_false ) {
 
     try {
+
+      static $false_json = null;
+
+      if ( $false_json === null ) {
+
+        $false_json = $this->php_json_encode( false, $this->get_config_json_encode_options() );
+
+      }
+
+      $is_false = false;
 
       $options = $this->get_config_json_decode_options();
 
@@ -1401,10 +1421,19 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       }
 
-      if ( $result === false && ! $this->get_config_false_enable() ) {
+      if ( $result === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3 );
+        if ( $input === $false_json ) {
 
+          $is_false = true;
+
+        }
+
+        if ( ! $this->get_config_false_enable() ) {
+
+          return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3 );
+
+        }
       }
 
       return $result;
@@ -1419,11 +1448,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function phps_decode( $input ) {
+  protected final function phps_decode( $input, &$is_false ) {
 
     try {
 
-      return $this->do_phps_decode( $input );
+      $is_false = false;
+
+      return $this->do_phps_decode( $input, $is_false );
 
     }
     catch ( \Throwable $ex ) {
@@ -1435,14 +1466,29 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_phps_decode( $input ) {
+  protected function do_phps_decode( $input, &$is_false ) {
+
+    static $false_phps = null;
+
+    if ( $false_phps === null ) { $false_phps = $this->php_serialize( false ); }
+
+    $is_false = false;
 
     $result = $this->php_unserialize( $input );
 
     if ( $result === false ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
+      if ( $input === $false_phps ) {
 
+        $is_false = true;
+
+      }
+
+      if ( ! $this->get_config_false_enable() ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
+
+      }
     }
 
     return $result;

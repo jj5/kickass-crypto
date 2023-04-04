@@ -28,19 +28,14 @@ require_once __DIR__ . '/lib/include.php';
 
 function run_test() {
 
-
   test_error(
-    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED,
+    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2,
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->do_encrypt( true );
+          return $this->do_json_decode( 'true', $is_false );
         }
-        protected function do_get_config_data_encoding( $default ) {
-          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
-        }
-        protected function do_is_valid_data_encoding( $data_encoding ) { return false; }
-        protected function do_get_config_phps_enable( $default ) { return false; }
+        protected function do_php_json_last_error() { return 123; }
       };
     }
   );

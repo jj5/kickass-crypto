@@ -165,7 +165,7 @@ function run_test() {
         public function test() {
           return $this->data_decode( 'true' );
         }
-        protected function do_json_decode( $json ) {
+        protected function do_json_decode( $json, &$is_false ) {
           throw new Exception( 'fail' );
         }
       };
@@ -177,7 +177,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->do_json_decode( 'true' );
+          return $this->do_json_decode( 'true', $is_false );
         }
         protected function do_php_json_last_error() { return 123; }
       };
@@ -270,9 +270,9 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->phps_decode( 'true' );
+          return $this->phps_decode( 'true', $is_false );
         }
-        protected function do_phps_decode( $input ) {
+        protected function do_phps_decode( $input, &$is_false ) {
           throw new Exception( 'fail' );
         }
       };
@@ -284,7 +284,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->phps_decode( 'true' );
+          return $this->phps_decode( 'true', $is_false );
         }
         protected function do_php_unserialize( $input ) {
           return false;
@@ -364,7 +364,7 @@ function run_test() {
         public function test() {
           return $this->data_decode( 'true' );
         }
-        protected function do_data_decode( string $json, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
+        protected function do_data_decode( string $json, $data_encoding, &$is_false ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -1037,7 +1037,7 @@ function run_test() {
           $result = $this->decrypt( $ciphertext );
           return $result;
         }
-        protected function do_data_decode( $input, $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON ) {
+        protected function do_data_decode( $input, $data_encoding, &$is_false ) {
           return false;
         }
       };

@@ -59,6 +59,10 @@ main() {
   #
   bash ../../bin/dev/count-kickass.sh >/dev/null
 
+  # 2023-04-05 jj5 - and report on any residual/current usage of var_dump()...
+  #
+  bash ../../bin/dev/check-var_dump.sh
+
   for test in *; do
 
     echo processing $test...;

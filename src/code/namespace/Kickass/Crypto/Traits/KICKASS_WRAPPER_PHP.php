@@ -100,7 +100,7 @@ trait KICKASS_WRAPPER_PHP {
     }
   }
 
-  protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
+  protected function do_php_json_encode( $value, $flags, $depth ) {
 
     return json_encode( $value, $flags, $depth );
 
