@@ -144,8 +144,9 @@ or the
 
 Gee, it started simply enough but it got kind of complicated in the end.
 
-I wanted to round-trip some relatively sensitive data between my server and its clients in a
-relatively secure fashion, secrecy and tamperproofing preferred.
+I wanted to round-trip some relatively sensitive data (row version numbers for optimistic
+concurrency control) between my server and its clients in a relatively secure fashion, secrecy and
+tamperproofing preferred.
 
 I had heard that the OpenSSL library was available in PHP so I searched for information
 concerning how to use that. I found example code in the PHP documentation for the
