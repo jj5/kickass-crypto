@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /************************************************************************************************\
@@ -15,12 +16,34 @@
 
 /************************************************************************************************\
 //
-// 2023-04-04 jj5 - here we include our utility functions...
+// 2023-04-05 jj5 - file-system functions.
 //
 \************************************************************************************************/
 
-require_once __DIR__ . '/../src/code/global/utility/error.php';
-require_once __DIR__ . '/../src/code/global/utility/exit.php';
-require_once __DIR__ . '/../src/code/global/utility/fs.php';
-require_once __DIR__ . '/../src/code/global/utility/io.php';
-require_once __DIR__ . '/../src/code/global/utility/twiddle.php';
+function kickass_crypto_change_dir( $dir ) {
+
+  if ( ! is_dir( $dir ) ) {
+
+    kickass_crypto_report_error( "invalid dir: $dir" );
+
+    exit( KICKASS_CRYPTO_EXIT_FILE_MISSING );
+
+  }
+
+  try {
+
+    if ( @chdir( $dir ) ) { return; }
+
+    kickass_crypto_report_error( "invalid dir: $dir" );
+
+    exit( KICKASS_CRYPTO_EXIT_FILE_MISSING );
+
+  }
+  catch ( \Throwable $ex ) {
+
+    kickass_crypto_report_error( "invalid dir: $dir" );
+
+    exit( KICKASS_CRYPTO_EXIT_FILE_MISSING );
+
+  }
+}

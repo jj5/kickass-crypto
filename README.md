@@ -253,6 +253,49 @@ Or you can just generate a whole demo `config.php` file with:
 php bin/gen-demo-config.php > config.php
 ```
 
+## Library metrics
+
+### File count
+
+Total Number of Files = 102
+Total Number of Source Code Files = 102
+
+| #Files | Directory | #Files-by-Language (Sorted) |
+|:------:| --------- | --------------------------- |
+|     84 | src       | php=80,sh=4                 |
+|     18 | bin       | php=13,sh=5                 |
+
+#### Totals grouped by language (dominant language first):
+
+| Language | SLOC | Percentage |
+|:--------:| ---- | ---------- |
+| php      |   93 |   (91.18%) |
+| sh       |    9 |    (8.82%) |
+
+
+### Lines of Code
+
+Total Physical Source Lines of Code (SLOC)                = 5,437
+Development Effort Estimate, Person-Years (Person-Months) = 1.18 (14.20)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.57 (6.85)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 2.07
+Total Estimated Cost to Develop                           = $ 159,871
+ (average salary = $56,286/year, overhead = 2.40).
+
+| SLOC  | Directory | SLOC-by-Language (Sorted) |
+|:-----:| --------- | ------------------------- |
+| 4,922 | src       | php=4753,sh=169           |
+|   515 | bin       | php=388,sh=127            |
+
+#### Totals grouped by language (dominant language first):
+
+| Language | SLOC  | Percentage |
+|:--------:| ----- | ---------- |
+| php      | 5,141 |   (94.56%) |
+| sh       |   296 |    (5.44%) |
+
 ## Supported PHP versions
 
 This code should work on PHP 7.4 or greater. If you try to run this code on an older version of
@@ -1099,6 +1142,8 @@ The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
 The string "kickass" appears in the source code 1,139 times (including the ASCII banners).
+
+SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
 ## Comments? Questions? Suggestions?
 
