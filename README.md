@@ -111,7 +111,7 @@ If you can think of anything else that everyone should know about and be careful
 ## tl;dr
 
 Don't want to RTFM..? And here I am, writing all this stuff... sheesh. At least read the
-[warnings](#warnings) listed above.
+[warnings](#warning) listed above.
 
 ```
 #!/bin/bash
