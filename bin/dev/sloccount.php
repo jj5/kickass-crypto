@@ -280,8 +280,8 @@ function format_part_b( $part_b ) {
     "|\n";
 
   echo
-    '| ' . pad_r( '', $max_a, '-' ) . ':' .
-    '| ' . pad_r( '', $max_b, '-' ) . ' ' .
+    '| ' . pad_r( '', $max_a, '-' ) . ' ' .
+    '| ' . pad_r( '', $max_b, '-' ) . ':' .
     '| ' . pad_r( '', $max_c, '-' ) . ' ' .
     "|\n";
 
