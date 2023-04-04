@@ -17,13 +17,6 @@
 //
 // 2023-04-04 jj5 - this implements support for round-tripping with OpenSSL.
 //
-// 2023-03-30 jj5 - if you need to round trip data from the web server to the client and back
-// again via hidden HTML form <input> tags use this KickassOpenSslRoundTrip class. This
-// class uses one or two secret keys from the config file. The first key is required and it's
-// called the "current" key, its config option is 'CONFIG_OPENSSL_SECRET_CURR'; the second
-// key is option and it's called the "previous" key, its config option is
-// 'CONFIG_OPENSSL_SECRET_PREV'.
-//
 \************************************************************************************************/
 
 namespace Kickass\Crypto\Module\OpenSsl;
