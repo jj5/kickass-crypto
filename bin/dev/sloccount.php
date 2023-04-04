@@ -40,11 +40,11 @@ function main( $argv ) {
 
   echo "\n";
 
-  format_part_a( $parts[ 'a' ] );
+  format_part_a( $parts[ 'a' ], 'Files' );
 
   echo "\n";
 
-  format_part_b( $parts[ 'b' ], '#Files' );
+  format_part_b( $parts[ 'b' ], 'Files' );
 
   echo "\n";
 
@@ -58,7 +58,7 @@ function main( $argv ) {
 
   echo "\n";
 
-  format_part_a( $parts[ 'a' ] );
+  format_part_a( $parts[ 'a' ], 'SLOC' );
 
   echo "\n";
 
@@ -160,7 +160,7 @@ function get_parts( $text ) {
 
 }
 
-function format_part_a( $part_a ) {
+function format_part_a( $part_a, $head_a ) {
 
   // 2023-04-05 jj5 - example markdown table...
   //
@@ -169,7 +169,7 @@ function format_part_a( $part_a ) {
 ## Tables
 
 | Left columns  | Right columns |
-| ------------- |:-------------:|
+| ------------- | -------------:|
 | left foo      | right foo     |
 | left bar      | right bar     |
 | left baz      | right baz     |
@@ -178,9 +178,8 @@ function format_part_a( $part_a ) {
 
   preg_match( REGEX_A, $part_a[ 0 ], $head_parts );
 
-  $head_a = trim( $head_parts[ 1 ] );
-  $head_b = trim( $head_parts[ 2 ] );
-  $head_c = trim( $head_parts[ 3 ] );
+  $head_b = 'Directory';
+  $head_c = 'By language';
 
   $max_a = strlen( $head_a );
   $max_b = strlen( $head_b );
@@ -236,7 +235,7 @@ function format_part_b( $part_b, $head_b ) {
 ## Tables
 
 | Left columns  | Right columns |
-| ------------- |:-------------:|
+| ------------- | -------------:|
 | left foo      | right foo     |
 | left bar      | right bar     |
 | left baz      | right baz     |
