@@ -55,6 +55,10 @@ main() {
   #
   php ../../bin/dev/rotate-keys.php 2>/dev/null
 
+  # 2023-04-05 jj5 - and report on source code metrics in the README.md...
+  #
+  php ../../bin/dev/sloccount.php;
+
   # 2023-04-03 jj5 - and update README.md with the "kickass" count...
   #
   bash ../../bin/dev/count-kickass.sh >/dev/null

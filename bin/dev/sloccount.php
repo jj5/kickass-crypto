@@ -30,6 +30,74 @@ function main( $argv ) {
 
   define( 'REGEX_A', '/^([^\s]*)\s+([^\s]*)\s+(.*)$/' );
 
+  ob_start();
+
+  generate_report();
+
+  $report = ob_get_clean();
+
+  $path = realpath( __DIR__ . '/../../README.md' );
+
+  $lines = file( $path );
+
+  $readme = '';
+
+  $i = 0;
+
+  for ( ;; ) {
+
+    $line = $lines[ $i ];
+
+    $readme .= $line;
+
+    if ( strpos( $line, '## Library metrics' ) === 0 ) {
+
+      break;
+
+    }
+
+    $i++;
+
+  }
+
+  $readme .= "\n";
+  $readme .= $report;
+
+  for ( ;; ) {
+
+    $line = $lines[ $i ];
+
+    if ( strpos( $line, '## Supported PHP versions' ) === 0 ) {
+
+      break;
+
+    }
+
+    $i++;
+
+  }
+
+  $readme .= "\n";
+
+  for ( ;; ) {
+
+    $line = $lines[ $i ];
+
+    $readme .= $line;
+
+    $i++;
+
+    if ( $i === count( $lines ) ) { break; }
+
+  }
+
+  file_put_contents( $path, $readme );
+
+}
+
+
+function generate_report() {
+
   $text = `sloccount --filecount bin src 2>/dev/null`;
 
   $parts = get_parts( $text );
