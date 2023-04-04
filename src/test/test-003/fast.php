@@ -50,7 +50,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->json_encode( true );
+          return $this->data_encode( true );
         }
         protected function do_php_json_encode( $value, $flags, $depth = 512 ) {
           return false;
@@ -64,9 +64,9 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->json_encode( true );
+          return $this->data_encode( true );
         }
-        protected function do_json_encode( $input ) {
+        protected function do_data_encode( $input ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -78,7 +78,7 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->json_decode( 'true' );
+          return $this->data_decode( 'true' );
         }
         protected function do_php_json_decode( $json, $associative, $depth, $flags ) {
           return false;
@@ -92,9 +92,9 @@ function run_test() {
     function() {
       return new class extends TestCrypto {
         public function test() {
-          return $this->json_decode( 'true' );
+          return $this->data_decode( 'true' );
         }
-        protected function do_json_decode( string $json ) {
+        protected function do_data_decode( string $json ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -640,7 +640,7 @@ function run_test() {
         public function test() {
           return $this->encrypt( 'test' );
         }
-        protected function do_json_encode( $input ) {
+        protected function do_data_encode( $input ) {
           return false;
         }
       };
@@ -670,7 +670,7 @@ function run_test() {
           $result = $this->decrypt( $ciphertext );
           return $result;
         }
-        protected function do_json_decode( $input ) {
+        protected function do_data_decode( $input ) {
           return false;
         }
       };

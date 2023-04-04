@@ -545,7 +545,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    $json = $this->json_encode( $input );
+    $json = $this->data_encode( $input );
 
     if ( $json === false ) {
 
@@ -662,7 +662,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       if ( $json === false ) { continue; }
 
-      $result = $this->json_decode( $json );
+      $result = $this->data_decode( $json );
 
       if ( $result !== false ) { return $result; }
 
@@ -915,11 +915,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function json_encode( $input ) {
+  protected final function data_encode( $input ) {
 
     try {
 
-      return $this->do_json_encode( $input );
+      return $this->do_data_encode( $input );
 
     }
     catch ( \Throwable $ex ) {
@@ -931,7 +931,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_json_encode( $input ) {
+  protected function do_data_encode( $input ) {
 
     try {
 
@@ -957,11 +957,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function json_decode( $json ) {
+  protected final function data_decode( $json ) {
 
     try {
 
-      return $this->do_json_decode( $json );
+      return $this->do_data_decode( $json );
 
     }
     catch ( \Throwable $ex ) {
@@ -973,7 +973,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected function do_json_decode( string $json ) {
+  protected function do_data_decode( string $json ) {
 
     try {
 

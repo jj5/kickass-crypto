@@ -4,8 +4,8 @@ A contemporary PHP cryptography library circa 2023.
 
 **Synopsis:**
 * a uniform interface to two separate and contemporary encryption libraries with support for
-input and config validation, serialization and deserialization (with JSON), data size limits,
-passphrase management, message padding, output encoding, logging, telemetry, and exception
+input and config validation, serialization and deserialization (using JSON by default), data size
+limits, passphrase management, message padding, output encoding, logging, telemetry, and exception
 handling and error management
 * [XSalsa20 stream cipher](https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20)
 encryption with
