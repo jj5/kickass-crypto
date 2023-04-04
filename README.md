@@ -267,7 +267,7 @@ Total Number of Source Code Files = 102
 | src       |    84 | php=80,sh=4 |
 | bin       |    18 | php=13,sh=5 |
 
-#### Totals grouped by language (dominant language first):
+#### Totals grouped by language (dominant language first)
 
 | Language | Files | Percentage |
 | -------- | -----:| ----------:|
@@ -293,7 +293,7 @@ Total Estimated Cost to Develop                           = $ 160,951
 | src       | 4,922 | php=4753,sh=169 |
 | bin       |   550 | php=422,sh=128  |
 
-#### Totals grouped by language (dominant language first):
+#### Totals grouped by language (dominant language first)
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|

@@ -310,7 +310,7 @@ function format_part_b( $part_b, $head_b ) {
 
   */
 
-  $head = trim( $part_b[ 0 ] );
+  $head = rtrim( trim( $part_b[ 0 ] ), ':' );
 
   $head_a = 'Language';
   $head_c = 'Percentage';
