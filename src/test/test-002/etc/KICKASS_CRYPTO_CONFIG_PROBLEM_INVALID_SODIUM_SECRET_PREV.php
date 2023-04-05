@@ -19,5 +19,5 @@
 //
 \************************************************************************************************/
 
-define( 'CONFIG_SODIUM_SECRET_CURR', 'RzSMNmuVTXh1Y5nXLPM5rTwjOp2tfGsPgg3ZgbqKpAgtE+mOW/d1vQURt9oNYb4w0pnm509etx6dCC4RmZCJznua' );
+define( 'CONFIG_SODIUM_SECRET_CURR', '1FyeY+3p/Bb3VqRO/iT3GHEI5p3RVlxCcCXN2yYNBzzBKgaTLJMT4UIu8uirWGaVPhAih0BEcyJLLoGtyic/eO4P' );
 define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );
