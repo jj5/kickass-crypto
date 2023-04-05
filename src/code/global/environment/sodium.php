@@ -64,6 +64,10 @@ function kickass_crypto_validate_environment_sodium() {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK' ) ) {
 
+      /**
+       * 2023-04-05 jj5 - defines whether the Sodium library check is disabled or not.
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', false );
 
     }

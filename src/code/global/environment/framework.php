@@ -53,12 +53,20 @@ function kickass_crypto_validate_environment() {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
 
+      /**
+       * 2023-04-05 jj5 - defines whether the PHP version check is disabled or not.
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
 
     }
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK' ) ) {
 
+      /**
+       * 2023-04-05 jj5 - defines whether the PHP word size check is disabled or not.
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_WORD_SIZE_CHECK', false );
 
     }

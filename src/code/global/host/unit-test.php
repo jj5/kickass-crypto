@@ -40,7 +40,15 @@ function main( $argv ) {
 
   try {
 
-    if ( ! defined( 'DEBUG' ) ) { define( 'DEBUG', false ); }
+    if ( ! defined( 'DEBUG' ) ) {
+
+      /**
+       * 2023-04-05 jj5 - defines whether debugging is enabled or not.
+       * @var boolean
+       */
+      define( 'DEBUG', false );
+
+    }
 
     run_test( $argv );
 

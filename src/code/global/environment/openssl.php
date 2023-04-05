@@ -67,6 +67,10 @@ function kickass_crypto_validate_environment_openssl() {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK' ) ) {
 
+      /**
+       * 2023-04-05 jj5 - defines whether the OpenSSL library check is disabled or not.
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', false );
 
     }

@@ -553,7 +553,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK",
             "name": "KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020defines\u0020whether\u0020the\u0020PHP\u0020version\u0020check\u0020is\u0020disabled\u0020or\u0020not.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK"
         },                {
             "fqsen": "\\kickass_crypto_validate_php\u0028\u0029",

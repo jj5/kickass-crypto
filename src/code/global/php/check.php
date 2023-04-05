@@ -38,6 +38,10 @@ function kickass_crypto_validate_php() {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK' ) ) {
 
+      /**
+       * 2023-04-05 jj5 - defines whether the PHP version check is disabled or not.
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );
 
     }

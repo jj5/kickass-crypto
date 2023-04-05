@@ -74,11 +74,13 @@ test_fail() {
 
     error "error level was: $error, this was unexpected.";
 
-    return 1;
+    exit $KICKASS_CRYPTO_EXIT_TEST_FAILED;
 
   }
 
   error "test fail:$test did not fail as expected.";
+
+  exit $KICKASS_CRYPTO_EXIT_TEST_FAILED;
 
 }
 
@@ -100,7 +102,7 @@ test_work() {
 
   error "error level was: $error.";
 
-  return 1;
+  exit $KICKASS_CRYPTO_EXIT_TEST_FAILED;
 
 }
 
