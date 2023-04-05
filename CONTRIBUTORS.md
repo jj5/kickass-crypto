@@ -8,3 +8,15 @@ The table includes the contributor details and the nature of their contribution.
 | Username | Name          | Email       | Contribution        | Begin | Recent |
 | -------- | ------------- | ----------- | ------------------- | ----- | ------ |
 | jj5      | John Elliot V | jj5@jj5.net | code, documentation | 2023  | 2023   |
+
+## Types of contribution
+
+Types of contribution include:
+
+- code
+- design
+- documentation
+- translation
+- testing
+- bug reports
+- code review
