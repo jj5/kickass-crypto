@@ -99,7 +99,7 @@ function main( $argv ) {
 
 function generate_report() {
 
-  $text = `sloccount --filecount bin src/code src/demo src/test 2>/dev/null`;
+  $text = `sloccount --filecount bin inc src/code src/demo src/test 2>/dev/null`;
 
   $parts = get_parts( $text );
 
@@ -117,7 +117,7 @@ function generate_report() {
 
   echo "\n";
 
-  $text = `sloccount bin src/code src/demo src/test 2>/dev/null`;
+  $text = `sloccount bin inc src/code src/demo src/test 2>/dev/null`;
 
   $parts = get_parts( $text );
 

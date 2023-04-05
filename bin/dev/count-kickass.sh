@@ -28,12 +28,12 @@ main() {
 
   # 2023-04-03 jj5 - we count the "kickass" in the ASCII banners!
   #
-  local banner=$( grep -Ri 'By jj5' bin src 2>/dev/null | wc -l );
+  local banner=$( grep -Ri 'By jj5' bin inc src 2>/dev/null | wc -l );
 
-  local kickass_1=$( egrep -Ri '.*kickass' bin src 2>/dev/null | wc -l );
-  local kickass_2=$( egrep -Ri '.*kickass.*kickass' bin src 2>/dev/null | wc -l );
-  local kickass_3=$( egrep -Ri '.*kickass.*kickass.*kickass' bin src 2>/dev/null | wc -l );
-  local kickass_4=$( egrep -Ri '.*kickass.*kickass.*kickass.*kickass' bin src 2>/dev/null | wc -l );
+  local kickass_1=$( egrep -Ri '.*kickass' bin inc src 2>/dev/null | wc -l );
+  local kickass_2=$( egrep -Ri '.*kickass.*kickass' bin inc src 2>/dev/null | wc -l );
+  local kickass_3=$( egrep -Ri '.*kickass.*kickass.*kickass' bin inc src 2>/dev/null | wc -l );
+  local kickass_4=$( egrep -Ri '.*kickass.*kickass.*kickass.*kickass' bin inc src 2>/dev/null | wc -l );
 
   # 2023-04-03 jj5 - the +1 is for the last line above (it has five kickasses in it, I'm gonna
   # assume there are no other instances of five kickasses on a single line).
