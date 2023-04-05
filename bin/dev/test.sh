@@ -51,9 +51,9 @@ main() {
     esac;
   done;
 
-  # 2023-04-03 jj5 - before we do anything rotate our testing keys...
+  # 2023-04-03 jj5 - before we do anything cycle our testing keys...
   #
-  php ../../bin/dev/rotate-keys.php 2>/dev/null
+  php ../../bin/dev/cycle-keys.php 2>/dev/null
 
   # 2023-04-05 jj5 - and update the PHPDoc documentation...
   #
