@@ -1138,9 +1138,18 @@ Some countries have banned the import or use of strong cryptography, such as
 Please be advised that this library does not contain cryptographic functions,
 they are provided by your PHP implementation.
 
+## Copyright
+
+Copyright (c) 2023 John Elliot V.
+
+## Contributors
+
+See [CONTRIBUTORS.ms](https://github.com/jj5/kickass-crypto/tree/main/CONTRIBUTORS.md).
+
 ## License
 
-This code is licensed under the MIT License.
+This code is licensed under the
+[MIT License](https://github.com/jj5/kickass-crypto/tree/main/LICENSE).
 
 ## Commit messages
 
