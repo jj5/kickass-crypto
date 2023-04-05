@@ -119,7 +119,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
-      //assert( $problem === null );
+      assert( $problem === null );
 
     }
 
@@ -148,7 +148,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $test_bytes = $this->php_random_bytes( 1 );
 
       }
-      catch ( \Exception $ex ) {
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ex ) {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
@@ -349,9 +354,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -390,6 +400,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       // made...
       //
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -439,6 +454,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       try {
@@ -451,6 +471,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->emergency_delay();
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -476,6 +501,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $this->do_catch( $ex, $file, $line, $function );
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       // 2023-04-01 jj5 - this function is called from exception handlers, and then notifies
@@ -491,6 +521,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -556,6 +591,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       return false;
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       // 2023-04-01 jj5 - the whole point of this function is to *not* throw an exception. Neither
@@ -567,6 +607,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -1500,7 +1545,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $pad_length = $chunk_size - ( $encoded_data_length % $chunk_size );
 
-    //assert( $pad_length <= $chunk_size );
+    assert( $pad_length <= $chunk_size );
 
     // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
     //
@@ -1972,11 +2017,21 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       // 2023-04-02 jj5 - otherwise we fall through to the usleep() fallback below...
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -1996,11 +2051,21 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $this->do_report_emergency_delay( $type, $file, $line, $function );
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -2046,9 +2111,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_data_encode( $data, $data_encoding );
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2090,6 +2160,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
@@ -2105,9 +2180,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_json_encode( $input );
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2144,6 +2224,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       return $result;
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
@@ -2165,9 +2250,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_phps_encode( $input );
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2194,6 +2284,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       return $result;
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
@@ -2214,6 +2309,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $is_false = false;
 
       return $this->do_data_decode( $encoded_data, $data_encoding, $is_false );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2258,6 +2358,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
@@ -2274,6 +2379,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $is_false = false;
 
       return $this->do_json_decode( $input, $is_false );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2329,6 +2439,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       return $result;
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
     catch ( \Throwable $ex ) {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
@@ -2345,6 +2460,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $is_false = false;
 
       return $this->do_phps_decode( $input, $is_false );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2391,9 +2511,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_message_encode( $binary );
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2438,9 +2563,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_message_decode( $encoded );
 
-      //assert( is_string( $result ) || $result === false );
+      assert( is_string( $result ) || $result === false );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2513,7 +2643,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $version = $this->get_const_data_format();
 
-    //assert( is_string( $version ) );
+    assert( is_string( $version ) );
 
     $class = get_class( $this );
 
@@ -2544,7 +2674,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $result = $this->do_convert_secret_to_passphrase( $key );
 
-    //assert( is_string( $result ) || $result === false );
+    assert( is_string( $result ) || $result === false );
 
     return $result;
 
@@ -2565,7 +2695,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $result = $this->do_get_padding( $length );
 
-    //assert( is_int( $result ) );
+    assert( is_string( $result ) );
 
     return $result;
 
@@ -2633,9 +2763,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $result = $this->do_log_error( $message, $file, $line, $function );
 
-      //assert( is_bool( $result ) );
+      assert( is_bool( $result ) );
 
       return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
     catch ( \Throwable $ex ) {
@@ -2647,6 +2782,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         //$this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
 
       }
       catch ( \Throwable $ignore ) { ; }
