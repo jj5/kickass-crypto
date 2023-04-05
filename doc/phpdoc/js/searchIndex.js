@@ -1103,7 +1103,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adecode_message\u0028\u0029",
             "name": "decode_message",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decodes\u0020a\u0020message.",
             "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_decode_message"
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_decode_message\u0028\u0029",

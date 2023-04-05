@@ -152,7 +152,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-        return $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
+        $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
+
+        assert( false );
 
       }
     }
@@ -237,7 +239,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   public static function GenerateSecret() {
 
-    return base64_encode( random_bytes( 66 ) );
+    $result = base64_encode( random_bytes( 66 ) );
+
+    assert( is_string( $result ) );
+    assert( strlen( $result ) === 88 );
+
+    return $result;
 
   }
 
@@ -342,6 +349,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
+      assert( is_string( $result ) || $result === false );
+
       return $result;
 
     }
@@ -375,7 +384,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       $this->count_function( __FUNCTION__ );
 
-      return $this->do_decrypt( $ciphertext );
+      $result = $this->do_decrypt( $ciphertext );
+
+      // 2023-04-05 jj5 - this result could be pretty much anything, there's no assertion to be
+      // made...
+      //
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -474,7 +488,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       // to interfere with this message being logged. It should never happen and if it does we
       // want to give ourselves our best chance of finding out about it so we can address.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( \Throwable $ignore ) { ; }
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
 
     }
   }
@@ -545,7 +564,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       // error log function here directly because we don't want to make sure this message which
       // should never happen is visible.
 
-      try { error_log( __FILE__ . ': ' . $ex->getMessage() ); } catch ( \Throwable $ignore ) { ; }
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
 
     }
 
@@ -1154,7 +1178,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     if ( $is_valid && strlen( $secret ) < KICKASS_CRYPTO_KEY_LENGTH_MIN ) {
 
-      $this->log_error( 'secret shorter than recommended.', __FILE__, __LINE__, __FUNCTION__ );
+      $this->log_error( 'secret shorter than recommended...', __FILE__, __LINE__, __FUNCTION__ );
 
     }
 
@@ -1593,6 +1617,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - decodes a message.
+   *
+   * @param string $message the encoded message.
+   *
+   * @param string $data_encoding a reference to the data encoding nominated in the message.
+   *
+   * @return string|false the decoded message or false on failure.
+   */
   protected final function decode_message( string $message, &$data_encoding ) {
 
     return $this->do_decode_message( $message, $data_encoding );
