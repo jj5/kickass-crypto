@@ -281,20 +281,20 @@ Total Number of Source Code Files = 113
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 5,580
-Development Effort Estimate, Person-Years (Person-Months) = 1.22 (14.59)
+Total Physical Source Lines of Code (SLOC)                = 5,628
+Development Effort Estimate, Person-Years (Person-Months) = 1.23 (14.73)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.58 (6.92)
+Schedule Estimate, Years (Months)                         = 0.58 (6.95)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.11
-Total Estimated Cost to Develop                           = $ 164,289
+Estimated Average Number of Developers (Effort/Schedule)  = 2.12
+Total Estimated Cost to Develop                           = $ 165,773
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
 | test      | 2,782 | php=2612,sh=170 |
-| code      | 2,087 | php=2087        |
+| code      | 2,135 | php=2135        |
 | bin       |   603 | php=422,sh=181  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -303,8 +303,8 @@ Total Estimated Cost to Develop                           = $ 164,289
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,229 |   (93.71%) |
-| sh       |   351 |    (6.29%) |
+| php      | 5,277 |   (93.76%) |
+| sh       |   351 |    (6.24%) |
 
 ## Supported PHP versions
 

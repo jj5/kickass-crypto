@@ -615,7 +615,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function count_function( $function ) : int {
 
-    return $this->do_count_function( $function );
+    $result = $this->do_count_function( $function );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -629,7 +633,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_count_function( $function ) {
 
-    return $this->increment_counter( self::$telemetry[ 'function' ], $function );
+    $result = $this->increment_counter( self::$telemetry[ 'function' ], $function );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -642,7 +650,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function count_class( $class ) : int {
 
-    return $this->do_count_class( $class );
+    $result = $this->do_count_class( $class );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -656,7 +668,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_count_class( $class ) {
 
-    return $this->increment_counter( self::$telemetry[ 'class' ], $class );
+    $result = $this->increment_counter( self::$telemetry[ 'class' ], $class );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -669,7 +685,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function count_length( int $length ) : int {
 
-    return $this->do_count_length( $length );
+    $result = $this->do_count_length( $length );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -683,7 +703,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_count_length( $length ) {
 
-    return $this->increment_counter( self::$telemetry[ 'length' ], $length );
+    $result = $this->increment_counter( self::$telemetry[ 'length' ], $length );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -699,7 +723,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function increment_counter( &$array, $key ) : int {
 
-    return $this->do_increment_counter( $array, $key );
+    $result = $this->do_increment_counter( $array, $key );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -734,7 +762,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_const_data_format() : string {
 
-    return $this->do_get_const_data_format();
+    $result = $this->do_get_const_data_format();
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -745,7 +777,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_const_key_hash() : string {
 
-    return $this->do_get_const_key_hash();
+    $result = $this->do_get_const_key_hash();
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -757,7 +793,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_const_key_hash() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
+    $result = $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -768,7 +808,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_const_key_length_min() : int {
 
-    return $this->do_get_const_key_length_min();
+    $result = $this->do_get_const_key_length_min();
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -780,7 +824,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_const_key_length_min() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
+    $result = $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -795,7 +843,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE
   ) : int {
 
-    return $this->do_get_config_chunk_size( $default );
+    $result = $this->do_get_config_chunk_size( $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -810,7 +862,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_chunk_size( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -825,7 +881,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
   ) : int {
 
-    return $this->do_get_config_chunk_size_max( $default );
+    $result = $this->do_get_config_chunk_size_max( $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -840,7 +900,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_chunk_size_max( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -856,7 +920,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
   ) : int {
 
-    return $this->do_get_config_data_length_max( $default );
+    $result = $this->do_get_config_data_length_max( $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -871,7 +939,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_data_length_max( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -895,7 +967,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     string $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
   ) : string {
 
-    return $this->do_get_config_data_encoding( $default );
+    $result = $this->do_get_config_data_encoding( $default );
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -910,7 +986,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_data_encoding( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -926,7 +1006,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
   ) : int {
 
-    return $this->do_get_config_json_encode_options( $default );
+    $result = $this->do_get_config_json_encode_options( $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -941,7 +1025,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_json_encode_options( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -957,7 +1045,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
   ) : int {
 
-    return $this->do_get_config_json_decode_options( $default );
+    $result = $this->do_get_config_json_decode_options( $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -972,7 +1064,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_json_decode_options( $default  ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
+
+    assert( is_int( $result ) );
+
+    return $result;
 
   }
 
