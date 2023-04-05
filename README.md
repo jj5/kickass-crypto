@@ -281,20 +281,20 @@ Total Number of Source Code Files = 113
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 5,628
-Development Effort Estimate, Person-Years (Person-Months) = 1.23 (14.73)
+Total Physical Source Lines of Code (SLOC)                = 5,781
+Development Effort Estimate, Person-Years (Person-Months) = 1.26 (15.15)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.58 (6.95)
+Schedule Estimate, Years (Months)                         = 0.59 (7.02)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.12
-Total Estimated Cost to Develop                           = $ 165,773
+Estimated Average Number of Developers (Effort/Schedule)  = 2.16
+Total Estimated Cost to Develop                           = $ 170,508
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| test      | 2,782 | php=2612,sh=170 |
-| code      | 2,135 | php=2135        |
+| test      | 2,863 | php=2693,sh=170 |
+| code      | 2,207 | php=2207        |
 | bin       |   603 | php=422,sh=181  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -303,8 +303,8 @@ Total Estimated Cost to Develop                           = $ 165,773
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,277 |   (93.76%) |
-| sh       |   351 |    (6.24%) |
+| php      | 5,430 |   (93.93%) |
+| sh       |   351 |    (6.07%) |
 
 ## Supported PHP versions
 
@@ -1161,7 +1161,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,172 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,174 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

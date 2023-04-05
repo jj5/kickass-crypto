@@ -46,7 +46,6 @@ function run_test() {
 
   }
 
-
   assert( $output === get_expected_output() );
 
 }

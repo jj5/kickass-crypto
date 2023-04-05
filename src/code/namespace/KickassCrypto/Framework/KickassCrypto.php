@@ -119,7 +119,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
-      assert( $problem === null );
+      //assert( $problem === null );
 
     }
 
@@ -349,7 +349,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
-      assert( is_string( $result ) || $result === false );
+      //assert( is_string( $result ) || $result === false );
 
       return $result;
 
@@ -1084,7 +1084,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     bool $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
   ) : bool {
 
-    return $this->do_get_config_phps_enable( $default );
+    $result = $this->do_get_config_phps_enable( $default );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1099,7 +1103,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_phps_enable( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1115,7 +1123,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     bool $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
   ) : bool {
 
-    return $this->do_get_config_false_enable( $default );
+    $result = $this->do_get_config_false_enable( $default );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1130,7 +1142,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_config_false_enable( $default ) {
 
-    return $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
+    $result = $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1146,7 +1162,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_const( $const, $default = false ) {
 
-    return $this->do_get_const( $const, $default );
+    $result = $this->do_get_const( $const, $default );
+
+    // 2023-04-05 jj5 - the result could be pretty much anything...
+    //
+    return $result;
 
   }
 
@@ -1173,18 +1193,26 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_passphrase_list() : array {
 
-    return $this->do_get_passphrase_list();
+    $result = $this->do_get_passphrase_list();
+
+    assert( is_array( $result ) );
+
+    return $result;
 
   }
 
   /**
-   * 2023-04-05 jj5 - returns the passphrase to use for encryption.
+   * 2023-04-05 jj5 - returns the passphrase to use for encryption or null if it's missing.
    *
-   * @return string the encryption passphrase.
+   * @return string the encryption passphrase or null.
    */
-  protected final function get_encryption_passphrase() : string {
+  protected final function get_encryption_passphrase() : ?string {
 
-    return $this->do_get_encryption_passphrase();
+    $result = $this->do_get_encryption_passphrase();
+
+    assert( is_string( $result ) || $result === null );
+
+    return $result;
 
   }
 
@@ -1192,11 +1220,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - by default returns the first passphrase from the passphrase list; can be
    * overridden by implementations.
    *
-   * @return string|false the passphrase or false if none.
+   * @return ?string the passphrase or null if none.
    */
   protected function do_get_encryption_passphrase() {
 
-    return $this->get_passphrase_list()[ 0 ] ?? false;
+    $result = $this->get_passphrase_list()[ 0 ] ?? null;
+
+    assert( is_string( $result ) || $result === null );
+
+    return $result;
 
   }
 
@@ -1207,7 +1239,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function is_cli() : bool {
 
-    return $this->do_is_cli();
+    $result = $this->do_is_cli();
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1219,7 +1255,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_is_cli() {
 
-    return $this->php_sapi_name() === 'cli';
+    $result = ( $this->php_sapi_name() === 'cli' );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1230,7 +1270,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function is_debug() : bool {
 
-    return $this->do_is_debug();
+    $result = $this->do_is_debug();
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1242,7 +1286,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_is_debug() {
 
-    return defined( 'DEBUG' ) && DEBUG;
+    $result = ( defined( 'DEBUG' ) && DEBUG );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1256,7 +1304,22 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function is_valid_config( ?string &$problem = null ) : bool {
 
-    return $this->do_is_valid_config( $problem );
+    $result = $this->do_is_valid_config( $problem );
+
+    assert( is_bool( $result ) );
+
+    if ( $result ) {
+
+      assert( $problem === null );
+
+    }
+    else {
+
+      assert( is_string( $problem ) );
+
+    }
+
+    return $result;
 
   }
 
@@ -1277,6 +1340,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       $this->log_error( 'secret shorter than recommended...', __FILE__, __LINE__, __FUNCTION__ );
 
     }
+
+    assert( is_bool( $is_valid ) );
 
     return $is_valid;
 
@@ -1310,7 +1375,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function is_valid_base64( $input ) : bool {
 
-    return $this->do_is_valdi_base64( $input );
+    $result = $this->do_is_valdi_base64( $input );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1431,7 +1500,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $pad_length = $chunk_size - ( $encoded_data_length % $chunk_size );
 
-    assert( $pad_length <= $chunk_size );
+    //assert( $pad_length <= $chunk_size );
 
     // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
     //
@@ -1513,7 +1582,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     //
     if ( strlen( $data_encoding ) !== 4 ) { return false; }
 
-    return $this->do_is_valid_data_encoding( $data_encoding );
+    $result = $this->do_is_valid_data_encoding( $data_encoding );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1545,7 +1618,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
         // 2023-04-04 jj5 - this data encoding is valid if it has been made available...
         //
-        return $this->get_config_phps_enable();
+        $result = $this->get_config_phps_enable();
+
+        assert( is_bool( $result ) );
+
+        return $result;
 
       default :
 
@@ -1561,7 +1638,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_data_encoding() : string {
 
-    return $this->do_get_data_encoding();
+    $result = $this->do_get_data_encoding();
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -1573,7 +1654,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_data_encoding() {
 
-    return $this->get_config_data_encoding();
+    $result = $this->get_config_data_encoding();
+
+    assert( is_string( $result ) );
+
+    return $result;
 
   }
 
@@ -1589,7 +1674,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
-    return $this->do_encrypt_string( $plaintext, $passphrase );
+    $result = $this->do_encrypt_string( $plaintext, $passphrase );
+
+    assert( is_string( $result ) || $result === false );
+
+    return $result;
 
   }
 
@@ -1686,7 +1775,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
-    return $this->do_decrypt_string( $binary, $passphrase );
+    $result = $this->do_decrypt_string( $binary, $passphrase );
+
+    assert( is_string( $result ) || $result === false );
+
+    return $result;
 
   }
 
@@ -1709,7 +1802,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     $ciphertext = false;
     $tag = false;
 
-    return $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+    $result = $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+
+    assert( is_bool( $result ) );
+
+    return $result;
 
   }
 
@@ -1724,7 +1821,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function decode_message( string $message, &$data_encoding ) {
 
-    return $this->do_decode_message( $message, $data_encoding );
+    $result = $this->do_decode_message( $message, $data_encoding );
+
+    assert( is_string( $result ) || $result === false );
+
+    return $result;
 
   }
 
@@ -1808,6 +1909,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $data_encoding = $data_encoding_read;
 
+    assert( is_string( $encoded_data ) );
+    assert( is_string( $data_encoding ) );
+
     return $encoded_data;
 
   }
@@ -1823,7 +1927,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     assert( is_int( $nanoseconds ) );
     assert( $nanoseconds < 1_000_000_000 );
 
-    return $this->php_time_nanosleep( $seconds, $nanoseconds );
+    $this->php_time_nanosleep( $seconds, $nanoseconds );
 
   }
 
@@ -1940,7 +2044,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_data_encode( $data, $data_encoding );
+      $result = $this->do_data_encode( $data, $data_encoding );
+
+      //assert( is_string( $result ) || $result === false );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -1995,7 +2103,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_json_encode( $input );
+      $result = $this->do_json_encode( $input );
+
+      //assert( is_string( $result ) || $result === false );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -2051,7 +2163,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
       }
 
-      return $this->do_phps_encode( $input );
+      $result = $this->do_phps_encode( $input );
+
+      //assert( is_string( $result ) || $result === false );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -2273,7 +2389,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_message_encode( $binary );
+      $result = $this->do_message_encode( $binary );
+
+      //assert( is_string( $result ) || $result === false );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -2316,7 +2436,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_message_decode( $encoded );
+      $result = $this->do_message_decode( $encoded );
+
+      //assert( is_string( $result ) || $result === false );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {
@@ -2389,6 +2513,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     $version = $this->get_const_data_format();
 
+    //assert( is_string( $version ) );
+
     $class = get_class( $this );
 
     switch ( $class ) {
@@ -2409,21 +2535,39 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
-  protected final function convert_secret_to_passphrase( string $key ) {
+  protected final function convert_secret_to_passphrase( $key ) {
 
-    return $this->do_convert_secret_to_passphrase( $key );
+    // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
+    // useful.
+
+    if ( empty( $key ) ) { return false; }
+
+    $result = $this->do_convert_secret_to_passphrase( $key );
+
+    //assert( is_string( $result ) || $result === false );
+
+    return $result;
 
   }
 
   protected function do_convert_secret_to_passphrase( $key ) {
 
+    // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
+    // useful.
+
+    if ( empty( $key ) ) { return false; }
+
     return hash( $this->get_const_key_hash(), $key, $binary = true );
 
   }
 
-  protected final function get_padding( int $length ) {
+  protected final function get_padding( int $length ) : string {
 
-    return $this->do_get_padding( $length );
+    $result = $this->do_get_padding( $length );
+
+    //assert( is_int( $result ) );
+
+    return $result;
 
   }
 
@@ -2437,9 +2581,26 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected final function get_delay( int $ns_min, int $ns_max, &$seconds, &$nanoseconds ) {
+  protected final function get_delay(
+    int $ns_min,
+    int $ns_max,
+    &$seconds,
+    &$nanoseconds
+  ) : void {
 
-    return $this->do_get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+    assert( is_int( $ns_min ) );
+    assert( is_int( $ns_max ) );
+
+    assert( $ns_min > 0 );
+    assert( $ns_max > $ns_min );
+
+    $this->do_get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+
+    assert( is_int( $seconds ) );
+    assert( is_int( $nanoseconds ) );
+
+    assert( $seconds >= 0 );
+    assert( $nanoseconds > 0 );
 
   }
 
@@ -2466,11 +2627,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected final function log_error( $message, $file, $line, $function ) {
+  protected final function log_error( $message, $file, $line, $function ) : bool {
 
     try {
 
-      return $this->do_log_error( $message, $file, $line, $function );
+      $result = $this->do_log_error( $message, $file, $line, $function );
+
+      //assert( is_bool( $result ) );
+
+      return $result;
 
     }
     catch ( \Throwable $ex ) {

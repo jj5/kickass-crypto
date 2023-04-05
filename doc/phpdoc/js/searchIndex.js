@@ -993,7 +993,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_encryption_passphrase\u0028\u0029",
             "name": "get_encryption_passphrase",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020passphrase\u0020to\u0020use\u0020for\u0020encryption.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020passphrase\u0020to\u0020use\u0020for\u0020encryption\u0020or\u0020null\u0020if\u0020it\u0027s\u0020missing.",
             "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_encryption_passphrase"
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_encryption_passphrase\u0028\u0029",
