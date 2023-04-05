@@ -908,22 +908,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_data_length_max\u0028\u0029",
             "name": "get_config_data_length_max",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020maximum\u0020supported\u0020data\u0020length,\u0020it\u0027s\u0020used\u0020for\u0020validating\u0020the\nencoded\u0020data.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_data_length_max"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_data_length_max\u0028\u0029",
             "name": "do_get_config_data_length_max",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_DATA_LENGTH_MAX\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_DATA_LENGTH_MAX\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_data_length_max"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_data_encoding\u0028\u0029",
             "name": "get_config_data_encoding",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020encoding.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_data_encoding"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_data_encoding\u0028\u0029",
             "name": "do_get_config_data_encoding",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_DATA_ENCODING\u0020constant\nor\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_DATA_ENCODING\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_data_encoding"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_json_encode_options\u0028\u0029",
