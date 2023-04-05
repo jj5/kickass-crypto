@@ -35,6 +35,12 @@ main() {
 
   fi
 
+  if grep -Ri "parent::do_"; then
+
+    echo 'WARNING: parent::do_*() called from module services...';
+
+  fi
+
 }
 
 main "$@";
