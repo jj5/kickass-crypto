@@ -808,27 +808,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
             "name": "error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020registers\u0020an\u0020error\u003B\u0020if\u0020this\u0020is\u0020the\u0020first\u0020error\u0020a\u0020random\u0020delay\u0020is\u0020injected\nas\u0020a\u0020timing\u0020attack\u0020mitigation.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_error"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acount_this\u0028\u0029",
             "name": "count_this",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020count\u0020this\u0020instance.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_count_this"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_count_this"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acount_function\u0028\u0029",
             "name": "count_function",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020function\u0020count\u0020metric.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_count_function"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_count_function\u0028\u0029",
             "name": "do_count_function",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020counter\u0020for\u0020this\u0020function\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_count_function"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acount_class\u0028\u0029",
@@ -1393,7 +1393,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Module-OpenSsl-KickassOpenSsl.html#method_do_count_this"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024error_list",
@@ -1508,7 +1508,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Module-Sodium-KickassSodium.html#method_do_count_this"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Module\\Sodium\\KickassSodium\u003A\u003A\u0024error_list",
