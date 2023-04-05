@@ -36,6 +36,14 @@ main() {
 
   bin/dev/phpdoc/phpDocumentor.phar run --force -d src/code -t doc/phpdoc
 
+  pushd doc/phpdoc >/dev/null;
+
+  mkdir images;
+
+  pushd images >/dev/null;
+
+  wget https://www.progclub.net/favicon.ico;
+
 }
 
 main "$@";
