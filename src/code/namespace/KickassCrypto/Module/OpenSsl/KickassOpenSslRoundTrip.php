@@ -13,14 +13,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - this implements support for round-tripping with OpenSSL.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - this implements support for round-tripping with OpenSSL.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 namespace KickassCrypto\Module\OpenSsl;
 
+/**
+ * 2023-04-05 jj5 - this is the OpenSSL round-trip crypto service.
+ */
 class KickassOpenSslRoundTrip extends KickassOpenSsl {
 
   use \KickassCrypto\Traits\KICKASS_CRYPTO_ROUND_TRIP;

@@ -1278,7 +1278,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException",
             "name": "KickassCryptoException",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020exception\u0020is\u0020thrown\u0020from\u0020crypto\u0020service\u0020constructors\u0020if\u0020there\u0027s\u0020a\u0020problem\nthat\u0020will\u0020prevent\u0020them\u0020from\u0020operating.",
             "url": "classes/KickassCrypto-Framework-KickassCryptoException.html"
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
@@ -1308,7 +1308,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl",
             "name": "KickassOpenSsl",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020base\u0020class\u0020for\u0020the\u0020OpenSSL\u0020crypto\u0020services.",
             "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003A__construct\u0028\u0029",
@@ -1418,7 +1418,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslAtRest",
             "name": "KickassOpenSslAtRest",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020OpenSSL\u0020at\u002Drest\u0020crypto\u0020service.",
             "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslAtRest.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
@@ -1433,7 +1433,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslRoundTrip",
             "name": "KickassOpenSslRoundTrip",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020OpenSSL\u0020round\u002Dtrip\u0020crypto\u0020service.",
             "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslRoundTrip.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
@@ -1448,7 +1448,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium",
             "name": "KickassSodium",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020base\u0020class\u0020for\u0020the\u0020Sodium\u0020crypto\u0020services.",
             "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003A__construct\u0028\u0029",
@@ -1528,7 +1528,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumAtRest",
             "name": "KickassSodiumAtRest",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020Sodium\u0020at\u002Drest\u0020crypto\u0020service.",
             "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumAtRest.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
@@ -1543,7 +1543,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumRoundTrip",
             "name": "KickassSodiumRoundTrip",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020Sodium\u0020round\u002Dtrip\u0020crypto\u0020service.",
             "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumRoundTrip.html"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",

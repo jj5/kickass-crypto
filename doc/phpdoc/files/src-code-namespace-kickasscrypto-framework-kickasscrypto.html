@@ -106,10 +106,35 @@
     <article class="phpdocumentor-element -file">
         <h2 class="phpdocumentor-content__title">KickassCrypto.php</h2>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">2023-03-30 jj5 - this is the Kickass Crypto library service framework.</p>
+
+    <section class="phpdocumentor-description"><p>2023-04-05 jj5 - if you just want a default implementation decide whether you want
+the Sodium implementation or the OpenSSL implementation and then include one (or both) of:</p>
+<ul>
+<li>inc/sodium.php</li>
+<li>inc/openssl.php</li>
+</ul>
+<p>if you're not sure, use Sodium.</p>
+<p>2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:</p>
+<p>$ciphertext = kickass_round_trip()-&gt;encrypt( 'secret data' );</p>
+<p>$plaintext = kickass_round_trip()-&gt;decrypt( $ciphertext );</p>
+<p>see README.md for more info.</p>
+</section>
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/jj5/kickass-crypto"> https://github.com/jj5/kickass-crypto </a>
+                    
+                                    </dd>
+                        </dl>
 
 
 
@@ -175,7 +200,7 @@ it yourself or use one (or more) of the services implemented as modules in this 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">92</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 
     </aside>
 
@@ -204,7 +229,7 @@ it yourself or use one (or more) of the services implemented as modules in this 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 
     </aside>
 
@@ -233,7 +258,7 @@ it yourself or use one (or more) of the services implemented as modules in this 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">104</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 

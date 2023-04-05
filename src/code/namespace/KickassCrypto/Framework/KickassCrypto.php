@@ -13,26 +13,27 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this is the Kickass Crypto library, if you want to use it decide whether you
-// want the Sodium implementation or the OpenSSL implementation and then include one (or both) of:
-//
-//* inc/sodium.php
-//* inc/openssl.php
-//
-// 2023-04-03 jj5 - if you're not sure, use Sodium.
-//
-// 2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:
-//
-//   $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
-//   $plaintext = kickass_round_trip()->decrypt( $ciphertext );
-//
-// see README.md for more info.
-//
-// 2023-03-31 jj5 - SEE: the Kickass Crypto home page: https://github.com/jj5/kickass-crypto
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this is the Kickass Crypto library service framework.
+ *
+ * 2023-04-05 jj5 - if you just want a default implementation decide whether you want
+ * the Sodium implementation or the OpenSSL implementation and then include one (or both) of:
+ *
+ * - inc/sodium.php
+ * - inc/openssl.php
+ *
+ * if you're not sure, use Sodium.
+ *
+ * 2023-03-30 jj5 - make sure you load a valid config.php file, then use this library like this:
+ *
+ * $ciphertext = kickass_round_trip()->encrypt( 'secret data' );
+ *
+ * $plaintext = kickass_round_trip()->decrypt( $ciphertext );
+ *
+ * see README.md for more info.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ **/
 
 namespace KickassCrypto\Framework;
 
@@ -191,7 +192,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * @param string $passphrase the passphrase (in binary format, should be 32 bytes).
    * @return string|false returns the encrypted string on success or false on failure.
    */
-  abstract protected function do_encrypt_string( string $plaintext, string $passphrase );
+  abstract protected function do_encrypt_string( $plaintext, $passphrase );
 
   /**
    * 2023-04-05 jj5 - this function will register an error.
@@ -211,7 +212,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * @param string $passphrase the passphrase (in binary format, should be 32 bytes).
    * @return string|false returns the decrypted string on success or false on failure.
    */
-  abstract protected function do_decrypt_string( string $binary, string $passphrase );
+  abstract protected function do_decrypt_string( $binary, $passphrase );
 
   /**
    * 2023-04-05 jj5 - this function extracts the initialization vector, ciphertext, and tag
@@ -399,6 +400,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       // minimum requirement we do the emergency delay.
 
       $start = microtime( $as_float = true );
+
+      assert( is_int( KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN ) );
+      assert( is_int( KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX ) );
 
       $this->do_delay(
         KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN, KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX
@@ -632,7 +636,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * @param int $length the length of the encrypted data.
    * @return int the current count for the length.
    */
-  protected function do_count_length( int $length ) {
+  protected function do_count_length( $length ) {
 
     return $this->increment_counter( self::$telemetry[ 'length' ], $length );
 
@@ -1254,7 +1258,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_decrypt( string $ciphertext ) {
+  protected function do_decrypt( $ciphertext ) {
 
     $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
 
@@ -1338,7 +1342,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_decode_message( string $message, &$data_encoding ) {
+  protected function do_decode_message( $message, &$data_encoding ) {
 
     // 2023-04-04 jj5 - this should be null unless its valid.
     //
@@ -1422,7 +1426,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_delay( int $ns_min, int $ns_max ) {
+  protected function do_delay( $ns_min, $ns_max ) {
 
     $this->log_error( 'delayed due to error...', __FILE__, __LINE__, __FUNCTION__ );
 
@@ -1530,7 +1534,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_throw( int $code, $data = null, $previous = null ) {
+  protected function do_throw( $code, $data, $previous ) {
 
     $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
 
@@ -1719,7 +1723,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
-  protected function do_data_decode( string $encoded_data, $data_encoding, &$is_false ) {
+  protected function do_data_decode( $encoded_data, $data_encoding, &$is_false ) {
 
     try {
 
@@ -1895,7 +1899,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
-  protected function do_message_encode( string $binary ) {
+  protected function do_message_encode( $binary ) {
 
     $data_format = $this->get_data_format();
     $base64 = $this->php_base64_encode( $binary );
@@ -1938,7 +1942,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
-  protected function do_message_decode( string $encoded ) {
+  protected function do_message_decode( $encoded ) {
 
     $parts = explode( '/', $encoded, 2 );
 
@@ -2025,7 +2029,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_convert_secret_to_passphrase( string $key ) {
+  protected function do_convert_secret_to_passphrase( $key ) {
 
     return hash( $this->get_const_key_hash(), $key, $binary = true );
 
@@ -2037,7 +2041,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_get_padding( int $length ) {
+  protected function do_get_padding( $length ) {
 
     return $this->php_random_bytes( $length );
 
@@ -2053,7 +2057,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
-  protected function do_get_delay( int $ns_min, int $ns_max, &$seconds, &$nanoseconds ) {
+  protected function do_get_delay( $ns_min, $ns_max, &$seconds, &$nanoseconds ) {
 
     assert( $ns_min >= 0 );
     assert( $ns_max >= 0 );

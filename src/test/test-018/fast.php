@@ -31,7 +31,7 @@ class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslR
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
-  protected function do_delay( int $ns_min, int $ns_max ) {
+  protected function do_delay( $ns_min, $ns_max ) {
 
     $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
 

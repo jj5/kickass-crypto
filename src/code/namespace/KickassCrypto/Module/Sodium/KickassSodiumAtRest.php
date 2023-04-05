@@ -13,14 +13,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - this implements support for at-rest encryption with Sodium.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - this implements support for at-rest encryption with Sodium.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 namespace KickassCrypto\Module\Sodium;
 
+/**
+ * 2023-04-05 jj5 - this is the Sodium at-rest crypto service.
+ */
 class KickassSodiumAtRest extends KickassSodium {
 
   use \KickassCrypto\Traits\KICKASS_CRYPTO_AT_REST;

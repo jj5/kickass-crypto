@@ -13,14 +13,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - this implements support for at-rest encryption with OpenSSL.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - this implements support for at-rest encryption with OpenSSL.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 namespace KickassCrypto\Module\OpenSsl;
 
+/**
+ * 2023-04-05 jj5 - this is the OpenSSL at-rest crypto service.
+ */
 class KickassOpenSslAtRest extends KickassOpenSsl {
 
   use \KickassCrypto\Traits\KICKASS_CRYPTO_AT_REST;

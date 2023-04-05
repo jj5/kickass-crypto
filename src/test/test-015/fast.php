@@ -37,7 +37,7 @@ class CryptoTest extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
 
   }
 
-  protected function do_data_decode( string $input, $data_encoding, &$is_false ) {
+  protected function do_data_decode( $input, $data_encoding, &$is_false ) {
 
     $is_false = false;
 

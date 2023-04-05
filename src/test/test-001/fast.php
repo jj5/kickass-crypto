@@ -27,7 +27,7 @@ class TestException extends \KickassCrypto\Framework\KickassCryptoException {}
 
 trait CustomThrow {
 
-  protected function do_throw( int $code, $data = null, $previous = null ) {
+  protected function do_throw( $code, $data, $previous ) {
 
     $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
 

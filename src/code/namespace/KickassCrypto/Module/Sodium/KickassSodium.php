@@ -13,16 +13,19 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - this implements support for Sodium bindings.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - this implements support for Sodium bindings.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 namespace KickassCrypto\Module\Sodium;
 
 use KickassCrypto\Framework\KickassCrypto;
 
+/**
+ * 2023-04-05 jj5 - this is the base class for the Sodium crypto services.
+ */
 abstract class KickassSodium extends \KickassCrypto\Framework\KickassCrypto {
 
   use \KickassCrypto\Traits\KICKASS_WRAPPER_PHP_SODIUM;
@@ -90,7 +93,7 @@ abstract class KickassSodium extends \KickassCrypto\Framework\KickassCrypto {
 
   }
 
-  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
+  protected function do_encrypt_string( $plaintext, $passphrase ) {
 
     $nonce = $this->php_random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
 
@@ -110,7 +113,7 @@ abstract class KickassSodium extends \KickassCrypto\Framework\KickassCrypto {
 
   }
 
-  protected function do_decrypt_string( string $binary, string $passphrase ) {
+  protected function do_decrypt_string( $binary, $passphrase ) {
 
     if ( ! $this->parse_binary( $binary, $nonce, $ciphertext, $tag ) ) {
 

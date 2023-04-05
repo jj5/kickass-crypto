@@ -13,16 +13,19 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - this implements support for OpenSSL bindings.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - this implements support for OpenSSL bindings.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 namespace KickassCrypto\Module\OpenSsl;
 
 use KickassCrypto\Framework\KickassCrypto;
 
+/**
+ * 2023-04-05 jj5 - this is the base class for the OpenSSL crypto services.
+ */
 abstract class KickassOpenSsl extends \KickassCrypto\Framework\KickassCrypto {
 
   use \KickassCrypto\Traits\KICKASS_WRAPPER_PHP_OPENSSL;
@@ -173,7 +176,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\Framework\KickassCrypto {
 
   }
 
-  protected function do_encrypt_string( string $plaintext, string $passphrase ) {
+  protected function do_encrypt_string( $plaintext, $passphrase ) {
 
     $iv = $this->php_random_bytes( $this->get_const_openssl_iv_length() );
 
@@ -237,7 +240,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\Framework\KickassCrypto {
 
   }
 
-  protected function do_decrypt_string( string $binary, string $passphrase ) {
+  protected function do_decrypt_string( $binary, $passphrase ) {
 
     if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
 

@@ -395,7 +395,7 @@ function run_test() {
         public function test() {
           return $this->data_decode( 'true' );
         }
-        protected function do_data_decode( string $json, $data_encoding, &$is_false ) {
+        protected function do_data_decode( $json, $data_encoding, &$is_false ) {
           throw new \Exception( 'fail' );
         }
       };
@@ -1073,7 +1073,7 @@ function run_test() {
           $binary = $this->message_decode( $ciphertext );
           return $this->try_decrypt( $binary, $this->get_encryption_passphrase() );
         }
-        protected function do_decrypt_string( string $binary, string $key ) {
+        protected function do_decrypt_string( $binary, $key ) {
           return false;
         }
       };
