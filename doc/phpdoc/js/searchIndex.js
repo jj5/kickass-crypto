@@ -833,77 +833,77 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acount_class\u0028\u0029",
             "name": "count_class",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020class\u0020count\u0020metric.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_count_class"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_count_class\u0028\u0029",
             "name": "do_count_class",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020count\u0020for\u0020this\u0020class\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_count_class"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Acount_length\u0028\u0029",
             "name": "count_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020length\u0020count\u0020metric.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_count_length"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_count_length\u0028\u0029",
             "name": "do_count_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020count\u0020for\u0020this\u0020length\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_count_length"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aincrement_counter\u0028\u0029",
             "name": "increment_counter",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\u0020to\u0020zero\u0020if\nmissing.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_increment_counter"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_increment_counter\u0028\u0029",
             "name": "do_increment_counter",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\nto\u0020zero\u0020if\u0020missing\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_increment_counter"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_const_data_format\u0028\u0029",
             "name": "get_const_data_format",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u0020constant\u003B\u0020defers\u0020to\u0020abstract\u0020method\u0020for\u0020implementation.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_const_data_format"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_const_key_hash\u0028\u0029",
             "name": "get_const_key_hash",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020name\u0020of\u0020the\u0020hashing\u0020algorithm\u0020to\u0020use\u0020for\u0020secret\u0020key\u0020hashing.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_const_key_hash"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_key_hash\u0028\u0029",
             "name": "do_get_const_key_hash",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020KICKASS_CRYPTO_KEY_HASH\u0020constant\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_const_key_hash"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_const_key_length_min\u0028\u0029",
             "name": "get_const_key_length_min",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020minimum\u0020length\u0020of\u0020a\u0020secret\u0020key.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_const_key_length_min"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_key_length_min\u0028\u0029",
             "name": "do_get_const_key_length_min",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020KICKASS_CRYPTO_KEY_LENGTH_MIN\u0020constant\u003B\ncan\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_const_key_length_min"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_chunk_size\u0028\u0029",
             "name": "get_config_chunk_size",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020chunk\u0020size,\u0020it\u0027s\u0020used\u0020for\u0020padding\u0020encrypted\u0020messages.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_chunk_size"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_chunk_size\u0028\u0029",
             "name": "do_get_config_chunk_size",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_CHUNK_SIZE\u0020constant\u0020or\nthe\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_CHUNK_SIZE\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_chunk_size"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_chunk_size_max\u0028\u0029",
             "name": "get_config_chunk_size_max",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020maximum\u0020chunk\u0020size,\u0020it\u0027s\u0020used\u0020for\u0020validating\u0020the\u0020chunk\u0020size.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_chunk_size_max"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_chunk_size_max\u0028\u0029",
             "name": "do_get_config_chunk_size_max",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_CHUNK_SIZE_MAX\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_CHUNK_SIZE_MAX\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_chunk_size_max"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_data_length_max\u0028\u0029",

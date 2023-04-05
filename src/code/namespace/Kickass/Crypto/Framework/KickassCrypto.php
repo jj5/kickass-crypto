@@ -566,12 +566,12 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
   /**
    * 2023-04-05 jj5 - will increment a function count metric.
    *
-   * @param string $metric the name of the function.
+   * @param string $function the name of the function.
    * @return int the current count for this function.
    */
-  protected final function count_function( $metric ) {
+  protected final function count_function( $function ) {
 
-    return $this->do_count_function( $metric );
+    return $this->do_count_function( $function );
 
   }
 
@@ -579,45 +579,87 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * 2023-04-05 jj5 - by default will increment the counter for this function metric; can be
    * overridden by implementations.
    *
-   * @param string $metric the name of the function.
-   * @return int the current count for this function.
+   * @param string $function the name of the function.
+   * @return int the current count for the function.
    */
-  protected function do_count_function( $metric ) {
+  protected function do_count_function( $function ) {
 
-    return $this->increment_counter( self::$telemetry[ 'function' ], $metric );
+    return $this->increment_counter( self::$telemetry[ 'function' ], $function );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - will increment a class count metric.
+   *
+   * @param string $class the name of the class.
+   * @return int the current count for the class.
+   */
   protected final function count_class( $class ) {
 
     return $this->do_count_class( $class );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will increment the count for this class metric; can be
+   * overridden by implementations.
+   *
+   * @param string $class the name of the class.
+   * @return int the current count for the class.
+   */
   protected function do_count_class( $class ) {
 
     return $this->increment_counter( self::$telemetry[ 'class' ], $class );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - will increment a length count metric.
+   *
+   * @param int $length the length of the encrypted data.
+   * @return int the current count for the length.
+   */
   protected final function count_length( int $length ) {
 
     return $this->do_count_length( $length );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will increment the count for this length metric; can be
+   * overridden by implementations.
+   *
+   * @param int $length the length of the encrypted data.
+   * @return int the current count for the length.
+   */
   protected function do_count_length( int $length ) {
 
     return $this->increment_counter( self::$telemetry[ 'length' ], $length );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - will increment the value for a key in an array; will initialize to zero if
+   * missing.
+   *
+   * @param array $array a reference to the array to operate on.
+   * @param string|int $key the key to operate on.
+   * @return int the current count.
+   */
   protected final function increment_counter( &$array, $key ) {
 
     return $this->do_increment_counter( $array, $key );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will increment the value for a key in an array; will initialize
+   * to zero if missing; can be overridden by implementations.
+   *
+   * @param array $array a reference to the array to operate on.
+   * @param string|int $key the key to operate on.
+   * @return int the current count.
+   */
   protected function do_increment_counter( &$array, $key ) {
 
     if ( ! array_key_exists( $key, $array ) ) {
@@ -632,48 +674,95 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the data format constant; defers to abstract method for implementation.
+   *
+   * @return string the data format constant.
+   */
   protected final function get_const_data_format() {
 
     return $this->do_get_const_data_format();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the name of the hashing algorithm to use for secret key hashing.
+   *
+   * @return string the name of the PHP hashing algorithm.
+   */
   protected final function get_const_key_hash() {
 
     return $this->do_get_const_key_hash();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the KICKASS_CRYPTO_KEY_HASH constant; can be
+   * overridden by implementations.
+   *
+   * @return string the name of the hash algorithm.
+   */
   protected function do_get_const_key_hash() {
 
     return $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the minimum length of a secret key.
+   *
+   * @return int the minimum length of a secret key.
+   */
   protected final function get_const_key_length_min() {
 
     return $this->do_get_const_key_length_min();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the KICKASS_CRYPTO_KEY_LENGTH_MIN constant;
+   * can be overridden by implementations.
+   *
+   * @return int the minimum length of a secret key.
+   */
   protected function do_get_const_key_length_min() {
 
     return $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the chunk size, it's used for padding encrypted messages.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the chunk size.
+   */
   protected final function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
 
     return $this->do_get_config_chunk_size( $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_CHUNK_SIZE constant or
+   * the default value if CONFIG_ENCRYPTION_CHUNK_SIZE is not defined; can be overridden by
+   * implementations.
+   *
+   * @param int $default the default chunk size.
+   * @return int the chunk size.
+   */
   protected function do_get_config_chunk_size( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the maximum chunk size, it's used for validating the chunk size.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the maximum chunk size.
+   */
   protected final function get_config_chunk_size_max(
     $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
   ) {
@@ -682,6 +771,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_CHUNK_SIZE_MAX
+   * constant or the default value if CONFIG_ENCRYPTION_CHUNK_SIZE_MAX is not defined; can be
+   * overridden by implementations.
+   *
+   * @param int $default the default maximum chunk size.
+   * @return int the maximum chunk size.
+   */
   protected function do_get_config_chunk_size_max( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
