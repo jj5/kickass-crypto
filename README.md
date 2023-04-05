@@ -1142,14 +1142,14 @@ they are provided by your PHP implementation.
 
 Copyright (c) 2023 John Elliot V.
 
-## Contributors
-
-See [CONTRIBUTORS.ms](https://github.com/jj5/kickass-crypto/tree/main/CONTRIBUTORS.md).
-
 ## License
 
 This code is licensed under the
 [MIT License](https://github.com/jj5/kickass-crypto/tree/main/LICENSE).
+
+## Contributors
+
+See the [contributors](https://github.com/jj5/kickass-crypto/tree/main/CONTRIBUTORS.md) file.
 
 ## Commit messages
 
