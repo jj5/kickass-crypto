@@ -24,7 +24,7 @@ main() {
 
   set -euo pipefail;
 
-  pushd "$( dirname "$0" )/../../" >/dev/null;
+  pushd "$( dirname "$0" )/../../src/" >/dev/null;
 
   # 2023-04-03 jj5 - we count the "kickass" in the ASCII banners!
   #
@@ -53,7 +53,7 @@ main() {
   echo $count;
 
   sed -i "s/appears in the source code [^ ]* times/appears in the source code $count times/" \
-    README.md
+    ../README.md
 
 }
 
