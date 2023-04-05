@@ -42,7 +42,7 @@ main() {
 
   pushd images >/dev/null;
 
-  wget https://www.progclub.net/favicon.ico;
+  wget https://www.progclub.net/favicon.ico 2>/dev/null;
 
 }
 
