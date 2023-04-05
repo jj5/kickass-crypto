@@ -264,8 +264,10 @@ Total Number of Source Code Files = 105
 
 | Directory | Files | By language |
 | --------- | -----:| ----------- |
-| src       |    84 | php=80,sh=4 |
+| test      |    49 | php=45,sh=4 |
+| code      |    34 | php=34      |
 | bin       |    21 | php=13,sh=8 |
+| demo      |     1 | php=1       |
 
 #### Totals grouped by language (dominant language first)
 
@@ -290,8 +292,10 @@ Total Estimated Cost to Develop                           = $ 161,569
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| src       | 4,906 | php=4737,sh=169 |
+| test      | 2,788 | php=2619,sh=169 |
+| code      | 2,047 | php=2047        |
 | bin       |   586 | php=422,sh=164  |
+| demo      |    71 | php=71          |
 
 #### Totals grouped by language (dominant language first)
 
