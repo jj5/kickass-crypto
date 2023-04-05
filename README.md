@@ -1118,6 +1118,7 @@ Here are some notes regarding notable components:
 * [src/code/global/php/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/php/): PHP version validation
 * [src/code/global/server/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/server/): service locators for library modules
 * [src/code/global/test/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/test/): helpers for use during testing
+* [src/code/global/utility/](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/utility/): utility code
 * [src/code/namespace/](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/): namespaced PHP components (classes, interfaces, and traits)
 * [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/): a web-client for demonstration purposes
 * [src/test/](https://github.com/jj5/kickass-crypto/tree/main/src/test/): unit tests:
@@ -1149,7 +1150,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 16,143 times (including the ASCII banners).
+The string "kickass" appears in the source code 16,144 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
