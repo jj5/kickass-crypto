@@ -20,9 +20,9 @@
 //
 \************************************************************************************************/
 
-namespace Kickass;
+namespace Kickass\Crypto\Framework;
 
-class KickassException extends \Exception {
+class KickassCryptoException extends \Exception {
 
   private $data;
 

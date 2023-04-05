@@ -90,7 +90,7 @@ function run_test( $argv ) {
     assert( false );
 
   }
-  catch ( \Kickass\KickassException $ex ) {
+  catch ( \Kickass\Crypto\Framework\KickassCryptoException $ex ) {
 
     $expected_code = KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG;
     $expected_message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $expected_code ];

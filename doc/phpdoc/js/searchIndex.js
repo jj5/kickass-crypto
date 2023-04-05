@@ -803,7 +803,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Athrow\u0028\u0029",
             "name": "throw",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020throws\u0020an\u0020exception.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_throw"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
@@ -1265,6 +1265,26 @@ Search.appendIndex(
             "name": "inject_delay",
             "summary": "2023\u002D04\u002D02\u0020jj5\u0020\u002D\u0020this\u0020flag\u0020indicates\u0020whether\u0020we\u0020need\u0020to\u0020inject\u0020a\u0020random\u0020delay\u0020or\u0020not,\u0020it\u0020gets\nset\u0020when\u0020a\u0020call\u0020to\u0020either\u0020encrypt\u0028\u0029\u0020or\u0020decrypt\u0028\u0029\u0020is\u0020made.\u0020It\u0020gets\u0020set\u0020back\u0020to\u0020false\u0020after\u0020a\ndelay\u0020has\u0020been\u0020injected\u0020so\u0020that\u0020multiple\u0020errors\u0020won\u0027t\u0020trigger\u0020multiple\u0020delays.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#property_inject_delay"
+        },                {
+            "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCryptoException",
+            "name": "KickassCryptoException",
+            "summary": "",
+            "url": "classes/Kickass-Crypto-Framework-KickassCryptoException.html"
+        },                {
+            "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Kickass-Crypto-Framework-KickassCryptoException.html#method___construct"
+        },                {
+            "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCryptoException\u003A\u003AgetData\u0028\u0029",
+            "name": "getData",
+            "summary": "",
+            "url": "classes/Kickass-Crypto-Framework-KickassCryptoException.html#method_getData"
+        },                {
+            "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCryptoException\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "classes/Kickass-Crypto-Framework-KickassCryptoException.html#property_data"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
@@ -1771,26 +1791,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Kickass-Crypto-Traits-KICKASS-WRAPPER-PHP-SODIUM.html#method_do_php_sodium_crypto_secretbox_open"
         },                {
-            "fqsen": "\\Kickass\\KickassException",
-            "name": "KickassException",
-            "summary": "",
-            "url": "classes/Kickass-KickassException.html"
-        },                {
-            "fqsen": "\\Kickass\\KickassException\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Kickass-KickassException.html#method___construct"
-        },                {
-            "fqsen": "\\Kickass\\KickassException\u003A\u003AgetData\u0028\u0029",
-            "name": "getData",
-            "summary": "",
-            "url": "classes/Kickass-KickassException.html#method_getData"
-        },                {
-            "fqsen": "\\Kickass\\KickassException\u003A\u003A\u0024data",
-            "name": "data",
-            "summary": "",
-            "url": "classes/Kickass-KickassException.html#property_data"
-        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1805,6 +1805,11 @@ Search.appendIndex(
             "name": "Crypto",
             "summary": "",
             "url": "namespaces/kickass-crypto.html"
+        },                {
+            "fqsen": "\\Kickass",
+            "name": "Kickass",
+            "summary": "",
+            "url": "namespaces/kickass.html"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework",
             "name": "Framework",
@@ -1830,10 +1835,5 @@ Search.appendIndex(
             "name": "Traits",
             "summary": "",
             "url": "namespaces/kickass-crypto-traits.html"
-        },                {
-            "fqsen": "\\Kickass",
-            "name": "Kickass",
-            "summary": "",
-            "url": "namespaces/kickass.html"
         }            ]
 );

@@ -36,8 +36,8 @@
  *
  * @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
  *
- * @throws Kickass\KickassException if the environment is determined to be unsupported during
- * construction.
+ * @throws Kickass\Crypto\Framework\KickassCryptoException if the environment is determined to be
+ * unsupported during construction.
 */
 function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 
@@ -65,8 +65,8 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassC
  *
  * @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
  *
- * @throws Kickass\KickassException if the environment is determined to be unsupported during
- * construction.
+ * @throws Kickass\Crypto\Framework\KickassCryptoException if the environment is determined to be
+ * unsupported during construction.
 */
 function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
 

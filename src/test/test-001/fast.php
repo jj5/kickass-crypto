@@ -23,7 +23,7 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestException extends \Kickass\KickassException {}
+class TestException extends \Kickass\Crypto\Framework\KickassCryptoException {}
 
 trait CustomThrow {
 

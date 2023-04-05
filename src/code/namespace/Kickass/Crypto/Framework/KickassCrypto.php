@@ -466,6 +466,16 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - this function throws an exception.
+   *
+   * @param int $code the exception code of the exception to throw, this is one of the
+   * KICKASS_CRYPTO_EXCEPTION_* constants.
+   * @param type $data optional data to associate with the exception.
+   * @param type $previous the previous exception, if any.
+   * @return void
+   * @throws Kickass\Crypto\Framework\KickassCryptoException
+   */
   protected final function throw( int $code, $data = null, $previous = null ) {
 
     $this->count_function( __FUNCTION__ );
@@ -1311,7 +1321,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     $this->log_error( 'exception: ' . $message, __FILE__, __LINE__, __FUNCTION__ );
 
-    throw new \Kickass\KickassException( $message, $code, $previous, $data );
+    throw new \Kickass\Crypto\Framework\KickassCryptoException( $message, $code, $previous, $data );
 
   }
 
