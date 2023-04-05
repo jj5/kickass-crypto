@@ -186,8 +186,8 @@ define(
 );
 
 /**
- * 2023-04-05 jj5 - this is our Base64 validation regex, it's not presently being used; see the
- * link for discussion concerning the previous regex and poor performance.
+ * 2023-04-05 jj5 - this is our Base64 validation regex; see the link for discussion concerning
+ * the previous regex and poor performance.
  *
  * @link https://www.progclub.org/blog/2023/04/01/php-preg_match-regex-fail/
  *

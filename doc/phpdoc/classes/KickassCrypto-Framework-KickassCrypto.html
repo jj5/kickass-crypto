@@ -231,7 +231,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_ReportCounters">ReportCounters()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
 <dd>2023-04-05 jj5 - this will report a list of counts to STDOUT.</dd>
 
@@ -314,7 +314,7 @@ for the rest of the story.</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - decrypts a binary string using the passphrase.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_catch">do_catch()</a>
@@ -388,7 +388,8 @@ this class instance; can be overridden by implementations.</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default handles the standard decryption process; can be overridden by
+implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_decrypt_string">do_decrypt_string()</a>
@@ -408,9 +409,9 @@ and do the actual decryption.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_encrypt">do_encrypt()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default encrypts the input value; can be overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_encrypt_string">do_encrypt_string()</a>
@@ -466,9 +467,11 @@ overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_false_enable">do_get_config_false_enable()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_FALSE_ENABLE constant
+of the default value if CONFIG_ENCRYPTION_FALSE_ENABLE is not defined; can be overridden by
+implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_json_decode_options">do_get_config_json_decode_options()</a>
@@ -502,7 +505,8 @@ implementations.</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default returns the value of the constant, or returns the default value
+if the constant is not defined; can be overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const_data_format">do_get_const_data_format()</a>
@@ -531,9 +535,10 @@ can be overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_data_encoding">do_get_data_encoding()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default gets the data encoding from the config option as returned from
+get_config_data_encoding().</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_delay">do_get_delay()</a>
@@ -545,9 +550,10 @@ can be overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_encryption_passphrase">do_get_encryption_passphrase()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default returns the first passphrase from the passphrase list; can be
+overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_padding">do_get_padding()</a>
@@ -575,23 +581,27 @@ to zero if missing; can be overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_cli">do_is_cli()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default checks to see if php_sapi_name() === &#039;cli&#039;; can be overridden by
+implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_debug">do_is_debug()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default checks to see if the DEBUG constant is defined and true; can be
+overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_base64">do_is_valid_base64()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default checks to make sure the input is a non-empty string and then
+validates it with the KICKASS_CRYPTO_REGEX_BASE64 regular expression; can be overridden by
+implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_config">do_is_valid_config()</a>
@@ -605,16 +615,18 @@ others are potentially used for decryption.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_data_encoding">do_is_valid_data_encoding()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - by default checks that the data encoding is one of the two supported data
+encodings; can be overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_secret">do_is_valid_secret()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - my default checks that the secret key is a string and meets the minimum
+length requirements; this function can be overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_do_json_decode">do_json_decode()</a>
@@ -776,9 +788,10 @@ does not use the tag.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_encrypt_string">encrypt_string()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - encrypts a plaintext string using the passphrase; defers to
+do_encrypt_string().</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_error">error()</a>
@@ -822,7 +835,8 @@ encoded data.</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - gets a boolean value indicating whether the boolean value false can be
+encrypted or not.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_json_decode_options">get_config_json_decode_options()</a>
@@ -853,7 +867,8 @@ deserialization is enabled or not.</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - gets a constant value, or returns the default value if the constant is not
+defined.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const_data_format">get_const_data_format()</a>
@@ -881,7 +896,7 @@ deserialization is enabled or not.</dd>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - gets the data encoding; defers to virtual do_get_data_encoding().</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_get_data_format">get_data_format()</a>
@@ -902,7 +917,7 @@ deserialization is enabled or not.</dd>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - returns the passphrase to use for encryption.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_get_padding">get_padding()</a>
@@ -916,7 +931,7 @@ deserialization is enabled or not.</dd>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - returns the list of passphrases; defers to abstract implementation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_increment_counter">increment_counter()</a>
@@ -931,49 +946,54 @@ missing.</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - reports if the program is running from the command-line.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_debug">is_debug()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks to see if the program is running in DEBUG mode.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_base64">is_valid_base64()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks the input is in valid base64 format; defers to virtual
+do_is_valid_base64().</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_config">is_valid_config()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks to see if the environment configuration is valid; this function
+defers to the abstract method do_is_valid_config().</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_data_encoding">is_valid_data_encoding()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks to see if the data encoding is a valid supported encoding; defers
+to the virtual do_is_valid_encoding() method.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_data_format">is_valid_data_format()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks to see if the data format is valid; this behavior cannot be
+overridden by implementations.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_secret">is_valid_secret()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - checks to see if a secret is valid; this function defers to
+do_is_valid_secret();</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_json_decode">json_decode()</a>
@@ -1015,7 +1035,7 @@ missing.</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - parses the binary message into its fixed length components.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html#method_php_base64_decode">php_base64_decode()</a>
@@ -1120,7 +1140,7 @@ missing.</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-05 jj5 - tries to decrypt a binary string using the passphrase.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/KickassCrypto-Framework-KickassCrypto.html#method_report_emergency_delay">report_emergency_delay()</a>
@@ -1275,7 +1295,7 @@ the constructor succeeds then encryption and decryption should also usually succ
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">361</span>
+    <span class="phpdocumentor-element-found-in__line">370</span>
 
     </aside>
 
@@ -1323,7 +1343,7 @@ failure.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">393</span>
+    <span class="phpdocumentor-element-found-in__line">402</span>
 
     </aside>
 
@@ -1358,7 +1378,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">321</span>
+    <span class="phpdocumentor-element-found-in__line">329</span>
 
     </aside>
 
@@ -1405,7 +1425,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">233</span>
+    <span class="phpdocumentor-element-found-in__line">238</span>
 
     </aside>
 
@@ -1441,7 +1461,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">251</span>
+    <span class="phpdocumentor-element-found-in__line">256</span>
 
     </aside>
 
@@ -1484,7 +1504,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">285</span>
+    <span class="phpdocumentor-element-found-in__line">292</span>
 
     </aside>
 
@@ -1492,7 +1512,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">ReportCounters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">ReportCounters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1511,7 +1531,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -1529,7 +1549,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">262</span>
+    <span class="phpdocumentor-element-found-in__line">267</span>
 
     </aside>
 
@@ -1563,7 +1583,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">447</span>
+    <span class="phpdocumentor-element-found-in__line">456</span>
 
     </aside>
 
@@ -1634,7 +1654,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2026</span>
+    <span class="phpdocumentor-element-found-in__line">2283</span>
 
     </aside>
 
@@ -1678,7 +1698,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">601</span>
+    <span class="phpdocumentor-element-found-in__line">619</span>
 
     </aside>
 
@@ -1725,7 +1745,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">576</span>
+    <span class="phpdocumentor-element-found-in__line">592</span>
 
     </aside>
 
@@ -1772,7 +1792,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">626</span>
+    <span class="phpdocumentor-element-found-in__line">646</span>
 
     </aside>
 
@@ -1819,7 +1839,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">549</span>
+    <span class="phpdocumentor-element-found-in__line">563</span>
 
     </aside>
 
@@ -1864,7 +1884,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1704</span>
+    <span class="phpdocumentor-element-found-in__line">1961</span>
 
     </aside>
 
@@ -1924,7 +1944,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1553</span>
+    <span class="phpdocumentor-element-found-in__line">1810</span>
 
     </aside>
 
@@ -1976,7 +1996,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1339</span>
+    <span class="phpdocumentor-element-found-in__line">1596</span>
 
     </aside>
 
@@ -2028,17 +2048,17 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1323</span>
+    <span class="phpdocumentor-element-found-in__line">1567</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - decrypts a binary string using the passphrase.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">decrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -2046,7 +2066,8 @@ for the rest of the story.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the binary data to decrypt.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -2054,7 +2075,8 @@ for the rest of the story.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the passphrase to use for decryption.</p>
+</section>
 
             </dd>
             </dl>
@@ -2064,7 +2086,9 @@ for the rest of the story.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the decrypted string or false on error.</p>
+</section>
+
     
 </article>
                     <article
@@ -2080,7 +2104,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1531</span>
+    <span class="phpdocumentor-element-found-in__line">1788</span>
 
     </aside>
 
@@ -2148,7 +2172,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2032</span>
+    <span class="phpdocumentor-element-found-in__line">2289</span>
 
     </aside>
 
@@ -2192,7 +2216,7 @@ for the rest of the story.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">614</span>
+    <span class="phpdocumentor-element-found-in__line">633</span>
 
     </aside>
 
@@ -2240,7 +2264,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">589</span>
+    <span class="phpdocumentor-element-found-in__line">606</span>
 
     </aside>
 
@@ -2288,7 +2312,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">639</span>
+    <span class="phpdocumentor-element-found-in__line">660</span>
 
     </aside>
 
@@ -2336,7 +2360,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">562</span>
+    <span class="phpdocumentor-element-found-in__line">577</span>
 
     </aside>
 
@@ -2382,7 +2406,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1726</span>
+    <span class="phpdocumentor-element-found-in__line">1983</span>
 
     </aside>
 
@@ -2442,7 +2466,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1569</span>
+    <span class="phpdocumentor-element-found-in__line">1826</span>
 
     </aside>
 
@@ -2494,7 +2518,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1345</span>
+    <span class="phpdocumentor-element-found-in__line">1602</span>
 
     </aside>
 
@@ -2546,25 +2570,27 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1261</span>
+    <span class="phpdocumentor-element-found-in__line">1484</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default handles the standard decryption process; can be overridden by
+implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_decrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_decrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$ciphertext</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the ciphertext to decrypt.</p>
+</section>
 
             </dd>
             </dl>
@@ -2574,7 +2600,9 @@ this class instance; can be overridden by implementations.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the decrypted and deserialized value on success, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -2590,7 +2618,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">215</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
@@ -2647,7 +2675,7 @@ and do the actual decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1429</span>
+    <span class="phpdocumentor-element-found-in__line">1686</span>
 
     </aside>
 
@@ -2699,17 +2727,17 @@ and do the actual decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1063</span>
+    <span class="phpdocumentor-element-found-in__line">1225</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default encrypts the input value; can be overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_encrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_encrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -2717,7 +2745,8 @@ and do the actual decryption.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value to encrypt.</p>
+</section>
 
             </dd>
             </dl>
@@ -2725,9 +2754,11 @@ and do the actual decryption.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the ciphertext or false on failure.</p>
+</section>
+
     
 </article>
                     <article
@@ -2743,7 +2774,7 @@ and do the actual decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">198</span>
 
     </aside>
 
@@ -2800,7 +2831,7 @@ and do the actual encryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">205</span>
+    <span class="phpdocumentor-element-found-in__line">208</span>
 
     </aside>
 
@@ -2846,7 +2877,7 @@ KICKASS_CRYPTO_ERROR_* constants. The return value will be ignored.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">760</span>
+    <span class="phpdocumentor-element-found-in__line">787</span>
 
     </aside>
 
@@ -2895,7 +2926,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">788</span>
+    <span class="phpdocumentor-element-found-in__line">817</span>
 
     </aside>
 
@@ -2944,7 +2975,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">854</span>
+    <span class="phpdocumentor-element-found-in__line">887</span>
 
     </aside>
 
@@ -2993,7 +3024,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">817</span>
+    <span class="phpdocumentor-element-found-in__line">848</span>
 
     </aside>
 
@@ -3042,25 +3073,28 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">955</span>
+    <span class="phpdocumentor-element-found-in__line">1011</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_FALSE_ENABLE constant
+of the default value if CONFIG_ENCRYPTION_FALSE_ENABLE is not defined; can be overridden by
+implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_get_config_false_enable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_get_config_false_enable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$default</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value to use if the config option is not defined.</p>
+</section>
 
             </dd>
             </dl>
@@ -3068,9 +3102,11 @@ overridden by implementations.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the boolean value false can be encrypted, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3086,7 +3122,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">912</span>
+    <span class="phpdocumentor-element-found-in__line">949</span>
 
     </aside>
 
@@ -3135,7 +3171,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">883</span>
+    <span class="phpdocumentor-element-found-in__line">918</span>
 
     </aside>
 
@@ -3184,7 +3220,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">941</span>
+    <span class="phpdocumentor-element-found-in__line">980</span>
 
     </aside>
 
@@ -3233,25 +3269,27 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">967</span>
+    <span class="phpdocumentor-element-found-in__line">1043</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default returns the value of the constant, or returns the default value
+if the constant is not defined; can be overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_get_const</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$const</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_get_const</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$const</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$const</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the name of the constant.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -3259,7 +3297,8 @@ implementations.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value to return if the constant is not defined.</p>
+</section>
 
             </dd>
             </dl>
@@ -3269,7 +3308,9 @@ implementations.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the value of the constant or the default value if the constant is not defined.</p>
+</section>
+
     
 </article>
                     <article
@@ -3285,7 +3326,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">185</span>
+    <span class="phpdocumentor-element-found-in__line">186</span>
 
     </aside>
 
@@ -3319,7 +3360,7 @@ so we can determine which service we need to decrypt values.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">709</span>
+    <span class="phpdocumentor-element-found-in__line">734</span>
 
     </aside>
 
@@ -3355,7 +3396,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">732</span>
+    <span class="phpdocumentor-element-found-in__line">757</span>
 
     </aside>
 
@@ -3391,24 +3432,27 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1249</span>
+    <span class="phpdocumentor-element-found-in__line">1454</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default gets the data encoding from the config option as returned from
+get_config_data_encoding().</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_get_data_encoding</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_get_data_encoding</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the data encoding.</p>
+</section>
+
     
 </article>
                     <article
@@ -3424,7 +3468,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2060</span>
+    <span class="phpdocumentor-element-found-in__line">2317</span>
 
     </aside>
 
@@ -3492,24 +3536,27 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">985</span>
+    <span class="phpdocumentor-element-found-in__line">1077</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default returns the first passphrase from the passphrase list; can be
+overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_get_encryption_passphrase</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_get_encryption_passphrase</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the passphrase or false if none.</p>
+</section>
+
     
 </article>
                     <article
@@ -3525,7 +3572,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2044</span>
+    <span class="phpdocumentor-element-found-in__line">2301</span>
 
     </aside>
 
@@ -3569,7 +3616,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">178</span>
 
     </aside>
 
@@ -3603,7 +3650,7 @@ key hashing function on the secret keys defined in the config file.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">667</span>
+    <span class="phpdocumentor-element-found-in__line">692</span>
 
     </aside>
 
@@ -3660,24 +3707,27 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">997</span>
+    <span class="phpdocumentor-element-found-in__line">1100</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default checks to see if php_sapi_name() === &#039;cli&#039;; can be overridden by
+implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_cli</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_cli</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if running from the command-line, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3693,24 +3743,27 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1009</span>
+    <span class="phpdocumentor-element-found-in__line">1123</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default checks to see if the DEBUG constant is defined and true; can be
+overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_debug</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_debug</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if running in DEBUG mode, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3726,25 +3779,28 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1051</span>
+    <span class="phpdocumentor-element-found-in__line">1206</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default checks to make sure the input is a non-empty string and then
+validates it with the KICKASS_CRYPTO_REGEX_BASE64 regular expression; can be overridden by
+implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_valid_base64</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_valid_base64</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$input</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>supposedly base64 encoded value.</p>
+</section>
 
             </dd>
             </dl>
@@ -3752,9 +3808,11 @@ to zero if missing; can be overridden by implementations.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if value is in valid base64 format, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3770,7 +3828,7 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">169</span>
+    <span class="phpdocumentor-element-found-in__line">170</span>
 
     </aside>
 
@@ -3817,25 +3875,35 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1222</span>
+    <span class="phpdocumentor-element-found-in__line">1416</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default checks that the data encoding is one of the two supported data
+encodings; can be overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_valid_data_encoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data_encoding</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_valid_data_encoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data_encoding</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>2023-04-05 jj5 - the two supported data encodings are:</p>
+<ul>
+<li>KICKASS_CRYPTO_DATA_ENCODING_JSON</li>
+<li>KICKASS_CRYPTO_DATA_ENCODING_PHPS</li>
+</ul>
+<p>Note that the PHPS data encoding is only a valid and supported data encoding if
+get_config_phps_enable() is true.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$data_encoding</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the data encoding.</p>
+</section>
 
             </dd>
             </dl>
@@ -3843,9 +3911,11 @@ others are potentially used for decryption.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the data encoding is a valid supported value, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3861,25 +3931,27 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1035</span>
+    <span class="phpdocumentor-element-found-in__line">1173</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - my default checks that the secret key is a string and meets the minimum
+length requirements; this function can be overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_valid_secret</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secret</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_valid_secret</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secret</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$secret</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the secret key</p>
+</section>
 
             </dd>
             </dl>
@@ -3887,9 +3959,11 @@ others are potentially used for decryption.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the secret is valid, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -3905,7 +3979,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1786</span>
+    <span class="phpdocumentor-element-found-in__line">2043</span>
 
     </aside>
 
@@ -3957,7 +4031,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1624</span>
+    <span class="phpdocumentor-element-found-in__line">1881</span>
 
     </aside>
 
@@ -4001,7 +4075,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2108</span>
+    <span class="phpdocumentor-element-found-in__line">2365</span>
 
     </aside>
 
@@ -4069,7 +4143,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1945</span>
+    <span class="phpdocumentor-element-found-in__line">2202</span>
 
     </aside>
 
@@ -4113,7 +4187,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1902</span>
+    <span class="phpdocumentor-element-found-in__line">2159</span>
 
     </aside>
 
@@ -4157,7 +4231,7 @@ others are potentially used for decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">225</span>
+    <span class="phpdocumentor-element-found-in__line">230</span>
 
     </aside>
 
@@ -4756,7 +4830,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1857</span>
+    <span class="phpdocumentor-element-found-in__line">2114</span>
 
     </aside>
 
@@ -4808,7 +4882,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1680</span>
+    <span class="phpdocumentor-element-found-in__line">1937</span>
 
     </aside>
 
@@ -4852,7 +4926,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1521</span>
+    <span class="phpdocumentor-element-found-in__line">1778</span>
 
     </aside>
 
@@ -4920,7 +4994,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1537</span>
+    <span class="phpdocumentor-element-found-in__line">1794</span>
 
     </aside>
 
@@ -4980,7 +5054,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1444</span>
+    <span class="phpdocumentor-element-found-in__line">1701</span>
 
     </aside>
 
@@ -5013,17 +5087,18 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1255</span>
+    <span class="phpdocumentor-element-found-in__line">1470</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - encrypts a plaintext string using the passphrase; defers to
+do_encrypt_string().</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">encrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plaintext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">encrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plaintext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -5031,7 +5106,8 @@ does not use the tag.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the plaintext to encrypt.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -5039,7 +5115,8 @@ does not use the tag.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the passphrase to use for encryption.</p>
+</section>
 
             </dd>
             </dl>
@@ -5047,9 +5124,11 @@ does not use the tag.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the ciphertext on success or false on error.</p>
+</section>
+
     
 </article>
                     <article
@@ -5065,7 +5144,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">502</span>
+    <span class="phpdocumentor-element-found-in__line">515</span>
 
     </aside>
 
@@ -5114,7 +5193,7 @@ constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">744</span>
+    <span class="phpdocumentor-element-found-in__line">770</span>
 
     </aside>
 
@@ -5161,7 +5240,7 @@ constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">772</span>
+    <span class="phpdocumentor-element-found-in__line">800</span>
 
     </aside>
 
@@ -5208,7 +5287,7 @@ constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">838</span>
+    <span class="phpdocumentor-element-found-in__line">870</span>
 
     </aside>
 
@@ -5264,7 +5343,7 @@ gory details.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">801</span>
+    <span class="phpdocumentor-element-found-in__line">831</span>
 
     </aside>
 
@@ -5312,17 +5391,18 @@ encoded data.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">947</span>
+    <span class="phpdocumentor-element-found-in__line">994</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - gets a boolean value indicating whether the boolean value false can be
+encrypted or not.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_config_false_enable</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -5330,7 +5410,8 @@ encoded data.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value to use if the config option is not defined.</p>
+</section>
 
             </dd>
             </dl>
@@ -5340,7 +5421,9 @@ encoded data.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the boolean value false can be encrypted, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -5356,7 +5439,7 @@ encoded data.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">896</span>
+    <span class="phpdocumentor-element-found-in__line">932</span>
 
     </aside>
 
@@ -5404,7 +5487,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">867</span>
+    <span class="phpdocumentor-element-found-in__line">901</span>
 
     </aside>
 
@@ -5452,7 +5535,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">925</span>
+    <span class="phpdocumentor-element-found-in__line">963</span>
 
     </aside>
 
@@ -5500,25 +5583,27 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">961</span>
+    <span class="phpdocumentor-element-found-in__line">1027</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - gets a constant value, or returns the default value if the constant is not
+defined.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_const</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$const</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_const</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$const</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$const</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the name of the constant.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -5526,7 +5611,8 @@ deserialization is enabled or not.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value to return if the constant is not defined.</p>
+</section>
 
             </dd>
             </dl>
@@ -5536,7 +5622,9 @@ deserialization is enabled or not.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the constant value or the default value if the constant is not defined.</p>
+</section>
+
     
 </article>
                     <article
@@ -5552,7 +5640,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">686</span>
+    <span class="phpdocumentor-element-found-in__line">711</span>
 
     </aside>
 
@@ -5587,7 +5675,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">697</span>
+    <span class="phpdocumentor-element-found-in__line">722</span>
 
     </aside>
 
@@ -5622,7 +5710,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">720</span>
+    <span class="phpdocumentor-element-found-in__line">745</span>
 
     </aside>
 
@@ -5657,24 +5745,26 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1243</span>
+    <span class="phpdocumentor-element-found-in__line">1442</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - gets the data encoding; defers to virtual do_get_data_encoding().</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_data_encoding</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the data encoding.</p>
+</section>
+
     
 </article>
                     <article
@@ -5690,7 +5780,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1997</span>
+    <span class="phpdocumentor-element-found-in__line">2254</span>
 
     </aside>
 
@@ -5723,7 +5813,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2054</span>
+    <span class="phpdocumentor-element-found-in__line">2311</span>
 
     </aside>
 
@@ -5791,24 +5881,26 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">979</span>
+    <span class="phpdocumentor-element-found-in__line">1065</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - returns the passphrase to use for encryption.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_encryption_passphrase</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the encryption passphrase.</p>
+</section>
+
     
 </article>
                     <article
@@ -5824,7 +5916,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2038</span>
+    <span class="phpdocumentor-element-found-in__line">2295</span>
 
     </aside>
 
@@ -5868,24 +5960,26 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">973</span>
+    <span class="phpdocumentor-element-found-in__line">1054</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - returns the list of passphrases; defers to abstract implementation.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>a list of strings to use as passphrases.</p>
+</section>
+
     
 </article>
                     <article
@@ -5901,7 +5995,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">653</span>
+    <span class="phpdocumentor-element-found-in__line">676</span>
 
     </aside>
 
@@ -5958,24 +6052,26 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">991</span>
+    <span class="phpdocumentor-element-found-in__line">1088</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - reports if the program is running from the command-line.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_cli</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if running from the command-line, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -5991,24 +6087,26 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1003</span>
+    <span class="phpdocumentor-element-found-in__line">1111</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks to see if the program is running in DEBUG mode.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_debug</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if running in DEBUG mode, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6024,25 +6122,27 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1045</span>
+    <span class="phpdocumentor-element-found-in__line">1191</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks the input is in valid base64 format; defers to virtual
+do_is_valid_base64().</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_base64</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_base64</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$input</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the value which should be in base64 format.</p>
+</section>
 
             </dd>
             </dl>
@@ -6052,7 +6152,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the input is in base64 format, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6068,17 +6170,18 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1015</span>
+    <span class="phpdocumentor-element-found-in__line">1137</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks to see if the environment configuration is valid; this function
+defers to the abstract method do_is_valid_config().</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_config</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$problem</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6086,7 +6189,8 @@ missing.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>a reference to the problem, if any.</p>
+</section>
 
             </dd>
             </dl>
@@ -6096,7 +6200,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the config is valid, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6112,17 +6218,18 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1211</span>
+    <span class="phpdocumentor-element-found-in__line">1389</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks to see if the data encoding is a valid supported encoding; defers
+to the virtual do_is_valid_encoding() method.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_data_encoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data_encoding</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6130,7 +6237,8 @@ missing.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the data encoding to validate.</p>
+</section>
 
             </dd>
             </dl>
@@ -6140,7 +6248,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the data encoding is value, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6156,17 +6266,18 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1186</span>
+    <span class="phpdocumentor-element-found-in__line">1356</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks to see if the data format is valid; this behavior cannot be
+overridden by implementations.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_data_format</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data_format</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6174,7 +6285,8 @@ missing.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the data format string.</p>
+</section>
 
             </dd>
             </dl>
@@ -6184,7 +6296,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the data format is valid, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6200,25 +6314,27 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1021</span>
+    <span class="phpdocumentor-element-found-in__line">1151</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - checks to see if a secret is valid; this function defers to
+do_is_valid_secret();</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_secret</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secret</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">is_valid_secret</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secret</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$secret</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the secret key</p>
+</section>
 
             </dd>
             </dl>
@@ -6228,7 +6344,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true if the secret key is valid, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6244,7 +6362,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1768</span>
+    <span class="phpdocumentor-element-found-in__line">2025</span>
 
     </aside>
 
@@ -6296,7 +6414,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1608</span>
+    <span class="phpdocumentor-element-found-in__line">1865</span>
 
     </aside>
 
@@ -6340,7 +6458,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2083</span>
+    <span class="phpdocumentor-element-found-in__line">2340</span>
 
     </aside>
 
@@ -6408,7 +6526,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1929</span>
+    <span class="phpdocumentor-element-found-in__line">2186</span>
 
     </aside>
 
@@ -6452,7 +6570,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1886</span>
+    <span class="phpdocumentor-element-found-in__line">2143</span>
 
     </aside>
 
@@ -6496,49 +6614,53 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1329</span>
+    <span class="phpdocumentor-element-found-in__line">1586</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - parses the binary message into its fixed length components.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">parse_binary</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$iv</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">parse_binary</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$iv</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$binary</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the binary message.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$iv</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the initialization vector for OpenSLL or the nonce for Sodium.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$ciphertext</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the ciphertext.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$tag</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the tag, only provided by OpenSSL, false for Sodium.</p>
+</section>
 
             </dd>
             </dl>
@@ -6548,7 +6670,9 @@ missing.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true on success, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -7090,7 +7214,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1839</span>
+    <span class="phpdocumentor-element-found-in__line">2096</span>
 
     </aside>
 
@@ -7142,7 +7266,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1658</span>
+    <span class="phpdocumentor-element-found-in__line">1915</span>
 
     </aside>
 
@@ -7186,7 +7310,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">483</span>
+    <span class="phpdocumentor-element-found-in__line">496</span>
 
     </aside>
 
@@ -7264,17 +7388,17 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1307</span>
+    <span class="phpdocumentor-element-found-in__line">1542</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - tries to decrypt a binary string using the passphrase.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">try_decrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$data_encoding</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">try_decrypt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$data_encoding</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -7282,7 +7406,8 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the binary data to decrypt.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -7290,15 +7415,18 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the passphrase to use for decryption.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$data_encoding</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>a reference to the data encoding, this is set if its possible to
+determine.</p>
+</section>
 
             </dd>
             </dl>
@@ -7308,7 +7436,9 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the decoded message on success, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -7324,7 +7454,7 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-framework-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/Framework/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1502</span>
+    <span class="phpdocumentor-element-found-in__line">1759</span>
 
     </aside>
 

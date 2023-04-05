@@ -164,6 +164,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * others are potentially used for decryption.
    *
    * @param string|null $problem a description of the problem if invalid, null otherwisej.
+   *
    * @return boolean
    */
   abstract protected function do_is_valid_config( &$problem );
@@ -189,7 +190,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * and do the actual encryption.
    *
    * @param string $plaintext the string to encrypt.
+   *
    * @param string $passphrase the passphrase (in binary format, should be 32 bytes).
+   *
    * @return string|false returns the encrypted string on success or false on failure.
    */
   abstract protected function do_encrypt_string( $plaintext, $passphrase );
@@ -209,7 +212,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * and do the actual decryption.
    *
    * @param string $binary the string to decrypt.
+   *
    * @param string $passphrase the passphrase (in binary format, should be 32 bytes).
+   *
    * @return string|false returns the decrypted string on success or false on failure.
    */
   abstract protected function do_decrypt_string( $binary, $passphrase );
@@ -281,6 +286,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - this will report a list of counts to STDOUT.
    *
    * @param array $table a key-value list; keys are strings, values are integers.
+   *
+   * @return void
    */
   public static function ReportCounters( $table ) {
 
@@ -316,6 +323,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - encrypts the input and returns the ciphertext; returns false on failure.
    *
    * @param mixed $input the complex value you want encrypted.
+   *
    * @return string|false the ciphertext on success, or false on failure.
    */
   public final function encrypt( $input ) {
@@ -356,6 +364,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * failure.
    *
    * @param string $ciphertext the ciphertext previously returned from the encrypt() method.
+   *
    * @return mixed the decrypted and deserialized value, or false on failure.
    */
   public final function decrypt( string $ciphertext ) {
@@ -475,9 +484,13 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    *
    * @param int $code the exception code of the exception to throw, this is one of the
    * KICKASS_CRYPTO_EXCEPTION_* constants.
+   *
    * @param type $data optional data to associate with the exception.
+   *
    * @param type $previous the previous exception, if any.
+   *
    * @return void
+   *
    * @throws KickassCrypto\Framework\KickassCryptoException
    */
   protected final function throw( int $code, $data = null, $previous = null ) : void {
@@ -544,6 +557,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - will count this instance.
    *
    * @param string $caller the name of the invoking function.
+   *
    * @return void
    */
   protected final function count_this( $caller ) : void {
@@ -557,6 +571,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * this class instance; can be overridden by implementations.
    *
    * @param string $caller the name of the invoking function.
+   *
    * @return void
    */
   protected function do_count_this( $caller ) {
@@ -571,6 +586,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - will increment a function count metric.
    *
    * @param string $function the name of the function.
+   *
    * @return int the current count for this function.
    */
   protected final function count_function( $function ) : int {
@@ -584,6 +600,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param string $function the name of the function.
+   *
    * @return int the current count for the function.
    */
   protected function do_count_function( $function ) {
@@ -596,6 +613,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - will increment a class count metric.
    *
    * @param string $class the name of the class.
+   *
    * @return int the current count for the class.
    */
   protected final function count_class( $class ) : int {
@@ -609,6 +627,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param string $class the name of the class.
+   *
    * @return int the current count for the class.
    */
   protected function do_count_class( $class ) {
@@ -621,6 +640,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - will increment a length count metric.
    *
    * @param int $length the length of the encrypted data.
+   *
    * @return int the current count for the length.
    */
   protected final function count_length( int $length ) : int {
@@ -634,6 +654,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param int $length the length of the encrypted data.
+   *
    * @return int the current count for the length.
    */
   protected function do_count_length( $length ) {
@@ -647,7 +668,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * missing.
    *
    * @param array $array a reference to the array to operate on.
+   *
    * @param string|int $key the key to operate on.
+   *
    * @return int the current count.
    */
   protected final function increment_counter( &$array, $key ) : int {
@@ -661,7 +684,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * to zero if missing; can be overridden by implementations.
    *
    * @param array $array a reference to the array to operate on.
+   *
    * @param string|int $key the key to operate on.
+   *
    * @return int the current count.
    */
   protected function do_increment_counter( &$array, $key ) {
@@ -739,6 +764,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - gets the chunk size, it's used for padding encrypted messages.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the chunk size.
    */
   protected final function get_config_chunk_size(
@@ -755,6 +781,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * implementations.
    *
    * @param int $default the default chunk size.
+   *
    * @return int the chunk size.
    */
   protected function do_get_config_chunk_size( $default ) {
@@ -767,6 +794,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * 2023-04-05 jj5 - gets the maximum chunk size, it's used for validating the chunk size.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the maximum chunk size.
    */
   protected final function get_config_chunk_size_max(
@@ -783,6 +811,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param int $default the default maximum chunk size.
+   *
    * @return int the maximum chunk size.
    */
   protected function do_get_config_chunk_size_max( $default ) {
@@ -796,6 +825,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * encoded data.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the maximum supported data length.
    */
   protected final function get_config_data_length_max(
@@ -812,6 +842,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param int $default the default maximum data length.
+   *
    * @return int the maximum data length.
    */
   protected function do_get_config_data_length_max( $default ) {
@@ -833,6 +864,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * gory details.
    *
    * @param string $default the value to use if the config option is not defined.
+   *
    * @return string the data encoding.
    */
   protected final function get_config_data_encoding(
@@ -849,6 +881,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param string $default the default data format.
+   *
    * @return string the data format.
    */
   protected function do_get_config_data_encoding( $default ) {
@@ -862,6 +895,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * function.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the JSON encoding options.
    */
   protected final function get_config_json_encode_options(
@@ -878,6 +912,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param int $default the default JSON encoding options.
+   *
    * @return int the JSON encoding options.
    */
   protected function do_get_config_json_encode_options( $default ) {
@@ -891,6 +926,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * function.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the JSON decoding options.
    */
   protected final function get_config_json_decode_options(
@@ -907,6 +943,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * overridden by implementations.
    *
    * @param int $default the value to use if the config option is not defined.
+   *
    * @return int the JSON decoding options.
    */
   protected function do_get_config_json_decode_options( $default  ) {
@@ -920,6 +957,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * deserialization is enabled or not.
    *
    * @param boolean $default the value to use if the config option is not defined.
+   *
    * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
    */
   protected final function get_config_phps_enable(
@@ -936,6 +974,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * implementations.
    *
    * @param boolean $default the value to use if the config option is not defined.
+   *
    * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
    */
   protected function do_get_config_phps_enable( $default ) {
@@ -944,6 +983,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets a boolean value indicating whether the boolean value false can be
+   * encrypted or not.
+   *
+   * @param boolean $default the value to use if the config option is not defined.
+   *
+   * @return boolean true if the boolean value false can be encrypted, false otherwise.
+   */
   protected final function get_config_false_enable(
     bool $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
   ) : bool {
@@ -952,72 +999,155 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_FALSE_ENABLE constant
+   * of the default value if CONFIG_ENCRYPTION_FALSE_ENABLE is not defined; can be overridden by
+   * implementations.
+   *
+   * @param boolean $default the value to use if the config option is not defined.
+   *
+   * @return boolean true if the boolean value false can be encrypted, false otherwise.
+   */
   protected function do_get_config_false_enable( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets a constant value, or returns the default value if the constant is not
+   * defined.
+   *
+   * @param string $const the name of the constant.
+   *
+   * @param mixed $default the value to return if the constant is not defined.
+   *
+   * @return mixed the constant value or the default value if the constant is not defined.
+   */
   protected final function get_const( $const, $default = false ) {
 
     return $this->do_get_const( $const, $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the constant, or returns the default value
+   * if the constant is not defined; can be overridden by implementations.
+   *
+   * @param string $const the name of the constant.
+   *
+   * @param mixed $default the value to return if the constant is not defined.
+   *
+   * @return mixed the value of the constant or the default value if the constant is not defined.
+   */
   protected function do_get_const( $const, $default ) {
 
     return defined( $const ) ? constant( $const ) : $default;
 
   }
 
+  /**
+   * 2023-04-05 jj5 - returns the list of passphrases; defers to abstract implementation.
+   *
+   * @return array a list of strings to use as passphrases.
+   */
   protected final function get_passphrase_list() : array {
 
     return $this->do_get_passphrase_list();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - returns the passphrase to use for encryption.
+   *
+   * @return string the encryption passphrase.
+   */
   protected final function get_encryption_passphrase() : string {
 
     return $this->do_get_encryption_passphrase();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the first passphrase from the passphrase list; can be
+   * overridden by implementations.
+   *
+   * @return string|false the passphrase or false if none.
+   */
   protected function do_get_encryption_passphrase() {
 
     return $this->get_passphrase_list()[ 0 ] ?? false;
 
   }
 
+  /**
+   * 2023-04-05 jj5 - reports if the program is running from the command-line.
+   *
+   * @return bool true if running from the command-line, false otherwise.
+   */
   protected final function is_cli() : bool {
 
     return $this->do_is_cli();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default checks to see if php_sapi_name() === 'cli'; can be overridden by
+   * implementations.
+   *
+   * @return boolean true if running from the command-line, false otherwise.
+   */
   protected function do_is_cli() {
 
     return $this->php_sapi_name() === 'cli';
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks to see if the program is running in DEBUG mode.
+   *
+   * @return boolean true if running in DEBUG mode, false otherwise.
+   */
   protected final function is_debug() : bool {
 
     return $this->do_is_debug();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default checks to see if the DEBUG constant is defined and true; can be
+   * overridden by implementations.
+   *
+   * @return boolean true if running in DEBUG mode, false otherwise.
+   */
   protected function do_is_debug() {
 
     return defined( 'DEBUG' ) && DEBUG;
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks to see if the environment configuration is valid; this function
+   * defers to the abstract method do_is_valid_config().
+   *
+   * @param string|null $problem a reference to the problem, if any.
+   *
+   * @return boolean true if the config is valid, false otherwise.
+   */
   protected final function is_valid_config( ?string &$problem = null ) : bool {
 
     return $this->do_is_valid_config( $problem );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks to see if a secret is valid; this function defers to
+   * do_is_valid_secret();
+   *
+   * @param string $secret the secret key
+   *
+   * @return boolean true if the secret key is valid, false otherwise.
+   */
   protected final function is_valid_secret( $secret ) : bool {
 
     $is_valid = $this->do_is_valid_secret( $secret );
@@ -1032,6 +1162,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - my default checks that the secret key is a string and meets the minimum
+   * length requirements; this function can be overridden by implementations.
+   *
+   * @param string $secret the secret key
+   *
+   * @return boolean true if the secret is valid, false otherwise.
+   */
   protected function do_is_valid_secret( $secret ) {
 
     if ( ! is_string( $secret ) ) { return false; }
@@ -1042,12 +1180,29 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks the input is in valid base64 format; defers to virtual
+   * do_is_valid_base64().
+   *
+   * @param string $input the value which should be in base64 format.
+   *
+   * @return boolean true if the input is in base64 format, false otherwise.
+   */
   protected final function is_valid_base64( $input ) : bool {
 
     return $this->do_is_valdi_base64( $input );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default checks to make sure the input is a non-empty string and then
+   * validates it with the KICKASS_CRYPTO_REGEX_BASE64 regular expression; can be overridden by
+   * implementations.
+   *
+   * @param string $input supposedly base64 encoded value.
+   *
+   * @return boolean true if value is in valid base64 format, false otherwise.
+   */
   protected function do_is_valid_base64( $input ) {
 
     if ( empty( $input ) ) { return false; }
@@ -1060,6 +1215,13 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default encrypts the input value; can be overridden by implementations.
+   *
+   * @param mixed $input the value to encrypt.
+   *
+   * @return string|false the ciphertext or false on failure.
+   */
   protected function do_encrypt( $input ) {
 
     if ( $input === false && ! $this->get_config_false_enable() ) {
@@ -1183,6 +1345,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks to see if the data format is valid; this behavior cannot be
+   * overridden by implementations.
+   *
+   * @param string $data_format the data format string.
+   *
+   * @return boolean true if the data format is valid, false otherwise.
+   */
   protected final function is_valid_data_format( string $data_format ) : bool {
 
     // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
@@ -1208,6 +1378,14 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - checks to see if the data encoding is a valid supported encoding; defers
+   * to the virtual do_is_valid_encoding() method.
+   *
+   * @param string $data_encoding the data encoding to validate.
+   *
+   * @return boolean true if the data encoding is value, false otherwise.
+   */
   protected final function is_valid_data_encoding( string $data_encoding ) : bool {
 
     // 2023-04-04 jj5 - the string length is non-negotiable, we need our padded messsages to
@@ -1219,6 +1397,22 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default checks that the data encoding is one of the two supported data
+   * encodings; can be overridden by implementations.
+   *
+   * 2023-04-05 jj5 - the two supported data encodings are:
+   *
+   * - KICKASS_CRYPTO_DATA_ENCODING_JSON
+   * - KICKASS_CRYPTO_DATA_ENCODING_PHPS
+   *
+   * Note that the PHPS data encoding is only a valid and supported data encoding if
+   * get_config_phps_enable() is true.
+   *
+   * @param string $data_encoding the data encoding.
+   *
+   * @return boolean true if the data encoding is a valid supported value, false otherwise.
+   */
   protected function do_is_valid_data_encoding( $data_encoding ) {
 
     switch ( $data_encoding ) {
@@ -1240,24 +1434,53 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the data encoding; defers to virtual do_get_data_encoding().
+   *
+   * @return string the data encoding.
+   */
   protected final function get_data_encoding() : string {
 
     return $this->do_get_data_encoding();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default gets the data encoding from the config option as returned from
+   * get_config_data_encoding().
+   *
+   * @return string the data encoding.
+   */
   protected function do_get_data_encoding() {
 
     return $this->get_config_data_encoding();
 
   }
 
+  /**
+   * 2023-04-05 jj5 - encrypts a plaintext string using the passphrase; defers to
+   * do_encrypt_string().
+   *
+   * @param string $plaintext the plaintext to encrypt.
+   *
+   * @param string $passphrase the passphrase to use for encryption.
+   *
+   * @return string|false the ciphertext on success or false on error.
+   */
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
     return $this->do_encrypt_string( $plaintext, $passphrase );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default handles the standard decryption process; can be overridden by
+   * implementations.
+   *
+   * @param string $ciphertext the ciphertext to decrypt.
+   *
+   * @return mixed the decrypted and deserialized value on success, false otherwise.
+   */
   protected function do_decrypt( $ciphertext ) {
 
     $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
@@ -1304,6 +1527,18 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - tries to decrypt a binary string using the passphrase.
+   *
+   * @param string $binary the binary data to decrypt.
+   *
+   * @param string $passphrase the passphrase to use for decryption.
+   *
+   * @param string $data_encoding a reference to the data encoding, this is set if its possible to
+   * determine.
+   *
+   * @return mixed the decoded message on success, false otherwise.
+   */
   protected final function try_decrypt( string $binary, string $passphrase, &$data_encoding = null ) {
 
     $data_encoding = null;
@@ -1320,12 +1555,34 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - decrypts a binary string using the passphrase.
+   *
+   * @param string $binary the binary data to decrypt.
+   *
+   * @param string $passphrase the passphrase to use for decryption.
+   *
+   * @return mixed the decrypted string or false on error.
+   */
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
     return $this->do_decrypt_string( $binary, $passphrase );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - parses the binary message into its fixed length components.
+   *
+   * @param string $binary the binary message.
+   *
+   * @param string $iv the initialization vector for OpenSLL or the nonce for Sodium.
+   *
+   * @param string $ciphertext the ciphertext.
+   *
+   * @param string $tag the tag, only provided by OpenSSL, false for Sodium.
+   *
+   * @return boolean true on success, false otherwise.
+   */
   protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) : bool {
 
     $iv = false;
