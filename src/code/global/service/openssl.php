@@ -31,15 +31,15 @@
  * defined with the CONFIG_OPENSSL_SECRET_CURR configuration constant (required) and the
  * CONFIG_OPENSSL_SECRET_PREV configuration constant (optional).
  *
- * @param Kickass\Crypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+ * @param KickassCrypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
  * service locator with a new service instance.
  *
- * @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
+ * @return KickassCrypto\Contract\IKickassCrypto the crypto interface.
  *
- * @throws Kickass\Crypto\Framework\KickassCryptoException if the environment is determined to be
+ * @throws KickassCrypto\Framework\KickassCryptoException if the environment is determined to be
  * unsupported during construction.
 */
-function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
+function kickass_round_trip( $set = false ) : \KickassCrypto\Contract\IKickassCrypto {
 
   static $instance = null;
 
@@ -47,7 +47,7 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassC
 
   if ( $instance === null ) {
 
-    $instance = new \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip();
+    $instance = new \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip();
 
   }
 
@@ -60,15 +60,15 @@ function kickass_round_trip( $set = false ) : \Kickass\Crypto\Contract\IKickassC
  * This component will use the at-rest keys defined for the OpenSSL module, those keys are
  * defined with the CONFIG_OPENSSL_SECRET_LIST configuration constant.
  *
- * @param Kickass\Crypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+ * @param KickassCrypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
  * service locator with a new service instance.
  *
- * @return Kickass\Crypto\Contract\IKickassCrypto the crypto interface.
+ * @return KickassCrypto\Contract\IKickassCrypto the crypto interface.
  *
- * @throws Kickass\Crypto\Framework\KickassCryptoException if the environment is determined to be
+ * @throws KickassCrypto\Framework\KickassCryptoException if the environment is determined to be
  * unsupported during construction.
 */
-function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCrypto {
+function kickass_at_rest( $set = false ) : \KickassCrypto\Contract\IKickassCrypto {
 
   static $instance = null;
 
@@ -76,7 +76,7 @@ function kickass_at_rest( $set = false ) : \Kickass\Crypto\Contract\IKickassCryp
 
   if ( $instance === null ) {
 
-    $instance = new \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest();
+    $instance = new \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest();
 
   }
 

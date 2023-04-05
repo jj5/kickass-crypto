@@ -22,9 +22,9 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestCrypto extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
@@ -36,7 +36,7 @@ function run_test() {
 
   ob_start();
 
-  \Kickass\Crypto\Framework\KickassCrypto::ReportTelemetry();
+  \KickassCrypto\Framework\KickassCrypto::ReportTelemetry();
 
   $output = ob_get_clean();
 
@@ -61,7 +61,7 @@ encrypt......: 1
 
 = Classes =
 
-Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip..: 1
+KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip..: 1
 
 = Lengths =
 

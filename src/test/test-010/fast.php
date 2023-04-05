@@ -22,9 +22,9 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestCrypto extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
   private $ivlen = 1;
   private $taglen = 1;

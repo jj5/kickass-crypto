@@ -29,7 +29,7 @@ define( 'DEBUG', true );
 require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/etc/config.php';
 
-class CryptoTest extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
+class CryptoTest extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
 
   protected function do_data_encode( $input, $data_encoding ) {
 

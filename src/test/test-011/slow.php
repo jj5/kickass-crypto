@@ -60,9 +60,9 @@ function main( $argv ) {
   }
 }
 
-class TestDelay extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestDelay extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_KEYS;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_KEYS;
 
   protected function do_delay( int $ns_min, int $ns_max ) {
 

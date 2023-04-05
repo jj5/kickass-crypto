@@ -19,9 +19,9 @@
 //
 \************************************************************************************************/
 
-class TestCrypto extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
   protected function do_is_valid_config( &$problem ) { $problem = null; return true; }
 

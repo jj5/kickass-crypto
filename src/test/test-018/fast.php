@@ -27,9 +27,9 @@
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
   protected function do_delay( int $ns_min, int $ns_max ) {
 

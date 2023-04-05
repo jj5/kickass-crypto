@@ -20,27 +20,27 @@
 //
 \************************************************************************************************/
 
-class TestOpenSslRoundTrip extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
-
-}
-
-class TestOpenSslAtRest extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslAtRest {
-
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestSodiumRoundTrip extends \Kickass\Crypto\Module\Sodium\KickassSodiumRoundTrip {
+class TestOpenSslAtRest extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestSodiumAtRest extends \Kickass\Crypto\Module\Sodium\KickassSodiumAtRest {
+class TestSodiumRoundTrip extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+
+}
+
+class TestSodiumAtRest extends \KickassCrypto\Module\Sodium\KickassSodiumAtRest {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 

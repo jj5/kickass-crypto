@@ -24,9 +24,9 @@
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestJsonWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestJsonWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
   protected function do_get_config_data_encoding( $default ) {
 
@@ -41,9 +41,9 @@ class TestJsonWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
   }
 }
 
-class TestJsonWithPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestJsonWithPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
   protected function do_get_config_data_encoding( $default ) {
 
@@ -64,9 +64,9 @@ class TestJsonWithPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoun
   }
 }
 
-class TestPhpsWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestPhpsWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
   protected function do_get_config_data_encoding( $default ) {
 
@@ -81,9 +81,9 @@ class TestPhpsWithoutPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslR
   }
 }
 
-class TestPhpsWithPhps extends \Kickass\Crypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestPhpsWithPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \Kickass\Crypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
   protected function do_get_config_data_encoding( $default ) {
 
