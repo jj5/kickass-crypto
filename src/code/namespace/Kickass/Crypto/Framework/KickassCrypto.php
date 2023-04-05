@@ -480,10 +480,21 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     $this->count_function( __FUNCTION__ );
 
-    return $this->do_throw( $code, $data, $previous );
+    $this->do_throw( $code, $data, $previous );
+
+    assert( false );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - registers an error; if this is the first error a random delay is injected
+   * as a timing attack mitigation.
+   *
+   * @param string $error the error description, usually one of the KICKASS_CRYPTO_ERROR_*
+   * constants.
+   *
+   * @return bool always false.
+   */
   protected final function error( $error ) {
 
     try {
@@ -525,12 +536,25 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - will count this instance.
+   *
+   * @param string $caller the name of the invoking function.
+   * @return void
+   */
   protected final function count_this( $caller ) {
 
-    return $this->do_count_this( $caller );
+    $this->do_count_this( $caller );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will count the caller function (should be the constructor) and
+   * this class instance; can be overridden by implementations.
+   *
+   * @param string $caller the name of the invoking function.
+   * @return void
+   */
   protected function do_count_this( $caller ) {
 
     $this->count_function( $caller );
@@ -539,12 +563,25 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - will increment a function count metric.
+   *
+   * @param string $metric the name of the function.
+   * @return int the current count for this function.
+   */
   protected final function count_function( $metric ) {
 
     return $this->do_count_function( $metric );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will increment the counter for this function metric; can be
+   * overridden by implementations.
+   *
+   * @param string $metric the name of the function.
+   * @return int the current count for this function.
+   */
   protected function do_count_function( $metric ) {
 
     return $this->increment_counter( self::$telemetry[ 'function' ], $metric );
