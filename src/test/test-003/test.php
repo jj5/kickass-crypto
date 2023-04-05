@@ -21,7 +21,7 @@
 //
 \************************************************************************************************/
 
-//define( 'DEBUG', true );
+define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/lib/include.php';
@@ -29,13 +29,14 @@ require_once __DIR__ . '/lib/include.php';
 function run_test() {
 
   test_error(
-    KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2,
+    KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4,
     function() {
       return new class extends TestCrypto {
+        private $count = 0;
         public function test() {
-          return $this->do_json_decode( 'true', $is_false );
+          define( 'KICKASS_CRYPTO_TEST_DATA_ENCODE', true );
+          return $this->do_data_encode( 'input', false );
         }
-        protected function do_php_json_last_error() { return 123; }
       };
     }
   );

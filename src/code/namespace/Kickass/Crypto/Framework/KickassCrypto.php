@@ -440,7 +440,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @return void
    */
   //
-  protected final function catch( $ex, $file, $line, $function ) {
+  protected final function catch( $ex, $file, $line, $function ) : void {
 
     try {
 
@@ -476,7 +476,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @return void
    * @throws Kickass\Crypto\Framework\KickassCryptoException
    */
-  protected final function throw( int $code, $data = null, $previous = null ) {
+  protected final function throw( int $code, $data = null, $previous = null ) : void {
 
     $this->count_function( __FUNCTION__ );
 
@@ -495,7 +495,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    *
    * @return bool always false.
    */
-  protected final function error( $error ) {
+  protected final function error( $error ) : bool {
 
     try {
 
@@ -542,7 +542,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param string $caller the name of the invoking function.
    * @return void
    */
-  protected final function count_this( $caller ) {
+  protected final function count_this( $caller ) : void {
 
     $this->do_count_this( $caller );
 
@@ -569,7 +569,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param string $function the name of the function.
    * @return int the current count for this function.
    */
-  protected final function count_function( $function ) {
+  protected final function count_function( $function ) : int {
 
     return $this->do_count_function( $function );
 
@@ -594,7 +594,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param string $class the name of the class.
    * @return int the current count for the class.
    */
-  protected final function count_class( $class ) {
+  protected final function count_class( $class ) : int {
 
     return $this->do_count_class( $class );
 
@@ -619,7 +619,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param int $length the length of the encrypted data.
    * @return int the current count for the length.
    */
-  protected final function count_length( int $length ) {
+  protected final function count_length( int $length ) : int {
 
     return $this->do_count_length( $length );
 
@@ -646,7 +646,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param string|int $key the key to operate on.
    * @return int the current count.
    */
-  protected final function increment_counter( &$array, $key ) {
+  protected final function increment_counter( &$array, $key ) : int {
 
     return $this->do_increment_counter( $array, $key );
 
@@ -679,7 +679,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    *
    * @return string the data format constant.
    */
-  protected final function get_const_data_format() {
+  protected final function get_const_data_format() : string {
 
     return $this->do_get_const_data_format();
 
@@ -690,7 +690,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    *
    * @return string the name of the PHP hashing algorithm.
    */
-  protected final function get_const_key_hash() {
+  protected final function get_const_key_hash() : string {
 
     return $this->do_get_const_key_hash();
 
@@ -713,7 +713,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    *
    * @return int the minimum length of a secret key.
    */
-  protected final function get_const_key_length_min() {
+  protected final function get_const_key_length_min() : int {
 
     return $this->do_get_const_key_length_min();
 
@@ -737,7 +737,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @param int $default the value to use if the config option is not defined.
    * @return int the chunk size.
    */
-  protected final function get_config_chunk_size( $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE ) {
+  protected final function get_config_chunk_size(
+    int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE
+  ) : int {
 
     return $this->do_get_config_chunk_size( $default );
 
@@ -764,8 +766,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @return int the maximum chunk size.
    */
   protected final function get_config_chunk_size_max(
-    $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
-  ) {
+    int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
+  ) : int {
 
     return $this->do_get_config_chunk_size_max( $default );
 
@@ -793,8 +795,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @return int the maximum supported data length.
    */
   protected final function get_config_data_length_max(
-    $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
-  ) {
+    int $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
+  ) : int {
 
     return $this->do_get_config_data_length_max( $default );
 
@@ -830,8 +832,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
    * @return string the data encoding.
    */
   protected final function get_config_data_encoding(
-    $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
-  ) {
+    string $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
+  ) : string {
 
     return $this->do_get_config_data_encoding( $default );
 
@@ -851,42 +853,87 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the JSON encoding options which will be passed to the PHP json_encode()
+   * function.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the JSON encoding options.
+   */
   protected final function get_config_json_encode_options(
-    $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
-  ) {
+    int $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
+  ) : int {
 
     return $this->do_get_config_json_encode_options( $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS
+   * constant or the default value if CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS is not defined; can be
+   * overridden by implementations.
+   *
+   * @param int $default the default JSON encoding options.
+   * @return int the JSON encoding options.
+   */
   protected function do_get_config_json_encode_options( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the JSON decoding options which will be passed to the PHP json_decode()
+   * function.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the JSON decoding options.
+   */
   protected final function get_config_json_decode_options(
-    $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
-  ) {
+    int $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
+  ) : int {
 
     return $this->do_get_config_json_decode_options( $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS
+   * constant or the default value if CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS is not defined; can be
+   * overridden by implementations.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the JSON decoding options.
+   */
   protected function do_get_config_json_decode_options( $default  ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets a boolean value indicating whether PHPS serialization and
+   * deserialization is enabled or not.
+   *
+   * @param boolean $default the value to use if the config option is not defined.
+   * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
+   */
   protected final function get_config_phps_enable(
-    $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
-  ) {
+    bool $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
+  ) : bool {
 
     return $this->do_get_config_phps_enable( $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_PHPS_ENABLE constant
+   * or the default value if CONFIG_ENCRYPTION_PHPS_ENABLE is not defined; can be overridden by
+   * implementations.
+   *
+   * @param boolean $default the value to use if the config option is not defined.
+   * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
+   */
   protected function do_get_config_phps_enable( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
@@ -894,8 +941,8 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
   }
 
   protected final function get_config_false_enable(
-    $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
-  ) {
+    bool $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
+  ) : bool {
 
     return $this->do_get_config_false_enable( $default );
 
@@ -919,13 +966,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function get_passphrase_list() {
+  protected final function get_passphrase_list() : array {
 
     return $this->do_get_passphrase_list();
 
   }
 
-  protected final function get_encryption_passphrase() {
+  protected final function get_encryption_passphrase() : string {
 
     return $this->do_get_encryption_passphrase();
 
@@ -937,7 +984,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_cli() {
+  protected final function is_cli() : bool {
 
     return $this->do_is_cli();
 
@@ -949,7 +996,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_debug() {
+  protected final function is_debug() : bool {
 
     return $this->do_is_debug();
 
@@ -961,13 +1008,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_valid_config( &$problem = null ) {
+  protected final function is_valid_config( ?string &$problem = null ) : bool {
 
     return $this->do_is_valid_config( $problem );
 
   }
 
-  protected final function is_valid_secret( $secret ) {
+  protected final function is_valid_secret( $secret ) : bool {
 
     $is_valid = $this->do_is_valid_secret( $secret );
 
@@ -991,7 +1038,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_valid_base64( $input ) {
+  protected final function is_valid_base64( $input ) : bool {
 
     return $this->do_is_valdi_base64( $input );
 
@@ -1132,7 +1179,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_valid_data_format( $data_format ) {
+  protected final function is_valid_data_format( string $data_format ) : bool {
 
     // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
     // format.
@@ -1157,7 +1204,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function is_valid_data_encoding( $data_encoding ) {
+  protected final function is_valid_data_encoding( string $data_encoding ) : bool {
 
     // 2023-04-04 jj5 - the string length is non-negotiable, we need our padded messsages to
     // always be the same size.
@@ -1189,7 +1236,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
     }
   }
 
-  protected final function get_data_encoding() {
+  protected final function get_data_encoding() : string {
 
     return $this->do_get_data_encoding();
 
@@ -1275,7 +1322,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) {
+  protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) : bool {
 
     $iv = false;
     $ciphertext = false;
@@ -1390,7 +1437,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
-  protected final function emergency_delay() {
+  protected final function emergency_delay() : void {
 
     // 2023-03-30 jj5 - ordinarily do_delay() does our delay, but there are a bunch of ways that
     // could go wrong. If do_delay() throws we make a sincere effort to call this function,
@@ -1422,7 +1469,9 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       if ( $result ) {
 
-        return $this->report_emergency_delay( 'nanosleep', __FILE__, __LINE__, __FUNCTION__ );
+        $this->report_emergency_delay( 'nanosleep', __FILE__, __LINE__, __FUNCTION__ );
+
+        return;
 
       }
 
@@ -1442,15 +1491,15 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     usleep( random_int( 1_000, 10_000_000 ) );
 
-    return $this->report_emergency_delay( 'microsleep', __FILE__, __LINE__, __FUNCTION__ );
+    $this->report_emergency_delay( 'microsleep', __FILE__, __LINE__, __FUNCTION__ );
 
   }
 
-  private function report_emergency_delay( string $type, $file, $line, $function ) {
+  private function report_emergency_delay( string $type, $file, $line, $function ) : void {
 
     try {
 
-      return $this->do_report_emergency_delay( $type, $file, $line, $function );
+      $this->do_report_emergency_delay( $type, $file, $line, $function );
 
     }
     catch ( \Throwable $ex ) {
@@ -1467,7 +1516,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected function do_report_emergency_delay( $type, $file, $line, $function ) {
 
-    return $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
+    $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
 
   }
 
@@ -1517,6 +1566,16 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     try {
 
+      if (
+        $data_encoding === false &&
+        defined( 'KICKASS_CRYPTO_TEST_DATA_ENCODE' ) &&
+        KICKASS_CRYPTO_TEST_DATA_ENCODE
+      ) {
+
+        throw new \Exception( 'fault injection' );
+
+      }
+
       switch ( $data_encoding ) {
 
         case KICKASS_CRYPTO_DATA_ENCODING_JSON :
@@ -1532,7 +1591,6 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
           return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_3 );
 
       }
-
     }
     catch ( \Throwable $ex ) {
 
@@ -1545,8 +1603,18 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected final function json_encode( $input ) {
 
-    return $this->do_json_encode( $input );
+    try {
 
+      return $this->do_json_encode( $input );
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+
+    }
   }
 
   protected function do_json_encode( $input ) {
@@ -1585,14 +1653,24 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   protected final function phps_encode( $input ) {
 
-    if ( ! $this->get_config_phps_enable() ) {
+    try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2 );
+      if ( ! $this->get_config_phps_enable() ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2 );
+
+      }
+
+      return $this->do_phps_encode( $input );
 
     }
+    catch ( \Throwable $ex ) {
 
-    return $this->do_phps_encode( $input );
+      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+
+    }
   }
 
   protected function do_phps_encode( $input ) {
@@ -1653,7 +1731,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
         KICKASS_CRYPTO_TEST_DATA_DECODE
       ) {
 
-        throw new Exception( 'fault injection' );
+        throw new \Exception( 'fault injection' );
 
       }
 
@@ -2009,7 +2087,11 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        // 2023-04-05 jj5 - this could infinite loop...
+        //
+        //$this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
 
       }
       catch ( \Throwable $ignore ) { ; }

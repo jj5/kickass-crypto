@@ -77,6 +77,24 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
   $error = $crypto->get_error();
   $error_list = $crypto->get_error_list();
 
+  if ( count( $error_list ) === 0 ) {
+
+    var_dump([
+      'expected' => $expected_error,
+      'class' => get_class( $crypto ),
+      'result' => $result,
+      'error_list' => $crypto->get_error_list(),
+    ]);
+
+    throw new \Exception( 'error: ' . json_encode( [
+      'expected' => $expected_error,
+      'class' => get_class( $crypto ),
+      'result' => $result,
+      'error_list' => $crypto->get_error_list(),
+    ], JSON_PARTIAL_OUTPUT_ON_ERROR ) );
+
+  }
+
   assert( count( $error_list ) > 0 );
 
   if ( $error !== $expected_error ) {

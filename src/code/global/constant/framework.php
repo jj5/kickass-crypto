@@ -355,12 +355,22 @@ define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3', 'JSON encoding failed (3)
 /**
  * @var string
  */
+define( 'KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4', 'JSON encoding failed (4).' );
+
+/**
+ * @var string
+ */
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED', 'PHPS encoding failed.' );
 
 /**
  * @var string
  */
 define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2', 'PHPS encoding failed (2).' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3', 'PHPS encoding failed (3).' );
 
 /**
  * @var string

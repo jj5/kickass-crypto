@@ -89,6 +89,20 @@ function run_test() {
   );
 
   test_error(
+    KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_encode( true, $this->get_data_encoding() );
+        }
+        protected function do_json_encode( $value ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
     KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED,
     function() {
       return new class extends TestCrypto {
@@ -118,6 +132,24 @@ function run_test() {
         }
         protected function do_get_config_phps_enable( $default ) { return true; }
         protected function do_php_serialize( $value ) {
+          throw new Exception( 'fail' );
+        }
+      };
+    }
+  );
+
+  test_error(
+    KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3,
+    function() {
+      return new class extends TestCrypto {
+        public function test() {
+          return $this->data_encode( true, $this->get_data_encoding() );
+        }
+        protected function do_get_data_encoding() {
+          return KICKASS_CRYPTO_DATA_ENCODING_PHPS;
+        }
+        protected function do_get_config_phps_enable( $default ) { return true; }
+        protected function do_phps_encode( $value ) {
           throw new Exception( 'fail' );
         }
       };
@@ -255,11 +287,10 @@ function run_test() {
     KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4,
     function() {
       return new class extends TestCrypto {
+        private $count = 0;
         public function test() {
-          return $this->do_data_encode( 'input', 'json' );
-        }
-        protected function do_json_encode( $data ) {
-          throw new Exception( 'fail' );
+          define( 'KICKASS_CRYPTO_TEST_DATA_ENCODE', true );
+          return $this->do_data_encode( 'input', false );
         }
       };
     }
@@ -542,63 +573,7 @@ function run_test() {
           return $this->do_encrypt( 'test' );
         }
         protected function do_get_config_chunk_size( $default ) {
-          return true;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
-    function() {
-      return new class extends TestCrypto {
-        public function test() {
-          return $this->do_encrypt( 'test' );
-        }
-        protected function do_get_config_chunk_size( $default ) {
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
-    function() {
-      return new class extends TestCrypto {
-        public function test() {
-          return $this->do_encrypt( 'test' );
-        }
-        protected function do_get_config_chunk_size( $default ) {
-          return 0;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
-    function() {
-      return new class extends TestCrypto {
-        public function test() {
-          return $this->do_encrypt( 'test' );
-        }
-        protected function do_get_config_chunk_size( $default ) {
-          return 0.0;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
-    function() {
-      return new class extends TestCrypto {
-        public function test() {
-          return $this->do_encrypt( 'test' );
-        }
-        protected function do_get_config_chunk_size( $default ) {
-          return 1.0;
+          return -123;
         }
       };
     }

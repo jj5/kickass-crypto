@@ -216,6 +216,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4",
+            "name": "KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED",
             "name": "KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED",
             "summary": "",
@@ -225,6 +230,11 @@ Search.appendIndex(
             "name": "KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2",
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3",
+            "name": "KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED",
             "name": "KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED",
@@ -928,32 +938,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_json_encode_options\u0028\u0029",
             "name": "get_config_json_encode_options",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020JSON\u0020encoding\u0020options\u0020which\u0020will\u0020be\u0020passed\u0020to\u0020the\u0020PHP\u0020json_encode\u0028\u0029\nfunction.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_json_encode_options"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_json_encode_options\u0028\u0029",
             "name": "do_get_config_json_encode_options",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_json_encode_options"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_json_decode_options\u0028\u0029",
             "name": "get_config_json_decode_options",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020JSON\u0020decoding\u0020options\u0020which\u0020will\u0020be\u0020passed\u0020to\u0020the\u0020PHP\u0020json_decode\u0028\u0029\nfunction.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_json_decode_options"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_json_decode_options\u0028\u0029",
             "name": "do_get_config_json_decode_options",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_json_decode_options"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_phps_enable\u0028\u0029",
             "name": "get_config_phps_enable",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020a\u0020boolean\u0020value\u0020indicating\u0020whether\u0020PHPS\u0020serialization\u0020and\ndeserialization\u0020is\u0020enabled\u0020or\u0020not.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_get_config_phps_enable"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_phps_enable\u0028\u0029",
             "name": "do_get_config_phps_enable",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0020constant\nor\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/Kickass-Crypto-Framework-KickassCrypto.html#method_do_get_config_phps_enable"
         },                {
             "fqsen": "\\Kickass\\Crypto\\Framework\\KickassCrypto\u003A\u003Aget_config_false_enable\u0028\u0029",
