@@ -785,6 +785,13 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the maximum supported data length, it's used for validating the
+   * encoded data.
+   *
+   * @param int $default the value to use if the config option is not defined.
+   * @return int the maximum supported data length.
+   */
   protected final function get_config_data_length_max(
     $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
   ) {
@@ -793,12 +800,35 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_DATA_LENGTH_MAX
+   * constant or the default value if CONFIG_ENCRYPTION_DATA_LENGTH_MAX is not defined; can be
+   * overridden by implementations.
+   *
+   * @param int $default the default maximum data length.
+   * @return int the maximum data length.
+   */
   protected function do_get_config_data_length_max( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
 
   }
 
+  /**
+   * 2023-04-05 jj5 - gets the data encoding.
+   *
+   * 2023-04-05 jj5 - data formats which are supported directly are:
+   *
+   * - KICKASS_CRYPTO_DATA_ENCODING_JSON
+   * - KICKASS_CRYPTO_DATA_ENCODING_PHPS
+   *
+   * 2023-04-05 jj5 - implementations can define their own data formats. Data format codes must
+   * be ASCII values make from capital letters and numbers, see is_valid_data_format() for the
+   * gory details.
+   *
+   * @param string $default the value to use if the config option is not defined.
+   * @return string the data encoding.
+   */
   protected final function get_config_data_encoding(
     $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
   ) {
@@ -807,6 +837,14 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the CONFIG_ENCRYPTION_DATA_ENCODING constant
+   * or the default value if CONFIG_ENCRYPTION_DATA_ENCODING is not defined; can be
+   * overridden by implementations.
+   *
+   * @param string $default the default data format.
+   * @return string the data format.
+   */
   protected function do_get_config_data_encoding( $default ) {
 
     return $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
@@ -1113,7 +1151,7 @@ abstract class KickassCrypto implements \Kickass\Crypto\Contract\IKickassCrypto 
 
     }
 
-    if ( ! preg_match( '/^[A-Z0-9]+$/', $data_format ) ) { return false; }
+    if ( ! preg_match( '/^[A-Z][A-Z0-9]+$/', $data_format ) ) { return false; }
 
     return true;
 
