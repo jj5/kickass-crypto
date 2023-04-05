@@ -13,14 +13,12 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - a crypto component will provide this interface...
-//
-// 2023-04-03 jj5 - oh man, I really wanted to use the PHP 8.0 type system, but the demo server
-// for this library is still on 7.4 so no typed interface. :(
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - a crypto component will provide this interface.
+ *
+ * 2023-04-03 jj5 - oh man, I really wanted to use the PHP 8.0 type system, but the demo server
+ * for this library is still on 7.4 so no typed interface. :(
+ */
 
 namespace KickassCrypto\Contract;
 
