@@ -53,7 +53,9 @@ main() {
 
   # 2023-04-03 jj5 - before we do anything cycle our testing keys...
   #
-  php ../../bin/dev/cycle-keys.php 2>/dev/null
+  # 2023-04-07 jj5 - NOTE: this is disabled now, you can run manually if you want.
+  #
+  #php ../../bin/dev/cycle-keys.php 2>/dev/null
 
   # 2023-04-05 jj5 - and update the PHPDoc documentation...
   #
