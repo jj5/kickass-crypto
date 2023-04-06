@@ -1343,6 +1343,11 @@ runs them. This is easy to do and provides all the power we need to run our test
 support for the various situations where each test instance needs to run in its own process and be
 isolated from other testing environments.
 
+If you have flakey and unreliable tests you can stick them in as silly tests. The fast and slow
+tests are the important ones, and you shouldn't put slow tests in the fast test scripts. The fast
+tests are for day to day programming and testing and the slow scripts are for running prior to a
+version release.
+
 ## Directory structure
 
 Here are some notes regarding notable components:
