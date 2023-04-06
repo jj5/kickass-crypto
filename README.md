@@ -635,8 +635,8 @@ The use of JSON as the data encoding format has some minor implications
 concerning the values we can support. Particularly we can't encode object instances that can
 later be decoded back to object instances (if the objects implement the JsonSerializable interface
 they can be serialized as data, but those will only be decoded back to PHP arrays, not the PHP
-objects from which they came), and some odd floating point values can't be represented (i.e. NaN,
-Pos Inf, Neg Info, and Neg Zero).
+objects from which they came); some odd floating point values can't be represented (i.e. NaN,
+Pos Inf, Neg Info, and Neg Zero); and binary strings can't be represented in JSON.
 
 By default these options are used for JSON encoding:
 
