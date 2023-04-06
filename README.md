@@ -532,6 +532,10 @@ module or the OpenSSL module depends on the order you included the `inc/sodium.p
 `inc/openssl.php` files; if you included the entire library with `inc/library.php` the Sodium
 module will have precedence.
 
+Regardless of whether you loaded the service locators for the Sodium module or the OpenSSL module
+you will be able to override the default instance by calling the service locator with a new
+instance as the argument.
+
 ## Data encryption
 
 The encryption process is roughly:
