@@ -197,7 +197,7 @@ function render_head() {
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <title>Kickass Crypto</title>
+  <title>Kickass Crypto Demo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -232,7 +232,7 @@ function handle_load() {
 </head>
 <body>
   <main>
-    <h1>Kickass Crypto</h1>
+    <h1>Kickass Crypto Demo</h1>
     <p>This is the demo page for the
       <a href="https://github.com/jj5/kickass-crypto">Kickass Crypto library</a>.
       You can <a href="./">reload</a> this page.</p>
