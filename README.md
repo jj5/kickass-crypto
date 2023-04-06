@@ -91,6 +91,10 @@ covered in this documentation or by this library)
 * be careful not to introduce syntax errors into config files
 * be careful not to attempt to redefine secret configuration constants
 * be careful not to deploy syntax errors to hosted code (production or otherwise)
+* take your web servers offline while you update the source code and configuration files and then
+bring them back online after that process is complete, this is to avoid problems with trying to
+serve temporarily missing or changing files with potentially mutually inconsistent content such
+as when half of your code has been updated and half of it hasn't
 * never log anything whose name includes the case-insensitive string "secret" or "pass"; this
 library will make sure that any secret or sensitive data is named with either of those substrings
 as part of its name
