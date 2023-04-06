@@ -34,7 +34,7 @@ main() {
   mkdir -p doc/phpdoc;
   mkdir -p log/phpdoc;
 
-  bin/dev/phpdoc/phpDocumentor.phar run --force -d src/code -t doc/phpdoc
+  bin/dev/phpdoc/phpDocumentor.phar run --force -d src/code -t doc/phpdoc --template doc/phpdoc-template/default/
 
   pushd doc/phpdoc >/dev/null;
 
