@@ -820,7 +820,7 @@ When an instance of one of of the following is created the configuration setting
 If the configuration settings are not valid the constructor will throw an exception. If the
 constructor succeeds then encryption and decryption later on should also (usually) succeed. If
 there are any configuration problems that will mean encryption or decryption won't be able to
-succeed the constructor should throw.
+succeed (such as secret key not having been provided) the constructor should throw.
 
 This library defines its own exception class called `KickassException`. This
 works like a normal Exception except that it adds a method `getData()` which
