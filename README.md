@@ -1162,7 +1162,7 @@ which is also known as the Robustness Principle. The final wrapper is liberal in
 such as with the return value one (`1`) from the default implementation; and conservative in what
 it does, such as always returning a properly typed boolean value.
 
-Not needing to type out and declare the types on the interface of the default implementation also
+Not needing to write out and declare the types on the interface of the default implementation also
 makes implementation and debugging easier, as there's less code to write.
 
 Ordinarily users of this code will only call the main function `is_valid_settings()`, and anyone
