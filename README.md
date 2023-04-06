@@ -261,7 +261,6 @@ php bin/gen-demo-config.php > config.php
 
 ## Library metrics
 
-
 Here are some notes about the number and type of files and the number of lines of code.
 
 ### File count
