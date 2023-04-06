@@ -251,7 +251,8 @@ was called.</dd>
     <span>
                                 &nbsp;: string|null    </span>
 </dt>
-<dd>2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.</dd>
+<dd>2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library or
+null if no error.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_GetTelemetry">GetTelemetry()</a>
@@ -616,9 +617,12 @@ it&#039;s best if it is!</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_get_passphrase_list">do_get_passphrase_list()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the lis of passphrases to use for this use case; these are stashed in
+a static variable which is used for all instances of this class, which should be fine
+because these come from a config file so they&#039;re essentially global/static data anyway and
+caching means we can avoid having to regenerate them if they&#039;re needed more than once.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_handle">do_handle()</a>
@@ -672,9 +676,10 @@ implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_is_valid_config">do_is_valid_config()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - this defines what a valid configuration looks like; basically we just need
+a valid current secret key and can have an optional extra previous secret key.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_data_encoding">do_is_valid_data_encoding()</a>
@@ -921,9 +926,9 @@ as a timing attack mitigation.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Traits-KICKASS-CRYPTO-ROUND-TRIP.html#method_generate_passphrase_list">generate_passphrase_list()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - generates a passphrase list by hashing one or both secrets.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_get_config_chunk_size">get_config_chunk_size()</a>
@@ -989,23 +994,34 @@ deserialization is enabled or not.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_curr">get_config_secret_curr()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the current secret key to use for encryption, and the first key to try
+for decryption; unless overridden by implementations this function returns the constant value
+CONFIG_OPENSSL_SECRET_CURR which should always be defined in a config file; this secret key
+is required by the round-trip use case and not relevant to the at-rest use case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_list">get_config_secret_list()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets an array of strings containing secret keys to use for the at-rest use
+case; this list is not relevant to the round-trip use case; unless overridden by
+implementations this function returns the constant value CONFIG_OPENSSL_SECRET_LIST which
+should be defined in the config file if you&#039;re using the library support for the OpenSSL
+at-rest use case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_prev">get_config_secret_prev()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets an optional extra secret key, known as the previous secret key, to try
+when decrypting input data; unless overridden by implementations this function returns the
+constant value CONFIG_OPENSSL_SECRET_PREV which can optionally be defined in the config file;
+this secret key is optional in the round-trip use case and not relevant to the at-rest use
+case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_get_const">get_const()</a>
@@ -1039,37 +1055,46 @@ defined.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_cipher">get_const_openssl_cipher()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the OpenSSL cipher algorithm to use with the the OpenSSL library;
+unless overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_CIPHER.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_iv_length">get_const_openssl_iv_length()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the length of the initialization vector expected by the cipher used
+with the OpenSSL library; unless overridden by implementations this function returns the
+constant value KICKASS_CRYPTO_OPENSSL_IV_LENGTH.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_options">get_const_openssl_options()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the options to use when calling the OpenSSL library; unless
+overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_OPTIONS.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_tag_length">get_const_openssl_tag_length()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the tag length expected by the cipher used with the OpenSSL library;
+unless overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_TAG_LENGTH.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_passphrase_length">get_const_passphrase_length()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the length of a valid passphrase; unless overridden by implementations
+this function returns the constant value KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_get_const_passphrase_length_min">get_const_passphrase_length_min()</a>
@@ -1942,11 +1967,12 @@ was called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">153</span>
+    <span class="phpdocumentor-element-found-in__line">154</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library or
+null if no error.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -4219,24 +4245,53 @@ it&#039;s best if it is!</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSslRoundTrip.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopensslroundtrip.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSslRoundTrip.php">KickassOpenSslRoundTrip.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the lis of passphrases to use for this use case; these are stashed in
+a static variable which is used for all instances of this class, which should be fine
+because these come from a config file so they&#039;re essentially global/static data anyway and
+caching means we can avoid having to regenerate them if they&#039;re needed more than once.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_get_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_get_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>The passphrases are generated from the secret keys. The secret keys are what the user puts
+in the config file, and the passphrases are a hash of a secret key used by the encryption
+library, in this case OpenSSL. The user needn't know anything about passphrases, they are
+an internal implementation detail. Good valid passphrases should be 32 bytes long and should
+be highly random.</p>
+<p>This function generates the keys if it needs to by calling generate_passphrase_list()
+which is defined on the round-trip traits used by this class, see
+KickassCrypto\Traits\KICKASS_CRYPTO_ROUND_TRIP for details.</p>
+</section>
 
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">staticvar</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>array $result the static variable that holds the generated list of passphrases.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the list of passphrases to use for encryption and decryption.</p>
+</section>
+
     
 </article>
                     <article
@@ -4576,25 +4631,27 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSslRoundTrip.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopensslroundtrip.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSslRoundTrip.php">KickassOpenSslRoundTrip.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - this defines what a valid configuration looks like; basically we just need
+a valid current secret key and can have an optional extra previous secret key.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_is_valid_config</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$problem</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_is_valid_config</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$problem</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$problem</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the config problem, or null if no problem.</p>
+</section>
 
             </dd>
             </dl>
@@ -4602,9 +4659,11 @@ implementations.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>true when config is valid, false otherwise.</p>
+</section>
+
     
 </article>
                     <article
@@ -6400,24 +6459,26 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-crypto-round-trip.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php">KICKASS_CRYPTO_ROUND_TRIP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - generates a passphrase list by hashing one or both secrets.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">generate_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">generate_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the list of strings of hashed secret keys to use as the passphrase list.</p>
+</section>
+
     
 </article>
                     <article
@@ -6823,24 +6884,29 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">258</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the current secret key to use for encryption, and the first key to try
+for decryption; unless overridden by implementations this function returns the constant value
+CONFIG_OPENSSL_SECRET_CURR which should always be defined in a config file; this secret key
+is required by the round-trip use case and not relevant to the at-rest use case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_curr</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_curr</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the current secret key or false if it's missing.</p>
+</section>
+
     
 </article>
                     <article
@@ -6856,24 +6922,31 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">214</span>
+    <span class="phpdocumentor-element-found-in__line">289</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets an array of strings containing secret keys to use for the at-rest use
+case; this list is not relevant to the round-trip use case; unless overridden by
+implementations this function returns the constant value CONFIG_OPENSSL_SECRET_LIST which
+should be defined in the config file if you&#039;re using the library support for the OpenSSL
+at-rest use case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>an array of strings, must contain at least one, and they must be valid secret
+keys.</p>
+</section>
+
     
 </article>
                     <article
@@ -6889,24 +6962,30 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">208</span>
+    <span class="phpdocumentor-element-found-in__line">273</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets an optional extra secret key, known as the previous secret key, to try
+when decrypting input data; unless overridden by implementations this function returns the
+constant value CONFIG_OPENSSL_SECRET_PREV which can optionally be defined in the config file;
+this secret key is optional in the round-trip use case and not relevant to the at-rest use
+case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_prev</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_prev</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the previous secret key or false if it's missing.</p>
+</section>
+
     
 </article>
                     <article
@@ -7084,22 +7163,24 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">172</span>
+    <span class="phpdocumentor-element-found-in__line">193</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the OpenSSL cipher algorithm to use with the the OpenSSL library;
+unless overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_CIPHER.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_openssl_cipher</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_openssl_cipher</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
@@ -7117,22 +7198,24 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">190</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the length of the initialization vector expected by the cipher used
+with the OpenSSL library; unless overridden by implementations this function returns the
+constant value KICKASS_CRYPTO_OPENSSL_IV_LENGTH.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_openssl_iv_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_openssl_iv_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
         
     
@@ -7150,22 +7233,24 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the options to use when calling the OpenSSL library; unless
+overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_OPTIONS.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_openssl_options</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_openssl_options</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
         
     
@@ -7183,22 +7268,24 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the tag length expected by the cipher used with the OpenSSL library;
+unless overridden by implementations this function returns the constant value
+KICKASS_CRYPTO_OPENSSL_TAG_LENGTH.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_openssl_tag_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_openssl_tag_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
         
     
@@ -7216,22 +7303,23 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">184</span>
+    <span class="phpdocumentor-element-found-in__line">218</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the length of a valid passphrase; unless overridden by implementations
+this function returns the constant value KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_passphrase_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_passphrase_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
         
     

@@ -102,8 +102,11 @@
     <article class="phpdocumentor-element -file">
         <h2 class="phpdocumentor-content__title">KICKASS_DEBUG_LOG.php</h2>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">2023-04-02 jj5 - these traits make a bunch of assumptions about the class that hosts them.</p>
+
+    <section class="phpdocumentor-description"><p>They've basically been designed to be in a class which extends KickassCrypto, they're not for
+use in other circumstances.</p>
+</section>
 
 
 
@@ -119,7 +122,8 @@
     
     
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/KickassCrypto-Traits-KICKASS-DEBUG-LOG.html"><abbr title="\KickassCrypto\Traits\KICKASS_DEBUG_LOG">KICKASS_DEBUG_LOG</abbr></a></dt>
-        <dd></dd>
+        <dd>2023-04-07 jj5 - these traits are defined for debugging purposes; they redefine the logging
+function so that a log is not actually written unless the DEBUG constant is defined as true.</dd>
     
     </dl>
 

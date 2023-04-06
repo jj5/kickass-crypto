@@ -1478,82 +1478,82 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
             "name": "get_openssl_error",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020earliest\u0020error\u0020message\u0020returned\u0020from\u0020the\u0020OpenSSL\u0020library.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020earliest\u0020error\u0020message\u0020returned\u0020from\u0020the\u0020OpenSSL\u0020library\u0020or\nnull\u0020if\u0020no\u0020error.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_openssl_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020active\u0020list\u0020of\u0020errors.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020error\u0020list\u0020and\u0020the\u0020OpenSSL\u0020error.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020code\u003B\u0020this\u0020will\u0020be\u0020prefixed\u0020to\u0020the\u0020base64\u0020encoded\u0020ciphertext\nso\u0020we\u0020can\u0020determine\u0020which\u0020service\u0020we\u0020need\u0020to\u0020decrypt\u0020values.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u0020to\u0020use\u0020for\u0020OpenSSL\u003B\u0020the\u0020data\u0020format\u0020is\u0020a\u0020string\u0020like\n\u0022KA0\u0022\u0020which\u0020identifies\u0020the\u0020data\u0020format\u0020used\u0020by\u0020the\u0020encryption\u0020library\u0020so\u0020we\u0020can\u0020know\u0020what\u0020to\ndo\u0020when\u0020we\u0020receive\u0020it,\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\nconstant\u0020value\u0020KICKASS_CRYPTO_DATA_FORMAT_OPENSSL.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_const_data_format"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_cipher\u0028\u0029",
             "name": "get_const_openssl_cipher",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020OpenSSL\u0020cipher\u0020algorithm\u0020to\u0020use\u0020with\u0020the\u0020the\u0020OpenSSL\u0020library\u003B\nunless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\nKICKASS_CRYPTO_OPENSSL_CIPHER.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_cipher"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_options\u0028\u0029",
             "name": "get_const_openssl_options",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020options\u0020to\u0020use\u0020when\u0020calling\u0020the\u0020OpenSSL\u0020library\u003B\u0020unless\noverridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\nKICKASS_CRYPTO_OPENSSL_OPTIONS.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_options"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_passphrase_length\u0028\u0029",
             "name": "get_const_passphrase_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020length\u0020of\u0020a\u0020valid\u0020passphrase\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\nthis\u0020function\u0020returns\u0020the\u0020constant\u0020value\u0020KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_passphrase_length"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_iv_length\u0028\u0029",
             "name": "get_const_openssl_iv_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020length\u0020of\u0020the\u0020initialization\u0020vector\u0020expected\u0020by\u0020the\u0020cipher\u0020used\nwith\u0020the\u0020OpenSSL\u0020library\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\nconstant\u0020value\u0020KICKASS_CRYPTO_OPENSSL_IV_LENGTH.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_iv_length"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_tag_length\u0028\u0029",
             "name": "get_const_openssl_tag_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020tag\u0020length\u0020expected\u0020by\u0020the\u0020cipher\u0020used\u0020with\u0020the\u0020OpenSSL\u0020library\u003B\nunless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\nKICKASS_CRYPTO_OPENSSL_TAG_LENGTH.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_tag_length"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_curr\u0028\u0029",
             "name": "get_config_secret_curr",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020current\u0020secret\u0020key\u0020to\u0020use\u0020for\u0020encryption,\u0020and\u0020the\u0020first\u0020key\u0020to\u0020try\nfor\u0020decryption\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\nCONFIG_OPENSSL_SECRET_CURR\u0020which\u0020should\u0020always\u0020be\u0020defined\u0020in\u0020a\u0020config\u0020file\u003B\u0020this\u0020secret\u0020key\nis\u0020required\u0020by\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u0020and\u0020not\u0020relevant\u0020to\u0020the\u0020at\u002Drest\u0020use\u0020case.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_curr"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_prev\u0028\u0029",
             "name": "get_config_secret_prev",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020an\u0020optional\u0020extra\u0020secret\u0020key,\u0020known\u0020as\u0020the\u0020previous\u0020secret\u0020key,\u0020to\u0020try\nwhen\u0020decrypting\u0020input\u0020data\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\nconstant\u0020value\u0020CONFIG_OPENSSL_SECRET_PREV\u0020which\u0020can\u0020optionally\u0020be\u0020defined\u0020in\u0020the\u0020config\u0020file\u003B\nthis\u0020secret\u0020key\u0020is\u0020optional\u0020in\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u0020and\u0020not\u0020relevant\u0020to\u0020the\u0020at\u002Drest\u0020use\ncase.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_prev"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_list\u0028\u0029",
             "name": "get_config_secret_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020an\u0020array\u0020of\u0020strings\u0020containing\u0020secret\u0020keys\u0020to\u0020use\u0020for\u0020the\u0020at\u002Drest\u0020use\ncase\u003B\u0020this\u0020list\u0020is\u0020not\u0020relevant\u0020to\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u003B\u0020unless\u0020overridden\u0020by\nimplementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\u0020CONFIG_OPENSSL_SECRET_LIST\u0020which\nshould\u0020be\u0020defined\u0020in\u0020the\u0020config\u0020file\u0020if\u0020you\u0027re\u0020using\u0020the\u0020library\u0020support\u0020for\u0020the\u0020OpenSSL\nat\u002Drest\u0020use\u0020case.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_encrypt_string\u0028\u0029",
             "name": "do_encrypt_string",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020encryption.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020encrypting\u0020a\u0020string\u0020by\u0020deferring\u0020to\u0020the\nOpenSSL\u0020library\u0020to\u0020do\u0020the\u0020heavy\u0020lifting\u003B\u0020returns\u0020false\u0020on\u0020failure\u0020or\u0020the\u0020encrypted\u0020result\notherwise.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_encrypt_string"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_error\u0028\u0029",
             "name": "do_error",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020register\u0020an\u0020error.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020registering\u0020an\u0020error\u003B\u0020keeps\u0020the\u0020error\u0020list\u0020up\u0020to\ndate\u0020but\u0020also\u0020keeps\u0020the\u0020OpenSSL\u0020error\u0020string\u0020up\u0020to\u0020date\u0020as\u0020well.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_decrypt_string\u0028\u0029",
             "name": "do_decrypt_string",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020decryption.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020decrypting\u0020a\u0020string\u0020by\u0020deferring\u0020to\u0020the\nOpenSSL\u0020library\u0020to\u0020do\u0020the\u0020heavy\u0020lifting\u003B\u0020returns\u0020false\u0020on\u0020failure\u0020or\u0020the\u0020decrypted\u0020result\notherwise.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_decrypt_string"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_parse_binary\u0028\u0029",
             "name": "do_parse_binary",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020extracts\u0020the\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020tag\nfrom\u0020the\u0020concatenated\u0020binary\u0020data\u003B\u0020not\u0020all\u0020service\u0020define\u0020all\u0020pieces\u003B\u0020the\u0020OpenSSL\u0020library\nwill\u0020use\u0020all\u0020three\u003B\u0020the\u0020Sodium\u0020library\u0020uses\u0020the\u0020initialization\u0020vector\u0020for\u0020its\u0020nonce\u0020and\u0020it\ndoes\u0020not\u0020use\u0020the\u0020tag.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020splitting\u0020the\u0020concatenated\u0020binary\u0020data\u0020into\u0020its\nconstituent\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020authentication\u0020tag.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_parse_binary"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020registering\u0020the\u0020telemetry\u0020for\u0020a\u0020new\u0020instance\u0020of\u0020this\nclass.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_count_this"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024error_list",
@@ -1573,12 +1573,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020lis\u0020of\u0020passphrases\u0020to\u0020use\u0020for\u0020this\u0020use\u0020case\u003B\u0020these\u0020are\u0020stashed\u0020in\na\u0020static\u0020variable\u0020which\u0020is\u0020used\u0020for\u0020all\u0020instances\u0020of\u0020this\u0020class,\u0020which\u0020should\u0020be\u0020fine\nbecause\u0020these\u0020come\u0020from\u0020a\u0020config\u0020file\u0020so\u0020they\u0027re\u0020essentially\u0020global\/static\u0020data\u0020anyway\u0020and\ncaching\u0020means\u0020we\u0020can\u0020avoid\u0020having\u0020to\u0020regenerate\u0020them\u0020if\u0020they\u0027re\u0020needed\u0020more\u0020than\u0020once.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslAtRest.html#method_do_get_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020defines\u0020what\u0020a\u0020valid\u0020configuration\u0020looks\u0020like\u003B\u0020basically\u0020we\u0020just\u0020need\na\u0020valid\u0020list\u0020of\u0020secret\u0020keys.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslAtRest.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip",
@@ -1588,12 +1588,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020lis\u0020of\u0020passphrases\u0020to\u0020use\u0020for\u0020this\u0020use\u0020case\u003B\u0020these\u0020are\u0020stashed\u0020in\na\u0020static\u0020variable\u0020which\u0020is\u0020used\u0020for\u0020all\u0020instances\u0020of\u0020this\u0020class,\u0020which\u0020should\u0020be\u0020fine\nbecause\u0020these\u0020come\u0020from\u0020a\u0020config\u0020file\u0020so\u0020they\u0027re\u0020essentially\u0020global\/static\u0020data\u0020anyway\u0020and\ncaching\u0020means\u0020we\u0020can\u0020avoid\u0020having\u0020to\u0020regenerate\u0020them\u0020if\u0020they\u0027re\u0020needed\u0020more\u0020than\u0020once.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_get_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020defines\u0020what\u0020a\u0020valid\u0020configuration\u0020looks\u0020like\u003B\u0020basically\u0020we\u0020just\u0020need\na\u0020valid\u0020current\u0020secret\u0020key\u0020and\u0020can\u0020have\u0020an\u0020optional\u0020extra\u0020previous\u0020secret\u0020key.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium",
@@ -1603,77 +1603,77 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020the\u0020constructor\u0020will\u0020throw\u0020if\u0020the\u0020environment\u0020is\u0020invalid.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method___construct"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020list\u0020of\u0020errors,\u0020it\u0027s\u0020a\u0020list\u0020of\u0020strings,\u0020it\u0020can\u0020be\u0020empty,\u0020in\u0020fact\nit\u0027s\u0020best\u0020if\u0020it\u0020is\u0021",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020list\u0020of\u0020errors\u003B\u0020errors\u0020are\u0020strings\u0020with\u0020a\u0020description\u0020of\u0020the\nproblem,\u0020the\u0020list\u0020is\u0020empty\u0020if\u0020there\u0020are\u0020no\u0020errors.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error,\u0020it\u0027s\u0020a\u0020string,\u0020or\u0020null\u0020if\u0020no\u0020error.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error\u0020as\u0020a\u0020string\u0020or\u0020returns\u0020null\u0020if\u0020there\u0020are\u0020no\nerrors.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020active\u0020list\u0020of\u0020errors.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020error\u0020list.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020code\u003B\u0020this\u0020will\u0020be\u0020prefixed\u0020to\u0020the\u0020base64\u0020encoded\u0020ciphertext\nso\u0020we\u0020can\u0020determine\u0020which\u0020service\u0020we\u0020need\u0020to\u0020decrypt\u0020values.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u0020to\u0020use\u0020for\u0020Sodium\u003B\u0020the\u0020data\u0020format\u0020is\u0020a\u0020string\u0020like\n\u0022KAS0\u0022\u0020which\u0020identifies\u0020the\u0020data\u0020format\u0020used\u0020by\u0020the\u0020encryption\u0020library\u0020so\u0020we\u0020can\u0020know\u0020what\u0020to\ndo\u0020when\u0020we\u0020receive\u0020it,\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\nconstant\u0020value\u0020KICKASS_CRYPTO_DATA_FORMAT_SODIUM.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_const_data_format"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_const_passphrase_length\u0028\u0029",
             "name": "get_const_passphrase_length",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020length\u0020of\u0020a\u0020valid\u0020passphrase\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\nthis\u0020function\u0020returns\u0020the\u0020constant\u0020value\u0020KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_const_passphrase_length"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_curr\u0028\u0029",
             "name": "get_config_secret_curr",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020current\u0020secret\u0020key\u0020to\u0020use\u0020for\u0020encryption,\u0020and\u0020the\u0020first\u0020key\u0020to\u0020try\nfor\u0020decryption\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\nCONFIG_SODIUM_SECRET_CURR\u0020which\u0020should\u0020always\u0020be\u0020defined\u0020in\u0020a\u0020config\u0020file\u003B\u0020this\u0020secret\u0020key\nis\u0020required\u0020by\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u0020and\u0020not\u0020relevant\u0020to\u0020the\u0020at\u002Drest\u0020use\u0020case.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_curr"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_prev\u0028\u0029",
             "name": "get_config_secret_prev",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020an\u0020optional\u0020extra\u0020secret\u0020key,\u0020known\u0020as\u0020the\u0020previous\u0020secret\u0020key,\u0020to\u0020try\nwhen\u0020decrypting\u0020input\u0020data\u003B\u0020unless\u0020overridden\u0020by\u0020implementations\u0020this\u0020function\u0020returns\u0020the\nconstant\u0020value\u0020CONFIG_SODIUM_SECRET_PREV\u0020which\u0020can\u0020optionally\u0020be\u0020defined\u0020in\u0020the\u0020config\u0020file\u003B\nthis\u0020secret\u0020key\u0020is\u0020optional\u0020in\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u0020and\u0020not\u0020relevant\u0020to\u0020the\u0020at\u002Drest\u0020use\ncase.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_prev"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_list\u0028\u0029",
             "name": "get_config_secret_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020an\u0020array\u0020of\u0020strings\u0020containing\u0020secret\u0020keys\u0020to\u0020use\u0020for\u0020the\u0020at\u002Drest\u0020use\ncase\u003B\u0020this\u0020list\u0020is\u0020not\u0020relevant\u0020to\u0020the\u0020round\u002Dtrip\u0020use\u0020case\u003B\u0020unless\u0020overridden\u0020by\nimplementations\u0020this\u0020function\u0020returns\u0020the\u0020constant\u0020value\u0020CONFIG_SODIUM_SECRET_LIST\u0020which\nshould\u0020be\u0020defined\u0020in\u0020the\u0020config\u0020file\u0020if\u0020you\u0027re\u0020using\u0020the\u0020library\u0020support\u0020for\u0020the\u0020OpenSSL\nat\u002Drest\u0020use\u0020case.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_encrypt_string\u0028\u0029",
             "name": "do_encrypt_string",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020encryption.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020encrypting\u0020a\u0020string\u0020by\u0020deferring\u0020to\u0020the\nSodium\u0020library\u0020to\u0020do\u0020the\u0020heavy\u0020lifting\u003B\u0020returns\u0020false\u0020on\u0020failure\u0020or\u0020the\u0020encrypted\u0020result\notherwise.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_encrypt_string"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_error\u0028\u0029",
             "name": "do_error",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020register\u0020an\u0020error.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020registering\u0020an\u0020error\u0020and\u0020keeps\u0020the\u0020error\u0020list\u0020up\u0020to\ndate.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_error"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_decrypt_string\u0028\u0029",
             "name": "do_decrypt_string",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020decryption.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020decrypting\u0020a\u0020string\u0020by\u0020deferring\u0020to\u0020the\nSodium\u0020library\u0020to\u0020do\u0020the\u0020heavy\u0020lifting\u003B\u0020returns\u0020false\u0020on\u0020failure\u0020or\u0020the\u0020decrypted\u0020result\notherwise.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_decrypt_string"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_parse_binary\u0028\u0029",
             "name": "do_parse_binary",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020extracts\u0020the\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020tag\nfrom\u0020the\u0020concatenated\u0020binary\u0020data\u003B\u0020not\u0020all\u0020service\u0020define\u0020all\u0020pieces\u003B\u0020the\u0020OpenSSL\u0020library\nwill\u0020use\u0020all\u0020three\u003B\u0020the\u0020Sodium\u0020library\u0020uses\u0020the\u0020initialization\u0020vector\u0020for\u0020its\u0020nonce\u0020and\u0020it\ndoes\u0020not\u0020use\u0020the\u0020tag.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020splitting\u0020the\u0020concatenated\u0020binary\u0020data\u0020into\u0020its\nconstituent\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020authentication\u0020tag.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_parse_binary"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020registering\u0020the\u0020telemetry\u0020for\u0020a\u0020new\u0020instance\u0020of\u0020this\nclass.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_count_this"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003A\u0024error_list",
             "name": "error_list",
-            "summary": "",
+            "summary": "2023\u002D03\u002D29\u0020jj5\u0020\u002D\u0020our\u0020list\u0020of\u0020errors\u0020is\u0020private,\u0020implementations\u0020can\u0020override\u0020the\u0020access\ninterface\u0020methods\u0020defined\u0020below.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#property_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest",
@@ -1683,12 +1683,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020lis\u0020of\u0020passphrases\u0020to\u0020use\u0020for\u0020this\u0020use\u0020case\u003B\u0020these\u0020are\u0020stashed\u0020in\na\u0020static\u0020variable\u0020which\u0020is\u0020used\u0020for\u0020all\u0020instances\u0020of\u0020this\u0020class,\u0020which\u0020should\u0020be\u0020fine\nbecause\u0020these\u0020come\u0020from\u0020a\u0020config\u0020file\u0020so\u0020they\u0027re\u0020essentially\u0020global\/static\u0020data\u0020anyway\u0020and\ncaching\u0020means\u0020we\u0020can\u0020avoid\u0020having\u0020to\u0020regenerate\u0020them\u0020if\u0020they\u0027re\u0020needed\u0020more\u0020than\u0020once.",
             "url": "classes/KickassCrypto-Sodium-KickassSodiumAtRest.html#method_do_get_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020defines\u0020what\u0020a\u0020valid\u0020configuration\u0020looks\u0020like\u003B\u0020basically\u0020we\u0020just\u0020need\na\u0020valid\u0020list\u0020of\u0020secret\u0020keys.",
             "url": "classes/KickassCrypto-Sodium-KickassSodiumAtRest.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip",
@@ -1698,72 +1698,72 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020lis\u0020of\u0020passphrases\u0020to\u0020use\u0020for\u0020this\u0020use\u0020case\u003B\u0020these\u0020are\u0020stashed\u0020in\na\u0020static\u0020variable\u0020which\u0020is\u0020used\u0020for\u0020all\u0020instances\u0020of\u0020this\u0020class,\u0020which\u0020should\u0020be\u0020fine\nbecause\u0020these\u0020come\u0020from\u0020a\u0020config\u0020file\u0020so\u0020they\u0027re\u0020essentially\u0020global\/static\u0020data\u0020anyway\u0020and\ncaching\u0020means\u0020we\u0020can\u0020avoid\u0020having\u0020to\u0020regenerate\u0020them\u0020if\u0020they\u0027re\u0020needed\u0020more\u0020than\u0020once.",
             "url": "classes/KickassCrypto-Sodium-KickassSodiumRoundTrip.html#method_do_get_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020defines\u0020what\u0020a\u0020valid\u0020configuration\u0020looks\u0020like\u003B\u0020basically\u0020we\u0020just\u0020need\na\u0020valid\u0020current\u0020secret\u0020key\u0020and\u0020can\u0020have\u0020an\u0020optional\u0020extra\u0020previous\u0020secret\u0020key.",
             "url": "classes/KickassCrypto-Sodium-KickassSodiumRoundTrip.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_CRYPTO_AT_REST",
             "name": "KICKASS_CRYPTO_AT_REST",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020defines\u0020how\u0020the\u0020passphrase\u0020list\u0020is\u0020generated\u0020for\u0020at\u002Drest\u0020use\u0020cases.",
             "url": "classes/KickassCrypto-Traits-KICKASS-CRYPTO-AT-REST.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_CRYPTO_AT_REST\u003A\u003Agenerate_passphrase_list\u0028\u0029",
             "name": "generate_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020generates\u0020a\u0020passphrase\u0020list\u0020by\u0020hashing\u0020each\u0020secret\u0020in\u0020the\u0020secret\u0020list.",
             "url": "classes/KickassCrypto-Traits-KICKASS-CRYPTO-AT-REST.html#method_generate_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_CRYPTO_ROUND_TRIP",
             "name": "KICKASS_CRYPTO_ROUND_TRIP",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020defines\u0020how\u0020the\u0020passphrase\u0020list\u0020is\u0020generated\u0020for\u0020round\u002Dtripo\u0020use\u0020cases.",
             "url": "classes/KickassCrypto-Traits-KICKASS-CRYPTO-ROUND-TRIP.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_CRYPTO_ROUND_TRIP\u003A\u003Agenerate_passphrase_list\u0028\u0029",
             "name": "generate_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020generates\u0020a\u0020passphrase\u0020list\u0020by\u0020hashing\u0020one\u0020or\u0020both\u0020secrets.",
             "url": "classes/KickassCrypto-Traits-KICKASS-CRYPTO-ROUND-TRIP.html#method_generate_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG",
             "name": "KICKASS_DEBUG",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020these\u0020traits\u0020are\u0020defined\u0020for\u0020debugging\u0020purposes\u003B\u0020they\u0020redefine\u0020the\u0020logging\nfunction\u0020so\u0020that\u0020a\u0020log\u0020is\u0020not\u0020actually\u0020written\u0020unless\u0020the\u0020DEBUG\u0020constant\u0020is\u0020defined\u0020as\u0020true\u003B\nthey\u0020generate\u0020single\u0020use\u0020secret\u0020keys\u0020and\u0020declare\u0020a\u0020valid\u0020environment\u0020so\u0020you\u0020don\u0027t\u0020have\u0020to\nworry\u0020about\u0020providing\u0020a\u0020valid\u0020config\u0020file\u003B\u0020and\u0020the\u0020delay\u0020for\u0020the\u0020minimum\u0020amount\u0020of\u0020time\u0020when\ndelay\u0020is\u0020invoked\u0020due\u0020to\u0020error.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_KEYS",
             "name": "KICKASS_DEBUG_KEYS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020these\u0020traits\u0020are\u0020defined\u0020for\u0020debugging\u0020purposes\u003B\u0020they\u0020generate\u0020single\u0020use\nsecret\u0020keys\u0020and\u0020declare\u0020a\u0020valid\u0020environment\u0020so\u0020you\u0020don\u0027t\u0020have\u0020to\u0020worry\u0020about\u0020providing\u0020a\u0020valid\n\u0020config\u0020file\u003B\u0020and\u0020the\u0020delay\u0020for\u0020the\u0020minimum\u0020amount\u0020of\u0020time\u0020when\u0020delay\u0020is\u0020invoked\u0020due\u0020to\u0020error.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-KEYS.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_KEYS\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020the\u0020environment\u0020is\u0020considered\u0020valid\u0020and\u0020there\u0020is\u0020no\u0020problem.\u0020Honest.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-KEYS.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_KEYS\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020a\u0020list\u0020of\u0020one\u0020element\u0020containing\u0020a\u0020single\u0020use\u0020passphrase.\u0020As\u0020this\npassphrase\u0020isn\u0027t\u0020stored\u0020anywhere\u0020it\u0020will\u0020be\u0020impossible\u0020to\u0020decrypt\u0020data\u0020encrypted\u0020using\u0020it\nafter\u0020the\u0020process\u0020has\u0020exited.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-KEYS.html#method_do_get_passphrase_list"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_LOG",
             "name": "KICKASS_DEBUG_LOG",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020these\u0020traits\u0020are\u0020defined\u0020for\u0020debugging\u0020purposes\u003B\u0020they\u0020redefine\u0020the\u0020logging\nfunction\u0020so\u0020that\u0020a\u0020log\u0020is\u0020not\u0020actually\u0020written\u0020unless\u0020the\u0020DEBUG\u0020constant\u0020is\u0020defined\u0020as\u0020true.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-LOG.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_LOG\u003A\u003Ado_log_error\u0028\u0029",
             "name": "do_log_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D02\u0020jj5\u0020\u002D\u0020if\u0020you\u0020include\u0020this\u0020trait\u0020logs\u0020will\u0020only\u0020be\u0020written\u0020if\u0020DEBUG\u0020is\u0020defined.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-LOG.html#method_do_log_error"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_WITHOUT_DELAY",
             "name": "KICKASS_DEBUG_WITHOUT_DELAY",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020these\u0020traits\u0020are\u0020defined\u0020for\u0020debugging\u0020purposes\u003B\u0020will\u0020delay\u0020for\u0020the\u0020minimum\namount\u0020of\u0020time\u0020when\u0020delay\u0020is\u0020invoked\u0020due\u0020to\u0020error.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-WITHOUT-DELAY.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_WITHOUT_DELAY\u003A\u003Ado_delay\u0028\u0029",
             "name": "do_delay",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020delay\u0020for\u0020the\u0020shortest\u0020time\u0020allowed.",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-WITHOUT-DELAY.html#method_do_delay"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP",

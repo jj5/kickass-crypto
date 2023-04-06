@@ -13,16 +13,22 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - sets you up with support for round-tripping...
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - sets you up with support for round-tripping...
+ */
 
 namespace KickassCrypto\Traits;
 
+/**
+ * 2023-04-07 jj5 - defines how the passphrase list is generated for round-tripo use cases.
+ */
 trait KICKASS_CRYPTO_ROUND_TRIP {
 
+  /**
+   * 2023-04-07 jj5 - generates a passphrase list by hashing one or both secrets.
+   *
+   * @return array the list of strings of hashed secret keys to use as the passphrase list.
+   */
   protected function generate_passphrase_list() {
 
     $secret_curr = $this->get_config_secret_curr();

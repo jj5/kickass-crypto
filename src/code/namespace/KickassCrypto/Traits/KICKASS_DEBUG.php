@@ -13,14 +13,19 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - sets you up for debugging and unit-testing...
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - sets you up for debugging and unit-testing...
+ */
 
 namespace KickassCrypto\Traits;
 
+/**
+ * 2023-04-07 jj5 - these traits are defined for debugging purposes; they redefine the logging
+ * function so that a log is not actually written unless the DEBUG constant is defined as true;
+ * they generate single use secret keys and declare a valid environment so you don't have to
+ * worry about providing a valid config file; and the delay for the minimum amount of time when
+ * delay is invoked due to error.
+ */
 trait KICKASS_DEBUG {
 
   // 2023-04-02 jj5 - these traits will set you up for debugging...

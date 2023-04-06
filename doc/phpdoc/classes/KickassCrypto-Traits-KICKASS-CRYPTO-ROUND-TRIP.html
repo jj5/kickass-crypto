@@ -109,12 +109,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-crypto-round-trip.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php">KICKASS_CRYPTO_ROUND_TRIP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">2023-04-07 jj5 - defines how the passphrase list is generated for round-tripo use cases.</p>
+
 
 
 
@@ -132,9 +132,9 @@
                         <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Traits-KICKASS-CRYPTO-ROUND-TRIP.html#method_generate_passphrase_list">generate_passphrase_list()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - generates a passphrase list by hashing one or both secrets.</dd>
 
         </dl>
 
@@ -160,24 +160,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-crypto-round-trip.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_CRYPTO_ROUND_TRIP.php">KICKASS_CRYPTO_ROUND_TRIP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - generates a passphrase list by hashing one or both secrets.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">generate_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">generate_passphrase_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the list of strings of hashed secret keys to use as the passphrase list.</p>
+</section>
+
     
 </article>
             </section>

@@ -156,9 +156,10 @@ stack; see the enter() and leave() functions to understand how this field is use
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#property_error_list">$error_list</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>2023-03-29 jj5 - our list of errors is private, implementations can override the access
+interface methods defined below.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-KickassCrypto.html#property_inject_delay">$inject_delay</a>
@@ -181,8 +182,7 @@ delay has been injected so that multiple errors won&#039;t trigger multiple dela
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
-the constructor succeeds then encryption and decryption should also usually succeed later on.</dd>
+<dd>2023-04-07 jj5 - the constructor will throw if the environment is invalid.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_clear_error">clear_error()</a>
@@ -330,7 +330,7 @@ do_data_encode() method.</dd>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>2023-04-07 jj5 - clears the active list of errors.</dd>
+<dd>2023-04-07 jj5 - clears the error list.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_convert_secret_to_passphrase">do_convert_secret_to_passphrase()</a>
@@ -366,10 +366,10 @@ overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_do_count_this">do_count_this()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd>2023-04-05 jj5 - by default will count the caller function (should be the constructor) and
-this class instance; can be overridden by implementations.</dd>
+<dd>2023-04-07 jj5 - does the actual work of registering the telemetry for a new instance of this
+class.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_data_decode">do_data_decode()</a>
@@ -407,8 +407,9 @@ implementations.</dd>
     <span>
                                 &nbsp;: string|false    </span>
 </dt>
-<dd>2023-04-05 jj5 - this will call the encryption library (either OpenSSL or Sodium by default)
-and do the actual decryption.</dd>
+<dd>2023-04-07 jj5 - this does the actual work of decrypting a string by deferring to the
+Sodium library to do the heavy lifting; returns false on failure or the decrypted result
+otherwise.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_delay">do_delay()</a>
@@ -429,17 +430,19 @@ implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_do_encrypt_string">do_encrypt_string()</a>
     <span>
-                                &nbsp;: string|false    </span>
+                                &nbsp;: string|null    </span>
 </dt>
-<dd>2023-04-05 jj5 - this will call the encryption library (either OpenSSL or Sodium by default)
-and do the actual encryption.</dd>
+<dd>2023-04-07 jj5 - this does the actual work of encrypting a string by deferring to the
+Sodium library to do the heavy lifting; returns false on failure or the encrypted result
+otherwise.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_do_error">do_error()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd>2023-04-05 jj5 - this function will register an error.</dd>
+<dd>2023-04-07 jj5 - does the actual work of registering an error and keeps the error list up to
+date.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_get_config_chunk_size">do_get_config_chunk_size()</a>
@@ -526,8 +529,10 @@ if the constant is not defined; can be overridden by implementations.</dd>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>2023-04-05 jj5 - the data format code; this will be prefixed to the base64 encoded ciphertext
-so we can determine which service we need to decrypt values.</dd>
+<dd>2023-04-07 jj5 - gets the data format to use for Sodium; the data format is a string like
+&quot;KAS0&quot; which identifies the data format used by the encryption library so we can know what to
+do when we receive it, unless overridden by implementations this function returns the
+constant value KICKASS_CRYPTO_DATA_FORMAT_SODIUM.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_get_const_key_hash">do_get_const_key_hash()</a>
@@ -581,15 +586,16 @@ overridden by implementations.</dd>
     <span>
                                 &nbsp;: string|null    </span>
 </dt>
-<dd>2023-04-07 jj5 - gets the most recent error, it&#039;s a string, or null if no error.</dd>
+<dd>2023-04-07 jj5 - gets the most recent error as a string or returns null if there are no
+errors.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error_list">do_get_error_list()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>2023-04-07 jj5 - gets the list of errors, it&#039;s a list of strings, it can be empty, in fact
-it&#039;s best if it is!</dd>
+<dd>2023-04-07 jj5 - returns the list of errors; errors are strings with a description of the
+problem, the list is empty if there are no errors.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_get_padding">do_get_padding()</a>
@@ -726,10 +732,8 @@ from the config file; can be overridden by implementations.</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>2023-04-05 jj5 - this function extracts the initialization vector, ciphertext, and tag
-from the concatenated binary data; not all service define all pieces; the OpenSSL library
-will use all three; the Sodium library uses the initialization vector for its nonce and it
-does not use the tag.</dd>
+<dd>2023-04-07 jj5 - does the actual work of splitting the concatenated binary data into its
+constituent initialization vector, ciphertext, and authentication tag.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html#method_do_php_base64_decode">do_php_base64_decode()</a>
@@ -947,23 +951,34 @@ deserialization is enabled or not.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_curr">get_config_secret_curr()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the current secret key to use for encryption, and the first key to try
+for decryption; unless overridden by implementations this function returns the constant value
+CONFIG_SODIUM_SECRET_CURR which should always be defined in a config file; this secret key
+is required by the round-trip use case and not relevant to the at-rest use case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_list">get_config_secret_list()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets an array of strings containing secret keys to use for the at-rest use
+case; this list is not relevant to the round-trip use case; unless overridden by
+implementations this function returns the constant value CONFIG_SODIUM_SECRET_LIST which
+should be defined in the config file if you&#039;re using the library support for the OpenSSL
+at-rest use case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_prev">get_config_secret_prev()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|false    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets an optional extra secret key, known as the previous secret key, to try
+when decrypting input data; unless overridden by implementations this function returns the
+constant value CONFIG_SODIUM_SECRET_PREV which can optionally be defined in the config file;
+this secret key is optional in the round-trip use case and not relevant to the at-rest use
+case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_get_const">get_const()</a>
@@ -997,9 +1012,10 @@ defined.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-Sodium-KickassSodium.html#method_get_const_passphrase_length">get_const_passphrase_length()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - gets the length of a valid passphrase; unless overridden by implementations
+this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_get_const_passphrase_length_min">get_const_passphrase_length_min()</a>
@@ -1392,21 +1408,23 @@ stack; see the enter() and leave() functions to understand how this field is use
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-03-29 jj5 - our list of errors is private, implementations can override the access
+interface methods defined below.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$error_list</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>..</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1508,22 +1526,35 @@ occur, these should group due to chunking.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
-the constructor succeeds then encryption and decryption should also usually succeed later on.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - the constructor will throw if the environment is invalid.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>If encryption or decryption won't be able to succeed the constructor should throw.</p>
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\KickassCrypto\KickassCrypto\KickassCryptoException">KickassCryptoException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if there are problems with the environment.</p>
 </section>
 
-    
-    
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -2413,11 +2444,11 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - clears the active list of errors.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - clears the error list.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -2634,26 +2665,26 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">315</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - by default will count the caller function (should be the constructor) and
-this class instance; can be overridden by implementations.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - does the actual work of registering the telemetry for a new instance of this
+class.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_count_this</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$caller</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">do_count_this</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$caller</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$caller</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the name of the invoking function.</p>
+                    <section class="phpdocumentor-description"><p>should be the name of the constructor, being '__construct'.</p>
 </section>
 
             </dd>
@@ -2662,9 +2693,11 @@ this class instance; can be overridden by implementations.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the current count of instances created for this class.</p>
+</section>
+
     
 </article>
                     <article
@@ -2947,35 +2980,36 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">116</span>
+    <span class="phpdocumentor-element-found-in__line">213</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - this will call the encryption library (either OpenSSL or Sodium by default)
-and do the actual decryption.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - this does the actual work of decrypting a string by deferring to the
+Sodium library to do the heavy lifting; returns false on failure or the decrypted result
+otherwise.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_decrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
+                    <span class="phpdocumentor-signature__name">do_decrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$binary</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the string to decrypt.</p>
+                    <section class="phpdocumentor-description"><p>the ciphertext to decrypt.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$passphrase</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the passphrase (in binary format, should be 32 bytes).</p>
+                    <section class="phpdocumentor-description"><p>the passphrase to use for decryption.</p>
 </section>
 
             </dd>
@@ -3107,23 +3141,24 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">174</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - this will call the encryption library (either OpenSSL or Sodium by default)
-and do the actual encryption.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - this does the actual work of encrypting a string by deferring to the
+Sodium library to do the heavy lifting; returns false on failure or the encrypted result
+otherwise.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_encrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plaintext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
+                    <span class="phpdocumentor-signature__name">do_encrypt_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plaintext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$passphrase</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$plaintext</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>the string to encrypt.</p>
@@ -3132,10 +3167,10 @@ and do the actual encryption.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$passphrase</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the passphrase (in binary format, should be 32 bytes).</p>
+                    <section class="phpdocumentor-description"><p>the passphrase to use.</p>
 </section>
 
             </dd>
@@ -3144,9 +3179,9 @@ and do the actual encryption.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string|false</span>
+    <span class="phpdocumentor-signature__response_type">string|null</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>returns the encrypted string on success or false on failure.</p>
+            <section class="phpdocumentor-description"><p>the encrypted data on success or false on error.</p>
 </section>
 
     
@@ -3164,26 +3199,26 @@ and do the actual encryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">106</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - this function will register an error.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - does the actual work of registering an error and keeps the error list up to
+date.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_error</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$error</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">do_error</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$error</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$error</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the error which has occurred, should ordinarily be on of the
-KICKASS_CRYPTO_ERROR_* constants. The return value will be ignored.</p>
+                    <section class="phpdocumentor-description"><p>the error string to register.</p>
 </section>
 
             </dd>
@@ -3192,9 +3227,11 @@ KICKASS_CRYPTO_ERROR_* constants. The return value will be ignored.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>this function always returns the value false.</p>
+</section>
+
     
 </article>
                     <article
@@ -3659,12 +3696,14 @@ if the constant is not defined; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">100</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - the data format code; this will be prefixed to the base64 encoded ciphertext
-so we can determine which service we need to decrypt values.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the data format to use for Sodium; the data format is a string like
+&quot;KAS0&quot; which identifies the data format used by the encryption library so we can know what to
+do when we receive it, unless overridden by implementations this function returns the
+constant value KICKASS_CRYPTO_DATA_FORMAT_SODIUM.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -3677,7 +3716,9 @@ so we can determine which service we need to decrypt values.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the data format string</p>
+</section>
+
     
 </article>
                     <article
@@ -3941,11 +3982,12 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the most recent error, it&#039;s a string, or null if no error.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the most recent error as a string or returns null if there are no
+errors.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -3958,7 +4000,7 @@ overridden by implementations.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|null</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>the most recent error or null if no error.</p>
+            <section class="phpdocumentor-description"><p>the error description or null if no error.</p>
 </section>
 
     
@@ -3976,12 +4018,12 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the list of errors, it&#039;s a list of strings, it can be empty, in fact
-it&#039;s best if it is!</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - returns the list of errors; errors are strings with a description of the
+problem, the list is empty if there are no errors.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -3994,7 +4036,8 @@ it&#039;s best if it is!</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>the list of errors, or an empty array if none.</p>
+            <section class="phpdocumentor-description"><p>an array of strings containing error descriptions, the list is empty if there
+are no errors.</p>
 </section>
 
     
@@ -4882,28 +4925,27 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">262</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-05 jj5 - this function extracts the initialization vector, ciphertext, and tag
-from the concatenated binary data; not all service define all pieces; the OpenSSL library
-will use all three; the Sodium library uses the initialization vector for its nonce and it
-does not use the tag.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - does the actual work of splitting the concatenated binary data into its
+constituent initialization vector, ciphertext, and authentication tag.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_parse_binary</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$nonce</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">do_parse_binary</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$nonce</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ciphertext</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$binary</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the binary data to extract the pieces from.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
@@ -4916,18 +4958,21 @@ does not use the tag.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$ciphertext</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the ciphertext extracted from the binary data.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$tag</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>the authentication tag is always false, the Sodium library doesn't use it
+because it manages its authentication tag by itself and separately.</p>
+</section>
 
             </dd>
             </dl>
@@ -4937,7 +4982,7 @@ does not use the tag.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>returns true on success; false on failure.</p>
+            <section class="phpdocumentor-description"><p>true on success or false on error.</p>
 </section>
 
     
@@ -6471,24 +6516,29 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the current secret key to use for encryption, and the first key to try
+for decryption; unless overridden by implementations this function returns the constant value
+CONFIG_SODIUM_SECRET_CURR which should always be defined in a config file; this secret key
+is required by the round-trip use case and not relevant to the at-rest use case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_curr</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_curr</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the current secret key or false if it's missing.</p>
+</section>
+
     
 </article>
                     <article
@@ -6504,24 +6554,31 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">157</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets an array of strings containing secret keys to use for the at-rest use
+case; this list is not relevant to the round-trip use case; unless overridden by
+implementations this function returns the constant value CONFIG_SODIUM_SECRET_LIST which
+should be defined in the config file if you&#039;re using the library support for the OpenSSL
+at-rest use case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_list</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>an array of strings, must contain at least one, and they must be valid secret
+keys.</p>
+</section>
+
     
 </article>
                     <article
@@ -6537,24 +6594,30 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">141</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets an optional extra secret key, known as the previous secret key, to try
+when decrypting input data; unless overridden by implementations this function returns the
+constant value CONFIG_SODIUM_SECRET_PREV which can optionally be defined in the config file;
+this secret key is optional in the round-trip use case and not relevant to the at-rest use
+case.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_config_secret_prev</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_config_secret_prev</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the previous secret key or false if it's missing.</p>
+</section>
+
     
 </article>
                     <article
@@ -6732,22 +6795,23 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php"><a href="files/src-code-namespace-kickasscrypto-sodium-kickasssodium.html"><abbr title="src/code/namespace/KickassCrypto/Sodium/KickassSodium.php">KickassSodium.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the length of a valid passphrase; unless overridden by implementations
+this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_const_passphrase_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">get_const_passphrase_length</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
         
     

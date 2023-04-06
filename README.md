@@ -1306,13 +1306,14 @@ another appropriate sentinel value) to communicate errors to the caller.
 
 Sometimes because of the nature of a typed interface it's not possible to return the boolean value
 false and in some circumstances the empty string (`''`), an empty array (`[]`), null (`null`), the
-floating-point value zero (`0.0`), or the integer zero (`0`) may be returned instead; however,
-returning false is definitely preferred if it's possible.
+floating-point value zero (`0.0`), or the integer zero (`0`) or minus one (`-1`) may be returned
+instead; however, returning false is definitely preferred if it's possible.
 
-Aside: in some rare cases minus one (`-1`) can be used as the sentinel value to signal an error,
-such as when you want to indicate an invalid array index, but in PHP minus one isn't necessarily
-an invalid array index, and returning false is still preferred. This aside is just FYI, there are
-no instances of minus one being used as a return value in this library, that doesn't happen.
+Aside: in some cases minus one (`-1`) can be used as the sentinel value to signal an error,
+such as when you want to indicate an invalid array index or an invalid count, but unlike in some
+other languages in PHP minus one isn't necessarily an invalid array index, and returning false is
+still preferred. This library does use minus one in some cases, if there's a problem with
+managing the telemetry counters.
 
 The fact that an error has occurred can be registered with your component by a call to `error()`
 so that if the callers get a false return value they can interrogate your component with a call to
@@ -1602,7 +1603,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,274 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,291 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

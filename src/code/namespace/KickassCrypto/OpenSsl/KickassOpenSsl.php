@@ -146,7 +146,8 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
   }
 
   /**
-   * 2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.
+   * 2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library or
+   * null if no error.
    *
    * @return ?string the error from the OpenSSL library or null if no error.
    */
@@ -156,6 +157,11 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - clears the error list and the OpenSSL error.
+   *
+   * @return void
+   */
   protected function do_clear_error() {
 
     $this->error_list = [];
@@ -163,60 +169,140 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the data format to use for OpenSSL; the data format is a string like
+   * "KA0" which identifies the data format used by the encryption library so we can know what to
+   * do when we receive it, unless overridden by implementations this function returns the
+   * constant value KICKASS_CRYPTO_DATA_FORMAT_OPENSSL.
+   *
+   * @return string the data format string
+   */
   protected function do_get_const_data_format() {
 
     return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the OpenSSL cipher algorithm to use with the the OpenSSL library;
+   * unless overridden by implementations this function returns the constant value
+   * KICKASS_CRYPTO_OPENSSL_CIPHER.
+   *
+   * @return string
+   */
   protected function get_const_openssl_cipher() {
 
     return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_CIPHER' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the options to use when calling the OpenSSL library; unless
+   * overridden by implementations this function returns the constant value
+   * KICKASS_CRYPTO_OPENSSL_OPTIONS.
+   *
+   * @return int
+   */
   protected function get_const_openssl_options() {
 
     return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_OPTIONS' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the length of a valid passphrase; unless overridden by implementations
+   * this function returns the constant value KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH.
+   *
+   * @return int
+   */
   protected function get_const_passphrase_length() {
 
     return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the length of the initialization vector expected by the cipher used
+   * with the OpenSSL library; unless overridden by implementations this function returns the
+   * constant value KICKASS_CRYPTO_OPENSSL_IV_LENGTH.
+   *
+   * @return int
+   */
   protected function get_const_openssl_iv_length() {
 
     return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_IV_LENGTH' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the tag length expected by the cipher used with the OpenSSL library;
+   * unless overridden by implementations this function returns the constant value
+   * KICKASS_CRYPTO_OPENSSL_TAG_LENGTH.
+   *
+   * @return int
+   */
   protected function get_const_openssl_tag_length() {
 
     return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_TAG_LENGTH' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the current secret key to use for encryption, and the first key to try
+   * for decryption; unless overridden by implementations this function returns the constant value
+   * CONFIG_OPENSSL_SECRET_CURR which should always be defined in a config file; this secret key
+   * is required by the round-trip use case and not relevant to the at-rest use case.
+   *
+   * @return string|false the current secret key or false if it's missing.
+   */
   protected function get_config_secret_curr() {
 
     return $this->get_const( 'CONFIG_OPENSSL_SECRET_CURR' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets an optional extra secret key, known as the previous secret key, to try
+   * when decrypting input data; unless overridden by implementations this function returns the
+   * constant value CONFIG_OPENSSL_SECRET_PREV which can optionally be defined in the config file;
+   * this secret key is optional in the round-trip use case and not relevant to the at-rest use
+   * case.
+   *
+   * @return string|false the previous secret key or false if it's missing.
+   */
   protected function get_config_secret_prev() {
 
     return $this->get_const( 'CONFIG_OPENSSL_SECRET_PREV' );
 
   }
 
+  /**
+   *2023-04-07 jj5 - gets an array of strings containing secret keys to use for the at-rest use
+   * case; this list is not relevant to the round-trip use case; unless overridden by
+   * implementations this function returns the constant value CONFIG_OPENSSL_SECRET_LIST which
+   * should be defined in the config file if you're using the library support for the OpenSSL
+   * at-rest use case.
+   *
+   * @return array an array of strings, must contain at least one, and they must be valid secret
+   * keys.
+   */
   protected function get_config_secret_list() {
 
     return $this->get_const( 'CONFIG_OPENSSL_SECRET_LIST' );
 
   }
 
+  /**
+   * 2023-04-07 jj5 - this does the actual work of encrypting a string by deferring to the
+   * OpenSSL library to do the heavy lifting; returns false on failure or the encrypted result
+   * otherwise.
+   *
+   * @param string $plaintext the string to encrypt.
+   *
+   * @param string $passphrase the passphrase to use.
+   *
+   * @return ?string the encrypted data on success or false on error.
+   */
   protected function do_encrypt_string( $plaintext, $passphrase ) {
 
     $iv = $this->php_random_bytes( $this->get_const_openssl_iv_length() );
@@ -265,6 +351,14 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of registering an error; keeps the error list up to
+   * date but also keeps the OpenSSL error string up to date as well.
+   *
+   * @param string $error the error string to register.
+   *
+   * @return boolean this function always returns the value false.
+   */
   protected function do_error( $error ) {
 
     $this->error_list[] = $error;
@@ -283,6 +377,17 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - this does the actual work of decrypting a string by deferring to the
+   * OpenSSL library to do the heavy lifting; returns false on failure or the decrypted result
+   * otherwise.
+   *
+   * @param string $binary the ciphertext to decrypt.
+   *
+   * @param string $passphrase the passphrase to use for decryption.
+   *
+   * @return string|false returns the decrypted string on success or false on failure.
+   */
   protected function do_decrypt_string( $binary, $passphrase ) {
 
     if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
@@ -321,6 +426,20 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of splitting the concatenated binary data into its
+   * constituent initialization vector, ciphertext, and authentication tag.
+   *
+   * @param string $binary the binary data to extract the pieces from.
+   *
+   * @param string $iv the initialization vector extracted from the binary data.
+   *
+   * @param string $ciphertext the ciphertext extracted from the binary data.
+   *
+   * @param string $tag the authentication tag extracted from the binary data.
+   *
+   * @return boolean true on success or false on error.
+   */
   protected function do_parse_binary( $binary, &$iv, &$ciphertext, &$tag ) {
 
     // 2023-04-02 jj5 - the binary data is: IV + ciphertext + tag; the IV and tag are fixed length
@@ -381,6 +500,14 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of registering the telemetry for a new instance of this
+   * class.
+   *
+   * @param string $caller should be the name of the constructor, being '__construct'.
+   *
+   * @return int the current count of instances created for this class.
+   */
   protected function do_count_this( $caller ) {
 
     $this->count_function( $caller );

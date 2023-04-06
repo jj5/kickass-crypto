@@ -13,19 +13,28 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-06 jj5 - this minimizes the delay for errors during testing.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-06 jj5 - this minimizes the delay for errors during testing.
+ */
 
 namespace KickassCrypto\Traits;
 
+/**
+ * 2023-04-07 jj5 - these traits are defined for debugging purposes; will delay for the minimum
+ * amount of time when delay is invoked due to error.
+ */
 trait KICKASS_DEBUG_WITHOUT_DELAY {
 
+  /**
+   * 2023-04-07 jj5 - delay for the shortest time allowed.
+   *
+   * @param int $ns_min the minimum time nominated by the caller, this is what we use.
+   *
+   * @param int $ns_max the maximum time nominated by the caller, this is ignored.
+   */
   protected function do_delay( $ns_min, $ns_max ) {
 
-    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
+    $this->php_time_nanosleep( 0, $ns_min );
 
   }
 }
