@@ -19,5 +19,5 @@
  * @link https://github.com/jj5/kickass-crypto
  */
 
-define( 'CONFIG_SODIUM_SECRET_CURR', 'xxNfmRE6NN9fqkk1JSLPXGI4frGWCLR9F5UzwXKWy4zKCZWaF5choDHsxQU5T/jF/5YJcaAIQt+h/D/QQ0+aZtvD' );
+define( 'CONFIG_SODIUM_SECRET_CURR', 'qbvWFTw+ERoMG8YgM6qwOvl4WxWOKkHHo1+RcHz8ZY9wS6rmiWzwguvD4tPJzvdRHKIV2miayJZ+X3+zUqnQZahx' );
 define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );

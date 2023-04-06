@@ -26,24 +26,24 @@ define( 'CONFIG_ENCRYPTION_PHPS_ENABLE', true );
 
 define(
   'CONFIG_OPENSSL_SECRET_CURR',
-  '8JslPlV7cZSfwmuDG12VZlAvQrBudzFF/EuS/LCk+Q4KyZzv/3rinpl1M4FpHNxg3nA4hCnfWO2epQaIhUxsQEJm'
+  'VKhrvUzhIYYxgIWbvWati+1iMRpnFt/lZ+7ZhCPowco19kty6OtIfineUzZWMLu06knpLSpvYtv5WMw6NigW8J5a'
 );
 
 define(
   'CONFIG_OPENSSL_SECRET_LIST',
   [
-    'wSUAq0BXxnf6ZeUuWdJ6DLh/S1pdLF0iGvhDdPKFAuLmhOlX5aCSflnQpt5EzsFiXfylc/MeuHTX+mDJ1hy6NpDB',
+    'EXoswhfHjbWRpPBNwHrYadpCIgZJbJR6vY4p1gUtwafnVB7J+sh432WCD4rD61lP8I4Te1VkjLXP+nzka2axJCq0',
   ]
 );
 
 define(
   'CONFIG_SODIUM_SECRET_CURR',
-  '2iN55G40g3k/mDPvxQ5yByyHA6l3vuHgFnQN25DOyYJSeftHURo+KzGcrm2WoQ3v6ZXXKKa7PabxRT8cC+oqheQY'
+  'bfeMpaNaFOrTcbFcVyeaxm18TK1DzjX1OMRSkvdSk6DU/rq73/rAA1Hkx8wOdW/u16SWmVD1Wo4zmx2Vs8X89YMG'
 );
 
 define(
   'CONFIG_SODIUM_SECRET_LIST',
   [
-    'j0PkapOBIlsQH/DnQvfJ+dxAzI9sAhx6EoMnSoFudkkg61BEo2IRBJs4tC1nFeYdgwWX9ElraAbhAjM2IQwoZG38',
+    'VVOOPjiNqlbNHHKOgV7QLTYtnQdCZKXEDYuimP4Uvj0pbtNuGReJBuJtA9GZgV8Vmgge0whk2IiFio+gwGR2MfZF',
   ]
 );

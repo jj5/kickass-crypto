@@ -21,24 +21,24 @@
 
 define(
   'CONFIG_OPENSSL_SECRET_CURR',
-  'G0TaVbVBtMnEa1y3mQf31rSsYKdvcy+BxFEzqfZaO7pMiOvxk1zM38LvBJxmu2t6F/zc0HLdQpGNnymjG6F/UF6M'
+  'FN5uRR0omfjh0DlUIOkJZ8ta2wlUuKXWidOsSCI5Ig6YSWA24DrWYZKJUOxpjcgOnVUxUUX9DhAIaPV+LjFPm1Yy'
 );
 
 define(
   'CONFIG_OPENSSL_SECRET_LIST',
   [
-    'kBJmo5rv5SprmgzFkJytLH+w2sArDax64YLD1yiSfOSAUKJXWL+FPnzkSPbphwPp3W7zxp/9G/yK3c9Q9xMtQTe3',
+    'Ge2EiwzBsGgJ2nng2OySZwywg0a28DU/trHqKYQGrSk9IqhvZqhYnDo3ZAUf0BOUPyqrGhc1YLS8xHfECFXp3qv6',
   ]
 );
 
 define(
   'CONFIG_SODIUM_SECRET_CURR',
-  '+mcxd3GYEW0lnm3W5Wbdxb2FQyzy4e8poqdZ7uZDKnb70Mhc9lYtjWgkyNidMdA6g1c5YE3lNpOjJ3d2B2UysXh7'
+  'Piwk8BgxLKVILOTIi4I7+MQg536IU/mAJhkws2QIJL+lkQbC3XTxG1pUEQWZIwWDye2HrLSuueycntLa+wUS3bMZ'
 );
 
 define(
   'CONFIG_SODIUM_SECRET_LIST',
   [
-    'GivMCxYIyngFIpbPNUHHxAnWIineNMDwuoU/6ux0K6igDeXxPrPrC1yD+VUMUIKak2J2TNBspipLC71zGyJpGzoV',
+    'v/RL3G4sUUhiFIpz+OKXbEX4RRfS8dox0AkQFxTWhFeki2zjclJFq1zENqgCPzDF0knO6QHi7Nxis6ptp3hAo5Fy',
   ]
 );

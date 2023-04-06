@@ -19,5 +19,5 @@
  * @link https://github.com/jj5/kickass-crypto
  */
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'LpzbEr5w0e7J4avfJ1s59mVhINzQjOwXx4uJIzOO4lPwW7Hm3rGQMXavgYFHDlAsYLSXgw5dNIu/q/xJ5AsJVXOz' );
+define( 'CONFIG_OPENSSL_SECRET_CURR', 'v1StxZRxaKWV7wdGthNBG5lkvdannpCdZUyAOfypUvlYZz84o1Z+Hul8BdM7xaVobvvUYUcemLYmPXbk36Zi7m1d' );
 define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );
