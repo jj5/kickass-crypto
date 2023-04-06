@@ -810,18 +810,17 @@ the delay logic and it might be less safe to do so.
 
 ## Exceptions and errors
 
-When an instance is one of:
+When an instance of one of of the following is created the configuration settings are validated.
 
 * `KickassSodiumRoundTrip`
 * `KickassSodiumAtRest`
 * `KickassOpenSSLRoundTrip`
 * `KickassOpenSSLAtRest`
 
-is created the configuration settings are validated. If the configuration settings
-are not valid the constructor will throw an exception. If the constructor succeeds
-then encryption and decryption later on should also (usually) succeed. If there
-are any configuration problems that will mean encryption or decryption won't
-be able to succeed the constructor should throw.
+If the configuration settings are not valid the constructor will throw an exception. If the
+constructor succeeds then encryption and decryption later on should also (usually) succeed. If
+there are any configuration problems that will mean encryption or decryption won't be able to
+succeed the constructor should throw.
 
 This library defines its own exception class called `KickassException`. This
 works like a normal Exception except that it adds a method `getData()` which
