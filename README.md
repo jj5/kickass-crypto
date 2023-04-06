@@ -1254,7 +1254,7 @@ deep our calls are nested using an enter/leave discipline, like this:
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1383,7 +1383,7 @@ Following is some example code showing how to handle exceptions and manage error
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1425,7 +1425,7 @@ working with string.'`. In this library the names of error constants begin with
 [src/code/global/constant/framework.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/constant/framework.php)
 file.
 
-Note that we don't even assume it's safe to call `catch()`, `ignore()`, or `error()`; we wrap all
+Note that we don't even assume it's safe to call `handle()`, `ignore()`, or `error()`; we wrap all
 such calls in try-catch handlers too. There are some edge case situations where even these
 functions which are supposed to be thread safe can lead to exceptions, such as when there's
 infinite recursion which gets aborted by the run-time. If you're an expert on such matters the
@@ -1435,8 +1435,8 @@ Now I will agree that the above code is kind of insane, it's just that it seems 
 no avoiding it if we want to be safe. We have to explicitly allow the AssertionError exception
 every single time in every single method just so that assertions remain useful to us as a
 development tool, and then when we handle other exceptions we want to make some noise about them
-so we call `catch()`, but the thing is that `catch()` will defer to `do_catch()` which can be
-overridden by implementers, which means it can throw... so if `catch()` throws we don't want to
+so we call `handle()`, but the thing is that `handle()` will defer to `do_handle()` which can be
+overridden by implementers, which means it can throw... so if `handle()` throws we don't want to
 just do nothing, we want to give the programmer a last chance to learn of their errant code,
 so we notify that we're going to ignore the exception with a call to `ignore()`, but that will
 defer to `do_ignore()`, which the programmer could override, and throw from... but if that
@@ -1488,7 +1488,7 @@ Following is a good example from the code.
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
