@@ -14,7 +14,7 @@
 \************************************************************************************************/
 
 /**
- * 2023-03-31 jj5 - this config file is for testing purposes; don't copy these keys!
+ * 2023-04-07 jj5 - this config file is for testing purposes; don't copy these keys!
  *
  * @link https://github.com/jj5/kickass-crypto
  */
