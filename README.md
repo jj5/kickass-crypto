@@ -1156,10 +1156,12 @@ can take care of fixing up some of the smaller details for us.
 
 The second advantage of this function is that it's marked as final. This means that the
 implementer can maintain particular standards within the library and be assured that those
-standards haven't been elided, accidentally or otherwise. Having code that you rely on marked as
-final helps you to reason about the possible states of your component. In the example given above
-the requirement that `$setting_b` is less that 200 bytes in length and that requirement cannot be
-changed by implementations; implementations can only make the requirements stronger.
+standards haven't been elided, accidentally or otherwise.
+
+Having code that you rely on marked as final helps you to reason about the possible states of your
+component. In the example given above the requirement that `$setting_b` is less that 200 bytes in
+length and that requirement cannot be changed by implementations; implementations can only make
+the requirements stronger.
 
 And another advantage of the typed interface is that it provides extra information which can be
 automatically added into the documentation.
