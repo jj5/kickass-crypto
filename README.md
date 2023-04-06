@@ -511,7 +511,7 @@ function by calling the function and passing the new instance as the sole
 parameter, like this:
 
 ```
-class MyKickassCrypto extends \Kickass\Crypto\Framework\KickassCrypto {
+class MyKickassCrypto extends \KickassCrypto\KickassCrypto {
 
   protected function do_is_valid_config( &$problem = null ) { return TODO; }
   protected function do_get_passphrase_list() { return TODO; }
