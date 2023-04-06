@@ -14,14 +14,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - these tests are silly. there's really no need to run them. the values for
-// $n were picked based on what my development workstation could handle, you might have more
-// or less luck.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - these tests are silly. there's really no need to run them. the values for
+ * $n were picked based on what my development workstation could handle, you might have more
+ * or less luck.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

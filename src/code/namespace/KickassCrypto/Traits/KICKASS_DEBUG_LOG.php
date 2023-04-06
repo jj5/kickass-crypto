@@ -17,6 +17,8 @@
  * 2023-04-02 jj5 - these traits make a bunch of assumptions about the class that hosts them.
  * They've basically been designed to be in a class which extends KickassCrypto, they're not for
  * use in other circumstances.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

@@ -2,7 +2,7 @@
 /nbproject/
 /etc/
 /log/
-config.php
+/config.php
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

@@ -523,27 +523,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_OPENSSL_CIPHER",
             "name": "KICKASS_CRYPTO_OPENSSL_CIPHER",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020OpenSSL\u0020cipher\u0020we\u0020use,\u0020this\u0020should\u0020never\u0020be\u0020changed...\u0020at\u0020least\nnot\u0020without\u0020a\u0020lot\u0020of\u0020support\u0020to\u0020upgrading\u0020to\u0020a\u0020new\u0020cipher.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_CIPHER"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_OPENSSL_OPTIONS",
             "name": "KICKASS_CRYPTO_OPENSSL_OPTIONS",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020options\u0020for\u0020the\u0020OpenSSL\u0020openssl_encrypt\u0028\u0029\u0020function,\u0020these\u0020should\nnot\u0020be\u0020changed.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_OPTIONS"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH",
             "name": "KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020passphrase\u0020length\u0020excepted\u0020by\u0020the\u0020openssl_encrypt\u0028\u0029\u0020function,\u0020this\nshould\u0020not\u0020be\u0020changed.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_OPENSSL_IV_LENGTH",
             "name": "KICKASS_CRYPTO_OPENSSL_IV_LENGTH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020length\u0020of\u0020the\u0020initialization\u0020vector\u0020expected\u0020by\u0020the\nopenssl_encrypt\u0028\u0029\u0020and\u0020openssl_decrypt\u0028\u0029\u0020fucntions,\u0020this\u0020should\u0020not\u0020be\u0020changed.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_IV_LENGTH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_OPENSSL_TAG_LENGTH",
             "name": "KICKASS_CRYPTO_OPENSSL_TAG_LENGTH",
-            "summary": "",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020tag\u0020length\u0020of\u0020the\u0020tag\u0020generated\u0020by\u0020the\u0020openssl_encrypt\u0028\u0029\u0020function\nand\u0020expected\u0020by\u0020the\u0020openssl_decrypt\u0028\u0029\u0020function,\u0020this\u0020should\u0020not\u0020be\u0020changed.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_TAG_LENGTH"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_CONFIG_PROBLEM_MISSING_OPENSSL_SECRET_CURR",

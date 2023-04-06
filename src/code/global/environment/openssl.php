@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - environment validation for the OpenSSL module.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - environment validation for the OpenSSL module.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-03-31 jj5 - this function is for validating our run-time environment. If there's a problem
@@ -69,6 +69,7 @@ function kickass_crypto_validate_environment_openssl() {
 
       /**
        * 2023-04-05 jj5 - defines whether the OpenSSL library check is disabled or not.
+       *
        * @var boolean
        */
       define( 'KICKASS_CRYPTO_DISABLE_OPENSSL_CHECK', false );

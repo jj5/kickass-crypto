@@ -14,30 +14,42 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
-//
-\************************************************************************************************/
+/**
+ * 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
+/**
+ * 2023-04-07 jj5 - OpenSSL round-trip
+ */
 class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
+/**
+ * 2023-04-07 jj5 - OpenSSL at-rest
+ */
 class TestOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
+/**
+ * 2023-04-07 jj5 - Sodium round-trip
+ */
 class TestSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
+/**
+ * 2023-04-07 jj5 - Sodium at-rest
+ */
 class TestSodiumAtRest extends \KickassCrypto\Sodium\KickassSodiumAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;

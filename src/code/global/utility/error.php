@@ -13,14 +13,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - help with error management...
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - help with error management...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-04-05 jj5 - this function will set up a standard run-time environment.
+ *
  * @return void
  */
 function kickass_crypto_setup_environment() {
@@ -37,9 +38,13 @@ function kickass_crypto_setup_environment() {
  * function. This function doesn't throw if error reporting is disabled.
  *
  * @param int $errno the error number.
+ *
  * @param string $errstr the error string.
+ *
  * @param string $errfile the file the error was triggered from.
+ *
  * @param string $errline the line in the file the error was triggered from.
+ *
  * @throws ErrorException the PHP ErrorException class.
 */
 function kickass_crypto_handle_error( $errno, $errstr, $errfile, $errline ) {

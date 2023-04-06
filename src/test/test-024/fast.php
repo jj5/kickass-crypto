@@ -14,11 +14,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-06 jj5 - this test is to checkout what happens when we try to recurse infinitely.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-06 jj5 - this test is to checkout what happens when we try to recurse infinitely.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 //define( 'DEBUG', true );
 

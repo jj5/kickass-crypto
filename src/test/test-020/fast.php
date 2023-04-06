@@ -14,12 +14,14 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - these tests make sure we can decode things that were encrypted using a
-// different data encoding than the one that we're currently using.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - these tests make sure we can decode things that were encrypted using a
+ * different data encoding than the one that we're currently using.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

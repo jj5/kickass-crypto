@@ -14,12 +14,14 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this test takes the various constructors for a spin, all code paths which
-// should result in an exception from the constructor should be exercised...
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this test takes the various constructors for a spin, all code paths which
+ * should result in an exception from the constructor should be exercised...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 

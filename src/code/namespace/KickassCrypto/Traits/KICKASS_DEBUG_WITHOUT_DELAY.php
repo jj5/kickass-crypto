@@ -15,6 +15,8 @@
 
 /**
  * 2023-04-06 jj5 - this minimizes the delay for errors during testing.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

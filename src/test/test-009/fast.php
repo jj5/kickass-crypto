@@ -14,16 +14,18 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-31 jj5 - these tests take our JSON encoding for a spin.
+/**
+ * 2023-03-31 jj5 - these tests take our JSON encoding for a spin.
+ *
+ * 2023-03-31 jj5 - NOTE: we don't use the test-host for these unit tests, because we need to
+ * configure our environment specially before it's loaded, so we take care of such things for
+ * ourselves in this script. See the fast.sh shell script for details about how this fast.php
+ * script is run.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-// 2023-03-31 jj5 - NOTE: we don't use the test-host for these unit tests, because we need to
-// configure our environment specially before it's loaded, so we take care of such things for
-// ourselves in this script. See the fast.sh shell script for details about how this fast.php
-// script is run.
-//
-\************************************************************************************************/
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test.php';

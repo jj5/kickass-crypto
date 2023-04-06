@@ -20,6 +20,8 @@
  * directory. You can generate a demo config.php file with this command:
  *
  * $ [ -f config.php ] || php bin/gen-demo-config.php > config.php
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 if ( file_exists( __DIR__ . '/../../inc/sodium.php' ) ) {

@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - environment validation for the OpenSSL module.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - environment validation for the OpenSSL module.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-04-03 jj5 - this function is for validating our run-time environment. If there's a problem
@@ -66,6 +66,7 @@ function kickass_crypto_validate_environment_sodium() {
 
       /**
        * 2023-04-05 jj5 - defines whether the Sodium library check is disabled or not.
+       *
        * @var boolean
        */
       define( 'KICKASS_CRYPTO_DISABLE_SODIUM_CHECK', false );

@@ -14,11 +14,13 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-31 jj5 - this test does some very rudiementary testing of our class counter telemetry.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-31 jj5 - this test does some very rudiementary testing of our class counter telemetry.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 

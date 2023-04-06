@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'y5stoXvk/CKGnorVm2Mq9F7ey7rHg4P204uCVyhTI57tbxZa8pav6sBDzIxp+UdNKTFoOJ6dmcbx7vRexUvs5hpf' );
+define( 'CONFIG_OPENSSL_SECRET_CURR', 'LpzbEr5w0e7J4avfJ1s59mVhINzQjOwXx4uJIzOO4lPwW7Hm3rGQMXavgYFHDlAsYLSXgw5dNIu/q/xJ5AsJVXOz' );
 define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );

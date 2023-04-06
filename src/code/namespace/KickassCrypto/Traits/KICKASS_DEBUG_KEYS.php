@@ -17,6 +17,8 @@
  * 2023-04-02 jj5 - if you include this trait you'll be set up with a test key and a valid
  * config. The secret key isn't kept anywhere so you won't be able to decrypt data after your
  * test completes.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

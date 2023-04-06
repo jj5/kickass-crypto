@@ -15,6 +15,8 @@
 
 /**
  * 2023-04-04 jj5 - sets you up with support for round-tripping...
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

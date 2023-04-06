@@ -14,15 +14,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-06 jj5 - this test just takes the services for a spin with debugging enabled. When the
-// DEBUG constant is true that can have some subtle difference in the code, for example we use
-// different types of padding, so this is just to see that everything seems to be in order.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-06 jj5 - this test just takes the services for a spin with debugging enabled. When the
+ * DEBUG constant is true that can have some subtle difference in the code, for example we use
+ * different types of padding, so this is just to see that everything seems to be in order.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'DEBUG', true );
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

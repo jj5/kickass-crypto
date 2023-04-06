@@ -14,11 +14,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
-//
-\************************************************************************************************/
+/**
+ * 2023-03-31 jj5 - these are bits and pieces for running our crypto tests...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 

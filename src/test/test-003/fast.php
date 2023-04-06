@@ -14,13 +14,13 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this test takes the various errors for a spin, all code paths which should
-// result in an error should be exercised... the code paths which will run quickly are in this
-// test, fast.php, other tests which include a delay should be added in slow.php if necessary.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this test takes the various errors for a spin, all code paths which should
+ * result in an error should be exercised... the code paths which will run quickly are in this
+ * test, fast.php, other tests which include a delay should be added in slow.php if necessary.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 //define( 'DEBUG', true );
 

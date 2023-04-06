@@ -14,17 +14,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - this script takes the serialization overrides for a spin...
-//
-// 2023-04-05 jj5 - NOTE: this code remains valid but it was written before PHP serialization
-// support was implemented. As PHP serialization support is now done you don't need to do it
-// yourself such as its done in this script.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - this script takes the serialization overrides for a spin...
+ *
+ * 2023-04-05 jj5 - NOTE: this code remains valid but it was written before PHP serialization
+ * support was implemented. As PHP serialization support is now done you don't need to do it
+ * yourself such as its done in this script.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'DEBUG', true );
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/etc/config.php';

@@ -14,15 +14,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-06 jj5 - this test just checks the error reporting and clearing works properly.
-//
-// 2023-04-06 jj5 - TODO: the tests in this script could be more comprehensive.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-06 jj5 - this test just checks the error reporting and clearing works properly.
+ *
+ * 2023-04-06 jj5 - TODO: the tests in this script could be more comprehensive.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'DEBUG', true );
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - these are some components to use with both the fast and slow tests.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - these are some components to use with both the fast and slow tests.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 class TestCrypto extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 

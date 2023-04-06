@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'CONFIG_SODIUM_SECRET_CURR', 'hhEdM+AR/jceOAfhsif+t/q0IsI+oIdHz9MaxGJdAY5t3rpDQLBFQfeF3Q2z9+64NJMHMDLJW2wxctPvMn3VksyO' );
+define( 'CONFIG_SODIUM_SECRET_CURR', 'xxNfmRE6NN9fqkk1JSLPXGI4frGWCLR9F5UzwXKWy4zKCZWaF5choDHsxQU5T/jF/5YJcaAIQt+h/D/QQ0+aZtvD' );
 define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );

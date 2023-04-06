@@ -14,13 +14,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
-// values. All the tests here should run relatively quickly because they succeed and don't cause
-// any delay.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
+ * values. All the tests here should run relatively quickly because they succeed and don't cause
+ * any delay.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

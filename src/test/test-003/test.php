@@ -14,12 +14,12 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - this script is just for looking at specific cases which ordinarily will run
-// in fast.php.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - this script is just for looking at specific cases which ordinarily will run
+ * in fast.php.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 define( 'DEBUG', true );
 

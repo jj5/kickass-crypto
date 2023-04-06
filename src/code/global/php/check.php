@@ -13,17 +13,18 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - PHP version validation.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - PHP version validation.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 kickass_crypto_validate_php();
 
 /**
  * 2023-04-04 jj5 - this function makes sure we're running a supported version of PHP; don't use
  * fancy PHP features because they might not be available in older versions.
+ *
  * @return void
  */
 function kickass_crypto_validate_php() {
@@ -40,6 +41,7 @@ function kickass_crypto_validate_php() {
 
       /**
        * 2023-04-05 jj5 - defines whether the PHP version check is disabled or not.
+       *
        * @var boolean
        */
       define( 'KICKASS_CRYPTO_DISABLE_PHP_VERSION_CHECK', false );

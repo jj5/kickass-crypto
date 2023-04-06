@@ -14,13 +14,13 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-06 jj5 - this test just checks some sample code which is in the documentation.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-06 jj5 - this test just checks some sample code which is in the documentation.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
-define( 'DEBUG', true );
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 

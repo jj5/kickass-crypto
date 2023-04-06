@@ -32,6 +32,8 @@
  * 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
  * notify() method has been defined to notify exceptions. After exceptions are notified they are
  * rethrown.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

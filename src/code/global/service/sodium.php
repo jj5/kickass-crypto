@@ -13,17 +13,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
-// encryption components for each use case. If you want to override with a different
-// implementation you can pass in a new instance, or you can manage construction yourself and
-// access some other way. These functions are how you should ordinarily access this library.
-//
-// 2023-04-04 jj5 - the service locators will default to using the Sodium module. These are the
-// service locators which will be included by default.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - these two service locator functions will automatically create appropriate
+ * encryption components for each use case. If you want to override with a different
+ * implementation you can pass in a new instance, or you can manage construction yourself and
+ * access some other way. These functions are how you should ordinarily access this library.
+ *
+ * 2023-04-04 jj5 - the service locators will default to using the Sodium module. These are the
+ * service locators which will be included by default.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-04-05 jj5 - this is the round-trip service locator defined for use by the Sodium module.

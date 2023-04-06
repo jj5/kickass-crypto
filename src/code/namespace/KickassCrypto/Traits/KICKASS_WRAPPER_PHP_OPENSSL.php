@@ -15,6 +15,8 @@
 
 /**
  * 2023-04-04 jj5 - these are wrappers for the OpenSSL library functions.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 namespace KickassCrypto\Traits;

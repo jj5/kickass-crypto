@@ -13,16 +13,17 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-31 jj5 - this file is for bits and pieces we want in all of our unit tests, including
-// unit tests which are managed by our unit test host and those which, for various reasons, host
-// themselves.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-31 jj5 - this file is for bits and pieces we want in all of our unit tests, including
+ * unit tests which are managed by our unit test host and those which, for various reasons, host
+ * themselves.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-04-05 jj5 - this function will set up a test environment.
+ *
  * @return void
  */
 function kickass_crypto_setup_unit_test_environment() {
@@ -38,13 +39,21 @@ function kickass_crypto_setup_unit_test_environment() {
  * values.
  *
  * @param float $nan the NaN (Not a Number) floating-point value
+ *
  * @param float $pos_inf the positive infinity floating-point value
+ *
  * @param float $neg_inf the negative infinity floating-point value
+ *
  * @param float $pos_zero the positive zero floating-point value
+ *
  * @param float $neg_zero the negative zero floating-point value
+ *
  * @param float $float_min the minimum floating-point value
+ *
  * @param float $float_max the maximum floating-point value
+ *
  * @param float $epslion the smallest absolute non-zero floating-point value
+ *
  * @return void
 */
 function kickass_crypto_get_floats(

@@ -14,11 +14,13 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-02 jj5 - this test takes the four crypto providers for a good long spin...
-//
-\************************************************************************************************/
+/**
+ * 2023-04-02 jj5 - this test takes the four crypto providers for a good long spin...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 require_once __DIR__ . '/etc/config.php';

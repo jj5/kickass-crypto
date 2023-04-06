@@ -14,13 +14,15 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - this test verifies that we can encrypt and decrypt particularly large values
-// using PHP serialization; as this takes a fairly long time these tests are defined in this
-// slow.php file.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - this test verifies that we can encrypt and decrypt particularly large values
+ * using PHP serialization; as this takes a fairly long time these tests are defined in this
+ * slow.php file.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';

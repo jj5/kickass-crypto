@@ -14,11 +14,13 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this test takes the round-trip crypto for a spin using various chunk sizes...
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this test takes the round-trip crypto for a spin using various chunk sizes...
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
+
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 

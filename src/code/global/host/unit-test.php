@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - unit test host.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - unit test host.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 /**
  * 2023-03-31 jj5 - this function hosts a unit test, it's just for convenience. It sets up your
@@ -26,6 +26,7 @@
  * your code so you shouldn't have to worry about whether it is defined or not.
  *
  * @param array $argv the command-line options.
+ *
  * @return void
  */
 function main( $argv ) {
@@ -43,7 +44,9 @@ function main( $argv ) {
     if ( ! defined( 'DEBUG' ) ) {
 
       /**
-       * 2023-04-05 jj5 - defines whether debugging is enabled or not.
+       * 2023-04-05 jj5 - defines whether debugging is enabled or not; if you don't define this
+       * value in the config file it will be defined as false for you at run time.
+       *
        * @var boolean
        */
       define( 'DEBUG', false );

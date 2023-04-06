@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this config file is problematic because the secret list includes an invalid
-// key.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this config file is problematic because the secret list includes an invalid
+ * key.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 define( 'CONFIG_OPENSSL_SECRET_LIST', [ 'invalid' ] );

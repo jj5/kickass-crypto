@@ -20,6 +20,8 @@
  * need to override any of these, for instance to test the correct handling of error scenarios,
  * pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
  * these... please see the documentation in README.md for an explanation of these values.
+ *
+ * @link https://github.com/jj5/kickass-crypto
  */
 
 /**
@@ -49,6 +51,7 @@ define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN', 32 );
 /**
  * 2023-04-04 jj5 - the JSON format uses the PHP json_encode() and json_decode() functions; the
  * encoding format strings must be four characters long.
+ *
  * @var string
  */
 define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
@@ -57,6 +60,7 @@ define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
  * 2023-04-04 jj5 - uses the PHP serialize() and unserialize() functions (not enabled by default
  * due to potential security issues, enable with CONFIG_ENCRYPTION_PHPS_ENABLE); the encoding
  * format strings must be four characters long.
+ *
  * @var string
  */
 define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
@@ -75,12 +79,14 @@ define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 
 /**
  * 2023-04-05 jj5 - the OpenSSL data format...
+ *
  * @var string
 */
 define( 'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL', 'KA0' );
 
 /**
  * 2023-04-05 jj5 - the Sodium data format...
+ *
  * @var string
  */
 //
@@ -88,12 +94,14 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_SODIUM', 'KAS0' );
 
 /**
  * 2023-04-05 jj5 - the data format indicator must meet this minimum character length...
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN', 2 );
 
 /**
  * 2023-04-05 jj5 - the data format indicator must meet this maximum character length...
+ *
  * @var int
 */
 define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX', 8 );
@@ -101,6 +109,7 @@ define( 'KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX', 8 );
 /**
  * 2023-04-05 jj5 - this is the default chunk size; messages are padded up to the message length
  * modulo the chunk size; 2^12 is 4KiB; this value might be changed in future.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
@@ -108,12 +117,14 @@ define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE', pow( 2, 12 ) );
 /**
  * 2023-04-05 jj5 - this is the default maximum chunk size; 2^26 is 64 MiB; this value might be
  * changed in future.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX', pow( 2, 26 ) );
 
 /**
  * 2023-04-05 jj5 - default data encoding format is JSON.
+ *
  * @var string
  */
 define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING', KICKASS_CRYPTO_DATA_ENCODING_JSON );
@@ -121,6 +132,7 @@ define( 'KICKASS_CRYPTO_DEFAULT_DATA_ENCODING', KICKASS_CRYPTO_DATA_ENCODING_JSO
 /**
  * 2023-04-05 jj5 - this is the maximum data length supported; 2^26 is 64 MiB; this value might be
  * changed in future.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX', pow( 2, 26 ) );
@@ -128,6 +140,7 @@ define( 'KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX', pow( 2, 26 ) );
 /**
  * 2023-04-05 jj5 - these are the default JSON encoding options passed to the PHP json_encode()
  * function.
+ *
  * @var int
  */
 define(
@@ -138,6 +151,7 @@ define(
 /**
  * 2023-04-05 jj5 - these are the default JSON decoding options passed to the PHP json_decode()
  * function.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS', JSON_THROW_ON_ERROR );
@@ -164,6 +178,7 @@ define( 'KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE', false );
 
 /**
  * 2023-04-05 jj5 - by default you can't encrypt false...
+ *
  * @var boolean
 */
 define( 'KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE', false );
@@ -171,6 +186,7 @@ define( 'KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE', false );
 /**
  * 2023-04-05 jj5 - the minimum random delay (in nanoseconds) used for timing attack mitigation;
  * this value might be changed in future.
+ *
  * @var int
 */
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
@@ -178,6 +194,7 @@ define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN',      1_000_000 );
 /**
  * 2023-04-05 jj5 - the maximum random delay (in nanoseconds) used for timing attack mitigation;
  * this value might be changed in future.
+ *
  * @var int
 */
 define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
@@ -186,6 +203,7 @@ define( 'KICKASS_CRYPTO_DELAY_NANOSECONDS_MAX', 10_000_000_000 );
  * 2023-04-03 jj5 - this delay is a floating-point value in seconds, it's for comparison of the
  * value returned from the PHP microtime() to check that our delay implementation did actually
  * delay for at least this minimum amount of time.
+ *
  * @var float
  */
 define(
@@ -227,6 +245,7 @@ define( 'KICKASS_CRYPTO_RECURSION_LIMIT', 100 );
 /**
  * 2023-04-05 jj5 - if an invalid exception code is passed to the exception raising facility
  * this exception is raised instead.
+ *
  * @var int
 */
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE',  1_000 );
@@ -248,6 +267,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG',          2_000 );
 
 /**
  * 2023-04-05 jj5 - if the hash algorithm is invalid or not available this exception is raised.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH',        3_000 );
@@ -255,6 +275,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_KEY_HASH',        3_000 );
 /**
  * 2023-04-05 jj5 - if the cipher nominated for the OpenSSL library is not available in the
  * environment this exception is raise.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER',          4_000 );
@@ -262,6 +283,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER',          4_000 );
 /**
  * 2023-04-05 jj5 - if the initialization vector for the OpenSSL library is not what we've been
  * coded to expect then this exception is raise.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
@@ -269,6 +291,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
 /**
  * 2023-04-05 jj5 - if the PHP random_bytes() implementation is not using a secure PRNG then this
  * exception is supposed to be raised.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
@@ -276,12 +299,14 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
 /**
  * 2023-04-06 jj5 - if we can't get a valid error list from an implementation we bail with an
  * exception.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST',      7_000 );
 
 /**
  * 2023-04-07 jj5 - called if recursion/reentrancy is detected.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED',      8_000 );
