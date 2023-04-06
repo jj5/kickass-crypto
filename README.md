@@ -1211,7 +1211,8 @@ only make the requirements stronger, such as is done in the default implementati
 example, where the maximum length is reduced further to 10 bytes.
 
 Another advantage of the typed interface is that it provides extra information which can be
-automatically added into the documentation.
+automatically added into the documentation. The typed interface communicates intent to the PHP
+run-time but also to other programmers reading, using, or maintaining the code.
 
 #### The advantages of the untyped interface on the default implementation
 
