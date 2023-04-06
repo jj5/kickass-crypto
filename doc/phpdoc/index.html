@@ -756,6 +756,13 @@ delay for at least this minimum amount of time.</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING">KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING</a>
+    <span>
+        &nbsp;= &#039;passphrase missing.&#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED">KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED</a>
     <span>
         &nbsp;= &#039;PHPS decoding failed.&#039;                            </span>
@@ -980,6 +987,62 @@ passphrase for use with either the OpenSSL or Sodium encryption library.</dd>
 minimal requirement.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE">KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE</a>
+    <span>
+        &nbsp;= &#039;error: invalid passphrase.&#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY">KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY</a>
+    <span>
+        &nbsp;= &#039;emergency delay: &#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH</a>
+    <span>
+        &nbsp;= &#039;caught exception: &#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE</a>
+    <span>
+        &nbsp;= &#039;ignored exception: &#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW</a>
+    <span>
+        &nbsp;= &#039;throwing exception: &#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_DELAY">KICKASS_CRYPTO_LOG_WARNING_DELAY</a>
+    <span>
+        &nbsp;= &#039;warning: delayed due to error.&#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE">KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE</a>
+    <span>
+        &nbsp;= &#039;warning: passphrase shorter than recommended.&#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET">KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET</a>
+    <span>
+        &nbsp;= &#039;warning: secret shorter than recommended.&#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_CIPHER">KICKASS_CRYPTO_OPENSSL_CIPHER</a>
     <span>
         &nbsp;= &#039;aes-256-gcm&#039;                            </span>
@@ -1013,6 +1076,14 @@ minimal requirement.</dd>
         &nbsp;= 16                            </span>
 </dt>
 <dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN">KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN</a>
+    <span>
+        &nbsp;= 32                            </span>
+</dt>
+<dd>2023-04-05 jj5 - the minimum key length is used to ensure that passphrases meet at least a
+minimal requirement.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/default.html#constant_KICKASS_CRYPTO_REGEX_BASE64">KICKASS_CRYPTO_REGEX_BASE64</a>
@@ -1483,7 +1554,7 @@ use case and the Sodium module.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
@@ -1512,7 +1583,7 @@ encoding format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -1542,7 +1613,7 @@ format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 
     </aside>
 
@@ -1572,7 +1643,7 @@ format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 
     </aside>
 
@@ -1602,7 +1673,7 @@ format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
@@ -1632,7 +1703,7 @@ format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
@@ -1662,7 +1733,7 @@ format strings must be four characters long.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -1691,7 +1762,7 @@ modulo the chunk size; 2^12 is 4KiB; this value might be changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">105</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -1720,7 +1791,7 @@ changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">111</span>
+    <span class="phpdocumentor-element-found-in__line">118</span>
 
     </aside>
 
@@ -1748,7 +1819,7 @@ changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 
     </aside>
 
@@ -1777,7 +1848,7 @@ changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">161</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -1807,7 +1878,7 @@ changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">135</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 
     </aside>
 
@@ -1836,7 +1907,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">132</span>
 
     </aside>
 
@@ -1865,7 +1936,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 
     </aside>
 
@@ -1903,7 +1974,7 @@ your config file:</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">175</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 
     </aside>
 
@@ -1932,7 +2003,7 @@ this value might be changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">168</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
@@ -1961,7 +2032,7 @@ this value might be changed in future.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">190</span>
 
     </aside>
 
@@ -2164,7 +2235,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">473</span>
+    <span class="phpdocumentor-element-found-in__line">480</span>
 
     </aside>
 
@@ -2191,7 +2262,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">478</span>
+    <span class="phpdocumentor-element-found-in__line">485</span>
 
     </aside>
 
@@ -2218,7 +2289,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">563</span>
+    <span class="phpdocumentor-element-found-in__line">575</span>
 
     </aside>
 
@@ -2245,7 +2316,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">508</span>
+    <span class="phpdocumentor-element-found-in__line">520</span>
 
     </aside>
 
@@ -2272,7 +2343,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">483</span>
+    <span class="phpdocumentor-element-found-in__line">490</span>
 
     </aside>
 
@@ -2299,7 +2370,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">503</span>
+    <span class="phpdocumentor-element-found-in__line">515</span>
 
     </aside>
 
@@ -2326,7 +2397,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">553</span>
+    <span class="phpdocumentor-element-found-in__line">565</span>
 
     </aside>
 
@@ -2353,7 +2424,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">558</span>
+    <span class="phpdocumentor-element-found-in__line">570</span>
 
     </aside>
 
@@ -2380,7 +2451,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">388</span>
+    <span class="phpdocumentor-element-found-in__line">395</span>
 
     </aside>
 
@@ -2407,7 +2478,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">393</span>
+    <span class="phpdocumentor-element-found-in__line">400</span>
 
     </aside>
 
@@ -2434,7 +2505,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">398</span>
+    <span class="phpdocumentor-element-found-in__line">405</span>
 
     </aside>
 
@@ -2461,7 +2532,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">403</span>
+    <span class="phpdocumentor-element-found-in__line">410</span>
 
     </aside>
 
@@ -2488,7 +2559,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">323</span>
+    <span class="phpdocumentor-element-found-in__line">330</span>
 
     </aside>
 
@@ -2515,7 +2586,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">328</span>
+    <span class="phpdocumentor-element-found-in__line">335</span>
 
     </aside>
 
@@ -2542,7 +2613,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">333</span>
+    <span class="phpdocumentor-element-found-in__line">340</span>
 
     </aside>
 
@@ -2569,7 +2640,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">338</span>
+    <span class="phpdocumentor-element-found-in__line">345</span>
 
     </aside>
 
@@ -2596,7 +2667,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -2623,7 +2694,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">308</span>
+    <span class="phpdocumentor-element-found-in__line">315</span>
 
     </aside>
 
@@ -2650,7 +2721,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">313</span>
+    <span class="phpdocumentor-element-found-in__line">320</span>
 
     </aside>
 
@@ -2677,7 +2748,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">325</span>
 
     </aside>
 
@@ -2704,7 +2775,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">543</span>
+    <span class="phpdocumentor-element-found-in__line">555</span>
 
     </aside>
 
@@ -2731,7 +2802,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">548</span>
+    <span class="phpdocumentor-element-found-in__line">560</span>
 
     </aside>
 
@@ -2758,7 +2829,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">533</span>
+    <span class="phpdocumentor-element-found-in__line">545</span>
 
     </aside>
 
@@ -2785,7 +2856,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">538</span>
+    <span class="phpdocumentor-element-found-in__line">550</span>
 
     </aside>
 
@@ -2812,7 +2883,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">283</span>
+    <span class="phpdocumentor-element-found-in__line">290</span>
 
     </aside>
 
@@ -2839,7 +2910,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">295</span>
 
     </aside>
 
@@ -2866,7 +2937,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">293</span>
+    <span class="phpdocumentor-element-found-in__line">300</span>
 
     </aside>
 
@@ -2893,7 +2964,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">298</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 
     </aside>
 
@@ -2920,7 +2991,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">513</span>
+    <span class="phpdocumentor-element-found-in__line">525</span>
 
     </aside>
 
@@ -2947,7 +3018,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">518</span>
+    <span class="phpdocumentor-element-found-in__line">530</span>
 
     </aside>
 
@@ -2974,7 +3045,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">408</span>
+    <span class="phpdocumentor-element-found-in__line">415</span>
 
     </aside>
 
@@ -3001,7 +3072,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">413</span>
+    <span class="phpdocumentor-element-found-in__line">420</span>
 
     </aside>
 
@@ -3028,7 +3099,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">418</span>
+    <span class="phpdocumentor-element-found-in__line">425</span>
 
     </aside>
 
@@ -3055,7 +3126,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">423</span>
+    <span class="phpdocumentor-element-found-in__line">430</span>
 
     </aside>
 
@@ -3082,7 +3153,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">343</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 
     </aside>
 
@@ -3109,7 +3180,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">348</span>
+    <span class="phpdocumentor-element-found-in__line">355</span>
 
     </aside>
 
@@ -3136,7 +3207,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">353</span>
+    <span class="phpdocumentor-element-found-in__line">360</span>
 
     </aside>
 
@@ -3163,7 +3234,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">358</span>
+    <span class="phpdocumentor-element-found-in__line">365</span>
 
     </aside>
 
@@ -3190,7 +3261,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">578</span>
+    <span class="phpdocumentor-element-found-in__line">590</span>
 
     </aside>
 
@@ -3217,7 +3288,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">573</span>
+    <span class="phpdocumentor-element-found-in__line">585</span>
 
     </aside>
 
@@ -3244,7 +3315,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">458</span>
+    <span class="phpdocumentor-element-found-in__line">465</span>
 
     </aside>
 
@@ -3271,7 +3342,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">438</span>
+    <span class="phpdocumentor-element-found-in__line">445</span>
 
     </aside>
 
@@ -3298,7 +3369,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">443</span>
+    <span class="phpdocumentor-element-found-in__line">450</span>
 
     </aside>
 
@@ -3325,7 +3396,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">448</span>
+    <span class="phpdocumentor-element-found-in__line">455</span>
 
     </aside>
 
@@ -3352,7 +3423,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">453</span>
+    <span class="phpdocumentor-element-found-in__line">460</span>
 
     </aside>
 
@@ -3379,7 +3450,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">463</span>
+    <span class="phpdocumentor-element-found-in__line">470</span>
 
     </aside>
 
@@ -3406,7 +3477,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">468</span>
+    <span class="phpdocumentor-element-found-in__line">475</span>
 
     </aside>
 
@@ -3433,7 +3504,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">568</span>
+    <span class="phpdocumentor-element-found-in__line">580</span>
 
     </aside>
 
@@ -3460,7 +3531,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">583</span>
+    <span class="phpdocumentor-element-found-in__line">595</span>
 
     </aside>
 
@@ -3487,7 +3558,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">588</span>
+    <span class="phpdocumentor-element-found-in__line">600</span>
 
     </aside>
 
@@ -3514,7 +3585,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">488</span>
+    <span class="phpdocumentor-element-found-in__line">500</span>
 
     </aside>
 
@@ -3541,7 +3612,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">493</span>
+    <span class="phpdocumentor-element-found-in__line">505</span>
 
     </aside>
 
@@ -3568,7 +3639,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">498</span>
+    <span class="phpdocumentor-element-found-in__line">510</span>
 
     </aside>
 
@@ -3587,6 +3658,33 @@ delay for at least this minimum amount of time.</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING">
+        KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">495</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;passphrase missing.&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED">
         KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED
         <a href="namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3595,7 +3693,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">428</span>
+    <span class="phpdocumentor-element-found-in__line">435</span>
 
     </aside>
 
@@ -3622,7 +3720,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">433</span>
+    <span class="phpdocumentor-element-found-in__line">440</span>
 
     </aside>
 
@@ -3649,7 +3747,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">378</span>
+    <span class="phpdocumentor-element-found-in__line">385</span>
 
     </aside>
 
@@ -3676,7 +3774,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">383</span>
+    <span class="phpdocumentor-element-found-in__line">390</span>
 
     </aside>
 
@@ -3703,7 +3801,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">363</span>
+    <span class="phpdocumentor-element-found-in__line">370</span>
 
     </aside>
 
@@ -3730,7 +3828,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">368</span>
+    <span class="phpdocumentor-element-found-in__line">375</span>
 
     </aside>
 
@@ -3757,7 +3855,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">373</span>
+    <span class="phpdocumentor-element-found-in__line">380</span>
 
     </aside>
 
@@ -3784,7 +3882,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">523</span>
+    <span class="phpdocumentor-element-found-in__line">535</span>
 
     </aside>
 
@@ -3811,7 +3909,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">528</span>
+    <span class="phpdocumentor-element-found-in__line">540</span>
 
     </aside>
 
@@ -3838,7 +3936,7 @@ delay for at least this minimum amount of time.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">257</span>
+    <span class="phpdocumentor-element-found-in__line">264</span>
 
     </aside>
 
@@ -3867,7 +3965,7 @@ exception is supposed to be raised.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">243</span>
+    <span class="phpdocumentor-element-found-in__line">250</span>
 
     </aside>
 
@@ -3896,7 +3994,7 @@ environment this exception is raise.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">237</span>
 
     </aside>
 
@@ -3933,7 +4031,7 @@ constitutes a valid config based on the use case.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">215</span>
+    <span class="phpdocumentor-element-found-in__line">222</span>
 
     </aside>
 
@@ -3962,7 +4060,7 @@ this exception is raised instead.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">250</span>
+    <span class="phpdocumentor-element-found-in__line">257</span>
 
     </aside>
 
@@ -3991,7 +4089,7 @@ coded to expect then this exception is raise.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">236</span>
+    <span class="phpdocumentor-element-found-in__line">243</span>
 
     </aside>
 
@@ -4019,7 +4117,7 @@ coded to expect then this exception is raise.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">264</span>
+    <span class="phpdocumentor-element-found-in__line">271</span>
 
     </aside>
 
@@ -4583,6 +4681,222 @@ minimal requirement.</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE">
+        KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">609</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;error: invalid passphrase.&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY">
+        KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">629</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;emergency delay: &#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH">
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">634</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;caught exception: &#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE">
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">639</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;ignored exception: &#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW">
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">644</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;throwing exception: &#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_WARNING_DELAY">
+        KICKASS_CRYPTO_LOG_WARNING_DELAY
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_DELAY" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">624</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_WARNING_DELAY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;warning: delayed due to error.&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE">
+        KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">619</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;warning: passphrase shorter than recommended.&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET">
+        KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">614</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;warning: secret shorter than recommended.&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_OPENSSL_CIPHER">
         KICKASS_CRYPTO_OPENSSL_CIPHER
         <a href="namespaces/default.html#constant_KICKASS_CRYPTO_OPENSSL_CIPHER" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4728,6 +5042,35 @@ minimal requirement.</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN">
+        KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">46</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">2023-04-05 jj5 - the minimum key length is used to ensure that passphrases meet at least a
+minimal requirement.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN</span>
+    = <span class="phpdocumentor-signature__default-value">32</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_REGEX_BASE64">
         KICKASS_CRYPTO_REGEX_BASE64
         <a href="namespaces/default.html#constant_KICKASS_CRYPTO_REGEX_BASE64" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4736,7 +5079,7 @@ minimal requirement.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">203</span>
 
     </aside>
 

@@ -530,7 +530,7 @@ function run_test() {
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID,
+    KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING,
     function() {
       return new class extends TestCrypto {
         public function test() {
@@ -549,12 +549,13 @@ function run_test() {
           return $this->do_encrypt( 'test' );
         }
         protected function do_get_passphrase_list() { return [ 'invalid' ]; }
+        protected function do_get_encryption_passphrase() { return 'invalid'; }
       };
     }
   );
 
   test_error(
-    KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID_2,
+    KICKASS_CRYPTO_ERROR_NO_VALID_KEY,
     function() {
       return new class extends TestCrypto {
         public function test() {

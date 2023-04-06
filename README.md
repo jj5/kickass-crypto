@@ -281,20 +281,20 @@ Total Number of Source Code Files = 113
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 5,877
-Development Effort Estimate, Person-Years (Person-Months) = 1.28 (15.41)
+Total Physical Source Lines of Code (SLOC)                = 6,095
+Development Effort Estimate, Person-Years (Person-Months) = 1.33 (16.01)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.59 (7.07)
+Schedule Estimate, Years (Months)                         = 0.60 (7.17)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.18
-Total Estimated Cost to Develop                           = $ 173,482
+Estimated Average Number of Developers (Effort/Schedule)  = 2.23
+Total Estimated Cost to Develop                           = $ 180,245
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| test      | 2,863 | php=2693,sh=170 |
-| code      | 2,303 | php=2303        |
+| test      | 2,782 | php=2612,sh=170 |
+| code      | 2,602 | php=2602        |
 | bin       |   603 | php=422,sh=181  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -303,8 +303,8 @@ Total Estimated Cost to Develop                           = $ 173,482
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,526 |   (94.03%) |
-| sh       |   351 |    (5.97%) |
+| php      | 5,744 |   (94.24%) |
+| sh       |   351 |    (5.76%) |
 
 ## Supported PHP versions
 
@@ -1089,6 +1089,113 @@ I have heard of and used PHPUnit (although I haven't used it for a long while). 
 this project because I don't feel I need it or that it adds much value. Tests are a shell script,
 if that's missing they're a PHP script. If I need to make assertions I call assert(). Easy.
 
+## Programming this library
+
+### Return false on error idiom
+
+As mentioned above this library won't throw exceptions from the methods on its public interface
+because we don't want to leak secrets from our call stack if there's a problem.
+
+Instead of throwing exceptions the methods on the classes in this library will usually return
+false instead. Also the fact that an error occurred can be registered with the service object
+so that if the callers get a false return value they can interrogate the service to get the list
+of recent errors (the programmer can clear the errors with `clear_error()` too.
+
+### Typed final, untyped do idiom
+
+In the code you will see things like this:
+
+```
+protected final function is_valid_settings( int $setting_a, string $setting_b ) : bool {
+
+  if ( strlen( $setting_b ) < 200 ) { return false; }
+
+  return $this->do_is_valid_settings( $setting_a, $setting_b );
+
+}
+
+protected function do_is_valid_settings( $setting_a, $setting_b ) {
+
+  if ( $setting_a < 100 ) { return false; }
+
+  if ( strlen( $setting_b ) > 100 ) { return false; }
+
+  return true;
+
+}
+```
+
+There are several things to note about this idiom.
+
+### Catch and throw idiom
+
+### The is_() functions for boolean tests
+
+There are a bunch of functions for testing boolean conditions, and they begin with "is_" and
+return a boolean. These functions should only do the test and return true or false, they should
+_not_ register errors using the `error()` function, it that's necessary the caller will do that.
+
+The is_() functions can be implemented using the typed-final, untyped-do idiom documented above.
+
+### Managing secrets on the stack
+
+If you implement a function which receives a secret key, passphrase, or data for encryption, you
+absolutely must put your function in a try-catch block and just return false on error. We don't
+want secrets to leak with values on the call stack.
+
+Following is a good example from the code. Note that it's okay to call `catch()` and `ignore()`
+from your exception handlers because they are exception safe. Probably best to call nothing else.
+
+```
+  protected final function is_valid_secret( $secret ) : bool {
+
+    try {
+
+      $is_valid = $this->do_is_valid_secret( $secret );
+
+      // ...
+
+      assert( is_bool( $is_valid ) );
+
+      return $is_valid;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
+
+  }
+```
+
+Note that `do_is_valid_secret()` _also_ has a secret on the call stack, so it should be
+implemented as exception safe in the same way (in case it is called directly from some other part
+of the code).
+
+Note too that it's okay to just rethrow assertion violations, these should never happen in
+production and they make testing the code easier.
+
 ## Directory structure
 
 Here are some notes regarding notable components:
@@ -1161,7 +1268,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,174 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,203 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

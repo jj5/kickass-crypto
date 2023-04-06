@@ -166,9 +166,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
   }
 
   /**
-   * 2023-03-30 jj5 - implementations need to define what a valid config looks like and provide a
-   * list of passphrases. The first passphrase in the list is the one that's used for encryption,
-   * others are potentially used for decryption.
+   * 2023-03-30 jj5 - implementations need to define what a valid configuration is.
    *
    * @param string|null $problem a description of the problem if invalid, null otherwisej.
    *
@@ -478,8 +476,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
   }
 
@@ -528,9 +529,103 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+  }
+
+  /**
+   * 2023-04-01 jj5 - implementations can decide what to do when errors are handled; by default
+   * we write a log entry; can be overridden by implementations.
+   *
+   * @param \Throwable $ex the exception which was caught.
+   *
+   * @param string $file the path to the file that caught the exception.
+   *
+   * @param int $line the line in the file where the caught exception was reported.
+   *
+   * @param string $function the function in which the exception was caught.
+   */
+  protected function do_catch( $ex, $file, $line, $function ) {
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH . $ex->getMessage(), $file, $line, $function
+    );
+
+  }
+
+  /**
+   * 2023-04-06 jj5 - the point of ignore() is simply to notify that an exception has been caught
+   * and it will be ignored.
+   *
+   * @return void
+   */
+  //
+  protected final function ignore( $ex, $file, $line, $function ) : void {
+
+    try {
+
+      $this->count_function( __FUNCTION__ );
+
+      $this->do_ignore( $ex, $file, $line, $function );
 
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      // 2023-04-01 jj5 - this function is called from exception handlers, and then notifies
+      // impementations via the do_ignore() method, as above. We don't trust implementations not
+      // to throw, and as we're presently *in* an exception handler, we don't want to throw
+      // another exception, because code might not be set up to accommodate that. So if we
+      // land here do_ignore() above (or count_function()?) has thrown, so just log and ignore.
+
+      // 2023-04-03 jj5 - note that here we call the PHP error directly so no one has a chance
+      // to interfere with this message being logged. It should never happen and if it does we
+      // want to give ourselves our best chance of finding out about it so we can address.
+
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+  }
+
+  /**
+   * 2023-04-01 jj5 - implementations can decide what to do when errors are ignored; by default
+   * we write a log entry; can be overridden by implementations.
+   *
+   * @param \Throwable $ex the exception which was caught and will be ignored.
+   *
+   * @param string $file the path to the file that caught the exception.
+   *
+   * @param int $line the line in the file where the caught exception was reported.
+   *
+   * @param string $function the function in which the exception was caught.
+   */
+  protected function do_ignore( $ex, $file, $line, $function ) {
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE . $ex->getMessage(), $file, $line, $function
+    );
+
   }
 
   /**
@@ -554,6 +649,36 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     $this->do_throw( $code, $data, $previous );
 
     assert( false );
+
+  }
+
+  /**
+   * 2023-04-05 jj5 - by default this finds the message for the given exception code and then
+   * throws an exception with the relevant code and message; can be overridden by implementations.
+   *
+   * @param int $code the exception code is one of the KICKASS_CRYPTO_EXCEPTION_* constants.
+   *
+   * @param mixed $data the data to associate with the exception, if any.
+   *
+   * @param \Throwable $previous the previous exception, if any.
+   *
+   * @throws \KickassCrypto\Framework\KickassCryptoException after finding the relevant details.
+   */
+  protected function do_throw( $code, $data, $previous ) {
+
+    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
+
+    if ( ! $message ) {
+
+      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE );
+
+    }
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
+    );
+
+    throw new \KickassCrypto\Framework\KickassCryptoException( $message, $code, $previous, $data );
 
   }
 
@@ -614,8 +739,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
 
     return false;
@@ -870,6 +998,37 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
   protected function do_get_const_key_length_min() {
 
     $result = $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
+
+    assert( is_int( $result ) );
+
+    return $result;
+
+  }
+
+  /**
+   * 2023-04-05 jj5 - gets the minimum length of a passphrase.
+   *
+   * @return int the minimum length of a passphrase.
+   */
+  protected final function get_const_passphrase_length_min() : int {
+
+    $result = $this->do_get_const_passphrase_length_min();
+
+    assert( is_int( $result ) );
+
+    return $result;
+
+  }
+
+  /**
+   * 2023-04-05 jj5 - by default returns the value of the KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN
+   *  constant; can be overridden by implementations.
+   *
+   * @return int the minimum length of a passphrase.
+   */
+  protected function do_get_const_passphrase_length_min() {
+
+    $result = $this->get_const( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN' );
 
     assert( is_int( $result ) );
 
@@ -1238,11 +1397,54 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_passphrase_list() : array {
 
-    $result = $this->do_get_passphrase_list();
+    try {
 
-    assert( is_array( $result ) );
+      $result = $this->do_get_passphrase_list();
 
-    return $result;
+      assert( is_array( $result ) );
+
+      foreach ( $result as $passphrase ) {
+
+        if ( $this->is_valid_passphrase( $passphrase) ) { continue; }
+
+        $this->log_error(
+          KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE, __FILE__, __LINE__, __FUNCTION__
+        );
+
+        $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+
+        return [];
+
+      }
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1253,11 +1455,40 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function get_encryption_passphrase() : ?string {
 
-    $result = $this->do_get_encryption_passphrase();
+    try {
 
-    assert( is_string( $result ) || $result === null );
+      $result = $this->do_get_encryption_passphrase();
 
-    return $result;
+      assert( is_string( $result ) || $result === null );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1269,11 +1500,40 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_get_encryption_passphrase() {
 
-    $result = $this->get_passphrase_list()[ 0 ] ?? null;
+    try {
 
-    assert( is_string( $result ) || $result === null );
+      $result = $this->get_passphrase_list()[ 0 ] ?? null;
 
-    return $result;
+      assert( is_string( $result ) || $result === null );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return null;
 
   }
 
@@ -1378,17 +1638,55 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function is_valid_secret( $secret ) : bool {
 
-    $is_valid = $this->do_is_valid_secret( $secret );
+    try {
 
-    if ( $is_valid && strlen( $secret ) < KICKASS_CRYPTO_KEY_LENGTH_MIN ) {
+      $is_valid = $this->do_is_valid_secret( $secret );
 
-      $this->log_error( 'secret shorter than recommended...', __FILE__, __LINE__, __FUNCTION__ );
+      // 2023-04-06 jj5 - if the client says that the secret is valid then we just check to make
+      // sure it looks sensible. We will allow the caller to redefine what a valid secret key is
+      // but if it doesn't meet our standards we will make some noise bout it in the log.
+      //
+      // 2023-04-06 jj5 - NOTE: here we use the KICKASS_CRYPTO_KEY_LENGTH_MIN constant directly
+      // and do not give the caller the opporunity to inject a different value.
+      //
+      if ( $is_valid && strlen( $secret ) < KICKASS_CRYPTO_KEY_LENGTH_MIN ) {
+
+        $this->log_error(
+          KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET, __FILE__, __LINE__, __FUNCTION__
+        );
+
+      }
+
+      assert( is_bool( $is_valid ) );
+
+      return $is_valid;
 
     }
+    catch ( \AssertionError $ex ) {
 
-    assert( is_bool( $is_valid ) );
+      throw $ex;
 
-    return $is_valid;
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1402,11 +1700,152 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_is_valid_secret( $secret ) {
 
-    if ( ! is_string( $secret ) ) { return false; }
+    try {
 
-    if ( strlen( $secret ) < $this->get_const_key_length_min() ) { return false; }
+      if ( ! is_string( $secret ) ) { return false; }
 
-    return true;
+      if ( strlen( $secret ) < $this->get_const_key_length_min() ) { return false; }
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
+
+  }
+
+  /**
+   * 2023-04-06 jj5 - checks to see if a passphrase is valid; this function defers to
+   * do_is_valid_passphrase();
+   *
+   * @param string $passphrase the passphrase key
+   *
+   * @return boolean true if the passphrase key is valid, false otherwise.
+   */
+  protected final function is_valid_passphrase( $passphrase ) : bool {
+
+    try {
+
+      $is_valid = $this->do_is_valid_passphrase( $passphrase );
+
+      if ( $is_valid ) {
+
+        // 2023-04-06 jj5 - the code in here is non-negotiable. Also we use the
+        // KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN directly so that implementations can't change it.
+
+        if ( ! is_string( $passphrase ) ) { return false; }
+
+        if ( strlen( $passphrase ) < KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN ) {
+
+          $this->log_error(
+            KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE, __FILE__, __LINE__, __FUNCTION__
+          );
+
+          return false;
+
+        }
+      }
+
+      assert( is_bool( $is_valid ) );
+
+      return $is_valid;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
+
+  }
+
+  /**
+   * 2023-04-06 jj5 - by default checks the string length; can be overridden by implementations.
+   *
+   *
+   * @param mixed $passphrase a passphrase to validate.
+   *
+   * @return boolean true on valid; false otherwise.
+   */
+  protected function do_is_valid_passphrase( $passphrase ) {
+
+    try {
+
+      if ( ! is_string( $passphrase ) ) { return false; }
+
+      if ( strlen( $passphrase ) < $this->get_const_passphrase_length_min() ) { return false; }
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1507,7 +1946,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     if ( ! $passphrase ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+      return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING );
 
     }
 
@@ -1522,6 +1961,12 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
           'passphrase_length_required' => $this->get_const_passphrase_length(),
         ]
       );
+
+    }
+
+    if ( ! $this->is_valid_passphrase( $passphrase ) ) {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
     }
 
@@ -1719,11 +2164,40 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
-    $result = $this->do_encrypt_string( $plaintext, $passphrase );
+    try {
 
-    assert( is_string( $result ) || $result === false );
+      $result = $this->do_encrypt_string( $plaintext, $passphrase );
 
-    return $result;
+      assert( is_string( $result ) || $result === false );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return $this->error( 'encrypt string failed.' );
 
   }
 
@@ -1749,9 +2223,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     foreach ( $this->get_passphrase_list() as $passphrase ) {
 
-      if ( strlen( $passphrase ) !== $this->get_const_passphrase_length() ) {
+      if ( ! $this->is_valid_passphrase( $passphrase ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID_2 );
+        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
       }
 
@@ -1795,17 +2269,46 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function try_decrypt( string $binary, string $passphrase, &$data_encoding = null ) {
 
-    $data_encoding = null;
+    try {
 
-    $message = $this->decrypt_string( $binary, $passphrase );
+      $data_encoding = null;
 
-    if ( $message === false ) {
+      $message = $this->decrypt_string( $binary, $passphrase );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+      if ( $message === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+
+      }
+
+      return $this->decode_message( $message, $data_encoding );
 
     }
+    catch ( \AssertionError $ex ) {
 
-    return $this->decode_message( $message, $data_encoding );
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1820,11 +2323,40 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
-    $result = $this->do_decrypt_string( $binary, $passphrase );
+    try {
 
-    assert( is_string( $result ) || $result === false );
+      $result = $this->do_decrypt_string( $binary, $passphrase );
 
-    return $result;
+      assert( is_string( $result ) || $result === false );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -1856,7 +2388,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
   }
 
   /**
-   * 2023-04-05 jj5 - decodes a message.
+   * 2023-04-05 jj5 - decodes a message; defers to virtual do_decode_message().
    *
    * @param string $message the encoded message.
    *
@@ -1874,6 +2406,19 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default will decode the message and determine the data encoding using;
+   * can be overridden by implementations.
+   *
+   * @staticvar int $max_json_length this is the maximum length supported by the JSON format.
+   * Note due to other limits this limit could never be reached.
+   *
+   * @param string $message the message to decode.
+   *
+   * @param string $data_encoding a reference to the data encoding extracted from the message.
+   *
+   * @return string the decoded string or false on error.
+   */
   protected function do_decode_message( $message, &$data_encoding ) {
 
     // 2023-04-04 jj5 - this should be null unless its valid.
@@ -1961,9 +2506,18 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - by default sleeps for a random amount of time between the minimum time given
+   * in nanoseconds and the maximum time also given in nanoseconds; can be overridden by
+   * implementations.
+   *
+   * @param int $ns_min minimum delay in nanoseconds.
+   *
+   * @param int $ns_max maximum delay in nanoseconds.
+   */
   protected function do_delay( $ns_min, $ns_max ) {
 
-    $this->log_error( 'delayed due to error...', __FILE__, __LINE__, __FUNCTION__ );
+    $this->log_error( KICKASS_CRYPTO_LOG_WARNING_DELAY, __FILE__, __LINE__, __FUNCTION__ );
 
     $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
 
@@ -1976,6 +2530,18 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - does an emergency delay; this doesn't give the caller any option to
+   * interfere so the emergency delay should run reliably if it's necessary.
+   *
+   * @return void
+   *
+   * @throws \AssertionError if there's an assertion violation during testing (not enable in
+   * production).
+   *
+   * @throws \Exception may throw an exception if set up for error injection, this should only be
+   * done during testing.
+   */
   protected final function emergency_delay() : void {
 
     // 2023-03-30 jj5 - ordinarily do_delay() does our delay, but there are a bunch of ways that
@@ -1984,6 +2550,19 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     // some delay. This code tries very hard to make sure there's some sort of random delay...
 
     try {
+
+      $ns_min =      1_000_000;
+      $ns_max = 10_000_000_000;
+
+      $delay = random_int( $ns_min, $ns_max );
+
+      $seconds = intval( round( $delay / 1_000_000_000 ) );
+      $nanoseconds = $delay % 1_000_000_000;
+
+      $result = time_nanosleep( $seconds, $nanoseconds );
+
+      // 2023-04-05 jj5 - don't inject the testing error until *after* the delay, just in case it
+      // gets injected accidentally; as long as the delay happens not much else matters.
 
       if (
         defined( 'KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP' ) &&
@@ -1995,16 +2574,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         );
 
       }
-
-      $ns_min =      1_000_000;
-      $ns_max = 10_000_000_000;
-
-      $delay = random_int( $ns_min, $ns_max );
-
-      $seconds = intval( round( $delay / 1_000_000_000 ) );
-      $nanoseconds = $delay % 1_000_000_000;
-
-      $result = time_nanosleep( $seconds, $nanoseconds );
 
       if ( $result ) {
 
@@ -2034,8 +2603,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
 
     usleep( random_int( 1_000, 10_000_000 ) );
@@ -2044,6 +2616,23 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-05 jj5 - this function makes some noice is the emergency delay is invoked; the
+   * emergency delay should not usually be activated so if it is we want to give ourself our best
+   * chance of finding out about it.
+   *
+   * @param string $type the type of delay, could be 'nanosleep' or 'microsleep'.
+   *
+   * @param string $file the file that reported the emergecny delay.
+   *
+   * @param int $line the line in the file where the emergency delay was reported.
+   *
+   * @param string $function the function from which the emergency delay was reported.
+   *
+   * @return void
+   *
+   * @throws \AssertionError on an assertion violation, this isn't done in production.
+   */
   private function report_emergency_delay( string $type, $file, $line, $function ) : void {
 
     try {
@@ -2068,43 +2657,48 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - by default writes a message to the error log; can be overridden by
+   * implementations.
+   *
+   * @param string $type the type of delay, could be 'nanosleep' or 'microsleep'.
+   *
+   * @param string $file the file that reported the emergecny delay.
+   *
+   * @param int $line the line in the file where the emergency delay was reported.
+   *
+   * @param string $function the function from which the emergency delay was reported.
+   */
   protected function do_report_emergency_delay( $type, $file, $line, $function ) {
 
-    $this->log_error( 'emergency delay: ' . $type, $file, $line, $function );
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY . $type, $file, $line, $function
+    );
 
   }
 
-  // 2023-04-01 jj5 - implementations can decide what to do when errors are handled. By default
-  // we write a log entry when debugging is enabled. It would probably be reasonable to log this
-  // even in production.
-  //
-  protected function do_catch( $ex, $file, $line, $function ) {
-
-    $this->log_error( 'caught exception: ' . $ex->getMessage(), $file, $line, $function );
-
-  }
-
-  protected function do_throw( $code, $data, $previous ) {
-
-    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
-
-    if ( ! $message ) {
-
-      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE );
-
-    }
-
-    $this->log_error( 'exception: ' . $message, __FILE__, __LINE__, __FUNCTION__ );
-
-    throw new \KickassCrypto\Framework\KickassCryptoException( $message, $code, $previous, $data );
-
-  }
-
+  /**
+   * 2023-04-05 jj5 - serializes the data based on the data encoding in use; defers to a virtual
+   * do_data_encode() method.
+   *
+   * @param mixed $data input data, can be pretty much anything.
+   *
+   * @param string $data_encoding the data encoding to use, usually
+   * either KICKASS_CRYPTO_DATA_ENCODING_JSON for JSON encoding or
+   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).
+   *
+   * @return string|false the encoded string on success or false on failure.
+   *
+   * @throws \AssertionError if there's an assertion violation, this doesn't happen in production.
+   */
   protected final function data_encode( $data, $data_encoding ) {
 
     try {
@@ -2130,6 +2724,23 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - by default serializes data based on the data encoding in use; can be
+   * overridden by implementations.
+   *
+   * @param mixed $data input data, can be pretty much anything.
+   *
+   * @param string $data_encoding the data encoding to use, usually
+   * either KICKASS_CRYPTO_DATA_ENCODING_JSON for JSON encoding or
+   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).
+   *
+   * @return string|false the encoded string on success or false on failure.
+   *
+   * @throws \AssertionError if there's an assertion violation, this doesn't happen in production.
+   *
+   * @throws \Exception may be thrown for fault injection during testing, this shouldn't happen
+   * in production.
+   */
   protected function do_data_encode( $data, $data_encoding ) {
 
     try {
@@ -2174,6 +2785,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - encodes a valud as JSON; defers to do_json_encode() for implementation.
+   *
+   * @param mixed $input input can be almost anything.
+   *
+   * @return string|false the JSON string on success, false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing.
+   */
   protected final function json_encode( $input ) {
 
     try {
@@ -2199,6 +2819,16 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - by default encodes the input as JSON using the JSON encoding options read
+   * from the config file; can be overridden by implementations.
+   *
+   * @param string $input JSON input.
+   *
+   * @return mixed returns the decoded JSON value or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing.
+   */
   protected function do_json_encode( $input ) {
 
     try {
@@ -2238,6 +2868,13 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-05 jj5 - serializes a value using PHP serialization; defers to virtual method
+   * do_phps_encode() for implementation; will
+   * @param type $input
+   * @return type
+   * @throws \AssertionError
+   */
   protected final function phps_encode( $input ) {
 
     try {
@@ -2667,27 +3304,85 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   protected final function convert_secret_to_passphrase( $key ) {
 
-    // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
-    // useful.
+    try {
 
-    if ( empty( $key ) ) { return false; }
+      // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
+      // useful.
 
-    $result = $this->do_convert_secret_to_passphrase( $key );
+      if ( empty( $key ) ) { return false; }
 
-    assert( is_string( $result ) || $result === false );
+      $result = $this->do_convert_secret_to_passphrase( $key );
 
-    return $result;
+      assert( is_string( $result ) || $result === false );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
   protected function do_convert_secret_to_passphrase( $key ) {
 
-    // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
-    // useful.
+    try {
 
-    if ( empty( $key ) ) { return false; }
+      // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
+      // useful.
 
-    return hash( $this->get_const_key_hash(), $key, $binary = true );
+      if ( empty( $key ) ) { return false; }
+
+      return hash( $this->get_const_key_hash(), $key, $binary = true );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \AssertionError $ex ) {
+
+        throw $ex;
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return false;
 
   }
 
@@ -2789,7 +3484,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         throw $ex;
 
       }
-      catch ( \Throwable $ignore ) { ; }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
 
       return false;
 

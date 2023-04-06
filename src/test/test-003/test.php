@@ -29,101 +29,17 @@ require_once __DIR__ . '/lib/include.php';
 function run_test() {
 
   test_error(
-    KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED,
+    KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID,
     function() {
-      return new class extends ValidCrypto {
+      return new class extends TestCrypto {
         public function test() {
-          return $this->encrypt( 'test'  );
+          return $this->do_encrypt( 'test' );
         }
-        protected function do_encrypt_string( $compressed, $passphrase ) {
-          return false;
-        }
+        protected function do_get_passphrase_list() { return []; }
       };
     }
   );
 
-  test_error(
-    KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          return $this->encrypt( 'test'  );
-        }
-        protected function do_php_openssl_encrypt(
-          $plaintext,
-          $cipher,
-          $passphrase,
-          $options,
-          $iv,
-          &$tag
-        ) {
-          parent::do_php_openssl_encrypt( $plaintext, $cipher, $passphrase, $options, $iv, $tag );
-          return false;
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          return $this->encrypt( 'test'  );
-        }
-        protected function do_php_openssl_encrypt(
-          $plaintext,
-          $cipher,
-          $passphrase,
-          $options,
-          $iv,
-          &$tag
-        ) {
-          $iv = null;
-          return parent::do_php_openssl_encrypt(
-            $plaintext,
-            $cipher,
-            $passphrase,
-            $options,
-            $iv,
-            $tag
-          );
-        }
-      };
-    }
-  );
-
-  test_error(
-    KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED,
-    function() {
-      return new class extends ValidCrypto {
-        public function test() {
-          assert( $this->get_openssl_error() === null );
-          $result = $this->encrypt( 'test'  );
-          assert( $this->get_openssl_error() !== null );
-          return $result;
-        }
-        protected function do_php_openssl_encrypt(
-          $plaintext,
-          $cipher,
-          $passphrase,
-          $options,
-          $iv,
-          &$tag
-        ) {
-          $iv = '';
-          return parent::do_php_openssl_encrypt(
-            $plaintext,
-            $cipher,
-            $passphrase,
-            $options,
-            $iv,
-            $tag
-          );
-        }
-      };
-    }
-  );
 }
 
 main( $argv );

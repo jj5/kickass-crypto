@@ -39,6 +39,13 @@ define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
 define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 
 /**
+ * 2023-04-05 jj5 - the minimum key length is used to ensure that passphrases meet at least a
+ * minimal requirement.
+ * @var int
+ */
+define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN', 32 );
+
+/**
  * 2023-04-04 jj5 - the JSON format uses the PHP json_encode() and json_decode() functions; the
  * encoding format strings must be four characters long.
  * @var string
@@ -485,6 +492,11 @@ define( 'KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE', 'cannot encrypt false.' );
 /**
  * @var string
  */
+define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING', 'passphrase missing.' );
+
+/**
+ * @var string
+ */
 define( 'KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID', 'passphrase invalid.' );
 
 /**
@@ -586,3 +598,47 @@ define( 'KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID', 'message length invalid.'
  * @var string
  */
 define( 'KICKASS_CRYPTO_ERROR_NO_VALID_KEY', 'no valid key.' );
+
+//
+// 2023-04-06 jj5 - following are log messages and prefixes...
+//
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE', 'error: invalid passphrase.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_WARNING_SHORT_SECRET', 'warning: secret shorter than recommended.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_WARNING_SHORT_PASSPHRASE', 'warning: passphrase shorter than recommended.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_WARNING_DELAY', 'warning: delayed due to error.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY', 'emergency delay: ' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH', 'caught exception: ' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE', 'ignored exception: ' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW', 'throwing exception: ' );
