@@ -896,15 +896,15 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020delays\u0020the\u0020process\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time\u0020between\u00201\u0020millisecond\u0020and\n10\u0020seconds\u003B\u0020this\u0020is\u0020used\u0020as\u0020a\u0020timing\u0020attack\u0020mitigation,\u0020it\u0020slows\u0020down\u0020attackers\u0020trying\u0020to\nbrute\u0020force\u0020errors.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acatch\u0028\u0029",
-            "name": "catch",
-            "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020the\u0020point\u0020of\u0020catch\u0028\u0029\u0020is\u0020simply\u0020to\u0020notify\u0020that\u0020an\u0020exception\u0020has\u0020been\u0020caught\nand\u0020\u0022handled\u0022\u003B\u0020sometimes\u0020\u0022handling\u0022\u0020the\u0020exception\u0020is\u0020tantamount\u0020to\u0020ignoring\u0020it,\u0020so\u0020we\u0020call\nthis\u0020method\u0020that\u0020we\u0020may\u0020make\u0020some\u0020noise\u0020about\u0020it\u0020\u0028during\u0020debugging,\u0020usually\u0029.\u0020See\u0020do_catch\u0028\u0029\nfor\u0020the\u0020rest\u0020of\u0020the\u0020story.",
-            "url": "classes/KickassCrypto-KickassCrypto.html#method_catch"
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ahandle\u0028\u0029",
+            "name": "handle",
+            "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020the\u0020point\u0020of\u0020handle\u0028\u0029\u0020is\u0020simply\u0020to\u0020notify\u0020that\u0020an\u0020exception\u0020has\u0020been\u0020caught\nand\u0020\u0022handled\u0022\u003B\u0020sometimes\u0020\u0022handling\u0022\u0020the\u0020exception\u0020is\u0020tantamount\u0020to\u0020ignoring\u0020it,\u0020so\u0020we\u0020call\nthis\u0020method\u0020that\u0020we\u0020may\u0020make\u0020some\u0020noise\u0020about\u0020it\u0020\u0028during\u0020debugging,\u0020usually\u0029.\u0020See\u0020do_handle\u0028\u0029\nfor\u0020the\u0020rest\u0020of\u0020the\u0020story.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_handle"
         },                {
-            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_catch\u0028\u0029",
-            "name": "do_catch",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_handle\u0028\u0029",
+            "name": "do_handle",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020implementations\u0020can\u0020decide\u0020what\u0020to\u0020do\u0020when\u0020errors\u0020are\u0020handled\u003B\u0020by\u0020default\nwe\u0020write\u0020a\u0020log\u0020entry\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_catch"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_handle"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aignore\u0028\u0029",
             "name": "ignore",

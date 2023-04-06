@@ -200,7 +200,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
 
@@ -262,7 +262,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
 

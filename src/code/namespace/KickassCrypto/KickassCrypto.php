@@ -163,7 +163,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ex ) {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
         $this->throw( KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM );
 
@@ -398,7 +398,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -530,7 +530,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -621,7 +621,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         //
         $this->emergency_delay();
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -643,9 +643,9 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   }
 
   /**
-   * 2023-04-01 jj5 - the point of catch() is simply to notify that an exception has been caught
+   * 2023-04-01 jj5 - the point of handle() is simply to notify that an exception has been caught
    * and "handled"; sometimes "handling" the exception is tantamount to ignoring it, so we call
-   * this method that we may make some noise about it (during debugging, usually). See do_catch()
+   * this method that we may make some noise about it (during debugging, usually). See do_handle()
    * for the rest of the story.
    *
    * It's very important that this function does not throw exceptions, except for AssertionError,
@@ -654,7 +654,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @return void
    */
   //
-  protected final function catch( $ex, $file, $line, $function ) : void {
+  protected final function handle( $ex, $file, $line, $function ) : void {
 
     try {
 
@@ -662,7 +662,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->count_function( __FUNCTION__ );
 
-      $this->do_catch( $ex, $file, $line, $function );
+      $this->do_handle( $ex, $file, $line, $function );
 
     }
     catch ( \AssertionError $ex ) {
@@ -673,10 +673,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     catch ( \Throwable $ex ) {
 
       // 2023-04-01 jj5 - this function is called from exception handlers, and then notifies
-      // impementations via the do_catch() method, as above. We don't trust implementations not
+      // impementations via the do_handle() method, as above. We don't trust implementations not
       // to throw, and as we're presently *in* an exception handler, we don't want to throw
       // another exception, because code might not be set up to accommodate that. So if we
-      // land here do_catch() above (or count_function()?) has thrown, so just log and ignore.
+      // land here do_handle() above (or count_function()?) has thrown, so just log and ignore.
 
       // 2023-04-03 jj5 - note that here we call the PHP error directly so no one has a chance
       // to interfere with this message being logged. It should never happen and if it does we
@@ -717,7 +717,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @param string $function the function in which the exception was caught.
    */
-  protected function do_catch( $ex, $file, $line, $function ) {
+  protected function do_handle( $ex, $file, $line, $function ) {
 
     try {
 
@@ -939,7 +939,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -991,7 +991,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1053,7 +1053,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1189,7 +1189,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1243,7 +1243,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1296,7 +1296,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1350,7 +1350,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1403,7 +1403,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1457,7 +1457,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1510,7 +1510,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1564,7 +1564,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1620,7 +1620,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1676,7 +1676,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1739,7 +1739,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1790,7 +1790,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1842,7 +1842,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1893,7 +1893,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1945,7 +1945,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1996,7 +1996,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2048,7 +2048,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2103,7 +2103,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2158,7 +2158,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2213,7 +2213,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2268,7 +2268,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2324,7 +2324,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2379,7 +2379,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2443,7 +2443,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2498,7 +2498,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2554,7 +2554,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2609,7 +2609,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2665,7 +2665,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2720,7 +2720,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2776,7 +2776,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2831,7 +2831,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2887,7 +2887,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2942,7 +2942,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -2998,7 +2998,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3052,7 +3052,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3117,7 +3117,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3186,7 +3186,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3238,7 +3238,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3289,7 +3289,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3341,7 +3341,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3392,7 +3392,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3444,7 +3444,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3509,7 +3509,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3578,7 +3578,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3632,7 +3632,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3704,7 +3704,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3758,7 +3758,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3812,7 +3812,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -3869,7 +3869,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4044,7 +4044,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4129,7 +4129,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4188,7 +4188,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4265,7 +4265,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4316,7 +4316,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4368,7 +4368,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4424,7 +4424,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4530,7 +4530,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4610,7 +4610,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4681,7 +4681,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4744,7 +4744,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4815,7 +4815,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -4969,7 +4969,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5047,7 +5047,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5154,7 +5154,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5185,7 +5185,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5238,7 +5238,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5296,7 +5296,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5356,7 +5356,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5454,7 +5454,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5525,7 +5525,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5611,7 +5611,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5686,7 +5686,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5752,7 +5752,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5816,7 +5816,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5900,7 +5900,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -5960,7 +5960,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6055,7 +6055,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6115,7 +6115,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6196,7 +6196,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6258,7 +6258,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6337,7 +6337,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6399,7 +6399,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6503,7 +6503,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6586,7 +6586,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6637,7 +6637,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6684,7 +6684,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6730,7 +6730,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6797,7 +6797,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6858,7 +6858,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6919,7 +6919,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -6967,7 +6967,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         // 2023-04-05 jj5 - this could infinite loop...
         //
-        //$this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        //$this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
 
@@ -7019,7 +7019,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         // 2023-04-05 jj5 - this could infinite loop...
         //
-        //$this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        //$this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
 

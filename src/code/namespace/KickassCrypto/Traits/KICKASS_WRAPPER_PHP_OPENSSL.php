@@ -31,7 +31,7 @@ trait KICKASS_WRAPPER_PHP_OPENSSL {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -53,7 +53,7 @@ trait KICKASS_WRAPPER_PHP_OPENSSL {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -75,7 +75,7 @@ trait KICKASS_WRAPPER_PHP_OPENSSL {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -106,7 +106,7 @@ trait KICKASS_WRAPPER_PHP_OPENSSL {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -144,7 +144,7 @@ trait KICKASS_WRAPPER_PHP_OPENSSL {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 

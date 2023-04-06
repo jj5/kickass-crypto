@@ -31,7 +31,7 @@
 // you want.
 //
 // 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
-// catch() method has been defined to notify exceptions. After exceptions are notified they are
+// handle() method has been defined to notify exceptions. After exceptions are notified they are
 // rethrown.
 //
 \************************************************************************************************/
@@ -49,7 +49,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -71,7 +71,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -93,7 +93,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -117,7 +117,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -139,7 +139,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -161,7 +161,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -183,7 +183,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -205,7 +205,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -227,7 +227,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -249,7 +249,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -271,7 +271,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
