@@ -1147,8 +1147,8 @@ This is an example of
 [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle),
 which is also known as the Robustness Principle.
 
-Not needing to type out and declare the types on the interface also makes implementation and
-debugging easier, as there's less code to write.
+Not needing to type out and declare the types on the interface of the default implementation also
+makes implementation and debugging easier, as there's less code to write.
 
 Ordinarily users of this code will only call the main function `is_valid_settings()`, and anyone
 implementing new code only needs to override `do_is_valid_settings()`.
