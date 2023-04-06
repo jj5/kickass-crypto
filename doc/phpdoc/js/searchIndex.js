@@ -141,6 +141,11 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020the\u0020PHP\u0020random_bytes\u0028\u0029\u0020implementation\u0020is\u0020not\u0020using\u0020a\u0020secure\u0020PRNG\u0020then\u0020this\nexception\u0020is\u0020supposed\u0020to\u0020be\u0020raised.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST",
+            "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST",
+            "summary": "2023\u002D04\u002D06\u0020jj5\u0020\u002D\u0020if\u0020we\u0020can\u0027t\u0020get\u0020a\u0020valid\u0020error\u0020list\u0020from\u0020an\u0020implementation\u0020we\u0020bail\u0020with\u0020an\nexception.",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_MESSAGE",
             "name": "KICKASS_CRYPTO_EXCEPTION_MESSAGE",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020exception\u0020messages\u0020for\u0020each\u0020exception\u0020code.\u0020These\u0020exception\nmessages\u0020should\u0020be\u0020stable,\u0020you\u0020can\u0020add\u0020new\u0020ones\u0020but\u0020don\u0027t\u0020change\u0020existing\u0020ones.",
@@ -786,6 +791,21 @@ Search.appendIndex(
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
             "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method___construct"
         },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_error_list\u0028\u0029",
+            "name": "do_get_error_list",
+            "summary": "",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_error_list"
+        },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_error\u0028\u0029",
+            "name": "do_get_error",
+            "summary": "",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_error"
+        },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_clear_error\u0028\u0029",
+            "name": "do_clear_error",
+            "summary": "",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_clear_error"
+        },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020implementations\u0020need\u0020to\u0020define\u0020what\u0020a\u0020valid\u0020configuration\u0020is.",
@@ -885,6 +905,21 @@ Search.appendIndex(
             "name": "do_throw",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020this\u0020finds\u0020the\u0020message\u0020for\u0020the\u0020given\u0020exception\u0020code\u0020and\u0020then\nthrows\u0020an\u0020exception\u0020with\u0020the\u0020relevant\u0020code\u0020and\u0020message\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_throw"
+        },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
+            "name": "get_error_list",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020errors\u0020which\u0020have\u0020happened\u0020since\u0020the\u0020last\u0020time\u0020clear_error\u0028\u0029\nwas\u0020called.",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_error_list"
+        },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_error\u0028\u0029",
+            "name": "get_error",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020most\u0020recent\u0020error\u003B\u0020this\u0020is\u0020a\u0020string\u0020or\u0020null\u0020if\u0020no\u0020errors.",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_error"
+        },                {
+            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aclear_error\u0028\u0029",
+            "name": "clear_error",
+            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020clear\u0020the\u0020current\u0020error\u0020list.",
+            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
             "name": "error",
@@ -1396,25 +1431,25 @@ Search.appendIndex(
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
             "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_error_list\u0028\u0029",
-            "name": "get_error_list",
+            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error_list\u0028\u0029",
+            "name": "do_get_error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_error_list"
+            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_error\u0028\u0029",
-            "name": "get_error",
+            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error\u0028\u0029",
+            "name": "do_get_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_error"
+            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
             "name": "get_openssl_error",
             "summary": "",
             "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_openssl_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aclear_error\u0028\u0029",
-            "name": "clear_error",
+            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
+            "name": "do_clear_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_clear_error"
+            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
@@ -1536,20 +1571,20 @@ Search.appendIndex(
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
             "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_error_list\u0028\u0029",
-            "name": "get_error_list",
+            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_error_list\u0028\u0029",
+            "name": "do_get_error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_error_list"
+            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_error\u0028\u0029",
-            "name": "get_error",
+            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_error\u0028\u0029",
+            "name": "do_get_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_error"
+            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aclear_error\u0028\u0029",
-            "name": "clear_error",
+            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_clear_error\u0028\u0029",
+            "name": "do_clear_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_clear_error"
+            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",

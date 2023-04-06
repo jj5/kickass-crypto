@@ -264,6 +264,13 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH',       5_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
 
 /**
+ * 2023-04-06 jj5 - if we can't get a valid error list from an implementation we bail with an
+ * exception.
+ * @var int
+ */
+define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST',      7_000 );
+
+/**
  * 2023-03-30 jj5 - these are the exception messages for each exception code. These exception
  * messages should be stable, you can add new ones but don't change existing ones.
  * @var array
@@ -275,6 +282,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INVALID_CIPHER         => 'invalid cipher.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH      => 'invalid IV length.',
   KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
+  KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST     => 'invalid error list.',
 ]);
 
 // 2023-03-30 jj5 - following are the errors that can happen during encryptiong and decryption, we

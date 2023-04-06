@@ -93,13 +93,13 @@ abstract class KickassOpenSsl extends \KickassCrypto\Framework\KickassCrypto {
     }
   }
 
-  protected function do_get_error_list() : array {
+  protected function do_get_error_list() {
 
     return $this->error_list;
 
   }
 
-  protected function do_get_error() : ?string {
+  protected function do_get_error() {
 
     $count = count( $this->error_list );
 
@@ -115,10 +115,12 @@ abstract class KickassOpenSsl extends \KickassCrypto\Framework\KickassCrypto {
 
   }
 
-  protected function do_clear_error() : void {
+  protected function do_clear_error() {
 
     $this->error_list = [];
     $this->openssl_error = null;
+
+    return true;
 
   }
 

@@ -61,6 +61,8 @@ abstract class KickassSodium extends \KickassCrypto\Framework\KickassCrypto {
 
     $this->error_list = [];
 
+    return true;
+
   }
 
   protected function do_get_const_data_format() {

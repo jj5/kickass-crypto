@@ -165,9 +165,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
-  abstract protected function do_get_error_list() : array;
-  abstract protected function do_get_error() : ?string;
-  abstract protected function do_clear_error() : void;
+  abstract protected function do_get_error_list();
+  abstract protected function do_get_error();
+  abstract protected function do_clear_error();
 
   /**
    * 2023-03-30 jj5 - implementations need to define what a valid configuration is.
@@ -727,7 +727,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_get_error_list();
+      $result = $this->do_get_error_list();
+
+      if ( is_array( $result ) ) { return $result; }
+
+      if ( $result === null ) { return []; }
 
     }
     catch ( \AssertionError $ex ) {
@@ -749,9 +753,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    $this->error( 'TODO: model this error' );
+    $this->throw( $code );
 
-    return [];
+    assert( false );
 
   }
 
@@ -759,7 +763,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_get_error();
+      $result = $this->do_get_error();
+
+      if ( is_string( $result ) ) { return $result; }
+
+      if ( $result === null ) { return null; }
+
+      $this->error( 'TODO: model this error' );
+
+      return null;
 
     }
     catch ( \AssertionError $ex ) {
@@ -791,7 +803,11 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
     try {
 
-      return $this->do_clear_error();
+      $result = $this->do_clear_error();
+
+      assert( is_bool( $result ) );
+
+      return $result ? true : false;
 
     }
     catch ( \AssertionError $ex ) {

@@ -56,9 +56,9 @@ interface IKickassCrypto {
   /**
    * 2023-04-03 jj5 - this will clear the current error list.
    *
-   * @return void
+   * @return boolean true on success false otherwise.
    */
-  public function clear_error() : void;
+  public function clear_error() : bool;
 
   /**
    * 2023-04-03 jj5 - this will JSON encode the input and encrypt the result; returns false on
