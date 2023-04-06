@@ -1106,9 +1106,9 @@ false and in some circumstances the empty string (`''`), an empty array (`[]`), 
 floating-point value zero (`0.0`), or the integer zero (`0`) may be returned instead; however,
 returning false is definitely preferred if it's possible.
 
-Aside: in some rare cases minus one (`-1`) can be used as the value to signal error, such as when
-you want to indicate an invalid array index, but in PHP minus one isn't necessarily an invalid
-array index, and returning false is still preferred.
+Aside: in some rare cases minus one (`-1`) can be used as the value to signal an error, such as
+when you want to indicate an invalid array index, but in PHP minus one isn't necessarily an
+invalid array index, and returning false is still preferred.
 
 The fact that an error has occurred can be registered with your component by a call to `error()`
 so that if the callers get a false return value they can interrogate your component with a call to
