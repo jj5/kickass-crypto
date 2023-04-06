@@ -41,7 +41,7 @@ define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 /**
  * 2023-04-05 jj5 - the minimum key length is used to ensure that passphrases meet at least a
  * minimal requirement.
- * 
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN', 32 );
@@ -289,7 +289,8 @@ define( 'KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED',      8_000 );
 /**
  * 2023-03-30 jj5 - these are the exception messages for each exception code. These exception
  * messages should be stable, you can add new ones but don't change existing ones.
- * @var array
+ *
+ * @var array<int, string>
  */
 define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE => 'invalid exception code.',
