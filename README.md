@@ -1180,6 +1180,9 @@ associated final wrapper.
 One last thing: if your component has a public function, it should probably be a final wrapper and
 just defer to a default implementation.
 
+Default implementations should pretty much always be protected, certainly not public, and maybe
+private if you're not ready to expose the implementation yet.
+
 #### The advantages of the typed interface on the final wrapper
 
 Having types on the interface of the final method `is_valid_settings()` confers three main
