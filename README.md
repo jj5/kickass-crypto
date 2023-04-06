@@ -1115,7 +1115,10 @@ so that if the callers get a false return value they can interrogate your compon
 `get_error()` or `get_error_list()` to get the recent errors (the caller can clear these errors
 with `clear_error()` too).
 
-In our library the function for registering that an error has occurred is the `error()` function.
+In our library the function for registering that an error has occurred is the `error()` function
+defined in the
+[KickassCrypto](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
+class.
 
 ### Typed-final, untyped-do idiom
 
