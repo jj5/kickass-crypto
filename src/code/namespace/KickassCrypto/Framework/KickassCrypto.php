@@ -423,12 +423,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return $this->error(
-      KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
-      [
-        'ex' => $ex,
-      ]
-    );
+    return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
 
   }
 
@@ -498,6 +493,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    * this method that we may make some noise about it (during debugging, usually). See do_catch()
    * for the rest of the story.
    *
+   * It's very important that this function does not throw exceptions, except for AssertionError,
+   * which is allowed.
+   *
    * @return void
    */
   //
@@ -534,6 +532,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
+        // 2023-04-06 jj5 - it's okay to call ignore() here as it's exception safe too...
+        //
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
 
       }
@@ -554,15 +554,39 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_catch( $ex, $file, $line, $function ) {
 
-    $this->log_error(
-      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH . $ex->getMessage(), $file, $line, $function
-    );
+    try {
 
+      $this->log_error(
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH . $ex->getMessage(), $file, $line, $function
+      );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
   }
 
   /**
    * 2023-04-06 jj5 - the point of ignore() is simply to notify that an exception has been caught
    * and it will be ignored.
+   *
+   * It's very important that this function does not throw exceptions, except for AssertionError,
+   * which is allowed. This function is the safest of all.
    *
    * @return void
    */
@@ -598,11 +622,8 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
 
       }
-      catch ( \Throwable $ignore ) {
+      catch ( \Throwable $ignore ) { ; }
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
     }
   }
 
@@ -620,10 +641,28 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_ignore( $ex, $file, $line, $function ) {
 
-    $this->log_error(
-      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE . $ex->getMessage(), $file, $line, $function
-    );
+    try {
 
+      $this->log_error(
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE . $ex->getMessage(), $file, $line, $function
+      );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
   }
 
   /**
