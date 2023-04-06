@@ -1120,7 +1120,7 @@ defined in the
 [KickassCrypto](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
 class.
 
-### Typed-final, untyped-do idiom
+### Typed final wrapper idiom
 
 In the code you will see things like this:
 
@@ -1291,7 +1291,7 @@ There are a bunch of functions for testing boolean conditions, and they begin wi
 return a boolean. These functions should only do the test and return true or false, they should
 _not_ register errors using the `error()` function, it that's necessary the caller will do that.
 
-The is_() functions can be implemented using the typed-final, untyped-do idiom documented above.
+The is_() functions can be implemented using the typed final wrapper idiom documented above.
 
 ### Managing secrets on the stack
 
