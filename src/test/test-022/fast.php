@@ -97,7 +97,7 @@ function test( $crypto ) {
   assert( $crypto->get_error() === KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID );
   assert( count( $crypto->get_error_list() ) === 4 );
 
-  assert( $crypto->clear_error() );
+  $crypto->clear_error();
 
   assert( $crypto->get_error() === null );
   assert( $crypto->get_error_list() === [] );
