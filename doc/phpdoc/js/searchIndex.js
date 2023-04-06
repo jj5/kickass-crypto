@@ -803,17 +803,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020list\u0020of\u0020errors,\u0020it\u0027s\u0020a\u0020list\u0020of\u0020strings,\u0020it\u0020can\u0020be\u0020empty,\u0020in\u0020fact\nit\u0027s\u0020best\u0020if\u0020it\u0020is\u0021",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error,\u0020it\u0027s\u0020a\u0020string,\u0020or\u0020null\u0020if\u0020no\u0020error.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020active\u0020list\u0020of\u0020errors.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_config\u0028\u0029",
@@ -1423,7 +1423,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024active",
             "name": "active",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020map\u0020is\u0020for\u0020tracking\u0020active\u0020functions\u0020which\u0020are\u0020presently\u0020on\u0020the\u0020call\nstack.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020map\u0020is\u0020for\u0020tracking\u0020active\u0020functions\u0020which\u0020are\u0020presently\u0020on\u0020the\u0020call\nstack\u003B\u0020see\u0020the\u0020enter\u0028\u0029\u0020and\u0020leave\u0028\u0029\u0020functions\u0020to\u0020understand\u0020how\u0020this\u0020field\u0020is\u0020used.",
             "url": "classes/KickassCrypto-KickassCrypto.html#property_active"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException",
@@ -1468,12 +1468,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020list\u0020of\u0020errors,\u0020it\u0027s\u0020a\u0020list\u0020of\u0020strings,\u0020it\u0020can\u0020be\u0020empty,\u0020in\u0020fact\nit\u0027s\u0020best\u0020if\u0020it\u0020is\u0021",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error,\u0020it\u0027s\u0020a\u0020string,\u0020or\u0020null\u0020if\u0020no\u0020error.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
@@ -1483,7 +1483,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020active\u0020list\u0020of\u0020errors.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_const_data_format\u0028\u0029",
@@ -1608,17 +1608,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020list\u0020of\u0020errors,\u0020it\u0027s\u0020a\u0020list\u0020of\u0020strings,\u0020it\u0020can\u0020be\u0020empty,\u0020in\u0020fact\nit\u0027s\u0020best\u0020if\u0020it\u0020is\u0021",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error,\u0020it\u0027s\u0020a\u0020string,\u0020or\u0020null\u0020if\u0020no\u0020error.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020active\u0020list\u0020of\u0020errors.",
             "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_const_data_format\u0028\u0029",

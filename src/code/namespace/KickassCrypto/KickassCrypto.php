@@ -78,7 +78,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   /**
    * 2023-04-07 jj5 - this map is for tracking active functions which are presently on the call
-   * stack.
+   * stack; see the enter() and leave() functions to understand how this field is used.
    *
    * @var array
    */
@@ -173,8 +173,26 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the list of errors, it's a list of strings, it can be empty, in fact
+   * it's best if it is!
+   *
+   * @return array the list of errors, or an empty array if none.
+   */
   abstract protected function do_get_error_list();
+
+  /**
+   * 2023-04-07 jj5 - gets the most recent error, it's a string, or null if no error.
+   *
+   * @return string|null the most recent error or null if no error.
+   */
   abstract protected function do_get_error();
+
+  /**
+   * 2023-04-07 jj5 - clears the active list of errors.
+   *
+   * @return boolean true on success false on failure.
+   */
   abstract protected function do_clear_error();
 
   /**
@@ -880,7 +898,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     if ( ! $message ) {
 
-      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE );
+      $data = [
+        'invalid_code' => $code,
+        'data' => $data,
+      ];
+
+      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE, $data, $previous );
 
     }
 
@@ -1032,7 +1055,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1131,16 +1154,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
 
       }
-      catch ( \Throwable $ignore ) {
+      catch ( \Throwable $ignore ) { ; }
 
-        try {
-
-          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
-
-        }
-        catch ( \Throwable $ignore ) { ; }
-
-      }
     }
     finally {
 
@@ -1179,7 +1194,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1233,7 +1248,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1286,7 +1301,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1340,7 +1355,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1393,7 +1408,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1447,7 +1462,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1500,7 +1515,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1554,7 +1569,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
