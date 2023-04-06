@@ -1099,13 +1099,16 @@ As mentioned above this library won't throw exceptions from the methods on its p
 because we don't want to leak secrets from our call stack if there's a problem.
 
 Instead of throwing exceptions the methods on the classes in this library will usually return
-false instead.
+`false` instead.
 
 Sometimes because of the nature of a typed interface it's not possible to return the boolean value
-false and in some circumstances the empty string, an empty array, null, the floating-point value
-0.0, or the integer zero (or in very rare cases minus one, this can be used to signal an invalid
-array index) may be returned instead; although returning false is definitely preferred if it's
-possible.
+false and in some circumstances the empty string (`''`), an empty array (`[]`), null (`null`), the
+floating-point value zero (`0.0`), or the integer zero (0) may be returned instead; however,
+returning false is definitely preferred if it's possible.
+
+Aside: in some rare cases minus one (-1) can be used as the value to signal error, such as when you
+want to indicate an invalid array index, but in PHP minus one isn't necessarily an invalid array
+index, so false is still preferred.
 
 The fact that an error has occurred can be registered with your component by a call to `error()`
 so that if the callers get a false return value they can interrogate your component with a call to
