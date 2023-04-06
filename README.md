@@ -1271,8 +1271,11 @@ occur during development and not in production. If you're calling code you don't
 not wish to rethrow AssertionError exceptions, but if you're calling code you don't trust you've
 probably got bigger problems in life.
 
-Following is some example code showing how to handle exceptions and manage errors.
+If you have a strong opinion regarding AssertionError exceptions and think I should not rethrow
+them I would be happy to hear from you to understand your concern and potentially address the
+issue.
 
+Following is some example code showing how to handle exceptions and manage errors.
 
 ```
   protected final function do_work_with_secret( $secret ) {
@@ -1300,12 +1303,33 @@ Following is some example code showing how to handle exceptions and manage error
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'error working with string.' );
+    try {
+
+      return $this->error( 'error working with string.' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 ```
@@ -1316,18 +1340,11 @@ working with string.'`. In this library the names of error constants begin with
 [src/code/global/constant/framework.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/constant/framework.php)
 file.
 
-Note that it's okay to call `catch()`, `ignore()`, and `error()` during and after your exception
-handlers because they are exception safe; but don't call anything which may throw from your
-exception handling code.
-
-I guess it's possible that if you're on an exceptionally deeply nested call stack the one extra
-call to a function during or after your exception handlers could be the function call which
-exceeds the limit and your code may blow up with some sort of exception, but if your code is well
-implemented and well tested that's a pretty unlikely situation. If you're truly worried about that
-I suppose you can always remove the function call to `ignore()` or wrap it in extra try-catch
-handlers. In my estimation it's better to call the ignore function when an exception is being
-ignored as it might be important for us to know that's happening, so we can fix a potentially
-more serious issue in our code.
+Note that we don't even assume it's safe to call `catch()`, `ignore()`, or `error()`; we wrap all
+such calls in try-catch handlers too. There are some edge case situations where even these
+functions which are supposed to be thread safe can lead to exceptions, such as when there's
+infinite recursion which gets aborted by the run-time. If you're an expert on such matters the
+code might do with a review from you.
 
 ### The is_() functions for boolean tests
 

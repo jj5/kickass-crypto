@@ -375,12 +375,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -422,12 +443,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -485,7 +527,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -536,9 +583,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        // 2023-04-06 jj5 - it's okay to call ignore() here as it's exception safe too...
-        //
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -579,7 +629,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -748,7 +803,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -788,12 +848,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    $this->error( 'TODO: model this error' );
+    try {
+
+      $this->error( 'TODO: model this error' );
+
+      return null;
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return null;
 
@@ -824,12 +905,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -887,7 +989,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1580,12 +1687,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+    try {
+
+      $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+
+      return [];
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return [];
 
@@ -1621,7 +1749,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1661,7 +1794,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1809,7 +1947,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1851,7 +1994,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1911,7 +2059,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -1953,7 +2106,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -2152,12 +2310,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2324,12 +2503,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2402,12 +2602,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2454,12 +2675,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2497,7 +2739,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -2667,12 +2914,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2770,15 +3038,41 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    usleep( random_int( 1_000, 10_000_000 ) );
+    try {
 
-    $this->report_emergency_delay( 'microsleep', __FILE__, __LINE__, __FUNCTION__ );
+      usleep( random_int( 1_000, 10_000_000 ) );
 
+      $this->report_emergency_delay( 'microsleep', __FILE__, __LINE__, __FUNCTION__ );
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
   }
 
   /**
@@ -2819,7 +3113,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -2884,12 +3183,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2954,12 +3274,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2997,12 +3338,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3055,12 +3417,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3102,12 +3485,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3140,12 +3544,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3176,12 +3601,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3232,12 +3678,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3264,12 +3731,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3331,12 +3819,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3363,12 +3872,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3416,12 +3946,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3450,12 +4001,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3501,12 +4073,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3535,12 +4128,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
+    try {
+
+      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3611,12 +4225,33 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
 
-    return $this->error( 'TODO: model this error' );
+    try {
+
+      return $this->error( 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3681,7 +4316,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -3716,7 +4356,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
@@ -3841,7 +4486,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
       catch ( \Throwable $ignore ) {
 
-        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
 
       }
     }
