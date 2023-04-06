@@ -242,7 +242,13 @@ require_once __DIR__ . '/lib/kickass-crypto/inc/sodium.php';
 ```
 
 After loading this library you will usually access via the `kickass_round_trip()` or
-`kickass_at_rest()` service locators which are documented below.
+`kickass_at_rest()` service locators which are documented below, something like this:
+
+```
+$ciphertext = kickass_round_trip()->encrypt( 'secret text' );
+$plaintext = kickass_round_trip()->decrypt( $ciphertext );
+echo "the secret data is: $plaintext.\n";
+```
 
 If you want to host the demo code you need to host the files in
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
