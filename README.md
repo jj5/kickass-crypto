@@ -1181,7 +1181,7 @@ implementing new code only needs to override `do_is_valid_settings()`.
 
 In general you should always wrap any non-final methods (except for private ones) with a final
 method per this idiom, so that you can have callers override functionality as they may want to do
-but retaining the ability to maintain standards as you may want to do.
+but retain the ability to maintain standards as you may want to do.
 
 If you're refactoring a private method to make it public or protected be sure to introduce the
 associated final wrapper.
@@ -1197,12 +1197,12 @@ private if you're not ready to expose the implementation yet.
 Having types on the interface of the final method `is_valid_settings()` confers three main
 advantages.
 
-The first is that the interface is typed, which means your callers can know what to expect and PHP
-can take care of fixing up some of the smaller details for us.
+The first is that the interface is strongly typed, which means your callers can know what to
+expect and PHP can take care of fixing up some of the smaller details for us.
 
-The second advantage of this function is that it's marked as final. This means that the
-implementer can maintain particular standards within the library and be assured that those
-standards haven't been elided, accidentally or otherwise.
+The second advantage of this approach is that our final wrapper function is marked as final. This
+means that the implementer can maintain particular standards within the library and be assured
+that those standards haven't been elided, accidentally or otherwise.
 
 Having code that you rely on marked as final helps you to reason about the possible states of your
 component. In the example given above the requirement that `$setting_b` is less that 200 bytes in
