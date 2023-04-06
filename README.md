@@ -1343,7 +1343,7 @@ defined in the
 class.
 
 In some error situations the best and safest thing to do is swallow the error and return a
-sensible default value as fallback.
+sensible and safe and uncontroversial default value as a fallback.
 
 ### Catch and throw idiom
 
