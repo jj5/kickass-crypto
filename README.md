@@ -1236,7 +1236,7 @@ occur in production in order to signal something from the test in question.
 
 The fourth and perhaps most important implication of the approach to the default implementation
 is that it is not marked as final which means that programmers inheriting from your class can
-provide a new implementation, thereby replacing the default implementation.
+provide a new implementation, thereby replacing, or augmenting, the default implementation.
 
 ### Catch and throw idiom
 
