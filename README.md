@@ -540,9 +540,9 @@ instance as the argument.
 
 The encryption process is roughly:
 
-* JSON encode
-* prefix with JSON data length
-* pad with random data
+* JSON encode (or PHP serialize if that's enabled)
+* prefix a message with data length and data encoding details
+* pad the message with random data
 * encrypt with either the Sodium library or the OpenSSL library
 * concatenate initialization vector, cipher text, and authentication tag
 * encode as base64
