@@ -5,7 +5,7 @@ A contemporary PHP cryptography library circa 2023.
 **Synopsis:**
 * an extensible and uniform interface to two separate and contemporary encryption libraries with
 support for input and config validation, serialization and deserialization (using JSON by default
-and with PHP serialization as an option), data size limits, passphrase management, message
+with PHP serialization as an option), data size limits, passphrase management, message
 padding, output encoding and input decoding, data format version management, logging, telemetry,
 timing attack mitigation, reentrancy detection and limits, and exception handling and error
 management
