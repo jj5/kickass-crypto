@@ -1102,8 +1102,9 @@ Instead of throwing exceptions the methods on the classes in this library will u
 false instead.
 
 Also the fact that an error occurred can be registered with your component so that if the callers
-get a false return value they can interrogate the service to get the list of recent errors (the
-programmer can clear the errors with `clear_error()` too).
+get a false return value they can interrogate the component with a call to `get_error()` or
+`get_error_list()` to get the list of recent errors (the caller can clear the errors with
+`clear_error()` too).
 
 In our library the function for registering that an error has occurred is the `error()` function.
 
