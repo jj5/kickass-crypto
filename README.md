@@ -1209,7 +1209,7 @@ The fourth and perhaps most important implication of the approach to the default
 is that it is not marked as final which means that programmers inheriting from your class can
 provide a new implementation, thereby replacing, or augmenting, the default implementation.
 
-### Enter/leave idiom
+### Enter/leave idiom and recursion limits
 
 One way a programmer can go wrong is to infinitely recurse. For example like this:
 
@@ -1228,7 +1228,7 @@ If the `do_encrypt()` function calls the `encrypt()` function, the `encrypt()` f
 the `do_encrypt()` function, and then off we go to infinity.
 
 If you do this and you have Xdebug installed and enabled that will limit the call depth to 256
-by default. If you don't have Xdebug installed and enabled PHP will just start recursing and will
+by default. If you don't have Xdebug installed and enabled PHP will just start recurring and will
 continue to do so until it hits its memory limit or runs out of RAM.
 
 Since there's pretty much nothing this library can do to stop programmers from accidentally
