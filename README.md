@@ -281,20 +281,20 @@ Total Number of Source Code Files = 113
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 6,095
-Development Effort Estimate, Person-Years (Person-Months) = 1.33 (16.01)
+Total Physical Source Lines of Code (SLOC)                = 6,193
+Development Effort Estimate, Person-Years (Person-Months) = 1.36 (16.28)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.60 (7.17)
+Schedule Estimate, Years (Months)                         = 0.60 (7.22)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.23
-Total Estimated Cost to Develop                           = $ 180,245
+Estimated Average Number of Developers (Effort/Schedule)  = 2.26
+Total Estimated Cost to Develop                           = $ 183,290
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
 | test      | 2,782 | php=2612,sh=170 |
-| code      | 2,602 | php=2602        |
+| code      | 2,700 | php=2700        |
 | bin       |   603 | php=422,sh=181  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -303,8 +303,8 @@ Total Estimated Cost to Develop                           = $ 180,245
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 5,744 |   (94.24%) |
-| sh       |   351 |    (5.76%) |
+| php      | 5,842 |   (94.33%) |
+| sh       |   351 |    (5.67%) |
 
 ## Supported PHP versions
 
@@ -1172,11 +1172,6 @@ from your exception handlers because they are exception safe. Probably best to c
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -1268,7 +1263,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,203 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,206 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

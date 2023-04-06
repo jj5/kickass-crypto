@@ -364,16 +364,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3,
-        [
-          'ex' => $ex,
-        ]
-      );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
+
   }
 
   /**
@@ -407,16 +411,25 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
-        [
-          'ex' => $ex,
-        ]
-      );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error(
+      KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4,
+      [
+        'ex' => $ex,
+      ]
+    );
+
   }
 
   /**
@@ -471,11 +484,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -522,11 +530,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -593,11 +596,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -732,11 +730,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -1432,11 +1425,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -1444,7 +1432,9 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return false;
+    $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+
+    return [];
 
   }
 
@@ -1474,11 +1464,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -1519,11 +1504,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -1674,11 +1654,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -1719,11 +1694,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -1786,11 +1756,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -1831,11 +1796,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -1897,130 +1857,154 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_encrypt( $input ) {
 
-    if ( $input === false && ! $this->get_config_false_enable() ) {
+    try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE );
+      if ( $input === false && ! $this->get_config_false_enable() ) {
 
-    }
+        return $this->error( KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE );
 
-    $data_encoding = $this->get_config_data_encoding();
-
-    if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
-
-      if ( $data_encoding === KICKASS_CRYPTO_DATA_ENCODING_PHPS ) {
-
-        if ( ! $this->get_config_phps_enable() ) {
-
-          return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
-
-        }
       }
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
+      $data_encoding = $this->get_config_data_encoding();
+
+      if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
+
+        if ( $data_encoding === KICKASS_CRYPTO_DATA_ENCODING_PHPS ) {
+
+          if ( ! $this->get_config_phps_enable() ) {
+
+            return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+
+          }
+        }
+
+        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
+
+      }
+
+      $encoded_data = $this->data_encode( $input, $data_encoding );
+
+      if ( $encoded_data === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+
+      }
+
+      $encoded_data_length = strlen( $encoded_data );
+
+      if ( $encoded_data_length > $this->get_config_data_length_max() ) {
+
+        return $this->error(
+          KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
+          [
+            'data_length' => $encoded_data_length,
+            'data_length_max' => $this->get_config_data_length_max(),
+          ]
+        );
+
+      }
+
+      $passphrase = $this->get_encryption_passphrase();
+
+      if ( ! $passphrase ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING );
+
+      }
+
+      $passphrase_length = strlen( $passphrase );
+
+      if ( $passphrase_length !== $this->get_const_passphrase_length() ) {
+
+        return $this->error(
+          KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID,
+          [
+            'passphrase_length' => $passphrase_length,
+            'passphrase_length_required' => $this->get_const_passphrase_length(),
+          ]
+        );
+
+      }
+
+      if ( ! $this->is_valid_passphrase( $passphrase ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+
+      }
+
+      $chunk_size = $this->get_config_chunk_size();
+
+      if (
+        ! is_int( $chunk_size ) ||
+        $chunk_size <= 0 ||
+        $chunk_size > $this->get_config_chunk_size_max()
+      ) {
+
+        return $this->error(
+          KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
+          [
+            'chunk_size' => $chunk_size,
+            'chunk_size_max' => $this->get_config_chunk_size_max(),
+          ]
+        );
+
+      }
+
+      $pad_length = $chunk_size - ( $encoded_data_length % $chunk_size );
+
+      assert( $pad_length <= $chunk_size );
+
+      // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
+      //
+      $encoded_data_length_hex = sprintf( '%08x', $encoded_data_length );
+
+      $data_encoding = $this->get_data_encoding();
+
+      if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2 );
+
+      }
+
+      $message =
+        $encoded_data_length_hex . '|' .
+        $data_encoding . '|' .
+        $encoded_data .
+        $this->get_padding( $pad_length );
+
+      $ciphertext = $this->encrypt_string( $message, $passphrase );
+
+      if ( $ciphertext === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
+
+      }
+
+      $encoded = $this->message_encode( $ciphertext );
+
+      return $encoded;
 
     }
+    catch ( \AssertionError $ex ) {
 
-    $encoded_data = $this->data_encode( $input, $data_encoding );
-
-    if ( $encoded_data === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
 
-    $encoded_data_length = strlen( $encoded_data );
+      try {
 
-    if ( $encoded_data_length > $this->get_config_data_length_max() ) {
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
-        [
-          'data_length' => $encoded_data_length,
-          'data_length_max' => $this->get_config_data_length_max(),
-        ]
-      );
+      }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
 
-    $passphrase = $this->get_encryption_passphrase();
-
-    if ( ! $passphrase ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING );
-
-    }
-
-    $passphrase_length = strlen( $passphrase );
-
-    if ( $passphrase_length !== $this->get_const_passphrase_length() ) {
-
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID,
-        [
-          'passphrase_length' => $passphrase_length,
-          'passphrase_length_required' => $this->get_const_passphrase_length(),
-        ]
-      );
-
-    }
-
-    if ( ! $this->is_valid_passphrase( $passphrase ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
-
-    }
-
-    $chunk_size = $this->get_config_chunk_size();
-
-    if (
-      ! is_int( $chunk_size ) ||
-      $chunk_size <= 0 ||
-      $chunk_size > $this->get_config_chunk_size_max()
-    ) {
-
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
-        [
-          'chunk_size' => $chunk_size,
-          'chunk_size_max' => $this->get_config_chunk_size_max(),
-        ]
-      );
-
-    }
-
-    $pad_length = $chunk_size - ( $encoded_data_length % $chunk_size );
-
-    assert( $pad_length <= $chunk_size );
-
-    // 2023-04-01 jj5 - we format as hex like this so it's always the same length...
-    //
-    $encoded_data_length_hex = sprintf( '%08x', $encoded_data_length );
-
-    $data_encoding = $this->get_data_encoding();
-
-    if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2 );
-
-    }
-
-    $message =
-      $encoded_data_length_hex . '|' .
-      $data_encoding . '|' .
-      $encoded_data .
-      $this->get_padding( $pad_length );
-
-    $ciphertext = $this->encrypt_string( $message, $passphrase );
-
-    if ( $ciphertext === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
-
-    }
-
-    $encoded = $this->message_encode( $ciphertext );
-
-    return $encoded;
+    return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
 
   }
 
@@ -2185,11 +2169,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -2211,47 +2190,71 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_decrypt( $ciphertext ) {
 
-    $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
+    try {
 
-    $binary = $this->message_decode( $ciphertext );
+      $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
 
-    if ( $binary === false ) {
+      $binary = $this->message_decode( $ciphertext );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID );
+      if ( $binary === false ) {
 
-    }
-
-    foreach ( $this->get_passphrase_list() as $passphrase ) {
-
-      if ( ! $this->is_valid_passphrase( $passphrase ) ) {
-
-        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+        return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID );
 
       }
 
-      $encoded_data = $this->try_decrypt( $binary, $passphrase, $data_encoding );
+      foreach ( $this->get_passphrase_list() as $passphrase ) {
 
-      if ( $encoded_data === false ) { continue; }
+        if ( ! $this->is_valid_passphrase( $passphrase ) ) {
 
-      $result = $this->data_decode( $encoded_data, $data_encoding, $is_false );
+          return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
-      if ( $result !== false ) { return $result; }
+        }
 
-      if ( $is_false ) { return false; }
+        $encoded_data = $this->try_decrypt( $binary, $passphrase, $data_encoding );
 
-      // 2023-04-02 jj5 - if we make it this far during any of our decryption attempts then this
-      // is the error we will return.
+        if ( $encoded_data === false ) { continue; }
 
-      $error = KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED;
+        $result = $this->data_decode( $encoded_data, $data_encoding, $is_false );
+
+        if ( $result !== false ) { return $result; }
+
+        if ( $is_false ) { return false; }
+
+        // 2023-04-02 jj5 - if we make it this far during any of our decryption attempts then this
+        // is the error we will return.
+
+        $error = KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED;
+
+      }
+
+      // 2023-04-02 jj5 - the $error here will be one of:
+      //
+      //* KICKASS_CRYPTO_ERROR_NO_VALID_KEY
+      //* KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED
+
+      return $this->error( $error );
 
     }
+    catch ( \AssertionError $ex ) {
 
-    // 2023-04-02 jj5 - the $error here will be one of:
-    //
-    //* KICKASS_CRYPTO_ERROR_NO_VALID_KEY
-    //* KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED
+      throw $ex;
 
-    return $this->error( $error );
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return $this->error( 'log this error' );
 
   }
 
@@ -2296,11 +2299,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -2308,7 +2306,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return false;
+    return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
 
   }
 
@@ -2342,11 +2340,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -2421,88 +2414,112 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
    */
   protected function do_decode_message( $message, &$data_encoding ) {
 
-    // 2023-04-04 jj5 - this should be null unless its valid.
-    //
-    $data_encoding = null;
+    try {
 
-    // 2023-04-02 jj5 - this function decodes a message, which is:
-    //
-    // $encoded_data_length . '|' . $encoded_data . $random_padding
-    //
-    // 2023-04-02 jj5 - this function will read the data length and then extract the JSON. This
-    // function doesn't validate the JSON.
+      // 2023-04-04 jj5 - this should be null unless its valid.
+      //
+      $data_encoding = null;
 
-    // 2023-04-02 jj5 - NOTE: this limit of 2 GiB worth of JSON is just a heuristic for this
-    // part of the code; the data can't actually be this long, but other parts of the code will
-    // make sure of that.
-    //
-    static $max_json_length = 2_147_483_647;
+      // 2023-04-02 jj5 - this function decodes a message, which is:
+      //
+      // $encoded_data_length . '|' . $encoded_data . $random_padding
+      //
+      // 2023-04-02 jj5 - this function will read the data length and then extract the JSON. This
+      // function doesn't validate the JSON.
 
-    assert( hexdec( '7fffffff' ) === $max_json_length );
+      // 2023-04-02 jj5 - NOTE: this limit of 2 GiB worth of JSON is just a heuristic for this
+      // part of the code; the data can't actually be this long, but other parts of the code will
+      // make sure of that.
+      //
+      static $max_json_length = 2_147_483_647;
 
-    $parts = explode( '|', $message, 3 );
+      assert( hexdec( '7fffffff' ) === $max_json_length );
 
-    if ( count( $parts ) !== 3 ) {
+      $parts = explode( '|', $message, 3 );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID );
+      if ( count( $parts ) !== 3 ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID );
+
+      }
+
+      $encoded_data_length_string = $parts[ 0 ];
+      $data_encoding_read = $parts[ 1 ];
+      $binary = $parts[ 2 ];
+
+      if ( strlen( $encoded_data_length_string ) !== 8 ) {
+
+        return $this->error(
+          KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_SPEC_INVALID,
+          [
+            'data_length_string' => $encoded_data_length_string,
+          ]
+        );
+
+      }
+
+      $encoded_data_length = hexdec( $encoded_data_length_string );
+
+      if (
+        ! is_int( $encoded_data_length ) ||
+        $encoded_data_length <= 0 ||
+        $encoded_data_length > $max_json_length
+      ) {
+
+        return $this->error(
+          KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
+          [
+            'json_length' => $encoded_data_length,
+          ]
+        );
+
+      }
+
+      if ( ! $this->is_valid_data_encoding( $data_encoding_read ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3 );
+
+      }
+
+      // 2023-04-02 jj5 - the binary data is the JSON with the random padding after it. So take
+      // the JSON from the beginning of the string, ignore the padding, and return the JSON.
+
+      if ( $encoded_data_length > strlen( $binary ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID );
+
+      }
+
+      $encoded_data = substr( $binary, 0, $encoded_data_length );
+
+      $data_encoding = $data_encoding_read;
+
+      assert( is_string( $encoded_data ) );
+      assert( is_string( $data_encoding ) );
+
+      return $encoded_data;
 
     }
+    catch ( \AssertionError $ex ) {
 
-    $encoded_data_length_string = $parts[ 0 ];
-    $data_encoding_read = $parts[ 1 ];
-    $binary = $parts[ 2 ];
-
-    if ( strlen( $encoded_data_length_string ) !== 8 ) {
-
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_SPEC_INVALID,
-        [
-          'data_length_string' => $encoded_data_length_string,
-        ]
-      );
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
 
-    $encoded_data_length = hexdec( $encoded_data_length_string );
+      try {
 
-    if (
-      ! is_int( $encoded_data_length ) ||
-      $encoded_data_length <= 0 ||
-      $encoded_data_length > $max_json_length
-    ) {
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error(
-        KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
-        [
-          'json_length' => $encoded_data_length,
-        ]
-      );
+      }
+      catch ( \Throwable $ignore ) {
 
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
 
-    if ( ! $this->is_valid_data_encoding( $data_encoding_read ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3 );
-
-    }
-
-    // 2023-04-02 jj5 - the binary data is the JSON with the random padding after it. So take
-    // the JSON from the beginning of the string, ignore the padding, and return the JSON.
-
-    if ( $encoded_data_length > strlen( $binary ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID );
-
-    }
-
-    $encoded_data = substr( $binary, 0, $encoded_data_length );
-
-    $data_encoding = $data_encoding_read;
-
-    assert( is_string( $encoded_data ) );
-    assert( is_string( $data_encoding ) );
-
-    return $encoded_data;
+    return $this->error( 'TODO: log this error' );
 
   }
 
@@ -2598,11 +2615,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -2650,11 +2662,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -2717,11 +2724,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
+
   }
 
   /**
@@ -2778,11 +2794,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
+
   }
 
   /**
@@ -2812,11 +2837,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+
   }
 
   /**
@@ -2861,11 +2895,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
+
   }
 
   /**
@@ -2899,11 +2942,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+
   }
 
   protected function do_phps_encode( $input ) {
@@ -2928,11 +2980,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
+
   }
 
   protected final function data_decode(
@@ -2955,11 +3016,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
+
   }
 
   protected function do_data_decode( $encoded_data, $data_encoding, &$is_false ) {
@@ -3002,11 +3072,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
+
   }
 
   protected final function json_decode( $input, &$is_false ) {
@@ -3025,11 +3104,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+
   }
 
   protected function do_json_decode( $input, &$is_false ) {
@@ -3083,11 +3171,20 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+
   }
 
   protected final function phps_decode( $input, &$is_false ) {
@@ -3106,39 +3203,72 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+
   }
 
   protected function do_phps_decode( $input, &$is_false ) {
 
-    static $false_phps = null;
+    try {
 
-    if ( $false_phps === null ) { $false_phps = $this->php_serialize( false ); }
+      static $false_phps = null;
 
-    $is_false = false;
+      if ( $false_phps === null ) { $false_phps = $this->php_serialize( false ); }
 
-    $result = $this->php_unserialize( $input );
+      $is_false = false;
 
-    if ( $result === false ) {
+      $result = $this->php_unserialize( $input );
 
-      if ( $input === $false_phps ) {
+      if ( $result === false ) {
 
-        $is_false = true;
+        if ( $input === $false_phps ) {
 
+          $is_false = true;
+
+        }
+
+        if ( ! $this->get_config_false_enable() ) {
+
+          return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
+
+        }
       }
 
-      if ( ! $this->get_config_false_enable() ) {
+      return $result;
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
 
       }
     }
 
-    return $result;
+    return $this->error( 'TODO: model this error' );
 
   }
 
@@ -3160,37 +3290,70 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+
   }
 
   protected function do_message_encode( $binary ) {
 
-    $data_format = $this->get_data_format();
-    $base64 = $this->php_base64_encode( $binary );
+    try {
 
-    if ( ! is_string( $base64 ) ) {
+      $data_format = $this->get_data_format();
+      $base64 = $this->php_base64_encode( $binary );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
+      if ( ! is_string( $base64 ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
+
+      }
+
+      if ( ! $this->is_valid_data_format( $data_format ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
+
+      }
+
+      if ( ! $base64 ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
+
+      }
+
+      return $data_format . '/' . $base64;
 
     }
+    catch ( \AssertionError $ex ) {
 
-    if ( ! $this->is_valid_data_format( $data_format ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
-
-    }
-
-    if ( ! $base64 ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
 
-    return $data_format . '/' . $base64;
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return $this->error( 'TODO: model this error' );
 
   }
 
@@ -3212,62 +3375,95 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
     catch ( \Throwable $ex ) {
 
-      $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
     }
+
+    return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
+
   }
 
   protected function do_message_decode( $encoded ) {
 
-    $parts = explode( '/', $encoded, 2 );
+    try {
 
-    if ( count( $parts ) !== 2 ) {
+      $parts = explode( '/', $encoded, 2 );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID );
+      if ( count( $parts ) !== 2 ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID );
+
+      }
+
+      $data_format = $parts[ 0 ];
+
+      if ( $data_format !== $this->get_data_format() ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN );
+
+      }
+
+      // 2023-04-01 jj5 - OLD: we don't do this any more, if base64 decoding fails we can
+      // surmise that the encoding was not valid, there's not much point doing validation in
+      // advance, especially as the normal case is that the encoding is valid.
+      //
+      /*
+      if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
+
+      }
+      */
+
+      $result = $this->php_base64_decode( $parts[ 1 ], $strict = true );
+
+      if ( $result === false ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED );
+
+      }
+
+      // 2023-04-01 jj5 - NOTE: but we did have to include this extra check for empty because
+      // it's not always false which is returned... actually empty() is probably stronger than
+      // required, a simplye $result !== '' would probably do, but this should be fine...
+      //
+      if ( empty( $result ) ) {
+
+        return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2 );
+
+      }
+
+      return $result;
 
     }
+    catch ( \AssertionError $ex ) {
 
-    $data_format = $parts[ 0 ];
-
-    if ( $data_format !== $this->get_data_format() ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN );
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
 
-    // 2023-04-01 jj5 - OLD: we don't do this any more, if base64 decoding fails we can
-    // surmise that the encoding was not valid, there's not much point doing validation in
-    // advance, especially as the normal case is that the encoding is valid.
-    //
-    /*
-    if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
+      try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-    }
-    */
+      }
+      catch ( \Throwable $ignore ) {
 
-    $result = $this->php_base64_decode( $parts[ 1 ], $strict = true );
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
 
-    if ( $result === false ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED );
-
+      }
     }
 
-    // 2023-04-01 jj5 - NOTE: but we did have to include this extra check for empty because
-    // it's not always false which is returned... actually empty() is probably stronger than
-    // required, a simplye $result !== '' would probably do, but this should be fine...
-    //
-    if ( empty( $result ) ) {
-
-      return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2 );
-
-    }
-
-    return $result;
+    return $this->error( 'TODO: model this error' );
 
   }
 
@@ -3330,11 +3526,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
@@ -3368,11 +3559,6 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       try {
 
         $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
-
-      }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
 
       }
       catch ( \Throwable $ignore ) {
@@ -3479,20 +3665,15 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
         error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
 
       }
-      catch ( \AssertionError $ex ) {
-
-        throw $ex;
-
-      }
       catch ( \Throwable $ignore ) {
 
         $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
 
       }
-
-      return false;
-
     }
+
+    return false;
+
   }
 
   protected function do_log_error( $message, $file, $line, $function ) {
