@@ -1091,43 +1091,159 @@ if that's missing they're a PHP script. If I need to make assertions I call asse
 
 ## Programming this library
 
+Here are some note about the various idioms and approaches taken in this library.
+
 ### Return false on error idiom
 
 As mentioned above this library won't throw exceptions from the methods on its public interface
 because we don't want to leak secrets from our call stack if there's a problem.
 
 Instead of throwing exceptions the methods on the classes in this library will usually return
-false instead. Also the fact that an error occurred can be registered with the service object
-so that if the callers get a false return value they can interrogate the service to get the list
-of recent errors (the programmer can clear the errors with `clear_error()` too.
+false instead.
 
-### Typed final, untyped do idiom
+Also the fact that an error occurred can be registered with your component so that if the callers
+get a false return value they can interrogate the service to get the list of recent errors (the
+programmer can clear the errors with `clear_error()` too).
+
+In our library the function for registering that an error has occurred is the `error()` function.
+
+### Typed-final, untyped-do idiom
 
 In the code you will see things like this:
 
 ```
-protected final function is_valid_settings( int $setting_a, string $setting_b ) : bool {
+  protected final function is_valid_settings( int $setting_a, string $setting_b ) : bool {
 
-  if ( strlen( $setting_b ) < 200 ) { return false; }
+    if ( strlen( $setting_b ) < 200 ) { return false; }
 
-  return $this->do_is_valid_settings( $setting_a, $setting_b );
+    return $this->do_is_valid_settings( $setting_a, $setting_b );
 
-}
+  }
 
-protected function do_is_valid_settings( $setting_a, $setting_b ) {
+  protected function do_is_valid_settings( $setting_a, $setting_b ) {
 
-  if ( $setting_a < 100 ) { return false; }
+    if ( $setting_a < 100 ) { return false; }
 
-  if ( strlen( $setting_b ) > 100 ) { return false; }
+    if ( strlen( $setting_b ) > 100 ) { return false; }
 
-  return true;
+    return true;
 
-}
+  }
 ```
 
 There are several things to note about this idiom.
 
+The first thing to note is that the main function `is_valid_settings()` is declared final and
+thus cannot be overridden by implementations; and the second thing to note is that this function
+declares the data types on its interface.
+
+In contrast the second function `do_is_valid_settings()` is not marked as final, and it does not
+declare the types on its interface.
+
+This is an example of [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle). It also
+makes implementation and debugging easier.
+
+Ordinarily users of this code will only call the main function `is_valid_settings()`, and anyone
+implementing new code only needs to override `do_is_valid_settings()`.
+
+#### The advantages of the typed interface
+
+Having types on the interface of the final method `is_valid_settings()` confers three main
+advantages.
+
+The first is that the interface is typed, which means your callers can know what to expect and PHP
+can take care of fixing up some of the smaller details for us.
+
+The second advantage of this function is that it's marked as final. This means that the
+implementer can maintain particular standards within the library and be assured that those
+standards haven't been elided, accidentally or otherwise. Having code that you rely on marked as
+final helps you to reason about the possible states of your component. In the example given above
+the requirement that `$setting_b` is less that 200 bytes in length cannot be changed by
+implementations, implementations can only make the requirements stronger.
+
+And another advantage of the typed interface is that it provides extra information which can be
+automatically added into the documentation.
+
+#### The advantages of the untyped interface
+
+Not having types on the interface of `do_is_valid_settings()` confers three main advantages.
+
+The first is that it's easier to type out and maintain the overriding function as you don't need
+to worry about the types.
+
+Also, in future, the `is_valid_settings()` might declare a new interface and change its types. If
+this happens it can maintain support for both old and new `do_is_valid_settings()` without
+implementers necessarily needing to update their code.
+
+And the third advantage of an untyped interface for the `do_is_valid_settings()` function is that
+it allows for the injection of "impossible" values. These are values which will never be able to
+make it past the types declared on the main function `is_valid_settings()` and into the
+`do_is_valid_settings()`, and being able to inject such "impossible" values can make unit testing
+of particular situations easier, as you can pass in a value that could never possibly occur in
+production in order to signal something from the test in question.
+
 ### Catch and throw idiom
+
+This library is very particular about exception handling and error reporting.
+
+If you have sensitive data on your call stack you must not throw exceptions. Sensitive data
+includes:
+
+- secret keys or other secrets
+- passphrases
+- unencrypted data
+- PHP Exception and Throwable objects
+- potentially other things
+
+If you encounter a situation from which you cannot continue the way to register this problem
+is to call the `error()` function with a string identifying and describing the problem and then
+returning false.
+
+Note that it's okay to intercept and rethrow PHP AssertionError exceptions. These should only ever
+occur during development and not in production.
+
+Following is some example code showing how to handle exceptions and manage errors.
+
+
+```
+  protected final function do_work_with_secret( $secret ) {
+
+    try {
+
+      $result = str_repeat( $secret, 2 );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return $this->error( 'error working with string.' );
+
+  }
+```
+
+In actual code you would define an error constant for use instead of the string literal `'error
+working with string.'`. In this library the names of error constants begin with
+"KICKASS_CRYPTO_ERROR_" and they are defined in the
+[src/code/global/constant/framework.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/constant/framework.php)
+file.
 
 ### The is_() functions for boolean tests
 
@@ -1263,7 +1379,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,206 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,208 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
