@@ -810,7 +810,7 @@ the delay logic and it might be less safe to do so.
 
 ## Exceptions and errors
 
-When an instance of one of:
+When an instance is one of:
 
 * `KickassSodiumRoundTrip`
 * `KickassSodiumAtRest`
