@@ -1444,13 +1444,16 @@ happens we will just silently ignore such a problem.
 
 And then if we get through all of that and our function hasn't returned then that's an error
 situation so we want to notify the error, but `error()` defers to `do_error()` and that could
-throw, so we wrap in a try-catch block and then do the exception ignore dance again.
+be overridden and throw, so we wrap in a try-catch block and then do the exception ignore dance
+again.
 
 I mean it's all over the top and excessive but it should at least be safe and it meets two
 requirements:
 
 - exceptions will not leak sensitive data on the call stack.
 - programmers are given the best chance to find out that exceptions or errors are occurring.
+
+In the usual happy code path none of the exception handling code even runs.
 
 ### The is_() functions for boolean tests
 
