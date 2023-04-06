@@ -783,17 +783,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020programmers\u0020can\u0020disable\u0020config\u0020validation\u0020by\u0020defining\u0020this\u0020constant\nas\u0020true.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020programmers\u0020can\u0020disable\u0020secret\u0020key\u0020hash\u0020function\u0020validation\u0020by\u0020defining\nthis\u0020constant\u0020as\u0020true.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020programmers\u0020can\u0020disable\u0020validation\u0020of\u0020the\u0020random_bytes\u0028\u0029\u0020function\u0020by\ndefining\u0020this\u0020constant\u0020as\u0020true.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto",
@@ -881,16 +881,6 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020encrypts\u0020the\u0020input\u0020and\u0020returns\u0020the\u0020ciphertext\u003B\u0020returns\u0020false\u0020on\u0020failure.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_encrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aenter\u0028\u0029",
-            "name": "enter",
-            "summary": "",
-            "url": "classes/KickassCrypto-KickassCrypto.html#method_enter"
-        },                {
-            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aleave\u0028\u0029",
-            "name": "leave",
-            "summary": "",
-            "url": "classes/KickassCrypto-KickassCrypto.html#method_leave"
-        },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decrypts\u0020the\u0020ciphertext\u0020and\u0020returns\u0020the\u0020deserialized\u0020value\u003B\u0020returns\u0020false\u0020on\nfailure.",
@@ -943,17 +933,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
             "name": "get_error_list",
-            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020errors\u0020which\u0020have\u0020happened\u0020since\u0020the\u0020last\u0020time\u0020clear_error\u0028\u0029\nwas\u0020called.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020current\u0020list\u0020of\u0020errors,\u0020the\u0020list\u0020is\u0020empty\u0020if\u0020there\u0020are\u0020no\u0020errors,\notherwise\u0020it\u0020contains\u0020strings\u0020which\u0020describe\u0020the\u0020errors\u0020that\u0020have\u0020occurred.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_error\u0028\u0029",
             "name": "get_error",
-            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020most\u0020recent\u0020error\u003B\u0020this\u0020is\u0020a\u0020string\u0020or\u0020null\u0020if\u0020no\u0020errors.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020latest\u0020error\u0020as\u0020a\u0020string\u0020description\u0020or\u0020returns\u0020null\u0020if\u0020there\u0027s\u0020no\nerror.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aclear_error\u0028\u0029",
             "name": "clear_error",
-            "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020clear\u0020the\u0020current\u0020error\u0020list.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020clears\u0020the\u0020current\u0020errors,\u0020if\u0020any.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_clear_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
@@ -1010,11 +1000,6 @@ Search.appendIndex(
             "name": "do_increment_counter",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\nto\u0020zero\u0020if\u0020missing\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_increment_counter"
-        },                {
-            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aincrement_counter_internal\u0028\u0029",
-            "name": "increment_counter_internal",
-            "summary": "",
-            "url": "classes/KickassCrypto-KickassCrypto.html#method_increment_counter_internal"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_data_format\u0028\u0029",
             "name": "get_const_data_format",
@@ -1318,113 +1303,128 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aphps_encode\u0028\u0029",
             "name": "phps_encode",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020serializes\u0020a\u0020value\u0020using\u0020PHP\u0020serialization\u003B\u0020defers\u0020to\u0020virtual\u0020method\ndo_phps_encode\u0028\u0029\u0020for\u0020implementation\u003B\u0020will",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020serializes\u0020a\u0020value\u0020using\u0020PHP\u0020serialization\u003B\u0020defers\u0020to\u0020virtual\u0020method\ndo_phps_encode\u0028\u0029\u0020for\u0020implementation.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_phps_encode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_phps_encode\u0028\u0029",
             "name": "do_phps_encode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020PHP\u0020serialization\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementers\u003B\u0020by\u0020default\u0020calls\u0020the\u0020PHP\u0020serialize\u0028\u0029\u0020function\u0020via\u0020its\u0020wrapper.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_encode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adata_decode\u0028\u0029",
             "name": "data_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020decodes\u0020the\u0020encoded\u0020data\u0020using\u0020the\u0020nominated\u0020encoding.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_data_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_data_decode\u0028\u0029",
             "name": "do_data_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020the\u0020default\u0020implementation\u0020for\u0020data\u0020decoding,\u0020which\u0020provides\nsupport\u0020for\u0020decoding\u0020either\u0020JSON\u0020or\u0020PHPS.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_data_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ajson_decode\u0028\u0029",
             "name": "json_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020deserialized\u0020JSON\u0020data.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_json_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_json_decode\u0028\u0029",
             "name": "do_json_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020JSON\u0020decoding\u0020by\u0020calling\u0020the\u0020PHP\u0020function\u0020via\u0020its\nwrapper.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_json_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aphps_decode\u0028\u0029",
             "name": "phps_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020deserializes\u0020the\u0020input\u0020data\u0020using\u0020the\u0020PHP\u0020unserialize\u0028\u0029\u0020function.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_phps_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_phps_decode\u0028\u0029",
             "name": "do_phps_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020PHP\u0020deserialization\u0020by\u0020deferring\u0020to\u0020the\nimplementation\u0020on\u0020the\u0020PHP\u0020wrapper.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Amessage_encode\u0028\u0029",
             "name": "message_encode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020encodes\u0020a\u0020message.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_message_encode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_message_encode\u0028\u0029",
             "name": "do_message_encode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020message\u0020encoding\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_message_encode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Amessage_decode\u0028\u0029",
             "name": "message_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020decodes\u0020a\u0020message\u0020into\u0020binary.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_message_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_message_decode\u0028\u0029",
             "name": "do_message_decode",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020message\u0020decoding\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_message_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_data_format\u0028\u0029",
             "name": "get_data_format",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u003B\u0020the\u0020data\u0020format\u0020can\u0020be\u0020\u0022KA0\u0022\u0020for\u0020OpenSSL\nimplementations\u0020and\u0020\u0022KAS0\u0022\u0020for\u0020Sodium\u0020implementations\u003B\u0020if\u0020not\u0020the\u0020official\u0020implementation\nthen\u0020the\u0020string\u0020\u0027X\u0027\u0020is\u0020prepended\u0020to\u0020the\u0020data\u0020format.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_get_data_format"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aconvert_secret_to_passphrase\u0028\u0029",
             "name": "convert_secret_to_passphrase",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020converts\u0020a\u0020secret\u0020key\u0020to\u0020a\u0020passphrase\u0020by\u0020applying\u0020the\u0020hashing\u0020function.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_convert_secret_to_passphrase"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_convert_secret_to_passphrase\u0028\u0029",
             "name": "do_convert_secret_to_passphrase",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020the\u0020default\u0020implementation\u0020of\u0020the\u0020passphrase\u0020hashing\u0020logic.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_convert_secret_to_passphrase"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_padding\u0028\u0029",
             "name": "get_padding",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020string\u0020to\u0020use\u0020as\u0020padding\u003B\u0020it\u0027s\u0020usually\u0020just\u0020a\u0020string\u0020of\u0020random\nbytes.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_get_padding"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_padding\u0028\u0029",
             "name": "do_get_padding",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020generating\u0020the\u0020random\u0020padding\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_padding"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_delay\u0028\u0029",
             "name": "get_delay",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020calculates\u0020the\u0020seconds\u0020and\u0020extra\u0020nanoseconds\u0020which\u0020will\u0020be\u0020needed\u0020by\u0020the\ndelay\u0020implementation\u003B\u0020this\u0020function\u0020defers\u0020to\u0020do_get_delay\u0028\u0029\u0020which\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_get_delay"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_delay\u0028\u0029",
             "name": "do_get_delay",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020the\u0020default\u0020implementation\u0020of\u0020the\u0020delay\u0020calculations\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_delay"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Alog_error\u0028\u0029",
             "name": "log_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020logs\u0020an\u0020error.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_log_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_log_error\u0028\u0029",
             "name": "do_log_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020a\u0020default\u0020implementation\u0020for\u0020log\u0020writing\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_log_error"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Awrite_log\u0028\u0029",
             "name": "write_log",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020our\u0020private\u0020implementation\u0020of\u0020log\u0020writing,\u0020in\u0020case\u0020we\u0020need\u0020to\u0020use\nit\u0020ourselves\u0020without\u0020potential\u0020interference\u0020from\u0020inheritors\u0020of\u0020our\u0020class.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_write_log"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aenter\u0028\u0029",
+            "name": "enter",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020registers\u0020when\u0020a\u0020function\u0020gets\u0020called\u0020so\u0020as\u0020to\u0020track\u0020the\u0020depth\u0020of\u0020a\u0020function\non\u0020the\u0020call\u0020stack.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_enter"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aleave\u0028\u0029",
+            "name": "leave",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020registers\u0020when\u0020a\u0020runction\u0020returns\u0020so\u0020as\u0020to\u0020track\u0020the\u0020depth\u0020of\u0020a\u0020function\u0020on\nthe\u0020call\u0020stack.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_leave"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aincrement_counter_internal\u0028\u0029",
+            "name": "increment_counter_internal",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020is\u0020our\u0020private\u0020implementation\u0020for\u0020incrementing\u0020a\u0020counter\u0020for\u0020a\u0020key,\nwe\u0020use\u0020it\u0020in\u0020enter\u0028\u0029.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_increment_counter_internal"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024telemetry",
             "name": "telemetry",
@@ -1898,7 +1898,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP_OPENSSL",
             "name": "KICKASS_WRAPPER_PHP_OPENSSL",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020thin\u0020wrappers\u0020around\u0020PHP\u0020functions\u0020for\u0020the\u0020OpenSSL\u0020library.",
             "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP-OPENSSL.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP_OPENSSL\u003A\u003Aphp_openssl_get_cipher_methods\u0028\u0029",
@@ -1953,7 +1953,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP_SODIUM",
             "name": "KICKASS_WRAPPER_PHP_SODIUM",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020thin\u0020wrappers\u0020around\u0020PHP\u0020functions\u0020for\u0020the\u0020Sodium\u0020library.",
             "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP-SODIUM.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP_SODIUM\u003A\u003Aphp_sodium_crypto_secretbox\u0028\u0029",

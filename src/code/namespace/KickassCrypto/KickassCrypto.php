@@ -80,7 +80,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-07 jj5 - this map is for tracking active functions which are presently on the call
    * stack; see the enter() and leave() functions to understand how this field is used.
    *
-   * @var array
+   * @var array keys are strings containing function names and values are a count of the number
+   * of instances of the function that are presently on the call stack.
    */
   private $active = [];
 
@@ -98,18 +99,36 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION' ) ) {
 
+      /**
+       * 2023-04-07 jj5 - programmers can disable config validation by defining this constant
+       * as true.
+       *
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION', false );
 
     }
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION' ) ) {
 
+      /**
+       * 2023-04-07 jj5 - programmers can disable secret key hash function validation by defining
+       * this constant as true.
+       *
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_KEY_HASH_VALIDATION', false );
 
     }
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION' ) ) {
 
+      /**
+       * 2023-04-07 jj5 - programmers can disable validation of the random_bytes() function by
+       * defining this constant as true.
+       *
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION', false );
 
     }
@@ -302,6 +321,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   /**
    * 2023-04-05 jj5 - this function will print the telemetry data to STDOUT; it's suitable
    * for use in a console.
+   *
    * @return void
    */
   public static function ReportTelemetry() {
@@ -436,63 +456,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     return false;
 
-  }
-
-  protected function enter( string $function ) {
-
-    $has_exceeded_limit = false;
-
-    if ( ( $this->active[ $function ] ?? 0 ) > KICKASS_CRYPTO_RECURSION_LIMIT ) {
-
-      $has_exceeded_limit = true;
-
-    }
-
-    $this->increment_counter_internal( $this->active, $function );
-
-    if ( ! $has_exceeded_limit ) { return; }
-
-    $code = KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED;
-
-    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
-
-    assert( ! empty( $message ) );
-
-    $this->log_error(
-      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
-    );
-
-    $previous = null;
-
-    $data = [
-      'function' => $function,
-    ];
-
-    throw new \KickassCrypto\KickassCryptoException( $message, $code, $previous, $data );
-
-  }
-
-  protected function leave( string $function ) {
-
-    if ( ! array_key_exists( $function, $this->active ) || $this->active[ $function ] === 0 ) {
-
-      // 2023-04-07 jj5 - there's no point throwing an exception to alert the programmer here,
-      // the call to leave() is always in a try-catch block with an ignored exception, so all
-      // we can do is log.
-
-      $message = "tried to leave unentered function '$function'.";
-
-      // 2023-04-07 jj5 - we call write_log() directly because we don't want to recurse!
-      //
-      $this->log_error( $message, __FILE__, __LINE__, __FUNCTION__ );
-
-    }
-
-    if ( array_key_exists( $function, $this->active ) ) {
-
-      $this->active[ $function ]--;
-
-    }
   }
 
   /**
@@ -653,7 +616,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    */
-  //
   protected final function handle( $ex, $file, $line, $function ) : void {
 
     try {
@@ -769,7 +731,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    */
-  //
   protected final function notify( $ex, $file, $line, $function ) : void {
 
     try {
@@ -873,7 +834,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    */
-  //
   protected final function ignore( $ex, $file, $line, $function ) : void {
 
     try {
@@ -1021,6 +981,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the current list of errors, the list is empty if there are no errors,
+   * otherwise it contains strings which describe the errors that have occurred.
+   *
+   * @return array an array of strings, can be empty.
+   *
+   * @throws \AssertionError can throw AssertionError during debugging.
+   */
   public final function get_error_list() : array {
 
     try {
@@ -1071,6 +1039,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the latest error as a string description or returns null if there's no
+   * error.
+   *
+   * @return string|null the error description or null if no error.
+   *
+   * @throws \AssertionError can throw AssertionError during debugging.
+   */
   public final function get_error() : ?string {
 
     try {
@@ -1139,6 +1115,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - clears the current errors, if any.
+   *
+   * @return void
+   *
+   * @throws \AssertionError can throw AssertionError during debugging.
+   */
   public final function clear_error() : void {
 
     try {
@@ -1273,7 +1256,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @param string $caller the name of the invoking function.
    *
-   * @return int
+   * @return int the count of instances made for this class.
    */
   protected final function count_this( string $caller ) : int {
 
@@ -1803,18 +1786,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     }
 
     return -1;
-
-  }
-
-  private function increment_counter_internal( &$array, $key ) {
-
-    if ( ! array_key_exists( $key, $array ) ) {
-
-      $array[ $key ] = 0;
-
-    }
-
-    $array[ $key ]++;
 
   }
 
@@ -3837,7 +3808,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   /**
    * 2023-04-06 jj5 - by default checks the string length; can be overridden by implementations.
    *
-   *
    * @param mixed $passphrase a passphrase to validate.
    *
    * @return boolean true on valid; false otherwise.
@@ -5759,9 +5729,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   /**
    * 2023-04-05 jj5 - serializes a value using PHP serialization; defers to virtual method
-   * do_phps_encode() for implementation; will
-   * @param type $input
-   * @return type
+   * do_phps_encode() for implementation.
+   *
+   * @param mixed $input can be pretty much anything, the PHP serialization has good support for
+   * odd values such as object instances and weird floats.
+   *
+   * @return string|false the serialized input or false on error.
+   *
    * @throws \AssertionError
    */
   protected final function phps_encode( $input ) {
@@ -5832,6 +5806,16 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of PHP serialization; can be overridden by
+   * implementers; by default calls the PHP serialize() function via its wrapper.
+   *
+   * @param mixed $input can be pretty much anything.
+   *
+   * @return string|false the serialized value on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_phps_encode( $input ) {
 
     try {
@@ -5898,6 +5882,21 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - decodes the encoded data using the nominated encoding.
+   *
+   * @param string $encoded_data the serialized data.
+   *
+   * @param string $data_encoding the data encoding to use, can be JSON or PHPS.
+   *
+   * @param boolean $is_false set to true if the encoded data is deserialized to the boolean value
+   * false.
+   *
+   * @return mixed returns the decoded data (can be pretty much anything) or false on error;
+   * false can also be a valid return value, if it is then $is_false will be set.
+   *
+   * @throws \AssertionError
+   */
   protected final function data_decode(
     $encoded_data,
     $data_encoding = KICKASS_CRYPTO_DATA_ENCODING_JSON,
@@ -5962,6 +5961,25 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - provides the default implementation for data decoding, which provides
+   * support for decoding either JSON or PHPS.
+   *
+   * @param string $encoded_data the serialized data.
+   *
+   * @param string $data_encoding the data encoding to use, can be JSON or PHPS.
+   *
+   * @param boolean $is_false set to true if the deserialized value is the boolean value false.
+   *
+   * @return mixed can return pretty much anything, will return false on error, but false can also
+   * be a valid return value.
+   *
+   * @throws \AssertionError
+   *
+   * @throws \Exception may inject an exception for testing purposes, you can control this by
+   * passing $data_encoding === false and defining the KICKASS_CRYPTO_TEST_DATA_DECODE constant
+   * true.
+   */
   protected function do_data_decode( $encoded_data, $data_encoding, &$is_false ) {
 
     try {
@@ -6046,6 +6064,18 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - deserialized JSON data.
+   *
+   * @param string $input the JSON.
+   *
+   * @param boolean $is_false set to true if the JSON deserializes to the boolean value false.
+   *
+   * @return mixed can return pretty much anything, will return false on failure but false can be
+   * a valid return value.
+   *
+   * @throws \AssertionError
+   */
   protected final function json_decode( $input, &$is_false ) {
 
     try {
@@ -6106,6 +6136,23 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of JSON decoding by calling the PHP function via its
+   * wrapper.
+   *
+   * @staticvar type $false_json the JSON for the boolean value false encoded as JSON, this is
+   * used to determine if the JSON represents the value false or not; this value is calculated
+   * only once and uses the JSON encoding options that were current on the instance which did
+   * the initial encoding.
+   *
+   * @param string $input the JSON to decode.
+   *
+   * @param boolean $is_false set to true if the JSON decodes to the boolean value false.
+   *
+   * @return mixed returns the decoded value on success or the value false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_json_decode( $input, &$is_false ) {
 
     try {
@@ -6201,6 +6248,18 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - deserializes the input data using the PHP unserialize() function.
+   *
+   * @param string $input the serialized data.
+   *
+   * @param boolean $is_false set to true if the deserialized data is the boolean value false.
+   *
+   * @return mixed the deserialized data on success or false on failure, the value false can be
+   * returned on success if that's what the serialized data represented.
+   *
+   * @throws \AssertionError
+   */
   protected final function phps_decode( $input, &$is_false ) {
 
     try {
@@ -6261,6 +6320,21 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of PHP deserialization by deferring to the
+   * implementation on the PHP wrapper.
+   *
+   * @staticvar type $false_phps keeps a static copy of what the serialized boolean value false
+   * looks like, this is used to determine if the input data is the serialized value false or not.
+   *
+   * @param string $input the serialized data to deserialize.
+   *
+   * @param boolean $is_false set to true if the deserialized value is the boolean value false.
+   *
+   * @return mixed the deserialized data or false on error.
+   *
+   * @throws \AssertionError
+   */
   protected function do_phps_decode( $input, &$is_false ) {
 
     try {
@@ -6342,6 +6416,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - encodes a message.
+   *
+   * @param string $binary the binary data to encode.
+   *
+   * @return string|false the encoded value on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function message_encode( string $binary ) {
 
     try {
@@ -6404,6 +6487,16 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of message encoding; can be overridden by
+   * implementations.
+   *
+   * @param string $binary the binary data to encode.
+   *
+   * @return string|false the encoded string on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_message_encode( $binary ) {
 
     try {
@@ -6483,6 +6576,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - decodes a message into binary.
+   *
+   * @param string $encoded the encoded message.
+   *
+   * @return string|false the decoded message or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function message_decode( string $encoded ) {
 
     try {
@@ -6545,6 +6647,16 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of message decoding; can be overridden by
+   * implementations.
+   *
+   * @param string $encoded the encoded message.
+   *
+   * @return string|false the decoded message or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_message_decode( $encoded ) {
 
     try {
@@ -6649,6 +6761,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the data format; the data format can be "KA0" for OpenSSL
+   * implementations and "KAS0" for Sodium implementations; if not the official implementation
+   * then the string 'X' is prepended to the data format.
+   *
+   * @return string|false the data format string or false on error.
+   *
+   * @throws \AssertionError
+   */
   protected final function get_data_format() {
 
     try {
@@ -6716,6 +6837,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - converts a secret key to a passphrase by applying the hashing function.
+   *
+   * @param string $key the secret key to convert
+   *
+   * @return string|false the generated passphrase or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function convert_secret_to_passphrase( $key ) {
 
     try {
@@ -6767,6 +6897,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - the default implementation of the passphrase hashing logic.
+   *
+   * @param string $key the secret key to hash.
+   *
+   * @return string|false the hashed string to use as the passphraser or false on error.
+   *
+   * @throws \AssertionError
+   */
   protected function do_convert_secret_to_passphrase( $key ) {
 
     try {
@@ -6814,6 +6953,16 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the string to use as padding; it's usually just a string of random
+   * bytes.
+   *
+   * @param int $length the length of the random padding to generate.
+   *
+   * @return string|false the padding string to use or false on error.
+   *
+   * @throws \AssertionError
+   */
   protected final function get_padding( int $length ) : string {
 
     try {
@@ -6860,6 +7009,16 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - does the actual work of generating the random padding; can be overridden by
+   * implementations.
+   *
+   * @param int $length the length of the padding to generate.
+   *
+   * @return string|false the padding on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_get_padding( $length ) {
 
     try {
@@ -6927,6 +7086,24 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - calculates the seconds and extra nanoseconds which will be needed by the
+   * delay implementation; this function defers to do_get_delay() which can be overridden by
+   * implementations.
+   *
+   * @param int $ns_min the total number of nanoseconds, minimum.
+   *
+   * @param int $ns_max the total number of nanoseconds, maximum.
+   *
+   * @param int $seconds the number of whole seconds to delay.
+   *
+   * @param int $nanoseconds the extra number of nanoseconds to delay beyond the number of
+   * seconds.
+   *
+   * @return boolean true on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function get_delay(
     int $ns_min,
     int $ns_max,
@@ -6988,6 +7165,23 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - provides the default implementation of the delay calculations; can be
+   * overridden by implementations.
+   *
+   * @param int $ns_min the total number of nanoseconds, minimum.
+   *
+   * @param int $ns_max the total number of nanoseconds, maximum.
+   *
+   * @param int $seconds the number of whole seconds to delay.
+   *
+   * @param int $nanoseconds the extra number of nanoseconds to delay beyond the number of
+   * seconds.
+   *
+   * @return boolean true on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_get_delay( $ns_min, $ns_max, &$seconds, &$nanoseconds ) {
 
     try {
@@ -7049,6 +7243,21 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - logs an error.
+   *
+   * @param string $message the message to log.
+   *
+   * @param string $file the path of the file writing the log entry.
+   *
+   * @param int $line the line in the file writing the log entry.
+   *
+   * @param string $function the name of the function writing the log entry.
+   *
+   * @return boolean true on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function log_error( $message, $file, $line, $function ) : bool {
 
     try {
@@ -7099,6 +7308,22 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - provides a default implementation for log writing; can be overridden by
+   * implementations.
+   *
+   * @param string $message the message to log.
+   *
+   * @param string $file the path of the file writing the log entry.
+   *
+   * @param int $line the line in the file writing the log entry.
+   *
+   * @param string $function the name of the function writing the log entry.
+   *
+   * @return boolean true on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected function do_log_error( $message, $file, $line, $function ) {
 
     try {
@@ -7151,9 +7376,118 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - provides our private implementation of log writing, in case we need to use
+   * it ourselves without potential interference from inheritors of our class.
+   *
+   * @param string $message the message to log.
+   *
+   * @param string $file the path of the file writing the log entry.
+   *
+   * @param int $line the line in the file writing the log entry.
+   *
+   * @param string $function the name of the function writing the log entry.
+   *
+   * @return boolean true on success or false on failure.
+   *
+   * @throws \AssertionError
+   */
   protected final function write_log( $message, $file, $line, $function ) {
 
     return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
+
+  }
+
+  /**
+   * 2023-04-07 jj5 - registers when a function gets called so as to track the depth of a function
+   * on the call stack.
+   *
+   * @param string $function the name of the function.
+   *
+   * @return void
+   *
+   * @throws \KickassCrypto\KickassCryptoException
+   */
+  protected function enter( string $function ) {
+
+    $has_exceeded_limit = false;
+
+    if ( ( $this->active[ $function ] ?? 0 ) > KICKASS_CRYPTO_RECURSION_LIMIT ) {
+
+      $has_exceeded_limit = true;
+
+    }
+
+    $this->increment_counter_internal( $this->active, $function );
+
+    if ( ! $has_exceeded_limit ) { return; }
+
+    $code = KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED;
+
+    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
+
+    assert( ! empty( $message ) );
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
+    );
+
+    $previous = null;
+
+    $data = [
+      'function' => $function,
+    ];
+
+    throw new \KickassCrypto\KickassCryptoException( $message, $code, $previous, $data );
+
+  }
+
+  /**
+   * 2023-04-07 jj5 - registers when a runction returns so as to track the depth of a function on
+   * the call stack.
+   *
+   * @param string $function the name of the function.
+   */
+  protected function leave( string $function ) {
+
+    if ( ! array_key_exists( $function, $this->active ) || $this->active[ $function ] === 0 ) {
+
+      // 2023-04-07 jj5 - there's no point throwing an exception to alert the programmer here,
+      // the call to leave() is always in a try-catch block with an ignored exception, so all
+      // we can do is log.
+
+      $message = "tried to leave unentered function '$function'.";
+
+      // 2023-04-07 jj5 - we call write_log() directly because we don't want to recurse!
+      //
+      $this->log_error( $message, __FILE__, __LINE__, __FUNCTION__ );
+
+    }
+
+    if ( array_key_exists( $function, $this->active ) ) {
+
+      $this->active[ $function ]--;
+
+    }
+  }
+
+  /**
+   * 2023-04-07 jj5 - this is our private implementation for incrementing a counter for a key,
+   * we use it in enter().
+   *
+   * @param array $array a reference to the array to manage.
+   *
+   * @param string $key the key of the counter to increment.
+   */
+  private function increment_counter_internal( &$array, $key ) {
+
+    if ( ! array_key_exists( $key, $array ) ) {
+
+      $array[ $key ] = 0;
+
+    }
+
+    $array[ $key ]++;
 
   }
 }
