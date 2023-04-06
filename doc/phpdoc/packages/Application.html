@@ -155,7 +155,7 @@ function so that a log is not actually written unless the DEBUG constant is defi
         <dd>2023-04-07 jj5 - these traits are defined for debugging purposes; will delay for the minimum
 amount of time when delay is invoked due to error.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html"><abbr title="\KickassCrypto\Traits\KICKASS_WRAPPER_PHP">KICKASS_WRAPPER_PHP</abbr></a></dt>
-        <dd></dd>
+        <dd>2023-04-07 jj5 - thin wrappers around PHP functions.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP-OPENSSL.html"><abbr title="\KickassCrypto\Traits\KICKASS_WRAPPER_PHP_OPENSSL">KICKASS_WRAPPER_PHP_OPENSSL</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP-SODIUM.html"><abbr title="\KickassCrypto\Traits\KICKASS_WRAPPER_PHP_SODIUM">KICKASS_WRAPPER_PHP_SODIUM</abbr></a></dt>
@@ -1059,9 +1059,9 @@ minimal requirement.</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH</a>
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE</a>
     <span>
-        &nbsp;= &#039;caught exception: &#039;                            </span>
+        &nbsp;= &#039;handled exception: &#039;                            </span>
 </dt>
 <dd></dd>
 
@@ -1069,6 +1069,13 @@ minimal requirement.</dd>
     <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE</a>
     <span>
         &nbsp;= &#039;ignored exception: &#039;                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY</a>
+    <span>
+        &nbsp;= &#039;caught exception: &#039;                            </span>
 </dt>
 <dd></dd>
 
@@ -4859,9 +4866,9 @@ minimal requirement.</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH">
-        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH
-        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE">
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -4875,8 +4882,8 @@ minimal requirement.</p>
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;caught exception: &#039;</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;handled exception: &#039;</span>
 </code>
 
 
@@ -4894,7 +4901,7 @@ minimal requirement.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">663</span>
+    <span class="phpdocumentor-element-found-in__line">668</span>
 
     </aside>
 
@@ -4913,6 +4920,33 @@ minimal requirement.</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY">
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY
+        <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">663</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;caught exception: &#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW">
         KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW
         <a href="namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4921,7 +4955,7 @@ minimal requirement.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/global/constant/framework.php"><a href="files/src-code-global-constant-framework.html"><abbr title="src/code/global/constant/framework.php">framework.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">668</span>
+    <span class="phpdocumentor-element-found-in__line">673</span>
 
     </aside>
 

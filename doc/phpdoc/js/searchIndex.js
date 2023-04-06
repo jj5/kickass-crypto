@@ -501,10 +501,15 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY"
         },                {
-            "fqsen": "\\KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH",
-            "name": "KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH",
+            "fqsen": "\\KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE",
+            "name": "KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE",
             "summary": "",
-            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH"
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY",
+            "name": "KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE",
             "name": "KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE",
@@ -905,6 +910,16 @@ Search.appendIndex(
             "name": "do_handle",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020implementations\u0020can\u0020decide\u0020what\u0020to\u0020do\u0020when\u0020errors\u0020are\u0020handled\u003B\u0020by\u0020default\nwe\u0020write\u0020a\u0020log\u0020entry\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_handle"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Anotify\u0028\u0029",
+            "name": "notify",
+            "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020the\u0020point\u0020of\u0020notify\u0028\u0029\u0020is\u0020simply\u0020to\u0020notify\u0020that\u0020an\u0020exception\u0020has\u0020been\u0020caught\nbut\u0020it\u0027s\u0020going\u0020to\u0020be\u0020rethrown\u003B\u0020it\u0027s\u0020best\u0020if\u0020this\u0020function\u0020doesn\u0027t\u0020throw\u0020an\u0020exception\u0020but\u0020it\nshouldn\u0027t\u0020be\u0020a\u0020huge\u0020problem\u0020if\u0020it\u0020does,\u0020the\u0020caller\u0020will\u0020throw\u0020when\u0020this\u0020function\u0020returns\nanyway.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_notify"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_notify\u0028\u0029",
+            "name": "do_notify",
+            "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020implementations\u0020can\u0020decide\u0020what\u0020to\u0020do\u0020when\u0020errors\u0020are\u0020notified\u003B\u0020by\u0020default\nwe\u0020write\u0020a\u0020log\u0020entry\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_notify"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aignore\u0028\u0029",
             "name": "ignore",
@@ -1768,7 +1783,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP",
             "name": "KICKASS_WRAPPER_PHP",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020thin\u0020wrappers\u0020around\u0020PHP\u0020functions.",
             "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP\u003A\u003Aphp_base64_encode\u0028\u0029",

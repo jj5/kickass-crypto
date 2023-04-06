@@ -287,19 +287,19 @@ Total Number of Source Code Files = 123
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 8,327
-Development Effort Estimate, Person-Years (Person-Months) = 1.85 (22.22)
+Total Physical Source Lines of Code (SLOC)                = 8,377
+Development Effort Estimate, Person-Years (Person-Months) = 1.86 (22.36)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.68 (8.12)
+Schedule Estimate, Years (Months)                         = 0.68 (8.14)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.74
-Total Estimated Cost to Develop                           = $ 250,124
+Estimated Average Number of Developers (Effort/Schedule)  = 2.75
+Total Estimated Cost to Develop                           = $ 251,701
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| code      | 4,627 | php=4627        |
+| code      | 4,677 | php=4677        |
 | test      | 2,989 | php=2819,sh=170 |
 | bin       |   603 | php=422,sh=181  |
 | demo      |    71 | php=71          |
@@ -309,8 +309,8 @@ Total Estimated Cost to Develop                           = $ 250,124
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 7,976 |   (95.78%) |
-| sh       |   351 |    (4.22%) |
+| php      | 8,026 |   (95.81%) |
+| sh       |   351 |    (4.19%) |
 
 ## Supported PHP versions
 
@@ -1603,7 +1603,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,291 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,293 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

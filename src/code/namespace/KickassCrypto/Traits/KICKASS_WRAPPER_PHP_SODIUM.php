@@ -32,7 +32,7 @@ trait KICKASS_WRAPPER_PHP_SODIUM {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -54,7 +54,7 @@ trait KICKASS_WRAPPER_PHP_SODIUM {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 

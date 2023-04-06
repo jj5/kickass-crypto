@@ -724,7 +724,113 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       $this->enter( __FUNCTION__ );
 
       $this->log_error(
-        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH . $ex->getMessage(), $file, $line, $function
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE . $ex->getMessage(), $file, $line, $function
+      );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        // 2023-04-07 jj5 - we don't call handle here, if this happens (it really shouldn't) then
+        // we make some noise in the log file without giving the programmer a chance to stop us.
+        //
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+  }
+
+  /**
+   * 2023-04-01 jj5 - the point of notify() is simply to notify that an exception has been caught
+   * but it's going to be rethrown; it's best if this function doesn't throw an exception but it
+   * shouldn't be a huge problem if it does, the caller will throw when this function returns
+   * anyway.
+   *
+   * @return void
+   */
+  //
+  protected final function notify( $ex, $file, $line, $function ) : void {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $this->count_function( __FUNCTION__ );
+
+      $this->do_notify( $ex, $file, $line, $function );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+  }
+
+  /**
+   * 2023-04-01 jj5 - implementations can decide what to do when errors are notified; by default
+   * we write a log entry; can be overridden by implementations.
+   *
+   * @param \Throwable $ex the exception which was caught and will be rethrown.
+   *
+   * @param string $file the path to the file that caught the exception.
+   *
+   * @param int $line the line in the file where the caught exception was reported.
+   *
+   * @param string $function the function in which the exception was caught.
+   */
+  protected function do_notify( $ex, $file, $line, $function ) {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $this->log_error(
+        KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY . $ex->getMessage(), $file, $line, $function
       );
 
     }

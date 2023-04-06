@@ -13,31 +13,32 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - these are indirections to PHP functions. The main reason for using these is
-// so that we can use them to inject errors during testing... some PHP functions such as
-// is_int(), intval() and round() are called directly and not via these indirections. If you need
-// to be able to inject invalid return values during testing this is the place to make such
-// arrangements to do such things.
-//
-// 2023-03-31 jj5 - NOTE: these wrappers should do as little as possible and just defer entirely
-// to the PHP implementation. One exception is that I like to initialize variables passed by
-// reference to null, this is probably not necessary but it gives me the warm and fuzzies.
-//
-// 2023-03-31 jj5 - NOTE: when defining default variables you should use the same default values
-// as the library functions you are calling use, or just don't provide a default value at all;
-// that's a sensible enough option, you can make the wrapper demand a value from the caller if
-// you want.
-//
-// 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
-// handle() method has been defined to notify exceptions. After exceptions are notified they are
-// rethrown.
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - these are indirections to PHP functions. The main reason for using these is
+ * so that we can use them to inject errors during testing... some PHP functions such as
+ * is_int(), intval() and round() are called directly and not via these indirections. If you need
+ * to be able to inject invalid return values during testing this is the place to make such
+ * arrangements to do such things.
+ *
+ * 2023-03-31 jj5 - NOTE: these wrappers should do as little as possible and just defer entirely
+ * to the PHP implementation. One exception is that I like to initialize variables passed by
+ * reference to null, this is probably not necessary but it gives me the warm and fuzzies.
+ *
+ * 2023-03-31 jj5 - NOTE: when defining default variables you should use the same default values
+ * as the library functions you are calling use, or just don't provide a default value at all;
+ * that's a sensible enough option, you can make the wrapper demand a value from the caller if
+ * you want.
+ *
+ * 2023-04-02 jj5 - NOTE: the only assumption this trait makes about its environment is that a
+ * notify() method has been defined to notify exceptions. After exceptions are notified they are
+ * rethrown.
+ */
 
 namespace KickassCrypto\Traits;
 
+/**
+ * 2023-04-07 jj5 - thin wrappers around PHP functions.
+ */
 trait KICKASS_WRAPPER_PHP {
 
   protected final function php_base64_encode( $input ) {
@@ -49,7 +50,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -71,7 +72,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -93,7 +94,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -117,7 +118,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -139,7 +140,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -161,7 +162,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -183,7 +184,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -205,7 +206,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -227,7 +228,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -249,7 +250,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 
@@ -271,7 +272,7 @@ trait KICKASS_WRAPPER_PHP {
     }
     catch ( \Throwable $ex ) {
 
-      $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
       throw $ex;
 

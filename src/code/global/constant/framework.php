@@ -655,7 +655,12 @@ define( 'KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY', 'emergency delay: ' );
 /**
  * @var string
  */
-define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH', 'caught exception: ' );
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_HANDLE', 'handled exception: ' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_NOTIFY', 'caught exception: ' );
 
 /**
  * @var string

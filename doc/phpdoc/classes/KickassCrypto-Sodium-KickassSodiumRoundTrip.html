@@ -726,6 +726,14 @@ from the config file; can be overridden by implementations.</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/KickassCrypto-KickassCrypto.html#method_do_notify">do_notify()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>2023-04-01 jj5 - implementations can decide what to do when errors are notified; by default
+we write a log entry; can be overridden by implementations.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_parse_binary">do_parse_binary()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -1204,6 +1212,16 @@ do_is_valid_secret();</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/KickassCrypto-KickassCrypto.html#method_notify">notify()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>2023-04-01 jj5 - the point of notify() is simply to notify that an exception has been caught
+but it&#039;s going to be rethrown; it&#039;s best if this function doesn&#039;t throw an exception but it
+shouldn&#039;t be a huge problem if it does, the caller will throw when this function returns
+anyway.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_parse_binary">parse_binary()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -1569,7 +1587,7 @@ the constructor succeeds then encryption and decryption should also usually succ
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1036</span>
+    <span class="phpdocumentor-element-found-in__line">1142</span>
 
     </aside>
 
@@ -1768,7 +1786,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">968</span>
+    <span class="phpdocumentor-element-found-in__line">1074</span>
 
     </aside>
 
@@ -1803,7 +1821,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">918</span>
+    <span class="phpdocumentor-element-found-in__line">1024</span>
 
     </aside>
 
@@ -1961,7 +1979,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6613</span>
+    <span class="phpdocumentor-element-found-in__line">6719</span>
 
     </aside>
 
@@ -2005,7 +2023,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1384</span>
+    <span class="phpdocumentor-element-found-in__line">1490</span>
 
     </aside>
 
@@ -2052,7 +2070,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1277</span>
+    <span class="phpdocumentor-element-found-in__line">1383</span>
 
     </aside>
 
@@ -2099,7 +2117,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1491</span>
+    <span class="phpdocumentor-element-found-in__line">1597</span>
 
     </aside>
 
@@ -2146,7 +2164,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1172</span>
+    <span class="phpdocumentor-element-found-in__line">1278</span>
 
     </aside>
 
@@ -2191,7 +2209,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5795</span>
+    <span class="phpdocumentor-element-found-in__line">5901</span>
 
     </aside>
 
@@ -2251,7 +2269,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5337</span>
+    <span class="phpdocumentor-element-found-in__line">5443</span>
 
     </aside>
 
@@ -2326,7 +2344,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4796</span>
+    <span class="phpdocumentor-element-found-in__line">4902</span>
 
     </aside>
 
@@ -2382,7 +2400,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4662</span>
+    <span class="phpdocumentor-element-found-in__line">4768</span>
 
     </aside>
 
@@ -2471,7 +2489,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6664</span>
+    <span class="phpdocumentor-element-found-in__line">6770</span>
 
     </aside>
 
@@ -2515,7 +2533,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1438</span>
+    <span class="phpdocumentor-element-found-in__line">1544</span>
 
     </aside>
 
@@ -2563,7 +2581,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1331</span>
+    <span class="phpdocumentor-element-found-in__line">1437</span>
 
     </aside>
 
@@ -2611,7 +2629,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1545</span>
+    <span class="phpdocumentor-element-found-in__line">1651</span>
 
     </aside>
 
@@ -2659,7 +2677,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1224</span>
+    <span class="phpdocumentor-element-found-in__line">1330</span>
 
     </aside>
 
@@ -2705,7 +2723,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5859</span>
+    <span class="phpdocumentor-element-found-in__line">5965</span>
 
     </aside>
 
@@ -2765,7 +2783,7 @@ this class instance; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5416</span>
+    <span class="phpdocumentor-element-found-in__line">5522</span>
 
     </aside>
 
@@ -2851,7 +2869,7 @@ in production.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4871</span>
+    <span class="phpdocumentor-element-found-in__line">4977</span>
 
     </aside>
 
@@ -2924,7 +2942,7 @@ Note due to other limits this limit could never be reached.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4475</span>
+    <span class="phpdocumentor-element-found-in__line">4581</span>
 
     </aside>
 
@@ -3029,7 +3047,7 @@ and do the actual decryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5021</span>
+    <span class="phpdocumentor-element-found-in__line">5127</span>
 
     </aside>
 
@@ -3085,7 +3103,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3903</span>
+    <span class="phpdocumentor-element-found-in__line">4009</span>
 
     </aside>
 
@@ -3235,7 +3253,7 @@ KICKASS_CRYPTO_ERROR_* constants. The return value will be ignored.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2139</span>
+    <span class="phpdocumentor-element-found-in__line">2245</span>
 
     </aside>
 
@@ -3284,7 +3302,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2249</span>
+    <span class="phpdocumentor-element-found-in__line">2355</span>
 
     </aside>
 
@@ -3333,7 +3351,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2479</span>
+    <span class="phpdocumentor-element-found-in__line">2585</span>
 
     </aside>
 
@@ -3382,7 +3400,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2360</span>
+    <span class="phpdocumentor-element-found-in__line">2466</span>
 
     </aside>
 
@@ -3431,7 +3449,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2923</span>
+    <span class="phpdocumentor-element-found-in__line">3029</span>
 
     </aside>
 
@@ -3480,7 +3498,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2701</span>
+    <span class="phpdocumentor-element-found-in__line">2807</span>
 
     </aside>
 
@@ -3529,7 +3547,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2590</span>
+    <span class="phpdocumentor-element-found-in__line">2696</span>
 
     </aside>
 
@@ -3578,7 +3596,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2812</span>
+    <span class="phpdocumentor-element-found-in__line">2918</span>
 
     </aside>
 
@@ -3627,7 +3645,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3035</span>
+    <span class="phpdocumentor-element-found-in__line">3141</span>
 
     </aside>
 
@@ -3718,7 +3736,7 @@ so we can determine which service we need to decrypt values.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1823</span>
+    <span class="phpdocumentor-element-found-in__line">1929</span>
 
     </aside>
 
@@ -3754,7 +3772,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1926</span>
+    <span class="phpdocumentor-element-found-in__line">2032</span>
 
     </aside>
 
@@ -3790,7 +3808,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2029</span>
+    <span class="phpdocumentor-element-found-in__line">2135</span>
 
     </aside>
 
@@ -3826,7 +3844,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4349</span>
+    <span class="phpdocumentor-element-found-in__line">4455</span>
 
     </aside>
 
@@ -3862,7 +3880,7 @@ get_config_data_encoding().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6885</span>
+    <span class="phpdocumentor-element-found-in__line">6991</span>
 
     </aside>
 
@@ -3930,7 +3948,7 @@ get_config_data_encoding().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3219</span>
+    <span class="phpdocumentor-element-found-in__line">3325</span>
 
     </aside>
 
@@ -4037,7 +4055,7 @@ it&#039;s best if it is!</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6757</span>
+    <span class="phpdocumentor-element-found-in__line">6863</span>
 
     </aside>
 
@@ -4216,7 +4234,7 @@ we write a log entry; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">826</span>
+    <span class="phpdocumentor-element-found-in__line">932</span>
 
     </aside>
 
@@ -4289,7 +4307,7 @@ we write a log entry; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1657</span>
+    <span class="phpdocumentor-element-found-in__line">1763</span>
 
     </aside>
 
@@ -4346,7 +4364,7 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3322</span>
+    <span class="phpdocumentor-element-found-in__line">3428</span>
 
     </aside>
 
@@ -4382,7 +4400,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3425</span>
+    <span class="phpdocumentor-element-found-in__line">3531</span>
 
     </aside>
 
@@ -4418,7 +4436,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3848</span>
+    <span class="phpdocumentor-element-found-in__line">3954</span>
 
     </aside>
 
@@ -4515,7 +4533,7 @@ a valid current secret key and can have an optional extra previous secret key.</
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4231</span>
+    <span class="phpdocumentor-element-found-in__line">4337</span>
 
     </aside>
 
@@ -4571,7 +4589,7 @@ get_config_phps_enable() is true.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3739</span>
+    <span class="phpdocumentor-element-found-in__line">3845</span>
 
     </aside>
 
@@ -4618,7 +4636,7 @@ get_config_phps_enable() is true.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3613</span>
+    <span class="phpdocumentor-element-found-in__line">3719</span>
 
     </aside>
 
@@ -4666,7 +4684,7 @@ length requirements; this function can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6003</span>
+    <span class="phpdocumentor-element-found-in__line">6109</span>
 
     </aside>
 
@@ -4718,7 +4736,7 @@ length requirements; this function can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5578</span>
+    <span class="phpdocumentor-element-found-in__line">5684</span>
 
     </aside>
 
@@ -4782,7 +4800,7 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6996</span>
+    <span class="phpdocumentor-element-found-in__line">7102</span>
 
     </aside>
 
@@ -4850,7 +4868,7 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6442</span>
+    <span class="phpdocumentor-element-found-in__line">6548</span>
 
     </aside>
 
@@ -4894,7 +4912,7 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6301</span>
+    <span class="phpdocumentor-element-found-in__line">6407</span>
 
     </aside>
 
@@ -4913,6 +4931,79 @@ from the config file; can be overridden by implementations.</p>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_do_notify">
+        do_notify()
+        <a href="classes/KickassCrypto-KickassCrypto.html#method_do_notify" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">826</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">2023-04-01 jj5 - implementations can decide what to do when errors are notified; by default
+we write a log entry; can be overridden by implementations.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">do_notify</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ex</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the exception which was caught and will be rethrown.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$file</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the path to the file that caught the exception.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$line</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the line in the file where the caught exception was reported.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$function</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the function in which the exception was caught.</p>
+</section>
 
             </dd>
             </dl>
@@ -5011,7 +5102,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">81</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 
     </aside>
 
@@ -5063,7 +5154,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
@@ -5107,7 +5198,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -5175,7 +5266,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 
     </aside>
 
@@ -5235,7 +5326,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">150</span>
 
     </aside>
 
@@ -5268,7 +5359,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">237</span>
+    <span class="phpdocumentor-element-found-in__line">238</span>
 
     </aside>
 
@@ -5312,7 +5403,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">215</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -5364,7 +5455,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">282</span>
 
     </aside>
 
@@ -5397,7 +5488,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -5561,7 +5652,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">259</span>
+    <span class="phpdocumentor-element-found-in__line">260</span>
 
     </aside>
 
@@ -5613,7 +5704,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">194</span>
 
     </aside>
 
@@ -5657,7 +5748,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6158</span>
+    <span class="phpdocumentor-element-found-in__line">6264</span>
 
     </aside>
 
@@ -5709,7 +5800,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5729</span>
+    <span class="phpdocumentor-element-found-in__line">5835</span>
 
     </aside>
 
@@ -5753,7 +5844,7 @@ does not use the tag.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5277</span>
+    <span class="phpdocumentor-element-found-in__line">5383</span>
 
     </aside>
 
@@ -5826,7 +5917,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">895</span>
+    <span class="phpdocumentor-element-found-in__line">1001</span>
 
     </aside>
 
@@ -5906,7 +5997,7 @@ throws an exception with the relevant code and message; can be overridden by imp
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5102</span>
+    <span class="phpdocumentor-element-found-in__line">5208</span>
 
     </aside>
 
@@ -5968,7 +6059,7 @@ done during testing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4405</span>
+    <span class="phpdocumentor-element-found-in__line">4511</span>
 
     </aside>
 
@@ -6069,7 +6160,7 @@ do_encrypt_string().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1107</span>
+    <span class="phpdocumentor-element-found-in__line">1213</span>
 
     </aside>
 
@@ -6172,7 +6263,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2082</span>
+    <span class="phpdocumentor-element-found-in__line">2188</span>
 
     </aside>
 
@@ -6219,7 +6310,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2192</span>
+    <span class="phpdocumentor-element-found-in__line">2298</span>
 
     </aside>
 
@@ -6266,7 +6357,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2422</span>
+    <span class="phpdocumentor-element-found-in__line">2528</span>
 
     </aside>
 
@@ -6322,7 +6413,7 @@ gory details.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2303</span>
+    <span class="phpdocumentor-element-found-in__line">2409</span>
 
     </aside>
 
@@ -6370,7 +6461,7 @@ encoded data.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2866</span>
+    <span class="phpdocumentor-element-found-in__line">2972</span>
 
     </aside>
 
@@ -6418,7 +6509,7 @@ encrypted or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2644</span>
+    <span class="phpdocumentor-element-found-in__line">2750</span>
 
     </aside>
 
@@ -6466,7 +6557,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2533</span>
+    <span class="phpdocumentor-element-found-in__line">2639</span>
 
     </aside>
 
@@ -6514,7 +6605,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2755</span>
+    <span class="phpdocumentor-element-found-in__line">2861</span>
 
     </aside>
 
@@ -6679,7 +6770,7 @@ case.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2979</span>
+    <span class="phpdocumentor-element-found-in__line">3085</span>
 
     </aside>
 
@@ -6736,7 +6827,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1720</span>
+    <span class="phpdocumentor-element-found-in__line">1826</span>
 
     </aside>
 
@@ -6771,7 +6862,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1771</span>
+    <span class="phpdocumentor-element-found-in__line">1877</span>
 
     </aside>
 
@@ -6806,7 +6897,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1874</span>
+    <span class="phpdocumentor-element-found-in__line">1980</span>
 
     </aside>
 
@@ -6875,7 +6966,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1977</span>
+    <span class="phpdocumentor-element-found-in__line">2083</span>
 
     </aside>
 
@@ -6910,7 +7001,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4297</span>
+    <span class="phpdocumentor-element-found-in__line">4403</span>
 
     </aside>
 
@@ -6945,7 +7036,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6546</span>
+    <span class="phpdocumentor-element-found-in__line">6652</span>
 
     </aside>
 
@@ -6978,7 +7069,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6824</span>
+    <span class="phpdocumentor-element-found-in__line">6930</span>
 
     </aside>
 
@@ -7046,7 +7137,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3167</span>
+    <span class="phpdocumentor-element-found-in__line">3273</span>
 
     </aside>
 
@@ -7081,7 +7172,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6711</span>
+    <span class="phpdocumentor-element-found-in__line">6817</span>
 
     </aside>
 
@@ -7125,7 +7216,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3084</span>
+    <span class="phpdocumentor-element-found-in__line">3190</span>
 
     </aside>
 
@@ -7234,7 +7325,7 @@ which is allowed.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">771</span>
+    <span class="phpdocumentor-element-found-in__line">877</span>
 
     </aside>
 
@@ -7306,7 +7397,7 @@ which is allowed. This function is the safest of all.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1601</span>
+    <span class="phpdocumentor-element-found-in__line">1707</span>
 
     </aside>
 
@@ -7363,7 +7454,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3270</span>
+    <span class="phpdocumentor-element-found-in__line">3376</span>
 
     </aside>
 
@@ -7398,7 +7489,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3373</span>
+    <span class="phpdocumentor-element-found-in__line">3479</span>
 
     </aside>
 
@@ -7433,7 +7524,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3793</span>
+    <span class="phpdocumentor-element-found-in__line">3899</span>
 
     </aside>
 
@@ -7481,7 +7572,7 @@ do_is_valid_base64().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3479</span>
+    <span class="phpdocumentor-element-found-in__line">3585</span>
 
     </aside>
 
@@ -7529,7 +7620,7 @@ defers to the abstract method do_is_valid_config().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4164</span>
+    <span class="phpdocumentor-element-found-in__line">4270</span>
 
     </aside>
 
@@ -7577,7 +7668,7 @@ to the virtual do_is_valid_encoding() method.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4095</span>
+    <span class="phpdocumentor-element-found-in__line">4201</span>
 
     </aside>
 
@@ -7625,7 +7716,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3667</span>
+    <span class="phpdocumentor-element-found-in__line">3773</span>
 
     </aside>
 
@@ -7673,7 +7764,7 @@ do_is_valid_passphrase();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3544</span>
+    <span class="phpdocumentor-element-found-in__line">3650</span>
 
     </aside>
 
@@ -7721,7 +7812,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5943</span>
+    <span class="phpdocumentor-element-found-in__line">6049</span>
 
     </aside>
 
@@ -7773,7 +7864,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5506</span>
+    <span class="phpdocumentor-element-found-in__line">5612</span>
 
     </aside>
 
@@ -7880,7 +7971,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6946</span>
+    <span class="phpdocumentor-element-found-in__line">7052</span>
 
     </aside>
 
@@ -7948,7 +8039,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6380</span>
+    <span class="phpdocumentor-element-found-in__line">6486</span>
 
     </aside>
 
@@ -7992,7 +8083,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6239</span>
+    <span class="phpdocumentor-element-found-in__line">6345</span>
 
     </aside>
 
@@ -8029,6 +8120,77 @@ do_is_valid_secret();</p>
             -protected
                                                 -final        "
 >
+    <h4 class="phpdocumentor-element__name" id="method_notify">
+        notify()
+        <a href="classes/KickassCrypto-KickassCrypto.html#method_notify" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">773</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">2023-04-01 jj5 - the point of notify() is simply to notify that an exception has been caught
+but it&#039;s going to be rethrown; it&#039;s best if this function doesn&#039;t throw an exception but it
+shouldn&#039;t be a huge problem if it does, the caller will throw when this function returns
+anyway.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">notify</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ex</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$file</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$line</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$function</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                -final        "
+>
     <h4 class="phpdocumentor-element__name" id="method_parse_binary">
         parse_binary()
         <a href="classes/KickassCrypto-KickassCrypto.html#method_parse_binary" class="headerlink"><i class="fas fa-link"></i></a>
@@ -8036,7 +8198,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4721</span>
+    <span class="phpdocumentor-element-found-in__line">4827</span>
 
     </aside>
 
@@ -8110,7 +8272,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
@@ -8162,7 +8324,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -8206,7 +8368,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 
     </aside>
 
@@ -8274,7 +8436,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">87</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
@@ -8334,7 +8496,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">133</span>
+    <span class="phpdocumentor-element-found-in__line">134</span>
 
     </aside>
 
@@ -8367,7 +8529,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">221</span>
+    <span class="phpdocumentor-element-found-in__line">222</span>
 
     </aside>
 
@@ -8411,7 +8573,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">199</span>
+    <span class="phpdocumentor-element-found-in__line">200</span>
 
     </aside>
 
@@ -8463,7 +8625,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">265</span>
+    <span class="phpdocumentor-element-found-in__line">266</span>
 
     </aside>
 
@@ -8496,7 +8658,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -8660,7 +8822,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">243</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
@@ -8712,7 +8874,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php"><a href="files/src-code-namespace-kickasscrypto-traits-kickass-wrapper-php.html"><abbr title="src/code/namespace/KickassCrypto/Traits/KICKASS_WRAPPER_PHP.php">KICKASS_WRAPPER_PHP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">178</span>
 
     </aside>
 
@@ -8756,7 +8918,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6098</span>
+    <span class="phpdocumentor-element-found-in__line">6204</span>
 
     </aside>
 
@@ -8808,7 +8970,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5661</span>
+    <span class="phpdocumentor-element-found-in__line">5767</span>
 
     </aside>
 
@@ -8866,7 +9028,7 @@ do_phps_encode() for implementation; will</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">873</span>
+    <span class="phpdocumentor-element-found-in__line">979</span>
 
     </aside>
 
@@ -8944,7 +9106,7 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4585</span>
+    <span class="phpdocumentor-element-found-in__line">4691</span>
 
     </aside>
 
@@ -9010,7 +9172,7 @@ determine.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7048</span>
+    <span class="phpdocumentor-element-found-in__line">7154</span>
 
     </aside>
 
@@ -9078,7 +9240,7 @@ determine.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1703</span>
+    <span class="phpdocumentor-element-found-in__line">1809</span>
 
     </aside>
 
@@ -9130,7 +9292,7 @@ determine.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5221</span>
+    <span class="phpdocumentor-element-found-in__line">5327</span>
 
     </aside>
 
