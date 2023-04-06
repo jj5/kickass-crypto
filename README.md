@@ -1328,6 +1328,21 @@ of the code).
 Note too that it's okay to just rethrow assertion violations, these should never happen in
 production and they make testing the code easier.
 
+### Tests are scripts idiom
+
+The approach to unit-testing taken by this library is simply and powerful. There are three types
+of test which can be defined for each unit test:
+
+- fast
+- slow
+- silly
+
+Each script will be either a shell script with the same name, e.g. `fast.sh`, or if that's missing
+a PHP script with the same name, e.g. `fast.php`. The test runner just finds these scripts and
+runs them. This is easy to do and provides all the power we need to run our tests, including
+support for the various situations where each test instance needs to run in its own process and be
+isolated from other testing environments.
+
 ## Directory structure
 
 Here are some notes regarding notable components:
