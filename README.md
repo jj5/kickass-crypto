@@ -1115,7 +1115,8 @@ returning false is definitely preferred if it's possible.
 
 Aside: in some rare cases minus one (`-1`) can be used as the sentinel value to signal an error,
 such as when you want to indicate an invalid array index, but in PHP minus one isn't necessarily
-an invalid array index, and returning false is still preferred.
+an invalid array index, and returning false is still preferred. This aside is just FYI, there are
+no instances of minus one being used as a return value in this library, that doesn't happen.
 
 The fact that an error has occurred can be registered with your component by a call to `error()`
 so that if the callers get a false return value they can interrogate your component with a call to
