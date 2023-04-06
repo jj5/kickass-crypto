@@ -741,6 +741,10 @@ or hexadecimal with
 In future the ability to work with data that isn't always JSON encoded might be added to this
 library. Let me know if that's a feature you care to have.
 
+Note: using PHP serialization instead of JSON encoding is now an option; this documentation needs
+to be updated to explain how it works and how to use it. The advantage of PHP serialization is
+that it supports more data types and formats than JSON can.
+
 ## Data size limits
 
 After data is encoded as JSON it is limited to a configurable maximum length.
