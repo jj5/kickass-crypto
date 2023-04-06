@@ -1091,7 +1091,7 @@ if that's missing they're a PHP script. If I need to make assertions I call asse
 
 ## Programming this library
 
-Here are some note about the various idioms and approaches taken in this library.
+Here are some notes about the various idioms and approaches taken in this library.
 
 ### Return false on error idiom
 
