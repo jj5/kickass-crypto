@@ -1431,6 +1431,27 @@ functions which are supposed to be thread safe can lead to exceptions, such as w
 infinite recursion which gets aborted by the run-time. If you're an expert on such matters the
 code might do with a review from you.
 
+Now I will agree that the above code is kind of insane, it's just that it seems to me like there's
+no avoiding it if we want to be safe. We have to explicitly allow the AssertionError exception
+every single time in every single method just so that assertions remain useful to us as a
+development tool, and then when we handle other exceptions we want to make some noise about them
+so we call `catch()`, but the thing is that `catch()` will defer to `do_catch()` which can be
+overridden by implementers, which means it can throw... so if `catch()` throws we don't want to
+just do nothing, we want to give the programmer a last chance to learn of their errant code,
+so we notify that we're going to ignore the exception with a call to `ignore()`, but that will
+defer to `do_ignore()`, which the programmer could override, and throw from... but if that
+happens we will just silently ignore such a problem.
+
+And then if we get through all of that and our function hasn't returned then that's an error
+situation so we want to notify the error, but `error()` defers to `do_error()` and that could
+throw, so we wrap in a try-catch block and then do the exception ignore dance again.
+
+I mean it's all over the top and excessive but it should at least be safe and it meets two
+requirements:
+
+- exceptions will not leak sensitive data on the call stack.
+- programmers are given the best chance to find out that exceptions or errors are occurring.
+
 ### The is_() functions for boolean tests
 
 There are a bunch of functions for testing boolean conditions, and they begin with "is_" and
@@ -1578,7 +1599,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,270 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,272 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
