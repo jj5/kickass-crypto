@@ -213,6 +213,12 @@ The demo code is available in this library in the
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
 directory if you'd like to host it yourself.
 
+## Library PHP docs
+
+Assuming I remember to update them from time to time, the PHP docs are over here:
+
+* [https://www.progclub.net/~jj5/kickass-crypto-phpdoc/](https://www.progclub.net/~jj5/kickass-crypto-phpdoc/)
+
 ## Using this library
 
 As mentioned above you can check out the code from git with a command like this:
