@@ -1155,7 +1155,8 @@ In the code you will see things like this:
 There are several things to note about this idiom.
 
 In talking about the above code we will call the first function `is_valid_settings()` the "final
-wrapper" and the second function `do_is_valid_settings()` the "default implementation".
+wrapper" (or sometimes the "main function') and we call the second function
+`do_is_valid_settings()` the "default implementation".
 
 The first thing to note is that the final wrapper `is_valid_settings()` is declared final and thus
 cannot be overridden by implementations; and the second thing to note is that the final wrapper
@@ -1216,8 +1217,8 @@ run-time but also to other programmers reading, using, or maintaining the code.
 
 #### The advantages of the untyped interface on the default implementation
 
-Not having types on the interface of the default implementation `do_is_valid_settings()` also
-confers three main advantages.
+Not having types on the interface of the default implementation `do_is_valid_settings()` confers
+four main advantages.
 
 The first is that it's easier to type out and maintain the overriding function as you don't need
 to worry about the types.
@@ -1226,12 +1227,16 @@ Also, in future, the `is_valid_settings()` might declare a new interface and cha
 this happens it can maintain support for both old and new `do_is_valid_settings()` implementations
 without implementers necessarily needing to update their code.
 
-And the third advantage of an untyped interface for the `do_is_valid_settings()` function is that
+The third advantage of an untyped interface for the `do_is_valid_settings()` function is that
 it allows for the injection of "impossible" values. These are values which will never be able to
 make it past the types declared on the main function `is_valid_settings()` and into the
 `do_is_valid_settings()`, and being able to inject such "impossible" values can make unit testing
 of particular situations easier, as you can pass in a value that could never possibly occur in
 production in order to signal something from the test in question.
+
+The fourth and perhaps most important implication of the approach to the default implementation
+is that it is not marked as final which means that programmers inheriting from your class can
+provide a new implementation, thereby replacing the default implementation.
 
 ### Catch and throw idiom
 
