@@ -526,6 +526,12 @@ Ideally this library will meet your requirements out of the box (or with certain
 configuration) and you won't need to replace the instances provided by the service locators
 by default.
 
+The service locators will create a new default instance for you on the first call to the service
+locator if it doesn't already have an instance. Whether the default implementation is the Sodium
+module or the OpenSSL module depends on the order you included the `inc/sodium.php` and
+`inc/openssl.php` files; if you included the entire library with `inc/library.php` the Sodium
+module will have precedence.
+
 ## Data encryption
 
 The encryption process is roughly:
