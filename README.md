@@ -1127,7 +1127,7 @@ In the code you will see things like this:
 ```
   protected final function is_valid_settings( int $setting_a, string $setting_b ) : bool {
 
-    if ( strlen( $setting_b ) < 200 ) { return false; }
+    if ( strlen( $setting_b ) > 20 ) { return false; }
 
     return $this->do_is_valid_settings( $setting_a, $setting_b );
 
@@ -1137,9 +1137,9 @@ In the code you will see things like this:
 
     if ( $setting_a < 100 ) { return false; }
 
-    if ( strlen( $setting_b ) > 100 ) { return false; }
+    if ( strlen( $setting_b ) > 10 ) { return false; }
 
-    return true;
+    return 1;
 
   }
 ```
@@ -1158,7 +1158,9 @@ does not declare the types on its interface.
 
 This is an example of
 [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle),
-which is also known as the Robustness Principle.
+which is also known as the Robustness Principle. The final wrapper is liberal in what it accepts,
+such as with the return value one (`1`) from the default implementation; and conservative in what
+it does, such as always returning a properly typed boolean value.
 
 Not needing to type out and declare the types on the interface of the default implementation also
 makes implementation and debugging easier, as there's less code to write.
