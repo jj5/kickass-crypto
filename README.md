@@ -618,8 +618,9 @@ the 16 byte authentication tag for the KA0 data format.
 
 After decrypting the ciphertext the library expects to find the size of the JSON data as an ASCII
 string representing an 8 character hex encoded value, followed by a single pipe character,
-followed by the JSON, and then the padding. The library can then remove the JSON from its
-padding and take care of the rest of the decoding.
+followed by a four character data encoding indicator ('json' or 'phps'), followed by a single pipe
+character, followed by the JSON (or PHP serialized data), and then the padding. The library can
+then extract the JSON/serialized data from its padding and take care of the rest of the decoding.
 
 ## JSON encoding and decoding
 
