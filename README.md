@@ -1134,7 +1134,7 @@ In the code you will see things like this:
 There are several things to note about this idiom.
 
 In talking about the above code we will call the first function `is_valid_settings()` the "final
-wrapper" and the second function `do_is_valid_settings()` is the "default implementation".
+wrapper" and the second function `do_is_valid_settings()` the "default implementation".
 
 The first thing to note is that the final wrapper `is_valid_settings()` is declared final and thus
 cannot be overridden by implementations; and the second thing to note is that the final wrapper
