@@ -113,7 +113,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_RECURSION_LIMIT",
             "name": "KICKASS_CRYPTO_RECURSION_LIMIT",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020limit\u0020of\u0020recursion\u0020that\u0020we\u0020allow...\u0020the\u0020XDebug\u0020limit\u0020is\u0020256\u0020and\nPHP\u0020by\u0020itself\u0020has\u0020no\u0020limit\u0020\u0028it\u0020will\u0020recurse\u0020until\u0020it\u0020runs\u0020out\u0020of\u0020memory\u0029\u003B\u0020we\u0020pick\u0020a\u0020value\u0020less\nthan\u0020the\u0020XDebug\u0020limit\u0020so\u0020that\u0020we\u0020can\u0020handle\u0020things\u0020ourselves.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020limit\u0020of\u0020recursion\u0020that\u0020we\u0020allow...\u0020the\u0020Xdebug\u0020limit\u0020is\u0020256\u0020and\nPHP\u0020by\u0020itself\u0020has\u0020no\u0020limit\u0020\u0028it\u0020will\u0020recurse\u0020until\u0020it\u0020runs\u0020out\u0020of\u0020memory\u0029\u003B\u0020we\u0020pick\u0020a\u0020value\u0020less\nthan\u0020the\u0020Xdebug\u0020limit\u0020so\u0020that\u0020we\u0020can\u0020handle\u0020things\u0020ourselves.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_RECURSION_LIMIT"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE",

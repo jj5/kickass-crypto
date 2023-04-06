@@ -38,11 +38,11 @@ class Test extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
 function run_test() {
 
-  // 2023-04-07 jj5 - the thing about XDebug is it limits the call stack to 256 functions
+  // 2023-04-07 jj5 - the thing about Xdebug is it limits the call stack to 256 functions
   /*
   if ( extension_loaded( 'xdebug' ) ) {
 
-    echo "It makes more sense to run this script with XDebug disabled.\n";
+    echo "It makes more sense to run this script with Xdebug disabled.\n";
 
   }
   */

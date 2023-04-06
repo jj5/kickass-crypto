@@ -1203,6 +1203,82 @@ The fourth and perhaps most important implication of the approach to the default
 is that it is not marked as final which means that programmers inheriting from your class can
 provide a new implementation, thereby replacing, or augmenting, the default implementation.
 
+### Enter/leave idiom
+
+One way a programmer can go wrong is to infinitely recurse. For example like this:
+
+```
+class Test extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
+
+  protected function do_encrypt( $input ) {
+
+    return $this->encrypt( $input );
+
+  }
+}
+```
+
+If the `do_encrypt()` function calls the `encrypt()` function, the `encrypt()` function will call
+the `do_encrypt()` function, and then off we go to infinity.
+
+If you do this and you have Xdebug installed and enabled that will limit the call depth to 256
+by default. If you don't have Xdebug installed and enabled PHP will just start recursing and will
+continue to do so until it hits its memory limit or runs out of RAM.
+
+Since there's pretty much nothing this library can do to stop programmers from accidentally
+writing code like the above what we do is to detect when it's probably happened by tracking how
+deep our calls are nested using an enter/leave discipline, like this:
+
+```
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      // 2023-04-07 jj5 - do work...
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+```
+
+The above code is shown with example and typical catch blocks included, but the key point is that
+the very first thing we do is register the function entry with the call to `enter()` and then
+in our finally block we register the function exit with the call to `leave()`.
+
+If a function enters more than the number of times allowed by KICKASS_CRYPTO_RECURSION_LIMIT
+without leaving then an exception is thrown in order to break the recursion. At the time of
+writing KICKASS_CRYPTO_RECURSION_LIMIT is defined as 100, which is less than the Xdebug limit of
+256, which means we should always be able to break our own recursive loops.
+
 ### Return false on error idiom
 
 As mentioned above and elaborated on in the following section this library won't usually throw
@@ -1493,7 +1569,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,266 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,270 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

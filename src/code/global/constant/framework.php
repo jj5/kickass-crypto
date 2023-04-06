@@ -211,9 +211,9 @@ define(
 );
 
 /**
- * 2023-04-07 jj5 - this is the limit of recursion that we allow... the XDebug limit is 256 and
+ * 2023-04-07 jj5 - this is the limit of recursion that we allow... the Xdebug limit is 256 and
  * PHP by itself has no limit (it will recurse until it runs out of memory); we pick a value less
- * than the XDebug limit so that we can handle things ourselves.
+ * than the Xdebug limit so that we can handle things ourselves.
  *
  * @var int
  */
