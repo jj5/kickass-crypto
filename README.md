@@ -1133,20 +1133,34 @@ In the code you will see things like this:
 
 There are several things to note about this idiom.
 
-The first thing to note is that the main function `is_valid_settings()` is declared final and
-thus cannot be overridden by implementations; and the second thing to note is that this function
+In talking about this code we will call the first function `is_valid_settings()` the "final
+wrapper" and the second function `do_is_valid_settings()` is the "default implementation".
+
+The first thing to note is that the final wrapper `is_valid_settings()` is declared final and thus
+cannot be overridden by implementations; and the second thing to note is that the final wrapper
 declares the data types on its interface.
 
-In contrast the second function `do_is_valid_settings()` is not marked as final, and it does not
-declare the types on its interface.
+In contrast the default implementation `do_is_valid_settings()` is not marked as final, and it
+does not declare the types on its interface.
 
-This is an example of [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle). It also
-makes implementation and debugging easier.
+This is an example of
+[Postel's law](https://en.wikipedia.org/wiki/Robustness_principle),
+which is also known as the Robustness Principle.
+
+Not needing to type out and declare the types on the interface also makes implementation and
+debugging easier, as there's less code to write.
 
 Ordinarily users of this code will only call the main function `is_valid_settings()`, and anyone
 implementing new code only needs to override `do_is_valid_settings()`.
 
-#### The advantages of the typed interface
+In general you should always wrap any non-final methods (except for private ones) with a final
+method per this idiom, so that you can have callers override functionality as they may want to do
+but retaining the ability to maintain standards as you may want to do.
+
+If you're refactoring a private method to make it public or protected be sure to introduce the
+associated final wrapper.
+
+#### The advantages of the typed interface on the final wrapper
 
 Having types on the interface of the final method `is_valid_settings()` confers three main
 advantages.
@@ -1166,7 +1180,7 @@ the requirements stronger.
 And another advantage of the typed interface is that it provides extra information which can be
 automatically added into the documentation.
 
-#### The advantages of the untyped interface
+#### The advantages of the untyped interface on the default implementation
 
 Not having types on the interface of `do_is_valid_settings()` confers three main advantages.
 
