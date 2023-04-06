@@ -184,7 +184,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     if ( strlen( $iv ) !== $this->get_const_openssl_iv_length() ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID );
 
     }
 
@@ -204,19 +204,19 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED );
 
     }
 
     if ( strlen( $tag ) !== $this->get_const_openssl_tag_length() ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID );
 
     }
 
     if ( ! $ciphertext ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED_2 );
 
     }
 
@@ -246,7 +246,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     if ( ! $this->parse_binary( $binary, $iv, $ciphertext, $tag ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
 
     }
 
@@ -266,13 +266,13 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
 
     }
 
     if ( ! $plaintext ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
 
     }
 
@@ -301,7 +301,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     //
     if ( $binary_length < $min_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
 
     }
 
@@ -309,7 +309,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     if ( strlen( $iv ) !== $iv_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
 
     }
 
@@ -317,7 +317,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
 
     }
 
@@ -326,6 +326,7 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     if ( strlen( $tag ) !== $tag_length ) {
 
       return $this->error(
+        __FUNCTION__,
         KICKASS_CRYPTO_ERROR_TAG_LENGTH_INVALID_2,
         [
           'tag_len' => strlen( $tag ),
@@ -345,19 +346,17 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     if ( is_a( $this, KickassOpenSslRoundTrip::class ) ) {
 
-      $this->count_class( KickassOpenSslRoundTrip::class );
+      return $this->count_class( KickassOpenSslRoundTrip::class );
 
     }
-    else if ( is_a( $this, KickassOpenSslAtRest::class ) ) {
 
-      $this->count_class( KickassOpenSslAtRest::class );
+    if ( is_a( $this, KickassOpenSslAtRest::class ) ) {
 
-    }
-    else {
-
-      $this->count_class( get_class( $this ) );
+      return $this->count_class( KickassOpenSslAtRest::class );
 
     }
+
+    return $this->count_class( get_class( $this ) );
+
   }
-
 }

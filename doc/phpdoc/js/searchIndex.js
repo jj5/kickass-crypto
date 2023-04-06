@@ -866,6 +866,16 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020encrypts\u0020the\u0020input\u0020and\u0020returns\u0020the\u0020ciphertext\u003B\u0020returns\u0020false\u0020on\u0020failure.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_encrypt"
         },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aenter\u0028\u0029",
+            "name": "enter",
+            "summary": "",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_enter"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aleave\u0028\u0029",
+            "name": "leave",
+            "summary": "",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_leave"
+        },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decrypts\u0020the\u0020ciphertext\u0020and\u0020returns\u0020the\u0020deserialized\u0020value\u003B\u0020returns\u0020false\u0020on\nfailure.",

@@ -346,6 +346,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->inject_delay = true;
 
+      $this->enter( __FUNCTION__ );
+
       $this->count_function( __FUNCTION__ );
 
       $result = $this->do_encrypt( $input );
@@ -384,10 +386,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_3 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -405,6 +412,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
+  protected function enter( $function ) {
+
+  }
+
+  protected function leave( $function ) {
+
+  }
+
   /**
    * 2023-04-05 jj5 - decrypts the ciphertext and returns the deserialized value; returns false on
    * failure.
@@ -418,6 +433,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     try {
 
       $this->inject_delay = true;
+
+      $this->enter( __FUNCTION__ );
 
       $this->count_function( __FUNCTION__ );
 
@@ -452,10 +469,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_4 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -483,6 +505,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   public final function delay() : void {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $this->count_function( __FUNCTION__ );
 
@@ -536,6 +560,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
   }
 
   /**
@@ -553,6 +582,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function catch( $ex, $file, $line, $function ) : void {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $this->count_function( __FUNCTION__ );
 
@@ -592,6 +623,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
   }
 
   /**
@@ -609,6 +645,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_catch( $ex, $file, $line, $function ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $this->log_error(
         KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_CATCH . $ex->getMessage(), $file, $line, $function
@@ -638,6 +676,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
   }
 
   /**
@@ -653,6 +696,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function ignore( $ex, $file, $line, $function ) : void {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $this->count_function( __FUNCTION__ );
 
@@ -684,6 +729,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       catch ( \Throwable $ignore ) { ; }
 
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
   }
 
   /**
@@ -701,6 +751,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_ignore( $ex, $file, $line, $function ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $this->log_error(
         KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_IGNORE . $ex->getMessage(), $file, $line, $function
@@ -720,6 +772,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
       catch ( \Throwable $ignore ) { ; }
+
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
   }
@@ -782,11 +839,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $result = $this->do_get_error_list();
 
       if ( is_array( $result ) ) { return $result; }
 
       if ( $result === null ) { return []; }
+
+      // 2023-04-06 jj5 - fall through to throw below
 
     }
     catch ( \AssertionError $ex ) {
@@ -812,8 +873,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
 
-    $this->throw( $code );
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST );
 
     assert( false );
 
@@ -823,13 +889,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $result = $this->do_get_error();
 
       if ( is_string( $result ) ) { return $result; }
 
       if ( $result === null ) { return null; }
 
-      $this->error( 'TODO: model this error' );
+      $this->error( __FUNCTION__, 'TODO: model this error' );
 
       return null;
 
@@ -857,10 +925,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      $this->error( 'TODO: model this error' );
+      $this->error( __FUNCTION__, 'TODO: model this error' );
 
       return null;
 
@@ -883,6 +956,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   public final function clear_error() : bool {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_clear_error();
 
@@ -914,10 +989,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -939,12 +1019,17 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - registers an error; if this is the first error a random delay is injected
    * as a timing attack mitigation.
    *
+   * @param string $function the name of the function registering the error.
+   *
    * @param string $error the error description, usually one of the KICKASS_CRYPTO_ERROR_*
    * constants.
    *
+   * @param mixed $data any error assoicated with the error; this could be sensitive, do not log
+   * without scrubbing or expose without thought.
+   *
    * @return bool always false.
    */
-  protected final function error( $error ) : bool {
+  protected final function error( $function, $error, $data = null ) : bool {
 
     try {
 
@@ -958,6 +1043,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         $this->inject_delay = false;
 
       }
+
+      $this->enter( __FUNCTION__ );
 
       $this->count_function( __FUNCTION__ );
 
@@ -998,6 +1085,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -1008,11 +1100,49 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @param string $caller the name of the invoking function.
    *
-   * @return void
+   * @return int
    */
-  protected final function count_this( $caller ) : void {
+  protected final function count_this( string $caller ) : int {
 
-    $this->do_count_this( $caller );
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $result = $this->do_count_this( $caller );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1026,9 +1156,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_count_this( $caller ) {
 
-    $this->count_function( $caller );
+    try {
 
-    $this->count_class( get_class( $this ) );
+      $this->enter( __FUNCTION__ );
+
+      $this->count_function( $caller );
+
+      $result = $this->count_class( get_class( $this ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1041,11 +1209,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function count_function( $function ) : int {
 
-    $result = $this->do_count_function( $function );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_count_function( $function );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1059,11 +1263,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_count_function( $function ) {
 
-    $result = $this->increment_counter( self::$telemetry[ 'function' ], $function );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->increment_counter( self::$telemetry[ 'function' ], $function );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1076,11 +1316,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function count_class( $class ) : int {
 
-    $result = $this->do_count_class( $class );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_count_class( $class );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1094,11 +1370,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_count_class( $class ) {
 
-    $result = $this->increment_counter( self::$telemetry[ 'class' ], $class );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->increment_counter( self::$telemetry[ 'class' ], $class );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1111,11 +1423,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function count_length( int $length ) : int {
 
-    $result = $this->do_count_length( $length );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_count_length( $length );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1129,11 +1477,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_count_length( $length ) {
 
-    $result = $this->increment_counter( self::$telemetry[ 'length' ], $length );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->increment_counter( self::$telemetry[ 'length' ], $length );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1149,11 +1533,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function increment_counter( &$array, $key ) : int {
 
-    $result = $this->do_increment_counter( $array, $key );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_increment_counter( $array, $key );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1169,15 +1589,53 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_increment_counter( &$array, $key ) {
 
-    if ( ! array_key_exists( $key, $array ) ) {
+    try {
 
-      $array[ $key ] = 0;
+      $this->enter( __FUNCTION__ );
+
+      if ( ! array_key_exists( $key, $array ) ) {
+
+        $array[ $key ] = 0;
+
+      }
+
+      $array[ $key ]++;
+
+      $result = $array[ $key ];
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
 
-    $array[ $key ]++;
-
-    return $array[ $key ];
+    return -1;
 
   }
 
@@ -1188,11 +1646,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_const_data_format() : string {
 
-    $result = $this->do_get_const_data_format();
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_const_data_format();
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -1203,11 +1697,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_const_key_hash() : string {
 
-    $result = $this->do_get_const_key_hash();
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_const_key_hash();
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -1219,11 +1749,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_const_key_hash() {
 
-    $result = $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'KICKASS_CRYPTO_KEY_HASH' );
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -1234,11 +1800,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_const_key_length_min() : int {
 
-    $result = $this->do_get_const_key_length_min();
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_const_key_length_min();
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1250,11 +1852,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_const_key_length_min() {
 
-    $result = $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'KICKASS_CRYPTO_KEY_LENGTH_MIN' );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1265,11 +1903,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_const_passphrase_length_min() : int {
 
-    $result = $this->do_get_const_passphrase_length_min();
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_const_passphrase_length_min();
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1281,11 +1955,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_const_passphrase_length_min() {
 
-    $result = $this->get_const( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN' );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN' );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1300,11 +2010,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE
   ) : int {
 
-    $result = $this->do_get_config_chunk_size( $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_chunk_size( $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1319,11 +2065,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_chunk_size( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE', $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1338,11 +2120,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
   ) : int {
 
-    $result = $this->do_get_config_chunk_size_max( $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_chunk_size_max( $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1357,11 +2175,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_chunk_size_max( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_CHUNK_SIZE_MAX', $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1377,11 +2231,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
   ) : int {
 
-    $result = $this->do_get_config_data_length_max( $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_data_length_max( $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1396,11 +2286,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_data_length_max( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_LENGTH_MAX', $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return -1;
 
   }
 
@@ -1424,11 +2350,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     string $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
   ) : string {
 
-    $result = $this->do_get_config_data_encoding( $default );
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_data_encoding( $default );
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -1443,11 +2405,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_data_encoding( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_DATA_ENCODING', $default );
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -1463,11 +2461,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
   ) : int {
 
-    $result = $this->do_get_config_json_encode_options( $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_json_encode_options( $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return 0;
 
   }
 
@@ -1482,11 +2516,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_json_encode_options( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS', $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return 0;
 
   }
 
@@ -1502,11 +2572,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
   ) : int {
 
-    $result = $this->do_get_config_json_decode_options( $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_json_decode_options( $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return 0;
 
   }
 
@@ -1521,11 +2627,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_json_decode_options( $default  ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
+    try {
 
-    assert( is_int( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS', $default );
+
+      assert( is_int( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return 0;
 
   }
 
@@ -1541,11 +2683,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     bool $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
   ) : bool {
 
-    $result = $this->do_get_config_phps_enable( $default );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_phps_enable( $default );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1560,11 +2738,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_phps_enable( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_PHPS_ENABLE', $default );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1580,11 +2794,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     bool $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
   ) : bool {
 
-    $result = $this->do_get_config_false_enable( $default );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_config_false_enable( $default );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1599,11 +2849,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_config_false_enable( $default ) {
 
-    $result = $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_const( 'CONFIG_ENCRYPTION_FALSE_ENABLE', $default );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1619,11 +2905,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_const( $const, $default = false ) {
 
-    $result = $this->do_get_const( $const, $default );
+    try {
 
-    // 2023-04-05 jj5 - the result could be pretty much anything...
-    //
-    return $result;
+      $this->enter( __FUNCTION__ );
+
+      $result = $this->do_get_const( $const, $default );
+
+      // 2023-04-05 jj5 - the result could be pretty much anything...
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return $default;
 
   }
 
@@ -1639,7 +2961,45 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_const( $const, $default ) {
 
-    return defined( $const ) ? constant( $const ) : $default;
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $result = defined( $const ) ? constant( $const ) : $default;
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return $default;
 
   }
 
@@ -1651,6 +3011,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function get_passphrase_list() : array {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_get_passphrase_list();
 
@@ -1664,7 +3026,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
           KICKASS_CRYPTO_LOG_ERROR_INVALID_PASSPHRASE, __FILE__, __LINE__, __FUNCTION__
         );
 
-        $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+        $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
         return [];
 
@@ -1696,10 +3058,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+      $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
       return [];
 
@@ -1727,6 +3094,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function get_encryption_passphrase() : ?string {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_get_encryption_passphrase();
 
@@ -1758,6 +3127,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -1772,6 +3146,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_get_encryption_passphrase() {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->get_passphrase_list()[ 0 ] ?? null;
 
@@ -1803,6 +3179,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return null;
 
@@ -1815,11 +3196,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_cli() : bool {
 
-    $result = $this->do_is_cli();
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_is_cli();
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1831,11 +3248,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_is_cli() {
 
-    $result = ( $this->php_sapi_name() === 'cli' );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = ( $this->php_sapi_name() === 'cli' );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1846,11 +3299,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_debug() : bool {
 
-    $result = $this->do_is_debug();
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_is_debug();
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1862,11 +3351,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_is_debug() {
 
-    $result = ( defined( 'DEBUG' ) && DEBUG );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = ( defined( 'DEBUG' ) && DEBUG );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -1880,22 +3405,58 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_valid_config( ?string &$problem = null ) : bool {
 
-    $result = $this->do_is_valid_config( $problem );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    if ( $result ) {
+      $result = $this->do_is_valid_config( $problem );
 
-      assert( $problem === null );
+      assert( is_bool( $result ) );
+
+      if ( $result ) {
+
+        assert( $problem === null );
+
+      }
+      else {
+
+        assert( is_string( $problem ) );
+
+      }
+
+      return $result;
 
     }
-    else {
+    catch ( \AssertionError $ex ) {
 
-      assert( is_string( $problem ) );
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
 
-    return $result;
+    return false;
 
   }
 
@@ -1910,6 +3471,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function is_valid_secret( $secret ) : bool {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_valid = $this->do_is_valid_secret( $secret );
 
@@ -1956,6 +3519,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -1972,6 +3540,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_is_valid_secret( $secret ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       if ( ! is_string( $secret ) ) { return false; }
 
@@ -2003,6 +3573,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -2019,6 +3594,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function is_valid_passphrase( $passphrase ) : bool {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_valid = $this->do_is_valid_passphrase( $passphrase );
 
@@ -2068,6 +3645,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -2084,6 +3666,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_is_valid_passphrase( $passphrase ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       if ( ! is_string( $passphrase ) ) { return false; }
 
@@ -2115,6 +3699,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -2130,11 +3719,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_valid_base64( $input ) : bool {
 
-    $result = $this->do_is_valdi_base64( $input );
+    try {
 
-    assert( is_bool( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_is_valdi_base64( $input );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2149,11 +3774,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_is_valid_base64( $input ) {
 
-    if ( empty( $input ) ) { return false; }
+    try {
 
-    if ( ! is_string( $input ) ) { return false; }
+      $this->enter( __FUNCTION__ );
 
-    if ( preg_match( KICKASS_CRYPTO_REGEX_BASE64, $input ) ) { return true; }
+      if ( empty( $input ) ) { return false; }
+
+      if ( ! is_string( $input ) ) { return false; }
+
+      if ( preg_match( KICKASS_CRYPTO_REGEX_BASE64, $input ) ) { return true; }
+
+      return false;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -2170,9 +3831,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       if ( $input === false && ! $this->get_config_false_enable() ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_CANNOT_ENCRYPT_FALSE );
 
       }
 
@@ -2184,12 +3847,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
           if ( ! $this->get_config_phps_enable() ) {
 
-            return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
+            return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED );
 
           }
         }
 
-        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID );
 
       }
 
@@ -2197,7 +3860,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $encoded_data === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED );
 
       }
 
@@ -2206,6 +3869,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       if ( $encoded_data_length > $this->get_config_data_length_max() ) {
 
         return $this->error(
+          __FUNCTION__,
           KICKASS_CRYPTO_ERROR_DATA_ENCODING_TOO_LARGE,
           [
             'data_length' => $encoded_data_length,
@@ -2219,7 +3883,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( ! $passphrase ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PASSPHRASE_MISSING );
 
       }
 
@@ -2228,6 +3892,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       if ( $passphrase_length !== $this->get_const_passphrase_length() ) {
 
         return $this->error(
+          __FUNCTION__,
           KICKASS_CRYPTO_ERROR_PASSPHRASE_LENGTH_INVALID,
           [
             'passphrase_length' => $passphrase_length,
@@ -2239,7 +3904,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( ! $this->is_valid_passphrase( $passphrase ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
       }
 
@@ -2252,6 +3917,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       ) {
 
         return $this->error(
+          __FUNCTION__,
           KICKASS_CRYPTO_ERROR_CHUNK_SIZE_INVALID,
           [
             'chunk_size' => $chunk_size,
@@ -2273,7 +3939,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( ! $this->is_valid_data_encoding( $data_encoding ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_2 );
 
       }
 
@@ -2287,7 +3953,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $ciphertext === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
 
       }
 
@@ -2319,10 +3985,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_ENCRYPTION_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -2350,26 +4021,62 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_valid_data_format( string $data_format ) : bool {
 
-    // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
-    // format.
+    try {
 
-    $length = strlen( $data_format );
+      $this->enter( __FUNCTION__ );
 
-    if ( $length < KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN ) {
+      // 2023-04-05 jj5 - NOTE: we don't give the client the option of defining the valid data
+      // format.
 
-      return false;
+      $length = strlen( $data_format );
+
+      if ( $length < KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MIN ) {
+
+        return false;
+
+      }
+
+      if ( $length > KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX ) {
+
+        return false;
+
+      }
+
+      if ( ! preg_match( '/^[A-Z][A-Z0-9]+$/', $data_format ) ) { return false; }
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
 
-    if ( $length > KICKASS_CRYPTO_DATA_FORMAT_LENGTH_MAX ) {
-
-      return false;
-
-    }
-
-    if ( ! preg_match( '/^[A-Z][A-Z0-9]+$/', $data_format ) ) { return false; }
-
-    return true;
+    return false;
 
   }
 
@@ -2383,16 +4090,52 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function is_valid_data_encoding( string $data_encoding ) : bool {
 
-    // 2023-04-04 jj5 - the string length is non-negotiable, we need our padded messsages to
-    // always be the same size.
-    //
-    if ( strlen( $data_encoding ) !== 4 ) { return false; }
+    try {
 
-    $result = $this->do_is_valid_data_encoding( $data_encoding );
+      $this->enter( __FUNCTION__ );
 
-    assert( is_bool( $result ) );
+      // 2023-04-04 jj5 - the string length is non-negotiable, we need our padded messsages to
+      // always be the same size.
+      //
+      if ( strlen( $data_encoding ) !== 4 ) { return false; }
 
-    return $result;
+      $result = $this->do_is_valid_data_encoding( $data_encoding );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2414,27 +4157,63 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_is_valid_data_encoding( $data_encoding ) {
 
-    switch ( $data_encoding ) {
+    try {
 
-      case KICKASS_CRYPTO_DATA_ENCODING_JSON :
+      $this->enter( __FUNCTION__ );
 
-        return true;
+      switch ( $data_encoding ) {
 
-      case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
+        case KICKASS_CRYPTO_DATA_ENCODING_JSON :
 
-        // 2023-04-04 jj5 - this data encoding is valid if it has been made available...
-        //
-        $result = $this->get_config_phps_enable();
+          return true;
 
-        assert( is_bool( $result ) );
+        case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
-        return $result;
+          // 2023-04-04 jj5 - this data encoding is valid if it has been made available...
+          //
+          $result = $this->get_config_phps_enable();
 
-      default :
+          assert( is_bool( $result ) );
 
-        return false;
+          return $result;
+
+        default :
+
+          return false;
+
+      }
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
   }
 
   /**
@@ -2444,11 +4223,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function get_data_encoding() : string {
 
-    $result = $this->do_get_data_encoding();
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_data_encoding();
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -2460,11 +4275,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_get_data_encoding() {
 
-    $result = $this->get_config_data_encoding();
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->get_config_data_encoding();
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return '';
 
   }
 
@@ -2481,6 +4332,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_encrypt_string( $plaintext, $passphrase );
 
@@ -2512,10 +4365,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -2545,13 +4403,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $error = KICKASS_CRYPTO_ERROR_NO_VALID_KEY;
 
       $binary = $this->message_decode( $ciphertext );
 
       if ( $binary === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID );
 
       }
 
@@ -2559,7 +4419,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         if ( ! $this->is_valid_passphrase( $passphrase ) ) {
 
-          return $this->error( KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
+          return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PASSPHRASE_INVALID );
 
         }
 
@@ -2585,7 +4445,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       //* KICKASS_CRYPTO_ERROR_NO_VALID_KEY
       //* KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED
 
-      return $this->error( $error );
+      return $this->error( __FUNCTION__, $error );
 
     }
     catch ( \AssertionError $ex ) {
@@ -2611,10 +4471,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -2648,13 +4513,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $data_encoding = null;
 
       $message = $this->decrypt_string( $binary, $passphrase );
 
       if ( $message === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
 
       }
 
@@ -2684,10 +4551,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -2717,6 +4589,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_decrypt_string( $binary, $passphrase );
 
@@ -2748,6 +4622,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -2768,15 +4647,67 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) : bool {
 
-    $iv = false;
-    $ciphertext = false;
-    $tag = false;
+    try {
 
-    $result = $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+      $this->enter( __FUNCTION__ );
 
-    assert( is_bool( $result ) );
+      $iv = false;
+      $ciphertext = false;
+      $tag = false;
 
-    return $result;
+      $result = $this->do_parse_binary( $binary, $iv, $ciphertext, $tag );
+
+      assert( is_bool( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    try {
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2791,11 +4722,63 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected final function decode_message( string $message, &$data_encoding ) {
 
-    $result = $this->do_decode_message( $message, $data_encoding );
+    try {
 
-    assert( is_string( $result ) || $result === false );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_decode_message( $message, $data_encoding );
+
+      assert( is_string( $result ) || $result === false );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    try {
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2815,6 +4798,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_decode_message( $message, &$data_encoding ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       // 2023-04-04 jj5 - this should be null unless its valid.
       //
@@ -2839,7 +4824,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( count( $parts ) !== 3 ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_FORMAT_INVALID );
 
       }
 
@@ -2850,6 +4835,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       if ( strlen( $encoded_data_length_string ) !== 8 ) {
 
         return $this->error(
+          __FUNCTION__,
           KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_SPEC_INVALID,
           [
             'data_length_string' => $encoded_data_length_string,
@@ -2867,6 +4853,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       ) {
 
         return $this->error(
+          __FUNCTION__,
           KICKASS_CRYPTO_ERROR_MESSAGE_DATA_LENGTH_RANGE_INVALID,
           [
             'json_length' => $encoded_data_length,
@@ -2877,7 +4864,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( ! $this->is_valid_data_encoding( $data_encoding_read ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_INVALID_3 );
 
       }
 
@@ -2886,7 +4873,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $encoded_data_length > strlen( $binary ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_LENGTH_INVALID );
 
       }
 
@@ -2923,10 +4910,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -2955,16 +4947,70 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_delay( $ns_min, $ns_max ) {
 
-    $this->log_error( KICKASS_CRYPTO_LOG_WARNING_DELAY, __FILE__, __LINE__, __FUNCTION__ );
+    try {
 
-    $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+      $this->enter( __FUNCTION__ );
 
-    assert( is_int( $seconds ) );
-    assert( $seconds >= 0 );
-    assert( is_int( $nanoseconds ) );
-    assert( $nanoseconds < 1_000_000_000 );
+      $this->log_error( KICKASS_CRYPTO_LOG_WARNING_DELAY, __FILE__, __LINE__, __FUNCTION__ );
 
-    $this->php_time_nanosleep( $seconds, $nanoseconds );
+      $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+
+      assert( is_int( $seconds ) );
+      assert( $seconds >= 0 );
+      assert( is_int( $nanoseconds ) );
+      assert( $nanoseconds < 1_000_000_000 );
+
+      $this->php_time_nanosleep( $seconds, $nanoseconds );
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    try {
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -2999,8 +5045,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $result = time_nanosleep( $seconds, $nanoseconds );
 
-      // 2023-04-05 jj5 - don't inject the testing error until *after* the delay, just in case it
-      // gets injected accidentally; as long as the delay happens not much else matters.
+      // 2023-04-05 jj5 - don't do anything until *after* the delay, just in case it throws etc;
+      // as long as the delay happens not much else matters.
+
+      $this->enter( __FUNCTION__ );
 
       if (
         defined( 'KICKASS_CRYPTO_TEST_EMERGENCY_DELAY_MICROSLEEP' ) &&
@@ -3047,6 +5095,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
@@ -3092,11 +5145,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @throws \AssertionError on an assertion violation, this isn't done in production.
    */
-  private function report_emergency_delay( string $type, $file, $line, $function ) : void {
+  private function report_emergency_delay( string $type, $file, $line, $function ) : bool {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $this->do_report_emergency_delay( $type, $file, $line, $function );
+
+      return true;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3122,6 +5179,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
   }
 
   /**
@@ -3138,9 +5203,47 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   protected function do_report_emergency_delay( $type, $file, $line, $function ) {
 
-    $this->log_error(
-      KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY . $type, $file, $line, $function
-    );
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $this->log_error(
+        KICKASS_CRYPTO_LOG_PREFIX_EMERGENCY_DELAY . $type, $file, $line, $function
+      );
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
@@ -3161,6 +5264,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function data_encode( $data, $data_encoding ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_data_encode( $data, $data_encoding );
 
@@ -3192,10 +5297,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_2 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3234,6 +5344,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       if (
         $data_encoding === false &&
         defined( 'KICKASS_CRYPTO_TEST_DATA_ENCODE' ) &&
@@ -3256,7 +5368,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         default :
 
-          return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_3 );
+          return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_3 );
 
       }
     }
@@ -3283,10 +5395,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_ENCODING_FAILED_4 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3316,6 +5433,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function json_encode( $input ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_json_encode( $input );
 
@@ -3347,10 +5466,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_4 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3382,6 +5506,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $options = $this->get_config_json_encode_options();
 
       $result = $this->php_json_encode( $input, $options );
@@ -3390,13 +5516,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $error ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED );
 
       }
 
       if ( $result === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_2 );
 
       }
 
@@ -3426,10 +5552,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_ENCODING_FAILED_3 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3458,9 +5589,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       if ( ! $this->get_config_phps_enable() ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2 );
 
       }
 
@@ -3494,10 +5627,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_3 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3519,11 +5657,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $result = $this->php_serialize( $input );
 
       if ( ! $result ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED );
 
       }
 
@@ -3553,10 +5693,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_ENCODING_FAILED_2 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3581,6 +5726,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_false = false;
 
@@ -3610,10 +5757,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_2 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3634,6 +5786,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_data_decode( $encoded_data, $data_encoding, &$is_false ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_false = false;
 
@@ -3659,7 +5813,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         default :
 
-          return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_3 );
+          return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_3 );
 
       }
 
@@ -3687,10 +5841,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3711,6 +5870,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function json_decode( $input, &$is_false ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_false = false;
 
@@ -3740,10 +5901,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3765,6 +5931,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       static $false_json = null;
 
       if ( $false_json === null ) {
@@ -3783,7 +5951,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $error ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_2 );
 
       }
 
@@ -3797,7 +5965,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         if ( ! $this->get_config_false_enable() ) {
 
-          return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3 );
+          return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_3 );
 
         }
       }
@@ -3828,10 +5996,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3852,6 +6025,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function phps_decode( $input, &$is_false ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $is_false = false;
 
@@ -3881,10 +6056,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3906,6 +6086,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       static $false_phps = null;
 
       if ( $false_phps === null ) { $false_phps = $this->php_serialize( false ); }
@@ -3924,7 +6106,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
         if ( ! $this->get_config_false_enable() ) {
 
-          return $this->error( KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
+          return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
 
         }
       }
@@ -3955,10 +6137,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -3979,6 +6166,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function message_encode( string $binary ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_message_encode( $binary );
 
@@ -4010,10 +6199,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -4035,24 +6229,26 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $data_format = $this->get_data_format();
       $base64 = $this->php_base64_encode( $binary );
 
       if ( ! is_string( $base64 ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
 
       }
 
       if ( ! $this->is_valid_data_format( $data_format ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 
       }
 
       if ( ! $base64 ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_4 );
 
       }
 
@@ -4082,10 +6278,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -4106,6 +6307,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected final function message_decode( string $encoded ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_message_decode( $encoded );
 
@@ -4137,10 +6340,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_DECODING_FAILED );
 
     }
     catch ( \Throwable $ignore ) {
@@ -4162,11 +6370,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      $this->enter( __FUNCTION__ );
+
       $parts = explode( '/', $encoded, 2 );
 
       if ( count( $parts ) !== 2 ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_INVALID );
 
       }
 
@@ -4174,7 +6384,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $data_format !== $this->get_data_format() ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_UNKNOWN );
 
       }
 
@@ -4185,7 +6395,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       /*
       if ( ! $this->is_valid_base64( $parts[ 1 ] ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_INVALID_BASE64_ENCODING );
 
       }
       */
@@ -4194,7 +6404,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $result === false ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED );
 
       }
 
@@ -4204,7 +6414,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       //
       if ( empty( $result ) ) {
 
-        return $this->error( KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2 );
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BASE64_DECODING_FAILED_2 );
 
       }
 
@@ -4234,10 +6444,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     try {
 
-      return $this->error( 'TODO: model this error' );
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -4257,38 +6472,76 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   protected final function get_data_format() {
 
-    // 2023-04-04 jj5 - this function just makes sure that only our implementation can use the
-    // "KA" data format version prefix. If we're running someone elses code and they don't
-    // nominate a new data format version for their own use we just put an 'X' in front of the
-    // version so as to avoid it having the same value as used by our canonical implementation.
+    try {
 
-    $version = $this->get_const_data_format();
+      $this->enter( __FUNCTION__ );
 
-    assert( is_string( $version ) );
+      // 2023-04-04 jj5 - this function just makes sure that only our implementation can use the
+      // "KA" data format version prefix. If we're running someone elses code and they don't
+      // nominate a new data format version for their own use we just put an 'X' in front of the
+      // version so as to avoid it having the same value as used by our canonical implementation.
 
-    $class = get_class( $this );
+      $version = $this->get_const_data_format();
 
-    switch ( $class ) {
+      assert( is_string( $version ) );
 
-      case 'KickassCrypto\OpenSsl\KickassOpenSslRoundTrip' :
-      case 'KickassCrypto\OpenSsl\KickassOpenSslAtRest' :
-      case 'KickassCrypto\Sodium\KickassSodiumRoundTrip' :
-      case 'KickassCrypto\Sodium\KickassSodiumAtRest' :
+      $class = get_class( $this );
 
-        return $version;
+      switch ( $class ) {
 
-      default :
+        case 'KickassCrypto\OpenSsl\KickassOpenSslRoundTrip' :
+        case 'KickassCrypto\OpenSsl\KickassOpenSslAtRest' :
+        case 'KickassCrypto\Sodium\KickassSodiumRoundTrip' :
+        case 'KickassCrypto\Sodium\KickassSodiumAtRest' :
 
-        if ( strpos( $version, 'KA' ) !== 0 ) { return $version; }
+          return $version;
 
-        return 'X' . $version;
+        default :
+
+          if ( strpos( $version, 'KA' ) !== 0 ) { return $version; }
+
+          return 'X' . $version;
+
+      }
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
 
     }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
   }
 
   protected final function convert_secret_to_passphrase( $key ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
       // useful.
@@ -4325,6 +6578,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -4333,6 +6591,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   protected function do_convert_secret_to_passphrase( $key ) {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       // 2023-04-05 jj5 - definitely don't want to hash an empty value and think we have something
       // useful.
@@ -4365,6 +6625,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -4372,43 +6637,115 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   protected final function get_padding( int $length ) : string {
 
-    $result = $this->do_get_padding( $length );
+    try {
 
-    assert( is_string( $result ) );
+      $this->enter( __FUNCTION__ );
 
-    return $result;
+      $result = $this->do_get_padding( $length );
+
+      assert( is_string( $result ) );
+
+      return $result;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
   protected function do_get_padding( $length ) {
 
-    if ( ! $this->is_debug() ) {
+    try {
 
-      return $this->php_random_bytes( $length );
+      $this->enter( __FUNCTION__ );
 
-    }
-
-    // 2023-04-06 jj5 - for debugging we generate random numbers in various other ways. You would
-    // be surprised to know doing this actually helped me fix a problem! When the random padding
-    // was a long string of the same ASCII character the regular expression for base64 encoding
-    // failed! I only learned that because I was experimenting with approaches to padding... who
-    // would have thought...
-
-    switch ( random_int( 1, 3 ) ) {
-
-      case 1 :
-
-        return str_repeat( "\0", $length );
-
-      case 2 :
-
-        return str_repeat( '0', $length );
-
-      default :
+      if ( ! $this->is_debug() ) {
 
         return $this->php_random_bytes( $length );
 
+      }
+
+      // 2023-04-06 jj5 - for debugging we generate random numbers in various other ways. You would
+      // be surprised to know doing this actually helped me fix a problem! When the random padding
+      // was a long string of the same ASCII character the regular expression for base64 encoding
+      // failed! I only learned that because I was experimenting with approaches to padding... who
+      // would have thought...
+
+      switch ( random_int( 1, 3 ) ) {
+
+        case 1 :
+
+          return str_repeat( "\0", $length );
+
+        case 2 :
+
+          return str_repeat( '0', $length );
+
+        default :
+
+          return $this->php_random_bytes( $length );
+
+      }
     }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
   }
 
   protected final function get_delay(
@@ -4416,50 +6753,128 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     int $ns_max,
     &$seconds,
     &$nanoseconds
-  ) : void {
+  ) : bool {
 
-    assert( is_int( $ns_min ) );
-    assert( is_int( $ns_max ) );
+    try {
 
-    assert( $ns_min > 0 );
-    assert( $ns_max > $ns_min );
+      $this->enter( __FUNCTION__ );
 
-    $this->do_get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+      assert( is_int( $ns_min ) );
+      assert( is_int( $ns_max ) );
 
-    assert( is_int( $seconds ) );
-    assert( is_int( $nanoseconds ) );
+      assert( $ns_min > 0 );
+      assert( $ns_max > $ns_min );
 
-    assert( $seconds >= 0 );
-    assert( $nanoseconds > 0 );
+      $this->do_get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+
+      assert( is_int( $seconds ) );
+      assert( is_int( $nanoseconds ) );
+
+      assert( $seconds >= 0 );
+      assert( $nanoseconds > 0 );
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
   protected function do_get_delay( $ns_min, $ns_max, &$seconds, &$nanoseconds ) {
 
-    assert( $ns_min >= 0 );
-    assert( $ns_max >= 0 );
-    assert( $ns_max >= $ns_min );
+    try {
 
-    $delay = $this->php_random_int( $ns_min, $ns_max );
+      $this->enter( __FUNCTION__ );
 
-    assert( is_int( $delay ) );
-    assert( $delay >= $ns_min );
-    assert( $delay <= $ns_max );
+      assert( $ns_min >= 0 );
+      assert( $ns_max >= 0 );
+      assert( $ns_max >= $ns_min );
 
-    $seconds = intval( round( $delay / 1_000_000_000 ) );
-    $nanoseconds = $delay % 1_000_000_000;
+      $delay = $this->php_random_int( $ns_min, $ns_max );
 
-    assert( is_int( $seconds ) );
-    assert( $seconds >= 0 );
-    assert( is_int( $nanoseconds ) );
-    assert( $nanoseconds >= ( $ns_min % 1_000_000_000 ) );
-    assert( $nanoseconds < 1_000_000_000 );
+      assert( is_int( $delay ) );
+      assert( $delay >= $ns_min );
+      assert( $delay <= $ns_max );
+
+      $seconds = intval( round( $delay / 1_000_000_000 ) );
+      $nanoseconds = $delay % 1_000_000_000;
+
+      assert( is_int( $seconds ) );
+      assert( $seconds >= 0 );
+      assert( is_int( $nanoseconds ) );
+      assert( $nanoseconds >= ( $ns_min % 1_000_000_000 ) );
+      assert( $nanoseconds < 1_000_000_000 );
+
+      return true;
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
 
   }
 
   protected final function log_error( $message, $file, $line, $function ) : bool {
 
     try {
+
+      $this->enter( __FUNCTION__ );
 
       $result = $this->do_log_error( $message, $file, $line, $function );
 
@@ -4495,6 +6910,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
     }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
 
     return false;
 
@@ -4502,13 +6922,53 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   protected function do_log_error( $message, $file, $line, $function ) {
 
-    if ( defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) && KICKASS_CRYPTO_DISABLE_LOG ) {
+    try {
 
-      return false;
+      $this->enter( __FUNCTION__ );
+
+      if ( defined( 'KICKASS_CRYPTO_DISABLE_LOG' ) && KICKASS_CRYPTO_DISABLE_LOG ) {
+
+        return false;
+
+      }
+
+      return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        // 2023-04-05 jj5 - this could infinite loop...
+        //
+        //$this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $message );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
 
-    return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
+    return false;
 
   }
 }

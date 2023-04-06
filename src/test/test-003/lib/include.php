@@ -50,6 +50,7 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
   if ( $result !== false ) {
 
     var_dump([
+      'problem' => 'result !== false',
       'expected' => $expected_error,
       'class' => get_class( $crypto ),
       'result' => $result,
@@ -73,6 +74,7 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
   if ( count( $error_list ) === 0 ) {
 
     var_dump([
+      'problem' => 'error list is empty',
       'expected' => $expected_error,
       'class' => get_class( $crypto ),
       'result' => $result,
@@ -97,6 +99,7 @@ function test_error( string $expected_error, callable $create_crypto, $data = nu
     );
 
     var_dump([
+      'problem' => '$error !== $expected_error',
       'error_list' => $error_list,
       'expected_error' => $expected_error,
     ]);

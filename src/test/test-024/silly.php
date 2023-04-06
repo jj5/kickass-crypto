@@ -20,7 +20,7 @@
 //
 \************************************************************************************************/
 
-define( 'DEBUG', true );
+//define( 'DEBUG', true );
 
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
@@ -37,6 +37,12 @@ class Test extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 }
 
 function run_test() {
+
+  if ( extension_loaded( 'xdebug' ) ) {
+
+    echo "It makes more sense to run this script with XDebug disabled.\n";
+
+  }
 
   $crypto = new Test;
 

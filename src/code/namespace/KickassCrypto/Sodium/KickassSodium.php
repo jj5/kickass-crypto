@@ -119,7 +119,7 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
 
     if ( ! $this->parse_binary( $binary, $nonce, $ciphertext, $tag ) ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BINARY_DATA_INVALID );
 
     }
 
@@ -134,13 +134,13 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
 
       $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
 
-      return $this->error( KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED_2 );
 
     }
 
     if ( ! $plaintext ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED_2 );
 
     }
 
@@ -169,7 +169,7 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
     //
     if ( $binary_length < $min_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_BINARY_LENGTH_INVALID );
 
     }
 
@@ -177,7 +177,7 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
 
     if ( strlen( $nonce ) !== $nonce_length ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_IV_LENGTH_INVALID_2 );
 
     }
 
@@ -185,7 +185,7 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
 
     if ( ! is_string( $ciphertext ) || $ciphertext === '' ) {
 
-      return $this->error( KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_CIPHERTEXT_INVALID_2 );
 
     }
 
@@ -199,18 +199,17 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
 
     if ( is_a( $this, KickassSodiumRoundTrip::class ) ) {
 
-      $this->count_class( KickassSodiumRoundTrip::class );
+      return $this->count_class( KickassSodiumRoundTrip::class );
 
     }
-    else if ( is_a( $this, KickassSodiumAtRest::class ) ) {
 
-      $this->count_class( KickassSodiumAtRest::class );
+    if ( is_a( $this, KickassSodiumAtRest::class ) ) {
 
-    }
-    else {
-
-      $this->count_class( get_class( $this ) );
+      return $this->count_class( KickassSodiumAtRest::class );
 
     }
+
+    return $this->count_class( get_class( $this ) );
+
   }
 }
