@@ -23,8 +23,8 @@
 namespace KickassCrypto;
 
 /**
- * 2023-04-05 jj5 - this exception is thrown from crypto service constructors if there's a problem
- * that will prevent them from operating.
+ * 2023-04-05 jj5 - this exception is thrown from crypto service constructors (and elsewhere) if
+ * there's a problem that will prevent them from operating.
  */
 class KickassCryptoException extends \Exception {
 

@@ -1443,7 +1443,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException",
             "name": "KickassCryptoException",
-            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020exception\u0020is\u0020thrown\u0020from\u0020crypto\u0020service\u0020constructors\u0020if\u0020there\u0027s\u0020a\u0020problem\nthat\u0020will\u0020prevent\u0020them\u0020from\u0020operating.",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020exception\u0020is\u0020thrown\u0020from\u0020crypto\u0020service\u0020constructors\u0020\u0028and\u0020elsewhere\u0029\u0020if\nthere\u0027s\u0020a\u0020problem\u0020that\u0020will\u0020prevent\u0020them\u0020from\u0020operating.",
             "url": "classes/KickassCrypto-KickassCryptoException.html"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
