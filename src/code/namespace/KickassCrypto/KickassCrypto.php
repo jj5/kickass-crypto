@@ -7425,9 +7425,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $result = $this->do_log_error( $message, $file, $line, $function );
 
-      assert( is_bool( $result ) );
+      // 2023-04-07 jj5 - it's easy for a caller to forget to return a value here, so if what we
+      // get is not a boolean just return true.
 
-      return $result;
+      if ( is_bool( $result ) ) { return $result; }
+
+      return true;
 
     }
     catch ( \AssertionError $ex ) {
