@@ -144,8 +144,8 @@ For slightly more elaboration maybe check out the
 [sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
 
 Or if you want the bottom line on how this library works read the code in the
-[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/KickassCrypto/KickassCrypto.php),
-the
+[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
+or the
 [other code](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/KickassCrypto/).
 
 ## Why was this library written?
