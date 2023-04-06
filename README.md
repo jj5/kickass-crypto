@@ -1330,7 +1330,7 @@ production and they make testing the code easier.
 
 ### Tests are scripts idiom
 
-The approach to unit-testing taken by this library is simply and powerful. There are three types
+The approach to unit-testing taken by this library is simple and powerful. There are three types
 of test which can be defined for each unit test:
 
 - fast
