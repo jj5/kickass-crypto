@@ -1269,6 +1269,8 @@ Following is some example code showing how to handle exceptions and manage error
 
       $result = str_repeat( $secret, 2 );
 
+      $this->call_some_function_you_might_not_control( $result );
+
       return $result;
 
     }
@@ -1302,22 +1304,28 @@ working with string.'`. In this library the names of error constants begin with
 [src/code/global/constant/framework.php](https://github.com/jj5/kickass-crypto/tree/main/src/code/global/constant/framework.php)
 file.
 
+Note that it's okay to call `catch()`, `ignore()`, and `error()` during and after your exception
+handlers because they are exception safe; but don't call anything which may throw from your
+exception handling code.
+
+I guess it's possible that if you're on an exceptionally deeply nested call stack the one extra
+call to a function during or after your exception handlers could be the function call which
+exceeds the limit and your code may blow up with some sort of exception, but if your code is well
+implemented and well tested that's a pretty unlikely situation. If you're truly worried about that
+I suppose you can always remove the function call to `ignore()` or wrap it in extra try-catch
+handlers. In my estimation it's better to call the ignore function when an exception is being
+ignored as it might be important for us to know that's happening, so we can fix a potentially
+more serious issue in our code.
+
 ### The is_() functions for boolean tests
 
 There are a bunch of functions for testing boolean conditions, and they begin with "is_" and
 return a boolean. These functions should only do the test and return true or false, they should
-_not_ register errors using the `error()` function, it that's necessary the caller will do that.
+_not_ register errors using the `error()` function, if that's necessary the caller will do that.
 
 The is_() functions can be implemented using the typed final wrapper idiom documented above.
 
-### Managing secrets on the stack
-
-If you implement a function which receives a secret key, passphrase, or data for encryption, you
-absolutely must put your function in a try-catch block and just return false on error. We don't
-want secrets to leak with values on the call stack.
-
-Following is a good example from the code. Note that it's okay to call `catch()` and `ignore()`
-from your exception handlers because they are exception safe. Probably best to call nothing else.
+Following is a good example from the code.
 
 ```
   protected final function is_valid_secret( $secret ) : bool {
