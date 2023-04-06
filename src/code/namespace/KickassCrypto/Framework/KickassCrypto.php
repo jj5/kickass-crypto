@@ -3623,12 +3623,33 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
 
   protected function do_get_padding( $length ) {
 
-    return $this->php_random_bytes( $length );
+    if ( ! $this->is_debug() ) {
 
-    // 2023-04-01 jj5 - the following is also an option, and might be faster..?
-    //
-    //return str_repeat( "\0", $length );
+      return $this->php_random_bytes( $length );
 
+    }
+
+    // 2023-04-06 jj5 - for debugging we generate random numbers in various other ways. You would
+    // be surprised to know doing this actually helped me fix a problem! When the random padding
+    // was a long string of the same ASCII character the regular expression for base64 encoding
+    // failed! I only learned that because I was experimenting with approaches to padding... who
+    // would have thought...
+
+    switch ( random_int( 1, 3 ) ) {
+
+      case 1 :
+
+        return str_repeat( "\0", $length );
+
+      case 2 :
+
+        return str_repeat( '0', $length );
+
+      default :
+
+        return $this->php_random_bytes( $length );
+
+    }
   }
 
   protected final function get_delay(

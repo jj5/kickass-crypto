@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /************************************************************************************************\
@@ -15,9 +16,36 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-04-06 jj5 - this test just takes the services for a spin with debugging enabled.
 //
 \************************************************************************************************/
 
-define( 'CONFIG_OPENSSL_SECRET_CURR', 'FuKCam1iqk+iU7qfEAyb4kPLNCird1ouZqZMtlaodudF24kUUQ8HLEmlLh7yvRv5IdGca94y5IBMGHsGKyebgMbF' );
-define( 'CONFIG_OPENSSL_SECRET_PREV', 'invalid' );
+define( 'DEBUG', true );
+
+require_once __DIR__ . '/etc/config.php';
+require_once __DIR__ . '/../../../inc/test-host.php';
+
+function run_test() {
+
+  for ( $n = 1; $n <= 10; $n++ ) {
+
+    test( kickass_round_trip() );
+
+    test( kickass_at_rest() );
+
+  }
+}
+
+function test( $crypto ) {
+
+  $secret = base64_encode( random_bytes( random_int( 100, 100 ) ) );
+
+  $ciphertext = $crypto->encrypt( $secret );
+
+  $plaintext = $crypto->decrypt( $ciphertext );
+
+  assert( $secret === $plaintext );
+
+}
+
+main( $argv );
