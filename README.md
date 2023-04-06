@@ -687,6 +687,9 @@ If you wanted to increase the chunk size to 8,192 you could do that in your
 
 ```define( 'CONFIG_ENCRYPTION_CHUNK_SIZE', 8912 );```
 
+You can change the defined chunk size and it will begin to apply to new data, and old data
+encrypted with a different chunk size will still be able to be decrypted.
+
 ## Encryptable values
 
 So long as the data size limits are observed (these are discussed next), this
