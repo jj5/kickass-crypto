@@ -1163,7 +1163,9 @@ such as with the return value one (`1`) from the default implementation; and con
 it does, such as always returning a properly typed boolean value.
 
 Not needing to write out and declare the types on the interface of the default implementation also
-makes implementation and debugging easier, as there's less code to write.
+makes implementation and debugging easier, as there's less code to write. (Also I find the syntax
+for return types a bit ugly and have a preference for avoiding it when possible, but that's a
+trivial matter.)
 
 Ordinarily users of this code will only call the main function `is_valid_settings()`, and anyone
 implementing new code only needs to override `do_is_valid_settings()`.
