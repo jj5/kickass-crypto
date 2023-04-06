@@ -1069,7 +1069,7 @@ There's some test runners in
 as you can see. Read the scripts for the gory details but in brief:
 
 * [bin/dev/test.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test.sh) will run the
-fast tests, takes about 5 seconds
+fast tests, takes about 10 seconds
 * [bin/dev/test-all.sh](https://github.com/jj5/kickass-crypto/tree/main/bin/dev/test-all.sh) will
 run the fast tests and the slow tests, takes about 10 minutes
 
@@ -1341,6 +1341,9 @@ In our library the function for registering that an error has occurred is the `e
 defined in the
 [KickassCrypto](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
 class.
+
+In some error situations the best and safest thing to do is swallow the error and return a
+sensible default value as fallback.
 
 ### Catch and throw idiom
 
