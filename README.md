@@ -1210,7 +1210,7 @@ component. In the example given above the requirement that `$setting_b` is less 
 only make the requirements stronger, such as is done in the default implementation given in the
 example, where the maximum length is reduced further to 10 bytes.
 
-And another advantage of the typed interface is that it provides extra information which can be
+Another advantage of the typed interface is that it provides extra information which can be
 automatically added into the documentation.
 
 #### The advantages of the untyped interface on the default implementation
