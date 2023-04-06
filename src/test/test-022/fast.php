@@ -27,13 +27,47 @@ define( 'DEBUG', true );
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
 
+class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
+
+}
+
+class TestOpenSslAtRest extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
+
+}
+
+class TestSodiumRoundTrip extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
+
+}
+
+class TestSodiumAtRest extends \KickassCrypto\Module\Sodium\KickassSodiumAtRest {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
+
+}
+
 function run_test() {
+
+  $openssl_round_trip = new TestOpenSslRoundTrip;
+  $openssl_at_rest = new TestOpenSslAtRest;
+
+  $sodium_round_trip = new TestSodiumRoundTrip;
+  $sodium_at_rest = new TestSodiumAtRest;
 
   for ( $n = 1; $n <= 100; $n++ ) {
 
-    test( kickass_round_trip() );
+    test( $openssl_round_trip );
 
-    test( kickass_at_rest() );
+    test( $openssl_at_rest );
+
+    test( $sodium_round_trip );
+
+    test( $sodium_at_rest );
 
   }
 }
@@ -47,6 +81,23 @@ function test( $crypto ) {
   $plaintext = $crypto->decrypt( $ciphertext );
 
   assert( $secret === $plaintext );
+
+  assert( $crypto->get_error() === null );
+  assert( $crypto->get_error_list() === [] );
+
+  $result = $crypto->decrypt( $plaintext );
+
+  assert( $result === false );
+  assert( $crypto->get_error() !== null );
+  assert( count( $crypto->get_error_list() ) === 2 );
+
+  $result = $crypto->decrypt( $plaintext );
+
+  assert( $result === false );
+  assert( $crypto->get_error() !== null );
+  assert( count( $crypto->get_error_list() ) === 4 );
+
+  assert( $crypto->clear_error() );
 
   assert( $crypto->get_error() === null );
   assert( $crypto->get_error_list() === [] );

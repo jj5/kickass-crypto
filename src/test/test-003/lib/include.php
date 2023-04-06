@@ -23,13 +23,6 @@ class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 
-  protected function do_is_valid_config( &$problem ) { $problem = null; return true; }
-
-  protected function do_delay( $ns_min, $ns_max ) {
-
-    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
-
-  }
 }
 
 class ValidCrypto extends TestCrypto {

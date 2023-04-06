@@ -15,9 +15,17 @@
 
 /************************************************************************************************\
 //
-// 2023-03-30 jj5 - this config file is problematic because the previous secret is invalid.
+// 2023-04-06 jj5 - this minimizes the delay for errors during testing.
 //
 \************************************************************************************************/
 
-define( 'CONFIG_SODIUM_SECRET_CURR', 'PxZxF7KJ3wnDqgitMx+4kQE/PeCHqmjfXzvEKUfbJ0MgL2Kcn2Dv9mbfX8wEGCqTm12DthYBolpzOSMDzQJ5Vn/d' );
-define( 'CONFIG_SODIUM_SECRET_PREV', 'invalid' );
+namespace KickassCrypto\Traits;
+
+trait KICKASS_DEBUG_WITHOUT_DELAY {
+
+  protected function do_delay( $ns_min, $ns_max ) {
+
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
+
+  }
+}

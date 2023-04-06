@@ -1721,6 +1721,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-LOG.html#method_do_log_error"
         },                {
+            "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_WITHOUT_DELAY",
+            "name": "KICKASS_DEBUG_WITHOUT_DELAY",
+            "summary": "",
+            "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-WITHOUT-DELAY.html"
+        },                {
+            "fqsen": "\\KickassCrypto\\Traits\\KICKASS_DEBUG_WITHOUT_DELAY\u003A\u003Ado_delay\u0028\u0029",
+            "name": "do_delay",
+            "summary": "",
+            "url": "classes/KickassCrypto-Traits-KICKASS-DEBUG-WITHOUT-DELAY.html#method_do_delay"
+        },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP",
             "name": "KICKASS_WRAPPER_PHP",
             "summary": "",

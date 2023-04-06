@@ -29,4 +29,6 @@ trait KICKASS_DEBUG {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_KEYS;
 
+  use \KickassCrypto\Traits\KICKASS_DEBUG_WITHOUT_DELAY;
+
 }
