@@ -1206,7 +1206,7 @@ that those standards haven't been elided, accidentally or otherwise.
 
 Having code that you rely on marked as final helps you to reason about the possible states of your
 component. In the example given above the requirement that `$setting_b` is less than or equal to
-20 bytes in length and that requirement cannot be changed by implementations; implementations can
+20 bytes in length is a requirement cannot be changed by implementations; implementations can
 only make the requirements stronger.
 
 And another advantage of the typed interface is that it provides extra information which can be
