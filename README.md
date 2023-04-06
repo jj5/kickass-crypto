@@ -1103,13 +1103,13 @@ false instead.
 
 Sometimes because of the nature of a typed interface it's not possible to return the boolean value
 false and in some circumstances the empty string, an empty array, null, the floating-point value
-0.0, or the integer zero may be returned instead, although returning false is definitely preferred
+0.0, or the integer zero may be returned instead; although returning false is definitely preferred
 if it's possible.
 
-Also the fact that an error occurred can be registered with your component so that if the callers
-get a false return value they can interrogate the component with a call to `get_error()` or
-`get_error_list()` to get the list of recent errors (the caller can clear the errors with
-`clear_error()` too).
+The fact that an error has occurred can be registered with your component by a call to `error()`
+so that if the callers get a false return value they can interrogate your component with a call to
+`get_error()` or `get_error_list()` to get the list of recent errors (the caller can clear these
+errors with `clear_error()` too).
 
 In our library the function for registering that an error has occurred is the `error()` function.
 
