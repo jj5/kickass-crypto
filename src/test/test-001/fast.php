@@ -38,11 +38,7 @@ trait CustomThrow {
         'data' => $data,
       ];
 
-      $code = KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE;
-
-      $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
-
-      assert( $message !== null );
+      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE, $data, $previous );
 
     }
 
