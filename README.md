@@ -1095,11 +1095,18 @@ Here are some notes about the various idioms and approaches taken in this librar
 
 ### Return false on error idiom
 
-As mentioned above this library won't throw exceptions from the methods on its public interface
-because we don't want to leak secrets from our call stack if there's a problem.
+As mentioned above this library won't usually throw exceptions from the methods on its public
+interface because we don't want to leak secrets from our call stack if there's a problem.
 
 Instead of throwing exceptions the methods on the classes in this library will usually return
-`false` instead.
+`false` instead, or some other invalid value such as `null` or `[]`.
+
+The avoidance of exceptions is only a firm rule for sensitive function calls which handle secret
+keys, passphrases, unencrypted content, or any other sensitive data. At the time of writing it's
+possible for the public `get_error_list()` function to throw an exception if the implementer has
+returned an invalid value from `do_get_error_list()`, apart from in that specific and hopefully
+unlikely situation everything else should be exception safe and use the boolean value false (or
+another appropriate sentinel value) to communicate errors to the caller.
 
 Sometimes because of the nature of a typed interface it's not possible to return the boolean value
 false and in some circumstances the empty string (`''`), an empty array (`[]`), null (`null`), the
