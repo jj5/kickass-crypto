@@ -1093,41 +1093,6 @@ if that's missing they're a PHP script. If I need to make assertions I call asse
 
 Here are some notes about the various idioms and approaches taken in this library.
 
-### Return false on error idiom
-
-As mentioned above this library won't usually throw exceptions from the methods on its public
-interface because we don't want to leak secrets from our call stack if there's a problem.
-
-Instead of throwing exceptions the methods on the classes in this library will usually return
-`false` instead, or some other invalid value such as `null` or `[]`.
-
-The avoidance of exceptions is only a firm rule for sensitive function calls which handle secret
-keys, passphrases, unencrypted content, or any other sensitive data. At the time of writing it's
-possible for the public `get_error_list()` function to throw an exception if the implementer has
-returned an invalid value from `do_get_error_list()`, apart from in that specific and hopefully
-unlikely situation everything else should be exception safe and use the boolean value false (or
-another appropriate sentinel value) to communicate errors to the caller.
-
-Sometimes because of the nature of a typed interface it's not possible to return the boolean value
-false and in some circumstances the empty string (`''`), an empty array (`[]`), null (`null`), the
-floating-point value zero (`0.0`), or the integer zero (`0`) may be returned instead; however,
-returning false is definitely preferred if it's possible.
-
-Aside: in some rare cases minus one (`-1`) can be used as the sentinel value to signal an error,
-such as when you want to indicate an invalid array index, but in PHP minus one isn't necessarily
-an invalid array index, and returning false is still preferred. This aside is just FYI, there are
-no instances of minus one being used as a return value in this library, that doesn't happen.
-
-The fact that an error has occurred can be registered with your component by a call to `error()`
-so that if the callers get a false return value they can interrogate your component with a call to
-`get_error()` or `get_error_list()` to get the recent errors (the caller can clear these errors
-with `clear_error()` too).
-
-In our library the function for registering that an error has occurred is the `error()` function
-defined in the
-[KickassCrypto](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
-class.
-
 ### Typed final wrapper idiom
 
 In the code you will see things like this:
@@ -1237,6 +1202,42 @@ occur in production in order to signal something from the test in question.
 The fourth and perhaps most important implication of the approach to the default implementation
 is that it is not marked as final which means that programmers inheriting from your class can
 provide a new implementation, thereby replacing, or augmenting, the default implementation.
+
+### Return false on error idiom
+
+As mentioned above and elaborated on in the following section this library won't usually throw
+exceptions from the methods on its public interface because we don't want to leak secrets from our
+call stack if there's a problem.
+
+Instead of throwing exceptions the methods on the classes in this library will usually return
+`false` instead, or some other invalid value such as `null` or `[]`.
+
+The avoidance of exceptions is only a firm rule for sensitive function calls which handle secret
+keys, passphrases, unencrypted content, or any other sensitive data. At the time of writing it's
+possible for the public `get_error_list()` function to throw an exception if the implementer has
+returned an invalid value from `do_get_error_list()`, apart from in that specific and hopefully
+unlikely situation everything else should be exception safe and use the boolean value false (or
+another appropriate sentinel value) to communicate errors to the caller.
+
+Sometimes because of the nature of a typed interface it's not possible to return the boolean value
+false and in some circumstances the empty string (`''`), an empty array (`[]`), null (`null`), the
+floating-point value zero (`0.0`), or the integer zero (`0`) may be returned instead; however,
+returning false is definitely preferred if it's possible.
+
+Aside: in some rare cases minus one (`-1`) can be used as the sentinel value to signal an error,
+such as when you want to indicate an invalid array index, but in PHP minus one isn't necessarily
+an invalid array index, and returning false is still preferred. This aside is just FYI, there are
+no instances of minus one being used as a return value in this library, that doesn't happen.
+
+The fact that an error has occurred can be registered with your component by a call to `error()`
+so that if the callers get a false return value they can interrogate your component with a call to
+`get_error()` or `get_error_list()` to get the recent errors (the caller can clear these errors
+with `clear_error()` too).
+
+In our library the function for registering that an error has occurred is the `error()` function
+defined in the
+[KickassCrypto](https://github.com/jj5/kickass-crypto/tree/main/src/code/namespace/KickassCrypto/KickassCrypto.php)
+class.
 
 ### Catch and throw idiom
 
