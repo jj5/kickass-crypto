@@ -795,13 +795,13 @@ for a random amount of time between 1 millisecond and 10 seconds.
 
 ## Fail safe
 
-The user of this library has the opportunity to override the `do_delay` method and provide their
+The user of this library has the opportunity to override the `do_delay()` method and provide their
 own delay logic.
 
-If that `do_delay` override throws an exception it will be handled and an emergency delay will be
+If that `do_delay()` override throws an exception it will be handled and an emergency delay will be
 injected.
 
-If you do override `do_delay` but don't actually delay for at least the minimum duration (which
+If you do override `do_delay()` but don't actually delay for at least the minimum duration (which
 is 1 ms) then the library will inject the emergency delay.
 
 The main reason for allowing the implementer to customize the delay logic is so that unit tests
