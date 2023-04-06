@@ -103,7 +103,7 @@ function generate_report() {
 
   $parts = get_parts( $text );
 
-  echo "Here are some notes about the number and type of files and the number of lines of code.\n\n";
+  echo "Here are some notes about the software files and lines of code.\n\n";
 
   echo "### File count\n\n";
 

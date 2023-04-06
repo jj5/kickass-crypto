@@ -272,7 +272,7 @@ php bin/gen-demo-config.php > config.php
 
 ## Library metrics
 
-Here are some notes about the number and type of files and the number of lines of code.
+Here are some notes about the software files and lines of code.
 
 ### File count
 
@@ -1634,7 +1634,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,425 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,423 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
