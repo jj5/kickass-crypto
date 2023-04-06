@@ -2215,7 +2215,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return $this->error( 'encrypt string failed.' );
+    return $this->error( 'TODO: model this error' );
 
   }
 
@@ -2293,7 +2293,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return $this->error( 'log this error' );
+    return $this->error( 'TODO: model this error' );
 
   }
 
@@ -2558,7 +2558,7 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
       }
     }
 
-    return $this->error( 'TODO: log this error' );
+    return $this->error( 'TODO: model this error' );
 
   }
 
