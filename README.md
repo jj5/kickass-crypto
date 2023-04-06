@@ -795,8 +795,8 @@ for a random amount of time between 1 millisecond and 10 seconds.
 
 ## Fail safe
 
-The user of this library has the opportunity to override the `do_delay()` method and provide their
-own delay logic.
+The programmer using this library has the opportunity to override the `do_delay()` method and
+provide their own delay logic.
 
 If that `do_delay()` override throws an exception it will be handled and an emergency delay will be
 injected.
