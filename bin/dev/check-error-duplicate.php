@@ -30,7 +30,7 @@ function main( $argv ) {
   $const_list = [];
   $const_map = [];
 
-  $lib = realpath( __DIR__ . '/../../src/code/namespace/Kickass/Crypto/KickassCrypto.php' );
+  $lib = realpath( __DIR__ . '/../../src/code/namespace/KickassCrypto/KickassCrypto.php' );
 
   $lib_lines = file( $lib );
 

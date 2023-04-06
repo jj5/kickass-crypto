@@ -27,15 +27,15 @@ main() {
   pushd "$( dirname "$0" )/../../" >/dev/null;
   source bin/inc/env.sh;
 
-  pushd src/code/namespace/KickassCrypto/Module >/dev/null;
+  pushd src/code/namespace/KickassCrypto/ >/dev/null;
 
-  if grep -Ri "this->do_"; then
+  if grep -Ri "this->do_" OpenSsl Sodium; then
 
     echo 'WARNING: $this->do_*() called from module services...';
 
   fi
 
-  if grep -Ri "parent::do_"; then
+  if grep -Ri "parent::do_" OpenSsl Sodium; then
 
     echo 'WARNING: parent::do_*() called from module services...';
 

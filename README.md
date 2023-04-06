@@ -416,6 +416,9 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/config.php';
 ```
 
+You can find an example of what happens if you double include the `config.php` in
+[config-die.php](https://github.com/jj5/kickass-crypto/blob/main/bin/dev/config-die.php).
+
 Consequently, as with most PHP source files, it's best to use `require_once` when including the
 `config.php` file:
 
