@@ -161,6 +161,11 @@ Search.appendIndex(
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020these\u0020are\u0020the\u0020exception\u0020messages\u0020for\u0020each\u0020exception\u0020code.\u0020These\u0020exception\nmessages\u0020should\u0020be\u0020stable,\u0020you\u0020can\u0020add\u0020new\u0020ones\u0020but\u0020don\u0027t\u0020change\u0020existing\u0020ones.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_MESSAGE"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_RESULT_INVALID",
+            "name": "KICKASS_CRYPTO_ERROR_RESULT_INVALID",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_RESULT_INVALID"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED",
             "name": "KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED",
             "summary": "",

@@ -319,7 +319,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_RESULT_INVALID );
 
     }
     catch ( \AssertionError $ex ) {
@@ -1412,7 +1418,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1468,7 +1480,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1523,7 +1541,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1579,7 +1603,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1634,7 +1664,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1690,7 +1726,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1744,11 +1786,25 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
+      assert( is_array( $array ) );
+
+      if ( ! is_array( $array ) ) {
+
+        return -1;
+
+      }
+
       $result = $this->do_increment_counter( $array, $key );
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1802,11 +1858,27 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
+      assert( is_array( $array ) );
+
+      if ( ! is_array( $array ) ) {
+
+        return -1;
+
+      }
+
       $this->increment_counter_internal( $array, $key );
 
       $result = $array[ $key ];
 
-      return $result;
+      assert( is_int( $result ) );
+
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return -1;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1859,7 +1931,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return '';
 
     }
     catch ( \AssertionError $ex ) {
@@ -1912,7 +1990,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_KEY_HASH;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1966,7 +2050,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_KEY_HASH;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2019,7 +2109,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_KEY_LENGTH_MIN;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2073,7 +2169,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_KEY_LENGTH_MIN;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2126,7 +2228,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2180,7 +2288,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2237,7 +2351,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2294,7 +2414,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2351,7 +2477,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2408,7 +2540,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2466,7 +2604,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2523,7 +2667,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2589,7 +2739,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_DATA_ENCODING;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2646,7 +2802,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_DATA_ENCODING;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2704,7 +2866,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2761,7 +2929,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2819,7 +2993,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2876,7 +3056,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_int( $result ) );
 
-      return $result;
+      if ( is_int( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2934,7 +3120,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2991,7 +3183,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3049,7 +3247,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3106,7 +3310,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3220,6 +3430,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $result = defined( $const ) ? constant( $const ) : $default;
 
+      // 2023-04-07 jj5 - this could be pretty much anything...
+      //
       return $result;
 
     }
@@ -3358,7 +3570,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === null );
 
-      return $result;
+      if ( is_string( $result ) || $result === null ) {
+
+        return $result;
+
+      }
+
+      return null;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3412,7 +3630,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === null );
 
-      return $result;
+      if ( is_string( $result ) || $result === null ) {
+
+        return $result;
+
+      }
+
+      return null;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3465,7 +3689,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3519,7 +3749,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3572,7 +3808,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3626,7 +3868,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3678,22 +3926,39 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
+      $problem = null;
+
       $result = $this->do_is_valid_config( $problem );
 
       assert( is_bool( $result ) );
 
-      if ( $result ) {
+      if ( is_bool( $result ) ) {
 
-        assert( $problem === null );
+        if ( $result ) {
 
+          assert( $problem === null );
+
+          if ( $problem === null ) {
+
+            return $result;
+
+          }
+        }
+        else {
+
+          assert( is_string( $problem ) );
+
+          if ( is_string( $problem ) ) {
+
+            return $result;
+
+          }
+        }
       }
-      else {
 
-        assert( is_string( $problem ) );
+      $problem = 'config validation failed.';
 
-      }
-
-      return $result;
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3724,6 +3989,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $problem = 'config validation failed.';
 
     return false;
 
@@ -3764,7 +4031,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $is_valid ) );
 
-      return $is_valid;
+      if ( is_bool( $is_valid ) ) {
+
+        return $is_valid;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -3894,7 +4167,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $is_valid ) );
 
-      return $is_valid;
+      if ( is_bool( $is_valid ) ) {
+
+        return $is_valid;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -4005,7 +4284,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -4389,7 +4674,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -4463,7 +4754,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
           assert( is_bool( $result ) );
 
-          return $result;
+          if ( is_bool( $result ) ) {
+
+            return $result;
+
+          }
+
+          return false;
 
         default :
 
@@ -4521,7 +4818,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return '';
 
     }
     catch ( \AssertionError $ex ) {
@@ -4575,7 +4878,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return '';
 
     }
     catch ( \AssertionError $ex ) {
@@ -4633,7 +4942,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -4819,6 +5134,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $message === false ) {
 
+        $data_encoding = null;
+
         return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DECRYPTION_FAILED );
 
       }
@@ -4854,6 +5171,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $data_encoding = null;
 
     try {
 
@@ -4896,7 +5215,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return false;
+
 
     }
     catch ( \AssertionError $ex ) {
@@ -4961,7 +5287,17 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_bool( $result ) );
 
-      return $result;
+      if ( is_bool( $result ) ) {
+
+        return $result;
+
+      }
+
+      $iv = false;
+      $ciphertext = false;
+      $tag = false;
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -4992,6 +5328,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $iv = false;
+    $ciphertext = false;
+    $tag = false;
 
     try {
 
@@ -5030,11 +5370,21 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
+      $data_encoding = null;
+
       $result = $this->do_decode_message( $message, $data_encoding );
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      $data_encoding = null;
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -5065,6 +5415,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $data_encoding = null;
 
     try {
 
@@ -5190,7 +5542,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       assert( is_string( $encoded_data ) );
       assert( is_string( $data_encoding ) );
 
-      return $encoded_data;
+      if ( is_string( $encoded_data ) && is_string( $data_encoding ) ) {
+
+        return $encoded_data;
+
+      }
+
+      $data_encoding = null;
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -5221,6 +5581,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $data_encoding = null;
 
     try {
 
@@ -5342,6 +5704,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
+      // 2023-04-07 jj5 - BEGIN CRITICAL SECTION
+
       $ns_min =      1_000_000;
       $ns_max = 10_000_000_000;
 
@@ -5351,6 +5715,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       $nanoseconds = $delay % 1_000_000_000;
 
       $result = time_nanosleep( $seconds, $nanoseconds );
+
+      // 2023-04-07 jj5 - END CRITICAL SECTION
 
       // 2023-04-05 jj5 - don't do anything until *after* the delay, just in case it throws etc;
       // as long as the delay happens not much else matters.
@@ -5521,7 +5887,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -5690,7 +6062,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -5776,7 +6154,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
-      return $result;
+      assert( is_string( $result ) );
+
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -5855,7 +6241,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
 
     }
     catch ( \AssertionError $ex ) {
@@ -5931,7 +6324,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
-      return $result;
+      assert( is_string( $result ) );
+
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -6010,7 +6411,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $is_false = false;
 
-      return $this->do_data_decode( $encoded_data, $data_encoding, $is_false );
+      $result = $this->do_data_decode( $encoded_data, $data_encoding, $is_false );
+
+      // 2023-04-07 jj5 - this can be pretty much anything...
+      //
+      return $result;
 
     }
     catch ( \AssertionError $ex ) {
@@ -6041,6 +6446,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $is_false = false;
 
     try {
 
@@ -6145,6 +6552,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
+    $is_false = false;
+
     try {
 
       return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED_4 );
@@ -6185,7 +6594,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $is_false = false;
 
-      return $this->do_json_decode( $input, $is_false );
+      $result = $this->do_json_decode( $input, $is_false );
+
+      // 2023-04-07 jj5 - this could be pretty much anything...
+
+      return $result;
 
     }
     catch ( \AssertionError $ex ) {
@@ -6216,6 +6629,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $is_false = false;
 
     try {
 
@@ -6329,6 +6744,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
+    $is_false = false;
+
     try {
 
       return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_JSON_DECODING_FAILED_4 );
@@ -6369,7 +6786,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $is_false = false;
 
-      return $this->do_phps_decode( $input, $is_false );
+      $result = $this->do_phps_decode( $input, $is_false );
+
+      // 2023-04-07 jj5 - this could be pretty much anything...
+      //
+      return $result;
 
     }
     catch ( \AssertionError $ex ) {
@@ -6400,6 +6821,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $is_false = false;
 
     try {
 
@@ -6452,12 +6875,17 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( $result === false ) {
 
+        // 2023-04-07 jj5 - it's okay to set the $is_false flag regardless of the
+        // CONFIG_FALSE_ENABLE setting; the issue is whether an error is registered or not.
+        //
         if ( $input === $false_phps ) {
 
           $is_false = true;
 
         }
 
+        // 2023-04-07 jj5 - this will register an error if CONFIG_FALSE_ENABLE is not set.
+        //
         if ( ! $this->get_config_false_enable() ) {
 
           return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2 );
@@ -6465,6 +6893,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         }
       }
 
+      // 2023-04-07 jj5 - this could be pretty much anything...
+      //
       return $result;
 
     }
@@ -6496,6 +6926,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    $is_false = false;
 
     try {
 
@@ -6536,7 +6968,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -6696,7 +7134,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \AssertionError $ex ) {
@@ -6886,6 +7330,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $version ) );
 
+      if ( ! is_string( $version ) ) { return false; }
+
       $class = get_class( $this );
 
       switch ( $class ) {
@@ -6962,7 +7408,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) || $result === false );
 
-      return $result;
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -7018,6 +7470,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       if ( empty( $key ) ) { return false; }
 
+      // 2023-04-07 jj5 - this will throw if the hash algorithm is invalid
+      //
       return hash( $this->get_const_key_hash(), $key, $binary = true );
 
     }
@@ -7074,7 +7528,13 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       assert( is_string( $result ) );
 
-      return $result;
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return false;
 
     }
     catch ( \AssertionError $ex ) {
@@ -7262,6 +7722,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
+    // 2023-04-07 jj5 - random would be better but something is better than nothing... the caller
+    // has no business actually using these values.
+    //
+    $seconds = 5;
+    $nanosections = 5_000;
+
     return false;
 
   }
@@ -7339,6 +7805,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
 
     }
+
+    // 2023-04-07 jj5 - random would be better but something is better than nothing... the caller
+    // has no business actually using these values.
+    //
+    $seconds = 5;
+    $nanosections = 5_000;
 
     return false;
 
@@ -7514,6 +7986,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     assert( ! empty( $message ) );
 
+    if ( empty( $message ) ) {
+
+      $message = 'RECURSION DETECTED.';
+
+    }
+
     $this->log_error(
       KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
     );
@@ -7552,6 +8030,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     if ( array_key_exists( $function, $this->active ) ) {
 
+      assert( is_int( $this->active[ $function ] ) );
+
       $this->active[ $function ]--;
 
     }
@@ -7567,11 +8047,21 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    */
   private function increment_counter_internal( &$array, $key ) {
 
+    assert( is_array( $array ) );
+
+    if ( ! is_array( $array ) ) {
+
+      return -1;
+
+    }
+
     if ( ! array_key_exists( $key, $array ) ) {
 
       $array[ $key ] = 0;
 
     }
+
+    assert( is_int( $array[ $key ] ) );
 
     $array[ $key ]++;
 

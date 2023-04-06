@@ -338,6 +338,11 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
 /**
  * @var string
  */
+define( 'KICKASS_CRYPTO_ERROR_RESULT_INVALID', 'result invalid.' );
+
+/**
+ * @var string
+ */
 define( 'KICKASS_CRYPTO_ERROR_EXCEPTION_RAISED', 'exception raised.' );
 
 /**
