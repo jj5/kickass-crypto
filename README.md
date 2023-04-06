@@ -1276,6 +1276,9 @@ deep our calls are nested using an enter/leave discipline, like this:
 
 ```
 
+The `leave()` function has no business throwing an exception, but we wrap it in a try-catch block
+just in case.
+
 The above code is shown with example and typical catch blocks included, but the key point is that
 the very first thing we do is register the function entry with the call to `enter()` and then
 in our finally block we register the function exit with the call to `leave()`.
