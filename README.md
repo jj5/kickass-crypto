@@ -250,6 +250,8 @@ $plaintext = kickass_round_trip()->decrypt( $ciphertext );
 echo "the secret data is: $plaintext.\n";
 ```
 
+It took a lot of work to make things that simple!
+
 If you want to host the demo code you need to host the files in
 [src/demo/](https://github.com/jj5/kickass-crypto/tree/main/src/demo/)
 and include a valid `config.php` file in the project base directory (that's the directory that
