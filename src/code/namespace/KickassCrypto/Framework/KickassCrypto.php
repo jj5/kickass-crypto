@@ -165,6 +165,10 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     }
   }
 
+  abstract protected function do_get_error_list() : array;
+  abstract protected function do_get_error() : ?string;
+  abstract protected function do_clear_error() : void;
+
   /**
    * 2023-03-30 jj5 - implementations need to define what a valid configuration is.
    *
@@ -716,6 +720,100 @@ abstract class KickassCrypto implements \KickassCrypto\Contract\IKickassCrypto {
     );
 
     throw new \KickassCrypto\Framework\KickassCryptoException( $message, $code, $previous, $data );
+
+  }
+
+  public final function get_error_list() : array {
+
+    try {
+
+      return $this->do_get_error_list();
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    $this->error( 'TODO: model this error' );
+
+    return [];
+
+  }
+
+  public final function get_error() : ?string {
+
+    try {
+
+      return $this->do_get_error();
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    $this->error( 'TODO: model this error' );
+
+    return null;
+
+  }
+
+  public final function clear_error() : bool {
+
+    try {
+
+      return $this->do_clear_error();
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+    }
+
+    return $this->error( 'TODO: model this error' );
 
   }
 

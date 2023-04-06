@@ -1166,6 +1166,9 @@ but retaining the ability to maintain standards as you may want to do.
 If you're refactoring a private method to make it public or protected be sure to introduce the
 associated final wrapper.
 
+One last thing: if your component has a public function, it should probably be a final wrapper and
+just defer to a default implementation.
+
 #### The advantages of the typed interface on the final wrapper
 
 Having types on the interface of the final method `is_valid_settings()` confers three main
