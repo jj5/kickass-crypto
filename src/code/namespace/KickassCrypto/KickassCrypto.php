@@ -77,6 +77,14 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   private $inject_delay = false;
 
   /**
+   * 2023-04-07 jj5 - this map is for tracking active functions which are presently on the call
+   * stack.
+   *
+   * @var array
+   */
+  private $active = [];
+
+  /**
    * 2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
    * the constructor succeeds then encryption and decryption should also usually succeed later on.
    * If encryption or decryption won't be able to succeed the constructor should throw.
@@ -412,12 +420,61 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
-  protected function enter( $function ) {
+  protected function enter( string $function ) {
+
+    $has_exceeded_limit = false;
+
+    if ( ( $this->active[ $function ] ?? 0 ) > KICKASS_CRYPTO_RECURSION_LIMIT ) {
+
+      $has_exceeded_limit = true;
+
+    }
+
+    $this->increment_counter_internal( $this->active, $function );
+
+    if ( ! $has_exceeded_limit ) { return; }
+
+    $code = KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED;
+
+    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
+
+    assert( ! empty( $message ) );
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
+    );
+
+    $previous = null;
+
+    $data = [
+      'function' => $function,
+    ];
+
+    throw new \KickassCrypto\KickassCryptoException( $message, $code, $previous, $data );
 
   }
 
-  protected function leave( $function ) {
+  protected function leave( string $function ) {
 
+    if ( ! array_key_exists( $function, $this->active ) || $this->active[ $function ] === 0 ) {
+
+      // 2023-04-07 jj5 - there's no point throwing an exception to alert the programmer here,
+      // the call to leave() is always in a try-catch block with an ignored exception, so all
+      // we can do is log.
+
+      $message = "tried to leave unentered function '$function'.";
+
+      // 2023-04-07 jj5 - we call write_log() directly because we don't want to recurse!
+      //
+      $this->log_error( $message, __FILE__, __LINE__, __FUNCTION__ );
+
+    }
+
+    if ( array_key_exists( $function, $this->active ) ) {
+
+      $this->active[ $function ]--;
+
+    }
   }
 
   /**
@@ -699,7 +756,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
-      $this->count_function( __FUNCTION__ );
+      //$this->count_function( __FUNCTION__ );
 
       $this->do_ignore( $ex, $file, $line, $function );
 
@@ -1122,7 +1179,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1176,7 +1233,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1229,7 +1286,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1283,7 +1340,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1336,7 +1393,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1390,7 +1447,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1443,7 +1500,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1497,7 +1554,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        $this->catch( $ex, __FILE__, __LINE__, __FUNCTION__ );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1593,13 +1650,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->enter( __FUNCTION__ );
 
-      if ( ! array_key_exists( $key, $array ) ) {
-
-        $array[ $key ] = 0;
-
-      }
-
-      $array[ $key ]++;
+      $this->increment_counter_internal( $array, $key );
 
       $result = $array[ $key ];
 
@@ -1636,6 +1687,18 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     }
 
     return -1;
+
+  }
+
+  private function increment_counter_internal( &$array, $key ) {
+
+    if ( ! array_key_exists( $key, $array ) ) {
+
+      $array[ $key ] = 0;
+
+    }
+
+    $array[ $key ]++;
 
   }
 
@@ -6932,7 +6995,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
-      return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
+      return $this->write_log( $message, $file, $line, $function );
 
     }
     catch ( \AssertionError $ex ) {
@@ -6969,6 +7032,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
     }
 
     return false;
+
+  }
+
+  protected final function write_log( $message, $file, $line, $function ) {
+
+    return error_log( $file . ':' . $line . ': ' . $function . '(): ' . $message );
 
   }
 }

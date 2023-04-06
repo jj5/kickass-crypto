@@ -16,7 +16,7 @@
 
 /************************************************************************************************\
 //
-// 2023-04-06 jj5 - this test is to checkout what happens when we try to recurse infinitely.
+// 2023-04-07 jj5 - try to leave unentered function...
 //
 \************************************************************************************************/
 
@@ -29,28 +29,32 @@ class Test extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 
-  protected function do_encrypt( $input ) {
+  public $count = 0;
 
-    return $this->encrypt( $input );
+  public function test() {
+
+    return $this->leave( __FUNCTION__ );
+
+  }
+
+  protected function do_log_error( $message, $file, $line, $function ) {
+
+    $this->count++;
+
+    assert( $message === "tried to leave unentered function 'test'." );
+
+    return true;
 
   }
 }
 
 function run_test() {
 
-  if ( extension_loaded( 'xdebug' ) ) {
-
-    echo "It makes more sense to run this script with XDebug disabled.\n";
-
-  }
-
   $crypto = new Test;
 
-  $ciphertext = $crypto->encrypt( 'secret' );
+  $crypto->test();
 
-  $plaintext = $crypto->decrypt( $ciphertext );
-
-  assert( $plaintext === false );
+  assert( $crypto->count === 1 );
 
 }
 

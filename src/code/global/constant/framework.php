@@ -210,6 +210,15 @@ define(
   //'/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/'
 );
 
+/**
+ * 2023-04-07 jj5 - this is the limit of recursion that we allow... the XDebug limit is 256 and
+ * PHP by itself has no limit (it will recurse until it runs out of memory); we pick a value less
+ * than the XDebug limit so that we can handle things ourselves.
+ *
+ * @var int
+ */
+define( 'KICKASS_CRYPTO_RECURSION_LIMIT', 100 );
+
 // 2023-03-29 jj5 - exceptions are thrown from the constructor only, these are the possible
 // exceptions. The exception codes should be stable, you can add new ones but don't change
 // existing ones.
@@ -271,6 +280,12 @@ define( 'KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM',         6_000 );
 define( 'KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST',      7_000 );
 
 /**
+ * 2023-04-07 jj5 - called if recursion/reentrancy is detected.
+ * @var int
+ */
+define( 'KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED',      8_000 );
+
+/**
  * 2023-03-30 jj5 - these are the exception messages for each exception code. These exception
  * messages should be stable, you can add new ones but don't change existing ones.
  * @var array
@@ -283,6 +298,7 @@ define( 'KICKASS_CRYPTO_EXCEPTION_MESSAGE', [
   KICKASS_CRYPTO_EXCEPTION_INVALID_IV_LENGTH      => 'invalid IV length.',
   KICKASS_CRYPTO_EXCEPTION_INSECURE_RANDOM        => 'insecure random.',
   KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST     => 'invalid error list.',
+  KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED     => 'recursion detected.',
 ]);
 
 // 2023-03-30 jj5 - following are the errors that can happen during encryptiong and decryption, we

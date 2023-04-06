@@ -111,6 +111,11 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020our\u0020Base64\u0020validation\u0020regex\u003B\u0020see\u0020the\u0020link\u0020for\u0020discussion\u0020concerning\nthe\u0020previous\u0020regex\u0020and\u0020poor\u0020performance.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_REGEX_BASE64"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_RECURSION_LIMIT",
+            "name": "KICKASS_CRYPTO_RECURSION_LIMIT",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020limit\u0020of\u0020recursion\u0020that\u0020we\u0020allow...\u0020the\u0020XDebug\u0020limit\u0020is\u0020256\u0020and\nPHP\u0020by\u0020itself\u0020has\u0020no\u0020limit\u0020\u0028it\u0020will\u0020recurse\u0020until\u0020it\u0020runs\u0020out\u0020of\u0020memory\u0029\u003B\u0020we\u0020pick\u0020a\u0020value\u0020less\nthan\u0020the\u0020XDebug\u0020limit\u0020so\u0020that\u0020we\u0020can\u0020handle\u0020things\u0020ourselves.",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_RECURSION_LIMIT"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE",
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020if\u0020an\u0020invalid\u0020exception\u0020code\u0020is\u0020passed\u0020to\u0020the\u0020exception\u0020raising\u0020facility\nthis\u0020exception\u0020is\u0020raised\u0020instead.",
@@ -145,6 +150,11 @@ Search.appendIndex(
             "name": "KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST",
             "summary": "2023\u002D04\u002D06\u0020jj5\u0020\u002D\u0020if\u0020we\u0020can\u0027t\u0020get\u0020a\u0020valid\u0020error\u0020list\u0020from\u0020an\u0020implementation\u0020we\u0020bail\u0020with\u0020an\nexception.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_INVALID_ERROR_LIST"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED",
+            "name": "KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020called\u0020if\u0020recursion\/reentrancy\u0020is\u0020detected.",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_EXCEPTION_RECURSION_DETECTED"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_EXCEPTION_MESSAGE",
             "name": "KICKASS_CRYPTO_EXCEPTION_MESSAGE",
@@ -986,6 +996,11 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\nto\u0020zero\u0020if\u0020missing\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_increment_counter"
         },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aincrement_counter_internal\u0028\u0029",
+            "name": "increment_counter_internal",
+            "summary": "",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_increment_counter_internal"
+        },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_data_format\u0028\u0029",
             "name": "get_const_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u0020constant\u003B\u0020defers\u0020to\u0020abstract\u0020method\u0020for\u0020implementation.",
@@ -1391,6 +1406,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_log_error"
         },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Awrite_log\u0028\u0029",
+            "name": "write_log",
+            "summary": "",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_write_log"
+        },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024telemetry",
             "name": "telemetry",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020our\u0020counters\u0020are\u0020stored\u0020here",
@@ -1400,6 +1420,11 @@ Search.appendIndex(
             "name": "inject_delay",
             "summary": "2023\u002D04\u002D02\u0020jj5\u0020\u002D\u0020this\u0020flag\u0020indicates\u0020whether\u0020we\u0020need\u0020to\u0020inject\u0020a\u0020random\u0020delay\u0020or\u0020not,\u0020it\u0020gets\nset\u0020when\u0020a\u0020call\u0020to\u0020either\u0020encrypt\u0028\u0029\u0020or\u0020decrypt\u0028\u0029\u0020is\u0020made.\u0020It\u0020gets\u0020set\u0020back\u0020to\u0020false\u0020after\u0020a\ndelay\u0020has\u0020been\u0020injected\u0020so\u0020that\u0020multiple\u0020errors\u0020won\u0027t\u0020trigger\u0020multiple\u0020delays.",
             "url": "classes/KickassCrypto-KickassCrypto.html#property_inject_delay"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024active",
+            "name": "active",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020this\u0020map\u0020is\u0020for\u0020tracking\u0020active\u0020functions\u0020which\u0020are\u0020presently\u0020on\u0020the\u0020call\nstack.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#property_active"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException",
             "name": "KickassCryptoException",
