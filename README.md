@@ -1223,8 +1223,8 @@ The first is that it's easier to type out and maintain the overriding function a
 to worry about the types.
 
 Also, in future, the `is_valid_settings()` might declare a new interface and change its types. If
-this happens it can maintain support for both old and new `do_is_valid_settings()` without
-implementers necessarily needing to update their code.
+this happens it can maintain support for both old and new `do_is_valid_settings()` implementations
+without implementers necessarily needing to update their code.
 
 And the third advantage of an untyped interface for the `do_is_valid_settings()` function is that
 it allows for the injection of "impossible" values. These are values which will never be able to
