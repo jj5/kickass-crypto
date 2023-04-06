@@ -120,8 +120,6 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     $this->error_list = [];
     $this->openssl_error = null;
 
-    return true;
-
   }
 
   protected function do_get_const_data_format() {

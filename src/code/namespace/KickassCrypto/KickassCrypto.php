@@ -191,7 +191,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   /**
    * 2023-04-07 jj5 - clears the active list of errors.
    *
-   * @return boolean true on success false on failure.
+   * @return void
    */
   abstract protected function do_clear_error();
 
@@ -1033,17 +1033,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   }
 
-  public final function clear_error() : bool {
+  public final function clear_error() : void {
 
     try {
 
       $this->enter( __FUNCTION__ );
 
-      $result = $this->do_clear_error();
+      $this->do_clear_error();
 
-      assert( is_bool( $result ) );
-
-      return $result ? true : false;
+      return;
 
     }
     catch ( \AssertionError $ex ) {
@@ -1077,7 +1075,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     try {
 
-      return $this->error( __FUNCTION__, 'TODO: model this error' );
+      $this->error( __FUNCTION__, 'TODO: model this error' );
 
     }
     catch ( \Throwable $ignore ) {
@@ -1090,9 +1088,6 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       catch ( \Throwable $ignore ) { ; }
 
     }
-
-    return false;
-
   }
 
   /**
