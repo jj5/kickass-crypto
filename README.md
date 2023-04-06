@@ -1252,9 +1252,19 @@ includes:
 - PHP Exception and Throwable objects
 - potentially other things
 
-If you encounter a situation from which you cannot continue the way to register this problem
-is to call the `error()` function with a string identifying and describing the problem and then
-returning false.
+If you encounter a situation from which you cannot continue processing of the typical and expected
+program logic the way to register this problem is by calling the `error()` function with a string
+identifying and describing the problem and then returning false to indicate failure.
+
+As the `error()` function always returns the boolean value false you can usually register the
+error and return false on the same like, like this:
+
+```
+  return $this->error( 'something bad happened.' );
+```
+
+When I nominate error strings I usually start them with a lowercase letter and end them with a
+period.
 
 Note that it's okay to intercept and rethrow PHP AssertionError exceptions. These should only ever
 occur during development and not in production.
