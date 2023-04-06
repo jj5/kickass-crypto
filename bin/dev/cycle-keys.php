@@ -14,22 +14,22 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - this script changes anything which looks like a secret key to a new secret
-// key. The reason for having this script is that invariably, someone, somewhere, will copy the
-// example files from our unit tests and then use them in production. And to be honest, sometimes
-// I even copy them myself! (Not for production of course, don't be silly.) We can't stop people
-// from copying the test config files, but we can cycle our keys from time to time as a mitigation
-// of sorts. Of course it's all there in the git history, I dunno.
-//
-// 2023-04-04 jj5 - THINK: Would it be evil to run this script automatically when the user loads
-// the library on their machine..?
-//
-// 2023-04-03 jj5 - this script has been updated to only run on files in src/test so that
-// hopefully people don't use this script to accidentally hose their production keys.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - this script changes anything which looks like a secret key to a new secret
+ * key. The reason for having this script is that invariably, someone, somewhere, will copy the
+ * example files from our unit tests and then use them in production. And to be honest, sometimes
+ * I even copy them myself! (Not for production of course, don't be silly.) We can't stop people
+ * from copying the test config files, but we can cycle our keys from time to time as a mitigation
+ * of sorts. Of course it's all there in the git history, I dunno.
+ *
+ * 2023-04-04 jj5 - THINK: Would it be evil to run this script automatically when the user loads
+ * the library on their machine..?
+ *
+ * 2023-04-03 jj5 - this script has been updated to only run on files in src/test so that
+ * hopefully people don't use this script to accidentally hose their production keys.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 require_once __DIR__ . '/../../inc/utility.php';
 

@@ -14,12 +14,12 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-05 jj5 - this script uses the `sloccount` command to generate a report for the
-// README.md file.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-05 jj5 - this script uses the `sloccount` command to generate a report for the
+ * README.md file.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 require_once __DIR__ . '/../../inc/utility.php';
 

@@ -14,14 +14,14 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-03-30 jj5 - this script lists the hash algorithms available on this computer; you can run
-// it from the library base directory, like this:
-//
-// $ php bin/get-hash-list.php
-//
-\************************************************************************************************/
+/**
+ * 2023-03-30 jj5 - this script lists the hash algorithms available on this computer; you can run
+ * it from the library base directory, like this:
+ *
+ * $ php bin/get-hash-list.php
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 foreach ( hash_algos() as $hash ) {
 

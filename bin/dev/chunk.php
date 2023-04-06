@@ -14,12 +14,12 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-02 jj5 - this file was just me thinking about the padding length logic... padding is
-// done in KickassCrypto::do_encrypt().
-//
-\************************************************************************************************/
+/**
+ * 2023-04-02 jj5 - this file was just me thinking about the padding length logic... padding is
+ * done in KickassCrypto::do_encrypt().
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 define( 'JSON_INC', 8 );
 define( 'CHUNK_INC', 3 );

@@ -13,11 +13,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-03 jj5 - this inc/openssl.php include file enables the Sodium module.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-03 jj5 - this inc/openssl.php include file enables the Sodium module.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 require_once __DIR__ . '/../src/code/global/php/check.php';
 

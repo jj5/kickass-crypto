@@ -14,11 +14,11 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - prints a list of JSON encoding/decoding constants and their value.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - prints a list of JSON encoding/decoding constants and their value.
+ *
+ * @link https://github.com/jj5/kickass-crypto
+ */
 
 $constants = get_defined_constants( $categorize = true );
 
