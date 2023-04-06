@@ -1221,7 +1221,7 @@ Not having types on the interface of the default implementation `do_is_valid_set
 four main advantages.
 
 The first is that it's easier to type out and maintain the overriding function as you don't need
-to worry about the types.
+to worry about writing out the types.
 
 Also, in future, the `is_valid_settings()` might declare a new interface and change its types. If
 this happens it can maintain support for both old and new `do_is_valid_settings()` implementations
@@ -1230,9 +1230,9 @@ without implementers necessarily needing to update their code.
 The third advantage of an untyped interface for the `do_is_valid_settings()` function is that
 it allows for the injection of "impossible" values. These are values which will never be able to
 make it past the types declared on the main function `is_valid_settings()` and into the
-`do_is_valid_settings()`, and being able to inject such "impossible" values can make unit testing
-of particular situations easier, as you can pass in a value that could never possibly occur in
-production in order to signal something from the test in question.
+`do_is_valid_settings()` function, and being able to inject such "impossible" values can make unit
+testing of particular situations easier, as you can pass in a value that could never possibly
+occur in production in order to signal something from the test in question.
 
 The fourth and perhaps most important implication of the approach to the default implementation
 is that it is not marked as final which means that programmers inheriting from your class can
