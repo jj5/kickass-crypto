@@ -49,14 +49,14 @@ interface IKickassCrypto {
   /**
    * 2023-04-03 jj5 - the most recent error; this is a string or null if no errors.
    *
-   * @return string|null the most recent error message or null if none.
+   * @return ?string the most recent error message or null if none.
    */
   public function get_error() : ?string;
 
   /**
    * 2023-04-03 jj5 - this will clear the current error list.
    *
-   * @return boolean true on success false otherwise.
+   * @return void
    */
   public function clear_error() : void;
 
