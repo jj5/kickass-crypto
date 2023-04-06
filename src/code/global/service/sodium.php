@@ -31,15 +31,15 @@
  * defined with the CONFIG_SODIUM_SECRET_CURR configuration constant (required) and the
  * CONFIG_SODIUM_SECRET_PREV configuration constant (optional).
  *
- * @param KickassCrypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+ * @param KickassCrypto\IKickassCrypto $set pass a valid instance to reconfigure the
  * service locator with a new service instance.
  *
- * @return KickassCrypto\Contract\IKickassCrypto the crypto interface.
+ * @return KickassCrypto\IKickassCrypto the crypto interface.
  *
- * @throws KickassCrypto\Framework\KickassCryptoException if the environment is determined to be
+ * @throws KickassCrypto\KickassCryptoException if the environment is determined to be
  * unsupported during construction.
 */
-function kickass_round_trip( $set = false ) : \KickassCrypto\Contract\IKickassCrypto {
+function kickass_round_trip( $set = false ) : \KickassCrypto\IKickassCrypto {
 
   static $instance = null;
 
@@ -47,7 +47,7 @@ function kickass_round_trip( $set = false ) : \KickassCrypto\Contract\IKickassCr
 
   if ( $instance === null ) {
 
-    $instance = new \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip();
+    $instance = new \KickassCrypto\Sodium\KickassSodiumRoundTrip();
 
   }
 
@@ -60,15 +60,15 @@ function kickass_round_trip( $set = false ) : \KickassCrypto\Contract\IKickassCr
  * This component will use the at-rest keys defined for the Sodium module, those keys are
  * defined with the CONFIG_SODIUM_SECRET_LIST configuration constant.
  *
- * @param KickassCrypto\Contract\IKickassCrypto $set pass a valid instance to reconfigure the
+ * @param KickassCrypto\IKickassCrypto $set pass a valid instance to reconfigure the
  * service locator with a new service instance.
  *
- * @return KickassCrypto\Contract\IKickassCrypto the crypto interface.
+ * @return KickassCrypto\IKickassCrypto the crypto interface.
  *
- * @throws KickassCrypto\Framework\KickassCryptoException if the environment is determined to be
+ * @throws KickassCrypto\KickassCryptoException if the environment is determined to be
  * unsupported during construction.
 */
-function kickass_at_rest( $set = false ) : \KickassCrypto\Contract\IKickassCrypto {
+function kickass_at_rest( $set = false ) : \KickassCrypto\IKickassCrypto {
 
   static $instance = null;
 
@@ -76,7 +76,7 @@ function kickass_at_rest( $set = false ) : \KickassCrypto\Contract\IKickassCrypt
 
   if ( $instance === null ) {
 
-    $instance = new \KickassCrypto\Module\Sodium\KickassSodiumAtRest();
+    $instance = new \KickassCrypto\Sodium\KickassSodiumAtRest();
 
   }
 

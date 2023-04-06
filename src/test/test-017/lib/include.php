@@ -20,25 +20,25 @@
 //
 \************************************************************************************************/
 
-class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestOpenSslAtRest extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
+class TestOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestSodiumRoundTrip extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
+class TestSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestSodiumAtRest extends \KickassCrypto\Module\Sodium\KickassSodiumAtRest {
+class TestSodiumAtRest extends \KickassCrypto\Sodium\KickassSodiumAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 

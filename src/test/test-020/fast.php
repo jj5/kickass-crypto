@@ -24,7 +24,7 @@
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestJsonWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestJsonWithoutPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
@@ -41,7 +41,7 @@ class TestJsonWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRo
   }
 }
 
-class TestJsonWithPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestJsonWithPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
@@ -64,7 +64,7 @@ class TestJsonWithPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRound
   }
 }
 
-class TestPhpsWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestPhpsWithoutPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
@@ -81,7 +81,7 @@ class TestPhpsWithoutPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRo
   }
 }
 
-class TestPhpsWithPhps extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestPhpsWithPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 

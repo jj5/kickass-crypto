@@ -27,25 +27,25 @@ define( 'DEBUG', true );
 require_once __DIR__ . '/etc/config.php';
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
-class TestOpenSslAtRest extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
+class TestOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
-class TestSodiumRoundTrip extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
+class TestSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
-class TestSodiumAtRest extends \KickassCrypto\Module\Sodium\KickassSodiumAtRest {
+class TestSodiumAtRest extends \KickassCrypto\Sodium\KickassSodiumAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 

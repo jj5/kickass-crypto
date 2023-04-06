@@ -22,25 +22,25 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestKickassSodiumRoundTrip extends \KickassCrypto\Module\Sodium\KickassSodiumRoundTrip {
+class TestKickassSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestKickassSodiumAtRest extends \KickassCrypto\Module\Sodium\KickassSodiumAtRest {
+class TestKickassSodiumAtRest extends \KickassCrypto\Sodium\KickassSodiumAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestKickassOpenSslRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestKickassOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
 }
 
-class TestKickassOpenSslAtRest extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
+class TestKickassOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
@@ -90,7 +90,7 @@ function run_test( $argv ) {
     assert( false );
 
   }
-  catch ( \KickassCrypto\Framework\KickassCryptoException $ex ) {
+  catch ( \KickassCrypto\KickassCryptoException $ex ) {
 
     $expected_code = KICKASS_CRYPTO_EXCEPTION_INVALID_CONFIG;
     $expected_message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $expected_code ];

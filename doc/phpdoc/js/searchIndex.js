@@ -731,40 +731,40 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020splits\u0020a\u0020set\u0020of\u0020flags\u0020into\u0020a\u0020list\u0020of\u0020singular\u0020flag\u0020values.",
             "url": "namespaces/default.html#function_kickass_crypto_bits_split"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto",
             "name": "IKickassCrypto",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020IKickassCrypto\u0020interface\u0020is\u0020the\u0020interface\u0020provided\u0020by\u0020an\u0020encryption\nservice.\u0020You\u0020can\u0020use\u0020the\u0020framework\u0020to\u0020create\u0020your\u0020own\u0020encryption\u0020services\u0020or\u0020you\u0020can\u0020use\u0020one\u0020\u0028or\nmore\u0029\u0020of\u0020the\u0020four\u0020encryption\u0020services\u0020provided\u0020by\u0020this\u0020library.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html"
+            "url": "classes/KickassCrypto-IKickassCrypto.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
             "name": "get_error_list",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020errors\u0020which\u0020have\u0020happened\u0020since\u0020the\u0020last\u0020time\u0020clear_error\u0028\u0029\nwas\u0020called.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_get_error_list"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Aget_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Aget_error\u0028\u0029",
             "name": "get_error",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020most\u0020recent\u0020error\u003B\u0020this\u0020is\u0020a\u0020string\u0020or\u0020null\u0020if\u0020no\u0020errors.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_get_error"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Aclear_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Aclear_error\u0028\u0029",
             "name": "clear_error",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020clear\u0020the\u0020current\u0020error\u0020list.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_clear_error"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_clear_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Aencrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Aencrypt\u0028\u0029",
             "name": "encrypt",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020JSON\u0020encode\u0020the\u0020input\u0020and\u0020encrypt\u0020the\u0020result\u003B\u0020returns\u0020false\u0020on\nerror.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_encrypt"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_encrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Adecrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020decrypt\u0020the\u0020ciphertext\u0020and\u0020decode\u0020it\u0020as\u0020JSON\u003B\u0020returns\u0020false\u0020on\nerror.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_decrypt"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_decrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract\\IKickassCrypto\u003A\u003Adelay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\IKickassCrypto\u003A\u003Adelay\u0028\u0029",
             "name": "delay",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020sleep\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time,\u0020from\u00201\u0020millisecond\u0020to\u002010\nseconds\u003B\u0020this\u0020is\u0020called\u0020automatically\u0020on\u0020the\u0020first\u0020error\u0020as\u0020a\u0020mitigation\u0020against\u0020timing\nattacks.",
-            "url": "classes/KickassCrypto-Contract-IKickassCrypto.html#method_delay"
+            "url": "classes/KickassCrypto-IKickassCrypto.html#method_delay"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_CONFIG_VALIDATION",
@@ -781,635 +781,635 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_RANDOM_BYTES_VALIDATION"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto",
+            "fqsen": "\\KickassCrypto\\KickassCrypto",
             "name": "KickassCrypto",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020class\u0020provides\u0020the\u0020base\u0020framework\u0020for\u0020a\u0020crypto\u0020service\u003B\u0020you\u0020can\u0020extend\nit\u0020yourself\u0020or\u0020use\u0020one\u0020\u0028or\u0020more\u0029\u0020of\u0020the\u0020services\u0020implemented\u0020as\u0020modules\u0020in\u0020this\u0020library.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html"
+            "url": "classes/KickassCrypto-KickassCrypto.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method___construct"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_error_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_error_list"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_clear_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_clear_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_clear_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020implementations\u0020need\u0020to\u0020define\u0020what\u0020a\u0020valid\u0020configuration\u0020is.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_config"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_config"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020passphrases\u003B\u0020the\u0020passphrases\u0020are\u0020generated\u0020by\u0020using\u0020the\u0020secret\nkey\u0020hashing\u0020function\u0020on\u0020the\u0020secret\u0020keys\u0020defined\u0020in\u0020the\u0020config\u0020file.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_passphrase_list"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020code\u003B\u0020this\u0020will\u0020be\u0020prefixed\u0020to\u0020the\u0020base64\u0020encoded\u0020ciphertext\nso\u0020we\u0020can\u0020determine\u0020which\u0020service\u0020we\u0020need\u0020to\u0020decrypt\u0020values.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const_data_format"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_const_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_encrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_encrypt_string\u0028\u0029",
             "name": "do_encrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020encryption.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_encrypt_string"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_encrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_error\u0028\u0029",
             "name": "do_error",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020register\u0020an\u0020error.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_decrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_decrypt_string\u0028\u0029",
             "name": "do_decrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020decryption.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_decrypt_string"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_decrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_parse_binary\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_parse_binary\u0028\u0029",
             "name": "do_parse_binary",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020extracts\u0020the\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020tag\nfrom\u0020the\u0020concatenated\u0020binary\u0020data\u003B\u0020not\u0020all\u0020service\u0020define\u0020all\u0020pieces\u003B\u0020the\u0020OpenSSL\u0020library\nwill\u0020use\u0020all\u0020three\u003B\u0020the\u0020Sodium\u0020library\u0020uses\u0020the\u0020initialization\u0020vector\u0020for\u0020its\u0020nonce\u0020and\u0020it\ndoes\u0020not\u0020use\u0020the\u0020tag.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_parse_binary"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_parse_binary"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003AGenerateSecret\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003AGenerateSecret\u0028\u0029",
             "name": "GenerateSecret",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020generate\u0020a\u0020secret\u0020key\u0020suitable\u0020for\u0020use\u0020in\u0020the\u0020config\n\u0020file.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_GenerateSecret"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_GenerateSecret"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003AGetTelemetry\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003AGetTelemetry\u0028\u0029",
             "name": "GetTelemetry",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020NOTE\u003A\u0020the\u0020telemetry\u0020might\u0020be\u0020considered\u0020sensitive\u0020data...\u0020but\u0020probably\u0020not\nso\u0020sensitive\u0020that\u0020it\u0020can\u0027t\u0020be\u0020logged.\u0020It\u0027s\u0020not\u0020at\u0020the\u0020same\u0020level\u0020as\u0020secrets\u0020or\u0020passphrases.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_GetTelemetry"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_GetTelemetry"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003AReportTelemetry\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003AReportTelemetry\u0028\u0029",
             "name": "ReportTelemetry",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020print\u0020the\u0020telemetry\u0020data\u0020to\u0020STDOUT\u003B\u0020it\u0027s\u0020suitable\nfor\u0020use\u0020in\u0020a\u0020console.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_ReportTelemetry"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_ReportTelemetry"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003AReportCounters\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003AReportCounters\u0028\u0029",
             "name": "ReportCounters",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020report\u0020a\u0020list\u0020of\u0020counts\u0020to\u0020STDOUT.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_ReportCounters"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_ReportCounters"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aencrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aencrypt\u0028\u0029",
             "name": "encrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020encrypts\u0020the\u0020input\u0020and\u0020returns\u0020the\u0020ciphertext\u003B\u0020returns\u0020false\u0020on\u0020failure.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_encrypt"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_encrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adecrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adecrypt\u0028\u0029",
             "name": "decrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decrypts\u0020the\u0020ciphertext\u0020and\u0020returns\u0020the\u0020deserialized\u0020value\u003B\u0020returns\u0020false\u0020on\nfailure.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_decrypt"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_decrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adelay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adelay\u0028\u0029",
             "name": "delay",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020delays\u0020the\u0020process\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time\u0020between\u00201\u0020millisecond\u0020and\n10\u0020seconds\u003B\u0020this\u0020is\u0020used\u0020as\u0020a\u0020timing\u0020attack\u0020mitigation,\u0020it\u0020slows\u0020down\u0020attackers\u0020trying\u0020to\nbrute\u0020force\u0020errors.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Acatch\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acatch\u0028\u0029",
             "name": "catch",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020the\u0020point\u0020of\u0020catch\u0028\u0029\u0020is\u0020simply\u0020to\u0020notify\u0020that\u0020an\u0020exception\u0020has\u0020been\u0020caught\nand\u0020\u0022handled\u0022\u003B\u0020sometimes\u0020\u0022handling\u0022\u0020the\u0020exception\u0020is\u0020tantamount\u0020to\u0020ignoring\u0020it,\u0020so\u0020we\u0020call\nthis\u0020method\u0020that\u0020we\u0020may\u0020make\u0020some\u0020noise\u0020about\u0020it\u0020\u0028during\u0020debugging,\u0020usually\u0029.\u0020See\u0020do_catch\u0028\u0029\nfor\u0020the\u0020rest\u0020of\u0020the\u0020story.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_catch"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_catch"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_catch\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_catch\u0028\u0029",
             "name": "do_catch",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020implementations\u0020can\u0020decide\u0020what\u0020to\u0020do\u0020when\u0020errors\u0020are\u0020handled\u003B\u0020by\u0020default\nwe\u0020write\u0020a\u0020log\u0020entry\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_catch"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_catch"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aignore\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aignore\u0028\u0029",
             "name": "ignore",
             "summary": "2023\u002D04\u002D06\u0020jj5\u0020\u002D\u0020the\u0020point\u0020of\u0020ignore\u0028\u0029\u0020is\u0020simply\u0020to\u0020notify\u0020that\u0020an\u0020exception\u0020has\u0020been\u0020caught\nand\u0020it\u0020will\u0020be\u0020ignored.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_ignore"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_ignore"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_ignore\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_ignore\u0028\u0029",
             "name": "do_ignore",
             "summary": "2023\u002D04\u002D01\u0020jj5\u0020\u002D\u0020implementations\u0020can\u0020decide\u0020what\u0020to\u0020do\u0020when\u0020errors\u0020are\u0020ignored\u003B\u0020by\u0020default\nwe\u0020write\u0020a\u0020log\u0020entry\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_ignore"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_ignore"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Athrow\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Athrow\u0028\u0029",
             "name": "throw",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020throws\u0020an\u0020exception.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_throw"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_throw"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_throw\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_throw\u0028\u0029",
             "name": "do_throw",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020this\u0020finds\u0020the\u0020message\u0020for\u0020the\u0020given\u0020exception\u0020code\u0020and\u0020then\nthrows\u0020an\u0020exception\u0020with\u0020the\u0020relevant\u0020code\u0020and\u0020message\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_throw"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_throw"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_error_list\u0028\u0029",
             "name": "get_error_list",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020list\u0020of\u0020errors\u0020which\u0020have\u0020happened\u0020since\u0020the\u0020last\u0020time\u0020clear_error\u0028\u0029\nwas\u0020called.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_error_list"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_error\u0028\u0029",
             "name": "get_error",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020the\u0020most\u0020recent\u0020error\u003B\u0020this\u0020is\u0020a\u0020string\u0020or\u0020null\u0020if\u0020no\u0020errors.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aclear_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aclear_error\u0028\u0029",
             "name": "clear_error",
             "summary": "2023\u002D04\u002D03\u0020jj5\u0020\u002D\u0020this\u0020will\u0020clear\u0020the\u0020current\u0020error\u0020list.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_clear_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_clear_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aerror\u0028\u0029",
             "name": "error",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020registers\u0020an\u0020error\u003B\u0020if\u0020this\u0020is\u0020the\u0020first\u0020error\u0020a\u0020random\u0020delay\u0020is\u0020injected\nas\u0020a\u0020timing\u0020attack\u0020mitigation.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Acount_this\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acount_this\u0028\u0029",
             "name": "count_this",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020count\u0020this\u0020instance.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_count_this"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_count_this"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_count_this\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_count_this"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_count_this"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Acount_function\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acount_function\u0028\u0029",
             "name": "count_function",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020function\u0020count\u0020metric.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_count_function"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_count_function"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_count_function\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_count_function\u0028\u0029",
             "name": "do_count_function",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020counter\u0020for\u0020this\u0020function\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_count_function"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_count_function"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Acount_class\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acount_class\u0028\u0029",
             "name": "count_class",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020class\u0020count\u0020metric.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_count_class"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_count_class"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_count_class\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_count_class\u0028\u0029",
             "name": "do_count_class",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020count\u0020for\u0020this\u0020class\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_count_class"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_count_class"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Acount_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Acount_length\u0028\u0029",
             "name": "count_length",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020a\u0020length\u0020count\u0020metric.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_count_length"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_count_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_count_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_count_length\u0028\u0029",
             "name": "do_count_length",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020count\u0020for\u0020this\u0020length\u0020metric\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_count_length"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_count_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aincrement_counter\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aincrement_counter\u0028\u0029",
             "name": "increment_counter",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\u0020to\u0020zero\u0020if\nmissing.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_increment_counter"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_increment_counter"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_increment_counter\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_increment_counter\u0028\u0029",
             "name": "do_increment_counter",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020increment\u0020the\u0020value\u0020for\u0020a\u0020key\u0020in\u0020an\u0020array\u003B\u0020will\u0020initialize\nto\u0020zero\u0020if\u0020missing\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_increment_counter"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_increment_counter"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_const_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_data_format\u0028\u0029",
             "name": "get_const_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020format\u0020constant\u003B\u0020defers\u0020to\u0020abstract\u0020method\u0020for\u0020implementation.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const_data_format"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_const_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_const_key_hash\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_key_hash\u0028\u0029",
             "name": "get_const_key_hash",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020name\u0020of\u0020the\u0020hashing\u0020algorithm\u0020to\u0020use\u0020for\u0020secret\u0020key\u0020hashing.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const_key_hash"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_const_key_hash"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_key_hash\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_const_key_hash\u0028\u0029",
             "name": "do_get_const_key_hash",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020KICKASS_CRYPTO_KEY_HASH\u0020constant\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const_key_hash"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_const_key_hash"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_const_key_length_min\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_key_length_min\u0028\u0029",
             "name": "get_const_key_length_min",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020minimum\u0020length\u0020of\u0020a\u0020secret\u0020key.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const_key_length_min"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_const_key_length_min"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_key_length_min\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_const_key_length_min\u0028\u0029",
             "name": "do_get_const_key_length_min",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020KICKASS_CRYPTO_KEY_LENGTH_MIN\u0020constant\u003B\ncan\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const_key_length_min"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_const_key_length_min"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_const_passphrase_length_min\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const_passphrase_length_min\u0028\u0029",
             "name": "get_const_passphrase_length_min",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020minimum\u0020length\u0020of\u0020a\u0020passphrase.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const_passphrase_length_min"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_const_passphrase_length_min"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const_passphrase_length_min\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_const_passphrase_length_min\u0028\u0029",
             "name": "do_get_const_passphrase_length_min",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN\n\u0020constant\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const_passphrase_length_min"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_const_passphrase_length_min"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_chunk_size\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_chunk_size\u0028\u0029",
             "name": "get_config_chunk_size",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020chunk\u0020size,\u0020it\u0027s\u0020used\u0020for\u0020padding\u0020encrypted\u0020messages.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_chunk_size"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_chunk_size"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_chunk_size\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_chunk_size\u0028\u0029",
             "name": "do_get_config_chunk_size",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_CHUNK_SIZE\u0020constant\u0020or\nthe\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_CHUNK_SIZE\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_chunk_size"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_chunk_size"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_chunk_size_max\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_chunk_size_max\u0028\u0029",
             "name": "get_config_chunk_size_max",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020maximum\u0020chunk\u0020size,\u0020it\u0027s\u0020used\u0020for\u0020validating\u0020the\u0020chunk\u0020size.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_chunk_size_max"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_chunk_size_max"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_chunk_size_max\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_chunk_size_max\u0028\u0029",
             "name": "do_get_config_chunk_size_max",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_CHUNK_SIZE_MAX\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_CHUNK_SIZE_MAX\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_chunk_size_max"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_chunk_size_max"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_data_length_max\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_data_length_max\u0028\u0029",
             "name": "get_config_data_length_max",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020maximum\u0020supported\u0020data\u0020length,\u0020it\u0027s\u0020used\u0020for\u0020validating\u0020the\nencoded\u0020data.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_data_length_max"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_data_length_max"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_data_length_max\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_data_length_max\u0028\u0029",
             "name": "do_get_config_data_length_max",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_DATA_LENGTH_MAX\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_DATA_LENGTH_MAX\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_data_length_max"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_data_length_max"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_data_encoding\u0028\u0029",
             "name": "get_config_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020encoding.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_data_encoding\u0028\u0029",
             "name": "do_get_config_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_DATA_ENCODING\u0020constant\nor\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_DATA_ENCODING\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_json_encode_options\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_json_encode_options\u0028\u0029",
             "name": "get_config_json_encode_options",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020JSON\u0020encoding\u0020options\u0020which\u0020will\u0020be\u0020passed\u0020to\u0020the\u0020PHP\u0020json_encode\u0028\u0029\nfunction.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_json_encode_options"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_json_encode_options"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_json_encode_options\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_json_encode_options\u0028\u0029",
             "name": "do_get_config_json_encode_options",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_JSON_ENCODE_OPTIONS\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_json_encode_options"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_json_encode_options"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_json_decode_options\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_json_decode_options\u0028\u0029",
             "name": "get_config_json_decode_options",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020JSON\u0020decoding\u0020options\u0020which\u0020will\u0020be\u0020passed\u0020to\u0020the\u0020PHP\u0020json_decode\u0028\u0029\nfunction.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_json_decode_options"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_json_decode_options"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_json_decode_options\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_json_decode_options\u0028\u0029",
             "name": "do_get_config_json_decode_options",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS\nconstant\u0020or\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_JSON_DECODE_OPTIONS\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_json_decode_options"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_json_decode_options"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_phps_enable\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_phps_enable\u0028\u0029",
             "name": "get_config_phps_enable",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020a\u0020boolean\u0020value\u0020indicating\u0020whether\u0020PHPS\u0020serialization\u0020and\ndeserialization\u0020is\u0020enabled\u0020or\u0020not.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_phps_enable"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_phps_enable"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_phps_enable\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_phps_enable\u0028\u0029",
             "name": "do_get_config_phps_enable",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0020constant\nor\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_phps_enable"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_phps_enable"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_config_false_enable\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_config_false_enable\u0028\u0029",
             "name": "get_config_false_enable",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020a\u0020boolean\u0020value\u0020indicating\u0020whether\u0020the\u0020boolean\u0020value\u0020false\u0020can\u0020be\nencrypted\u0020or\u0020not.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_config_false_enable"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_config_false_enable"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_config_false_enable\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_config_false_enable\u0028\u0029",
             "name": "do_get_config_false_enable",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020CONFIG_ENCRYPTION_FALSE_ENABLE\u0020constant\nof\u0020the\u0020default\u0020value\u0020if\u0020CONFIG_ENCRYPTION_FALSE_ENABLE\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_config_false_enable"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_config_false_enable"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_const\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_const\u0028\u0029",
             "name": "get_const",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020a\u0020constant\u0020value,\u0020or\u0020returns\u0020the\u0020default\u0020value\u0020if\u0020the\u0020constant\u0020is\u0020not\ndefined.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_const"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_const"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_const\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_const\u0028\u0029",
             "name": "do_get_const",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020value\u0020of\u0020the\u0020constant,\u0020or\u0020returns\u0020the\u0020default\u0020value\nif\u0020the\u0020constant\u0020is\u0020not\u0020defined\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_const"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_const"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_passphrase_list\u0028\u0029",
             "name": "get_passphrase_list",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020list\u0020of\u0020passphrases\u003B\u0020defers\u0020to\u0020abstract\u0020implementation.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_passphrase_list"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_encryption_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_encryption_passphrase\u0028\u0029",
             "name": "get_encryption_passphrase",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020passphrase\u0020to\u0020use\u0020for\u0020encryption\u0020or\u0020null\u0020if\u0020it\u0027s\u0020missing.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_encryption_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_encryption_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_encryption_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_encryption_passphrase\u0028\u0029",
             "name": "do_get_encryption_passphrase",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020returns\u0020the\u0020first\u0020passphrase\u0020from\u0020the\u0020passphrase\u0020list\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_encryption_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_encryption_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_cli\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_cli\u0028\u0029",
             "name": "is_cli",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020reports\u0020if\u0020the\u0020program\u0020is\u0020running\u0020from\u0020the\u0020command\u002Dline.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_cli"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_cli"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_cli\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_cli\u0028\u0029",
             "name": "do_is_cli",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020checks\u0020to\u0020see\u0020if\u0020php_sapi_name\u0028\u0029\u0020\u003D\u003D\u003D\u0020\u0027cli\u0027\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_cli"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_cli"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_debug\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_debug\u0028\u0029",
             "name": "is_debug",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020the\u0020program\u0020is\u0020running\u0020in\u0020DEBUG\u0020mode.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_debug"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_debug"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_debug\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_debug\u0028\u0029",
             "name": "do_is_debug",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020checks\u0020to\u0020see\u0020if\u0020the\u0020DEBUG\u0020constant\u0020is\u0020defined\u0020and\u0020true\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_debug"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_debug"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_config\u0028\u0029",
             "name": "is_valid_config",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020the\u0020environment\u0020configuration\u0020is\u0020valid\u003B\u0020this\u0020function\ndefers\u0020to\u0020the\u0020abstract\u0020method\u0020do_is_valid_config\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_config"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_config"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_secret\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_secret\u0028\u0029",
             "name": "is_valid_secret",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020a\u0020secret\u0020is\u0020valid\u003B\u0020this\u0020function\u0020defers\u0020to\ndo_is_valid_secret\u0028\u0029\u003B",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_secret"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_secret"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_secret\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_secret\u0028\u0029",
             "name": "do_is_valid_secret",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020my\u0020default\u0020checks\u0020that\u0020the\u0020secret\u0020key\u0020is\u0020a\u0020string\u0020and\u0020meets\u0020the\u0020minimum\nlength\u0020requirements\u003B\u0020this\u0020function\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_secret"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_secret"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_passphrase\u0028\u0029",
             "name": "is_valid_passphrase",
             "summary": "2023\u002D04\u002D06\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020a\u0020passphrase\u0020is\u0020valid\u003B\u0020this\u0020function\u0020defers\u0020to\ndo_is_valid_passphrase\u0028\u0029\u003B",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_passphrase\u0028\u0029",
             "name": "do_is_valid_passphrase",
             "summary": "2023\u002D04\u002D06\u0020jj5\u0020\u002D\u0020by\u0020default\u0020checks\u0020the\u0020string\u0020length\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_base64\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_base64\u0028\u0029",
             "name": "is_valid_base64",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020the\u0020input\u0020is\u0020in\u0020valid\u0020base64\u0020format\u003B\u0020defers\u0020to\u0020virtual\ndo_is_valid_base64\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_base64"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_base64"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_base64\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_base64\u0028\u0029",
             "name": "do_is_valid_base64",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020checks\u0020to\u0020make\u0020sure\u0020the\u0020input\u0020is\u0020a\u0020non\u002Dempty\u0020string\u0020and\u0020then\nvalidates\u0020it\u0020with\u0020the\u0020KICKASS_CRYPTO_REGEX_BASE64\u0020regular\u0020expression\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_base64"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_base64"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_encrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_encrypt\u0028\u0029",
             "name": "do_encrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020encrypts\u0020the\u0020input\u0020value\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_encrypt"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_encrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_data_format\u0028\u0029",
             "name": "is_valid_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020the\u0020data\u0020format\u0020is\u0020valid\u003B\u0020this\u0020behavior\u0020cannot\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_data_format"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ais_valid_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ais_valid_data_encoding\u0028\u0029",
             "name": "is_valid_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020checks\u0020to\u0020see\u0020if\u0020the\u0020data\u0020encoding\u0020is\u0020a\u0020valid\u0020supported\u0020encoding\u003B\u0020defers\nto\u0020the\u0020virtual\u0020do_is_valid_encoding\u0028\u0029\u0020method.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_is_valid_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_is_valid_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_is_valid_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_is_valid_data_encoding\u0028\u0029",
             "name": "do_is_valid_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020checks\u0020that\u0020the\u0020data\u0020encoding\u0020is\u0020one\u0020of\u0020the\u0020two\u0020supported\u0020data\nencodings\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_is_valid_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_is_valid_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_data_encoding\u0028\u0029",
             "name": "get_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020data\u0020encoding\u003B\u0020defers\u0020to\u0020virtual\u0020do_get_data_encoding\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_data_encoding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_data_encoding\u0028\u0029",
             "name": "do_get_data_encoding",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020gets\u0020the\u0020data\u0020encoding\u0020from\u0020the\u0020config\u0020option\u0020as\u0020returned\u0020from\nget_config_data_encoding\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_data_encoding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_data_encoding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aencrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aencrypt_string\u0028\u0029",
             "name": "encrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020encrypts\u0020a\u0020plaintext\u0020string\u0020using\u0020the\u0020passphrase\u003B\u0020defers\u0020to\ndo_encrypt_string\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_encrypt_string"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_encrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_decrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_decrypt\u0028\u0029",
             "name": "do_decrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020handles\u0020the\u0020standard\u0020decryption\u0020process\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_decrypt"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_decrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Atry_decrypt\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Atry_decrypt\u0028\u0029",
             "name": "try_decrypt",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020tries\u0020to\u0020decrypt\u0020a\u0020binary\u0020string\u0020using\u0020the\u0020passphrase.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_try_decrypt"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_try_decrypt"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adecrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adecrypt_string\u0028\u0029",
             "name": "decrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decrypts\u0020a\u0020binary\u0020string\u0020using\u0020the\u0020passphrase.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_decrypt_string"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_decrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aparse_binary\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aparse_binary\u0028\u0029",
             "name": "parse_binary",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020parses\u0020the\u0020binary\u0020message\u0020into\u0020its\u0020fixed\u0020length\u0020components.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_parse_binary"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_parse_binary"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adecode_message\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adecode_message\u0028\u0029",
             "name": "decode_message",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020decodes\u0020a\u0020message\u003B\u0020defers\u0020to\u0020virtual\u0020do_decode_message\u0028\u0029.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_decode_message"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_decode_message"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_decode_message\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_decode_message\u0028\u0029",
             "name": "do_decode_message",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020decode\u0020the\u0020message\u0020and\u0020determine\u0020the\u0020data\u0020encoding\u0020using\u003B\ncan\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_decode_message"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_decode_message"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_delay\u0028\u0029",
             "name": "do_delay",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020sleeps\u0020for\u0020a\u0020random\u0020amount\u0020of\u0020time\u0020between\u0020the\u0020minimum\u0020time\u0020given\nin\u0020nanoseconds\u0020and\u0020the\u0020maximum\u0020time\u0020also\u0020given\u0020in\u0020nanoseconds\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aemergency_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aemergency_delay\u0028\u0029",
             "name": "emergency_delay",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020does\u0020an\u0020emergency\u0020delay\u003B\u0020this\u0020doesn\u0027t\u0020give\u0020the\u0020caller\u0020any\u0020option\u0020to\ninterfere\u0020so\u0020the\u0020emergency\u0020delay\u0020should\u0020run\u0020reliably\u0020if\u0020it\u0027s\u0020necessary.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_emergency_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_emergency_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Areport_emergency_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Areport_emergency_delay\u0028\u0029",
             "name": "report_emergency_delay",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020makes\u0020some\u0020noice\u0020is\u0020the\u0020emergency\u0020delay\u0020is\u0020invoked\u003B\u0020the\nemergency\u0020delay\u0020should\u0020not\u0020usually\u0020be\u0020activated\u0020so\u0020if\u0020it\u0020is\u0020we\u0020want\u0020to\u0020give\u0020ourself\u0020our\u0020best\nchance\u0020of\u0020finding\u0020out\u0020about\u0020it.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_report_emergency_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_report_emergency_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_report_emergency_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_report_emergency_delay\u0028\u0029",
             "name": "do_report_emergency_delay",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020writes\u0020a\u0020message\u0020to\u0020the\u0020error\u0020log\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_report_emergency_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_report_emergency_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adata_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adata_encode\u0028\u0029",
             "name": "data_encode",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020serializes\u0020the\u0020data\u0020based\u0020on\u0020the\u0020data\u0020encoding\u0020in\u0020use\u003B\u0020defers\u0020to\u0020a\u0020virtual\ndo_data_encode\u0028\u0029\u0020method.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_data_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_data_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_data_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_data_encode\u0028\u0029",
             "name": "do_data_encode",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020serializes\u0020data\u0020based\u0020on\u0020the\u0020data\u0020encoding\u0020in\u0020use\u003B\u0020can\u0020be\noverridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_data_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_data_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ajson_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ajson_encode\u0028\u0029",
             "name": "json_encode",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020encodes\u0020a\u0020valud\u0020as\u0020JSON\u003B\u0020defers\u0020to\u0020do_json_encode\u0028\u0029\u0020for\u0020implementation.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_json_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_json_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_json_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_json_encode\u0028\u0029",
             "name": "do_json_encode",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020encodes\u0020the\u0020input\u0020as\u0020JSON\u0020using\u0020the\u0020JSON\u0020encoding\u0020options\u0020read\nfrom\u0020the\u0020config\u0020file\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_json_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_json_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aphps_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aphps_encode\u0028\u0029",
             "name": "phps_encode",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020serializes\u0020a\u0020value\u0020using\u0020PHP\u0020serialization\u003B\u0020defers\u0020to\u0020virtual\u0020method\ndo_phps_encode\u0028\u0029\u0020for\u0020implementation\u003B\u0020will",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_phps_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_phps_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_phps_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_phps_encode\u0028\u0029",
             "name": "do_phps_encode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_phps_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Adata_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adata_decode\u0028\u0029",
             "name": "data_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_data_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_data_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_data_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_data_decode\u0028\u0029",
             "name": "do_data_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_data_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_data_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ajson_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ajson_decode\u0028\u0029",
             "name": "json_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_json_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_json_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_json_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_json_decode\u0028\u0029",
             "name": "do_json_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_json_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_json_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aphps_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aphps_decode\u0028\u0029",
             "name": "phps_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_phps_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_phps_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_phps_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_phps_decode\u0028\u0029",
             "name": "do_phps_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_phps_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Amessage_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Amessage_encode\u0028\u0029",
             "name": "message_encode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_message_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_message_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_message_encode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_message_encode\u0028\u0029",
             "name": "do_message_encode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_message_encode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_message_encode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Amessage_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Amessage_decode\u0028\u0029",
             "name": "message_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_message_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_message_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_message_decode\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_message_decode\u0028\u0029",
             "name": "do_message_decode",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_message_decode"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_message_decode"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_data_format\u0028\u0029",
             "name": "get_data_format",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_data_format"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aconvert_secret_to_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aconvert_secret_to_passphrase\u0028\u0029",
             "name": "convert_secret_to_passphrase",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_convert_secret_to_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_convert_secret_to_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_convert_secret_to_passphrase\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_convert_secret_to_passphrase\u0028\u0029",
             "name": "do_convert_secret_to_passphrase",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_convert_secret_to_passphrase"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_convert_secret_to_passphrase"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_padding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_padding\u0028\u0029",
             "name": "get_padding",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_padding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_padding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_padding\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_padding\u0028\u0029",
             "name": "do_get_padding",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_padding"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_padding"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Aget_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Aget_delay\u0028\u0029",
             "name": "get_delay",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_get_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_get_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_get_delay\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_get_delay\u0028\u0029",
             "name": "do_get_delay",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_get_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_get_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Alog_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Alog_error\u0028\u0029",
             "name": "log_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_log_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_log_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003Ado_log_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_log_error\u0028\u0029",
             "name": "do_log_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#method_do_log_error"
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_log_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003A\u0024telemetry",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024telemetry",
             "name": "telemetry",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020our\u0020counters\u0020are\u0020stored\u0020here",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#property_telemetry"
+            "url": "classes/KickassCrypto-KickassCrypto.html#property_telemetry"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCrypto\u003A\u003A\u0024inject_delay",
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003A\u0024inject_delay",
             "name": "inject_delay",
             "summary": "2023\u002D04\u002D02\u0020jj5\u0020\u002D\u0020this\u0020flag\u0020indicates\u0020whether\u0020we\u0020need\u0020to\u0020inject\u0020a\u0020random\u0020delay\u0020or\u0020not,\u0020it\u0020gets\nset\u0020when\u0020a\u0020call\u0020to\u0020either\u0020encrypt\u0028\u0029\u0020or\u0020decrypt\u0028\u0029\u0020is\u0020made.\u0020It\u0020gets\u0020set\u0020back\u0020to\u0020false\u0020after\u0020a\ndelay\u0020has\u0020been\u0020injected\u0020so\u0020that\u0020multiple\u0020errors\u0020won\u0027t\u0020trigger\u0020multiple\u0020delays.",
-            "url": "classes/KickassCrypto-Framework-KickassCrypto.html#property_inject_delay"
+            "url": "classes/KickassCrypto-KickassCrypto.html#property_inject_delay"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException",
+            "fqsen": "\\KickassCrypto\\KickassCryptoException",
             "name": "KickassCryptoException",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020exception\u0020is\u0020thrown\u0020from\u0020crypto\u0020service\u0020constructors\u0020if\u0020there\u0027s\u0020a\u0020problem\nthat\u0020will\u0020prevent\u0020them\u0020from\u0020operating.",
-            "url": "classes/KickassCrypto-Framework-KickassCryptoException.html"
+            "url": "classes/KickassCrypto-KickassCryptoException.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCryptoException.html#method___construct"
+            "url": "classes/KickassCrypto-KickassCryptoException.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException\u003A\u003AgetData\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003AgetData\u0028\u0029",
             "name": "getData",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCryptoException.html#method_getData"
+            "url": "classes/KickassCrypto-KickassCryptoException.html#method_getData"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework\\KickassCryptoException\u003A\u003A\u0024data",
+            "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003A\u0024data",
             "name": "data",
             "summary": "",
-            "url": "classes/KickassCrypto-Framework-KickassCryptoException.html#property_data"
+            "url": "classes/KickassCrypto-KickassCryptoException.html#property_data"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
@@ -1421,255 +1421,255 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl",
             "name": "KickassOpenSsl",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020base\u0020class\u0020for\u0020the\u0020OpenSSL\u0020crypto\u0020services.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method___construct"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_get_error_list"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_get_error"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
             "name": "get_openssl_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_openssl_error"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_openssl_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_clear_error"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_clear_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_const_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020code\u003B\u0020this\u0020will\u0020be\u0020prefixed\u0020to\u0020the\u0020base64\u0020encoded\u0020ciphertext\nso\u0020we\u0020can\u0020determine\u0020which\u0020service\u0020we\u0020need\u0020to\u0020decrypt\u0020values.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_get_const_data_format"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_const_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_cipher\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_cipher\u0028\u0029",
             "name": "get_const_openssl_cipher",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_cipher"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_cipher"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_options\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_options\u0028\u0029",
             "name": "get_const_openssl_options",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_options"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_options"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_passphrase_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_passphrase_length\u0028\u0029",
             "name": "get_const_passphrase_length",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_const_passphrase_length"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_passphrase_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_iv_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_iv_length\u0028\u0029",
             "name": "get_const_openssl_iv_length",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_iv_length"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_iv_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_tag_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_const_openssl_tag_length\u0028\u0029",
             "name": "get_const_openssl_tag_length",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_tag_length"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_const_openssl_tag_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_curr\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_curr\u0028\u0029",
             "name": "get_config_secret_curr",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_config_secret_curr"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_curr"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_prev\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_prev\u0028\u0029",
             "name": "get_config_secret_prev",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_config_secret_prev"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_prev"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_config_secret_list\u0028\u0029",
             "name": "get_config_secret_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_get_config_secret_list"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_config_secret_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_encrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_encrypt_string\u0028\u0029",
             "name": "do_encrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020encryption.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_encrypt_string"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_encrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_error\u0028\u0029",
             "name": "do_error",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020register\u0020an\u0020error.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_error"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_decrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_decrypt_string\u0028\u0029",
             "name": "do_decrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020decryption.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_decrypt_string"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_decrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_parse_binary\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_parse_binary\u0028\u0029",
             "name": "do_parse_binary",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020extracts\u0020the\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020tag\nfrom\u0020the\u0020concatenated\u0020binary\u0020data\u003B\u0020not\u0020all\u0020service\u0020define\u0020all\u0020pieces\u003B\u0020the\u0020OpenSSL\u0020library\nwill\u0020use\u0020all\u0020three\u003B\u0020the\u0020Sodium\u0020library\u0020uses\u0020the\u0020initialization\u0020vector\u0020for\u0020its\u0020nonce\u0020and\u0020it\ndoes\u0020not\u0020use\u0020the\u0020tag.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_parse_binary"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_parse_binary"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_count_this\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#method_do_count_this"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_count_this"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024error_list",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024error_list",
             "name": "error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#property_error_list"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024openssl_error",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024openssl_error",
             "name": "openssl_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSsl.html#property_openssl_error"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_openssl_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslAtRest",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest",
             "name": "KickassOpenSslAtRest",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020OpenSSL\u0020at\u002Drest\u0020crypto\u0020service.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslAtRest.html"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslAtRest.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslAtRest.html#method_do_get_passphrase_list"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslAtRest.html#method_do_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslAtRest.html#method_do_is_valid_config"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslAtRest.html#method_do_is_valid_config"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslRoundTrip",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip",
             "name": "KickassOpenSslRoundTrip",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020OpenSSL\u0020round\u002Dtrip\u0020crypto\u0020service.",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslRoundTrip.html"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslRoundTrip.html#method_do_get_passphrase_list"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-OpenSsl-KickassOpenSslRoundTrip.html#method_do_is_valid_config"
+            "url": "classes/KickassCrypto-OpenSsl-KickassOpenSslRoundTrip.html#method_do_is_valid_config"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium",
             "name": "KickassSodium",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020base\u0020class\u0020for\u0020the\u0020Sodium\u0020crypto\u0020services.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method___construct"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method___construct"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_error_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_get_error_list"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_get_error"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_clear_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_clear_error\u0028\u0029",
             "name": "do_clear_error",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_clear_error"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_clear_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_get_const_data_format\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_get_const_data_format\u0028\u0029",
             "name": "do_get_const_data_format",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020data\u0020format\u0020code\u003B\u0020this\u0020will\u0020be\u0020prefixed\u0020to\u0020the\u0020base64\u0020encoded\u0020ciphertext\nso\u0020we\u0020can\u0020determine\u0020which\u0020service\u0020we\u0020need\u0020to\u0020decrypt\u0020values.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_get_const_data_format"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_get_const_data_format"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_const_passphrase_length\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_const_passphrase_length\u0028\u0029",
             "name": "get_const_passphrase_length",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_const_passphrase_length"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_const_passphrase_length"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_curr\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_curr\u0028\u0029",
             "name": "get_config_secret_curr",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_config_secret_curr"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_curr"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_prev\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_prev\u0028\u0029",
             "name": "get_config_secret_prev",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_config_secret_prev"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_prev"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Aget_config_secret_list\u0028\u0029",
             "name": "get_config_secret_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_get_config_secret_list"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_get_config_secret_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_encrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_encrypt_string\u0028\u0029",
             "name": "do_encrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020encryption.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_encrypt_string"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_encrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_error\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_error\u0028\u0029",
             "name": "do_error",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020will\u0020register\u0020an\u0020error.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_error"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_error"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_decrypt_string\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_decrypt_string\u0028\u0029",
             "name": "do_decrypt_string",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020will\u0020call\u0020the\u0020encryption\u0020library\u0020\u0028either\u0020OpenSSL\u0020or\u0020Sodium\u0020by\u0020default\u0029\nand\u0020do\u0020the\u0020actual\u0020decryption.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_decrypt_string"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_decrypt_string"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_parse_binary\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_parse_binary\u0028\u0029",
             "name": "do_parse_binary",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020function\u0020extracts\u0020the\u0020initialization\u0020vector,\u0020ciphertext,\u0020and\u0020tag\nfrom\u0020the\u0020concatenated\u0020binary\u0020data\u003B\u0020not\u0020all\u0020service\u0020define\u0020all\u0020pieces\u003B\u0020the\u0020OpenSSL\u0020library\nwill\u0020use\u0020all\u0020three\u003B\u0020the\u0020Sodium\u0020library\u0020uses\u0020the\u0020initialization\u0020vector\u0020for\u0020its\u0020nonce\u0020and\u0020it\ndoes\u0020not\u0020use\u0020the\u0020tag.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_parse_binary"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_parse_binary"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003Ado_count_this\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003Ado_count_this\u0028\u0029",
             "name": "do_count_this",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020by\u0020default\u0020will\u0020count\u0020the\u0020caller\u0020function\u0020\u0028should\u0020be\u0020the\u0020constructor\u0029\u0020and\nthis\u0020class\u0020instance\u003B\u0020can\u0020be\u0020overridden\u0020by\u0020implementations.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#method_do_count_this"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#method_do_count_this"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodium\u003A\u003A\u0024error_list",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodium\u003A\u003A\u0024error_list",
             "name": "error_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodium.html#property_error_list"
+            "url": "classes/KickassCrypto-Sodium-KickassSodium.html#property_error_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumAtRest",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest",
             "name": "KickassSodiumAtRest",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020Sodium\u0020at\u002Drest\u0020crypto\u0020service.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumAtRest.html"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumAtRest.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumAtRest.html#method_do_get_passphrase_list"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumAtRest.html#method_do_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumAtRest\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumAtRest.html#method_do_is_valid_config"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumAtRest.html#method_do_is_valid_config"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumRoundTrip",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip",
             "name": "KickassSodiumRoundTrip",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020this\u0020is\u0020the\u0020Sodium\u0020round\u002Dtrip\u0020crypto\u0020service.",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumRoundTrip.html"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumRoundTrip.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_get_passphrase_list\u0028\u0029",
             "name": "do_get_passphrase_list",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumRoundTrip.html#method_do_get_passphrase_list"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumRoundTrip.html#method_do_get_passphrase_list"
         },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
+            "fqsen": "\\KickassCrypto\\Sodium\\KickassSodiumRoundTrip\u003A\u003Ado_is_valid_config\u0028\u0029",
             "name": "do_is_valid_config",
             "summary": "",
-            "url": "classes/KickassCrypto-Module-Sodium-KickassSodiumRoundTrip.html#method_do_is_valid_config"
+            "url": "classes/KickassCrypto-Sodium-KickassSodiumRoundTrip.html#method_do_is_valid_config"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_CRYPTO_AT_REST",
             "name": "KICKASS_CRYPTO_AT_REST",
@@ -1931,35 +1931,20 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Contract",
-            "name": "Contract",
-            "summary": "",
-            "url": "namespaces/kickasscrypto-contract.html"
-        },                {
             "fqsen": "\\KickassCrypto",
             "name": "KickassCrypto",
             "summary": "",
             "url": "namespaces/kickasscrypto.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Framework",
-            "name": "Framework",
-            "summary": "",
-            "url": "namespaces/kickasscrypto-framework.html"
-        },                {
-            "fqsen": "\\KickassCrypto\\Module\\OpenSsl",
+            "fqsen": "\\KickassCrypto\\OpenSsl",
             "name": "OpenSsl",
             "summary": "",
-            "url": "namespaces/kickasscrypto-module-openssl.html"
+            "url": "namespaces/kickasscrypto-openssl.html"
         },                {
-            "fqsen": "\\KickassCrypto\\Module",
-            "name": "Module",
-            "summary": "",
-            "url": "namespaces/kickasscrypto-module.html"
-        },                {
-            "fqsen": "\\KickassCrypto\\Module\\Sodium",
+            "fqsen": "\\KickassCrypto\\Sodium",
             "name": "Sodium",
             "summary": "",
-            "url": "namespaces/kickasscrypto-module-sodium.html"
+            "url": "namespaces/kickasscrypto-sodium.html"
         },                {
             "fqsen": "\\KickassCrypto\\Traits",
             "name": "Traits",

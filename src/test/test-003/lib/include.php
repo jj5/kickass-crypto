@@ -19,7 +19,7 @@
 //
 \************************************************************************************************/
 
-class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCrypto extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 

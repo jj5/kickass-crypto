@@ -22,7 +22,7 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestCrypto extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCrypto extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG;
 

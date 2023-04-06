@@ -60,15 +60,11 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
-                <a href="namespaces/kickasscrypto-contract.html" class="">Contract</a>
+                <a href="namespaces/kickasscrypto-openssl.html" class="">OpenSsl</a>
                 
             </li>
                     <li>
-                <a href="namespaces/kickasscrypto-framework.html" class="">Framework</a>
-                
-            </li>
-                    <li>
-                <a href="namespaces/kickasscrypto-module.html" class="">Module</a>
+                <a href="namespaces/kickasscrypto-sodium.html" class="">Sodium</a>
                 
             </li>
                     <li>
@@ -125,14 +121,14 @@
                             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_round_trip">kickass_round_trip()</a>
     <span>
-                                &nbsp;: <a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
+                                &nbsp;: <a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
 <dd>2023-04-05 jj5 - this is the round-trip service locator defined for use by the OpenSSL module.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_kickass_at_rest">kickass_at_rest()</a>
     <span>
-                                &nbsp;: <a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
+                                &nbsp;: <a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a>    </span>
 </dt>
 <dd>2023-04-05 jj5 - this is the at-rest service locator defined for use by the OpenSSL module.</dd>
 
@@ -163,7 +159,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_round_trip</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
         <section class="phpdocumentor-description"><p>This component will use the round-trip keys defined for the OpenSSL module, those keys are
 defined with the CONFIG_OPENSSL_SECRET_CURR configuration constant (required) and the
@@ -174,7 +170,7 @@ CONFIG_OPENSSL_SECRET_PREV configuration constant (optional).</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
@@ -194,7 +190,7 @@ service locator with a new service instance.</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/KickassCrypto-Framework-KickassCryptoException.html"><abbr title="\KickassCrypto\Framework\KickassCryptoException">KickassCryptoException</abbr></a></span>
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/KickassCrypto-KickassCryptoException.html"><abbr title="\KickassCrypto\KickassCryptoException">KickassCryptoException</abbr></a></span>
                                                             
                                                  <section class="phpdocumentor-description"><p>if the environment is determined to be
 unsupported during construction.</p>
@@ -204,7 +200,7 @@ unsupported during construction.</p>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
             <section class="phpdocumentor-description"><p>the crypto interface.</p>
 </section>
@@ -227,7 +223,7 @@ unsupported during construction.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">kickass_at_rest</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$set</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span></code>
 
         <section class="phpdocumentor-description"><p>This component will use the at-rest keys defined for the OpenSSL module, those keys are
 defined with the CONFIG_OPENSSL_SECRET_LIST configuration constant.</p>
@@ -237,7 +233,7 @@ defined with the CONFIG_OPENSSL_SECRET_LIST configuration constant.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$set</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>pass a valid instance to reconfigure the
@@ -257,7 +253,7 @@ service locator with a new service instance.</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/KickassCrypto-Framework-KickassCryptoException.html"><abbr title="\KickassCrypto\Framework\KickassCryptoException">KickassCryptoException</abbr></a></span>
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/KickassCrypto-KickassCryptoException.html"><abbr title="\KickassCrypto\KickassCryptoException">KickassCryptoException</abbr></a></span>
                                                             
                                                  <section class="phpdocumentor-description"><p>if the environment is determined to be
 unsupported during construction.</p>
@@ -267,7 +263,7 @@ unsupported during construction.</p>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-Contract-IKickassCrypto.html"><abbr title="\KickassCrypto\Contract\IKickassCrypto">IKickassCrypto</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/KickassCrypto-IKickassCrypto.html"><abbr title="\KickassCrypto\IKickassCrypto">IKickassCrypto</abbr></a></span>
             &mdash;
             <section class="phpdocumentor-description"><p>the crypto interface.</p>
 </section>

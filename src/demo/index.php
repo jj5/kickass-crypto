@@ -152,7 +152,7 @@ function main() {
     render_foot();
 
   }
-  catch ( \KickassCrypto\Framework\KickassCryptoException $ex ) {
+  catch ( \KickassCrypto\KickassCryptoException $ex ) {
 
     render_head();
 

@@ -23,7 +23,7 @@
 
 require_once __DIR__ . '/../../../inc/test-host.php';
 
-class TestException extends \KickassCrypto\Framework\KickassCryptoException {}
+class TestException extends \KickassCrypto\KickassCryptoException {}
 
 trait CustomThrow {
 
@@ -42,19 +42,19 @@ trait CustomThrow {
   }
 }
 
-class TestCryptoAtRestInvalidConfig extends \KickassCrypto\Module\OpenSsl\KickassOpenSslAtRest {
+class TestCryptoAtRestInvalidConfig extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTripInvalidConfig extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCryptoRoundTripInvalidConfig extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use CustomThrow;
 
 }
 
-class TestCryptoRoundTrip extends \KickassCrypto\Module\OpenSsl\KickassOpenSslRoundTrip {
+class TestCryptoRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
 
