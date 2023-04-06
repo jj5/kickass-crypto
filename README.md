@@ -1214,7 +1214,7 @@ provide a new implementation, thereby replacing, or augmenting, the default impl
 One way a programmer can go wrong is to infinitely recurse. For example like this:
 
 ```
-class Test extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
+class InfiniteRecursion extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
   protected function do_encrypt( $input ) {
 
@@ -1287,6 +1287,21 @@ If a function enters more than the number of times allowed by KICKASS_CRYPTO_REC
 without leaving then an exception is thrown in order to break the recursion. At the time of
 writing KICKASS_CRYPTO_RECURSION_LIMIT is defined as 100, which is less than the Xdebug limit of
 256, which means we should always be able to break our own recursive loops.
+
+And for all the trouble we've gone to if the inheritor calls themselves and recurs directly there
+is nothing to be done:
+
+```
+class EpicFail extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
+
+  protected function do_encrypt( $input ) {
+
+    return $this->do_encrypt( $input );
+
+  }
+}
+```
+
 
 ### Return false on error idiom
 
@@ -1603,7 +1618,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,299 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,301 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
