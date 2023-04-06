@@ -1267,7 +1267,9 @@ When I nominate error strings I usually start them with a lowercase letter and e
 period.
 
 Note that it's okay to intercept and rethrow PHP AssertionError exceptions. These should only ever
-occur during development and not in production.
+occur during development and not in production. If you're calling code you don't trust you might
+not wish to rethrow AssertionError exceptions, but if you're calling code you don't trust you've
+probably got bigger problems.
 
 Following is some example code showing how to handle exceptions and manage errors.
 
