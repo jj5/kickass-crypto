@@ -1102,8 +1102,9 @@ Instead of throwing exceptions the methods on the classes in this library will u
 false instead.
 
 Sometimes because of the nature of a typed interface it's not possible to return the boolean value
-false and in some circumstances the empty string, an empty array, null, or the integer zero may
-be returned instead, although returning false is definitely preferred if it's possible.
+false and in some circumstances the empty string, an empty array, null, the floating-point value
+0.0, or the integer zero may be returned instead, although returning false is definitely preferred
+if it's possible.
 
 Also the fact that an error occurred can be registered with your component so that if the callers
 get a false return value they can interrogate the component with a call to `get_error()` or
