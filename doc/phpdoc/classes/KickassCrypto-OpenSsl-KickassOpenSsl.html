@@ -156,9 +156,10 @@ stack; see the enter() and leave() functions to understand how this field is use
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_error_list">$error_list</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>2023-03-29 jj5 - our list of errors is private, implementations can override the access
+interface methods defined below.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-KickassCrypto.html#property_inject_delay">$inject_delay</a>
@@ -172,9 +173,9 @@ delay has been injected so that multiple errors won&#039;t trigger multiple dela
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_openssl_error">$openssl_error</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string|null            </span>
 </dt>
-<dd></dd>
+<dd>2023-03-30 jj5 - this is for tracking the first openssl error that occurs, if any.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/KickassCrypto-KickassCrypto.html#property_telemetry">$telemetry</a>
@@ -188,8 +189,7 @@ delay has been injected so that multiple errors won&#039;t trigger multiple dela
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
-the constructor succeeds then encryption and decryption should also usually succeed later on.</dd>
+<dd>2023-04-07 jj5 - the constructor will throw if the environment is invalid.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_clear_error">clear_error()</a>
@@ -248,9 +248,9 @@ was called.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_openssl_error">get_openssl_error()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string|null    </span>
 </dt>
-<dd></dd>
+<dd>2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_GetTelemetry">GetTelemetry()</a>
@@ -595,15 +595,16 @@ overridden by implementations.</dd>
     <span>
                                 &nbsp;: string|null    </span>
 </dt>
-<dd>2023-04-07 jj5 - gets the most recent error, it&#039;s a string, or null if no error.</dd>
+<dd>2023-04-07 jj5 - gets the most recent error as a string or returns null if there are no
+errors.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error_list">do_get_error_list()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>2023-04-07 jj5 - gets the list of errors, it&#039;s a list of strings, it can be empty, in fact
-it&#039;s best if it is!</dd>
+<dd>2023-04-07 jj5 - returns the list of errors; errors are strings with a description of the
+problem, the list is empty if there are no errors.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_get_padding">do_get_padding()</a>
@@ -1476,21 +1477,23 @@ stack; see the enter() and leave() functions to understand how this field is use
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-03-29 jj5 - our list of errors is private, implementations can override the access
+interface methods defined below.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$error_list</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>..</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1545,21 +1548,22 @@ delay has been injected so that multiple errors won&#039;t trigger multiple dela
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-03-30 jj5 - this is for tracking the first openssl error that occurs, if any.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string|null</span>
     <span class="phpdocumentor-signature__name">$openssl_error</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>..</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1626,22 +1630,35 @@ occur, these should group due to chunking.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
-the constructor succeeds then encryption and decryption should also usually succeed later on.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - the constructor will throw if the environment is invalid.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>If encryption or decryption won't be able to succeed the constructor should throw.</p>
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\KickassCrypto\KickassCrypto\KickassCryptoException">KickassCryptoException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if there are problems with the environment.</p>
 </section>
 
-    
-    
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -1923,7 +1940,7 @@ was called.</p>
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+                                                -final        "
 >
     <h4 class="phpdocumentor-element__name" id="method_get_openssl_error">
         get_openssl_error()
@@ -1932,24 +1949,26 @@ was called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">get_openssl_error</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">get_openssl_error</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|null</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>the error from the OpenSSL library or null if no error.</p>
+</section>
+
     
 </article>
                     <article
@@ -2564,7 +2583,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">159</span>
 
     </aside>
 
@@ -2785,7 +2804,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">341</span>
+    <span class="phpdocumentor-element-found-in__line">384</span>
 
     </aside>
 
@@ -3098,7 +3117,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">243</span>
+    <span class="phpdocumentor-element-found-in__line">286</span>
 
     </aside>
 
@@ -3258,7 +3277,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">179</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
@@ -3315,7 +3334,7 @@ and do the actual encryption.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">227</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
@@ -3810,7 +3829,7 @@ if the constant is not defined; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">166</span>
 
     </aside>
 
@@ -4092,11 +4111,12 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">138</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the most recent error, it&#039;s a string, or null if no error.</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the most recent error as a string or returns null if there are no
+errors.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -4109,7 +4129,7 @@ overridden by implementations.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|null</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>the most recent error or null if no error.</p>
+            <section class="phpdocumentor-description"><p>the error description or null if no error.</p>
 </section>
 
     
@@ -4127,12 +4147,12 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">2023-04-07 jj5 - gets the list of errors, it&#039;s a list of strings, it can be empty, in fact
-it&#039;s best if it is!</p>
+        <p class="phpdocumentor-summary">2023-04-07 jj5 - returns the list of errors; errors are strings with a description of the
+problem, the list is empty if there are no errors.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -4145,7 +4165,8 @@ it&#039;s best if it is!</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>the list of errors, or an empty array if none.</p>
+            <section class="phpdocumentor-description"><p>an array of strings containing error descriptions, the list is empty if there
+are no errors.</p>
 </section>
 
     
@@ -5033,7 +5054,7 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">324</span>
 
     </aside>
 
@@ -6780,7 +6801,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">161</span>
+    <span class="phpdocumentor-element-found-in__line">202</span>
 
     </aside>
 
@@ -6813,7 +6834,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">173</span>
+    <span class="phpdocumentor-element-found-in__line">214</span>
 
     </aside>
 
@@ -6846,7 +6867,7 @@ deserialization is enabled or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">167</span>
+    <span class="phpdocumentor-element-found-in__line">208</span>
 
     </aside>
 
@@ -7041,7 +7062,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -7074,7 +7095,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">190</span>
 
     </aside>
 
@@ -7107,7 +7128,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">137</span>
+    <span class="phpdocumentor-element-found-in__line">178</span>
 
     </aside>
 
@@ -7140,7 +7161,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">196</span>
 
     </aside>
 
@@ -7173,7 +7194,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php"><a href="files/src-code-namespace-kickasscrypto-openssl-kickassopenssl.html"><abbr title="src/code/namespace/KickassCrypto/OpenSsl/KickassOpenSsl.php">KickassOpenSsl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">143</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 
     </aside>
 

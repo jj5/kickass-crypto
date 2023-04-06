@@ -1448,12 +1448,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020programmers\u0020can\u0020disable\u0020cipher\u0020validation\u0020by\u0020defining\u0020this\u0020constant\nas\u0020true.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION",
             "name": "KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020programmers\u0020can\u0020disable\u0020initialization\u0020vector\u0020length\u0020validation\u0020by\ndefining\u0020this\u0020constant\u0020as\u0020true.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl",
@@ -1463,22 +1463,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020we\u0020throw\u0020exceptions\u0020from\u0020the\u0020constructor\u0020if\u0020our\u0020environment\u0020is\u0020invalid\u003B\u0020if\nthe\u0020constructor\u0020succeeds\u0020then\u0020encryption\u0020and\u0020decryption\u0020should\u0020also\u0020usually\u0020succeed\u0020later\u0020on.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020the\u0020constructor\u0020will\u0020throw\u0020if\u0020the\u0020environment\u0020is\u0020invalid.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method___construct"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error_list\u0028\u0029",
             "name": "do_get_error_list",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020list\u0020of\u0020errors,\u0020it\u0027s\u0020a\u0020list\u0020of\u0020strings,\u0020it\u0020can\u0020be\u0020empty,\u0020in\u0020fact\nit\u0027s\u0020best\u0020if\u0020it\u0020is\u0021",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020list\u0020of\u0020errors\u003B\u0020errors\u0020are\u0020strings\u0020with\u0020a\u0020description\u0020of\u0020the\nproblem,\u0020the\u0020list\u0020is\u0020empty\u0020if\u0020there\u0020are\u0020no\u0020errors.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_get_error\u0028\u0029",
             "name": "do_get_error",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error,\u0020it\u0027s\u0020a\u0020string,\u0020or\u0020null\u0020if\u0020no\u0020error.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020gets\u0020the\u0020most\u0020recent\u0020error\u0020as\u0020a\u0020string\u0020or\u0020returns\u0020null\u0020if\u0020there\u0020are\u0020no\nerrors.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_do_get_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Aget_openssl_error\u0028\u0029",
             "name": "get_openssl_error",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020returns\u0020the\u0020earliest\u0020error\u0020message\u0020returned\u0020from\u0020the\u0020OpenSSL\u0020library.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#method_get_openssl_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003Ado_clear_error\u0028\u0029",
@@ -1558,12 +1558,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024error_list",
             "name": "error_list",
-            "summary": "",
+            "summary": "2023\u002D03\u002D29\u0020jj5\u0020\u002D\u0020our\u0020list\u0020of\u0020errors\u0020is\u0020private,\u0020implementations\u0020can\u0020override\u0020the\u0020access\ninterface\u0020methods\u0020defined\u0020below.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_error_list"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSsl\u003A\u003A\u0024openssl_error",
             "name": "openssl_error",
-            "summary": "",
+            "summary": "2023\u002D03\u002D30\u0020jj5\u0020\u002D\u0020this\u0020is\u0020for\u0020tracking\u0020the\u0020first\u0020openssl\u0020error\u0020that\u0020occurs,\u0020if\u0020any.",
             "url": "classes/KickassCrypto-OpenSsl-KickassOpenSsl.html#property_openssl_error"
         },                {
             "fqsen": "\\KickassCrypto\\OpenSsl\\KickassOpenSslAtRest",

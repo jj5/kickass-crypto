@@ -30,27 +30,50 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   use \KickassCrypto\Traits\KICKASS_WRAPPER_PHP_OPENSSL;
 
-  // 2023-03-29 jj5 - our list of errors is private, implementations can override the access
-  // interface methods defined below...
-  //
+  /**
+   * 2023-03-29 jj5 - our list of errors is private, implementations can override the access
+   * interface methods defined below...
+   *
+   * @var array
+   */
   private $error_list = [];
 
-  // 2023-03-30 jj5 - this is for tracking the first openssl error that occurs, if any...
-  //
+  /**
+   * 2023-03-30 jj5 - this is for tracking the first openssl error that occurs, if any...
+   *
+   * @var ?string
+   */
   private $openssl_error = null;
 
+  /**
+   * 2023-04-07 jj5 - the constructor will throw if the environment is invalid.
+   *
+   * @throws KickassCrypto\KickassCryptoException if there are problems with the environment.
+   */
   public function __construct() {
 
     parent::__construct();
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION' ) ) {
 
+      /**
+       * 2023-04-07 jj5 - programmers can disable cipher validation by defining this constant
+       * as true.
+       *
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_CIPHER_VALIDATION', false );
 
     }
 
     if ( ! defined( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION' ) ) {
 
+      /**
+       * 2023-04-07 jj5 - programmers can disable initialization vector length validation by
+       * defining this constant as true.
+       *
+       * @var boolean
+       */
       define( 'KICKASS_CRYPTO_DISABLE_IV_LENGTH_VALIDATION', false );
 
     }
@@ -93,12 +116,25 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
     }
   }
 
+  /**
+   * 2023-04-07 jj5 - returns the list of errors; errors are strings with a description of the
+   * problem, the list is empty if there are no errors.
+   *
+   * @return array an array of strings containing error descriptions, the list is empty if there
+   * are no errors.
+   */
   protected function do_get_error_list() {
 
     return $this->error_list;
 
   }
 
+  /**
+   * 2023-04-07 jj5 - gets the most recent error as a string or returns null if there are no
+   * errors.
+   *
+   * @return ?string the error description or null if no error.
+   */
   protected function do_get_error() {
 
     $count = count( $this->error_list );
@@ -109,7 +145,12 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
   }
 
-  public function get_openssl_error() {
+  /**
+   * 2023-04-07 jj5 - returns the earliest error message returned from the OpenSSL library.
+   *
+   * @return ?string the error from the OpenSSL library or null if no error.
+   */
+  public final function get_openssl_error() : ?string {
 
     return $this->openssl_error;
 
@@ -230,7 +271,9 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
 
     while ( $openssl_error = $this->php_openssl_error_string() ) {
 
-      $this->openssl_error = $openssl_error;
+      assert( is_string( $openssl_error ) );
+
+      $this->openssl_error = strval( $openssl_error );
 
     }
 
