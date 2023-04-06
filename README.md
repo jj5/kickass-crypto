@@ -1160,7 +1160,8 @@ This is an example of
 [Postel's Law](https://en.wikipedia.org/wiki/Robustness_principle),
 which is also known as the Robustness Principle. The final wrapper is liberal in what it accepts,
 such as with the return value one (`1`) from the default implementation; and conservative in what
-it does, such as always returning a properly typed boolean value.
+it does, such as always returning a properly typed boolean value and always providing values of
+the correct type to the default implementation.
 
 Not needing to write out and declare the types on the interface of the default implementation also
 makes implementation and debugging easier, as there's less code to write. (Also I find the syntax
