@@ -382,6 +382,26 @@ possible) for constants. Similarly if you need to cache global/static data (such
 config file) the best way to do that is with a local static variable in a function, if possible,
 as using instance fields, class fields, or globals can more easily lead to secret leakage.
 
+To give you an example, let's create a test file called `double-define.php` like this:
+
+```
+<?php
+define( 'TEST', 123 );
+define( 'TEST', 456 );
+```
+
+Then when we run the code, something like this happens:
+
+```
+$ php double-define.php
+PHP Warning:  Constant TEST already defined in ./double-define.php on line 4
+PHP Stack trace:
+PHP   1. {main}() ./double-define.php:0
+PHP   2. define($constant_name = 'TEST', $value = 456) ./double-define.php:4
+```
+
+If that constant value contained your secret key then you've just had a very bad day.
+
 The safest way to define a constant in PHP is to check that it's not already defined first,
 because attempting to define an already defined constant will result in error. If you find an
 already defined constant you can either abort with an error message (if you do don't provide too
