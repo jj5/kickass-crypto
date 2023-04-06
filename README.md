@@ -1216,8 +1216,8 @@ run-time but also to other programmers reading, using, or maintaining the code.
 
 #### The advantages of the untyped interface on the default implementation
 
-Not having types on the interface of the default implementation `do_is_valid_settings()` confers
-three main advantages.
+Not having types on the interface of the default implementation `do_is_valid_settings()` also
+confers three main advantages.
 
 The first is that it's easier to type out and maintain the overriding function as you don't need
 to worry about the types.
