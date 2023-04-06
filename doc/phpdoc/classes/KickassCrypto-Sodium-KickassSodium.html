@@ -619,7 +619,7 @@ key hashing function on the secret keys defined in the config file.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_handle">do_handle()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
 <dd>2023-04-01 jj5 - implementations can decide what to do when errors are handled; by default
 we write a log entry; can be overridden by implementations.</dd>
@@ -627,7 +627,7 @@ we write a log entry; can be overridden by implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_ignore">do_ignore()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
 <dd>2023-04-01 jj5 - implementations can decide what to do when errors are ignored; by default
 we write a log entry; can be overridden by implementations.</dd>
@@ -738,7 +738,7 @@ implementations.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_notify">do_notify()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
 <dd>2023-04-01 jj5 - implementations can decide what to do when errors are notified; by default
 we write a log entry; can be overridden by implementations.</dd>
@@ -861,7 +861,7 @@ implementers; by default calls the PHP serialize() function via its wrapper.</dd
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/KickassCrypto-KickassCrypto.html#method_do_report_emergency_delay">do_report_emergency_delay()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: void    </span>
 </dt>
 <dd>2023-04-05 jj5 - by default writes a message to the error log; can be overridden by
 implementations.</dd>
@@ -1615,7 +1615,7 @@ occur, these should group due to chunking.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1125</span>
+    <span class="phpdocumentor-element-found-in__line">1153</span>
 
     </aside>
 
@@ -1639,7 +1639,7 @@ occur, these should group due to chunking.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>can throw AssertionError during debugging.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -1664,7 +1664,7 @@ occur, these should group due to chunking.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">469</span>
+    <span class="phpdocumentor-element-found-in__line">475</span>
 
     </aside>
 
@@ -1690,6 +1690,22 @@ failure.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -1712,7 +1728,7 @@ failure.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">543</span>
+    <span class="phpdocumentor-element-found-in__line">551</span>
 
     </aside>
 
@@ -1727,6 +1743,22 @@ brute force errors.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -1747,7 +1779,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">389</span>
+    <span class="phpdocumentor-element-found-in__line">393</span>
 
     </aside>
 
@@ -1772,6 +1804,22 @@ brute force errors.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|false</span>
@@ -1794,7 +1842,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">292</span>
+    <span class="phpdocumentor-element-found-in__line">294</span>
 
     </aside>
 
@@ -1830,7 +1878,7 @@ brute force errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1050</span>
+    <span class="phpdocumentor-element-found-in__line">1078</span>
 
     </aside>
 
@@ -1855,7 +1903,7 @@ error.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>can throw AssertionError during debugging.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -1882,7 +1930,7 @@ error.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">992</span>
+    <span class="phpdocumentor-element-found-in__line">1020</span>
 
     </aside>
 
@@ -1907,7 +1955,7 @@ otherwise it contains strings which describe the errors that have occurred.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>can throw AssertionError during debugging.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -1934,7 +1982,7 @@ otherwise it contains strings which describe the errors that have occurred.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">315</span>
+    <span class="phpdocumentor-element-found-in__line">317</span>
 
     </aside>
 
@@ -1977,7 +2025,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">354</span>
 
     </aside>
 
@@ -2022,7 +2070,7 @@ so sensitive that it can&#039;t be logged. It&#039;s not at the same level as se
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">327</span>
+    <span class="phpdocumentor-element-found-in__line">329</span>
 
     </aside>
 
@@ -2056,7 +2104,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6849</span>
+    <span class="phpdocumentor-element-found-in__line">7008</span>
 
     </aside>
 
@@ -2092,7 +2140,9 @@ for use in a console.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -2117,7 +2167,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1473</span>
+    <span class="phpdocumentor-element-found-in__line">1513</span>
 
     </aside>
 
@@ -2142,6 +2192,22 @@ for use in a console.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2164,7 +2230,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1366</span>
+    <span class="phpdocumentor-element-found-in__line">1402</span>
 
     </aside>
 
@@ -2189,6 +2255,22 @@ for use in a console.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2211,7 +2293,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1580</span>
+    <span class="phpdocumentor-element-found-in__line">1624</span>
 
     </aside>
 
@@ -2236,6 +2318,22 @@ for use in a console.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2258,7 +2356,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1261</span>
+    <span class="phpdocumentor-element-found-in__line">1293</span>
 
     </aside>
 
@@ -2283,6 +2381,22 @@ for use in a console.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2305,7 +2419,7 @@ for use in a console.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5900</span>
+    <span class="phpdocumentor-element-found-in__line">6059</span>
 
     </aside>
 
@@ -2360,7 +2474,9 @@ false.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -2386,7 +2502,7 @@ false can also be a valid return value, if it is then $is_false will be set.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5413</span>
+    <span class="phpdocumentor-element-found-in__line">5572</span>
 
     </aside>
 
@@ -2434,7 +2550,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>if there's an assertion violation, this doesn't happen in production.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -2461,7 +2577,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4872</span>
+    <span class="phpdocumentor-element-found-in__line">5024</span>
 
     </aside>
 
@@ -2495,6 +2611,22 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|false</span>
@@ -2517,7 +2649,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4738</span>
+    <span class="phpdocumentor-element-found-in__line">4886</span>
 
     </aside>
 
@@ -2551,6 +2683,22 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -2606,7 +2754,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6909</span>
+    <span class="phpdocumentor-element-found-in__line">7068</span>
 
     </aside>
 
@@ -2642,7 +2790,9 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -2667,7 +2817,7 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1527</span>
+    <span class="phpdocumentor-element-found-in__line">1569</span>
 
     </aside>
 
@@ -2693,6 +2843,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2715,7 +2881,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1420</span>
+    <span class="phpdocumentor-element-found-in__line">1458</span>
 
     </aside>
 
@@ -2741,6 +2907,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2763,7 +2945,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1634</span>
+    <span class="phpdocumentor-element-found-in__line">1680</span>
 
     </aside>
 
@@ -2789,6 +2971,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -2859,7 +3057,7 @@ class.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5983</span>
+    <span class="phpdocumentor-element-found-in__line">6142</span>
 
     </aside>
 
@@ -2912,19 +3110,21 @@ support for decoding either JSON or PHPS.</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
-                                                            
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
                                                             
                                                  <section class="phpdocumentor-description"><p>may inject an exception for testing purposes, you can control this by
 passing $data_encoding === false and defining the KICKASS_CRYPTO_TEST_DATA_DECODE constant
 true.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -2952,7 +3152,7 @@ be a valid return value.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5492</span>
+    <span class="phpdocumentor-element-found-in__line">5651</span>
 
     </aside>
 
@@ -2998,9 +3198,10 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>if there's an assertion violation, this doesn't happen in production.</p>
+                                                 <section class="phpdocumentor-description"><p>may be thrown for fault injection during testing, this shouldn't happen
+in production.</p>
 </section>
 
                                     </dd>
@@ -3008,10 +3209,9 @@ KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>may be thrown for fault injection during testing, this shouldn't happen
-in production.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -3038,7 +3238,7 @@ in production.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4947</span>
+    <span class="phpdocumentor-element-found-in__line">5101</span>
 
     </aside>
 
@@ -3088,6 +3288,16 @@ Note due to other limits this limit could never be reached.</p>
 </section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -3111,7 +3321,7 @@ Note due to other limits this limit could never be reached.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4551</span>
+    <span class="phpdocumentor-element-found-in__line">4695</span>
 
     </aside>
 
@@ -3137,6 +3347,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -3217,7 +3443,7 @@ otherwise.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5097</span>
+    <span class="phpdocumentor-element-found-in__line">5253</span>
 
     </aside>
 
@@ -3253,6 +3479,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -3273,7 +3515,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3979</span>
+    <span class="phpdocumentor-element-found-in__line">4109</span>
 
     </aside>
 
@@ -3298,6 +3540,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|false</span>
@@ -3426,7 +3684,7 @@ date.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2216</span>
+    <span class="phpdocumentor-element-found-in__line">2284</span>
 
     </aside>
 
@@ -3453,6 +3711,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3475,7 +3749,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2326</span>
+    <span class="phpdocumentor-element-found-in__line">2398</span>
 
     </aside>
 
@@ -3502,6 +3776,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3524,7 +3814,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2556</span>
+    <span class="phpdocumentor-element-found-in__line">2636</span>
 
     </aside>
 
@@ -3551,6 +3841,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -3573,7 +3879,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2437</span>
+    <span class="phpdocumentor-element-found-in__line">2513</span>
 
     </aside>
 
@@ -3600,6 +3906,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3622,7 +3944,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3000</span>
+    <span class="phpdocumentor-element-found-in__line">3096</span>
 
     </aside>
 
@@ -3649,6 +3971,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -3671,7 +4009,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2778</span>
+    <span class="phpdocumentor-element-found-in__line">2866</span>
 
     </aside>
 
@@ -3698,6 +4036,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3720,7 +4074,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2667</span>
+    <span class="phpdocumentor-element-found-in__line">2751</span>
 
     </aside>
 
@@ -3747,6 +4101,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3769,7 +4139,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2889</span>
+    <span class="phpdocumentor-element-found-in__line">2981</span>
 
     </aside>
 
@@ -3796,6 +4166,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -3818,7 +4204,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3112</span>
+    <span class="phpdocumentor-element-found-in__line">3212</span>
 
     </aside>
 
@@ -3853,6 +4239,22 @@ if the constant is not defined; can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -3913,7 +4315,7 @@ constant value KICKASS_CRYPTO_DATA_FORMAT_SODIUM.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1900</span>
+    <span class="phpdocumentor-element-found-in__line">1956</span>
 
     </aside>
 
@@ -3927,6 +4329,22 @@ overridden by implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -3949,7 +4367,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2003</span>
+    <span class="phpdocumentor-element-found-in__line">2063</span>
 
     </aside>
 
@@ -3963,6 +4381,22 @@ can be overridden by implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -3985,7 +4419,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2106</span>
+    <span class="phpdocumentor-element-found-in__line">2170</span>
 
     </aside>
 
@@ -3999,6 +4433,22 @@ can be overridden by implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -4021,7 +4471,7 @@ can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4425</span>
+    <span class="phpdocumentor-element-found-in__line">4565</span>
 
     </aside>
 
@@ -4035,6 +4485,22 @@ get_config_data_encoding().</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -4057,7 +4523,7 @@ get_config_data_encoding().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7185</span>
+    <span class="phpdocumentor-element-found-in__line">7344</span>
 
     </aside>
 
@@ -4122,7 +4588,9 @@ seconds.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -4147,7 +4615,7 @@ seconds.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3296</span>
+    <span class="phpdocumentor-element-found-in__line">3402</span>
 
     </aside>
 
@@ -4161,6 +4629,22 @@ overridden by implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|null</span>
@@ -4256,7 +4740,7 @@ are no errors.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7022</span>
+    <span class="phpdocumentor-element-found-in__line">7181</span>
 
     </aside>
 
@@ -4293,7 +4777,9 @@ implementations.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -4318,7 +4804,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">232</span>
+    <span class="phpdocumentor-element-found-in__line">234</span>
 
     </aside>
 
@@ -4352,7 +4838,7 @@ key hashing function on the secret keys defined in the config file.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">682</span>
+    <span class="phpdocumentor-element-found-in__line">696</span>
 
     </aside>
 
@@ -4361,7 +4847,7 @@ we write a log entry; can be overridden by implementations.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_handle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_handle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -4405,9 +4891,25 @@ we write a log entry; can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -4425,7 +4927,7 @@ we write a log entry; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">892</span>
+    <span class="phpdocumentor-element-found-in__line">918</span>
 
     </aside>
 
@@ -4434,7 +4936,7 @@ we write a log entry; can be overridden by implementations.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_ignore</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_ignore</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -4478,9 +4980,25 @@ we write a log entry; can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -4498,7 +5016,7 @@ we write a log entry; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1746</span>
+    <span class="phpdocumentor-element-found-in__line">1796</span>
 
     </aside>
 
@@ -4533,6 +5051,22 @@ to zero if missing; can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -4555,7 +5089,7 @@ to zero if missing; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3399</span>
+    <span class="phpdocumentor-element-found-in__line">3509</span>
 
     </aside>
 
@@ -4569,6 +5103,22 @@ implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4591,7 +5141,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3502</span>
+    <span class="phpdocumentor-element-found-in__line">3616</span>
 
     </aside>
 
@@ -4605,6 +5155,22 @@ overridden by implementations.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4627,7 +5193,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3924</span>
+    <span class="phpdocumentor-element-found-in__line">4052</span>
 
     </aside>
 
@@ -4654,6 +5220,22 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4676,7 +5258,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">224</span>
+    <span class="phpdocumentor-element-found-in__line">226</span>
 
     </aside>
 
@@ -4721,7 +5303,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4307</span>
+    <span class="phpdocumentor-element-found-in__line">4443</span>
 
     </aside>
 
@@ -4755,6 +5337,22 @@ get_config_phps_enable() is true.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4777,7 +5375,7 @@ get_config_phps_enable() is true.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3815</span>
+    <span class="phpdocumentor-element-found-in__line">3939</span>
 
     </aside>
 
@@ -4802,6 +5400,22 @@ get_config_phps_enable() is true.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4824,7 +5438,7 @@ get_config_phps_enable() is true.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3690</span>
+    <span class="phpdocumentor-element-found-in__line">3810</span>
 
     </aside>
 
@@ -4850,6 +5464,22 @@ length requirements; this function can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -4872,7 +5502,7 @@ length requirements; this function can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6156</span>
+    <span class="phpdocumentor-element-found-in__line">6315</span>
 
     </aside>
 
@@ -4930,7 +5560,9 @@ the initial encoding.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -4955,7 +5587,7 @@ the initial encoding.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5654</span>
+    <span class="phpdocumentor-element-found-in__line">5813</span>
 
     </aside>
 
@@ -4992,7 +5624,7 @@ from the config file; can be overridden by implementations.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -5019,7 +5651,7 @@ from the config file; can be overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7327</span>
+    <span class="phpdocumentor-element-found-in__line">7486</span>
 
     </aside>
 
@@ -5083,7 +5715,9 @@ implementations.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -5108,7 +5742,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6660</span>
+    <span class="phpdocumentor-element-found-in__line">6819</span>
 
     </aside>
 
@@ -5145,7 +5779,9 @@ implementations.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -5170,7 +5806,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6500</span>
+    <span class="phpdocumentor-element-found-in__line">6659</span>
 
     </aside>
 
@@ -5207,7 +5843,9 @@ implementations.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -5232,7 +5870,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">787</span>
+    <span class="phpdocumentor-element-found-in__line">807</span>
 
     </aside>
 
@@ -5241,7 +5879,7 @@ we write a log entry; can be overridden by implementations.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_notify</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_notify</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -5285,9 +5923,25 @@ we write a log entry; can be overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -6026,7 +6680,7 @@ because it manages its authentication tag by itself and separately.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6338</span>
+    <span class="phpdocumentor-element-found-in__line">6497</span>
 
     </aside>
 
@@ -6082,7 +6736,9 @@ looks like, this is used to determine if the input data is the serialized value 
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -6107,7 +6763,7 @@ looks like, this is used to determine if the input data is the serialized value 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5819</span>
+    <span class="phpdocumentor-element-found-in__line">5978</span>
 
     </aside>
 
@@ -6144,7 +6800,9 @@ implementers; by default calls the PHP serialize() function via its wrapper.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -6169,7 +6827,7 @@ implementers; by default calls the PHP serialize() function via its wrapper.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5353</span>
+    <span class="phpdocumentor-element-found-in__line">5512</span>
 
     </aside>
 
@@ -6178,7 +6836,7 @@ implementations.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">do_report_emergency_delay</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">do_report_emergency_delay</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$line</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$function</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -6222,9 +6880,25 @@ implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -6242,7 +6916,7 @@ implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">961</span>
+    <span class="phpdocumentor-element-found-in__line">989</span>
 
     </aside>
 
@@ -6322,7 +6996,7 @@ throws an exception with the relevant code and message; can be overridden by imp
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5178</span>
+    <span class="phpdocumentor-element-found-in__line">5333</span>
 
     </aside>
 
@@ -6345,10 +7019,10 @@ interfere so the emergency delay should run reliably if it&#039;s necessary.</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>if there's an assertion violation during testing (not enable in
-production).</p>
+                                                 <section class="phpdocumentor-description"><p>may throw an exception if set up for error injection, this should only be
+done during testing.</p>
 </section>
 
                                     </dd>
@@ -6356,10 +7030,9 @@ production).</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>may throw an exception if set up for error injection, this should only be
-done during testing.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -6384,7 +7057,7 @@ done during testing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4481</span>
+    <span class="phpdocumentor-element-found-in__line">4623</span>
 
     </aside>
 
@@ -6419,6 +7092,22 @@ do_encrypt_string().</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|false</span>
@@ -6441,7 +7130,7 @@ do_encrypt_string().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7411</span>
+    <span class="phpdocumentor-element-found-in__line">7570</span>
 
     </aside>
 
@@ -6501,7 +7190,7 @@ on the call stack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1196</span>
+    <span class="phpdocumentor-element-found-in__line">1226</span>
 
     </aside>
 
@@ -6547,6 +7236,22 @@ without scrubbing or expose without thought.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -6569,7 +7274,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2159</span>
+    <span class="phpdocumentor-element-found-in__line">2225</span>
 
     </aside>
 
@@ -6594,6 +7299,22 @@ without scrubbing or expose without thought.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -6616,7 +7337,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2269</span>
+    <span class="phpdocumentor-element-found-in__line">2339</span>
 
     </aside>
 
@@ -6641,6 +7362,22 @@ without scrubbing or expose without thought.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -6663,7 +7400,7 @@ without scrubbing or expose without thought.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2499</span>
+    <span class="phpdocumentor-element-found-in__line">2577</span>
 
     </aside>
 
@@ -6697,6 +7434,22 @@ gory details.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -6719,7 +7472,7 @@ gory details.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2380</span>
+    <span class="phpdocumentor-element-found-in__line">2454</span>
 
     </aside>
 
@@ -6745,6 +7498,22 @@ encoded data.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -6767,7 +7536,7 @@ encoded data.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2943</span>
+    <span class="phpdocumentor-element-found-in__line">3037</span>
 
     </aside>
 
@@ -6793,6 +7562,22 @@ encrypted or not.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -6815,7 +7600,7 @@ encrypted or not.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2721</span>
+    <span class="phpdocumentor-element-found-in__line">2807</span>
 
     </aside>
 
@@ -6841,6 +7626,22 @@ function.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -6863,7 +7664,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2610</span>
+    <span class="phpdocumentor-element-found-in__line">2692</span>
 
     </aside>
 
@@ -6889,6 +7690,22 @@ function.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -6911,7 +7728,7 @@ function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2832</span>
+    <span class="phpdocumentor-element-found-in__line">2922</span>
 
     </aside>
 
@@ -6937,6 +7754,22 @@ deserialization is enabled or not.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -7076,7 +7909,7 @@ case.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3056</span>
+    <span class="phpdocumentor-element-found-in__line">3154</span>
 
     </aside>
 
@@ -7111,6 +7944,22 @@ defined.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -7133,7 +7982,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1797</span>
+    <span class="phpdocumentor-element-found-in__line">1849</span>
 
     </aside>
 
@@ -7146,6 +7995,22 @@ defined.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -7168,7 +8033,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1848</span>
+    <span class="phpdocumentor-element-found-in__line">1902</span>
 
     </aside>
 
@@ -7181,6 +8046,22 @@ defined.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -7203,7 +8084,7 @@ defined.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1951</span>
+    <span class="phpdocumentor-element-found-in__line">2009</span>
 
     </aside>
 
@@ -7216,6 +8097,22 @@ defined.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -7272,7 +8169,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">2054</span>
+    <span class="phpdocumentor-element-found-in__line">2116</span>
 
     </aside>
 
@@ -7285,6 +8182,22 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -7307,7 +8220,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4373</span>
+    <span class="phpdocumentor-element-found-in__line">4511</span>
 
     </aside>
 
@@ -7320,6 +8233,22 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -7342,7 +8271,7 @@ this function returns the constant value KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6773</span>
+    <span class="phpdocumentor-element-found-in__line">6932</span>
 
     </aside>
 
@@ -7368,7 +8297,9 @@ then the string &#039;X&#039; is prepended to the data format.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -7393,7 +8324,7 @@ then the string &#039;X&#039; is prepended to the data format.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7107</span>
+    <span class="phpdocumentor-element-found-in__line">7266</span>
 
     </aside>
 
@@ -7459,7 +8390,9 @@ seconds.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -7484,7 +8417,7 @@ seconds.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3244</span>
+    <span class="phpdocumentor-element-found-in__line">3348</span>
 
     </aside>
 
@@ -7497,6 +8430,22 @@ seconds.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -7519,7 +8468,7 @@ seconds.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6966</span>
+    <span class="phpdocumentor-element-found-in__line">7125</span>
 
     </aside>
 
@@ -7556,7 +8505,9 @@ bytes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -7581,7 +8532,7 @@ bytes.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3161</span>
+    <span class="phpdocumentor-element-found-in__line">3263</span>
 
     </aside>
 
@@ -7594,6 +8545,22 @@ bytes.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
@@ -7616,7 +8583,7 @@ bytes.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">619</span>
+    <span class="phpdocumentor-element-found-in__line">629</span>
 
     </aside>
 
@@ -7670,6 +8637,22 @@ which is allowed.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -7690,7 +8673,7 @@ which is allowed.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">837</span>
+    <span class="phpdocumentor-element-found-in__line">859</span>
 
     </aside>
 
@@ -7742,6 +8725,22 @@ which is allowed. This function is the safest of all.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -7762,7 +8761,7 @@ which is allowed. This function is the safest of all.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1690</span>
+    <span class="phpdocumentor-element-found-in__line">1738</span>
 
     </aside>
 
@@ -7797,6 +8796,22 @@ missing.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
@@ -7819,7 +8834,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3347</span>
+    <span class="phpdocumentor-element-found-in__line">3455</span>
 
     </aside>
 
@@ -7832,6 +8847,22 @@ missing.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -7854,7 +8885,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3450</span>
+    <span class="phpdocumentor-element-found-in__line">3562</span>
 
     </aside>
 
@@ -7867,6 +8898,22 @@ missing.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -7889,7 +8936,7 @@ missing.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3869</span>
+    <span class="phpdocumentor-element-found-in__line">3995</span>
 
     </aside>
 
@@ -7915,6 +8962,22 @@ do_is_valid_base64().</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -7937,7 +9000,7 @@ do_is_valid_base64().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3556</span>
+    <span class="phpdocumentor-element-found-in__line">3672</span>
 
     </aside>
 
@@ -7963,6 +9026,22 @@ defers to the abstract method do_is_valid_config().</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -7985,7 +9064,7 @@ defers to the abstract method do_is_valid_config().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4240</span>
+    <span class="phpdocumentor-element-found-in__line">4374</span>
 
     </aside>
 
@@ -8011,6 +9090,22 @@ to the virtual do_is_valid_encoding() method.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -8033,7 +9128,7 @@ to the virtual do_is_valid_encoding() method.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4171</span>
+    <span class="phpdocumentor-element-found-in__line">4303</span>
 
     </aside>
 
@@ -8059,6 +9154,22 @@ overridden by implementations.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -8081,7 +9192,7 @@ overridden by implementations.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3744</span>
+    <span class="phpdocumentor-element-found-in__line">3866</span>
 
     </aside>
 
@@ -8107,6 +9218,22 @@ do_is_valid_passphrase();</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -8129,7 +9256,7 @@ do_is_valid_passphrase();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3621</span>
+    <span class="phpdocumentor-element-found-in__line">3739</span>
 
     </aside>
 
@@ -8155,6 +9282,22 @@ do_is_valid_secret();</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -8177,7 +9320,7 @@ do_is_valid_secret();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6079</span>
+    <span class="phpdocumentor-element-found-in__line">6238</span>
 
     </aside>
 
@@ -8222,7 +9365,9 @@ do_is_valid_secret();</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -8248,7 +9393,7 @@ a valid return value.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5582</span>
+    <span class="phpdocumentor-element-found-in__line">5741</span>
 
     </aside>
 
@@ -8284,7 +9429,7 @@ a valid return value.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>
@@ -8311,7 +9456,7 @@ a valid return value.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7451</span>
+    <span class="phpdocumentor-element-found-in__line">7610</span>
 
     </aside>
 
@@ -8357,7 +9502,7 @@ the call stack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7261</span>
+    <span class="phpdocumentor-element-found-in__line">7420</span>
 
     </aside>
 
@@ -8420,7 +9565,9 @@ the call stack.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -8445,7 +9592,7 @@ the call stack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6588</span>
+    <span class="phpdocumentor-element-found-in__line">6747</span>
 
     </aside>
 
@@ -8481,7 +9628,9 @@ the call stack.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -8506,7 +9655,7 @@ the call stack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6428</span>
+    <span class="phpdocumentor-element-found-in__line">6587</span>
 
     </aside>
 
@@ -8542,7 +9691,9 @@ the call stack.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -8567,7 +9718,7 @@ the call stack.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">734</span>
+    <span class="phpdocumentor-element-found-in__line">750</span>
 
     </aside>
 
@@ -8618,6 +9769,22 @@ anyway.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -8638,7 +9805,7 @@ anyway.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4797</span>
+    <span class="phpdocumentor-element-found-in__line">4947</span>
 
     </aside>
 
@@ -8690,6 +9857,22 @@ anyway.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -9358,7 +10541,7 @@ anyway.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6263</span>
+    <span class="phpdocumentor-element-found-in__line">6422</span>
 
     </aside>
 
@@ -9403,7 +10586,9 @@ anyway.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -9429,7 +10614,7 @@ returned on success if that's what the serialized data represented.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5741</span>
+    <span class="phpdocumentor-element-found-in__line">5900</span>
 
     </aside>
 
@@ -9467,7 +10652,9 @@ odd values such as object instances and weird floats.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -9492,7 +10679,7 @@ odd values such as object instances and weird floats.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">939</span>
+    <span class="phpdocumentor-element-found-in__line">967</span>
 
     </aside>
 
@@ -9545,6 +10732,16 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\KickassCrypto\KickassCrypto\KickassCryptoException">KickassCryptoException</abbr></span>
                                                             
                                              
@@ -9570,7 +10767,7 @@ KICKASS_CRYPTO_EXCEPTION_* constants.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">4661</span>
+    <span class="phpdocumentor-element-found-in__line">4807</span>
 
     </aside>
 
@@ -9614,6 +10811,22 @@ determine.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -9636,7 +10849,7 @@ determine.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7395</span>
+    <span class="phpdocumentor-element-found-in__line">7554</span>
 
     </aside>
 
@@ -9700,7 +10913,9 @@ it ourselves without potential interference from inheritors of our class.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -9725,7 +10940,7 @@ it ourselves without potential interference from inheritors of our class.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7482</span>
+    <span class="phpdocumentor-element-found-in__line">7641</span>
 
     </aside>
 
@@ -9780,7 +10995,7 @@ we use it in enter().</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/code/namespace/KickassCrypto/KickassCrypto.php"><a href="files/src-code-namespace-kickasscrypto-kickasscrypto.html"><abbr title="src/code/namespace/KickassCrypto/KickassCrypto.php">KickassCrypto.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5297</span>
+    <span class="phpdocumentor-element-found-in__line">5452</span>
 
     </aside>
 
@@ -9845,7 +11060,7 @@ chance of finding out about it.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\AssertionError">AssertionError</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>on an assertion violation, this isn't done in production.</p>
+                                                 <section class="phpdocumentor-description"><p>potentially thrown during testing when assertions are enabled.</p>
 </section>
 
                                     </dd>

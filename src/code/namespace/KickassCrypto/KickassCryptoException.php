@@ -30,6 +30,18 @@ class KickassCryptoException extends \Exception {
 
   private $data;
 
+  /**
+   * 2023-04-07 jj5 - creates a new instance of this class; calls the parent constructor and
+   * records the associated data, if any.
+   *
+   * @param string $message the exception message.
+   *
+   * @param int $code the exception code.
+   *
+   * @param Throwable $previous the previous exception or null if none.
+   *
+   * @param mixed $data optional data to associate with this exception.
+   */
   public function __construct( $message, $code = 0, $previous = null, $data = null ) {
 
     parent::__construct( $message, $code, $previous );
@@ -38,6 +50,11 @@ class KickassCryptoException extends \Exception {
 
   }
 
+  /**
+   * 2023-04-07 jj5 - an accessor for the associated data, if any.
+   *
+   * @return mixed can be antying.
+   */
   public function getData() { return $this->data; }
 
 }

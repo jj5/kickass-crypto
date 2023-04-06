@@ -89,6 +89,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-03-30 jj5 - we throw exceptions from the constructor if our environment is invalid; if
    * the constructor succeeds then encryption and decryption should also usually succeed later on.
    * If encryption or decryption won't be able to succeed the constructor should throw.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public function __construct() {
 
@@ -385,6 +387,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $input the complex value you want encrypted.
    *
    * @return string|false the ciphertext on success, or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function encrypt( $input ) {
 
@@ -465,6 +469,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $ciphertext the ciphertext previously returned from the encrypt() method.
    *
    * @return mixed the decrypted and deserialized value, or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function decrypt( string $ciphertext ) {
 
@@ -539,6 +545,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * brute force errors.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function delay() : void {
 
@@ -615,6 +623,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * which is allowed.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function handle( $ex, $file, $line, $function ) : void {
 
@@ -678,6 +688,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $line the line in the file where the caught exception was reported.
    *
    * @param string $function the function in which the exception was caught.
+   *
+   * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_handle( $ex, $file, $line, $function ) {
 
@@ -730,6 +744,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * anyway.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function notify( $ex, $file, $line, $function ) : void {
 
@@ -783,6 +799,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $line the line in the file where the caught exception was reported.
    *
    * @param string $function the function in which the exception was caught.
+   *
+   * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_notify( $ex, $file, $line, $function ) {
 
@@ -833,6 +853,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * which is allowed. This function is the safest of all.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function ignore( $ex, $file, $line, $function ) : void {
 
@@ -888,6 +910,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $line the line in the file where the caught exception was reported.
    *
    * @param string $function the function in which the exception was caught.
+   *
+   * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_ignore( $ex, $file, $line, $function ) {
 
@@ -933,6 +959,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param type $previous the previous exception, if any.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    *
    * @throws KickassCrypto\KickassCryptoException
    */
@@ -987,7 +1015,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return array an array of strings, can be empty.
    *
-   * @throws \AssertionError can throw AssertionError during debugging.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function get_error_list() : array {
 
@@ -1045,7 +1073,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|null the error description or null if no error.
    *
-   * @throws \AssertionError can throw AssertionError during debugging.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function get_error() : ?string {
 
@@ -1120,7 +1148,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    *
-   * @throws \AssertionError can throw AssertionError during debugging.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   public final function clear_error() : void {
 
@@ -1192,6 +1220,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * without scrubbing or expose without thought.
    *
    * @return bool always false.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function error( $function, $error, $data = null ) : bool {
 
@@ -1257,6 +1287,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $caller the name of the invoking function.
    *
    * @return int the count of instances made for this class.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function count_this( string $caller ) : int {
 
@@ -1309,6 +1341,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $caller the name of the invoking function.
    *
    * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_count_this( $caller ) {
 
@@ -1362,6 +1396,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $function the name of the function.
    *
    * @return int the current count for this function.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function count_function( $function ) : int {
 
@@ -1416,6 +1452,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $function the name of the function.
    *
    * @return int the current count for the function.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_count_function( $function ) {
 
@@ -1469,6 +1507,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $class the name of the class.
    *
    * @return int the current count for the class.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function count_class( $class ) : int {
 
@@ -1523,6 +1563,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $class the name of the class.
    *
    * @return int the current count for the class.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_count_class( $class ) {
 
@@ -1576,6 +1618,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $length the length of the encrypted data.
    *
    * @return int the current count for the length.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function count_length( int $length ) : int {
 
@@ -1630,6 +1674,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $length the length of the encrypted data.
    *
    * @return int the current count for the length.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_count_length( $length ) {
 
@@ -1686,6 +1732,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string|int $key the key to operate on.
    *
    * @return int the current count.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function increment_counter( &$array, $key ) : int {
 
@@ -1742,6 +1790,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string|int $key the key to operate on.
    *
    * @return int the current count.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_increment_counter( &$array, $key ) {
 
@@ -1793,6 +1843,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - gets the data format constant; defers to abstract method for implementation.
    *
    * @return string the data format constant.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_const_data_format() : string {
 
@@ -1844,6 +1896,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - gets the name of the hashing algorithm to use for secret key hashing.
    *
    * @return string the name of the PHP hashing algorithm.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_const_key_hash() : string {
 
@@ -1896,6 +1950,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * overridden by implementations.
    *
    * @return string the name of the hash algorithm.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_const_key_hash() {
 
@@ -1947,6 +2003,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - gets the minimum length of a secret key.
    *
    * @return int the minimum length of a secret key.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_const_key_length_min() : int {
 
@@ -1999,6 +2057,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * can be overridden by implementations.
    *
    * @return int the minimum length of a secret key.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_const_key_length_min() {
 
@@ -2050,6 +2110,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - gets the minimum length of a passphrase.
    *
    * @return int the minimum length of a passphrase.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_const_passphrase_length_min() : int {
 
@@ -2102,6 +2164,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *  constant; can be overridden by implementations.
    *
    * @return int the minimum length of a passphrase.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_const_passphrase_length_min() {
 
@@ -2155,6 +2219,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the chunk size.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_chunk_size(
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE
@@ -2212,6 +2278,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the default chunk size.
    *
    * @return int the chunk size.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_chunk_size( $default ) {
 
@@ -2265,6 +2333,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the maximum chunk size.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_chunk_size_max(
     int $default = KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX
@@ -2322,6 +2392,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the default maximum chunk size.
    *
    * @return int the maximum chunk size.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_chunk_size_max( $default ) {
 
@@ -2376,6 +2448,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the maximum supported data length.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_data_length_max(
     int $default = KICKASS_CRYPTO_DEFAULT_DATA_LENGTH_MAX
@@ -2433,6 +2507,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the default maximum data length.
    *
    * @return int the maximum data length.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_data_length_max( $default ) {
 
@@ -2495,6 +2571,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $default the value to use if the config option is not defined.
    *
    * @return string the data encoding.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_data_encoding(
     string $default = KICKASS_CRYPTO_DEFAULT_DATA_ENCODING
@@ -2552,6 +2630,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $default the default data format.
    *
    * @return string the data format.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_data_encoding( $default ) {
 
@@ -2606,6 +2686,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the JSON encoding options.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_json_encode_options(
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_ENCODE_OPTIONS
@@ -2663,6 +2745,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the default JSON encoding options.
    *
    * @return int the JSON encoding options.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_json_encode_options( $default ) {
 
@@ -2717,6 +2801,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the JSON decoding options.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_json_decode_options(
     int $default = KICKASS_CRYPTO_DEFAULT_JSON_DECODE_OPTIONS
@@ -2774,6 +2860,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $default the value to use if the config option is not defined.
    *
    * @return int the JSON decoding options.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_json_decode_options( $default  ) {
 
@@ -2828,6 +2916,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param boolean $default the value to use if the config option is not defined.
    *
    * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_phps_enable(
     bool $default = KICKASS_CRYPTO_DEFAULT_PHPS_ENABLE
@@ -2885,6 +2975,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param boolean $default the value to use if the config option is not defined.
    *
    * @return boolean true if PHPS serialization and deserialization is enabled, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_phps_enable( $default ) {
 
@@ -2939,6 +3031,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param boolean $default the value to use if the config option is not defined.
    *
    * @return boolean true if the boolean value false can be encrypted, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_config_false_enable(
     bool $default = KICKASS_CRYPTO_DEFAULT_FALSE_ENABLE
@@ -2996,6 +3090,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param boolean $default the value to use if the config option is not defined.
    *
    * @return boolean true if the boolean value false can be encrypted, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_config_false_enable( $default ) {
 
@@ -3052,6 +3148,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $default the value to return if the constant is not defined.
    *
    * @return mixed the constant value or the default value if the constant is not defined.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_const( $const, $default = false ) {
 
@@ -3108,6 +3206,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $default the value to return if the constant is not defined.
    *
    * @return mixed the value of the constant or the default value if the constant is not defined.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_const( $const, $default ) {
 
@@ -3157,6 +3257,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - returns the list of passphrases; defers to abstract implementation.
    *
    * @return array a list of strings to use as passphrases.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_passphrase_list() : array {
 
@@ -3240,6 +3342,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - returns the passphrase to use for encryption or null if it's missing.
    *
    * @return string the encryption passphrase or null.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_encryption_passphrase() : ?string {
 
@@ -3292,6 +3396,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * overridden by implementations.
    *
    * @return ?string the passphrase or null if none.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_encryption_passphrase() {
 
@@ -3343,6 +3449,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - reports if the program is running from the command-line.
    *
    * @return bool true if running from the command-line, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_cli() : bool {
 
@@ -3395,6 +3503,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * implementations.
    *
    * @return boolean true if running from the command-line, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_cli() {
 
@@ -3446,6 +3556,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - checks to see if the program is running in DEBUG mode.
    *
    * @return boolean true if running in DEBUG mode, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_debug() : bool {
 
@@ -3498,6 +3610,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * overridden by implementations.
    *
    * @return boolean true if running in DEBUG mode, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_debug() {
 
@@ -3552,6 +3666,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string|null $problem a reference to the problem, if any.
    *
    * @return boolean true if the config is valid, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_config( ?string &$problem = null ) : bool {
 
@@ -3617,6 +3733,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $secret the secret key
    *
    * @return boolean true if the secret key is valid, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_secret( $secret ) : bool {
 
@@ -3686,6 +3804,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $secret the secret key
    *
    * @return boolean true if the secret is valid, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_valid_secret( $secret ) {
 
@@ -3740,6 +3860,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $passphrase the passphrase key
    *
    * @return boolean true if the passphrase key is valid, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_passphrase( $passphrase ) : bool {
 
@@ -3811,6 +3933,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $passphrase a passphrase to validate.
    *
    * @return boolean true on valid; false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_valid_passphrase( $passphrase ) {
 
@@ -3865,6 +3989,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $input the value which should be in base64 format.
    *
    * @return boolean true if the input is in base64 format, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_base64( $input ) : bool {
 
@@ -3920,6 +4046,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $input supposedly base64 encoded value.
    *
    * @return boolean true if value is in valid base64 format, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_valid_base64( $input ) {
 
@@ -3975,6 +4103,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $input the value to encrypt.
    *
    * @return string|false the ciphertext or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_encrypt( $input ) {
 
@@ -4167,6 +4297,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $data_format the data format string.
    *
    * @return boolean true if the data format is valid, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_data_format( string $data_format ) : bool {
 
@@ -4236,6 +4368,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $data_encoding the data encoding to validate.
    *
    * @return boolean true if the data encoding is value, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function is_valid_data_encoding( string $data_encoding ) : bool {
 
@@ -4303,6 +4437,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $data_encoding the data encoding.
    *
    * @return boolean true if the data encoding is a valid supported value, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_is_valid_data_encoding( $data_encoding ) {
 
@@ -4369,6 +4505,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - gets the data encoding; defers to virtual do_get_data_encoding().
    *
    * @return string the data encoding.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_data_encoding() : string {
 
@@ -4421,6 +4559,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * get_config_data_encoding().
    *
    * @return string the data encoding.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_data_encoding() {
 
@@ -4477,6 +4617,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $passphrase the passphrase to use for encryption.
    *
    * @return string|false the ciphertext on success or false on error.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function encrypt_string( string $plaintext, string $passphrase ) {
 
@@ -4547,6 +4689,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $ciphertext the ciphertext to decrypt.
    *
    * @return mixed the decrypted and deserialized value on success, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_decrypt( $ciphertext ) {
 
@@ -4657,6 +4801,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * determine.
    *
    * @return mixed the decoded message on success, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function try_decrypt( string $binary, string $passphrase, &$data_encoding = null ) {
 
@@ -4734,6 +4880,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $passphrase the passphrase to use for decryption.
    *
    * @return mixed the decrypted string or false on error.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function decrypt_string( string $binary, string $passphrase ) {
 
@@ -4793,6 +4941,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $tag the tag, only provided by OpenSSL, false for Sodium.
    *
    * @return boolean true on success, false otherwise.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function parse_binary( $binary, &$iv, &$ciphertext, &$tag ) : bool {
 
@@ -4868,6 +5018,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $data_encoding a reference to the data encoding nominated in the message.
    *
    * @return string|false the decoded message or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function decode_message( string $message, &$data_encoding ) {
 
@@ -4943,6 +5095,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param string $data_encoding a reference to the data encoding extracted from the message.
    *
    * @return string the decoded string or false on error.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_decode_message( $message, &$data_encoding ) {
 
@@ -5093,6 +5247,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $ns_min minimum delay in nanoseconds.
    *
    * @param int $ns_max maximum delay in nanoseconds.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_delay( $ns_min, $ns_max ) {
 
@@ -5169,11 +5325,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    *
-   * @throws \AssertionError if there's an assertion violation during testing (not enable in
-   * production).
-   *
    * @throws \Exception may throw an exception if set up for error injection, this should only be
    * done during testing.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function emergency_delay() : void {
 
@@ -5292,7 +5447,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return void
    *
-   * @throws \AssertionError on an assertion violation, this isn't done in production.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   private function report_emergency_delay( string $type, $file, $line, $function ) : bool {
 
@@ -5349,6 +5504,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param int $line the line in the file where the emergency delay was reported.
    *
    * @param string $function the function from which the emergency delay was reported.
+   *
+   * @return void
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_report_emergency_delay( $type, $file, $line, $function ) {
 
@@ -5408,7 +5567,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the encoded string on success or false on failure.
    *
-   * @throws \AssertionError if there's an assertion violation, this doesn't happen in production.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function data_encode( $data, $data_encoding ) {
 
@@ -5484,10 +5643,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the encoded string on success or false on failure.
    *
-   * @throws \AssertionError if there's an assertion violation, this doesn't happen in production.
-   *
    * @throws \Exception may be thrown for fault injection during testing, this shouldn't happen
    * in production.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_data_encode( $data, $data_encoding ) {
 
@@ -5577,7 +5736,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the JSON string on success, false on failure.
    *
-   * @throws \AssertionError potentially thrown during testing.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function json_encode( $input ) {
 
@@ -5649,7 +5808,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return mixed returns the decoded JSON value or false on failure.
    *
-   * @throws \AssertionError potentially thrown during testing.
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_json_encode( $input ) {
 
@@ -5736,7 +5895,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the serialized input or false on error.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function phps_encode( $input ) {
 
@@ -5814,7 +5973,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the serialized value on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_phps_encode( $input ) {
 
@@ -5895,7 +6054,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @return mixed returns the decoded data (can be pretty much anything) or false on error;
    * false can also be a valid return value, if it is then $is_false will be set.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function data_decode(
     $encoded_data,
@@ -5974,11 +6133,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @return mixed can return pretty much anything, will return false on error, but false can also
    * be a valid return value.
    *
-   * @throws \AssertionError
-   *
    * @throws \Exception may inject an exception for testing purposes, you can control this by
    * passing $data_encoding === false and defining the KICKASS_CRYPTO_TEST_DATA_DECODE constant
    * true.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_data_decode( $encoded_data, $data_encoding, &$is_false ) {
 
@@ -6074,7 +6233,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @return mixed can return pretty much anything, will return false on failure but false can be
    * a valid return value.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function json_decode( $input, &$is_false ) {
 
@@ -6151,7 +6310,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return mixed returns the decoded value on success or the value false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_json_decode( $input, &$is_false ) {
 
@@ -6258,7 +6417,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @return mixed the deserialized data on success or false on failure, the value false can be
    * returned on success if that's what the serialized data represented.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function phps_decode( $input, &$is_false ) {
 
@@ -6333,7 +6492,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return mixed the deserialized data or false on error.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_phps_decode( $input, &$is_false ) {
 
@@ -6423,7 +6582,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the encoded value on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function message_encode( string $binary ) {
 
@@ -6495,7 +6654,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the encoded string on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_message_encode( $binary ) {
 
@@ -6583,7 +6742,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the decoded message or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function message_decode( string $encoded ) {
 
@@ -6655,7 +6814,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the decoded message or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_message_decode( $encoded ) {
 
@@ -6768,7 +6927,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the data format string or false on error.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_data_format() {
 
@@ -6844,7 +7003,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the generated passphrase or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function convert_secret_to_passphrase( $key ) {
 
@@ -6904,7 +7063,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the hashed string to use as the passphraser or false on error.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_convert_secret_to_passphrase( $key ) {
 
@@ -6961,7 +7120,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the padding string to use or false on error.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_padding( int $length ) : string {
 
@@ -7017,7 +7176,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return string|false the padding on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_padding( $length ) {
 
@@ -7102,7 +7261,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return boolean true on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function get_delay(
     int $ns_min,
@@ -7180,7 +7339,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return boolean true on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_get_delay( $ns_min, $ns_max, &$seconds, &$nanoseconds ) {
 
@@ -7256,7 +7415,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return boolean true on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function log_error( $message, $file, $line, $function ) : bool {
 
@@ -7322,7 +7481,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return boolean true on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected function do_log_error( $message, $file, $line, $function ) {
 
@@ -7390,7 +7549,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @return boolean true on success or false on failure.
    *
-   * @throws \AssertionError
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
    */
   protected final function write_log( $message, $file, $line, $function ) {
 

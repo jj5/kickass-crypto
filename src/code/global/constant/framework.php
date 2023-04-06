@@ -13,20 +13,19 @@
 *                                                                                                *
 \************************************************************************************************/
 
-/************************************************************************************************\
-//
-// 2023-04-04 jj5 - these are the constants used by the library.
-//
-// 2023-04-04 jj5 - NOTE: these constants are *constants* and not configuration settings. If you
-// need to override any of these, for instance to test the correct handling of error scenarios,
-// pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
-// these... please see the documentation in README.md for an explanation of these values.
-//
-\************************************************************************************************/
+/**
+ * 2023-04-04 jj5 - these are the constants used by the library.
+ *
+ * 2023-04-04 jj5 - NOTE: these constants are *constants* and not configuration settings. If you
+ * need to override any of these, for instance to test the correct handling of error scenarios,
+ * pelase override the relevant get_const_*() accessor in the KickassCrypto class, don't edit
+ * these... please see the documentation in README.md for an explanation of these values.
+ */
 
 /**
  * 2023-04-05 jj5 - the key has is used to convert a secret key into a 32 byte (256-bit)
  * passphrase for use with either the OpenSSL or Sodium encryption library.
+ *
  * @var string
  */
 define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
@@ -34,6 +33,7 @@ define( 'KICKASS_CRYPTO_KEY_HASH', 'sha512/256' );
 /**
  * 2023-04-05 jj5 - the minimum key length is used to ensure that secret keys meet at least a
  * minimal requirement.
+ *
  * @var int
  */
 define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
@@ -41,6 +41,7 @@ define( 'KICKASS_CRYPTO_KEY_LENGTH_MIN', 88 );
 /**
  * 2023-04-05 jj5 - the minimum key length is used to ensure that passphrases meet at least a
  * minimal requirement.
+ * 
  * @var int
  */
 define( 'KICKASS_CRYPTO_PASSPHRASE_LENGTH_MIN', 32 );

@@ -1448,12 +1448,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020creates\u0020a\u0020new\u0020instance\u0020of\u0020this\u0020class\u003B\u0020calls\u0020the\u0020parent\u0020constructor\u0020and\nrecords\u0020the\u0020associated\u0020data,\u0020if\u0020any.",
             "url": "classes/KickassCrypto-KickassCryptoException.html#method___construct"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003AgetData\u0028\u0029",
             "name": "getData",
-            "summary": "",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020an\u0020accessor\u0020for\u0020the\u0020associated\u0020data,\u0020if\u0020any.",
             "url": "classes/KickassCrypto-KickassCryptoException.html#method_getData"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCryptoException\u003A\u003A\u0024data",
