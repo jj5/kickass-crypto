@@ -1157,7 +1157,7 @@ In contrast the default implementation `do_is_valid_settings()` is not marked as
 does not declare the types on its interface.
 
 This is an example of
-[Postel's law](https://en.wikipedia.org/wiki/Robustness_principle),
+[Postel's Law](https://en.wikipedia.org/wiki/Robustness_principle),
 which is also known as the Robustness Principle. The final wrapper is liberal in what it accepts,
 such as with the return value one (`1`) from the default implementation; and conservative in what
 it does, such as always returning a properly typed boolean value.
