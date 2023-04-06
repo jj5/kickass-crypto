@@ -144,11 +144,9 @@ For slightly more elaboration maybe check out the
 [sample code](https://github.com/jj5/kickass-crypto/blob/main/src/demo/index.php).
 
 Or if you want the bottom line on how this library works read the code in the
-[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Framework/KickassCrypto.php),
+[library framework](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/KickassCrypto/KickassCrypto.php),
 the
-[Sodium implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/Sodium/KickassSodium.php),
-or the
-[OpenSSL implementation](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/Kickass/Crypto/Module/OpenSsl/KickassOpenSSL.php).
+[other code](https://github.com/jj5/kickass-crypto/blob/main/src/code/namespace/).
 
 ## Why was this library written?
 
