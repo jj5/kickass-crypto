@@ -16,7 +16,9 @@
 
 /************************************************************************************************\
 //
-// 2023-04-06 jj5 - this test just takes the services for a spin with debugging enabled.
+// 2023-04-06 jj5 - this test just takes the services for a spin with debugging enabled. When the
+// DEBUG constant is true that can have some subtle difference in the code, for example we use
+// different types of padding, so this is just to see that everything seems to be in order.
 //
 \************************************************************************************************/
 
@@ -27,7 +29,7 @@ require_once __DIR__ . '/../../../inc/test-host.php';
 
 function run_test() {
 
-  for ( $n = 1; $n <= 10; $n++ ) {
+  for ( $n = 1; $n <= 100; $n++ ) {
 
     test( kickass_round_trip() );
 
