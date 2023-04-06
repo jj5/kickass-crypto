@@ -1205,9 +1205,9 @@ means that the implementer can maintain particular standards within the library 
 that those standards haven't been elided, accidentally or otherwise.
 
 Having code that you rely on marked as final helps you to reason about the possible states of your
-component. In the example given above the requirement that `$setting_b` is less that 200 bytes in
-length and that requirement cannot be changed by implementations; implementations can only make
-the requirements stronger.
+component. In the example given above the requirement that `$setting_b` is less than or equal to
+bytes in length and that requirement cannot be changed by implementations; implementations can
+only make the requirements stronger.
 
 And another advantage of the typed interface is that it provides extra information which can be
 automatically added into the documentation.
