@@ -1112,8 +1112,8 @@ array index, and returning false is still preferred.
 
 The fact that an error has occurred can be registered with your component by a call to `error()`
 so that if the callers get a false return value they can interrogate your component with a call to
-`get_error()` or `get_error_list()` to get the list of recent errors (the caller can clear these
-errors with `clear_error()` too).
+`get_error()` or `get_error_list()` to get the recent errors (the caller can clear these errors
+with `clear_error()` too).
 
 In our library the function for registering that an error has occurred is the `error()` function.
 
