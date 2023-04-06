@@ -749,7 +749,7 @@ The config constant for the maximum JSON encoding length is
 `CONFIG_ENCRYPTION_DATA_LENGTH_MAX`.
 
 The default data encoding limit is 67,108,864 (2^<sup>26</sup>) bytes, which
-is roughly 67 MB.
+is roughly 67 MB or 64 MiB.
 
 It's possible to configure this data encoding limit, if you need to make it
 larger or smaller. Just be aware that if you make the limit too large you will
@@ -787,10 +787,11 @@ Note that avoiding timing attacks is
 guest on your VPS host (or a malicious person listening to your server's fans!
 😜) could figure out that your process is sleeping rather than doing actual work.
 
-This library includes a method called `delay`, and this method is called
-automatically on the first instance of an error. The `delay` method does what is says on the tin:
-it injects a random delay into the process. The `delay` method is public
-and you can call it yourself if you feel the need.
+This library includes a method called `delay()`, and this method is called
+automatically on the first instance of an error. The `delay()` method does what is says on the tin:
+it injects a random delay into the process. The `delay()` method is public
+and you can call it yourself if you feel the need. Each time `delay()` is called it will sleep
+for a random amount of time between 1 millisecond and 10 seconds.
 
 ## Fail safe
 
