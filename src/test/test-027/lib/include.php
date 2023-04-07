@@ -81,6 +81,20 @@ function test_error( $instance ) {
 
 }
 
+function test_text( $instance, $compare = 'text_equal' ) {
+
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
+
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
+
+}
+
 function test_service_error( $crypto, $instance ) {
 
   $ciphertext = $crypto->encrypt( $instance );
@@ -96,90 +110,6 @@ function test_service_error( $crypto, $instance ) {
   assert( count( $crypto->get_error_list() ) > 0 );
 
   $crypto->clear_error();
-
-}
-
-function test_inequality( $instance, $compare = 'value_unequal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
-
-}
-
-function test_text( $instance, $compare = 'text_equal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
-
-}
-
-function test_value( $instance, $compare = 'value_equal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
-
-}
-
-function test_nan( $instance, $compare = 'nan_equal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
-
-}
-
-function test_date( $instance, $compare = 'date_equal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
-
-}
-
-function test_class( $instance, $compare = 'class_equal' ) {
-
-  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
-
-  test_service_instance( $openssl_round_trip, $instance, $compare );
-
-  test_service_instance( $openssl_at_rest, $instance, $compare );
-
-  test_service_instance( $sodium_round_trip, $instance, $compare );
-
-  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 
