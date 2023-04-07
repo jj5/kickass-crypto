@@ -307,19 +307,19 @@ Total Number of Source Code Files = 128
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 9,199
-Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.67)
+Total Physical Source Lines of Code (SLOC)                = 9,210
+Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.70)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.70 (8.45)
+Schedule Estimate, Years (Months)                         = 0.70 (8.46)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.92
-Total Estimated Cost to Develop                           = $ 277,696
+Total Estimated Cost to Develop                           = $ 278,044
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| code      | 5,090 | php=5090        |
+| code      | 5,101 | php=5101        |
 | test      | 3,398 | php=3228,sh=170 |
 | bin       |   603 | php=423,sh=180  |
 | demo      |    71 | php=71          |
@@ -329,7 +329,7 @@ Total Estimated Cost to Develop                           = $ 277,696
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 8,849 |   (96.20%) |
+| php      | 8,860 |   (96.20%) |
 | sh       |   350 |    (3.80%) |
 
 ## Supported PHP versions
@@ -1385,7 +1385,6 @@ class EpicFail extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 }
 ```
 
-
 ### Return false on error idiom
 
 As mentioned above and elaborated on in the following section this library won't usually throw
@@ -1425,6 +1424,34 @@ class.
 
 In some error situations the best and safest thing to do is swallow the error and return a
 sensible and safe and uncontroversial default value as a fallback.
+
+Here's a quick run-down:
+
+- if you mess up `get_error_list()` you get an exception with no error
+- if you mess up `get_error()` you get null and an error
+- if you mess up `clear_error()` it's void but with an error
+- if you mess up `handle()` you get a log entry, no error
+- if you mess up `notify()` is will be handled then ignored, no error
+- if you mess up `ignore()` you get a log entry, no error
+- if you mess up `throw()` it will throw anyway
+- if you mess up `error()` your error may not be properly registered, it always returns false
+- if you mess up a counter you get -1 and no error
+- if you mess up `get_const_data_format()` you get an empty string and no error
+- if you mess up a constant accessor you get the value defined by the default constant and no
+error
+- if you mess up a config accessor you get the value defined by the default constant and no
+error
+- if you mess up `get_const()` you get the default value and no error
+- if you mess up `get_passphrase_list()` you get an empty array and an error
+- if you mess up `get_encryption_passphrase()` you get null and no error
+- if you mess up an `is_*()` method you will get false and no error
+- if you mess up `get_data_encoding()` you will get an empty string and no error
+- if you mess up `get_data_format()` you will get false and no error
+- if you mess up `convert_secret_to_passphrase()` you will get false and no error
+- if you mess up `get_padding()` you will get false and no error
+- if you mess up `get_delay()` you will get false and no error
+- if you mess up `log_error()` you will get false and no error (but we try to be forgiving)
+- if you mess up anything else you will get false and one or more errors
 
 ### Catch and throw idiom
 
@@ -1704,7 +1731,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,489 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,498 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

@@ -860,7 +860,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -920,7 +920,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         // 2023-04-07 jj5 - we don't call handle here, if this happens (it really shouldn't) then
         // we make some noise in the log file without giving the programmer a chance to stop us.
         //
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1028,7 +1028,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) {
@@ -1090,7 +1090,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -1139,7 +1139,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -1174,7 +1174,24 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     $this->do_throw( $code, $data, $previous );
 
-    assert( false );
+    $message = KICKASS_CRYPTO_EXCEPTION_MESSAGE[ $code ] ?? null;
+
+    if ( ! $message ) {
+
+      $data = [
+        'invalid_code' => $code,
+        'data' => $data,
+      ];
+
+      $this->throw( KICKASS_CRYPTO_EXCEPTION_INVALID_EXCEPTION_CODE, $data, $previous );
+
+    }
+
+    $this->log_error(
+      KICKASS_CRYPTO_LOG_PREFIX_EXCEPTION_THROW . $message, __FILE__, __LINE__, __FUNCTION__
+    );
+
+    throw new \KickassCrypto\KickassCryptoException( $message, $code, $previous, $data );
 
   }
 
@@ -1274,7 +1291,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       try {
 
-        error_log( __FILE__ . ':' . __LINE__ . ': ' . __FUNCTION__ . '(): ' . $ex->getMessage() );
+        $this->write_log( $ex->getMessage(), __FILE__, __LINE__, __FUNCTION__ );
 
       }
       catch ( \Throwable $ignore ) { ; }
@@ -2483,7 +2500,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
-      return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
+      return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2515,7 +2532,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
-    return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
+    return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX;
 
   }
 
@@ -2546,7 +2563,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
-      return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
+      return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX;
 
     }
     catch ( \AssertionError $ex ) {
@@ -2578,7 +2595,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
-    return CONFIG_ENCRYPTION_CHUNK_SIZE_MAX;
+    return KICKASS_CRYPTO_DEFAULT_CHUNK_SIZE_MAX;
 
   }
 
