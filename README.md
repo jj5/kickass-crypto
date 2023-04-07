@@ -448,8 +448,16 @@ with either "pass" or "secret" as a substring in the name.
 
 ## Data format and data encoding
 
-The data format is either "KA0" for the OpenSSL module or "KAS0" for the Sodium module. You need
-to use the right module for the data format in order to successfully decrypt a ciphertext.
+Here I explain the what these similar sounding terms actually mean in the context of this library.
+
+### Data format
+
+The data format is either "KA0" for the OpenSSL module or "KAS0" for the Sodium module.
+
+You need to use the right module for the data format in order to successfully decrypt a
+ciphertext.
+
+### Data encoding
 
 The data encoding is either JSON, PHP serialization, or text. Assuming you have the right module
 for the data format (above) you can decrypt anything regardless of the data encoding it used.
