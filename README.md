@@ -452,7 +452,14 @@ Here I explain the what these similar sounding terms actually mean in the contex
 
 ### Data format
 
-The data format is either "KA0" for the OpenSSL module or "KAS0" for the Sodium module.
+If you use the default modules the data format is either "KA0" for the OpenSSL module or "KAS0"
+for the Sodium module.
+
+If you inherit the base framework and define your own crypto module the default data format is
+"XKA0" for a module based on the OpenSSL implementation or "XKAS0" for a module based on the
+Sodium implementation otherwise your implementation of `do_get_const_data_format()` determines
+what the data format will be known as, you can make it anything so long as it doesn't start with
+the string "KA" which is reserved for official implementations.
 
 You need to use the right module for the data format in order to successfully decrypt a
 ciphertext.
@@ -460,9 +467,9 @@ ciphertext.
 ### Data encoding
 
 The data encoding is either JSON, PHP serialization, or text. Assuming you have the right module
-for the data format (above) you can decrypt anything regardless of the data encoding it used.
-Encryption will be done using the configured data encoding, see CONFIG_ENCRYPTION_DATA_ENCODING,
-it can be one of:
+for the data format (above), and with a caveat discussed below, you can decrypt anything
+regardless of the data encoding it used. Encryption will be done using the configured data
+encoding, see CONFIG_ENCRYPTION_DATA_ENCODING, it can be one of:
 
 - KICKASS_CRYPTO_DATA_ENCODING_JSON
 - KICKASS_CRYPTO_DATA_ENCODING_PHPS
