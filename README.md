@@ -460,6 +460,10 @@ it can be one of:
 - KICKASS_CRYPTO_DATA_ENCODING_PHPS
 - KICKASS_CRYPTO_DATA_ENCODING_TEXT
 
+Note that you won't be able to use PHPS encoding unless you also define
+CONFIG_ENCRYPTION_PHPS_ENABLE, this is because PHP deserialization might be unsafe so it is
+disabled by default.
+
 ## Configuration settings
 
 In addition to inheriting from `KickassCrypto` and overriding particular functionality a lot of
