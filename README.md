@@ -132,6 +132,7 @@ Don't want to RTFM..? And here I am, writing all this stuff... sheesh. At least 
 
 ```
 #!/bin/bash
+set -euo pipefail;
 mkdir -p kickass-demo/lib
 cd kickass-demo
 git clone https://github.com/jj5/kickass-crypto.git lib/kickass-crypto 2>/dev/null
