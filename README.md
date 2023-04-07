@@ -1431,7 +1431,7 @@ Here's a quick run-down:
 - if you mess up `get_error()` you get null and an error
 - if you mess up `clear_error()` it's void but with an error
 - if you mess up `handle()` you get a log entry, no error
-- if you mess up `notify()` is will be handled then ignored, no error
+- if you mess up `notify()` it will be handled then ignored, no error
 - if you mess up `ignore()` you get a log entry, no error
 - if you mess up `throw()` it will throw anyway
 - if you mess up `error()` your error may not be properly registered, it always returns false
