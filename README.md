@@ -307,20 +307,20 @@ Total Number of Source Code Files = 128
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 9,224
-Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.74)
+Total Physical Source Lines of Code (SLOC)                = 9,199
+Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.67)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.71 (8.46)
+Schedule Estimate, Years (Months)                         = 0.70 (8.45)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.92
-Total Estimated Cost to Develop                           = $ 278,488
+Total Estimated Cost to Develop                           = $ 277,696
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
 | code      | 5,090 | php=5090        |
-| test      | 3,423 | php=3253,sh=170 |
+| test      | 3,398 | php=3228,sh=170 |
 | bin       |   603 | php=423,sh=180  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -329,8 +329,8 @@ Total Estimated Cost to Develop                           = $ 278,488
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 8,874 |   (96.21%) |
-| sh       |   350 |    (3.79%) |
+| php      | 8,849 |   (96.20%) |
+| sh       |   350 |    (3.80%) |
 
 ## Supported PHP versions
 
@@ -445,6 +445,20 @@ with either "pass" or "secret" as a substring in the name.
 **_Don't write sensitive data into logs._**
 
 **_Do put either 'pass' or 'secret' in the name of sensitive variables, fields, or constants._**
+
+## Data format and data encoding
+
+The data format is either "KA0" for the OpenSSL module or "KAS0" for the Sodium module. You need
+to use the right module for the data format in order to successfully decrypt a ciphertext.
+
+The data encoding is either JSON, PHP serialization, or text. Assuming you have the right module
+for the data format (above) you can decrypt anything regardless of the data encoding it used.
+Encryption will be done using the configured data encoding, see CONFIG_ENCRYPTION_DATA_ENCODING,
+it can be one of:
+
+- KICKASS_CRYPTO_DATA_ENCODING_JSON
+- KICKASS_CRYPTO_DATA_ENCODING_PHPS
+- KICKASS_CRYPTO_DATA_ENCODING_TEXT
 
 ## Configuration settings
 
@@ -1682,7 +1696,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,486 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,489 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
