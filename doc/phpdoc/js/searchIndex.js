@@ -31,6 +31,11 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D04\u0020jj5\u0020\u002D\u0020uses\u0020the\u0020PHP\u0020serialize\u0028\u0029\u0020and\u0020unserialize\u0028\u0029\u0020functions\u0020\u0028not\u0020enabled\u0020by\u0020default\ndue\u0020to\u0020potential\u0020security\u0020issues,\u0020enable\u0020with\u0020CONFIG_ENCRYPTION_PHPS_ENABLE\u0029\u003B\u0020the\u0020encoding\nformat\u0020strings\u0020must\u0020be\u0020four\u0020characters\u0020long.",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_ENCODING_PHPS"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_DATA_ENCODING_TEXT",
+            "name": "KICKASS_CRYPTO_DATA_ENCODING_TEXT",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020encode\u0020as\u0020text.",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_DATA_ENCODING_TEXT"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_DATA_FORMAT_OPENSSL",
             "name": "KICKASS_CRYPTO_DATA_FORMAT_OPENSSL",
             "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020the\u0020OpenSSL\u0020data\u0020format.",
@@ -271,6 +276,21 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2"
         },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_2",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_2",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_2"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_3",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_3",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_3"
+        },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED",
             "name": "KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED",
             "summary": "",
@@ -320,6 +340,21 @@ Search.appendIndex(
             "name": "KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2",
             "summary": "",
             "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_2",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_2",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_2"
+        },                {
+            "fqsen": "\\KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_3",
+            "name": "KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_3",
+            "summary": "",
+            "url": "namespaces/default.html#constant_KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_3"
         },                {
             "fqsen": "\\KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED",
             "name": "KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED",
@@ -1311,6 +1346,16 @@ Search.appendIndex(
             "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020PHP\u0020serialization\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementers\u003B\u0020by\u0020default\u0020calls\u0020the\u0020PHP\u0020serialize\u0028\u0029\u0020function\u0020via\u0020its\u0020wrapper.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_encode"
         },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Atext_encode\u0028\u0029",
+            "name": "text_encode",
+            "summary": "2023\u002D04\u002D05\u0020jj5\u0020\u002D\u0020serializes\u0020a\u0020value\u0020as\u0020text\u003B\u0020defers\u0020to\u0020virtual\u0020method\u0020do_text_encode\u0028\u0029\u0020for\n\u0020implementation.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_text_encode"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_text_encode\u0028\u0029",
+            "name": "do_text_encode",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020text\u0020serialization\u003B\u0020can\u0020be\u0020overridden\u0020by\nimplementers\u003B\u0020by\u0020default\u0020calls\u0020the\u0020PHP\u0020strval\u0028\u0029\u0020function\u0020via\u0020its\u0020wrapper.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_text_encode"
+        },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Adata_decode\u0028\u0029",
             "name": "data_decode",
             "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020decodes\u0020the\u0020encoded\u0020data\u0020using\u0020the\u0020nominated\u0020encoding.",
@@ -1318,7 +1363,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_data_decode\u0028\u0029",
             "name": "do_data_decode",
-            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020the\u0020default\u0020implementation\u0020for\u0020data\u0020decoding,\u0020which\u0020provides\nsupport\u0020for\u0020decoding\u0020either\u0020JSON\u0020or\u0020PHPS.",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020provides\u0020the\u0020default\u0020implementation\u0020for\u0020data\u0020decoding,\u0020which\u0020provides\nsupport\u0020for\u0020decoding\u0020one\u0020of\u0020JSON,\u0020PHPS,\u0020or\u0020text.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_data_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ajson_decode\u0028\u0029",
@@ -1340,6 +1385,16 @@ Search.appendIndex(
             "name": "do_phps_decode",
             "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020PHP\u0020deserialization\u0020by\u0020deferring\u0020to\u0020the\nimplementation\u0020on\u0020the\u0020PHP\u0020wrapper.",
             "url": "classes/KickassCrypto-KickassCrypto.html#method_do_phps_decode"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Atext_decode\u0028\u0029",
+            "name": "text_decode",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020deserializes\u0020the\u0020input\u0020data\u0020using\u0020the\u0020PHP\u0020strval\u0028\u0029\u0020function.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_text_decode"
+        },                {
+            "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Ado_text_decode\u0028\u0029",
+            "name": "do_text_decode",
+            "summary": "2023\u002D04\u002D07\u0020jj5\u0020\u002D\u0020does\u0020the\u0020actual\u0020work\u0020of\u0020text\u0020deserialization\u0020by\u0020deferring\u0020to\u0020the\nimplementation\u0020on\u0020the\u0020PHP\u0020wrapper.",
+            "url": "classes/KickassCrypto-KickassCrypto.html#method_do_text_decode"
         },                {
             "fqsen": "\\KickassCrypto\\KickassCrypto\u003A\u003Amessage_encode\u0028\u0029",
             "name": "message_encode",
@@ -1860,6 +1915,16 @@ Search.appendIndex(
             "name": "do_php_unserialize",
             "summary": "",
             "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html#method_do_php_unserialize"
+        },                {
+            "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP\u003A\u003Aphp_strval\u0028\u0029",
+            "name": "php_strval",
+            "summary": "",
+            "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html#method_php_strval"
+        },                {
+            "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP\u003A\u003Ado_php_strval\u0028\u0029",
+            "name": "do_php_strval",
+            "summary": "",
+            "url": "classes/KickassCrypto-Traits-KICKASS-WRAPPER-PHP.html#method_do_php_strval"
         },                {
             "fqsen": "\\KickassCrypto\\Traits\\KICKASS_WRAPPER_PHP\u003A\u003Aphp_random_int\u0028\u0029",
             "name": "php_random_int",

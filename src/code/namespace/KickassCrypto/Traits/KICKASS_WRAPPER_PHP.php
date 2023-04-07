@@ -207,6 +207,28 @@ trait KICKASS_WRAPPER_PHP {
 
   }
 
+  protected final function php_strval( $value ) {
+
+    try {
+
+      return $this->do_php_strval( $value );
+
+    }
+    catch ( \Throwable $ex ) {
+
+      $this->notify( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      throw $ex;
+
+    }
+  }
+
+  protected function do_php_strval( $value ) {
+
+    return strval( $value );
+
+  }
+
   protected final function php_random_int( $min, $max ) {
 
     try {

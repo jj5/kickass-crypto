@@ -25,7 +25,7 @@
  */
 class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
 
-  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
@@ -34,7 +34,7 @@ class TestOpenSslRoundTrip extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTri
  */
 class TestOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
 
-  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
@@ -43,7 +43,7 @@ class TestOpenSslAtRest extends \KickassCrypto\OpenSsl\KickassOpenSslAtRest {
  */
 class TestSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
 
-  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
@@ -52,7 +52,7 @@ class TestSodiumRoundTrip extends \KickassCrypto\Sodium\KickassSodiumRoundTrip {
  */
 class TestSodiumAtRest extends \KickassCrypto\Sodium\KickassSodiumAtRest {
 
-  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+  use \KickassCrypto\Traits\KICKASS_DEBUG;
 
 }
 
@@ -101,41 +101,71 @@ function test_service_error( $crypto, $instance ) {
 
 function test_inequality( $instance, $compare = 'value_unequal' ) {
 
-  test_service_instance( kickass_round_trip(), $instance, $compare );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_instance( kickass_at_rest(), $instance, $compare );
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 
 function test_value( $instance, $compare = 'value_equal' ) {
 
-  test_service_instance( kickass_round_trip(), $instance, $compare );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_instance( kickass_at_rest(), $instance, $compare );
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 
 function test_nan( $instance, $compare = 'nan_equal' ) {
 
-  test_service_instance( kickass_round_trip(), $instance, $compare );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_instance( kickass_at_rest(), $instance, $compare );
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 
 function test_date( $instance, $compare = 'date_equal' ) {
 
-  test_service_instance( kickass_round_trip(), $instance, $compare );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_instance( kickass_at_rest(), $instance, $compare );
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 
 function test_class( $instance, $compare = 'class_equal' ) {
 
-  test_service_instance( kickass_round_trip(), $instance, $compare );
+  global $openssl_round_trip, $openssl_at_rest, $sodium_round_trip, $sodium_at_rest;
 
-  test_service_instance( kickass_at_rest(), $instance, $compare );
+  test_service_instance( $openssl_round_trip, $instance, $compare );
+
+  test_service_instance( $openssl_at_rest, $instance, $compare );
+
+  test_service_instance( $sodium_round_trip, $instance, $compare );
+
+  test_service_instance( $sodium_at_rest, $instance, $compare );
 
 }
 

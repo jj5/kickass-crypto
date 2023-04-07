@@ -65,6 +65,13 @@ define( 'KICKASS_CRYPTO_DATA_ENCODING_JSON', 'json' );
  */
 define( 'KICKASS_CRYPTO_DATA_ENCODING_PHPS', 'phps' );
 
+/**
+ * 2023-04-07 jj5 - encode as text.
+ *
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_DATA_ENCODING_TEXT', 'text' );
+
 // 2023-04-02 jj5 - NOTE: you don't need to actually change the following constants, you can just
 // override do_get_const_data_format() and return a different string. For example:
 //
@@ -448,6 +455,21 @@ define( 'KICKASS_CRYPTO_ERROR_PHPS_ENCODING_DISABLED_2', 'PHPS encoding disabled
 /**
  * @var string
  */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED', 'text encoding failed.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_2', 'text encoding failed (2).' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_3', 'text encoding failed (3).' );
+
+/**
+ * @var string
+ */
 define( 'KICKASS_CRYPTO_ERROR_DATA_DECODING_FAILED', 'data decoding failed.' );
 
 /**
@@ -494,6 +516,21 @@ define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED', 'PHPS decoding failed.' );
  * @var string
  */
 define( 'KICKASS_CRYPTO_ERROR_PHPS_DECODING_FAILED_2', 'PHPS decoding failed (2).' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED', 'text decoding failed.' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_2', 'text decoding failed (2).' );
+
+/**
+ * @var string
+ */
+define( 'KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_3', 'text decoding failed (3).' );
 
 /**
  * @var string

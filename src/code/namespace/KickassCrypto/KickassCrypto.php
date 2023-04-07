@@ -2716,6 +2716,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * - KICKASS_CRYPTO_DATA_ENCODING_JSON
    * - KICKASS_CRYPTO_DATA_ENCODING_PHPS
+   * - KICKASS_CRYPTO_DATA_ENCODING_TEXT
    *
    * 2023-04-05 jj5 - implementations can define their own data formats. Data format codes must
    * be ASCII values make from capital letters and numbers, see is_valid_data_format() for the
@@ -4724,6 +4725,7 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * - KICKASS_CRYPTO_DATA_ENCODING_JSON
    * - KICKASS_CRYPTO_DATA_ENCODING_PHPS
+   * - KICKASS_CRYPTO_DATA_ENCODING_TEXT
    *
    * Note that the PHPS data encoding is only a valid and supported data encoding if
    * get_config_phps_enable() is true.
@@ -4761,6 +4763,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
           }
 
           return false;
+
+        case KICKASS_CRYPTO_DATA_ENCODING_TEXT :
+
+          return true;
 
         default :
 
@@ -5442,8 +5448,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * 2023-04-05 jj5 - by default will decode the message and determine the data encoding using;
    * can be overridden by implementations.
    *
-   * @staticvar int $max_json_length this is the maximum length supported by the JSON format.
-   * Note due to other limits this limit could never be reached.
+   * @staticvar int $max_data_length this is the maximum length supported by the data encoding
+   * format. Note that due to other limits this limit could never be reached.
    *
    * @param string $message the message to decode.
    *
@@ -5474,9 +5480,9 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       // part of the code; the data can't actually be this long, but other parts of the code will
       // make sure of that.
       //
-      static $max_json_length = 2_147_483_647;
+      static $max_data_length = 2_147_483_647;
 
-      assert( hexdec( '7fffffff' ) === $max_json_length );
+      assert( hexdec( '7fffffff' ) === $max_data_length );
 
       $parts = explode( '|', $message, 3 );
 
@@ -5504,10 +5510,22 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $encoded_data_length = hexdec( $encoded_data_length_string );
 
+      // 2023-04-07 jj5 - make this 1 for JSON and PHPS...
+      //
+      $min_data_length = 1;
+
+      if ( $data_encoding_read === KICKASS_CRYPTO_DATA_ENCODING_TEXT ) {
+
+        // 2023-04-07 jj5 - but make it zero for text...
+        //
+        $min_data_length = 0;
+
+      }
+
       if (
         ! is_int( $encoded_data_length ) ||
-        $encoded_data_length <= 0 ||
-        $encoded_data_length > $max_json_length
+        $encoded_data_length < $min_data_length ||
+        $encoded_data_length > $max_data_length
       ) {
 
         return $this->error(
@@ -5870,8 +5888,9 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    * @param mixed $data input data, can be pretty much anything.
    *
    * @param string $data_encoding the data encoding to use, usually
-   * either KICKASS_CRYPTO_DATA_ENCODING_JSON for JSON encoding or
-   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).
+   * either KICKASS_CRYPTO_DATA_ENCODING_JSON for JSON encoding,
+   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled), or
+   * KICKASS_CRYPTO_DATA_ENCODING_TEXT.
    *
    * @return string|false the encoded string on success or false on failure.
    *
@@ -5953,7 +5972,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
    *
    * @param string $data_encoding the data encoding to use, usually
    * either KICKASS_CRYPTO_DATA_ENCODING_JSON for JSON encoding or
-   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled).
+   * KICKASS_CRYPTO_DATA_ENCODING_PHPS for PHP serialization (if it's enabled), or
+   * KICKASS_CRYPTO_DATA_ENCODING_TEXT.
    *
    * @return string|false the encoded string on success or false on failure.
    *
@@ -5987,6 +6007,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
           return $this->phps_encode( $data );
+
+        case KICKASS_CRYPTO_DATA_ENCODING_TEXT :
+
+          return $this->text_encode( $data );
 
         default :
 
@@ -6385,11 +6409,168 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
   }
 
   /**
+   * 2023-04-05 jj5 - serializes a value as text; defers to virtual method do_text_encode() for
+   *  implementation.
+   *
+   * @param mixed $input should be a string or something that strval() will turn into a string.
+   *
+   * @return string|false the serialized input or false on error.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
+   */
+  protected final function text_encode( $input ) {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $result = $this->do_text_encode( $input );
+
+      assert( is_string( $result ) || $result === false );
+
+      if ( is_string( $result ) || $result === false ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    try {
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
+  }
+
+  /**
+   * 2023-04-07 jj5 - does the actual work of text serialization; can be overridden by
+   * implementers; by default calls the PHP strval() function via its wrapper.
+   *
+   * @param mixed $input something that is a string or can be turned into a string.
+   *
+   * @return string|false the serialized value on success or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
+   */
+  protected function do_text_encode( $input ) {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $result = $this->php_strval( $input );
+
+      assert( is_string( $result ) );
+
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    try {
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TEXT_ENCODING_FAILED_3 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
+  }
+
+  /**
    * 2023-04-07 jj5 - decodes the encoded data using the nominated encoding.
    *
    * @param string $encoded_data the serialized data.
    *
-   * @param string $data_encoding the data encoding to use, can be JSON or PHPS.
+   * @param string $data_encoding the data encoding to use, can be JSON, PHPS, or text.
    *
    * @param boolean $is_false set to true if the encoded data is deserialized to the boolean value
    * false.
@@ -6471,11 +6652,11 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
   /**
    * 2023-04-07 jj5 - provides the default implementation for data decoding, which provides
-   * support for decoding either JSON or PHPS.
+   * support for decoding one of JSON, PHPS, or text.
    *
    * @param string $encoded_data the serialized data.
    *
-   * @param string $data_encoding the data encoding to use, can be JSON or PHPS.
+   * @param string $data_encoding the data encoding to use, can be JSON, PHPS, or text.
    *
    * @param boolean $is_false set to true if the deserialized value is the boolean value false.
    *
@@ -6515,6 +6696,10 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
         case KICKASS_CRYPTO_DATA_ENCODING_PHPS :
 
           return $this->phps_decode( $encoded_data, $is_false );
+
+        case KICKASS_CRYPTO_DATA_ENCODING_TEXT :
+
+          return $this->text_decode( $encoded_data, $is_false );
 
         default :
 
@@ -6927,6 +7112,175 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
     }
 
+    $is_false = false;
+
+    try {
+
+      return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
+  }
+
+  /**
+   * 2023-04-07 jj5 - deserializes the input data using the PHP strval() function.
+   *
+   * @param string $input the serialized data.
+   *
+   * @param boolean $is_false always set to false, this format can't represent false.
+   *
+   * @return mixed the deserialized data on success or false on failure.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
+   */
+  protected final function text_decode( $input, &$is_false ) {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $is_false = false;
+
+      $result = $this->do_text_decode( $input, $is_false );
+
+      assert( is_string( $result ) );
+
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    $is_false = false;
+
+    try {
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_2 );
+
+    }
+    catch ( \Throwable $ignore ) {
+
+      try {
+
+        $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    return false;
+
+  }
+
+  /**
+   * 2023-04-07 jj5 - does the actual work of text deserialization by deferring to the
+   * implementation on the PHP wrapper.
+   *
+   * @param string $input the serialized data to deserialize.
+   *
+   * @param boolean $is_false set to false, the value false can't be represent.
+   *
+   * @return mixed the deserialized data or false on error.
+   *
+   * @throws \AssertionError potentially thrown during testing when assertions are enabled.
+   */
+  protected function do_text_decode( $input, &$is_false ) {
+
+    try {
+
+      $this->enter( __FUNCTION__ );
+
+      $is_false = false;
+
+      $result = $this->php_strval( $input );
+
+      assert( is_string( $result ) );
+
+      if ( is_string( $result ) ) {
+
+        return $result;
+
+      }
+
+      return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_TEXT_DECODING_FAILED_3 );
+
+    }
+    catch ( \AssertionError $ex ) {
+
+      throw $ex;
+
+    }
+    catch ( \Throwable $ex ) {
+
+      try {
+
+        $this->handle( $ex, __FILE__, __LINE__, __FUNCTION__ );
+
+      }
+      catch ( \Throwable $ignore ) {
+
+        try {
+
+          $this->ignore( $ignore, __FILE__, __LINE__, __FUNCTION__ );
+
+        }
+        catch ( \Throwable $ignore ) { ; }
+
+      }
+    }
+    finally {
+
+      try { $this->leave( __FUNCTION__ ); } catch ( \Throwable $ignore ) { ; }
+
+    }
+
+    // 2023-04-07 jj5 - this should already be false, but just in case...
+    //
     $is_false = false;
 
     try {

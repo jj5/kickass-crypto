@@ -280,13 +280,13 @@ Here are some notes about the software files and lines of code.
 ### File count
 
 ```
-Total Number of Files = 125
-Total Number of Source Code Files = 125
+Total Number of Files = 128
+Total Number of Source Code Files = 128
 ```
 
 | Directory | Files | By language |
 | --------- | -----:| ----------- |
-| test      |    60 | php=56,sh=4 |
+| test      |    63 | php=59,sh=4 |
 | code      |    35 | php=35      |
 | bin       |    22 | php=13,sh=9 |
 | inc       |     7 | php=7       |
@@ -296,27 +296,27 @@ Total Number of Source Code Files = 125
 
 | Language | Files | Percentage |
 | -------- | -----:| ----------:|
-| php      |   112 |   (89.60%) |
-| sh       |    13 |   (10.40%) |
+| php      |   115 |   (89.84%) |
+| sh       |    13 |   (10.16%) |
 
 
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 8,721
-Development Effort Estimate, Person-Years (Person-Months) = 1.94 (23.32)
+Total Physical Source Lines of Code (SLOC)                = 9,224
+Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.74)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.69 (8.27)
+Schedule Estimate, Years (Months)                         = 0.71 (8.46)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 2.82
-Total Estimated Cost to Develop                           = $ 262,565
+Estimated Average Number of Developers (Effort/Schedule)  = 2.92
+Total Estimated Cost to Develop                           = $ 278,488
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| code      | 4,905 | php=4905        |
-| test      | 3,105 | php=2935,sh=170 |
+| code      | 5,090 | php=5090        |
+| test      | 3,423 | php=3253,sh=170 |
 | bin       |   603 | php=423,sh=180  |
 | demo      |    71 | php=71          |
 | inc       |    37 | php=37          |
@@ -325,8 +325,8 @@ Total Estimated Cost to Develop                           = $ 262,565
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 8,371 |   (95.99%) |
-| sh       |   350 |    (4.01%) |
+| php      | 8,874 |   (96.21%) |
+| sh       |   350 |    (3.79%) |
 
 ## Supported PHP versions
 
@@ -1678,7 +1678,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,448 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,486 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 

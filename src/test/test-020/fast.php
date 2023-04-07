@@ -106,12 +106,54 @@ class TestPhpsWithPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
   }
 }
 
+class TestTextWithoutPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+
+  protected function do_get_config_data_encoding( $default ) {
+
+    return KICKASS_CRYPTO_DATA_ENCODING_TEXT;
+
+  }
+
+  protected function do_delay( $ns_min, $ns_max ) {
+
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
+
+  }
+}
+
+class TestTextWithPhps extends \KickassCrypto\OpenSsl\KickassOpenSslRoundTrip {
+
+  use \KickassCrypto\Traits\KICKASS_DEBUG_LOG;
+
+  protected function do_get_config_data_encoding( $default ) {
+
+    return KICKASS_CRYPTO_DATA_ENCODING_TEXT;
+
+  }
+
+  protected function do_get_config_phps_enable( $default ) {
+
+    return true;
+
+  }
+
+  protected function do_delay( $ns_min, $ns_max ) {
+
+    $this->php_time_nanosleep( 0, KICKASS_CRYPTO_DELAY_NANOSECONDS_MIN );
+
+  }
+}
+
 function run_test() {
 
   $json_with = new TestJsonWithPhps();
   $json_without = new TestJsonWithoutPhps();
   $phps_with = new TestPhpsWithPhps();
   $phps_without = new TestPhpsWithoutPhps();
+  $text_with = new TestTextWithPhps();
+  $text_without = new TestTextWithoutPhps();
 
   global $secret;
 
@@ -119,15 +161,27 @@ function run_test() {
 
   test_success( $json_with, $json_without );
   test_success( $json_with, $phps_without );
+  test_success( $json_with, $text_without );
 
   test_success( $json_without, $json_with );
   test_success( $json_without, $phps_with );
+  test_success( $json_without, $text_with );
 
   test_error( $phps_with, $phps_without );
   test_error( $phps_with, $json_without );
+  test_error( $phps_with, $text_without );
 
   test_error( $phps_without, $phps_with );
   test_error( $phps_without, $json_with );
+  test_error( $phps_without, $text_with );
+
+  test_success( $text_with, $json_without );
+  test_success( $text_with, $phps_without );
+  test_success( $text_with, $text_without );
+
+  test_success( $text_without, $json_with );
+  test_success( $text_without, $phps_with );
+  test_success( $text_without, $text_with );
 
 }
 
