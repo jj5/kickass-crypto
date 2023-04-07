@@ -179,7 +179,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function do_get_const_data_format() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_DATA_FORMAT_OPENSSL',
+      KICKASS_CRYPTO_DATA_FORMAT_OPENSSL
+    );
 
   }
 
@@ -192,7 +195,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_openssl_cipher() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_CIPHER' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_OPENSSL_CIPHER',
+      KICKASS_CRYPTO_OPENSSL_CIPHER
+    );
 
   }
 
@@ -205,7 +211,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_openssl_options() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_OPTIONS' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_OPENSSL_OPTIONS',
+      KICKASS_CRYPTO_OPENSSL_OPTIONS
+    );
 
   }
 
@@ -217,7 +226,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_passphrase_length() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH',
+      KICKASS_CRYPTO_OPENSSL_PASSPHRASE_LENGTH
+    );
 
   }
 
@@ -230,7 +242,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_openssl_iv_length() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_IV_LENGTH' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_OPENSSL_IV_LENGTH',
+      KICKASS_CRYPTO_OPENSSL_IV_LENGTH
+    );
 
   }
 
@@ -243,7 +258,10 @@ abstract class KickassOpenSsl extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_openssl_tag_length() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_OPENSSL_TAG_LENGTH' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_OPENSSL_TAG_LENGTH',
+      KICKASS_CRYPTO_OPENSSL_TAG_LENGTH
+    );
 
   }
 

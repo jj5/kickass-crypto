@@ -99,7 +99,10 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
    */
   protected function do_get_const_data_format() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_DATA_FORMAT_SODIUM' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_DATA_FORMAT_SODIUM',
+      KICKASS_CRYPTO_DATA_FORMAT_SODIUM
+    );
 
   }
 
@@ -111,7 +114,10 @@ abstract class KickassSodium extends \KickassCrypto\KickassCrypto {
    */
   protected function get_const_passphrase_length() {
 
-    return $this->get_const( 'KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH' );
+    return $this->get_const(
+      'KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH',
+      KICKASS_CRYPTO_SODIUM_PASSPHRASE_LENGTH
+    );
 
   }
 

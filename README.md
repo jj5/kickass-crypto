@@ -307,19 +307,19 @@ Total Number of Source Code Files = 128
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 9,186
-Development Effort Estimate, Person-Years (Person-Months) = 2.05 (24.63)
+Total Physical Source Lines of Code (SLOC)                = 9,204
+Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.68)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
 Schedule Estimate, Years (Months)                         = 0.70 (8.45)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.92
-Total Estimated Cost to Develop                           = $ 277,284
+Total Estimated Cost to Develop                           = $ 277,854
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| code      | 5,112 | php=5112        |
+| code      | 5,130 | php=5130        |
 | test      | 3,363 | php=3193,sh=170 |
 | bin       |   603 | php=423,sh=180  |
 | demo      |    71 | php=71          |
@@ -329,8 +329,8 @@ Total Estimated Cost to Develop                           = $ 277,284
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 8,836 |   (96.19%) |
-| sh       |   350 |    (3.81%) |
+| php      | 8,854 |   (96.20%) |
+| sh       |   350 |    (3.80%) |
 
 ## Supported PHP versions
 
@@ -1439,8 +1439,8 @@ Here's a quick run-down:
 - if you mess up `get_const_data_format()` you get an empty string and no error
 - if you mess up a constant accessor you get the value defined by the default constant and no
 error
-- if you mess up a config accessor you get the value defined by the default constant and no
-error
+- if you mess up a config accessor you get the value defined by the default constant (or false if
+there is no such thing) and no error
 - if you mess up `get_const()` you get the default value and no error
 - if you mess up `get_passphrase_list()` you get an empty array and an error
 - if you mess up `get_encryption_passphrase()` you get null and no error
@@ -1732,7 +1732,7 @@ widely used I will try to be more careful with my commits.
 The Kickass Crypto ASCII banner is in the Graffiti font courtesy of
 [TAAG](http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Kickass%20Crypto).
 
-The string "kickass" appears in the source code 1,498 times (including the ASCII banners).
+The string "kickass" appears in the source code 1,504 times (including the ASCII banners).
 
 SLOC and file count reports generated using David A. Wheeler's 'SLOCCount'.
 
