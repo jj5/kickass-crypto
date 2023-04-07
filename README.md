@@ -462,7 +462,11 @@ it can be one of:
 
 Note that you won't be able to use PHPS encoding unless you also define
 CONFIG_ENCRYPTION_PHPS_ENABLE, this is because PHP deserialization might be unsafe so it is
-disabled by default.
+disabled by default. Honestly this is a little bit hand wavey. I've just heard rumors that PHP
+`unserialize()` can lead to code injection but I'm not sure if that's true or what exactly it
+means. I implemented PHP serialization and deserialization and gave it a bit of a test but I don't
+know if it's really insecure or not. I'm pretty sure that JSON and text data encoding should be
+safe.
 
 ## Configuration settings
 
