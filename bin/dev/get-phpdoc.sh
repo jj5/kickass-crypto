@@ -28,9 +28,9 @@ main() {
   source inc/env.sh;
   popd >/dev/null;
 
-  mkdir -p phpdoc;
+  mkdir -p ../../lib/phpdoc;
 
-  pushd "phpdoc/" >/dev/null;
+  pushd "../../lib/phpdoc/" >/dev/null;
 
   rm -f phpDocumentor.phar
 
