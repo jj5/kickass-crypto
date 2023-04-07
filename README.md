@@ -1452,7 +1452,7 @@ error
 - if you mess up `get_delay()` you will get false and no error (an emergency delay will be injected)
 - if you mess up `delay()` you will get void and no error (an emergency delay will be injected)
 - if you mess up `log_error()` you will get false and no error (but we try to be forgiving)
-- if you mess up anything else you will get false and one or more errors
+- if you mess up anything else you will get false and one or more errors, per the standard idiom
 
 ### Catch and throw idiom
 

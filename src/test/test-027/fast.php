@@ -15,8 +15,8 @@
 \************************************************************************************************/
 
 /**
- * 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt both simple and complex
- * values using text serialization.
+ * 2023-03-30 jj5 - this test verifies that we can encrypt and decrypt simple values using text
+ * serialization and that encryption of complex values fails reliably.
  *
  * @link https://github.com/jj5/kickass-crypto
  */
