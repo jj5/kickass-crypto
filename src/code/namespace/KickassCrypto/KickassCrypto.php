@@ -5510,7 +5510,8 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $encoded_data_length = hexdec( $encoded_data_length_string );
 
-      // 2023-04-07 jj5 - make this 1 for JSON and PHPS...
+      // 2023-04-07 jj5 - make this 1 for JSON and PHPS... actually for these formats it could
+      // probably be higher than one, but one will do.
       //
       $min_data_length = 1;
 
