@@ -58,7 +58,7 @@ something you think I should know about please
 
 I want to be clear with you that this library is big and complex and it hasn't seen much use; it
 is no doubt laden with subtle bugs which haven't been discovered yet. I think this code base has
-the capacity to mature into a solid and reliable tool, but we need to go through the process.
+the potential to mature into a solid and reliable tool, but we need to go through the process.
 
 ## Warning
 
