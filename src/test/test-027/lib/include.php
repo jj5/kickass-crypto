@@ -232,18 +232,6 @@ function test_service_instance( $crypto, $instance, $compare ) {
   }
 }
 
-function value_unequal( $a, $b ) {
-  if ( false ) {
-    var_dump([
-      'a' => strlen( $a ),
-      'b' => strlen( $b ),
-    ]);
-  }
-  if ( $a === false ) { return false; }
-  if ( $b === false ) { return false; }
-  return $a !== $b;
-}
-
 function text_equal( $a, $b ) {
   if ( false ) {
     var_dump([
@@ -253,23 +241,3 @@ function text_equal( $a, $b ) {
   }
   return strval( $a ) === strval( $b );
 }
-
-function value_equal( $a, $b ) {
-  if ( false ) {
-    var_dump([
-      'a' => strlen( $a ),
-      'b' => strlen( $b ),
-    ]);
-  }
-  return $a === $b;
-}
-
-function nan_equal( $a, $b ) {
-
-  return is_nan( $a ) && is_nan( $b );
-
-}
-
-function date_equal( $a, $b ) { return $a->format( 'r' ) === $b->format( 'r' ); }
-
-function class_equal( $a, $b ) { return get_class( $a ) === get_class( $b ); }
