@@ -4528,11 +4528,19 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       }
 
+      $padding = $this->get_padding( $pad_length );
+
+      if ( ! is_string( $padding ) ) {
+
+        return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+      }
+
       $message =
         $encoded_data_length_hex . '|' .
         $data_encoding . '|' .
         $encoded_data .
-        $this->get_padding( $pad_length );
+        $padding;
 
       $ciphertext = $this->encrypt_string( $message, $passphrase );
 
@@ -5659,7 +5667,15 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
 
       $this->log_error( KICKASS_CRYPTO_LOG_WARNING_DELAY, __FILE__, __LINE__, __FUNCTION__ );
 
-      $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+      $result = $this->get_delay( $ns_min, $ns_max, $seconds, $nanoseconds );
+
+      if ( ! $result ) {
+
+        $this->emergency_delay();
+
+        return false;
+
+      }
 
       assert( is_int( $seconds ) );
       assert( $seconds >= 0 );
@@ -7415,17 +7431,18 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       $this->enter( __FUNCTION__ );
 
       $data_format = $this->get_data_format();
+
+      if ( ! $this->is_valid_data_format( $data_format ) ) {
+
+        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
+
+      }
+
       $base64 = $this->php_base64_encode( $binary );
 
       if ( ! is_string( $base64 ) ) {
 
         return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_2 );
-
-      }
-
-      if ( ! $this->is_valid_data_format( $data_format ) ) {
-
-        return $this->error( __FUNCTION__, KICKASS_CRYPTO_ERROR_MESSAGE_ENCODING_FAILED_3 );
 
       }
 
@@ -7589,6 +7606,12 @@ abstract class KickassCrypto implements \KickassCrypto\IKickassCrypto {
       }
 
       $data_format = $parts[ 0 ];
+
+      if ( ! $this->is_valid_data_format( $data_format ) ) {
+
+        return $this->error( __FUNCTION__, 'TODO: model this error' );
+
+      }
 
       if ( $data_format !== $this->get_data_format() ) {
 

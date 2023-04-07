@@ -307,19 +307,19 @@ Total Number of Source Code Files = 128
 ### Lines of code
 
 ```
-Total Physical Source Lines of Code (SLOC)                = 9,210
-Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.70)
+Total Physical Source Lines of Code (SLOC)                = 9,221
+Development Effort Estimate, Person-Years (Person-Months) = 2.06 (24.73)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
 Schedule Estimate, Years (Months)                         = 0.70 (8.46)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
 Estimated Average Number of Developers (Effort/Schedule)  = 2.92
-Total Estimated Cost to Develop                           = $ 278,044
+Total Estimated Cost to Develop                           = $ 278,393
  (average salary = $56,286/year, overhead = 2.40).
 ```
 
 | Directory | SLOC  | By language     |
 | --------- | -----:| --------------- |
-| code      | 5,101 | php=5101        |
+| code      | 5,112 | php=5112        |
 | test      | 3,398 | php=3228,sh=170 |
 | bin       |   603 | php=423,sh=180  |
 | demo      |    71 | php=71          |
@@ -329,7 +329,7 @@ Total Estimated Cost to Develop                           = $ 278,044
 
 | Language | SLOC  | Percentage |
 | -------- | -----:| ----------:|
-| php      | 8,860 |   (96.20%) |
+| php      | 8,871 |   (96.20%) |
 | sh       |   350 |    (3.80%) |
 
 ## Supported PHP versions
@@ -1449,7 +1449,8 @@ error
 - if you mess up `get_data_format()` you will get false and no error
 - if you mess up `convert_secret_to_passphrase()` you will get false and no error
 - if you mess up `get_padding()` you will get false and no error
-- if you mess up `get_delay()` you will get false and no error
+- if you mess up `get_delay()` you will get false and no error (an emergency delay will be injected)
+- if you mess up `delay()` you will get void and no error (an emergency delay will be injected)
 - if you mess up `log_error()` you will get false and no error (but we try to be forgiving)
 - if you mess up anything else you will get false and one or more errors
 
